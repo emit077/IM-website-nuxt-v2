@@ -6,6 +6,17 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-07',
   devtools: { enabled: true },
 
+  components: [
+    {
+      path: '~/components/icons',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components',
+      ignore: ['icons'],
+    },
+  ],
+
   modules: [
     '@nuxtjs/tailwindcss',
     '@vueuse/motion/nuxt',
@@ -20,6 +31,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: false,
+      routes: ['/about', '/academic-coverage', '/student-parent'],
     },
   },
 
