@@ -560,16 +560,9 @@ onUnmounted(() => {
                     </form>
 
                     <!-- Social proof -->
-                    <SharedReviewerStrip
-                        class="mt-6"
-                        v-motion
-                        :initial="{ opacity: 0, y: 12 }"
-                        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }"
-                        variant="avatars"
-                        size="md"
-                        layout="row"
-                        audience="student"
-                    >
+                    <SharedReviewerStrip class="mt-6" v-motion :initial="{ opacity: 0, y: 12 }"
+                        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }" variant="avatars"
+                        size="md" layout="row" audience="student">
                         <p class="text-sm text-slate-600">
                             <span class="font-bold text-slate-900">50,000+ students</span>
                             already learning
@@ -648,93 +641,100 @@ onUnmounted(() => {
                                     </span>
                                 </div>
 
-                                <!-- Card -->
-                                <article :class="[
-                                    'timeline-card relative z-[1] flex w-full items-start gap-4 rounded-2xl border bg-white p-4 transition-all duration-300 sm:gap-5 sm:p-5',
-                                    step.highlight
-                                        ? 'border-emerald-300 ring-2 ring-emerald-200/70 shadow-[0_18px_44px_-20px_rgba(16,185,129,0.55)]'
-                                        : 'border-slate-200/80 shadow-[0_8px_24px_-14px_rgba(15,23,42,0.18)] hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-[0_14px_36px_-18px_rgba(37,99,235,0.32)]',
-                                ]">
-                                    <!-- Soft inner highlight when recommended -->
-                                    <span v-if="step.highlight" aria-hidden="true"
-                                        class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-50/70 via-white to-white"></span>
-
-                                    <!-- Icon tile -->
-                                    <span :class="[
-                                        'relative grid h-12 w-12 shrink-0 place-items-center rounded-xl sm:h-14 sm:w-14',
-                                        accentClasses[step.accent].tile,
+                                <!-- Card (outer: GSAP scroll reveal; inner: buttery hover) -->
+                                <article class="timeline-card relative z-[1] w-full">
+                                    <div :class="[
+                                        'timeline-card-surface group relative flex w-full items-start gap-4 overflow-hidden rounded-2xl border bg-white p-4 sm:gap-5 sm:p-5',
+                                        step.highlight
+                                            ? 'timeline-card-surface--highlight border-emerald-300 ring-2 ring-emerald-200/70 shadow-[0_18px_44px_-20px_rgba(16,185,129,0.55)]'
+                                            : 'border-slate-200/80 shadow-[0_8px_24px_-14px_rgba(15,23,42,0.18)]',
                                     ]">
-                                        <!-- 01 register: form / clipboard -->
-                                        <svg v-if="step.iconType === 'register'"
-                                            :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
-                                            viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                            <path
-                                                d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z"
-                                                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-                                            <path d="M14 3.5V8h4" stroke="currentColor" stroke-width="1.6"
-                                                stroke-linejoin="round" />
-                                            <path d="M8.5 12.5h7M8.5 16h5" stroke="currentColor" stroke-width="1.6"
-                                                stroke-linecap="round" />
-                                        </svg>
-                                        <!-- 02 match: people -->
-                                        <svg v-else-if="step.iconType === 'match'"
-                                            :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
-                                            viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                            <circle cx="9" cy="9" r="3.2" stroke="currentColor" stroke-width="1.6" />
-                                            <path
-                                                d="M3.5 19c.6-3 3-4.5 5.5-4.5s4.9 1.5 5.5 4.5M16.5 14.5a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2zM20.5 19c-.5-2.4-2.2-3.6-4-3.8"
-                                                stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                                        </svg>
-                                        <!-- 03 demo: calendar w/ check -->
-                                        <svg v-else-if="step.iconType === 'demo'"
-                                            :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
-                                            viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                            <rect x="4" y="5.5" width="16" height="14" rx="2" stroke="currentColor"
-                                                stroke-width="1.6" />
-                                            <path d="M4 10h16M9 3.5v4M15 3.5v4" stroke="currentColor" stroke-width="1.6"
-                                                stroke-linecap="round" />
-                                            <path d="m9 14.5 2 2 4-4" stroke="currentColor" stroke-width="1.7"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        <!-- 04 plan: document -->
-                                        <svg v-else-if="step.iconType === 'plan'"
-                                            :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
-                                            viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                            <path
-                                                d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z"
-                                                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-                                            <path d="M14 3.5V8h4M8.5 12.5h7M8.5 16h7M8.5 9h3" stroke="currentColor"
-                                                stroke-width="1.6" stroke-linecap="round" />
-                                        </svg>
-                                        <!-- 05 learn: open book -->
-                                        <svg v-else :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
-                                            viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                            <path
-                                                d="M3.5 5.5c2.5-.5 5-.5 8.5 1.2 3.5-1.7 6-1.7 8.5-1.2v12c-2.5-.5-5-.5-8.5 1.2-3.5-1.7-6-1.7-8.5-1.2v-12z"
-                                                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-                                            <path d="M12 6.7v12" stroke="currentColor" stroke-width="1.6"
-                                                stroke-linecap="round" />
-                                        </svg>
-                                    </span>
+                                        <!-- Soft inner highlight when recommended -->
+                                        <span v-if="step.highlight" aria-hidden="true"
+                                            class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-50/70 via-white to-white"></span>
 
-                                    <!-- Body -->
-                                    <div class="relative min-w-0 flex-1">
-                                        <h3 class="font-display text-[15.5px] font-bold text-slate-900 sm:text-[17px]">
-                                            {{ step.title }}
-                                        </h3>
-                                        <p class="mt-1 text-[13px] leading-relaxed text-slate-500 sm:text-[13.5px]">
-                                            {{ step.description }}
-                                        </p>
-
-                                        <span v-if="step.highlight"
-                                            class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-200">
-                                            <svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"
-                                                aria-hidden="true">
+                                        <!-- Icon tile -->
+                                        <span :class="[
+                                            'timeline-card-icon relative grid h-12 w-12 shrink-0 place-items-center rounded-xl sm:h-14 sm:w-14',
+                                            accentClasses[step.accent].tile,
+                                        ]">
+                                            <!-- 01 register: form / clipboard -->
+                                            <svg v-if="step.iconType === 'register'"
+                                                :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
+                                                viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                                 <path
-                                                    d="M12 2 13.5 8 19 9.5 13.5 11 12 17 10.5 11 5 9.5 10.5 8 12 2z" />
+                                                    d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z"
+                                                    stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                                                <path d="M14 3.5V8h4" stroke="currentColor" stroke-width="1.6"
+                                                    stroke-linejoin="round" />
+                                                <path d="M8.5 12.5h7M8.5 16h5" stroke="currentColor" stroke-width="1.6"
+                                                    stroke-linecap="round" />
                                             </svg>
-                                            Recommended Step
+                                            <!-- 02 match: people -->
+                                            <svg v-else-if="step.iconType === 'match'"
+                                                :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
+                                                viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                                <circle cx="9" cy="9" r="3.2" stroke="currentColor"
+                                                    stroke-width="1.6" />
+                                                <path
+                                                    d="M3.5 19c.6-3 3-4.5 5.5-4.5s4.9 1.5 5.5 4.5M16.5 14.5a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2zM20.5 19c-.5-2.4-2.2-3.6-4-3.8"
+                                                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                                            </svg>
+                                            <!-- 03 demo: calendar w/ check -->
+                                            <svg v-else-if="step.iconType === 'demo'"
+                                                :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
+                                                viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                                <rect x="4" y="5.5" width="16" height="14" rx="2" stroke="currentColor"
+                                                    stroke-width="1.6" />
+                                                <path d="M4 10h16M9 3.5v4M15 3.5v4" stroke="currentColor"
+                                                    stroke-width="1.6" stroke-linecap="round" />
+                                                <path d="m9 14.5 2 2 4-4" stroke="currentColor" stroke-width="1.7"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <!-- 04 plan: document -->
+                                            <svg v-else-if="step.iconType === 'plan'"
+                                                :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
+                                                viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                                <path
+                                                    d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z"
+                                                    stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                                                <path d="M14 3.5V8h4M8.5 12.5h7M8.5 16h7M8.5 9h3" stroke="currentColor"
+                                                    stroke-width="1.6" stroke-linecap="round" />
+                                            </svg>
+                                            <!-- 05 learn: open book -->
+                                            <svg v-else
+                                                :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
+                                                viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                                <path
+                                                    d="M3.5 5.5c2.5-.5 5-.5 8.5 1.2 3.5-1.7 6-1.7 8.5-1.2v12c-2.5-.5-5-.5-8.5 1.2-3.5-1.7-6-1.7-8.5-1.2v-12z"
+                                                    stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                                                <path d="M12 6.7v12" stroke="currentColor" stroke-width="1.6"
+                                                    stroke-linecap="round" />
+                                            </svg>
                                         </span>
+
+                                        <!-- Body -->
+                                        <div class="relative min-w-0 flex-1">
+                                            <h3 :class="[
+                                                'font-display text-[15.5px] font-bold text-slate-900 transition-colors duration-300 sm:text-[17px]',
+                                                step.highlight ? 'group-hover:text-emerald-700' : 'group-hover:text-blue-700',
+                                            ]">
+                                                {{ step.title }}
+                                            </h3>
+                                            <p class="mt-1 text-[13px] leading-relaxed text-slate-500 sm:text-[13.5px]">
+                                                {{ step.description }}
+                                            </p>
+
+                                            <span v-if="step.highlight"
+                                                class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-200">
+                                                <svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"
+                                                    aria-hidden="true">
+                                                    <path
+                                                        d="M12 2 13.5 8 19 9.5 13.5 11 12 17 10.5 11 5 9.5 10.5 8 12 2z" />
+                                                </svg>
+                                                Recommended Step
+                                            </span>
+                                        </div>
                                     </div>
                                 </article>
                             </li>
@@ -751,5 +751,89 @@ onUnmounted(() => {
 .timeline-story .timeline-card,
 .timeline-story .timeline-badge {
     opacity: 1;
+}
+
+/* Buttery hover on step cards (inner surface — GSAP animates outer .timeline-card) */
+.timeline-card-surface {
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s ease;
+}
+
+.timeline-card-surface::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.85) 0%,
+            rgba(255, 255, 255, 0.15) 42%,
+            transparent 70%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+}
+
+.timeline-card-surface::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 3px;
+    border-radius: 1rem 1rem 0 0;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.45), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.timeline-card-surface:hover {
+    transform: translateY(-6px);
+    border-color: rgb(191 219 254);
+    box-shadow:
+        0 4px 12px -2px rgba(15, 23, 42, 0.08),
+        0 22px 48px -16px rgba(37, 99, 235, 0.28);
+}
+
+.timeline-card-surface:hover::before,
+.timeline-card-surface:hover::after {
+    opacity: 1;
+}
+
+.timeline-card-surface--highlight:hover {
+    border-color: rgb(110 231 183);
+    box-shadow:
+        0 4px 12px -2px rgba(15, 23, 42, 0.06),
+        0 22px 48px -16px rgba(16, 185, 129, 0.35);
+}
+
+.timeline-card-surface--highlight:hover::after {
+    background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.55), transparent);
+}
+
+.timeline-card-icon {
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.timeline-card-surface:hover .timeline-card-icon {
+    transform: scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .timeline-card-surface,
+    .timeline-card-icon {
+        transition: none;
+    }
+
+    .timeline-card-surface:hover {
+        transform: none;
+    }
+
+    .timeline-card-surface:hover .timeline-card-icon {
+        transform: none;
+    }
 }
 </style>

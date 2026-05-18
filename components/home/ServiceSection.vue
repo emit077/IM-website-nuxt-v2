@@ -30,7 +30,7 @@ const services: ServiceCard[] = [
     {
         title: 'Home Tutor',
         description: '1-on-1 personalized learning in the comfort of your home.',
-        iconMdi: 'mdi:home',
+        iconMdi: 'fa6-solid:house',
         features: ['Personalised learning', 'Flexible scheduling', 'All subjects & boards'],
         accent: {
             checkCircle: 'bg-blue-600 text-white',
@@ -41,8 +41,8 @@ const services: ServiceCard[] = [
     },
     {
         title: 'Home schooling',
-        description: 'Full-time or hybrid learning at home with a structured curriculum and mentor.',
-        iconMdi: 'mdi:book-education',
+        description: 'Home-based learning with structured guidance.',
+        iconMdi: 'fa6-solid:book-open',
         features: ['Board-aligned curriculum', 'Dedicated homeschool mentor', 'Progress & assessments'],
         accent: {
             checkCircle: 'bg-indigo-600 text-white',
@@ -55,7 +55,7 @@ const services: ServiceCard[] = [
     {
         title: 'Online Tutor',
         description: 'Live interactive classes from anywhere, anytime.',
-        iconMdi: 'mdi:monitor',
+        iconMdi: 'fa6-solid:laptop',
         features: ['Live sessions', 'Digital whiteboard', 'Recorded sessions'],
         accent: {
             checkCircle: 'bg-blue-600 text-white',
@@ -67,7 +67,7 @@ const services: ServiceCard[] = [
     {
         title: 'Shadow Tutor',
         description: 'Extra focus and depth beyond regular school.',
-        iconMdi: 'mdi:account-multiple',
+        iconMdi: 'fa6-solid:user-group',
         features: ['Concept reinforcement', 'Homework guidance', 'Exam preparation'],
         accent: {
             checkCircle: 'bg-blue-600 text-white',
@@ -79,7 +79,7 @@ const services: ServiceCard[] = [
     {
         title: 'Travel Tutor',
         description: 'Mentors available at your location while you travel.',
-        iconMdi: 'mdi:airplane',
+        iconMdi: 'fa6-solid:plane',
         features: ['On-demand support', 'Location flexibility', 'Continuity in learning'],
         accent: {
             checkCircle: 'bg-blue-600 text-white',
@@ -91,7 +91,7 @@ const services: ServiceCard[] = [
     {
         title: 'Live-In Tutor',
         description: 'Daily immersive coaching and academic support.',
-        iconMdi: 'mdi:home-account',
+        iconMdi: 'fa6-solid:bed',
         features: ['Structured routine', 'Academic discipline', 'Result-oriented approach'],
         accent: {
             checkCircle: 'bg-blue-600 text-white',
@@ -104,7 +104,7 @@ const services: ServiceCard[] = [
         title: 'Custom Tutor Service',
         description:
             'Tell us your goals, schedule, and learning style — we match you with a mentor and plan built around your family, not a fixed package.',
-        iconMdi: 'mdi:tune-variant',
+        iconMdi: 'fa6-solid:wand-magic-sparkles',
         features: ['Flexible goals & timelines', 'Mixed subjects or boards', 'Dedicated academic coordinator'],
         accent: {
             checkCircle: 'bg-white text-blue-700',
@@ -120,12 +120,15 @@ const services: ServiceCard[] = [
 </script>
 
 <template>
-    <section id="services" class="relative overflow-hidden bg-[#f8fafc] py-5" aria-labelledby="services-heading">
+    <section id="services"
+        class="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 py-8 sm:py-10"
+        aria-labelledby="services-heading">
         <div aria-hidden="true"
-            class="pointer-events-none absolute left-4 top-8 h-40 w-40 opacity-[0.35] sm:left-10 sm:top-12"
-            style="background-image: radial-gradient(#94a3b8 1px, transparent 1px); background-size: 14px 14px;"></div>
+            class="pointer-events-none absolute left-4 top-8 h-40 w-40 opacity-25 sm:left-10 sm:top-12"
+            style="background-image: radial-gradient(rgba(255,255,255,0.45) 1px, transparent 1px); background-size: 14px 14px;">
+        </div>
         <svg aria-hidden="true"
-            class="pointer-events-none absolute -right-4 top-10 h-28 w-36 text-sky-300/90 sm:right-6 sm:top-14 sm:h-32 sm:w-44"
+            class="pointer-events-none absolute -right-4 top-10 h-28 w-36 text-white/25 sm:right-6 sm:top-14 sm:h-32 sm:w-44"
             viewBox="0 0 160 120" fill="none">
             <path d="M12 95 Q 55 72, 88 48 T 148 8" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 6"
                 stroke-linecap="round" opacity="0.55" />
@@ -133,7 +136,8 @@ const services: ServiceCard[] = [
         </svg>
 
         <div class="relative z-[1] mx-auto w-full max-w-[1200px] px-4">
-            <CardHeader class="mb-2" badge="WHAT WE OFFER" title="Ways we deliver academic excellence" />
+            <CardHeader class="mb-2 text-center" theme="on-blue" badge="WHAT WE OFFER"
+                title="Ways we deliver academic excellence" />
 
             <div class="flex flex-wrap justify-center gap-4 sm:gap-5">
                 <ServiceOfferingCard v-for="(service, i) in services" :key="service.title"
