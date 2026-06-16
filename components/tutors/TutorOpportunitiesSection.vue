@@ -1,0 +1,51 @@
+<script setup lang="ts">
+import { Icon } from '@iconify/vue'
+import IconArrowRight from '~/components/icons/IconArrowRight.vue'
+import { browseFilters } from '~/data/tutors'
+</script>
+
+<template>
+  <section id="browse-students" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
+    aria-labelledby="browse-students-heading">
+    <div class="container-page">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Browse Student Opportunities</span>
+        <h2 id="browse-students-heading"
+          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          Find students that <span class="text-gradient-brand">match your expertise</span>
+        </h2>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
+          Registered tutors can explore available tutoring opportunities and connect with
+          suitable students to expand their teaching engagements.
+        </p>
+      </div>
+
+      <ul class="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-5" role="list">
+        <li v-for="(filter, i) in browseFilters" :key="filter.title"
+          :class="i === browseFilters.length - 1 ? 'sm:col-span-2 lg:col-span-1' : ''" v-motion
+          :initial="{ opacity: 0, y: 14 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 50 + i * 60, duration: 420 } }">
+          <article
+            class="group flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-5 text-center shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card">
+            <span
+              class="mx-auto grid h-11 w-11 place-items-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white"
+              aria-hidden="true">
+              <Icon :icon="filter.iconMdi" class="h-5 w-5" />
+            </span>
+            <h3 class="font-display mt-3 text-[14.5px] font-bold leading-snug text-slate-900">{{ filter.title }}</h3>
+            <p class="mt-1.5 text-[12.5px] leading-relaxed text-slate-500">{{ filter.description }}</p>
+          </article>
+        </li>
+      </ul>
+
+      <div class="mt-10 text-center" v-motion :initial="{ opacity: 0, y: 10 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: 200 } }">
+        <a href="#tutor-register" class="btn-primary group inline-flex">
+          <Icon icon="mdi:account-search-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
+          Browse Student Leads
+          <IconArrowRight class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </a>
+      </div>
+    </div>
+  </section>
+</template>

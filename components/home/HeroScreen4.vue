@@ -8,7 +8,7 @@ const heroTitle =
   'Join India\'s <span class="text-gradient-brand"> Trusted Tutor</span> Network'
 
 const heroDescription =
-  'Empowering Educators with Smart Opportunities. Access quality student leads and build your teaching career with institutional support.'
+  '<span class="text-gradient-brand">Indian Mentors</span> - Empowering Educators with Smart Opportunities. Access quality student leads and build your teaching career with institutional support.'
 
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
@@ -18,7 +18,7 @@ function rippleHandler(e: MouseEvent) {
 }
 
 const heroSectionStyle = {
-  backgroundImage: `url('${usePublicAsset('/img/hero-bg/hero3.png')}')`,
+  backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-4.png')}')`,
 }
 </script>
 

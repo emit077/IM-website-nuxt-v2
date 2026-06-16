@@ -22,7 +22,7 @@ function rippleHandler(e: MouseEvent) {
 }
 
 const heroSectionStyle = {
-  backgroundImage: `url('${usePublicAsset('/img/hero-bg/hero1.png')}')`,
+  backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-1.png')}')`,
 }
 </script>
 

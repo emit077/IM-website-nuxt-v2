@@ -10,14 +10,19 @@ const navLinks = [
   { label: 'Students & parents', to: '/student-parent' },
   { label: 'Academic coverage', to: '/academic-coverage' },
   { label: 'About us', to: '/about' },
+  { label: 'Contact us', to: '/contact' },
+  { label: 'Contact us', to: '/contact' },
   { label: 'Our services', to: '/#services' },
   { label: 'Learning library', to: '/#learning-library' },
   { label: 'Find tutors', to: '/#tutors' },
   { label: 'How it works', to: '/#how-it-works' },
-  { label: 'Success stories', to: '/#testimonials' },
+  { label: 'Success stories', to: '/success-stories' },
   { label: 'Partner programme', to: '/#partner-programme' },
-  { label: 'Hire for institute', to: '/#institute-hiring' },
-  { label: 'Join us', to: '/#join' },
+  { label: 'Channel partner program', to: '/channel-partner' },
+  { label: 'Hire for institute', to: '/institutions' },
+  { label: 'Join as a tutor', to: '/tutors' },
+  { label: 'Careers', to: '/careers' },
+  { label: 'FAQs', to: '/faq' },
 ] as const
 </script>
 
@@ -27,20 +32,6 @@ const navLinks = [
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
         <!-- Contact -->
         <div class="lg:col-span-5">
-          <NuxtLink
-            to="/"
-            class="inline-flex items-center rounded-xl bg-white px-3 py-2 shadow-sm ring-1 ring-white/20 transition hover:opacity-95"
-            aria-label="Indian Mentors home"
-          >
-            <img
-              :src="usePublicAsset('/assets/img/logo/full-logo.svg')"
-              alt="Indian Mentors"
-              class="h-8 w-auto max-w-[200px] sm:h-9"
-              width="200"
-              height="36"
-              loading="lazy"
-            />
-          </NuxtLink>
           <p class="mt-5 text-sm font-semibold text-slate-300">
             India's #1 verified tutor platform. Building futures through personalised education with structured tutoring
             services and reliable teacher recruitment solutions across India.

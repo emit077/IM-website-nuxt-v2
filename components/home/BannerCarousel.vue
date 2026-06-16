@@ -32,17 +32,17 @@ const props = withDefaults(
       'Seasonal campaigns, partner highlights, and quick links for families — tap a slide to book a demo, explore a program, or jump straight to sign-up.',
     slides: () => [
       {
-        image: '/img/banner/banner-1.png',
+        image: '/assets/img/banner/banner-1.png',
         link: '/#book-demo',
         label: 'Book a free demo — verified tutors',
       },
       {
-        image: '/assets/img/banner/banner-2.jpg',
+        image: '/assets/img/banner/banner-1.png',
         link: '/home',
         label: 'Explore the home experience',
       },
       {
-        image: '/assets/img/banner/banner-3.jpg',
+        image: '/assets/img/banner/banner-1.png',
         link: '/#join',
         label: 'Join as a parent or tutor',
       },
@@ -130,13 +130,8 @@ function onLeave() {
           <component :is="wrapTag(slide)" v-bind="wrapBind(slide)"
             class="block aspect-[21/5] min-h-[140px] w-full max-sm:aspect-[4/3] sm:min-h-[160px] lg:min-h-[200px] focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50"
             :aria-label="slide.link ? slide.label : undefined">
-            <img
-              :src="usePublicAsset(slide.image)"
-              :alt="slide.label ?? 'Banner'"
-              class="h-full w-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
+            <img :src="usePublicAsset(slide.image)" :alt="slide.label ?? 'Banner'" class="h-full w-full object-cover"
+              loading="lazy" decoding="async" />
           </component>
         </div>
       </div>

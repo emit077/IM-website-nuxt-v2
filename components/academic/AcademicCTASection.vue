@@ -12,7 +12,7 @@ function rippleHandler(e: MouseEvent) {
 </script>
 
 <template>
-  <section id="book-demo" class="relative bg-cream-50 py-12 sm:py-14 lg:py-16" aria-labelledby="academic-cta-heading">
+  <section id="book-demo" class="relative bg-cream-50 py-14 sm:py-16 lg:py-24" aria-labelledby="academic-cta-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#eef1ff] to-transparent" />
 

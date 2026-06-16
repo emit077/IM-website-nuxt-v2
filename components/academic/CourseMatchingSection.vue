@@ -21,7 +21,7 @@ function rippleHandler(e: MouseEvent) {
 <template>
   <section
     id="course-matching"
-    class="relative overflow-hidden bg-gradient-to-br from-[#0b1220] via-[#101a35] to-[#0a142f] py-12 sm:py-14 lg:py-16"
+    class="relative overflow-hidden bg-gradient-to-br from-[#0b1220] via-[#101a35] to-[#0a142f] py-14 sm:py-16 lg:py-24"
     aria-labelledby="course-matching-heading"
   >
     <span
@@ -93,9 +93,10 @@ function rippleHandler(e: MouseEvent) {
           </div>
         </div>
 
-        <motion.div
+        <div
           class="relative mx-auto w-full max-w-md lg:max-w-none"
           aria-hidden="true"
+          v-motion
           :initial="{ opacity: 0, scale: 0.96 }"
           :visibleOnce="{ opacity: 1, scale: 1, transition: { delay: 200, duration: 600 } }"
         >
@@ -149,7 +150,7 @@ function rippleHandler(e: MouseEvent) {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   </section>

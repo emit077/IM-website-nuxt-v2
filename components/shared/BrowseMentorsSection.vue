@@ -709,16 +709,16 @@ const headerCopy = computed(() =>
         ? {
             badge: 'Discover the perfect match',
             title:
-                "Find Your <span class='text-gradient-brand'>Learning</span> Partner",
+                "Find Your <span class='text-gradient-brand'>Perfect Learning</span> Partner",
             description:
-                'Background-verified tutors across boards, subjects and cities — filter by what you need and book a free demo in minutes.',
+                'Explore verified tutors matched to your academic needs, learning preferences, and goals',
         }
         : {
             badge: 'Discover the perfect match',
             title:
-                "Meet <span class='text-gradient-brand'>Eager</span> Learners",
+                "Discover   <span class='text-gradient-brand'>Students Ready</span> to Learn",
             description:
-                'Active student requests with clear goals, schedule and budget — find the ones that fit your expertise and send a proposal in one click.',
+                'Explore verified student requirements based on subject, grade, location, and preferred mode.',
         },
 )
 
@@ -803,7 +803,7 @@ onUnmounted(() => {
         aria-labelledby="browse-mentors-heading">
         <!-- Anchor for CTAs site-wide -->
         <div id="book-demo" class="sr-only scroll-mt-28" tabindex="-1">
-          Book a free demo
+            Book a free demo
         </div>
         <div aria-hidden="true"
             class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-[#eef1ff] via-[#f6f8ff] to-transparent">

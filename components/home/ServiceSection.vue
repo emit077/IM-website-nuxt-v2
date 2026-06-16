@@ -39,23 +39,11 @@ const services: ServiceCard[] = [
             iconMdiClass: 'text-blue-600',
         },
     },
-    {
-        title: 'Home schooling',
-        description: 'Home-based learning with structured guidance.',
-        iconMdi: 'fa6-solid:book-open',
-        features: ['Board-aligned curriculum', 'Dedicated homeschool mentor', 'Progress & assessments'],
-        accent: {
-            checkCircle: 'bg-indigo-600 text-white',
-            link: 'text-indigo-600 group-hover:text-indigo-700',
-            iconTint: 'bg-indigo-50 ring-1 ring-indigo-100/90',
-            headingBar: 'bg-indigo-600',
-            iconMdiClass: 'text-indigo-600',
-        },
-    },
+
     {
         title: 'Online Tutor',
         description: 'Live interactive classes from anywhere, anytime.',
-        iconMdi: 'fa6-solid:laptop',
+        iconMdi: 'fa6-solid:desktop',
         features: ['Live sessions', 'Digital whiteboard', 'Recorded sessions'],
         accent: {
             checkCircle: 'bg-blue-600 text-white',
@@ -79,13 +67,13 @@ const services: ServiceCard[] = [
     {
         title: 'Travel Tutor',
         description: 'Mentors available at your location while you travel.',
-        iconMdi: 'fa6-solid:plane',
+        iconMdi: 'fa6-solid:plane-up',
         features: ['On-demand support', 'Location flexibility', 'Continuity in learning'],
         accent: {
             checkCircle: 'bg-blue-600 text-white',
             link: 'text-blue-600 group-hover:text-blue-700',
             iconTint: 'bg-blue-50 ring-1 ring-blue-100/90',
-            iconMdiClass: 'text-blue-600',
+            iconMdiClass: 'text-blue-600 rotate-45',
         },
     },
     {
@@ -98,6 +86,19 @@ const services: ServiceCard[] = [
             link: 'text-blue-600 group-hover:text-blue-700',
             iconTint: 'bg-blue-50 ring-1 ring-blue-100/90',
             iconMdiClass: 'text-blue-600',
+        },
+    },
+    {
+        title: 'Home schooling',
+        description: 'Home-based learning with structured guidance.',
+        iconMdi: 'fa6-solid:book-open',
+        features: ['Board-aligned curriculum', 'Dedicated homeschool mentor', 'Progress & assessments'],
+        accent: {
+            checkCircle: 'bg-indigo-600 text-white',
+            link: 'text-indigo-600 group-hover:text-indigo-700',
+            iconTint: 'bg-indigo-50 ring-1 ring-indigo-100/90',
+            headingBar: 'bg-indigo-600',
+            iconMdiClass: 'text-indigo-600',
         },
     },
     {
@@ -137,9 +138,9 @@ const services: ServiceCard[] = [
 
         <div class="relative z-[1] mx-auto w-full max-w-[1200px] px-4">
             <CardHeader class="mb-2 text-center" theme="on-blue" badge="WHAT WE OFFER"
-                title="Ways we deliver academic excellence" />
+                title="Modern Learning Solutions for Academic Excellence" />
 
-            <div class="flex flex-wrap justify-center gap-4 sm:gap-5">
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-5 mt-10">
                 <ServiceOfferingCard v-for="(service, i) in services" :key="service.title"
                     :class="cardWidthClass(service)" :title="service.title" :description="service.description"
                     :features="service.features" :icon-mdi="service.iconMdi" :animation-index="i" :span="service.span"

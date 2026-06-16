@@ -5,6 +5,7 @@ import BannerCarousel from '~/components/home/BannerCarousel.vue'
 import ServiceSection from '~/components/home/ServiceSection.vue'
 import SmartLearningDashboardSection from '~/components/home/SmartLearningDashboardSection.vue'
 import PartnersStrip from '~/components/home/PartnersStrip.vue'
+import PartneredWithStrip from '~/components/home/PartneredWithStrip.vue'
 import HireInstituteSection from '~/components/home/HireInstituteSection.vue'
 import LearningLibrarySection from '~/components/home/LearningLibrarySection.vue'
 import LearningStepsSection from '~/components/home/LearningStepsSection.vue'
@@ -34,6 +35,7 @@ useSeoMeta({
     <LearningLibrarySection />
     <AboutSection />
     <RegistrationCTASection />
+    <PartneredWithStrip />
     <LearningStepsSection />
     <BrowseMentorsSection />
     <SmartLearningDashboardSection />

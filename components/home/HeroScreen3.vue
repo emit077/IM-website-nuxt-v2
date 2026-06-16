@@ -9,7 +9,7 @@ const heroTitle =
   'Learn from <span class="text-gradient-brand">  Background</span><br class="hidden sm:block" /> Verified Tutors'
 
 const heroDescription =
-  'Building Strong Foundations for Lifelong Learning<br />Every tutor undergoes structured verification and performance monitoring.'
+  '<span class="text-gradient-brand">Indian Mentors</span> - Building Strong Foundations for Lifelong Learning<br />Every tutor undergoes structured verification and performance monitoring.'
 
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
@@ -18,7 +18,7 @@ function rippleHandler(e: MouseEvent) {
   target.style.setProperty('--y', `${e.clientY - rect.top}px`)
 }
 const heroSectionStyle = {
-  backgroundImage: `url('${usePublicAsset('/img/hero-bg/hero4.png')}')`,
+  backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-3.png')}')`,
 }
 </script>
 

@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import AboutHeroSection from '~/components/about/AboutHeroSection.vue'
-import AboutVideoSection from '~/components/about/AboutVideoSection.vue'
 import AboutMissionSection from '~/components/about/AboutMissionSection.vue'
+import AboutLeadershipSection from '~/components/about/AboutLeadershipSection.vue'
+import AboutPhilosophySection from '~/components/about/AboutPhilosophySection.vue'
 import AboutJourneySection from '~/components/about/AboutJourneySection.vue'
-import AboutTeamSection from '~/components/about/AboutTeamSection.vue'
-import RegistrationCTASection from '~/components/home/RegistrationCTASection.vue'
+import AboutComparisonSection from '~/components/about/AboutComparisonSection.vue'
+import AboutAudienceSection from '~/components/about/AboutAudienceSection.vue'
+import AboutFinalCTASection from '~/components/about/AboutFinalCTASection.vue'
 import NewsletterSection from '~/components/home/NewsletterSection.vue'
 
 useSeoMeta({
@@ -21,11 +23,13 @@ useSeoMeta({
 <template>
   <div class="min-h-screen bg-cream-50">
     <AboutHeroSection />
-    <!-- <AboutVideoSection /> -->
     <AboutMissionSection />
+    <AboutLeadershipSection />
+    <AboutPhilosophySection />
     <AboutJourneySection />
-    <AboutTeamSection />
-    <RegistrationCTASection />
+    <AboutComparisonSection />
+    <AboutAudienceSection />
+    <AboutFinalCTASection />
     <NewsletterSection />
   </div>
 </template>

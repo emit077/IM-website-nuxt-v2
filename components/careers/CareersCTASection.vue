@@ -1,0 +1,102 @@
+<script setup lang="ts">
+import { Icon } from '@iconify/vue'
+import IconArrowRight from '~/components/icons/IconArrowRight.vue'
+import { careersFinalCta } from '~/data/careers'
+
+function rippleHandler(e: MouseEvent) {
+  const target = e.currentTarget as HTMLElement
+  const rect = target.getBoundingClientRect()
+  target.style.setProperty('--x', `${e.clientX - rect.left}px`)
+  target.style.setProperty('--y', `${e.clientY - rect.top}px`)
+}
+</script>
+
+<template>
+  <section id="apply" class="relative scroll-mt-20 bg-cream-50 py-12 sm:py-16" aria-label="Apply for a role">
+    <div class="container-page">
+      <div
+        class="relative overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 px-6 py-12 text-center shadow-[0_24px_60px_-24px_rgba(29,78,216,0.5)] sm:px-12 sm:py-14"
+        v-motion
+        :initial="{ opacity: 0, y: 16 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }"
+      >
+        <span
+          aria-hidden="true"
+          class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl"
+        />
+        <span
+          aria-hidden="true"
+          class="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-indigo-400/20 blur-3xl"
+        />
+
+        <div class="relative mx-auto max-w-2xl">
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-blue-100"
+          >
+            <Icon icon="mdi:briefcase-check-outline" class="h-4 w-4" aria-hidden="true" />
+            {{ careersFinalCta.badge }}
+          </span>
+
+          <h2 class="font-display mt-5 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            {{ careersFinalCta.title }}
+          </h2>
+          <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-blue-100 sm:text-base">
+            {{ careersFinalCta.description }}
+          </p>
+
+          <div class="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+            <a
+              :href="careersFinalCta.primaryCta.href"
+              @mousemove="rippleHandler"
+              class="ripple group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-7 py-3.5 text-sm font-semibold text-blue-700 shadow-lg transition duration-300 hover:-translate-y-0.5 sm:w-auto"
+            >
+              <Icon icon="mdi:send-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
+              {{ careersFinalCta.primaryCta.label }}
+              <IconArrowRight
+                class="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </a>
+            <a
+              :href="careersFinalCta.secondaryCta.href"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 sm:w-auto"
+            >
+              <Icon icon="mdi:file-upload-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
+              {{ careersFinalCta.secondaryCta.label }}
+            </a>
+            <a
+              :href="careersFinalCta.tertiaryCta.href"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 sm:w-auto"
+            >
+              <Icon icon="mdi:phone-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
+              {{ careersFinalCta.tertiaryCta.label }}
+            </a>
+          </div>
+
+          <div class="mt-7 flex flex-col items-center justify-center gap-3 text-[13px] text-blue-100 sm:flex-row">
+            <a
+              href="mailto:info@indianmentors.in?subject=Recruitment%20Enquiry"
+              class="inline-flex items-center gap-1.5 font-medium underline-offset-4 transition hover:text-white hover:underline"
+            >
+              <Icon icon="mdi:email-outline" class="h-4 w-4" aria-hidden="true" />
+              info@indianmentors.in
+            </a>
+            <span class="hidden h-3.5 w-px bg-white/30 sm:block" aria-hidden="true" />
+            <a
+              href="https://wa.me/917389563564"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 font-medium underline-offset-4 transition hover:text-white hover:underline"
+            >
+              <Icon icon="mdi:whatsapp" class="h-4 w-4" aria-hidden="true" />
+              WhatsApp Recruitment
+            </a>
+          </div>
+
+          <p class="mt-6 text-[13px] font-medium text-blue-100/90 sm:text-sm">
+            {{ careersFinalCta.closing }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

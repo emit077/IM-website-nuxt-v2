@@ -7,7 +7,7 @@ import IconCalendar from '~/components/icons/IconCalendar.vue'
 
 const heroTitle = 'Personalised <span class="text-gradient-brand"> </span> Learning for <span class="text-gradient-brand"> Your Success</span>'
 
-const heroTagline = 'Guiding Every Student Towards Academic Excellence'
+const heroTagline = '<span class="text-gradient-brand">Indian Mentors</span> - Guiding Every Student Towards Academic Excellence'
 
 const heroDescription =
   'Providing structured tutoring services and reliable teacher recruitment solutions across India.'
@@ -20,7 +20,7 @@ function rippleHandler(e: MouseEvent) {
 }
 
 const heroSectionStyle = {
-  backgroundImage: `url('${usePublicAsset('/img/hero-bg/hero2.png')}')`,
+  backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-2.png')}')`,
 }
 </script>
 

@@ -4,16 +4,18 @@ import { Icon } from '@iconify/vue'
 
 const props = withDefaults(
   defineProps<{
-    /** `hero-blue`: full-width strip on hero slides. `card`: light panel (default). */
+    /** `hero-blue`: elevated cards for hero slides. `card`: flat light cards (default). */
     variant?: 'card' | 'hero-blue'
   }>(),
   { variant: 'card' },
 )
 
-const rootClass = computed(() =>
-  props.variant === 'hero-blue'
-    ? 'rounded-2xl border border-indigo-300/35 bg-gradient-to-br from-indigo-900 via-indigo-700 to-indigo-500 p-3 shadow-[0_24px_55px_-30px_rgba(37,99,235,0.85)] backdrop-blur-sm sm:p-4'
-    : 'rounded-2xl border border-blue-100/80 bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/40 p-3 shadow-sm sm:p-4',
+const isHero = computed(() => props.variant === 'hero-blue')
+
+const cardClass = computed(() =>
+  isHero.value
+    ? 'border-slate-200/70 bg-white/90 shadow-[0_18px_40px_-22px_rgba(37,99,235,0.4)] ring-1 ring-blue-100/50 backdrop-blur-sm'
+    : 'border-slate-200/80 bg-white shadow-[0_6px_20px_-12px_rgba(15,23,42,0.18)]',
 )
 
 const items = [
@@ -22,83 +24,62 @@ const items = [
     title: 'Verified & Trusted',
     description: 'Every tutor is background checked and verified.',
     icon: 'solar:shield-check-bold-duotone',
-    tone: 'text-blue-700',
   },
   {
     id: 'subj',
     title: 'Subject Verified',
     description: 'Experts in 250+ subjects across all boards.',
     icon: 'solar:book-bookmark-bold-duotone',
-    tone: 'text-indigo-700',
   },
   {
     id: 'demo',
     title: 'Demo Evaluated',
     description: 'Each tutor goes through a demo to ensure quality.',
     icon: 'solar:check-circle-bold-duotone',
-    tone: 'text-blue-700',
   },
   {
     id: 'match',
     title: 'Quick Matching',
-    description: 'Get the right tutor for your child within 24 hours.',
+    description: 'Get the right tutor within 24 hours.',
     icon: 'solar:users-group-rounded-bold-duotone',
-    tone: 'text-indigo-700',
   },
 ]
 </script>
 
 <template>
-  <div :class="rootClass" aria-label="Trust signals">
-    <ul class="flex flex-col lg:flex-row lg:items-stretch" role="list">
-      <li
-        v-for="(item, i) in items"
-        :key="item.id"
-        v-motion
-        :initial="{ y: 10 }"
-        :enter="{
-          y: 0,
-          transition: { duration: 480, delay: 200 + i * 70, ease: 'easeOut' },
-        }"
-        :class="[
-          'group flex min-w-0 flex-1 items-start gap-3 rounded-lg px-3 py-2.5 transition-all duration-200 sm:px-4 sm:py-3 lg:rounded-none',
-          variant === 'hero-blue' ? 'hover:bg-white/10' : 'hover:bg-white/70',
-        ]"
-      >
-        <div class="flex items-start gap-3">
-          <span
-            :class="[
-              'grid h-10 w-10 shrink-0 place-items-center',
-              variant === 'hero-blue' ? 'text-indigo-100' : item.tone,
-            ]"
-          >
-            <Icon :icon="item.icon" class="h-10 w-10" />
-          </span>
-          <div>
-            <p
-              class="text-sm font-semibold"
-              :class="variant === 'hero-blue' ? 'text-white' : 'text-slate-900'"
-            >
-              {{ item.title }}
-            </p>
-            <p
-              class="mt-1 text-xs leading-relaxed sm:text-[13px]"
-              :class="variant === 'hero-blue' ? 'text-white/90' : 'text-slate-600'"
-            >
-              {{ item.description }}
-            </p>
-          </div>
-        </div>
+  <ul
+    class="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4 lg:gap-4"
+    role="list"
+    aria-label="Trust signals"
+  >
+    <li
+      v-for="(item, i) in items"
+      :key="item.id"
+      v-motion
+      :initial="{ y: 12 }"
+      :enter="{ y: 0, transition: { duration: 460, delay: 180 + i * 70, ease: 'easeOut' } }"
+      :class="[
+        'group relative flex flex-col overflow-hidden rounded-2xl border p-3.5 transition duration-300 hover:-translate-y-1 sm:p-4',
+        cardClass,
+      ]"
+    >
+      <span
+        aria-hidden="true"
+        class="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-blue-500 transition-transform duration-300 group-hover:scale-x-100"
+      />
 
-        <span
-          v-if="i < items.length - 1"
-          class="ml-4 hidden select-none self-center text-xl leading-none lg:block"
-          :class="variant === 'hero-blue' ? 'text-white/25' : 'text-slate-300'"
-          aria-hidden="true"
-        >
-          |
-        </span>
-      </li>
-    </ul>
-  </div>
+      <span
+        class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-transform duration-200 group-hover:scale-105"
+      >
+        <Icon :icon="item.icon" class="h-6 w-6" aria-hidden="true" />
+      </span>
+
+      <p class="mt-3 text-[13px] font-bold leading-tight text-slate-900 sm:text-sm">
+        {{ item.title }}
+      </p>
+      <p class="mt-1.5 text-[11px] leading-relaxed text-slate-500 sm:text-xs">
+        {{ item.description }}
+      </p>
+    </li>
+  </ul>
 </template>

@@ -74,9 +74,9 @@ export const curriculumStages: CurriculumStage[] = [
     stepColor: 'bg-amber-500 border-amber-300',
   },
   {
-    id: 'foundation',
+    id: 'primary',
     emoji: '🎒',
-    title: 'Foundation',
+    title: 'Primary',
     subtitle: 'Class 1st – 5th',
     gradesLabel: 'Primary school years',
     focus: 'Concept Building & Learning Habits',

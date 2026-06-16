@@ -193,7 +193,6 @@ const linkClass = computed(() =>
     </div>
   </a>
 </template>
-
 <style scoped>
 .service-card-grid {
   mask-image: linear-gradient(165deg, black 0%, transparent 72%);

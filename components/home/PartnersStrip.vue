@@ -6,12 +6,11 @@ const partners = [
   { id: 'icse', name: 'ICSE', logo: '/assets/img/boards/icse.png', fallback: 'IC' },
   { id: 'ib', name: 'IB Schools', logo: '/assets/img/boards/Ib.png', fallback: 'IB' },
   { id: 'cambridge', name: 'Cambridge', logo: '/assets/img/boards/cambridge.png', fallback: 'C' },
+  { id: 'nios', name: 'NIOS', logo: '/assets/img/boards/nios.png', fallback: 'N' },
   { id: 'state', name: 'State Boards', logo: '/assets/img/boards/state-boards.png', fallback: 'SB' },
-  { id: 'iit/neet', name: 'IIT/NEET Coaching', logo: '/assets/img/boards/NTC.png', fallback: 'NTC' },
+  { id: 'iit/neet', name: 'JEE/NEET', logo: '/assets/img/boards/NTC.png', fallback: 'NTC' },
 ]
-
 const failedLogos = ref<Record<string, boolean>>({})
-
 function markLogoFailed(id: string) {
   failedLogos.value[id] = true
 }

@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import TrustIndicators from './TrustIndicators.vue'
 import HeroStats from './HeroStats.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
-import IconBook from '~/components/icons/IconBook.vue'
-import IconCheck from '~/components/icons/IconCheck.vue'
 import CardHeader from '~/components/ui/cardheader.vue'
 
 function rippleHandler(e: MouseEvent) {
@@ -70,8 +67,6 @@ function rippleHandler(e: MouseEvent) {
           <HeroStats />
         </div>
       </div>
-      <!-- Trust Indicators -->
-      <!-- <TrustIndicators class="pt-1" /> -->
     </div>
     <!-- Bottom soft fade into next section -->
     <div aria-hidden="true"

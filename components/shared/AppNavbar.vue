@@ -1,101 +1,231 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { onClickOutside } from '@vueuse/core'
 
 const scrolled = ref(false)
 const mobileOpen = ref(false)
+const openMenuId = ref<string | null>(null)
+const mobileOpenMenuId = ref<string | null>(null)
+const navRef = ref<HTMLElement | null>(null)
 
-const links = [
-  { label: 'About', href: '/about' },
-  { label: 'Students & Parents', href: '/student-parent' },
-  { label: 'Academic Coverage', href: '/academic-coverage' },
-  { label: 'Find Tutors', href: '/#tutors' },
-  { label: 'How it Works', href: '/#how-it-works' },
-  { label: 'Become a Tutor', href: '/#join' },
+const phone = { display: '+91 73895 63564', tel: '+917389563564' }
+const email = 'info@indianmentors.in'
+
+const primaryLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Contact Us', href: '/contact' },
+  { label: 'Tutors', href: '/tutors' },
+]
+
+const navMenus = [
+  {
+    id: 'more',
+    label: 'More',
+    items: [
+      { label: 'Students & Parents', href: '/student-parent' },
+      { label: 'Academic Coverage', href: '/academic-coverage' },
+      { label: 'How it Works', href: '/#how-it-works' },
+      { label: 'Learning Library', href: '/#learning-library' },
+      { label: 'Success Stories', href: '/success-stories' },
+      { label: 'Partner Programme', href: '/#partner-programme' },
+      { label: 'Hire for Institute', href: '/#institute-hiring' },
+      { label: 'Careers', href: '/careers' },
+      { label: 'FAQs', href: '/faq' },
+    ],
+  },
 ]
 
 function onScroll() {
-  scrolled.value = window.scrollY > 12
+  scrolled.value = window.scrollY > 8
 }
+
+function closeMenus() {
+  openMenuId.value = null
+  mobileOpenMenuId.value = null
+  mobileOpen.value = false
+}
+
+function toggleMenu(id: string) {
+  openMenuId.value = openMenuId.value === id ? null : id
+}
+
+function toggleMobileMenu(id: string) {
+  mobileOpenMenuId.value = mobileOpenMenuId.value === id ? null : id
+}
+
+function onKeydown(e: KeyboardEvent) {
+  if (e.key === 'Escape') closeMenus()
+}
+
+onClickOutside(navRef, () => {
+  openMenuId.value = null
+})
 
 onMounted(() => {
   window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('keydown', onKeydown)
 })
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('keydown', onKeydown)
 })
 </script>
 
 <template>
-  <header :class="[
-    'sticky top-0 z-50 w-full transition-all duration-300',
-    scrolled
-      ? 'bg-white/80 backdrop-blur-xl border-b border-slate-200/70 shadow-soft'
-      : 'bg-transparent',
-  ]" v-motion :initial="{ opacity: 0, y: -20 }"
-    :enter="{ opacity: 1, y: 0, transition: { duration: 600, ease: 'easeOut' } }">
-    <nav class="container-page flex items-center justify-between h-16 lg:h-20" aria-label="Primary">
-      <!-- Logo -->
-      <NuxtLink to="/" class="flex items-center gap-1 group" aria-label="Indian Mentors home">
-        <span
-          class="relative grid place-items-center rounded-xl text-white font-extrabold text-sm transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105">
-          <img :src="usePublicAsset('/assets/img/logo/favicon.png')" alt="Indian Mentors favicon" class="h-5 w-5">
-          <span
-            class="absolute -inset-1 rounded-2xl bg-blue-400/30 blur-md -z-10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-        </span>
-        <span class="font-display font-extrabold text-lg tracking-tight text-brand-ink ">
-          Indian<span class="text-blue-700">Mentors</span>
-        </span>
-      </NuxtLink>
-
-      <!-- Desktop links -->
-      <ul class="hidden lg:flex items-center gap-1">
-        <li v-for="link in links" :key="link.href">
-          <a :href="link.href"
-            class="px-4 py-2 text-sm font-medium text-slate-600 rounded-xl transition-colors duration-200 hover:text-blue-700 hover:bg-blue-50/70">
-            {{ link.label }}
+  <header ref="navRef" class="sticky top-0 z-50 w-full">
+    <!-- Top utility bar -->
+    <div class="hidden border-b border-blue-800/30 bg-blue-700 text-white sm:block">
+      <div class="container-page flex h-9 items-center justify-between text-xs sm:text-[13px]">
+        <div class="flex min-w-0 items-center gap-3">
+          <a :href="`tel:${phone.tel}`" class="inline-flex items-center gap-1.5 transition hover:text-blue-100">
+            <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M6.5 3h3l1.5 4-2 1.5c1 2.5 3.5 5 6 6L18 12.5 22 14v3c0 1.5-1 2.5-2.5 2.5C9.5 20 4 14.5 4 6.5 4 5 5 3 6.5 3Z"
+                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+            </svg>
+            {{ phone.display }}
           </a>
-        </li>
-      </ul>
+          <span class="h-3.5 w-px bg-white/30" aria-hidden="true" />
+          <a :href="`mailto:${email}`" class="truncate transition hover:text-blue-100">
+            {{ email }}
+          </a>
+        </div>
 
-      <!-- Desktop CTA -->
-      <div class="hidden lg:flex items-center gap-3">
-        <a href="#login" class="text-sm font-medium text-slate-700 hover:text-blue-700 transition-colors px-3 py-2">
-          Sign in
-        </a>
-        <a href="#book-demo" class="btn-primary !px-5 !py-2.5 text-sm">
-          Book Free Demo
-          <IconArrowRight class="w-4 h-4" />
-        </a>
+        <div class="flex shrink-0 items-center gap-3">
+          <a href="/tutors" class="font-medium transition hover:text-blue-100">Become a Tutor</a>
+          <span class="h-3.5 w-px bg-white/30" aria-hidden="true" />
+          <a href="#login" class="font-medium transition hover:text-blue-100">Login</a>
+          <span class="h-3.5 w-px bg-white/30" aria-hidden="true" />
+          <a href="#register" class="font-medium transition hover:text-blue-100">Register</a>
+        </div>
       </div>
+    </div>
 
-      <!-- Mobile toggle -->
-      <button type="button" class="lg:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
-        :aria-expanded="mobileOpen" aria-label="Toggle menu" @click="mobileOpen = !mobileOpen">
-        <svg v-if="!mobileOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
-        </svg>
-        <svg v-else xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6" />
-        </svg>
-      </button>
-    </nav>
+    <!-- Main navigation -->
+    <div :class="[
+      'border-b bg-white transition-shadow duration-300',
+      scrolled ? 'border-slate-200 shadow-sm' : 'border-slate-200/80',
+    ]">
+      <nav class="container-page flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]" aria-label="Primary">
+        <!-- Logo -->
+        <NuxtLink to="/" class="group flex min-w-0 shrink-0 items-center gap-3" aria-label="Indian Mentors home">
+          <img :src="usePublicAsset('/assets/img/logo/full-logo.svg')" alt="Indian Mentors"
+            class="h-8 w-auto max-w-[150px] sm:h-9 sm:max-w-[180px] lg:max-w-[200px]" width="200" height="36" />
+          <span class="hidden min-w-0 flex-col border-l border-slate-200 pl-3 sm:flex">
+            <span class="truncate text-[11px] font-medium leading-tight text-slate-500 lg:text-xs">
+              Find Verified Tutors
+            </span>
+          </span>
+        </NuxtLink>
+
+        <!-- Desktop links -->
+        <ul class="hidden items-center lg:flex">
+          <li v-for="link in primaryLinks" :key="link.href">
+            <a :href="link.href"
+              class="px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:text-blue-700 xl:px-3.5">
+              {{ link.label }}
+            </a>
+          </li>
+
+          <li v-for="menu in navMenus" :key="menu.id" class="relative">
+            <button type="button"
+              class="inline-flex items-center gap-0.5 px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:text-blue-700 xl:px-3.5"
+              :aria-expanded="openMenuId === menu.id" aria-haspopup="true" @click="toggleMenu(menu.id)">
+              {{ menu.label }}
+              <svg class="h-3.5 w-3.5 transition-transform duration-200" :class="openMenuId === menu.id && 'rotate-180'"
+                viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+
+            <Transition enter-active-class="transition duration-150 ease-out" enter-from-class="opacity-0 translate-y-1"
+              enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-100 ease-in"
+              leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
+              <div v-if="openMenuId === menu.id"
+                class="absolute left-0 top-full z-50 mt-1.5 min-w-[13rem] overflow-hidden rounded-lg border border-slate-200 bg-white py-1 shadow-lg"
+                role="menu">
+                <a v-for="item in menu.items" :key="item.label" :href="item.href" role="menuitem"
+                  class="block px-4 py-2 text-sm text-slate-600 transition-colors hover:bg-blue-50 hover:text-blue-700"
+                  @click="openMenuId = null">
+                  {{ item.label }}
+                </a>
+              </div>
+            </Transition>
+          </li>
+        </ul>
+
+        <!-- Desktop CTA -->
+        <div class="hidden shrink-0 lg:block">
+          <a href="#book-demo"
+            class="inline-flex items-center justify-center rounded-full bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800">
+            Book Free Consultation
+          </a>
+        </div>
+
+        <!-- Mobile toggle -->
+        <button type="button" class="ml-auto rounded-lg p-2 text-slate-700 transition hover:bg-slate-100 lg:hidden"
+          :aria-expanded="mobileOpen" aria-label="Toggle menu" @click="mobileOpen = !mobileOpen">
+          <svg v-if="!mobileOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg v-else class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6" />
+          </svg>
+        </button>
+      </nav>
+    </div>
 
     <!-- Mobile menu -->
-    <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 -translate-y-2"
+    <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 -translate-y-1"
       enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-150 ease-in"
       leave-from-class="opacity-100" leave-to-class="opacity-0">
-      <div v-if="mobileOpen" class="lg:hidden border-t border-slate-200/70 bg-white/95 backdrop-blur-xl">
-        <div class="container-page py-4 flex flex-col gap-1">
-          <a v-for="link in links" :key="link.href" :href="link.href"
-            class="px-3 py-2.5 rounded-xl text-slate-700 font-medium hover:bg-blue-50 hover:text-blue-700 transition-colors"
-            @click="mobileOpen = false">
+      <div v-if="mobileOpen" class="border-b border-slate-200 bg-white lg:hidden">
+        <div class="container-page max-h-[calc(100dvh-4rem)] overflow-y-auto py-3">
+          <a :href="`tel:${phone.tel}`"
+            class="mb-3 flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2 text-sm font-medium text-blue-800 sm:hidden">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M6.5 3h3l1.5 4-2 1.5c1 2.5 3.5 5 6 6L18 12.5 22 14v3c0 1.5-1 2.5-2.5 2.5C9.5 20 4 14.5 4 6.5 4 5 5 3 6.5 3Z"
+                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+            </svg>
+            {{ phone.display }}
+          </a>
+
+          <a v-for="link in primaryLinks" :key="link.href" :href="link.href"
+            class="block rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700"
+            @click="closeMenus">
             {{ link.label }}
           </a>
-          <div class="flex flex-col gap-2 pt-3 mt-2 border-t border-slate-200/70">
-            <a href="#login" class="btn-secondary !w-full text-sm">Sign in</a>
-            <a href="#book-demo" class="btn-primary !w-full text-sm">Book Free Demo</a>
+
+          <div v-for="menu in navMenus" :key="menu.id" class="mt-0.5">
+            <button type="button"
+              class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700"
+              :aria-expanded="mobileOpenMenuId === menu.id" @click="toggleMobileMenu(menu.id)">
+              {{ menu.label }}
+              <svg class="h-4 w-4 transition-transform duration-200"
+                :class="mobileOpenMenuId === menu.id && 'rotate-180'" viewBox="0 0 24 24" fill="none"
+                aria-hidden="true">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div v-if="mobileOpenMenuId === menu.id" class="mb-1 ml-3 border-l border-slate-200 pl-3">
+              <a v-for="item in menu.items" :key="item.label" :href="item.href"
+                class="block rounded-lg px-3 py-2 text-sm text-slate-600 hover:bg-blue-50 hover:text-blue-700"
+                @click="closeMenus">
+                {{ item.label }}
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-3 flex flex-col gap-2 border-t border-slate-200 pt-3">
+            <a href="#login" class="btn-secondary !w-full text-sm" @click="closeMenus">Login</a>
+            <a href="/tutors" class="btn-secondary !w-full text-sm" @click="closeMenus">Become a Tutor</a>
+            <a href="#book-demo" class="btn-primary !w-full text-sm" @click="closeMenus">Book Free Demo</a>
           </div>
         </div>
       </div>

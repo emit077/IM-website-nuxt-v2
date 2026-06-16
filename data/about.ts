@@ -182,3 +182,118 @@ const teamSeed: TeamMember[] = [
 export const teamMembers = [...teamSeed].sort(
   (a, b) => a.display_order - b.display_order,
 )
+
+export type LeadershipProfile = {
+  id: string
+  name: string
+  role: string
+  bio: string
+  inTheirWords: string[]
+  initials: string
+  ringColor: string
+}
+
+export const aboutLeadership: LeadershipProfile[] = [
+  {
+    id: 'founder',
+    name: 'Afroj Aalam',
+    role: 'Founder & CEO',
+    bio: 'Leads strategy, governance, and long-term growth — keeping mentorship credible, measurable, and scalable across every city Indian Mentors serves.',
+    inTheirWords: [
+      'Every student deserves structure, not just another tuition class.',
+      'Transparency between parents, mentors, and students is non-negotiable.',
+      'Technology should empower mentors — not replace the human connection.',
+    ],
+    initials: 'FC',
+    ringColor: 'ring-blue-500',
+  },
+  {
+    id: 'academic-director',
+    name: 'Ananya Desai',
+    role: 'Academic Director',
+    bio: 'An experienced education professional overseeing curriculum development, mentor training, and academic performance management across the organisation.',
+    inTheirWords: [
+      'Quality mentorship starts with verified expertise and continuous training.',
+      'Progress must be measurable — parents deserve clarity, not assumptions.',
+      'Every learning plan should align with the student\'s board, goals, and pace.',
+    ],
+    initials: 'AD',
+    ringColor: 'ring-emerald-500',
+  },
+]
+
+export const aboutMissionQuote =
+  'We believe that students don\'t need guesswork, unverified tutors, or opaque progress reports to achieve academic excellence.'
+
+export type PhilosophyValue = {
+  icon: string
+  title: string
+  description: string
+}
+
+export const aboutPhilosophy = {
+  title: 'Our Philosophy',
+  subtitle: 'Three simple values. Powered by technology, delivered by humans.',
+  values: [
+    {
+      icon: 'mdi:lightning-bolt',
+      title: 'Structure, support, and speed',
+      description:
+        'Personalised learning plans, verified mentors, and ERP-backed tracking — so families see progress from day one.',
+    },
+    {
+      icon: 'mdi:heart-outline',
+      title: 'Trust at every touchpoint',
+      description:
+        'Background-verified tutors, transparent reporting, and open communication between students, parents, and mentors.',
+    },
+    {
+      icon: 'mdi:send-outline',
+      title: 'Outcomes that scale',
+      description:
+        'From home tutoring to institutional partnerships — structured systems that grow with every learner.',
+    },
+  ] satisfies PhilosophyValue[],
+}
+
+export type ComparisonRow = {
+  feature: string
+  indianMentors: boolean
+  coachingCenters: boolean
+  selfStudy: boolean
+}
+
+export const aboutComparison = {
+  title: 'What Makes Us Different',
+  subtitle: 'How Indian Mentors compares to traditional coaching and self-study.',
+  columns: ['Indian Mentors', 'Coaching Centers', 'Self-Study'] as const,
+  rows: [
+    { feature: 'Verified & background-checked tutors', indianMentors: true, coachingCenters: false, selfStudy: false },
+    { feature: 'Personalised one-to-one mentorship', indianMentors: true, coachingCenters: false, selfStudy: false },
+    { feature: 'Parent visibility & progress reports', indianMentors: true, coachingCenters: false, selfStudy: false },
+    { feature: 'Flexible home, online & hybrid modes', indianMentors: true, coachingCenters: true, selfStudy: true },
+    { feature: 'ERP-backed session tracking', indianMentors: true, coachingCenters: false, selfStudy: false },
+    { feature: 'Board-aligned curriculum support', indianMentors: true, coachingCenters: true, selfStudy: true },
+    { feature: 'Measurable academic outcomes', indianMentors: true, coachingCenters: false, selfStudy: false },
+    { feature: 'Pan-India mentor network', indianMentors: true, coachingCenters: false, selfStudy: false },
+  ] satisfies ComparisonRow[],
+}
+
+export type AudienceCard = {
+  icon: string
+  text: string
+}
+
+export const aboutAudience = {
+  title: 'Designed for Students Who…',
+  subtitle: 'Our team becomes your academic support system — structured, transparent, and scalable.',
+  cards: [
+    { icon: 'mdi:rocket-launch-outline', text: 'Want personalised guidance beyond crowded classroom coaching.' },
+    { icon: 'mdi:clock-fast', text: 'Need flexible scheduling that fits school, exams, and family life.' },
+    { icon: 'mdi:account-group-outline', text: 'Value transparency — parents, students, and mentors aligned on goals.' },
+    { icon: 'mdi:school-outline', text: 'Aim for board excellence, competitive exams, or long-term academic growth.' },
+  ] satisfies AudienceCard[],
+}
+
+export const aboutLeadershipQuote =
+  'Together, we are building India\'s most trusted personalised tutoring ecosystem — where every learner gets structure, every parent gets clarity, and every mentor gets the support to teach with impact.'

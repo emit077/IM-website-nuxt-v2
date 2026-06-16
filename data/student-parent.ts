@@ -1,6 +1,6 @@
 export type EnrollmentPlan = {
   id: 'free' | 'premium'
-  emoji: string
+  iconMdi: string
   name: string
   price: string
   priceNote?: string
@@ -21,7 +21,7 @@ export type ComparisonRow = {
 
 export type DashboardModule = {
   id: string
-  emoji: string
+  iconMdi: string
   title: string
   description: string
   features: string[]
@@ -30,7 +30,7 @@ export type DashboardModule = {
 
 export type SubscriptionPlan = {
   id: 'gold' | 'diamond' | 'platinum'
-  emoji: string
+  iconMdi: string
   name: string
   duration: string
   subtitle: string
@@ -66,35 +66,35 @@ export const heroContent = {
 export const resourceLinks = [
   {
     id: 'student-brochure',
-    emoji: '📄',
+    iconMdi: 'mdi:file-document-outline',
     title: 'Student Brochure',
     description: 'Download our guide to personalised tutoring services.',
     href: '#student-brochure',
   },
   {
     id: 'enrollment-process',
-    emoji: '📋',
+    iconMdi: 'mdi:clipboard-list-outline',
     title: 'Enrollment Process',
     description: 'See how to register, match, demo, and start learning.',
     href: '#enrollment-process',
   },
   {
     id: 'browse-tutors',
-    emoji: '🔍',
+    iconMdi: 'mdi:account-search-outline',
     title: 'Browse Tutors',
     description: 'Explore verified mentors by subject and grade.',
     href: '#browse-tutors',
   },
   {
     id: 'enrollment-plans',
-    emoji: '📦',
+    iconMdi: 'mdi:layers-outline',
     title: 'Enrollment Plans',
     description: 'Free and Premium student profiles explained.',
     href: '#enrollment-plans',
   },
   {
     id: 'subscription-plans',
-    emoji: '💳',
+    iconMdi: 'mdi:credit-card-outline',
     title: 'Subscription Plans',
     description: 'Gold, Diamond, and Platinum learning packages.',
     href: '#subscription-plans',
@@ -104,7 +104,7 @@ export const resourceLinks = [
 export const enrollmentPlans: EnrollmentPlan[] = [
   {
     id: 'free',
-    emoji: '📦',
+    iconMdi: 'mdi:rocket-launch-outline',
     name: 'Free Student Profile',
     price: '₹0',
     priceNote: 'Explore Personalised Tutoring',
@@ -132,7 +132,7 @@ export const enrollmentPlans: EnrollmentPlan[] = [
   },
   {
     id: 'premium',
-    emoji: '⭐',
+    iconMdi: 'mdi:star-four-points-outline',
     name: 'Premium Student Profile',
     price: '₹1200',
     priceNote: 'per Year (≈ ₹100 per Month)',
@@ -168,19 +168,19 @@ export const enrollmentPlans: EnrollmentPlan[] = [
 ]
 
 export const planComparisonRows: ComparisonRow[] = [
-  { feature: 'Student profile creation', free: '✅', premium: '✅' },
+  { feature: 'Student profile creation', free: 'Included', premium: 'Included' },
   { feature: 'Tutor browsing', free: 'Limited (3–5 profiles)', premium: 'Unlimited + direct connect' },
   { feature: 'Demo sessions', free: '1 free online demo', premium: 'Up to 3 offline + priority scheduling' },
-  { feature: 'Tutor replacement', free: '❌', premium: '✅ Within 48 hours' },
-  { feature: 'Multi-subject enrollment', free: '❌', premium: '✅ Available' },
-  { feature: 'Flexible payment options', free: '❌', premium: 'Half-yearly / Annual' },
-  { feature: 'Key Account Manager', free: '❌', premium: '✅ Dedicated support' },
+  { feature: 'Tutor replacement', free: '—', premium: 'Within 48 hours' },
+  { feature: 'Multi-subject enrollment', free: '—', premium: 'Available' },
+  { feature: 'Flexible payment options', free: '—', premium: 'Half-yearly / Annual' },
+  { feature: 'Key Account Manager', free: '—', premium: 'Dedicated support' },
   { feature: 'Reports', free: 'Basic demo feedback', premium: 'Detailed performance & progress reports' },
-  { feature: 'Parent/Student Dashboard', free: '❌', premium: '✅ Full dashboard' },
-  { feature: 'AI tutor recommendations', free: '❌', premium: '✅ Smart matching' },
-  { feature: '24/7 priority support', free: '❌', premium: '✅ WhatsApp & phone' },
-  { feature: 'Discounts & offers', free: '❌', premium: '✅ Exclusive deals' },
-  { feature: 'Achievement certificates', free: '❌', premium: '✅ After course completion' },
+  { feature: 'Parent/Student Dashboard', free: '—', premium: 'Full dashboard' },
+  { feature: 'AI tutor recommendations', free: '—', premium: 'Smart matching' },
+  { feature: '24/7 priority support', free: '—', premium: 'WhatsApp & phone' },
+  { feature: 'Discounts & offers', free: '—', premium: 'Exclusive deals' },
+  { feature: 'Achievement certificates', free: '—', premium: 'After course completion' },
 ]
 
 export const premiumWhyChoose = [
@@ -195,7 +195,7 @@ export const premiumWhyChoose = [
 export const dashboardModules: DashboardModule[] = [
   {
     id: 'dashboard',
-    emoji: '📊',
+    iconMdi: 'mdi:view-dashboard-outline',
     title: 'Dashboard',
     description: 'Central control panel with a quick overview of all learning activities and account updates.',
     features: ['Upcoming sessions overview', 'Recent academic updates', 'Notifications and reminders', 'Quick access to important modules'],
@@ -203,7 +203,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'profile',
-    emoji: '👤',
+    iconMdi: 'mdi:account-outline',
     title: 'Student Profile',
     description: 'Stores and manages essential student information for personalised tutor matching and academic planning.',
     features: ['Personal details and academic grade', 'Board and subject preferences', 'Learning goals and requirements', 'Profile update options'],
@@ -211,7 +211,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'tutors',
-    emoji: '🔍',
+    iconMdi: 'mdi:account-search-outline',
     title: 'Browse Tutors',
     description: 'Explore verified tutors available on the Indian Mentors platform.',
     features: ['Tutor profiles and qualifications', 'Subject specialisation', 'Teaching experience details', 'Tutor availability information'],
@@ -219,7 +219,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'subscriptions',
-    emoji: '📦',
+    iconMdi: 'mdi:layers-outline',
     title: 'Subscription Plans',
     description: 'View available tutoring plans and select the most suitable subscription package.',
     features: ['Plan details and pricing', 'Session frequency options', 'Subject-specific packages', 'Plan upgrade or renewal options'],
@@ -227,7 +227,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'history',
-    emoji: '📑',
+    iconMdi: 'mdi:history',
     title: 'Subscription History',
     description: 'Track previously purchased tutoring plans.',
     features: ['Active plan details', 'Past subscription records', 'Plan duration and session usage', 'Renewal reminders'],
@@ -235,7 +235,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'demo',
-    emoji: '🎓',
+    iconMdi: 'mdi:school-outline',
     title: 'Demo Session',
     description: 'Request and manage trial tutoring sessions before enrolling in a full plan.',
     features: ['Book demo sessions', 'Demo tutor details', 'Demo schedule tracking', 'Feedback submission after demo'],
@@ -243,7 +243,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'batch',
-    emoji: '👥',
+    iconMdi: 'mdi:account-group-outline',
     title: 'Batch',
     description: 'Information about group classes or learning batches assigned to the student.',
     features: ['Batch name and subject details', 'Tutor assigned to the batch', 'Batch schedule and session timing', 'Student list for group learning'],
@@ -251,7 +251,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'sessions',
-    emoji: '📅',
+    iconMdi: 'mdi:calendar-clock-outline',
     title: 'Sessions',
     description: 'Complete record of all tutoring classes conducted or scheduled.',
     features: ['Upcoming sessions', 'Completed class records', 'Rescheduled sessions', 'Tutor session notes'],
@@ -259,7 +259,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'payments',
-    emoji: '💳',
+    iconMdi: 'mdi:credit-card-outline',
     title: 'Payments',
     description: 'Full visibility into financial transactions related to tutoring services.',
     features: ['Payment history', 'Invoice downloads', 'Upcoming payment reminders', 'Subscription payment tracking'],
@@ -267,7 +267,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'messages',
-    emoji: '💬',
+    iconMdi: 'mdi:message-text-outline',
     title: 'Messages',
     description: 'Communicate directly with tutors or the academic support team.',
     features: ['Tutor communication', 'Academic queries', 'Admin support messages', 'Learning updates'],
@@ -275,7 +275,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'feedback',
-    emoji: '⭐',
+    iconMdi: 'mdi:star-outline',
     title: 'Feedback',
     description: 'Provide feedback about tutors and learning experiences.',
     features: ['Tutor performance ratings', 'Session feedback', 'Learning improvement suggestions', 'Service quality reviews'],
@@ -283,7 +283,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'notifications',
-    emoji: '🔔',
+    iconMdi: 'mdi:bell-outline',
     title: 'Notifications',
     description: 'Real-time alerts and updates related to tutoring sessions and academic activities.',
     features: ['Class reminders', 'Homework alerts', 'Tutor updates', 'Payment confirmations', 'Report uploads'],
@@ -291,7 +291,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'support',
-    emoji: '🛠',
+    iconMdi: 'mdi:lifebuoy',
     title: 'Support',
     description: 'Contact the Indian Mentors academic and technical support team for assistance.',
     features: ['Raise support tickets', 'Academic assistance requests', 'Technical help for the platform', 'Tutor replacement requests'],
@@ -299,7 +299,7 @@ export const dashboardModules: DashboardModule[] = [
   },
   {
     id: 'settings',
-    emoji: '⚙️',
+    iconMdi: 'mdi:cog-outline',
     title: 'Settings',
     description: 'Manage account preferences and dashboard configuration.',
     features: ['Profile settings', 'Password and security management', 'Notification preferences', 'Account customisation'],
@@ -325,7 +325,7 @@ export const parentVisibilityPoints = [
 export const subscriptionPlans: SubscriptionPlan[] = [
   {
     id: 'gold',
-    emoji: '🏆',
+    iconMdi: 'mdi:trophy-outline',
     name: 'Gold Plan',
     duration: '1 Hour/Day',
     subtitle: 'Affordable Starter',
@@ -354,7 +354,7 @@ export const subscriptionPlans: SubscriptionPlan[] = [
   },
   {
     id: 'diamond',
-    emoji: '💎',
+    iconMdi: 'mdi:diamond-stone',
     name: 'Diamond Plan',
     duration: '1.5 Hours/Day',
     subtitle: 'Most Popular',
@@ -385,7 +385,7 @@ export const subscriptionPlans: SubscriptionPlan[] = [
   },
   {
     id: 'platinum',
-    emoji: '👑',
+    iconMdi: 'mdi:crown-outline',
     name: 'Platinum Plan',
     duration: '2 Hours/Day',
     subtitle: 'Premium Excellence',
@@ -446,7 +446,7 @@ export const subscriptionComparisonRows: SubscriptionComparisonRow[] = [
 ]
 
 export const planPositioning = [
-  { emoji: '🏆', name: 'Gold – Smart Start', description: 'Best for basic academic support and homework assistance' },
-  { emoji: '💎', name: 'Diamond – Most Popular', description: 'Ideal for regular practice, revision, and consistent improvement' },
-  { emoji: '👑', name: 'Platinum – Premium Excellence', description: 'Perfect for complete academic coverage and exam-focused preparation' },
+  { iconMdi: 'mdi:trophy-outline', name: 'Gold – Smart Start', description: 'Best for basic academic support and homework assistance' },
+  { iconMdi: 'mdi:diamond-stone', name: 'Diamond – Most Popular', description: 'Ideal for regular practice, revision, and consistent improvement' },
+  { iconMdi: 'mdi:crown-outline', name: 'Platinum – Premium Excellence', description: 'Perfect for complete academic coverage and exam-focused preparation' },
 ]

@@ -81,27 +81,6 @@ const accentClasses: Record<Step['accent'], { badge: string; tile: string; icon:
     },
 }
 
-const features = [
-    {
-        title: '100% Safe',
-        copy: 'Background verified tutors',
-        iconType: 'shield' as const,
-        tone: 'bg-blue-50 text-blue-600',
-    },
-    {
-        title: 'Top Quality',
-        copy: 'Experts in 250+ subjects',
-        iconType: 'star' as const,
-        tone: 'bg-violet-50 text-violet-600',
-    },
-    {
-        title: '24/7 Support',
-        copy: "We're here for you always",
-        iconType: 'clock' as const,
-        tone: 'bg-emerald-50 text-emerald-600',
-    },
-]
-
 /** Resize / spine tween cleanup (set in onMounted). */
 let disposeTimelineSpine: (() => void) | null = null
 
@@ -658,17 +637,14 @@ onUnmounted(() => {
                                             'timeline-card-icon relative grid h-12 w-12 shrink-0 place-items-center rounded-xl sm:h-14 sm:w-14',
                                             accentClasses[step.accent].tile,
                                         ]">
-                                            <!-- 01 register: form / clipboard -->
+                                            <!-- 01 register: user profile -->
                                             <svg v-if="step.iconType === 'register'"
                                                 :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
                                                 viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                                <path
-                                                    d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z"
-                                                    stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-                                                <path d="M14 3.5V8h4" stroke="currentColor" stroke-width="1.6"
-                                                    stroke-linejoin="round" />
-                                                <path d="M8.5 12.5h7M8.5 16h5" stroke="currentColor" stroke-width="1.6"
-                                                    stroke-linecap="round" />
+                                                <circle cx="12" cy="8.5" r="3.5" stroke="currentColor"
+                                                    stroke-width="1.6" />
+                                                <path d="M5.5 19.5c1.3-3.4 3.9-5.5 6.5-5.5s5.2 2.1 6.5 5.5"
+                                                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
                                             </svg>
                                             <!-- 02 match: people -->
                                             <svg v-else-if="step.iconType === 'match'"

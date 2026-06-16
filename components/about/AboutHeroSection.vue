@@ -1,17 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
-import TrustIndicators from '~/components/home/TrustIndicators.vue'
+import IconBook from '~/components/icons/IconBook.vue'
 
-const isPlaying = ref(false)
-
-const highlights = [
-  { value: '50K+', label: 'Active learners', sub: 'Students & families nationwide' },
-  { value: '5L+', label: 'Verified tutors', sub: 'Screened before they teach' },
-  { value: '98%', label: 'Satisfaction rate', sub: 'From verified parent reviews' },
+const heroStats = [
+  { value: '50K', suffix: '+', label: 'Active students learning every month' },
+  { value: '5', suffix: '+ lakh', label: 'Verified tutors across every subject' },
+  { value: '50', suffix: '+ lakh', label: 'Sessions delivered to date' },
+  { value: '98', suffix: '%', label: 'Satisfaction rate from verified reviews' },
 ]
+
+const heroTitle =
+  'Building futures through <span class="text-gradient-brand">personalised education</span>'
+
+const heroTagline =
+  '<span class="text-gradient-brand">Indian Mentors</span> — India\'s trusted tutoring ecosystem'
+
+const heroDescription =
+  'Connecting students, parents, tutors, and institutions with verified mentors, transparent progress tracking, and technology-backed reporting you can rely on.'
 
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
@@ -21,7 +28,7 @@ function rippleHandler(e: MouseEvent) {
 }
 
 const heroSectionStyle = {
-  // backgroundImage: `url('${usePublicAsset('/img/hero-bg/hero2.png')}')`,
+  backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-3.png')}')`,
 }
 </script>
 
@@ -29,10 +36,8 @@ const heroSectionStyle = {
   <section class="relative overflow-hidden bg-white bg-contain bg-center bg-no-repeat"
     aria-labelledby="about-hero-heading" :style="heroSectionStyle">
     <div aria-hidden="true" class="absolute inset-0 -z-10 bg-mesh-light" />
-    <div aria-hidden="true" class="absolute inset-0 -z-10 opacity-[0.04]" style="
-        background-image: radial-gradient(#1e293b 0.8px, transparent 0.8px);
-        background-size: 24px 24px;
-      " />
+    <div aria-hidden="true" class="absolute inset-0 -z-10 opacity-[0.04]"
+      style="background-image: radial-gradient(#1e293b 0.8px, transparent 0.8px); background-size: 24px 24px" />
     <div aria-hidden="true"
       class="pointer-events-none absolute -left-14 -top-20 -z-10 h-72 w-72 rounded-full bg-indigo-300/25 blur-3xl" />
     <div aria-hidden="true"
@@ -42,56 +47,44 @@ const heroSectionStyle = {
     <div aria-hidden="true"
       class="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[400px] w-[1100px] -translate-x-1/2 bg-gradient-to-b from-indigo-200/30 to-transparent blur-3xl" />
 
-    <div class="container-page pb-12 pt-10 text-center lg:pt-16">
-      <div class="pb-5">
-        <span class="badge-pill mx-auto mb-5 w-fit">
-          <span class="grid h-5 w-5 place-items-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
-            ✦
-          </span>
-          <span>About Indian Mentors</span>
-        </span>
-
-        <h1 id="about-hero-heading"
-          class="heading-display text-balance py-5 text-[2.35rem] leading-[1.06] sm:text-5xl lg:text-[3.5rem] xl:text-[3.85rem]"
-          v-motion :initial="{ opacity: 0, y: 24 }"
-          :enter="{ opacity: 1, y: 0, transition: { duration: 700, delay: 200, ease: [0.22, 1, 0.36, 1] } }">
-          Building futures through
-          <span class="text-gradient-brand">personalised education</span>
-        </h1>
-
-        <p class="mx-auto max-w-4xl text-pretty py-3 text-base leading-relaxed text-slate-600 sm:text-lg" v-motion
-          :initial="{ opacity: 0, y: 16 }" :enter="{ opacity: 1, y: 0, transition: { duration: 700, delay: 350 } }">
-          India's trusted tutoring ecosystem — connecting students, parents, tutors, and
-          institutions with verified mentors, transparent progress tracking, and technology-backed
-          reporting you can rely on.
-        </p>
-      </div>
-      <div
-        class="relative mx-auto aspect-video w-full max-w-3xl overflow-hidden rounded-2xl shadow-[0_20px_50px_-12px_rgba(37,99,235,0.35)] ring-1 ring-slate-200/80"
-        v-motion :initial="{ opacity: 0, y: 20 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, delay: 200 } }">
-        <iframe v-if="isPlaying" class="absolute inset-0 h-full w-full"
-          src="https://www.youtube.com/embed/N78TDRRCqEo?autoplay=1&rel=0&modestbranding=1&playsinline=1"
-          title="Indian Mentors overview video" loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen />
-        <button v-else type="button" class="group relative h-full w-full"
-          aria-label="Play Indian Mentors overview video" @click="isPlaying = true">
-          <img src="https://img.youtube.com/vi/N78TDRRCqEo/maxresdefault.jpg" alt=""
-            class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-            loading="lazy" />
-          <span class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/25 to-transparent" />
-          <span class="absolute inset-0 m-auto flex h-16 w-16 items-center justify-center">
-            <span class="absolute h-full w-full animate-ping rounded-full bg-blue-400/30" aria-hidden="true" />
+    <div class="container-page pb-12 pt-10 lg:pt-16">
+      <CardHeader variant="hero" heading-id="about-hero-heading" content-class="!px-0 !py-0 max-w-2xl lg:max-w-[46rem]"
+        badge="About Indian Mentors" :title="heroTitle" :tagline="heroTagline" :description="heroDescription">
+        <div class="flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
+          <a href="#mission" class="btn-secondary group w-full sm:w-auto">
             <span
-              class="relative flex h-14 w-14 items-center justify-center rounded-full bg-white text-blue-600 shadow-xl transition group-hover:scale-110">
-              <Icon icon="mdi:play" class="h-7 w-7 translate-x-0.5" aria-hidden="true" />
+              class="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white">
+              <IconBook class="h-3.5 w-3.5" />
             </span>
-          </span>
-        </button>
-      </div>
+            Our Mission
+          </a>
+        </div>
 
-      <TrustIndicators class="mt-8" variant="hero-blue" />
+        <div class="mt-2 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" v-motion
+          :initial="{ opacity: 0 }" :enter="{ opacity: 1, transition: { delay: 1000, duration: 600 } }" />
+      </CardHeader>
+
+      <div
+        class="rounded-2xl border border-indigo-300/35 bg-gradient-to-br from-indigo-900 via-indigo-700 to-indigo-500 p-4 shadow-[0_24px_55px_-30px_rgba(37,99,235,0.85)] backdrop-blur-sm sm:p-5"
+        aria-label="Platform statistics">
+        <ul class="grid grid-cols-2 gap-y-5 lg:flex lg:items-stretch" role="list">
+          <li v-for="(stat, i) in heroStats" :key="stat.label" v-motion :initial="{ opacity: 0, y: 10 }"
+            :enter="{ opacity: 1, y: 0, transition: { duration: 480, delay: 300 + i * 80, ease: 'easeOut' } }"
+            class="flex min-w-0 flex-1 items-center gap-4 px-3 sm:px-5">
+            <div class="min-w-0">
+              <p class="font-display text-2xl font-extrabold leading-none tracking-tight text-white sm:text-[1.75rem]">
+                {{ stat.value }}<span class="text-sky-300">{{ stat.suffix }}</span>
+              </p>
+              <p class="mt-2 text-xs leading-snug text-indigo-100/90 sm:text-[13px]">
+                {{ stat.label }}
+              </p>
+            </div>
+            <span v-if="i < heroStats.length - 1" class="ml-auto hidden w-px self-stretch bg-white/20 lg:block"
+              aria-hidden="true" />
+          </li>
+        </ul>
+      </div>
 
       <div aria-hidden="true"
         class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-cream-50" />

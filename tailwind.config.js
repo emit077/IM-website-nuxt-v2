@@ -112,6 +112,10 @@ export default {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         float: "float 6s ease-in-out infinite",
@@ -120,6 +124,7 @@ export default {
         "pulse-ring":
           "pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite",
         "gradient-x": "gradient-x 6s ease infinite",
+        marquee: "marquee 35s linear infinite",
       },
       backdropBlur: {
         xs: "2px",
