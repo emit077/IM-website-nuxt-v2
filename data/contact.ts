@@ -102,23 +102,27 @@ export const contactHeroStats = [
   { value: '2', suffix: '', label: 'HQ & corporate offices' },
 ] as const
 
-export const contactHeroFeaturedCities = popularCityImages.slice(0, 6)
+/** Contact hero collage — top row (2 cities) + bottom row (4 cities) */
+export const contactHeroCollageTop = popularCityImages.slice(0, 2)
+export const contactHeroCollageBottom = popularCityImages.slice(2, 6)
 
 export const contactQuickLinks = [
   { id: 'head-office', title: 'Headquarters', href: '#head-office', iconMdi: 'mdi:office-building-outline' },
   { id: 'corporate-office', title: 'Corporate Office', href: '#corporate-office', iconMdi: 'mdi:domain' },
   { id: 'branch-offices', title: 'Popular Cities', href: '#branch-offices', iconMdi: 'mdi:city-variant-outline' },
   { id: 'also-serving', title: 'Other Cities', href: '#also-serving', iconMdi: 'mdi:map-marker-radius-outline' },
-  { id: 'call-us', title: 'Contact Us', href: '#call-us', iconMdi: 'mdi:phone-outline' },
+  { id: 'call-us', title: 'Call Us', href: '#call-us', iconMdi: 'mdi:phone-outline' },
+  { id: 'email', title: 'Email', href: '#email', iconMdi: 'mdi:email-outline' },
 ] as const
 
 export const headOffice = {
   title: 'Indian Mentors – National Operations Center',
   subtitle: 'Headquarters',
+  location: 'Bhilai, Chhattisgarh',
   address:
     '32A, Indian Mentors Building, Near Avantibai Chowk, Junwani Road, Beside Dubey Dairy, Kohka, Bhilai, District Durg, Chhattisgarh, India – 490023',
-  intro:
-    'The Indian Mentors headquarters in Bhilai serves as the central hub for:',
+  mapsCta: 'Get directions on Google Maps',
+  intro: 'The Indian Mentors headquarters in Bhilai serves as the central hub for:',
   responsibilities: [
     'Academic operations and mentor coordination',
     'Tutor verification and onboarding processes',
@@ -486,7 +490,7 @@ export const findMentorSection = {
 
 export const phoneSupport = {
   title: 'Speak with Our Support Team',
-  intro: 'Our authorised support numbers are available for:',
+  intro: 'Call our authorised support line for enrollment, demo booking, academic counselling, and partnership enquiries.',
   topics: [
     'Student enrollment enquiries',
     'Tutor recruitment assistance',
@@ -496,15 +500,9 @@ export const phoneSupport = {
     'Recruitment partnership',
     'Partnership discussions',
   ],
+  number: { display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
   numbers: [
     { display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
-    { display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
-    { display: '+91 70245 68193', tel: '+917024568193' },
-    { display: '+91 74152 63564', tel: '+917415263564' },
-    { display: '+91 74153 63564', tel: '+917415363564' },
-    { display: '+91 74159 13564', tel: '+917415913564' },
-    { display: '+91 74159 23564', tel: '+917415923564' },
-    { display: '+91 91791 84304', tel: '+919179184304' },
   ] satisfies PhoneContact[],
 } as const
 
@@ -536,9 +534,18 @@ export const whatsappSupport = {
 export const emailSupport = {
   title: 'Write to Our Team',
   intro:
-    'For detailed enquiries, institutional partnerships, or official communication, you may contact us via email.',
+    'For detailed enquiries, institutional partnerships, or official communication, reach us at our support email.',
   address: 'info@indianmentors.in',
+  ctaLabel: 'Send an Email',
   responseTime: 'Our team typically responds within 24–48 working hours.',
+  topics: [
+    'Institutional partnership enquiries',
+    'Official documentation requests',
+    'Detailed enrollment information',
+    'Tutor and mentor applications',
+    'Academic program details',
+    'Verification and compliance queries',
+  ],
 } as const
 
 export const websiteInfo = {
@@ -566,9 +573,9 @@ export const contactGetStarted = {
     'Experience structured mentorship designed to help students achieve confidence, clarity, and academic success.',
   ctas: [
     { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
-    { label: 'Talk to Counsellor', href: `tel:${phoneSupport.numbers[0].tel}`, iconMdi: 'mdi:account-voice' },
+    { label: 'Talk to Counsellor', href: `tel:${phoneSupport.number.tel}`, iconMdi: 'mdi:account-voice' },
     { label: 'Find a Mentor in Your City', href: '#find-mentor', iconMdi: 'mdi:map-marker-radius-outline' },
   ],
 } as const
 
-export const primaryPhone = phoneSupport.numbers[0]
+export const primaryPhone = phoneSupport.number
