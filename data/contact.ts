@@ -53,6 +53,7 @@ export const popularCityImages = [
   { id: 'pune', image: 'pune', label: 'Pune', branchCity: 'Pune' },
   { id: 'ahmedabad', image: 'ahmdabad', label: 'Ahmedabad', branchCity: 'Ahmedabad' },
   { id: 'raipur', image: 'raipur', label: 'Raipur', branchCity: 'Raipur' },
+  { id: 'jaipur', image: 'jaipur', label: 'Jaipur', branchCity: 'Jaipur' },
   { id: 'indore', image: 'indore', label: 'Indore', branchCity: 'Indore' },
   { id: 'lucknow', image: 'lucknow', label: 'Lucknow', branchCity: 'Lucknow' },
   { id: 'kochi', image: 'kochi', label: 'Kochi' },
