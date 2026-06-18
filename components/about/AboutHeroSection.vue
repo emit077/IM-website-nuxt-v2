@@ -64,26 +64,26 @@ const heroSectionStyle = {
         <div class="mt-2 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" v-motion
           :initial="{ opacity: 0 }" :enter="{ opacity: 1, transition: { delay: 1000, duration: 600 } }" />
       </CardHeader>
-
-      <div
-        class="rounded-2xl border border-indigo-300/35 bg-gradient-to-br from-indigo-900 via-indigo-700 to-indigo-500 p-4 shadow-[0_24px_55px_-30px_rgba(37,99,235,0.85)] backdrop-blur-sm sm:p-5"
+      <!-- Platform statistics -->
+      <div class="relative w-full rounded-[2rem] bg-white p-6 sm:p-8 lg:p-10 " role="region"
         aria-label="Platform statistics">
-        <ul class="grid grid-cols-2 gap-y-5 lg:flex lg:items-stretch" role="list">
-          <li v-for="(stat, i) in heroStats" :key="stat.label" v-motion :initial="{ opacity: 0, y: 10 }"
-            :enter="{ opacity: 1, y: 0, transition: { duration: 480, delay: 300 + i * 80, ease: 'easeOut' } }"
-            class="flex min-w-0 flex-1 items-center gap-4 px-3 sm:px-5">
-            <div class="min-w-0">
-              <p class="font-display text-2xl font-extrabold leading-none tracking-tight text-white sm:text-[1.75rem]">
-                {{ stat.value }}<span class="text-sky-300">{{ stat.suffix }}</span>
-              </p>
-              <p class="mt-2 text-xs leading-snug text-indigo-100/90 sm:text-[13px]">
-                {{ stat.label }}
-              </p>
+
+        <div class="grid  grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-8 sm:gap-y-10 content-center" role="list">
+          <div v-for="(stat, i) in heroStats" :key="stat.label" role="listitem"
+            class="relative border-l-[3px] border-blue-600 pl-6" v-motion :initial="{ opacity: 0, y: 14 }" :enter="{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 600, delay: 900 + i * 110, ease: 'easeOut' },
+            }">
+            <div
+              class="font-display font-extrabold text-[2.35rem] sm:text-[2.6rem] leading-none tracking-tight text-slate-900">
+              {{ stat.value }}<span class="text-blue-600">{{ stat.suffix }}</span>
             </div>
-            <span v-if="i < heroStats.length - 1" class="ml-auto hidden w-px self-stretch bg-white/20 lg:block"
-              aria-hidden="true" />
-          </li>
-        </ul>
+            <p class="mt-3 text-[1.1rem] leading-snug text-slate-600 max-w-[18ch]">
+              {{ stat.label }}
+            </p>
+          </div>
+        </div>
       </div>
 
       <div aria-hidden="true"
