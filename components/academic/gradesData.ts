@@ -6,6 +6,13 @@ export type ClassLevel = {
   outcome?: string
 }
 
+export type StreamDetail = {
+  name: string
+  emoji: string
+  subjects: string
+  focus: string
+}
+
 export type CurriculumStage = {
   id: string
   emoji: string
@@ -19,11 +26,27 @@ export type CurriculumStage = {
   cta: string
   classes: ClassLevel[]
   streams?: string[]
+  streamDetails?: StreamDetail[]
   examGroups?: { label: string; items: string[] }[]
   gradient: string
   accent: string
   ring: string
   stepColor: string
+  iconMdi: string
+  programTitle: string
+  programDescription: string
+  keyFeatures?: string[]
+  closingTitle: string
+  closingDescription: string
+}
+
+export const gradesPageIntro = {
+  badge: 'Grades covered',
+  title: 'Personalised learning support across every academic stage',
+  description:
+    'Indian Mentors provides structured tutoring support from early childhood education to postgraduate studies. Our mentorship framework adapts to the academic level, learning style, and goals of every student, ensuring consistent progress and academic success.',
+  subDescription:
+    'We combine experienced mentors, structured learning plans, and performance monitoring to help students achieve their full academic potential.',
 }
 
 export const curriculumStages: CurriculumStage[] = [
@@ -35,183 +58,393 @@ export const curriculumStages: CurriculumStage[] = [
     gradesLabel: 'Nursery · LKG · UKG',
     focus: 'Early Development & School Readiness',
     overview:
-      'Play-based learning that nurtures curiosity, communication, and basic cognitive skills in a fun, engaging environment.',
+      'The pre-primary stage lays the foundation for a child\'s lifelong learning journey. At this age, children learn best through play, interaction, and exploration. Our tutors focus on nurturing curiosity, communication skills, and basic cognitive abilities in a fun and engaging environment.',
     approach: [
-      'Play-based & activity-driven learning',
-      'Alphabet recognition & phonics readiness',
-      'Numbers, shapes & basic counting',
-      'Storytelling, rhymes & language development',
-      'Motor skills & social confidence',
+      'Play-based and activity-driven learning',
+      'Alphabet recognition and phonics readiness',
+      'Numbers, shapes, and basic counting skills',
+      'Storytelling, rhymes, and language development',
+      'Motor skills development (fine & gross)',
+      'Social interaction and confidence building',
     ],
-    goal: 'Build school readiness, curiosity, and a love for learning.',
+    goal: 'Build school readiness, curiosity, and a love for learning in a supportive and engaging environment.',
     cta: 'Start Early Learning with Expert Tutors',
     classes: [
       {
         id: 'nursery',
         label: 'Nursery',
         tagline: 'First step into learning',
-        focus: ['Letters, numbers & shapes', 'Cognitive & motor skills', 'Stories, rhymes & creativity'],
-        outcome: 'Curiosity, confidence & early learning habits.',
+        focus: [
+          'Basic recognition of letters, numbers, and shapes',
+          'Development of cognitive and motor skills',
+          'Storytelling, rhymes, and creative activities',
+          'Social interaction and communication skills',
+        ],
+        outcome: 'Children develop curiosity, confidence, and early learning habits.',
       },
       {
         id: 'lkg',
         label: 'LKG',
         tagline: 'Strengthening early skills',
-        focus: ['Alphabet writing & phonics', 'Counting & number concepts', 'Vocabulary & simple sentences'],
-        outcome: 'Basic literacy, numeracy & improved engagement.',
+        focus: [
+          'Alphabet writing and phonics introduction',
+          'Basic number concepts and counting',
+          'Vocabulary building and simple sentence formation',
+          'Activity-based learning for better understanding',
+        ],
+        outcome: 'Students gain basic literacy and numeracy skills with improved attention and engagement.',
       },
       {
         id: 'ukg',
         label: 'UKG',
-        tagline: 'School readiness',
-        focus: ['Reading & writing practice', 'Basic arithmetic', 'Logical thinking activities'],
-        outcome: 'Confident, school-ready learners.',
+        tagline: 'School readiness & confidence building',
+        focus: [
+          'Reading readiness and writing practice',
+          'Basic arithmetic (addition, subtraction)',
+          'Sentence formation and comprehension',
+          'Logical thinking and problem-solving activities',
+        ],
+        outcome: 'Children become confident, school-ready learners with strong foundational concepts.',
       },
     ],
     gradient: 'from-amber-400 via-yellow-400 to-orange-400',
     accent: 'bg-amber-500',
     ring: 'ring-amber-400/50',
     stepColor: 'bg-amber-500 border-amber-300',
+    iconMdi: 'mdi:teddy-bear',
+    programTitle: 'Early Learning',
+    programDescription:
+      'At Indian Mentors, our Early Learning program focuses on nurturing young minds during their most important developmental years. We combine play-based learning, structured activities, and personalised attention to build strong academic and cognitive foundations.',
+    keyFeatures: [
+      'Personalised one-to-one attention',
+      'Activity-based and interactive teaching methods',
+      'Focus on cognitive and emotional development',
+      'Regular progress tracking and feedback',
+      'Safe and engaging learning environment',
+    ],
+    closingTitle: 'Give your child the right start',
+    closingDescription:
+      'Build a strong academic foundation with expert-guided early learning support from Indian Mentors.',
   },
   {
     id: 'primary',
     emoji: '🎒',
     title: 'Primary',
     subtitle: 'Class 1st – 5th',
-    gradesLabel: 'Primary school years',
+    gradesLabel: 'Class 1st to Class 5th',
     focus: 'Concept Building & Learning Habits',
     overview:
-      'Interactive, activity-based teaching that builds curiosity, strong habits, and fundamental skills across core subjects.',
+      'The early years are crucial for building a child\'s academic foundation. Our tutors focus on developing curiosity, strong learning habits, and fundamental skills through interactive and activity-based teaching methods.',
     approach: [
-      'Phonics & early language development',
-      'Basic mathematics & number sense',
-      'Activity-based engaging methods',
-      'Reading fluency & comprehension',
-      'Creative thinking & curiosity',
+      'Phonics and early language development',
+      'Basic mathematics and number sense',
+      'Activity-based and engaging learning methods',
+      'Reading fluency and comprehension development',
+      'Creative thinking and curiosity building',
     ],
-    goal: 'Strong academic foundations and positive learning behaviour from an early age.',
+    goal: 'Build strong academic foundations and positive learning behaviour from an early age.',
     cta: 'Find a Tutor for Primary Classes',
     classes: [
       {
         id: 'c1',
-        label: 'Class 1',
+        label: 'Class 1st',
         tagline: 'Beginning structured learning',
-        focus: ['Basic reading & writing', 'Numbers & simple arithmetic', 'Activity-based learning'],
-        outcome: 'Comfort with structured learning.',
+        focus: [
+          'Basic reading and writing skills',
+          'Introduction to numbers and simple arithmetic',
+          'Vocabulary building and sentence formation',
+          'Activity-based learning for better understanding',
+        ],
+        outcome: 'Students develop comfort with structured learning and foundational academic skills.',
       },
       {
         id: 'c2',
-        label: 'Class 2',
+        label: 'Class 2nd',
         tagline: 'Strengthening core skills',
-        focus: ['Reading fluency & writing', 'Addition, subtraction & operations', 'Comprehension practice'],
-        outcome: 'Clarity and confidence in core subjects.',
+        focus: [
+          'Improved reading fluency and writing skills',
+          'Addition, subtraction, and number operations',
+          'Enhanced comprehension and classroom practice',
+          'Regular revision and concept reinforcement',
+        ],
+        outcome: 'Students gain better clarity, accuracy, and confidence in core subjects.',
       },
       {
         id: 'c3',
-        label: 'Class 3',
-        tagline: 'Concept clarity',
-        focus: ['Maths, English & EVS clarity', 'Comprehension & expression', 'Application-based learning'],
-        outcome: 'Concept-driven learning habits.',
+        label: 'Class 3rd',
+        tagline: 'Concept clarity & understanding',
+        focus: [
+          'Concept clarity in Maths, English, and EVS',
+          'Reading comprehension and written expression',
+          'Introduction to application-based learning',
+          'Reducing reliance on memorisation',
+        ],
+        outcome: 'Students become concept-driven learners with improved understanding and retention.',
       },
       {
         id: 'c4',
-        label: 'Class 4',
-        tagline: 'Skill development',
-        focus: ['Maths problem-solving', 'Grammar & language fluency', 'Subject-wise strengthening'],
-        outcome: 'Improved accuracy and logical thinking.',
+        label: 'Class 4th',
+        tagline: 'Skill development & subject depth',
+        focus: [
+          'Problem-solving techniques in Mathematics',
+          'Grammar improvement and language fluency',
+          'Subject-wise conceptual strengthening',
+          'Practice through worksheets and assessments',
+        ],
+        outcome: 'Students show improved accuracy, logical thinking, and academic performance.',
       },
       {
         id: 'c5',
-        label: 'Class 5',
-        tagline: 'Middle school bridge',
-        focus: ['Strong foundations all subjects', 'Logical reasoning', 'Independent study habits'],
-        outcome: 'Smooth transition to middle school.',
+        label: 'Class 5th',
+        tagline: 'Preparing for middle school',
+        focus: [
+          'Strong conceptual foundation across subjects',
+          'Logical reasoning and analytical skills',
+          'Independent study habits and time management',
+          'Revision and structured academic planning',
+        ],
+        outcome: 'Students transition smoothly to middle school with confidence, clarity, and academic readiness.',
       },
     ],
     gradient: 'from-emerald-500 via-green-500 to-teal-500',
     accent: 'bg-emerald-500',
     ring: 'ring-emerald-400/50',
     stepColor: 'bg-emerald-500 border-emerald-300',
+    iconMdi: 'mdi:school-outline',
+    programTitle: 'Primary School',
+    programDescription:
+      'At Indian Mentors, the Primary School stage focuses on building a strong academic foundation while nurturing curiosity, confidence, and independent learning habits. Our personalised tutoring approach ensures that each student develops clear concepts, strong language skills, and problem-solving abilities.',
+    keyFeatures: [
+      'Personalised one-to-one tutoring',
+      'Focus on conceptual clarity over memorisation',
+      'Regular assessments and progress tracking',
+      'Activity-based and interactive teaching methods',
+      'Strong foundation for higher classes',
+    ],
+    closingTitle: 'Build strong academic foundations',
+    closingDescription:
+      'Help your child develop confidence and clarity with structured guidance from Indian Mentors.',
   },
   {
     id: 'middle',
     emoji: '🧠',
     title: 'Middle School',
     subtitle: 'Class 6th – 8th',
-    gradesLabel: 'Concept strengthening phase',
+    gradesLabel: 'Class 6th to Class 8th',
     focus: 'Concept Strengthening & Subject Depth',
     overview:
-      'Personalised tutoring that deepens subject understanding while building analytical thinking and structured study habits.',
+      'Middle school is the stage where students begin exploring subjects in greater depth. Our personalised tutoring strengthens core subject understanding while encouraging analytical thinking and structured study habits.',
     approach: [
-      'Clarity in Maths, Science & Social Studies',
-      'Logical & analytical thinking',
-      'Structured study planning',
-      'Regular tests & performance tracking',
+      'Concept clarity in Mathematics, Science, and Social Studies',
+      'Development of logical and analytical thinking',
+      'Structured study planning and learning discipline',
+      'Regular tests and performance tracking',
     ],
-    goal: 'Prepare students for advanced challenges and board-level studies.',
+    goal: 'Prepare students for advanced academic challenges and board-level studies.',
     cta: 'Explore Middle School Tutoring',
     classes: [
-      { id: 'c6', label: 'Class 6', tagline: 'Advanced learning begins' },
-      { id: 'c7', label: 'Class 7', tagline: 'Application-based learning' },
-      { id: 'c8', label: 'Class 8', tagline: 'Secondary preparation' },
+      {
+        id: 'c6',
+        label: 'Class 6th',
+        tagline: 'Transition to advanced learning',
+        focus: [
+          'Introduction to advanced topics across subjects',
+          'Strengthening fundamental concepts in Maths, Science, and English',
+          'Development of logical thinking and reasoning skills',
+          'Building structured study routines and discipline',
+        ],
+        outcome: 'Students gain confidence in handling new subjects and develop a strong academic base.',
+      },
+      {
+        id: 'c7',
+        label: 'Class 7th',
+        tagline: 'Deepening understanding & application',
+        focus: [
+          'In-depth exploration of core subjects',
+          'Application of concepts through problem-solving',
+          'Improved comprehension and analytical skills',
+          'Regular practice and performance assessments',
+        ],
+        outcome: 'Students develop strong problem-solving abilities and improved academic performance.',
+      },
+      {
+        id: 'c8',
+        label: 'Class 8th',
+        tagline: 'Preparing for secondary level',
+        focus: [
+          'Strong conceptual clarity across all subjects',
+          'Analytical thinking and logical reasoning',
+          'Introduction to exam-oriented preparation',
+          'Time management and revision strategies',
+        ],
+        outcome: 'Students become academically prepared, confident, and ready for secondary school challenges.',
+      },
     ],
     gradient: 'from-blue-500 via-sky-500 to-cyan-500',
     accent: 'bg-blue-600',
     ring: 'ring-blue-400/50',
     stepColor: 'bg-blue-600 border-blue-300',
+    iconMdi: 'mdi:brain',
+    programTitle: 'Middle School',
+    programDescription:
+      'At Indian Mentors, the Middle School stage is designed to help students transition from basic learning to advanced academic understanding and independent thinking. We focus on building strong conceptual clarity, analytical skills, and structured study habits to prepare students for higher academic challenges.',
+    keyFeatures: [
+      'Personalised one-to-one mentoring',
+      'Focus on conceptual clarity and application',
+      'Regular assessments and progress tracking',
+      'Structured study plans and academic guidance',
+      'Preparation for board-level curriculum',
+    ],
+    closingTitle: 'Build strong academic thinking',
+    closingDescription:
+      'Empower your child with the skills needed to succeed in higher classes with expert guidance from Indian Mentors.',
   },
   {
     id: 'secondary',
     emoji: '📝',
     title: 'Secondary',
     subtitle: 'Class 9th – 10th',
-    gradesLabel: 'Board examination years',
+    gradesLabel: 'Class 9th to Class 10th',
     focus: 'Board Examination Preparation',
     overview:
-      'Strategic mentoring for India\'s first major board exams — conceptual clarity, exam strategy, and consistent practice.',
+      'Class 9th and 10th are key academic years where students prepare for their first major board examinations. Our mentors focus on conceptual clarity, exam strategy, and consistent practice.',
     approach: [
-      'Board syllabus with strategic planning',
-      'Sample papers & previous year questions',
-      'Numerical mastery & concept depth',
-      'Time management & exam strategies',
+      'Board syllabus completion with strategic planning',
+      'Practice with sample papers and previous year questions',
+      'Numerical problem-solving and conceptual mastery',
+      'Time management and exam preparation strategies',
     ],
-    goal: 'Strong board performance and lasting academic confidence.',
+    goal: 'Help students achieve strong board exam performance and academic confidence.',
     cta: 'Start Board Exam Preparation',
     classes: [
-      { id: 'c9', label: 'Class 9', tagline: 'Board foundation year' },
-      { id: 'c10', label: 'Class 10', tagline: 'Board exam focus' },
+      {
+        id: 'c9',
+        label: 'Class 9th',
+        tagline: 'Foundation for board-level learning',
+        focus: [
+          'In-depth understanding of core subjects (Maths, Science, English, Social Science)',
+          'Concept clarity with application-based learning',
+          'Regular assessments and performance evaluation',
+          'Introduction to structured study plans and revision techniques',
+        ],
+        outcome: 'Students build a strong academic foundation and readiness for Class 10 board exams.',
+      },
+      {
+        id: 'c10',
+        label: 'Class 10th',
+        tagline: 'Focused board exam preparation',
+        focus: [
+          'Complete syllabus coverage with concept mastery',
+          'Chapter-wise revision and exam-oriented preparation',
+          'Regular mock tests and sample paper practice',
+          'Time management strategies and answer-writing techniques',
+        ],
+        outcome: 'Students achieve high confidence, improved accuracy, and strong board exam performance.',
+      },
     ],
     gradient: 'from-violet-600 via-purple-600 to-fuchsia-600',
     accent: 'bg-violet-600',
     ring: 'ring-violet-400/50',
     stepColor: 'bg-violet-600 border-violet-300',
+    iconMdi: 'mdi:clipboard-text-outline',
+    programTitle: 'Secondary School',
+    programDescription:
+      'At Indian Mentors, the Secondary School stage is focused on preparing students for board-level academics with a strategic and structured approach. We ensure students develop strong conceptual understanding, exam confidence, and performance-oriented study habits.',
+    keyFeatures: [
+      'Personalised one-to-one tutoring',
+      'Board-specific curriculum coverage (CBSE, ICSE, State Boards)',
+      'Regular tests, mock exams, and performance tracking',
+      'Strategic revision and exam preparation plans',
+      'Focus on time management and answer presentation',
+    ],
+    closingTitle: 'Achieve board exam success',
+    closingDescription:
+      'Prepare with confidence and expert guidance from Indian Mentors to achieve your best academic results.',
   },
   {
     id: 'senior',
     emoji: '🎓',
     title: 'Senior Secondary',
     subtitle: 'Class 11th – 12th',
-    gradesLabel: 'Stream specialisation',
+    gradesLabel: 'Class 11th to Class 12th',
     focus: 'Stream Specialisation & Career Preparation',
     overview:
-      'Advanced subject support aligned with Science, Commerce, or Humanities — plus integrated entrance exam preparation.',
+      'Senior secondary education plays a critical role in shaping future academic and career pathways. Indian Mentors provides advanced subject support aligned with students\' chosen streams and career goals.',
     approach: [
-      'Advanced subject mastery',
-      'Competitive exam integration',
-      'Practical work & project support',
-      'Continuous performance monitoring',
+      'Advanced subject mastery and concept depth',
+      'Integration with competitive exam preparation',
+      'Practical work, assignments, and project support',
+      'Continuous academic performance monitoring',
     ],
-    goal: 'Board excellence, university admissions & entrance readiness.',
+    goal: 'Prepare students for board exams, university admissions, and competitive entrance tests.',
     cta: 'Get Expert Senior Secondary Mentorship',
-    streams: ['Science (PCM / PCB)', 'Commerce', 'Humanities'],
+    streams: ['Science', 'Commerce', 'Humanities'],
+    streamDetails: [
+      {
+        name: 'Science (PCM / PCB)',
+        emoji: '🔬',
+        subjects: 'Physics, Chemistry, Mathematics / Biology',
+        focus: 'Conceptual clarity and problem-solving',
+      },
+      {
+        name: 'Commerce',
+        emoji: '📊',
+        subjects: 'Accountancy, Business Studies, Economics',
+        focus: 'Financial understanding and analytical skills',
+      },
+      {
+        name: 'Humanities',
+        emoji: '📖',
+        subjects: 'History, Political Science, Geography, Psychology, Sociology',
+        focus: 'Critical thinking and conceptual analysis',
+      },
+    ],
     classes: [
-      { id: 'c11', label: 'Class 11', tagline: 'Stream foundations' },
-      { id: 'c12', label: 'Class 12', tagline: 'Board + entrance excellence' },
+      {
+        id: 'c11',
+        label: 'Class 11th',
+        tagline: 'Building strong foundations in your chosen stream',
+        focus: [
+          'Advanced subject concepts and academic depth',
+          'Strong foundation for Class 12 and competitive exams',
+          'Structured study plans and regular assessments',
+          'Introduction to entrance exam preparation (JEE, NEET, CUET, etc.)',
+        ],
+        outcome: 'Students develop clarity in their chosen stream and readiness for higher academic challenges.',
+      },
+      {
+        id: 'c12',
+        label: 'Class 12th',
+        tagline: 'Board exams & competitive exam excellence',
+        focus: [
+          'Complete syllabus coverage with in-depth concept mastery',
+          'Intensive revision strategies and doubt-solving sessions',
+          'Regular mock tests, sample papers, and performance analysis',
+          'Preparation for competitive exams (JEE, NEET, CUET, etc.)',
+          'Time management and exam strategy development',
+        ],
+        outcome:
+          'Students achieve strong board results, improved confidence, and readiness for higher education and entrance exams.',
+      },
     ],
     gradient: 'from-rose-600 via-red-600 to-pink-600',
     accent: 'bg-rose-600',
     ring: 'ring-rose-400/50',
     stepColor: 'bg-rose-600 border-rose-300',
+    iconMdi: 'mdi:school',
+    programTitle: 'Senior Secondary',
+    programDescription:
+      'At Indian Mentors, the Senior Secondary stage is designed to help students specialise in their chosen stream and prepare for future academic and career pathways. Our personalised approach ensures deep subject understanding, exam readiness, and competitive exam preparation.',
+    keyFeatures: [
+      'Stream-specific expert tutors',
+      'Personalised one-to-one mentoring',
+      'Board + competitive exam integrated preparation',
+      'Regular mock tests and performance tracking',
+      'Career-oriented academic guidance',
+    ],
+    closingTitle: 'Prepare for your future with confidence',
+    closingDescription:
+      'Get expert guidance for board exams and career pathways with Indian Mentors.',
   },
   {
     id: 'competitive',
@@ -219,57 +452,91 @@ export const curriculumStages: CurriculumStage[] = [
     title: 'Competitive Exams',
     subtitle: 'Entrance & olympiad prep',
     gradesLabel: 'Targeted exam mentoring',
-    focus: 'Strategic Mentoring & Performance',
+    focus: 'Strategic Mentoring & Performance Enhancement',
     overview:
-      'Structured preparation for school, national, and professional entrance exams with expert strategies and analytics.',
+      'Indian Mentors provides structured preparation programs for various school, national, and professional entrance examinations with targeted strategies and expert mentorship.',
     approach: [
-      'Targeted syllabus & problem practice',
-      'Mock tests & rank-focused strategy',
-      'Doubt-solving & performance analytics',
+      'Targeted syllabus and problem practice',
+      'Mock tests and rank-focused strategy',
+      'Doubt-solving and performance analytics',
       'Time-bound revision plans',
     ],
-    goal: 'Improve ranking potential through focused preparation.',
+    goal: 'Improve ranking potential through focused preparation and performance analytics.',
     cta: 'Prepare for Competitive Exams',
     classes: [],
     examGroups: [
       {
-        label: 'School entrance',
+        label: 'School entrance exams',
         items: ['Navodaya Vidyalaya', 'Sainik School', 'RMS', 'RIMC', 'Army Schools'],
       },
       {
-        label: 'Engineering & medical',
-        items: ['IIT-JEE', 'NEET', 'PET / PAT / PPHT'],
+        label: 'Engineering & medical entrance',
+        items: ['IIT-JEE', 'NEET', 'PPHT and other competitive exams'],
       },
     ],
     gradient: 'from-amber-500 via-orange-500 to-yellow-500',
     accent: 'bg-amber-500',
     ring: 'ring-amber-400/50',
     stepColor: 'bg-amber-500 border-amber-400',
+    iconMdi: 'mdi:trophy-outline',
+    programTitle: 'Competitive Exam Preparation',
+    programDescription:
+      'Indian Mentors provides structured preparation programs for various school, national, and professional entrance examinations with targeted strategies and expert mentorship.',
+    closingTitle: 'Improve your ranking potential',
+    closingDescription:
+      'Get focused preparation and performance analytics with expert competitive exam mentors.',
   },
   {
     id: 'university',
     emoji: '🎓',
     title: 'University',
     subtitle: 'Undergraduate – Postgraduate',
-    gradesLabel: 'Higher education support',
-    focus: 'Advanced Subject & Project Support',
+    gradesLabel: 'Undergraduate to Postgraduate',
+    focus: 'Advanced Subject Support & Academic Projects',
     overview:
-      'Guidance for complex subjects, research projects, academic writing, and structured revision for university exams.',
+      'Indian Mentors also supports university students who require guidance in complex subjects, research projects, and academic writing.',
     approach: [
-      'Advanced subject clarification',
-      'Assignment & dissertation guidance',
-      'Academic writing & research support',
-      'Structured exam revision planning',
+      'Concept clarification for advanced subjects',
+      'Assignment and dissertation guidance',
+      'Academic writing and research support',
+      'Structured revision planning for university exams',
     ],
-    goal: 'Enhanced performance and subject mastery at university level.',
+    goal: 'Enhance academic performance and subject mastery at the university level.',
     cta: 'Get University Academic Support',
     classes: [
-      { id: 'ug', label: 'Undergraduate', tagline: 'Degree-level mentoring' },
-      { id: 'pg', label: 'Postgraduate', tagline: 'Research & advanced topics' },
+      {
+        id: 'ug',
+        label: 'Undergraduate',
+        tagline: 'Degree-level mentoring',
+        focus: [
+          'Concept clarification for advanced subjects',
+          'Assignment and project guidance',
+          'Structured revision for university exams',
+        ],
+        outcome: 'Enhanced academic performance and subject mastery.',
+      },
+      {
+        id: 'pg',
+        label: 'Postgraduate',
+        tagline: 'Research & advanced topics',
+        focus: [
+          'Dissertation and research support',
+          'Academic writing and literature review',
+          'Advanced subject clarification',
+        ],
+        outcome: 'Improved research quality and academic confidence.',
+      },
     ],
     gradient: 'from-slate-700 via-slate-600 to-slate-500',
     accent: 'bg-slate-700',
     ring: 'ring-slate-400/50',
     stepColor: 'bg-slate-700 border-slate-400',
+    iconMdi: 'mdi:university-outline',
+    programTitle: 'University Level Support',
+    programDescription:
+      'Indian Mentors also supports university students who require guidance in complex subjects, research projects, and academic writing.',
+    closingTitle: 'Enhance your university performance',
+    closingDescription:
+      'Get expert guidance for advanced subjects, research projects, and academic writing.',
   },
 ]

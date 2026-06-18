@@ -1,0 +1,89 @@
+<script setup lang="ts">
+import { Icon } from '@iconify/vue'
+import IconArrowRight from '~/components/icons/IconArrowRight.vue'
+import IconCalendar from '~/components/icons/IconCalendar.vue'
+import { gradesPageIntro } from '~/components/academic/gradesData'
+
+function rippleHandler(e: MouseEvent) {
+  const target = e.currentTarget as HTMLElement
+  const rect = target.getBoundingClientRect()
+  target.style.setProperty('--x', `${e.clientX - rect.left}px`)
+  target.style.setProperty('--y', `${e.clientY - rect.top}px`)
+}
+</script>
+
+<template>
+  <section class="relative overflow-hidden bg-white" aria-labelledby="grades-hero-heading">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-x-0 -top-40 -z-10 mx-auto h-[420px] max-w-5xl bg-gradient-to-b from-blue-100/60 via-indigo-50/40 to-transparent blur-3xl"
+    />
+
+    <div class="container-page pb-14 pt-10 sm:pb-16 lg:pt-16">
+      <NuxtLink
+        to="/academic-coverage#grades-covered"
+        class="inline-flex items-center gap-1.5 text-sm font-medium text-slate-500 transition hover:text-blue-600"
+      >
+        <IconArrowRight class="h-3.5 w-3.5 rotate-180" />
+        Back to Academic Coverage
+      </NuxtLink>
+
+      <div class="text-center">
+        <span
+          class="badge-pill mx-auto mt-8 w-fit"
+          v-motion
+          :initial="{ opacity: 0, y: 12 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 500 } }"
+        >
+          <span class="grid h-5 w-5 place-items-center rounded-full bg-blue-600 text-white">
+            <Icon icon="mdi:book-education-outline" class="h-3 w-3" aria-hidden="true" />
+          </span>
+          <span>{{ gradesPageIntro.badge }}</span>
+        </span>
+
+        <h1
+          id="grades-hero-heading"
+          class="heading-display mx-auto mt-6 max-w-3xl text-balance text-[2rem] leading-[1.1] sm:text-[2.75rem] lg:text-[3.25rem]"
+          v-motion
+          :initial="{ opacity: 0, y: 24 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 700, delay: 150, ease: [0.22, 1, 0.36, 1] } }"
+        >
+          Personalised learning support across
+          <span class="text-gradient-brand">every academic stage</span>
+        </h1>
+
+        <p
+          class="mx-auto mt-5 max-w-2xl text-pretty text-[15px] leading-relaxed text-slate-600 sm:text-lg"
+          v-motion
+          :initial="{ opacity: 0, y: 16 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 700, delay: 300 } }"
+        >
+          {{ gradesPageIntro.description }}
+        </p>
+
+        <p
+          class="mx-auto mt-3 max-w-xl text-pretty text-sm leading-relaxed text-slate-500 sm:text-[15px]"
+          v-motion
+          :initial="{ opacity: 0, y: 12 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 380 } }"
+        >
+          {{ gradesPageIntro.subDescription }}
+        </p>
+
+        <div
+          class="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          v-motion
+          :initial="{ opacity: 0, y: 16 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 450 } }"
+        >
+          <a href="#book-demo" class="btn-primary ripple group w-full sm:w-auto" @mousemove="rippleHandler">
+            <IconCalendar class="h-4 w-4 shrink-0 opacity-95" />
+            Book Free Demo
+            <IconArrowRight class="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+          <a href="#grades-nav" class="btn-secondary w-full sm:w-auto">Explore All Stages</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

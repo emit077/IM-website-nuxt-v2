@@ -29,7 +29,7 @@ function toggle(id: CurriculumStage['id']) {
         content-class="!px-0 !py-0"
         badge="Grades covered"
         title='Support across <span class="text-gradient-brand">every academic stage</span>'
-        description="From pre-primary to postgraduate — structured mentoring, learning plans, and progress monitoring adapted to each level."
+        description="Indian Mentors provides structured tutoring from early childhood to postgraduate studies — adapting to each student's level, learning style, and goals."
         v-motion
         :initial="{ opacity: 0, y: 14 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }"
@@ -171,9 +171,9 @@ function toggle(id: CurriculumStage['id']) {
                     </ul>
                   </div>
 
-                  <!-- Goal + CTA -->
+                  <!-- Goal + CTAs -->
                   <div
-                    class="mt-5 flex flex-col gap-3 rounded-xl border border-slate-200/80 bg-slate-50/70 p-4 sm:flex-row sm:items-center sm:justify-between"
+                    class="mt-5 flex flex-col gap-4 rounded-xl border border-slate-200/80 bg-slate-50/70 p-4"
                   >
                     <div class="flex items-start gap-2.5">
                       <Icon icon="mdi:flag-checkered" class="mt-0.5 h-4 w-4 shrink-0 text-blue-600" aria-hidden="true" />
@@ -181,19 +181,43 @@ function toggle(id: CurriculumStage['id']) {
                         <span class="font-semibold text-slate-900">Goal:</span> {{ stage.goal }}
                       </p>
                     </div>
-                    <a
-                      href="#book-demo"
-                      class="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
-                    >
-                      {{ stage.cta }}
-                      <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
-                    </a>
+                    <div class="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap">
+                      <NuxtLink
+                        :to="`/grades#${stage.id}`"
+                        class="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-blue-200 bg-white px-4 py-2.5 text-sm font-semibold text-blue-700 transition hover:border-blue-300 hover:bg-blue-50 sm:flex-none"
+                      >
+                        Learn More
+                        <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+                      </NuxtLink>
+                      <a
+                        href="#book-demo"
+                        class="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 sm:flex-none"
+                      >
+                        {{ stage.cta }}
+                        <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </Transition>
         </div>
+      </div>
+
+      <div
+        class="mx-auto mt-10 flex max-w-3xl justify-center"
+        v-motion
+        :initial="{ opacity: 0, y: 12 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 200, duration: 450 } }"
+      >
+        <NuxtLink
+          to="/grades"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-blue-200 bg-white px-6 py-3 text-sm font-semibold text-blue-700 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-soft"
+        >
+          View all grades &amp; programs
+          <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+        </NuxtLink>
       </div>
     </div>
   </section>
