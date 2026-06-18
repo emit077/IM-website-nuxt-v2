@@ -2,7 +2,7 @@
 import MilestonesHeroSection from '~/components/milestones/MilestonesHeroSection.vue'
 import MilestonesTimelineSection from '~/components/milestones/MilestonesTimelineSection.vue'
 import AboutFinalCTASection from '~/components/about/AboutFinalCTASection.vue'
-import NewsletterSection from '~/components/home/NewsletterSection.vue'
+import NewsletterSection from '~/components/shared/NewsletterSection.vue'
 
 useSeoMeta({
   title: 'Our Milestones — Indian Mentors',

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { hiringSteps, type HiringStep } from '~/data/tutors'
 
 const accentClasses: Record<HiringStep['accent'], { badge: string; tile: string; icon: string }> = {
@@ -21,17 +22,14 @@ const accentClasses: Record<HiringStep['accent'], { badge: string; tile: string;
       class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-blue-100/50 blur-3xl" />
 
     <div class="container-page relative">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Tutor Hiring Process</span>
-        <h2 id="hiring-process-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          From registration to your <span class="text-gradient-brand">first session</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          A structured onboarding process designed to maintain high academic standards —
-          so students and parents always receive reliable, qualified mentors.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="hiring-process-heading"
+        content-class="!px-0 !py-0"
+        badge="Tutor Hiring Process"
+        title='From registration to your <span class="text-gradient-brand">first session</span>'
+        description="A structured onboarding process designed to maintain high academic standards — so students and parents always receive reliable, qualified mentors."
+      />
 
       <!-- Steps -->
       <div class="relative mx-auto mt-12 max-w-5xl">

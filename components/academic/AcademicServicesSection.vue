@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import ServiceOfferingCard from '~/components/home/ServiceOfferingCard.vue'
 
 type ServiceCard = {
@@ -112,12 +113,13 @@ function cardWidthClass() {
     />
 
     <div class="container-page relative z-[1]">
-      <div class="text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Our services</span>
-        <h2 id="academic-services-heading" class="font-display mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
-          Six ways we <span class="text-gradient-brand">reach you</span>
-        </h2>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="academic-services-heading"
+        content-class="!px-0 !py-0"
+        badge="Our services"
+        title='Six ways we <span class="text-gradient-brand">reach you</span>'
+      />
 
       <!-- Visual mode picker strip -->
       <div

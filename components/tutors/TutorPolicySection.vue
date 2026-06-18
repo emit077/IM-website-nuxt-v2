@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { policyPoints } from '~/data/tutors'
 </script>
 
@@ -12,16 +13,14 @@ import { policyPoints } from '~/data/tutors'
         <!-- Left: copy -->
         <div class="lg:col-span-5" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-          <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Tutor Registration Policy</span>
-          <h2 id="tutor-policy-heading"
-            class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            Fair, professional, and <span class="text-gradient-brand">respectful for everyone</span>
-          </h2>
-          <p class="mt-4 text-sm leading-relaxed text-slate-600">
-            All tutors associated with Indian Mentors follow established policies designed to
-            maintain professional and ethical tutoring practices — ensuring a fair environment
-            for tutors, students, and parents alike.
-          </p>
+          <CardHeader
+            variant="section-left"
+            heading-id="tutor-policy-heading"
+            content-class="!px-0 !py-0"
+            badge="Tutor Registration Policy"
+            title='Fair, professional, and <span class="text-gradient-brand">respectful for everyone</span>'
+            description="All tutors associated with Indian Mentors follow established policies designed to maintain professional and ethical tutoring practices — ensuring a fair environment for tutors, students, and parents alike."
+          />
           <a href="#tutor-register"
             class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 underline-offset-4 transition hover:underline">
             Read Tutor Registration Policy

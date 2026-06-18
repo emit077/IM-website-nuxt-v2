@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import { aboutTimeline } from '~/data/about'
 
@@ -11,6 +12,11 @@ const yearLabels: Record<string, string> = {
 }
 
 const activeTimeline = computed(() => aboutTimeline.filter((t) => t.status === 'Active'))
+
+const journeyDescription = computed(
+  () =>
+    `Four chapters. ${activeTimeline.value.length} milestones. One mission — trusted mentorship for every learner in India.`,
+)
 
 const yearGroups = computed(() => {
   const groups: { year: string; label: string; milestones: typeof activeTimeline.value }[] = []
@@ -33,19 +39,14 @@ const yearGroups = computed(() => {
 <template>
   <section id="journey" class="border-y border-slate-200/80 bg-white py-14 sm:py-16" aria-labelledby="journey-heading">
     <div class="container-page">
-      <div class="mx-auto max-w-2xl text-center">
-        <p class="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">
-          Our Journey
-        </p>
-        <h2 id="journey-heading"
-          class="font-display mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-          Milestones that shaped us
-        </h2>
-        <p class="mt-4 text-base leading-relaxed text-slate-600">
-          Four chapters. {{ activeTimeline.length }} milestones. One mission — trusted mentorship for every learner in
-          India.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="journey-heading"
+        content-class="!px-0 !py-0"
+        badge="Our Journey"
+        title="Milestones that shaped us"
+        :description="journeyDescription"
+      />
 
       <ol class="mx-auto mt-10 max-w-3xl divide-y divide-slate-200 border-y border-slate-200" v-motion
         :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 80 } }">

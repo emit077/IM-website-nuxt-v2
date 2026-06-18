@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { aboutLeadership, aboutLeadershipQuote } from '~/data/about'
 
 const bannerImage = usePublicAsset('assets/img/banner/banner-1.png')
@@ -11,15 +12,13 @@ const otherLeaders = computed(() => aboutLeadership.filter((l) => l.id !== 'foun
 <template>
   <section id="leadership" class="bg-[#f8fafc] py-14 sm:py-16 lg:py-20" aria-labelledby="leadership-heading">
     <div class="container-page">
-      <div class="mx-auto text-center">
-        <h2 id="leadership-heading"
-          class="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-          Founders &amp; Leadership
-        </h2>
-        <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-          The people guiding academic quality, operations, and mentor excellence across India.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="leadership-heading"
+        content-class="!px-0 !py-0"
+        title="Founders &amp; Leadership"
+        description="The people guiding academic quality, operations, and mentor excellence across India."
+      />
 
       <!-- Founder & CEO -->
       <article v-if="founder"

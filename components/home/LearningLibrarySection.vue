@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 
 type GradeId =
   | '12pass'
@@ -408,22 +409,14 @@ const gridCards = computed(() => current.value.cards)
         class="rounded-[1.75rem] border border-slate-200/70 bg-white p-6 shadow-soft sm:p-8 lg:p-10 lg:shadow-[0_8px_40px_-12px_rgba(15,23,42,0.08)]"
         v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550, ease: 'easeOut' } }">
-        <!-- Header -->
-        <header class="max-w-x">
-          <p class="text-xs font-semibold uppercase tracking-[0.16em] text-blue-600">
-            Learning library
-          </p>
-          <h2 id="learning-library-heading"
-            class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-[2.1rem] lg:leading-snug">
-            Resources built for your grade
-          </h2>
-          <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-            At Indian Mentors, we provide comprehensive academic mentoring designed to support students across every
-            stage of their educational journey. Our tutoring programs combine experienced mentors, curriculum-aligned
-            teaching methods, and personalised learning strategies to help students build strong academic foundations
-            and achieve their educational goals.
-          </p>
-        </header>
+        <CardHeader
+          variant="section-left"
+          heading-id="learning-library-heading"
+          content-class="!px-0 !py-0"
+          badge="Learning library"
+          title="Resources built for your grade"
+          description="At Indian Mentors, we provide comprehensive academic mentoring designed to support students across every stage of their educational journey. Our tutoring programs combine experienced mentors, curriculum-aligned teaching methods, and personalised learning strategies to help students build strong academic foundations and achieve their educational goals."
+        />
 
         <!-- Grade tabs -->
         <div class="mt-8 -mx-1 overflow-x-auto pb-1 [scrollbar-width:thin]" role="tablist" aria-label="Select class">

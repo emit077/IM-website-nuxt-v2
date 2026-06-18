@@ -7,7 +7,7 @@ import AboutJourneySection from '~/components/about/AboutJourneySection.vue'
 import AboutComparisonSection from '~/components/about/AboutComparisonSection.vue'
 import AboutAudienceSection from '~/components/about/AboutAudienceSection.vue'
 import AboutFinalCTASection from '~/components/about/AboutFinalCTASection.vue'
-import NewsletterSection from '~/components/home/NewsletterSection.vue'
+import NewsletterSection from '~/components/shared/NewsletterSection.vue'
 
 useSeoMeta({
   title: 'About Us — Indian Mentors',

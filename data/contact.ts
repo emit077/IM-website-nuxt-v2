@@ -4,39 +4,34 @@ export type PhoneContact = {
   wa?: string
 }
 
-export const cityIconBasePath = '/assets/img/city-icons' as const
-export const cityImgBasePath = '/assets/img/city-img' as const
-
 export type PopularCity = {
   id: string
   icon: string
   label: string
-  branchCity?: string
 }
 
 export type PopularCityImage = {
   id: string
   image: string
   label: string
-  branchCity?: string
 }
 
 /** Cities with a dedicated icon in /public/assets/img/city-icons/ */
 export const popularCities = [
-  { id: 'mumbai', icon: 'mumbai', label: 'Mumbai', branchCity: 'Mumbai' },
-  { id: 'delhi', icon: 'delhi', label: 'Delhi-NCR', branchCity: 'Delhi' },
-  { id: 'bengaluru', icon: 'bengaluru', label: 'Bengaluru', branchCity: 'Bangalore' },
-  { id: 'hyderabad', icon: 'hydrabad', label: 'Hyderabad', branchCity: 'Hyderabad' },
-  { id: 'chandigarh', icon: 'chandigarh', label: 'Chandigarh', branchCity: 'Chandigarh' },
-  { id: 'ahmedabad', icon: 'ahmdabad', label: 'Ahmedabad', branchCity: 'Ahmedabad' },
-  { id: 'pune', icon: 'pune', label: 'Pune', branchCity: 'Pune' },
-  { id: 'chennai', icon: 'chennai', label: 'Chennai', branchCity: 'Chennai' },
-  { id: 'kolkata', icon: 'kolkata', label: 'Kolkata', branchCity: 'Kolkata' },
-  { id: 'raipur', icon: 'raipur', label: 'Raipur', branchCity: 'Raipur' },
-  { id: 'nagpur', icon: 'nagpur', label: 'Nagpur', branchCity: 'Nagpur' },
-  { id: 'indore', icon: 'indore', label: 'Indore', branchCity: 'Indore' },
-  { id: 'lucknow', icon: 'lucknow', label: 'Lucknow', branchCity: 'Lucknow' },
-  { id: 'jaipur', icon: 'jaipur', label: 'Jaipur', branchCity: 'Jaipur' },
+  { id: 'mumbai', icon: 'mumbai', label: 'Mumbai' },
+  { id: 'delhi', icon: 'delhi', label: 'Delhi-NCR' },
+  { id: 'bengaluru', icon: 'bengaluru', label: 'Bengaluru' },
+  { id: 'hyderabad', icon: 'hydrabad', label: 'Hyderabad' },
+  { id: 'chandigarh', icon: 'chandigarh', label: 'Chandigarh' },
+  { id: 'ahmedabad', icon: 'ahmdabad', label: 'Ahmedabad' },
+  { id: 'pune', icon: 'pune', label: 'Pune' },
+  { id: 'chennai', icon: 'chennai', label: 'Chennai' },
+  { id: 'kolkata', icon: 'kolkata', label: 'Kolkata' },
+  { id: 'raipur', icon: 'raipur', label: 'Raipur' },
+  { id: 'nagpur', icon: 'nagpur', label: 'Nagpur' },
+  { id: 'indore', icon: 'indore', label: 'Indore' },
+  { id: 'lucknow', icon: 'lucknow', label: 'Lucknow' },
+  { id: 'jaipur', icon: 'jaipur', label: 'Jaipur' },
   { id: 'patna', icon: 'patna', label: 'Patna' },
   { id: 'kochi', icon: 'kochi', label: 'Kochi' },
   { id: 'bhubaneswar', icon: 'bhubneshwar', label: 'Bhubaneswar' },
@@ -45,19 +40,19 @@ export const popularCities = [
 
 /** Cities with a dedicated image in /public/assets/img/city-img/ */
 export const popularCityImages = [
-  { id: 'mumbai', image: 'mumbai', label: 'Mumbai', branchCity: 'Mumbai' },
-  { id: 'delhi', image: 'delhi', label: 'Delhi-NCR', branchCity: 'Delhi' },
-  { id: 'bengaluru', image: 'bangluru', label: 'Bengaluru', branchCity: 'Bangalore' },
-  { id: 'chennai', image: 'chennai', label: 'Chennai', branchCity: 'Chennai' },
-  { id: 'kolkata', image: 'kolkata', label: 'Kolkata', branchCity: 'Kolkata' },
-  { id: 'pune', image: 'pune', label: 'Pune', branchCity: 'Pune' },
-  { id: 'ahmedabad', image: 'ahmdabad', label: 'Ahmedabad', branchCity: 'Ahmedabad' },
-  { id: 'raipur', image: 'raipur', label: 'Raipur', branchCity: 'Raipur' },
-  { id: 'jaipur', image: 'jaipur', label: 'Jaipur', branchCity: 'Jaipur' },
-  { id: 'indore', image: 'indore', label: 'Indore', branchCity: 'Indore' },
-  { id: 'lucknow', image: 'lucknow', label: 'Lucknow', branchCity: 'Lucknow' },
+  { id: 'mumbai', image: 'mumbai', label: 'Mumbai' },
+  { id: 'delhi', image: 'delhi', label: 'Delhi-NCR' },
+  { id: 'bengaluru', image: 'bangluru', label: 'Bengaluru' },
+  { id: 'chennai', image: 'chennai', label: 'Chennai' },
+  { id: 'kolkata', image: 'kolkata', label: 'Kolkata' },
+  { id: 'pune', image: 'pune', label: 'Pune' },
+  { id: 'ahmedabad', image: 'ahmdabad', label: 'Ahmedabad' },
+  { id: 'raipur', image: 'raipur', label: 'Raipur' },
+  { id: 'jaipur', image: 'jaipur', label: 'Jaipur' },
+  { id: 'indore', image: 'indore', label: 'Indore' },
+  { id: 'lucknow', image: 'lucknow', label: 'Lucknow' },
   { id: 'kochi', image: 'kochi', label: 'Kochi' },
-  { id: 'bhopal', image: 'bhopal', label: 'Bhopal', branchCity: 'Bhopal' },
+  { id: 'bhopal', image: 'bhopal', label: 'Bhopal' },
 ] as const satisfies readonly PopularCityImage[]
 
 export type BranchOffice = {
@@ -75,46 +70,14 @@ export type ServiceZone = {
 
 export const contactHero = {
   badge: 'Cities of Operation',
-  tagline: 'INDIAN MENTORS – Structured Academic Support, Delivered Nationwide',
-  title: 'Expanding Structured Mentorship',
-  titleHighlight: 'Across India',
   subheadline: 'Delivering Personalised Tutoring Services Across Major Cities and Educational Hubs',
-  description:
-    'Indian Mentors operates as a growing national academic ecosystem dedicated to delivering structured and personalised tutoring services across multiple cities in India.',
-  supporting: [
-    'Our operational network combines centralised academic quality control with local accessibility, ensuring the same high standards of mentorship, tutor verification, and learning transparency wherever students are located.',
-    'Through home tutoring, online tutoring, and academic support systems, we connect students with qualified mentors across metropolitan areas, regional cities, and emerging educational hubs.',
-  ],
   primaryCta: { label: 'Explore Popular Cities', href: '#branch-offices' },
   secondaryCta: { label: 'Contact Support', href: '#call-us' },
 } as const
 
-export const contactHeroHighlights = [
-  { label: '19+ Branch Offices', iconMdi: 'mdi:office-building-marker-outline' },
-  { label: 'Pan-India Coverage', iconMdi: 'mdi:earth' },
-  { label: 'Home & Online Tutoring', iconMdi: 'mdi:home-city-outline' },
-  { label: 'Verified Mentors', iconMdi: 'mdi:shield-check-outline' },
-] as const
-
-export const contactHeroStats = [
-  { value: '19', suffix: '+', label: 'Primary service cities' },
-  { value: '150', suffix: '+', label: 'Cities actively served' },
-  { value: '5', suffix: '', label: 'Regional zones covered' },
-  { value: '2', suffix: '', label: 'HQ & corporate offices' },
-] as const
-
 /** Contact hero collage — top row (2 cities) + bottom row (4 cities) */
 export const contactHeroCollageTop = popularCityImages.slice(0, 2)
 export const contactHeroCollageBottom = popularCityImages.slice(2, 6)
-
-export const contactQuickLinks = [
-  { id: 'head-office', title: 'Headquarters', href: '#head-office', iconMdi: 'mdi:office-building-outline' },
-  { id: 'corporate-office', title: 'Corporate Office', href: '#corporate-office', iconMdi: 'mdi:domain' },
-  { id: 'branch-offices', title: 'Popular Cities', href: '#branch-offices', iconMdi: 'mdi:city-variant-outline' },
-  { id: 'also-serving', title: 'Other Cities', href: '#also-serving', iconMdi: 'mdi:map-marker-radius-outline' },
-  { id: 'call-us', title: 'Call Us', href: '#call-us', iconMdi: 'mdi:phone-outline' },
-  { id: 'email', title: 'Email', href: '#email', iconMdi: 'mdi:email-outline' },
-] as const
 
 export const headOffice = {
   title: 'Indian Mentors – National Operations Center',
@@ -135,22 +98,10 @@ export const headOffice = {
     'From this location, our administrative and academic teams ensure that every student receives consistent, high-quality tutoring support nationwide.',
 } as const
 
-export const corporateOffice = {
-  title: 'Corporate Office',
-  subtitle: 'Indian Mentors – Central Coordination Hub',
-  address:
-    'Office No 7-8-9, 5th Floor, Surya Treasure Island Mall, South Office Block, Junwani Road, Surya Vihar, Nehru Nagar, Bhilai, District Durg, Chhattisgarh 490020',
-  description: [
-    'The corporate office of Indian Mentors serves as the central hub for academic operations, tutor management, student support, and strategic coordination across India.',
-    'Located in the educational and commercial hub of Bhilai, our corporate office ensures seamless coordination between students, parents, mentors, and institutional partners, enabling a structured and efficient tutoring experience.',
-  ],
-} as const
-
 export const branchOffices = {
   title: 'Major Cities with Operational Presence',
   intro:
     'Indian Mentors currently maintains operational activities in several key metropolitan and regional cities across India.',
-  sectionLabel: 'Primary Service Cities',
   offices: [
     {
       city: 'Mumbai',
@@ -241,7 +192,6 @@ export const branchOffices = {
 } as const
 
 export const alsoServing = {
-  title: 'Also Serving In',
   intro:
     'In addition to our branch locations, Indian Mentors actively serves students in numerous growing educational hubs across India through our home tutoring network and online learning ecosystem.',
   supporting:
@@ -467,21 +417,6 @@ export const alsoServing = {
   ] satisfies ServiceZone[],
 } as const
 
-export const continuousExpansion = {
-  title: 'Continuous Expansion',
-  intro:
-    'Indian Mentors continues to expand its tutoring network across India to ensure that more students gain access to qualified mentors, personalised academic support, and structured learning systems.',
-  standardsLabel: 'Every new city added to our network follows the same standards of:',
-  standards: [
-    'Tutor verification and screening',
-    'Academic monitoring and ERP tracking',
-    'Structured tutoring methodology',
-    'Dedicated academic support services',
-  ],
-  closing:
-    'Our goal is to build a reliable national mentorship network that supports students across diverse educational environments.',
-} as const
-
 export const findMentorSection = {
   title: 'Find a Mentor in Your City',
   description:
@@ -502,9 +437,6 @@ export const phoneSupport = {
     'Partnership discussions',
   ],
   number: { display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
-  numbers: [
-    { display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
-  ] satisfies PhoneContact[],
 } as const
 
 export const workingHours = {
@@ -549,24 +481,6 @@ export const emailSupport = {
   ],
 } as const
 
-export const websiteInfo = {
-  title: 'Learn More About Indian Mentors',
-  intro: 'Explore complete information about:',
-  topics: [
-    'Personalised tutoring services',
-    'Tutor registration process',
-    'Student enrollment procedures',
-    'Academic programs and subjects offered',
-  ],
-  url: 'https://www.indianmentors.in',
-  displayUrl: 'www.indianmentors.in',
-} as const
-
-export const contactClosing = {
-  title: 'Indian Mentors — Structured Academic Support, Delivered Nationwide.',
-  text: 'At Indian Mentors, your academic success is our priority. Reach out today and let us help you achieve your learning goals with the right guidance and support.',
-} as const
-
 export const contactGetStarted = {
   badge: 'Get Started',
   title: 'Get Personalised Tutoring Support in Your City',
@@ -575,8 +489,5 @@ export const contactGetStarted = {
   ctas: [
     { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
     { label: 'Talk to Counsellor', href: `tel:${phoneSupport.number.tel}`, iconMdi: 'mdi:account-voice' },
-    { label: 'Find a Mentor in Your City', href: '#find-mentor', iconMdi: 'mdi:map-marker-radius-outline' },
   ],
 } as const
-
-export const primaryPhone = phoneSupport.number

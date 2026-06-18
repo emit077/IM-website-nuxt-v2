@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { partnershipBenefitsSection, partnershipBenefits } from '~/data/channel-partner'
 </script>
 
@@ -7,19 +8,14 @@ import { partnershipBenefitsSection, partnershipBenefits } from '~/data/channel-
   <section id="partnership-benefits" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="partnership-benefits-heading">
     <div class="container-page">
-      <!-- Section header -->
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">
-          {{ partnershipBenefitsSection.kicker }}
-        </span>
-        <h2 id="partnership-benefits-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Growth through <span class="text-gradient-brand">educational collaboration</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          {{ partnershipBenefitsSection.description }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="partnership-benefits-heading"
+        content-class="!px-0 !py-0"
+        :badge="partnershipBenefitsSection.kicker"
+        title='Growth through <span class="text-gradient-brand">educational collaboration</span>'
+        :description="partnershipBenefitsSection.description"
+      />
 
       <!-- Benefits grid -->
       <ul class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3" role="list">

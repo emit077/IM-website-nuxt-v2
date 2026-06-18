@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import {
   dashboardModules,
@@ -13,17 +14,14 @@ const frameworkSteps = ['Plan', 'Track', 'Review', 'Improve']
 <template>
   <section id="erp-dashboard" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20" aria-labelledby="erp-heading">
     <div class="container-page">
-      <!-- Section header -->
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Learning Dashboard</span>
-        <h2 id="erp-heading" class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Complete transparency for <span class="text-gradient-brand">parents and students</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          Every session, report, and payment is tracked in one ERP-powered dashboard —
-          so you always know exactly how learning is progressing.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="erp-heading"
+        content-class="!px-0 !py-0"
+        badge="Learning Dashboard"
+        title='Complete transparency for <span class="text-gradient-brand">parents and students</span>'
+        description="Every session, report, and payment is tracked in one ERP-powered dashboard — so you always know exactly how learning is progressing."
+      />
 
       <!-- Framework strip -->
       <div class="mx-auto mt-8 flex flex-wrap items-center justify-center gap-2" v-motion

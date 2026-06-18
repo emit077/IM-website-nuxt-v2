@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { whyChooseAdvantages, institutionalSupport } from '~/data/institutions'
 </script>
@@ -8,17 +9,14 @@ import { whyChooseAdvantages, institutionalSupport } from '~/data/institutions'
   <section id="why-institutions" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="why-institutions-heading">
     <div class="container-page">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Why Indian Mentors</span>
-        <h2 id="why-institutions-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Why institutions <span class="text-gradient-brand">choose us</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          Educational organizations across India trust Indian Mentors for structured and
-          reliable teacher recruitment solutions.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="why-institutions-heading"
+        content-class="!px-0 !py-0"
+        badge="Why Indian Mentors"
+        title='Why institutions <span class="text-gradient-brand">choose us</span>'
+        description="Educational organizations across India trust Indian Mentors for structured and reliable teacher recruitment solutions."
+      />
 
       <ul class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3" role="list">
         <li v-for="(adv, i) in whyChooseAdvantages" :key="adv.label" v-motion :initial="{ opacity: 0, y: 12 }"

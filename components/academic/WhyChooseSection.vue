@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 
 type Reason = {
   id: string
@@ -73,13 +74,13 @@ const reasons: Reason[] = [
       class="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-blue-200/25 blur-3xl" />
 
     <div class="container-page relative z-[1]">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Why Indian Mentors</span>
-        <h2 id="why-choose-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Built for <span class="text-gradient-brand">trust</span>, not just tutoring
-        </h2>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="why-choose-heading"
+        content-class="!px-0 !py-0"
+        badge="Why Indian Mentors"
+        title='Built for <span class="text-gradient-brand">trust</span>, not just tutoring'
+      />
 
       <!-- Bento mosaic -->
       <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:gap-5">

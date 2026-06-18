@@ -1,15 +1,12 @@
 <script setup lang="ts">
 import ContactHeroSection from '~/components/contact/ContactHeroSection.vue'
-import ContactCitiesSection from '~/components/contact/ContactCitiesSection.vue'
-import ContactCitiesImageSection from '~/components/contact/ContactCitiesImageSection.vue'
+import ContactBranchCitiesSection from '~/components/contact/ContactBranchCitiesSection.vue'
 import ContactHeadOfficeSection from '~/components/contact/ContactHeadOfficeSection.vue'
-import ContactFindMentorSection from '~/components/contact/ContactFindMentorSection.vue'
-import ContactPhoneSection from '~/components/contact/ContactPhoneSection.vue'
-import ContactWhatsAppSection from '~/components/contact/ContactWhatsAppSection.vue'
-import ContactEmailSection from '~/components/contact/ContactEmailSection.vue'
+import ContactCenteredSection from '~/components/contact/ContactCenteredSection.vue'
+import ContactChannelSection from '~/components/contact/ContactChannelSection.vue'
 import ContactCTASection from '~/components/contact/ContactCTASection.vue'
-import ContactClosingSection from '~/components/contact/ContactClosingSection.vue'
-import NewsletterSection from '~/components/home/NewsletterSection.vue'
+import NewsletterSection from '~/components/shared/NewsletterSection.vue'
+import { findMentorSection } from '~/data/contact'
 
 useSeoMeta({
   title: 'Cities of Operation — Indian Mentors',
@@ -25,15 +22,19 @@ useSeoMeta({
 <template>
   <div class="min-h-screen bg-cream-50">
     <ContactHeroSection />
-    <ContactCitiesSection />
-    <ContactCitiesImageSection />
+
+    <ContactBranchCitiesSection variant="icons" section-id="branch-offices" heading-id="branch-offices-heading" />
+
+    <ContactBranchCitiesSection variant="images" section-id="city-images" heading-id="city-images-heading"
+      other-cities-id="city-images-other" bg-class="bg-cream-50" />
+
     <ContactHeadOfficeSection />
-    <ContactFindMentorSection />
-    <ContactPhoneSection />
-    <ContactWhatsAppSection />
-    <ContactEmailSection />
+
+    <ContactCenteredSection id="find-mentor" heading-id="find-mentor-heading" icon="mdi:school-outline"
+      :title="findMentorSection.title" :description="findMentorSection.description"
+      :closing="findMentorSection.closing" />
+    <ContactChannelSection />
     <ContactCTASection />
-    <ContactClosingSection />
     <NewsletterSection />
   </div>
 </template>

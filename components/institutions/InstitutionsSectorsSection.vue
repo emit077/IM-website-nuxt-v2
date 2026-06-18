@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { hiringSectors } from '~/data/institutions'
 
@@ -16,16 +17,14 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
   <section id="hire-teachers-for" class="relative bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="sectors-heading">
     <div class="container-page">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Hire Teachers For</span>
-        <h2 id="sectors-heading" class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Faculty recruitment for <span class="text-gradient-brand">every education sector</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          Indian Mentors supports structured faculty recruitment for multiple education sectors
-          and learning organizations.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="sectors-heading"
+        content-class="!px-0 !py-0"
+        badge="Hire Teachers For"
+        title='Faculty recruitment for <span class="text-gradient-brand">every education sector</span>'
+        description="Indian Mentors supports structured faculty recruitment for multiple education sectors and learning organizations."
+      />
 
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
         <article v-for="(sector, i) in hiringSectors" :key="sector.id"

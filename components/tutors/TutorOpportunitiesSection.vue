@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import { browseFilters } from '~/data/tutors'
 </script>
@@ -8,17 +9,14 @@ import { browseFilters } from '~/data/tutors'
   <section id="browse-students" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
     aria-labelledby="browse-students-heading">
     <div class="container-page">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Browse Student Opportunities</span>
-        <h2 id="browse-students-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Find students that <span class="text-gradient-brand">match your expertise</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          Registered tutors can explore available tutoring opportunities and connect with
-          suitable students to expand their teaching engagements.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="browse-students-heading"
+        content-class="!px-0 !py-0"
+        badge="Browse Student Opportunities"
+        title='Find students that <span class="text-gradient-brand">match your expertise</span>'
+        description="Registered tutors can explore available tutoring opportunities and connect with suitable students to expand their teaching engagements."
+      />
 
       <ul class="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-5" role="list">
         <li v-for="(filter, i) in browseFilters" :key="filter.title"

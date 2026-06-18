@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import {
   boardRegions,
   countriesByBoards,
@@ -51,6 +52,11 @@ function resetFilters() {
   searchQuery.value = ''
   activeRegion.value = 'all'
 }
+
+const boardsDescription = computed(
+  () =>
+    `From Indian national boards to international programmes — explore the curricula we support across ${totalCountryCount} countries and ${totalBoardCount}+ examination systems.`,
+)
 </script>
 
 <template>
@@ -60,17 +66,14 @@ function resetFilters() {
       class="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-80 max-w-4xl bg-gradient-to-b from-blue-200/40 to-transparent blur-3xl" />
 
     <div class="container-page relative z-[1]">
-      <!-- Header -->
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Boards covered</span>
-        <h2 id="boards-heading" class="heading-display mt-3 text-[1.7rem] leading-tight sm:text-3xl lg:text-[2.25rem]">
-          Every major curriculum, <span class="text-gradient-brand">by country</span>
-        </h2>
-        <p class="mx-auto mt-4 max-w-xl text-pretty text-[15px] leading-relaxed text-slate-600 sm:text-base">
-          From Indian national boards to international programmes — explore the curricula we support across
-          {{ totalCountryCount }} countries and {{ totalBoardCount }}+ examination systems.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="boards-heading"
+        content-class="!px-0 !py-0"
+        badge="Boards covered"
+        title='Every major curriculum, <span class="text-gradient-brand">by country</span>'
+        :description="boardsDescription"
+      />
 
       <!-- Search + region filters -->
       <div class="mx-auto mt-8 max-w-4xl space-y-4">

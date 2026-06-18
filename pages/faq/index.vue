@@ -5,7 +5,7 @@ import FaqSearchFilterSection from '~/components/faq/FaqSearchFilterSection.vue'
 import FaqCategoriesSection from '~/components/faq/FaqCategoriesSection.vue'
 import FaqClosingSection from '~/components/faq/FaqClosingSection.vue'
 import FaqCTASection from '~/components/faq/FaqCTASection.vue'
-import NewsletterSection from '~/components/home/NewsletterSection.vue'
+import NewsletterSection from '~/components/shared/NewsletterSection.vue'
 
 const searchQuery = ref('')
 const activeCategory = ref('all')
@@ -30,11 +30,7 @@ useSeoMeta({
   <div class="min-h-screen bg-cream-50">
     <FaqHeroSection />
     <FaqSearchFilterSection v-model:search-query="searchQuery" v-model:active-category="activeCategory" />
-    <FaqCategoriesSection
-      :search-query="searchQuery"
-      :active-category="activeCategory"
-      @reset-filters="resetFilters"
-    />
+    <FaqCategoriesSection :search-query="searchQuery" :active-category="activeCategory" @reset-filters="resetFilters" />
     <FaqClosingSection />
     <FaqCTASection />
     <NewsletterSection />

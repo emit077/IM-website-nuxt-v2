@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { aboutPhilosophy } from '~/data/about'
 
 type PhilosophyTheme = {
@@ -63,23 +64,14 @@ const values = computed(() =>
     />
 
     <div class="container-page relative">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="badge-pill mb-5">
-          <span class="grid h-5 w-5 place-items-center rounded-full bg-blue-600 text-white">
-            <Icon icon="mdi:compass-outline" class="h-3 w-3" aria-hidden="true" />
-          </span>
-          <span>What we stand for</span>
-        </span>
-        <h2
-          id="philosophy-heading"
-          class="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
-        >
-          Our <span class="text-gradient-brand">Philosophy</span>
-        </h2>
-        <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-          {{ aboutPhilosophy.subtitle }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="philosophy-heading"
+        content-class="!px-0 !py-0"
+        badge="What we stand for"
+        title='Our <span class="text-gradient-brand">Philosophy</span>'
+        :description="aboutPhilosophy.subtitle"
+      />
 
       <div class="mt-12 grid gap-6 sm:grid-cols-3 sm:gap-5 lg:gap-6">
         <article

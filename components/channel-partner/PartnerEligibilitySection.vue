@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { whoCanApplySection, eligibleApplicants } from '~/data/channel-partner'
 </script>
 
@@ -7,17 +8,14 @@ import { whoCanApplySection, eligibleApplicants } from '~/data/channel-partner'
   <section id="who-can-apply" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="who-can-apply-heading">
     <div class="container-page">
-      <!-- Section header -->
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">{{ whoCanApplySection.kicker }}</span>
-        <h2 id="who-can-apply-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Ideal <span class="text-gradient-brand">partner profiles</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          {{ whoCanApplySection.description }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="who-can-apply-heading"
+        content-class="!px-0 !py-0"
+        :badge="whoCanApplySection.kicker"
+        title='Ideal <span class="text-gradient-brand">partner profiles</span>'
+        :description="whoCanApplySection.description"
+      />
 
       <!-- Applicant cards -->
       <ul class="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4" role="list">

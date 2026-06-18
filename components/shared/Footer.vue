@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const phoneLines = [
-  { display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
-  { display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
+  { tel: '+91 7389563564' },
+  { wa: '+91 7389563564' },
 ] as const
 
 /** In-page anchors match `pages/index.vue` sections; use `/#…` so links work from any route. */
@@ -10,7 +10,6 @@ const navLinks = [
   { label: 'Students & parents', to: '/student-parent' },
   { label: 'Academic coverage', to: '/academic-coverage' },
   { label: 'About us', to: '/about' },
-  { label: 'Contact us', to: '/contact' },
   { label: 'Contact us', to: '/contact' },
   { label: 'Our services', to: '/#services' },
   { label: 'Learning library', to: '/#learning-library' },
@@ -49,9 +48,9 @@ const navLinks = [
               <div class="min-w-0 leading-relaxed text-slate-400">
                 <span class="font-semibold text-slate-100">Phone</span>
                 <div class="mt-1 flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:gap-x-3">
-                  <a v-for="{ display, tel } in phoneLines" :key="display" :href="`tel:${tel}`"
+                  <a v-for="{ tel } in phoneLines" :key="tel" :href="`tel:${tel}`"
                     class="font-medium text-slate-400 underline-offset-2 hover:text-white hover:underline">
-                    {{ display }}
+                    {{ tel }}
                   </a>
                 </div>
               </div>
@@ -67,10 +66,10 @@ const navLinks = [
               <div class="min-w-0 leading-relaxed text-slate-400">
                 <span class="font-semibold text-slate-100">WhatsApp</span>
                 <div class="mt-1 flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:gap-x-3">
-                  <a v-for="{ display, wa } in phoneLines" :key="wa" :href="`https://wa.me/${wa}`" target="_blank"
+                  <a v-for="{ wa } in phoneLines" :key="wa" :href="`https://wa.me/${wa}`" target="_blank"
                     rel="noopener noreferrer"
                     class="font-medium text-slate-400 underline-offset-2 hover:text-white hover:underline">
-                    {{ display }}
+                    {{ wa }}
                   </a>
                 </div>
               </div>

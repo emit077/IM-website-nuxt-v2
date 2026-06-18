@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import {
   commonPlanBenefits,
@@ -18,18 +19,14 @@ const accentStyles = {
   <section id="subscription-plans" class="relative bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="subscription-plans-heading">
     <div class="container-page">
-      <!-- Section header -->
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Subscription Plans</span>
-        <h2 id="subscription-plans-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          A plan for every <span class="text-gradient-brand">academic goal</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          From daily homework help to intensive exam preparation — pick the intensity
-          that matches your child's journey.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="subscription-plans-heading"
+        content-class="!px-0 !py-0"
+        badge="Subscription Plans"
+        title='A plan for every <span class="text-gradient-brand">academic goal</span>'
+        description="From daily homework help to intensive exam preparation — pick the intensity that matches your child's journey."
+      />
 
       <!-- Plan cards -->
       <div class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">

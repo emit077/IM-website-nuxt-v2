@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import {
   enrollmentPlans,
@@ -12,18 +13,14 @@ import {
   <section id="enrollment-plans" class="relative bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="enrollment-plans-heading">
     <div class="container-page">
-      <!-- Section header -->
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Enrollment Plans</span>
-        <h2 id="enrollment-plans-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Start free, upgrade <span class="text-gradient-brand">when you're ready</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          Try the platform with a Free Student Profile, or unlock priority matching,
-          detailed reports, and dedicated support with Premium.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="enrollment-plans-heading"
+        content-class="!px-0 !py-0"
+        badge="Enrollment Plans"
+        title="Start free, upgrade <span class=&quot;text-gradient-brand&quot;>when you're ready</span>"
+        description="Try the platform with a Free Student Profile, or unlock priority matching, detailed reports, and dedicated support with Premium."
+      />
 
       <!-- Plan cards -->
       <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 lg:grid-cols-2">

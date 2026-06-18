@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { curriculumStages, type CurriculumStage } from './gradesData'
 
 const activeId = ref<CurriculumStage['id']>(curriculumStages[0]!.id)
@@ -22,22 +23,17 @@ function toggle(id: CurriculumStage['id']) {
     />
 
     <div class="container-page relative">
-      <!-- Header -->
-      <div
-        class="mx-auto max-w-2xl text-center"
+      <CardHeader
+        variant="section"
+        heading-id="grades-heading"
+        content-class="!px-0 !py-0"
+        badge="Grades covered"
+        title='Support across <span class="text-gradient-brand">every academic stage</span>'
+        description="From pre-primary to postgraduate — structured mentoring, learning plans, and progress monitoring adapted to each level."
         v-motion
         :initial="{ opacity: 0, y: 14 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }"
-      >
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Grades covered</span>
-        <h2 id="grades-heading" class="heading-display mt-3 text-[1.7rem] leading-tight sm:text-3xl lg:text-[2.25rem]">
-          Support across <span class="text-gradient-brand">every academic stage</span>
-        </h2>
-        <p class="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-slate-600 sm:text-base">
-          From pre-primary to postgraduate — structured mentoring, learning plans, and progress
-          monitoring adapted to each level.
-        </p>
-      </div>
+      />
 
       <!-- Accordion -->
       <div

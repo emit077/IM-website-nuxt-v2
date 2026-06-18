@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { tutorPlans } from '~/data/tutors'
 </script>
@@ -8,17 +9,14 @@ import { tutorPlans } from '~/data/tutors'
   <section id="tutor-plans" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="tutor-plans-heading">
     <div class="container-page">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Tutor Registration Plans</span>
-        <h2 id="tutor-plans-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Flexible plans for <span class="text-gradient-brand">every stage</span> of your career
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          Start with a free profile and verification, or go Premium for priority leads,
-          featured visibility, and faster payouts.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="tutor-plans-heading"
+        content-class="!px-0 !py-0"
+        badge="Tutor Registration Plans"
+        title='Flexible plans for <span class="text-gradient-brand">every stage</span> of your career'
+        description="Start with a free profile and verification, or go Premium for priority leads, featured visibility, and faster payouts."
+      />
 
       <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 lg:grid-cols-2">
         <article v-for="(plan, i) in tutorPlans" :key="plan.id" :class="[

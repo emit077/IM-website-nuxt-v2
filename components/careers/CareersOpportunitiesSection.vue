@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { opportunitiesSection, roleCategories, type RoleCategory } from '~/data/careers'
 
@@ -41,21 +42,15 @@ const accentClasses: Record<
     aria-labelledby="opportunities-heading"
   >
     <div class="container-page">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">
-          {{ opportunitiesSection.kicker }}
-        </span>
-        <h2
-          id="opportunities-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
-        >
-          {{ opportunitiesSection.title }}
-          <span class="text-gradient-brand">{{ opportunitiesSection.titleHighlight }}</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          {{ opportunitiesSection.description }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="opportunities-heading"
+        content-class="!px-0 !py-0"
+        :badge="opportunitiesSection.kicker"
+        :title="`${opportunitiesSection.title} `"
+        :title-highlight="opportunitiesSection.titleHighlight"
+        :description="opportunitiesSection.description"
+      />
 
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
         <article

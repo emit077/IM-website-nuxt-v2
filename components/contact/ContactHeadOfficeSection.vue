@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { headOffice } from '~/data/contact'
 
 const mapsQuery = encodeURIComponent(headOffice.address)
@@ -11,21 +12,17 @@ const mapsEmbedUrl = `https://www.google.com/maps?q=${mapsQuery}&output=embed`
   <section id="head-office" class="scroll-mt-24 border-b border-slate-200/70 bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="head-office-heading">
     <div class="container-page">
-      <div class="mx-auto max-w-3xl text-center" v-motion :initial="{ opacity: 0, y: 12 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-        <span
-          class="mx-auto inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-600">
-          <Icon icon="mdi:office-building-marker" class="h-3.5 w-3.5 text-blue-600" aria-hidden="true" />
-          {{ headOffice.subtitle }}
-        </span>
-        <h2 id="head-office-heading"
-          class="font-display mt-5 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          {{ headOffice.title }}
-        </h2>
-        <p class="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-          {{ headOffice.intro }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="head-office-heading"
+        content-class="!px-0 !py-0"
+        :badge="headOffice.subtitle"
+        :title="headOffice.title"
+        :description="headOffice.intro"
+        v-motion
+        :initial="{ opacity: 0, y: 12 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }"
+      />
 
       <div class="mt-10 grid grid-cols-1 gap-6 lg:mt-12 lg:grid-cols-12 lg:gap-8" v-motion
         :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 80 } }">

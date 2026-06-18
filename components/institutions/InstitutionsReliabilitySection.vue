@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { reliabilityPillars } from '~/data/institutions'
 </script>
@@ -8,16 +9,14 @@ import { reliabilityPillars } from '~/data/institutions'
   <section id="recruitment-reliability" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="reliability-heading">
     <div class="container-page">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Quality Assurance</span>
-        <h2 id="reliability-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          What makes our recruitment <span class="text-gradient-brand">reliable?</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          Our teacher recruitment services are built around quality assurance, verification, and efficiency.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="reliability-heading"
+        content-class="!px-0 !py-0"
+        badge="Quality Assurance"
+        title='What makes our recruitment <span class="text-gradient-brand">reliable?</span>'
+        description="Our teacher recruitment services are built around quality assurance, verification, and efficiency."
+      />
 
       <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         <article v-for="(pillar, i) in reliabilityPillars" :key="pillar.id"

@@ -2,7 +2,7 @@
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/cardheader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
-import { cityImgBasePath, contactHero, contactHeroCollageBottom, contactHeroCollageTop } from '~/data/contact'
+import { contactHero, contactHeroCollageBottom, contactHeroCollageTop } from '~/data/contact'
 
 const heroTitle = `Contact Us<br class="hidden sm:block" /> <span class="text-gradient-brand">We’re Here to Help</span>`
 
@@ -57,54 +57,35 @@ function rippleHandler(e: MouseEvent) {
             class="pointer-events-none absolute -inset-2 rounded-[1.35rem] bg-gradient-to-br from-blue-100/50 via-indigo-50/30 to-sky-50/40 blur-sm" />
 
           <div
-            class="relative overflow-hidden rounded-[1.35rem] border border-slate-200/70 bg-slate-100/80 p-2 shadow-[0_20px_50px_-24px_rgba(37,99,235,0.22)] sm:p-2.5"
-          >
+            class="relative overflow-hidden rounded-[1.35rem] border border-slate-200/70 bg-slate-100/80 p-2 shadow-[0_20px_50px_-24px_rgba(37,99,235,0.22)] sm:p-2.5">
             <div class="flex flex-col gap-2 sm:gap-2.5">
               <div class="grid grid-cols-2 gap-2 sm:gap-2.5">
-                <div
-                  v-for="city in contactHeroCollageTop"
-                  :key="city.id"
-                  class="group relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-200"
-                >
-                  <img
-                    :src="`${cityImgBasePath}/${city.image}.png`"
+                <div v-for="city in contactHeroCollageTop" :key="city.id"
+                  class="group relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-200">
+                  <img :src="usePublicAsset(`/assets/img/city-img/${city.image}.png`)"
                     :alt="`${city.label} tutoring services`"
                     class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div
-                    class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent"
-                    aria-hidden="true"
-                  />
+                    loading="lazy" decoding="async" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent"
+                    aria-hidden="true" />
                   <span
-                    class="absolute bottom-2 left-2 rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-sm sm:px-3 sm:py-1.5 sm:text-xs"
-                  >
+                    class="absolute bottom-2 left-2 rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-sm sm:px-3 sm:py-1.5 sm:text-xs">
                     {{ city.label }}
                   </span>
                 </div>
               </div>
 
               <div class="grid grid-cols-4 gap-2 sm:gap-2.5">
-                <div
-                  v-for="city in contactHeroCollageBottom"
-                  :key="city.id"
-                  class="group relative aspect-square overflow-hidden rounded-xl bg-slate-200"
-                >
-                  <img
-                    :src="`${cityImgBasePath}/${city.image}.png`"
+                <div v-for="city in contactHeroCollageBottom" :key="city.id"
+                  class="group relative aspect-square overflow-hidden rounded-xl bg-slate-200">
+                  <img :src="usePublicAsset(`/assets/img/city-img/${city.image}.png`)"
                     :alt="`${city.label} tutoring services`"
                     class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div
-                    class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent"
-                    aria-hidden="true"
-                  />
+                    loading="lazy" decoding="async" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent"
+                    aria-hidden="true" />
                   <span
-                    class="absolute bottom-1.5 left-1.5 rounded-full bg-white/15 px-2 py-0.5 text-[9px] font-semibold text-white backdrop-blur-sm sm:bottom-2 sm:left-2 sm:px-2.5 sm:py-1 sm:text-[10px]"
-                  >
+                    class="absolute bottom-1.5 left-1.5 rounded-full bg-white/15 px-2 py-0.5 text-[9px] font-semibold text-white backdrop-blur-sm sm:bottom-2 sm:left-2 sm:px-2.5 sm:py-1 sm:text-[10px]">
                     {{ city.label }}
                   </span>
                 </div>

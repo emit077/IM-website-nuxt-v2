@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 
 const isPlaying = ref(false)
 
@@ -26,16 +27,14 @@ const highlights = [
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }"
       >
         <div class="lg:col-span-5">
-          <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">See how we work</span>
-          <h2
-            id="about-video-heading"
-            class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
-          >
-            Inside Indian Mentors
-          </h2>
-          <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-            Two minutes on how we match mentors, track progress, and keep parents in the loop.
-          </p>
+          <CardHeader
+            variant="section-left"
+            heading-id="about-video-heading"
+            content-class="!px-0 !py-0"
+            badge="See how we work"
+            title="Inside Indian Mentors"
+            description="Two minutes on how we match mentors, track progress, and keep parents in the loop."
+          />
 
           <ul class="mt-6 flex flex-wrap gap-2" aria-label="Platform features">
             <li

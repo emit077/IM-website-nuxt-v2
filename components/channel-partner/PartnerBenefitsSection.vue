@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { benefitsSection, benefitCards, type BenefitCard } from '~/data/channel-partner'
 
@@ -15,17 +16,14 @@ const accentClasses: Record<BenefitCard['accent'], { tile: string; icon: string;
   <section id="partner-benefits" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="partner-benefits-heading">
     <div class="container-page">
-      <!-- Section header -->
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">{{ benefitsSection.kicker }}</span>
-        <h2 id="partner-benefits-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          A transparent and <span class="text-gradient-brand">scalable business model</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          {{ benefitsSection.description }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="partner-benefits-heading"
+        content-class="!px-0 !py-0"
+        :badge="benefitsSection.kicker"
+        title='A transparent and <span class="text-gradient-brand">scalable business model</span>'
+        :description="benefitsSection.description"
+      />
 
       <!-- Benefit cards -->
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">

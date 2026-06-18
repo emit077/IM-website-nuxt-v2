@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { brochureCard, landingCard } from '~/data/tutors'
@@ -11,17 +12,14 @@ const cards = [brochureCard, landingCard]
   <section id="tutor-resources" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="tutor-resources-heading">
     <div class="container-page">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Know Before You Join</span>
-        <h2 id="tutor-resources-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Understand the <span class="text-gradient-brand">partnership model</span> first
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          Explore the official tutors brochure and opportunities overview — everything an educator
-          needs to know about collaborating with Indian Mentors.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="tutor-resources-heading"
+        content-class="!px-0 !py-0"
+        badge="Know Before You Join"
+        title='Understand the <span class="text-gradient-brand">partnership model</span> first'
+        description="Explore the official tutors brochure and opportunities overview — everything an educator needs to know about collaborating with Indian Mentors."
+      />
 
       <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 lg:grid-cols-2">
         <article v-for="(card, i) in cards" :key="card.badge"

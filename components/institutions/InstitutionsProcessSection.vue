@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { hiringSteps, hiringProcessOutcome } from '~/data/institutions'
 </script>
 
@@ -9,16 +10,14 @@ import { hiringSteps, hiringProcessOutcome } from '~/data/institutions'
     <div aria-hidden="true" class="absolute inset-0 -z-10 bg-mesh-light opacity-60" />
 
     <div class="container-page">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Our Hiring Process</span>
-        <h2 id="process-heading" class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          A structured framework, <span class="text-gradient-brand">step by step</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          Indian Mentors follows a structured recruitment framework designed to deliver
-          qualified educators efficiently.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="process-heading"
+        content-class="!px-0 !py-0"
+        badge="Our Hiring Process"
+        title='A structured framework, <span class="text-gradient-brand">step by step</span>'
+        description="Indian Mentors follows a structured recruitment framework designed to deliver qualified educators efficiently."
+      />
 
       <ol class="relative mx-auto mt-12 max-w-3xl space-y-0" role="list">
         <li v-for="(step, i) in hiringSteps" :key="step.step" class="relative flex gap-5 sm:gap-6" v-motion

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { erpFeatures } from '~/data/tutors'
 
 const frameworkSteps = ['Teach', 'Track', 'Earn', 'Grow']
@@ -9,17 +10,14 @@ const frameworkSteps = ['Teach', 'Track', 'Earn', 'Grow']
   <section id="tutor-erp" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="tutor-erp-heading">
     <div class="container-page">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">ERP System &amp; Transparency</span>
-        <h2 id="tutor-erp-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Your teaching, organised by a <span class="text-gradient-brand">smart dashboard</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          A structured ERP-based academic management system ensures transparency, accountability,
-          and efficient academic management for every tutor.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="tutor-erp-heading"
+        content-class="!px-0 !py-0"
+        badge="ERP System &amp; Transparency"
+        title='Your teaching, organised by a <span class="text-gradient-brand">smart dashboard</span>'
+        description="A structured ERP-based academic management system ensures transparency, accountability, and efficient academic management for every tutor."
+      />
 
       <!-- Framework strip -->
       <div class="mx-auto mt-8 flex flex-wrap items-center justify-center gap-2" v-motion

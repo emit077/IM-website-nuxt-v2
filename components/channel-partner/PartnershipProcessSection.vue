@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { processSection, processSteps, type ProcessStep } from '~/data/channel-partner'
 
@@ -22,17 +23,9 @@ const accentClasses: Record<ProcessStep['accent'], { badge: string; tile: string
       class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-blue-100/50 blur-3xl" />
 
     <div class="container-page relative">
-      <!-- Section header -->
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">{{ processSection.kicker }}</span>
-        <h2 id="partnership-process-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Simple and <span class="text-gradient-brand">structured onboarding</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          {{ processSection.description }}
-        </p>
-      </div>
+      <CardHeader variant="section" heading-id="partnership-process-heading" content-class="!px-0 !py-0"
+        :badge="processSection.kicker" title='Simple and <span class="text-gradient-brand">structured onboarding</span>'
+        :description="processSection.description" />
 
       <!-- Journey strip: Register → Collaborate → Earn -->
       <div class="mx-auto mt-7 flex flex-wrap items-center justify-center gap-2" v-motion
@@ -42,8 +35,8 @@ const accentClasses: Record<ProcessStep['accent'], { badge: string; tile: string
             class="rounded-full border border-slate-200/80 bg-white px-4 py-1.5 text-[13px] font-semibold text-slate-700 shadow-soft">
             {{ stage }}
           </span>
-          <Icon v-if="i < processSection.journey.length - 1" icon="mdi:arrow-right"
-            class="h-3.5 w-3.5 text-slate-400" aria-hidden="true" />
+          <Icon v-if="i < processSection.journey.length - 1" icon="mdi:arrow-right" class="h-3.5 w-3.5 text-slate-400"
+            aria-hidden="true" />
         </template>
       </div>
 
@@ -53,8 +46,8 @@ const accentClasses: Record<ProcessStep['accent'], { badge: string; tile: string
         <div aria-hidden="true"
           class="pointer-events-none absolute bottom-8 left-[17px] top-8 w-px bg-gradient-to-b from-violet-200 via-blue-200 to-indigo-200 sm:left-[21px]" />
 
-        <li v-for="(step, i) in processSteps" :key="step.no" class="relative flex items-start gap-3.5 sm:gap-5"
-          v-motion :initial="{ opacity: 0, y: 18 }"
+        <li v-for="(step, i) in processSteps" :key="step.no" class="relative flex items-start gap-3.5 sm:gap-5" v-motion
+          :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 60, duration: 450 } }">
           <!-- Number badge -->
           <span :class="[

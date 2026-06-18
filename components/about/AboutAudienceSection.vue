@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import { aboutAudience } from '~/data/about'
 
@@ -76,24 +77,14 @@ const audienceCards = computed(() =>
     />
 
     <div class="container-page relative">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="badge-pill mb-5">
-          <span class="grid h-5 w-5 place-items-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
-            🎓
-          </span>
-          <span>Who we serve</span>
-        </span>
-        <h2
-          id="audience-heading"
-          class="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
-        >
-          Designed for
-          <span class="text-gradient-brand">Students Who…</span>
-        </h2>
-        <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-          {{ aboutAudience.subtitle }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="audience-heading"
+        content-class="!px-0 !py-0"
+        badge="Who we serve"
+        title='Designed for <span class="text-gradient-brand">Students Who…</span>'
+        :description="aboutAudience.subtitle"
+      />
 
       <div class="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
         <article

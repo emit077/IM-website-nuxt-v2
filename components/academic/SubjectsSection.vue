@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 
 type SubjectStream = {
   id: string
@@ -81,17 +82,14 @@ const activeStream = computed(() => streams.find((s) => s.id === active.value) ?
   <section id="subjects-offered" class="relative bg-cream-50 py-14 sm:py-16 lg:py-24"
     aria-labelledby="subjects-heading">
     <div class="container-page">
-      <div class="mx-auto max-w-3xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Subjects offered</span>
-        <h2 id="subjects-heading"
-          class="heading-display mt-3 text-[1.7rem] leading-tight sm:text-3xl lg:text-[2.25rem]">
-          Pick a stream — <span class="text-gradient-brand">see what we teach</span>
-        </h2>
-        <p class="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-600 sm:text-base">
-          250+ subjects across sciences, languages, commerce, humanities and competitive tracks —
-          taught by mentors matched to your board and goals.
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="subjects-heading"
+        content-class="!px-0 !py-0 max-w-3xl mx-auto"
+        badge="Subjects offered"
+        title='Pick a stream — <span class="text-gradient-brand">see what we teach</span>'
+        description="250+ subjects across sciences, languages, commerce, humanities and competitive tracks — taught by mentors matched to your board and goals."
+      />
 
       <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 auto-rows-[120px] sm:auto-rows-[130px]">
         <button v-for="(stream, i) in streams" :key="stream.id" type="button" :class="[

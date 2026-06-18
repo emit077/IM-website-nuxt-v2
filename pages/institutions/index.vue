@@ -6,7 +6,7 @@ import InstitutionsReliabilitySection from '~/components/institutions/Institutio
 import InstitutionsProcessSection from '~/components/institutions/InstitutionsProcessSection.vue'
 import InstitutionsWhySection from '~/components/institutions/InstitutionsWhySection.vue'
 import InstitutionsCTASection from '~/components/institutions/InstitutionsCTASection.vue'
-import NewsletterSection from '~/components/home/NewsletterSection.vue'
+import NewsletterSection from '~/components/shared/NewsletterSection.vue'
 
 useSeoMeta({
   title: 'Teacher Recruitment Services — Indian Mentors',

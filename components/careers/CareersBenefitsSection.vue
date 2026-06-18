@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { benefitsSection, careerBenefits, type CareerBenefit } from '~/data/careers'
 
 const accentClasses: Record<
@@ -45,21 +46,15 @@ const accentClasses: Record<
     />
 
     <div class="container-page relative">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">
-          {{ benefitsSection.kicker }}
-        </span>
-        <h2
-          id="benefits-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
-        >
-          {{ benefitsSection.title }}
-          <span class="text-gradient-brand">{{ benefitsSection.titleHighlight }}</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          {{ benefitsSection.description }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="benefits-heading"
+        content-class="!px-0 !py-0"
+        :badge="benefitsSection.kicker"
+        :title="`${benefitsSection.title} `"
+        :title-highlight="benefitsSection.titleHighlight"
+        :description="benefitsSection.description"
+      />
 
       <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
         <article

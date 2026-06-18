@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { aboutMission, aboutMissionQuote } from '~/data/about'
 </script>
 
@@ -12,22 +13,17 @@ import { aboutMission, aboutMissionQuote } from '~/data/about'
       class="pointer-events-none absolute -left-20 bottom-10 h-72 w-72 rounded-full bg-indigo-100/30 blur-3xl" />
 
     <div class="container-page relative">
-      <div class="mx-auto max-w-3xl text-center" v-motion :initial="{ opacity: 0, y: 16 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-        <span class="badge-pill mb-5">
-          <span class="grid h-5 w-5 place-items-center rounded-full bg-blue-600 text-white">
-            <Icon icon="mdi:flag-variant-outline" class="h-3 w-3" aria-hidden="true" />
-          </span>
-          <span>{{ aboutMission.badge }}</span>
-        </span>
-        <h2 id="mission-section-heading"
-          class="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-          Mission <span class="text-gradient-brand">First</span>, Always
-        </h2>
-        <p class="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg">
-          {{ aboutMission.summary }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="mission-section-heading"
+        content-class="!px-0 !py-0 max-w-3xl mx-auto"
+        :badge="aboutMission.badge"
+        title='Mission <span class="text-gradient-brand">First</span>, Always'
+        :description="aboutMission.summary"
+        v-motion
+        :initial="{ opacity: 0, y: 16 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }"
+      />
 
       <!-- Quote -->
       <p class="font-display text-md font-semibold italic leading-relaxed text-slate-700 pt-5 text-center sm:text-md">

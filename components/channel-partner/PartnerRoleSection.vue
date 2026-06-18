@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { roleSection, responsibilities } from '~/data/channel-partner'
 </script>
 
@@ -7,17 +8,14 @@ import { roleSection, responsibilities } from '~/data/channel-partner'
   <section id="partner-role" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
     aria-labelledby="partner-role-heading">
     <div class="container-page">
-      <!-- Section header -->
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">{{ roleSection.kicker }}</span>
-        <h2 id="partner-role-heading"
-          class="font-display mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Your role in the <span class="text-gradient-brand">Indian Mentors ecosystem</span>
-        </h2>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">
-          {{ roleSection.description }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="partner-role-heading"
+        content-class="!px-0 !py-0"
+        :badge="roleSection.kicker"
+        title='Your role in the <span class="text-gradient-brand">Indian Mentors ecosystem</span>'
+        :description="roleSection.description"
+      />
 
       <!-- Responsibilities grid -->
       <ul class="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3" role="list">

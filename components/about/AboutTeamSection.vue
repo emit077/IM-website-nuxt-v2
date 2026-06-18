@@ -383,13 +383,14 @@ const avatarGradients = [
       <!-- Managing team -->
       <div v-if="activeTeam.length" class="mt-12 sm:mt-14">
         <div class="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <span class="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">Leadership</span>
-            <h3 class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">Managing team</h3>
-            <p class="mt-2 max-w-lg text-sm text-slate-600">
-              The people guiding academic quality, operations, and mentor excellence.
-            </p>
-          </div>
+          <CardHeader
+            variant="section-left"
+            heading-id="managing-team-heading"
+            content-class="!px-0 !py-0"
+            badge="Leadership"
+            title="Managing team"
+            description="The people guiding academic quality, operations, and mentor excellence."
+          />
         </div>
 
         <div

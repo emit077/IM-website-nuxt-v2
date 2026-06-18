@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import { aboutComparison } from '~/data/about'
 
 type ColumnKey = 'indianMentors' | 'coachingCenters' | 'selfStudy'
@@ -77,24 +78,14 @@ function cellWrapClass(value: boolean, highlight = false) {
     />
 
     <div class="container-page relative">
-      <div class="mx-auto max-w-2xl text-center">
-        <span class="badge-pill mb-5">
-          <span class="grid h-5 w-5 place-items-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
-            ✓
-          </span>
-          <span>Why choose us</span>
-        </span>
-        <h2
-          id="comparison-heading"
-          class="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl"
-        >
-          What Makes Us
-          <span class="text-gradient-brand">Different</span>
-        </h2>
-        <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-          {{ aboutComparison.subtitle }}
-        </p>
-      </div>
+      <CardHeader
+        variant="section"
+        heading-id="comparison-heading"
+        content-class="!px-0 !py-0"
+        badge="Why choose us"
+        title='What Makes Us <span class="text-gradient-brand">Different</span>'
+        :description="aboutComparison.subtitle"
+      />
 
       <!-- Column summary cards -->
       <div
