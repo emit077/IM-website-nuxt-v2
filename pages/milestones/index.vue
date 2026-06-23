@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import MilestonesHeroSection from '~/components/milestones/MilestonesHeroSection.vue'
 import MilestonesTimelineSection from '~/components/milestones/MilestonesTimelineSection.vue'
-import AboutFinalCTASection from '~/components/about/AboutFinalCTASection.vue'
-import NewsletterSection from '~/components/shared/NewsletterSection.vue'
+import UiCTASection from '~/components/ui/CTASection.vue'
+import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+
+const milestoneCtas = [
+  { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+  { label: 'Explore Academic Coverage', href: '/academic-coverage', iconMdi: 'mdi:book-open-page-variant-outline' },
+] as const
 
 useSeoMeta({
   title: 'Our Milestones — Indian Mentors',
@@ -19,7 +24,9 @@ useSeoMeta({
   <div class="min-h-screen bg-cream-50">
     <MilestonesHeroSection />
     <MilestonesTimelineSection />
-    <AboutFinalCTASection />
+    <UiCTASection section-id="about-cta" heading-id="milestones-cta-heading" title="Ready to Learn Smarter?"
+      description="Book a free demo with a verified mentor — personalised learning, transparent progress, no commitment."
+      :ctas="milestoneCtas" />
     <NewsletterSection />
   </div>
 </template>

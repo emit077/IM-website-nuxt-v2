@@ -5,8 +5,15 @@ import InstitutionsSectorsSection from '~/components/institutions/InstitutionsSe
 import InstitutionsReliabilitySection from '~/components/institutions/InstitutionsReliabilitySection.vue'
 import InstitutionsProcessSection from '~/components/institutions/InstitutionsProcessSection.vue'
 import InstitutionsWhySection from '~/components/institutions/InstitutionsWhySection.vue'
-import InstitutionsCTASection from '~/components/institutions/InstitutionsCTASection.vue'
-import NewsletterSection from '~/components/shared/NewsletterSection.vue'
+import UiCTASection from '~/components/ui/CTASection.vue'
+import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+import { institutionsFinalCta } from '~/data/institutions'
+
+const institutionsCtas = [
+  { ...institutionsFinalCta.primaryCta, iconMdi: 'mdi:account-tie-outline', primary: true },
+  { ...institutionsFinalCta.secondaryCta, iconMdi: 'mdi:phone-outline' },
+  { ...institutionsFinalCta.tertiaryCta, iconMdi: 'mdi:whatsapp', target: '_blank' },
+] as const
 
 useSeoMeta({
   title: 'Teacher Recruitment Services — Indian Mentors',
@@ -27,7 +34,11 @@ useSeoMeta({
     <InstitutionsReliabilitySection />
     <InstitutionsProcessSection />
     <InstitutionsWhySection />
-    <InstitutionsCTASection />
+    <UiCTASection section-id="hire-teachers" heading-id="institutions-cta-heading"
+      :extra-anchor-ids="['talk-to-recruiter', 'book-demo']" :badge="institutionsFinalCta.badge"
+      badge-icon-mdi="mdi:account-tie-outline" :title="institutionsFinalCta.title"
+      :description="institutionsFinalCta.description" :supporting="institutionsFinalCta.closing"
+      :ctas="institutionsCtas" />
     <NewsletterSection />
   </div>
 </template>

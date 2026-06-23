@@ -10,10 +10,15 @@ import HireInstituteSection from '~/components/home/HireInstituteSection.vue'
 import LearningLibrarySection from '~/components/home/LearningLibrarySection.vue'
 import LearningStepsSection from '~/components/home/LearningStepsSection.vue'
 import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
-import NewsletterSection from '~/components/shared/NewsletterSection.vue'
-import RegistrationCTASection from '~/components/home/RegistrationCTASection.vue'
+import UiCTASection from '~/components/ui/CTASection.vue'
+import NewsletterSection from '~/components/ui/NewsletterSection.vue'
 import PartnerProgrammeSection from '~/components/home/PartnerProgrammeSection.vue'
 import HeroCarousel from '~/components/home/HeroCarousel.vue'
+
+const homeCtas = [
+  { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+  { label: 'Become a Tutor', href: '#become-tutor', iconMdi: 'mdi:account-plus-outline' },
+] as const
 
 useSeoMeta({
   title: 'Indian Mentors — Find the Perfect Tutor for Your Child',
@@ -34,7 +39,9 @@ useSeoMeta({
     <ServiceSection />
     <LearningLibrarySection />
     <AboutSection />
-    <RegistrationCTASection />
+    <UiCTASection badge="Get Started" title="Ready to start with Indian Mentors?"
+      description="Book a free demo with a background-verified mentor, or join India's trusted tutor network."
+      :ctas="homeCtas" />
     <PartneredWithStrip />
     <LearningStepsSection />
     <BrowseMentorsSection />

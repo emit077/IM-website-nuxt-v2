@@ -5,9 +5,15 @@ import EnrollmentPlansSection from '~/components/student-parent/EnrollmentPlansS
 import StudentParentErpSection from '~/components/student-parent/StudentParentErpSection.vue'
 import SubscriptionPlansSection from '~/components/student-parent/SubscriptionPlansSection.vue'
 import SubscriptionComparisonSection from '~/components/student-parent/SubscriptionComparisonSection.vue'
-import StudentParentCTASection from '~/components/student-parent/StudentParentCTASection.vue'
 import LearningStepsSection from '~/components/home/LearningStepsSection.vue'
 import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
+import UiCTASection from '~/components/ui/CTASection.vue'
+
+const studentParentCtas = [
+  { label: 'Book Free Demo Class', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+  { label: 'Call Us', href: 'tel:+917389563564', iconMdi: 'mdi:phone-outline' },
+  { label: 'WhatsApp', href: 'https://wa.me/917389563564', iconMdi: 'mdi:whatsapp', target: '_blank' },
+] as const
 
 useSeoMeta({
   title: 'Students & Parents — Indian Mentors',
@@ -34,6 +40,8 @@ useSeoMeta({
     <StudentParentErpSection />
     <SubscriptionPlansSection />
     <SubscriptionComparisonSection />
-    <StudentParentCTASection />
+    <UiCTASection title="Give your child the right academic support"
+      description="Start with a free demo class — experience personalised tutoring backed by transparent tracking and professional mentoring."
+      supporting="Compare plans anytime in the plan comparison above." :ctas="studentParentCtas" />
   </div>
 </template>

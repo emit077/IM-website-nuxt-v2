@@ -4,11 +4,16 @@ import FaqHeroSection from '~/components/faq/FaqHeroSection.vue'
 import FaqSearchFilterSection from '~/components/faq/FaqSearchFilterSection.vue'
 import FaqCategoriesSection from '~/components/faq/FaqCategoriesSection.vue'
 import FaqClosingSection from '~/components/faq/FaqClosingSection.vue'
-import FaqCTASection from '~/components/faq/FaqCTASection.vue'
-import NewsletterSection from '~/components/shared/NewsletterSection.vue'
+import UiCTASection from '~/components/ui/CTASection.vue'
+import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+import { faqCta } from '~/data/faq'
 
 const searchQuery = ref('')
 const activeCategory = ref('all')
+const faqCtas = faqCta.ctas.map((cta) => ({
+  ...cta,
+  primary: cta.label === 'Book Free Demo',
+}))
 
 function resetFilters() {
   searchQuery.value = ''
@@ -32,7 +37,8 @@ useSeoMeta({
     <FaqSearchFilterSection v-model:search-query="searchQuery" v-model:active-category="activeCategory" />
     <FaqCategoriesSection :search-query="searchQuery" :active-category="activeCategory" @reset-filters="resetFilters" />
     <FaqClosingSection />
-    <FaqCTASection />
+    <UiCTASection heading-id="faq-cta-heading" :badge="faqCta.badge" badge-icon-mdi="mdi:headset"
+      :title="faqCta.title" :description="faqCta.description" :ctas="faqCtas" />
     <NewsletterSection />
   </div>
 </template>

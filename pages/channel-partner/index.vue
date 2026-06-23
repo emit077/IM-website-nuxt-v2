@@ -6,7 +6,14 @@ import PartnerBenefitsSection from '~/components/channel-partner/PartnerBenefits
 import PartnerEligibilitySection from '~/components/channel-partner/PartnerEligibilitySection.vue'
 import WhyPartnerSection from '~/components/channel-partner/WhyPartnerSection.vue'
 import PartnershipBenefitsSection from '~/components/channel-partner/PartnershipBenefitsSection.vue'
-import ChannelPartnerCTASection from '~/components/channel-partner/ChannelPartnerCTASection.vue'
+import UiCTASection from '~/components/ui/CTASection.vue'
+import { finalCta } from '~/data/channel-partner'
+
+const partnerCtas = [
+  { ...finalCta.primaryCta, iconMdi: 'mdi:account-plus-outline', primary: true },
+  { ...finalCta.secondaryCta, iconMdi: 'mdi:headset' },
+  { ...finalCta.tertiaryCta, iconMdi: 'mdi:file-download-outline' },
+] as const
 
 useSeoMeta({
   title: 'Channel Partner Program — Indian Mentors',
@@ -28,6 +35,8 @@ useSeoMeta({
     <PartnerEligibilitySection />
     <WhyPartnerSection />
     <PartnershipBenefitsSection />
-    <ChannelPartnerCTASection />
+    <UiCTASection section-id="partner-register" heading-id="partner-cta-heading" :title="finalCta.title"
+      :description="finalCta.description" :supporting="`${finalCta.closingTitle} ${finalCta.closingStatement}`"
+      :ctas="partnerCtas" />
   </div>
 </template>

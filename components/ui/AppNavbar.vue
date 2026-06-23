@@ -93,11 +93,11 @@ onUnmounted(() => {
         </div>
 
         <div class="flex shrink-0 items-center gap-3">
+          <a href="#register" class="font-medium transition hover:text-blue-100">Book a Tutor</a>
+          <span class="h-3.5 w-px bg-white/30" aria-hidden="true" />
           <a href="/tutors" class="font-medium transition hover:text-blue-100">Become a Tutor</a>
           <span class="h-3.5 w-px bg-white/30" aria-hidden="true" />
           <a href="#login" class="font-medium transition hover:text-blue-100">Login</a>
-          <span class="h-3.5 w-px bg-white/30" aria-hidden="true" />
-          <a href="#register" class="font-medium transition hover:text-blue-100">Register</a>
         </div>
       </div>
     </div>

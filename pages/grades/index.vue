@@ -2,7 +2,12 @@
 import GradesHeroSection from '~/components/grades/GradesHeroSection.vue'
 import GradesNavSection from '~/components/grades/GradesNavSection.vue'
 import GradesProgramsSection from '~/components/grades/GradesProgramsSection.vue'
-import GradesCTASection from '~/components/grades/GradesCTASection.vue'
+import UiCTASection from '~/components/ui/CTASection.vue'
+
+const gradesCtas = [
+  { label: 'Find a Personalised Tutor', href: '#book-demo', iconMdi: 'mdi:account-search-outline' },
+  { label: 'Book a Free Demo Session', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+] as const
 
 useSeoMeta({
   title: 'Grades Covered — Indian Mentors',
@@ -19,6 +24,8 @@ useSeoMeta({
   <div>
     <GradesHeroSection />
     <GradesProgramsSection />
-    <GradesCTASection />
+    <UiCTASection heading-id="grades-cta-heading" title="Start your personalised learning journey"
+      description="Whether your child needs foundation learning, board exam preparation, or competitive exam mentoring, Indian Mentors connects you with verified and experienced tutors across India."
+      supporting="No commitment required · Background-verified tutors · Free demo session" :ctas="gradesCtas" />
   </div>
 </template>

@@ -6,8 +6,13 @@ import AboutPhilosophySection from '~/components/about/AboutPhilosophySection.vu
 import AboutJourneySection from '~/components/about/AboutJourneySection.vue'
 import AboutComparisonSection from '~/components/about/AboutComparisonSection.vue'
 import AboutAudienceSection from '~/components/about/AboutAudienceSection.vue'
-import AboutFinalCTASection from '~/components/about/AboutFinalCTASection.vue'
-import NewsletterSection from '~/components/shared/NewsletterSection.vue'
+import UiCTASection from '~/components/ui/CTASection.vue'
+import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+
+const aboutCtas = [
+  { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+  { label: 'Explore Academic Coverage', href: '/academic-coverage', iconMdi: 'mdi:book-open-page-variant-outline' },
+] as const
 
 useSeoMeta({
   title: 'About Us — Indian Mentors',
@@ -29,7 +34,9 @@ useSeoMeta({
     <AboutJourneySection />
     <AboutComparisonSection />
     <AboutAudienceSection />
-    <AboutFinalCTASection />
+    <UiCTASection section-id="about-cta" heading-id="about-cta-heading" title="Ready to Learn Smarter?"
+      description="Book a free demo with a verified mentor — personalised learning, transparent progress, no commitment."
+      :ctas="aboutCtas" />
     <NewsletterSection />
   </div>
 </template>

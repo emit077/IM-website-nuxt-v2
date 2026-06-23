@@ -4,9 +4,9 @@ import ContactBranchCitiesSection from '~/components/contact/ContactBranchCities
 import ContactHeadOfficeSection from '~/components/contact/ContactHeadOfficeSection.vue'
 import ContactCenteredSection from '~/components/contact/ContactCenteredSection.vue'
 import ContactChannelSection from '~/components/contact/ContactChannelSection.vue'
-import ContactCTASection from '~/components/contact/ContactCTASection.vue'
-import NewsletterSection from '~/components/shared/NewsletterSection.vue'
-import { findMentorSection } from '~/data/contact'
+import UiCTASection from '~/components/ui/CTASection.vue'
+import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+import { findMentorSection, contactGetStarted } from '~/data/contact'
 
 useSeoMeta({
   title: 'Cities of Operation — Indian Mentors',
@@ -22,9 +22,6 @@ useSeoMeta({
 <template>
   <div class="min-h-screen bg-cream-50">
     <ContactHeroSection />
-
-    <ContactBranchCitiesSection variant="icons" section-id="branch-offices" heading-id="branch-offices-heading" />
-
     <ContactBranchCitiesSection variant="images" section-id="city-images" heading-id="city-images-heading"
       other-cities-id="city-images-other" bg-class="bg-cream-50" />
 
@@ -34,7 +31,8 @@ useSeoMeta({
       :title="findMentorSection.title" :description="findMentorSection.description"
       :closing="findMentorSection.closing" />
     <ContactChannelSection />
-    <ContactCTASection />
+    <UiCTASection :badge="contactGetStarted.badge" :title="contactGetStarted.title"
+      :description="contactGetStarted.description" :ctas="contactGetStarted.ctas" />
     <NewsletterSection />
   </div>
 </template>

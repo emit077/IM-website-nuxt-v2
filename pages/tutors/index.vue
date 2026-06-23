@@ -8,7 +8,15 @@ import TutorComplianceSection from '~/components/tutors/TutorComplianceSection.v
 import TutorOpportunitiesSection from '~/components/tutors/TutorOpportunitiesSection.vue'
 import TutorErpSection from '~/components/tutors/TutorErpSection.vue'
 import TutorPolicySection from '~/components/tutors/TutorPolicySection.vue'
-import TutorsCTASection from '~/components/tutors/TutorsCTASection.vue'
+import UiCTASection from '~/components/ui/CTASection.vue'
+import { finalCta as tutorsFinalCta } from '~/data/tutors'
+
+const tutorsCtas = [
+  { ...tutorsFinalCta.primaryCta, href: '/#join', iconMdi: 'mdi:account-plus-outline', primary: true },
+  { ...tutorsFinalCta.secondaryCta, href: '/#join', iconMdi: 'mdi:handshake-outline' },
+  { label: 'Call Us', href: 'tel:+917389563564', iconMdi: 'mdi:phone-outline' },
+  { label: 'WhatsApp Us', href: 'https://wa.me/917389563564', iconMdi: 'mdi:whatsapp', target: '_blank' },
+] as const
 
 useSeoMeta({
   title: 'Tutors — Indian Mentors',
@@ -32,6 +40,7 @@ useSeoMeta({
     <TutorOpportunitiesSection />
     <TutorErpSection />
     <TutorPolicySection />
-    <TutorsCTASection />
+    <UiCTASection section-id="tutor-register" :badge="'Become a Mentor'" badge-icon-mdi="mdi:rocket-launch-outline"
+      :title="tutorsFinalCta.title" :description="tutorsFinalCta.description" :ctas="tutorsCtas" />
   </div>
 </template>

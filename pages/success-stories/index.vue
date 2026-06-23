@@ -6,11 +6,12 @@ import SuccessStoriesQuoteSection from '~/components/success-stories/SuccessStor
 import SuccessStoriesPlacementSection from '~/components/success-stories/SuccessStoriesPlacementSection.vue'
 import SuccessStoriesVideoSection from '~/components/success-stories/SuccessStoriesVideoSection.vue'
 import SuccessStoriesWhySection from '~/components/success-stories/SuccessStoriesWhySection.vue'
-import SuccessStoriesCTASection from '~/components/success-stories/SuccessStoriesCTASection.vue'
+import UiCTASection from '~/components/ui/CTASection.vue'
 import {
   institutionalFeedback,
   parentReviews,
   partnerReviews,
+  successStoriesFinalCta,
   storyTabs,
   tutorReviews,
 } from '~/data/success-stories'
@@ -19,6 +20,10 @@ const parentSection = storyTabs.find((t) => t.id === 'parents')!
 const tutorSection = storyTabs.find((t) => t.id === 'tutors')!
 const institutionSection = storyTabs.find((t) => t.id === 'institutions')!
 const partnerSection = storyTabs.find((t) => t.id === 'partners')!
+const successStoriesCtas = [
+  { ...successStoriesFinalCta.primaryCta, iconMdi: 'mdi:calendar-check-outline', primary: true },
+  { ...successStoriesFinalCta.secondaryCta, iconMdi: 'mdi:phone-outline' },
+] as const
 
 useSeoMeta({
   title: 'Success Stories — Indian Mentors',
@@ -41,6 +46,8 @@ useSeoMeta({
     <SuccessStoriesPlacementSection />
     <SuccessStoriesQuoteSection :section="partnerSection" :reviews="partnerReviews" bg-class="bg-white" />
     <SuccessStoriesVideoSection />
-    <SuccessStoriesCTASection />
+    <UiCTASection :badge="successStoriesFinalCta.badge" badge-icon-mdi="mdi:trophy-outline"
+      :title="successStoriesFinalCta.title" :description="successStoriesFinalCta.description"
+      :supporting="successStoriesFinalCta.closing" :ctas="successStoriesCtas" />
   </div>
 </template>
