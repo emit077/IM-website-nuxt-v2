@@ -188,6 +188,8 @@ export type LeadershipProfile = {
   name: string
   role: string
   bio: string
+  image?: string
+  message?: string
   inTheirWords: string[]
   initials: string
   ringColor: string
@@ -219,6 +221,41 @@ export const aboutLeadership: LeadershipProfile[] = [
     ],
     initials: 'AD',
     ringColor: 'ring-emerald-500',
+    image: 'assets/img/hero/hero-1.png',
+    message:
+      'Focused on building consistent academic systems so every learner receives structured guidance, timely reviews, and clear improvement plans.',
+  },
+  {
+    id: 'operations-head',
+    name: 'Rohan Mehta',
+    role: 'Head of Operations',
+    bio: 'Coordinates city-level tutor onboarding, parent communication, scheduling, and service delivery to keep mentorship reliable at scale.',
+    inTheirWords: [
+      'A great tutoring experience depends on dependable systems behind every session.',
+      'Families should always know what is happening, who is responsible, and what comes next.',
+      'Operations must make quality easier for mentors, students, and parents.',
+    ],
+    initials: 'RM',
+    ringColor: 'ring-amber-500',
+    image: 'assets/img/hero/hero-2.png',
+    message:
+      'Keeps day-to-day delivery disciplined across cities, ensuring families, tutors, and internal teams stay aligned from onboarding to outcomes.',
+  },
+  {
+    id: 'mentor-success-lead',
+    name: 'Priya Sharma',
+    role: 'Mentor Success Lead',
+    bio: 'Supports tutor quality, training, engagement, and performance feedback so mentors can teach with confidence and accountability.',
+    inTheirWords: [
+      'Mentors do their best work when expectations, feedback, and support are clear.',
+      'Strong tutor relationships create stronger academic outcomes for students.',
+      'Quality is built through regular review, not one-time verification.',
+    ],
+    initials: 'PS',
+    ringColor: 'ring-rose-500',
+    image: 'assets/img/hero/hero-4.png',
+    message:
+      'Works closely with mentors to strengthen teaching quality, feedback loops, and the student experience across home and online tutoring.',
   },
 ]
 

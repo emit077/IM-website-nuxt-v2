@@ -7,6 +7,7 @@ const bannerImage = usePublicAsset('assets/img/banner/banner-1.png')
 
 const founder = computed(() => aboutLeadership.find((l) => l.id === 'founder'))
 const otherLeaders = computed(() => aboutLeadership.filter((l) => l.id !== 'founder'))
+const leadershipCards = computed(() => otherLeaders.value.slice(0, 3))
 </script>
 
 <template>
@@ -70,7 +71,41 @@ const otherLeaders = computed(() => aboutLeadership.filter((l) => l.id !== 'foun
         </div>
       </article>
 
+      <!-- Leadership cards -->
+      <div v-if="leadershipCards.length"
+        class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
+        role="list"
+        aria-label="Leadership team">
+        <article v-for="(leader, li) in leadershipCards" :key="leader.id"
+          class="group overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.04),0_18px_48px_-26px_rgba(15,23,42,0.16)]"
+          role="listitem"
+          v-motion
+          :initial="{ opacity: 0, y: 18 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 80 + li * 90 } }">
+          <div class="relative aspect-[4/3] overflow-hidden bg-slate-200">
+            <img
+              :src="leader.image ? usePublicAsset(leader.image) : bannerImage"
+              :alt="leader.name"
+              class="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+            <div aria-hidden="true"
+              class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent" />
+          </div>
 
+          <div class="p-6 sm:p-7">
+            <h3 class="font-display text-xl font-bold tracking-tight text-slate-950">
+              {{ leader.name }}
+            </h3>
+            <p class="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-600">
+              {{ leader.role }}
+            </p>
+            <p class="mt-5 text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+              {{ leader.message ?? leader.bio }}
+            </p>
+          </div>
+        </article>
+      </div>
 
       <!-- closer quote -->
       <div class="relative mx-auto mt-10  overflow-hidden rounded-2xl">

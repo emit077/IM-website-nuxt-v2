@@ -51,9 +51,10 @@ function onSubmit() {
         :initial="{ opacity: 0, y: 20 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
         <div aria-hidden="true"
           class="pointer-events-none absolute inset-x-8 top-0 h-32 rounded-b-full bg-white/70 blur-2xl" />
-        <CardHeader variant="section" heading-id="newsletter-heading" title="Subscribe to Our Newsletter"
-          description="Get study tips, tutor insights, success stories, and platform updates in one concise monthly email."
-          content-class="relative mx-auto max-w-2xl text-center [&_[data-slot=card-badge]]:inline-flex [&_[data-slot=card-badge]]:items-center [&_[data-slot=card-badge]]:rounded-full [&_[data-slot=card-badge]]:border [&_[data-slot=card-badge]]:border-slate-200 [&_[data-slot=card-badge]]:bg-white/80 [&_[data-slot=card-badge]]:px-3 [&_[data-slot=card-badge]]:py-1 [&_[data-slot=card-badge]]:text-[11px] [&_[data-slot=card-badge]]:shadow-sm [&_[data-slot=card-title]]:mt-4 [&_[data-slot=card-title]]:text-3xl [&_[data-slot=card-title]]:font-extrabold [&_[data-slot=card-title]]:sm:text-4xl [&_[data-slot=card-description]]:mx-auto [&_[data-slot=card-description]]:max-w-xl" />
+        <div class="relative mx-auto max-w-2xl">
+          <CardHeader variant="section" heading-id="newsletter-heading" title="Subscribe to Our Newsletter"
+            description="Get study tips, tutor insights, success stories, and platform updates in one concise monthly email." />
+        </div>
 
         <div class="relative mx-auto mt-6 max-w-2xl">
           <form
