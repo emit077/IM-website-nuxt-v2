@@ -8,7 +8,7 @@ type Accent = 'blue' | 'indigo' | 'violet'
 
 const accentClasses: Record<
   Accent,
-  { tag: string; node: string; glow: string; check: string; bar: string; hover: string }
+  { tag: string; node: string; glow: string; check: string; bar: string; hover: string; blob: string; watermark: string }
 > = {
   blue: {
     tag: 'bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-200/70',
@@ -17,6 +17,8 @@ const accentClasses: Record<
     check: 'text-blue-600',
     bar: 'bg-gradient-to-r from-blue-500 to-indigo-600',
     hover: 'hover:border-blue-200',
+    blob: 'bg-blue-400/20',
+    watermark: 'text-blue-500/[0.06]',
   },
   indigo: {
     tag: 'bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-200/70',
@@ -25,6 +27,8 @@ const accentClasses: Record<
     check: 'text-indigo-600',
     bar: 'bg-gradient-to-r from-indigo-500 to-violet-600',
     hover: 'hover:border-indigo-200',
+    blob: 'bg-indigo-400/20',
+    watermark: 'text-indigo-500/[0.06]',
   },
   violet: {
     tag: 'bg-violet-50 text-violet-700 ring-1 ring-inset ring-violet-200/70',
@@ -33,6 +37,8 @@ const accentClasses: Record<
     check: 'text-violet-600',
     bar: 'bg-gradient-to-r from-violet-500 to-fuchsia-600',
     hover: 'hover:border-violet-200',
+    blob: 'bg-violet-400/20',
+    watermark: 'text-violet-500/[0.06]',
   },
 }
 
@@ -43,34 +49,18 @@ const headerTitle = computed(
 </script>
 
 <template>
-  <section id="roadmap" class="bg-[#f8fafc] py-14 sm:py-16 lg:py-20" aria-labelledby="roadmap-heading">
+  <section id="roadmap" class="bg-white py-14 sm:py-16 lg:py-20" aria-labelledby="roadmap-heading">
     <div class="container-page">
       <CardHeader variant="section" heading-id="roadmap-heading" content-class="!px-0 !py-0" :badge="aboutRoadmap.badge"
         :title="headerTitle" :description="aboutRoadmap.subtitle" />
 
       <!-- Connected vertical timeline -->
-      <ol class="relative mx-auto mt-12 max-w-3xl" role="list">
-        <!-- Flowing spine (blue -> indigo -> violet), centered through the markers -->
-        <span
-          class="pointer-events-none absolute left-[calc(1.5rem-1px)] top-6 bottom-6 w-0.5 rounded-full bg-gradient-to-b from-blue-400 via-indigo-400 to-violet-400"
-          aria-hidden="true" />
+      <ol class="relative mx-auto mt-12 max-w-5xl" role="list">
 
         <li v-for="(phase, pi) in aboutRoadmap.phases" :key="phase.id" class="relative"
-          :class="pi === aboutRoadmap.phases.length - 1 ? '' : 'pb-6 sm:pb-8'" v-motion
-          :initial="{ opacity: 0, y: 18 }"
+          :class="pi === aboutRoadmap.phases.length - 1 ? '' : 'pb-6 sm:pb-8'" v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 80 + pi * 120 } }">
           <div class="relative pl-14 sm:pl-16">
-            <!-- Marker dot, vertically centered on the card -->
-            <span
-              class="absolute left-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-white shadow-md ring-1 ring-slate-200/80"
-              aria-hidden="true">
-              <span :class="[
-                'h-4 w-4 rounded-full shadow-sm',
-                accentClasses[phase.accent].node,
-                accentClasses[phase.accent].glow,
-              ]" />
-            </span>
-
             <!-- Phase card -->
             <div :class="[
               'group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(15,23,42,0.1)]',
@@ -79,20 +69,24 @@ const headerTitle = computed(
               <!-- Accent top bar -->
               <span :class="['absolute inset-x-0 top-0 h-1', accentClasses[phase.accent].bar]" aria-hidden="true" />
 
-              <div class="p-5 pt-6 sm:p-6 sm:pt-7">
-                <div class="flex flex-wrap items-center gap-3">
-                  <span :class="[
-                    'inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide',
-                    accentClasses[phase.accent].tag,
-                  ]">
-                    {{ phase.tag }}
-                  </span>
-                  <span class="text-xs font-medium text-slate-400">
-                    {{ phase.items.length }} focus areas
+              <!-- Decorative background -->
+              <span :class="[
+                'pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full blur-2xl',
+                accentClasses[phase.accent].blob,
+              ]" aria-hidden="true" />
+              <Icon :icon="phase.icon" :class="[
+                'pointer-events-none absolute -bottom-5 -right-3 h-28 w-28 rotate-6 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3',
+                accentClasses[phase.accent].watermark,
+              ]" aria-hidden="true" />
+
+              <div class="relative p-5 pt-6 sm:p-6 sm:pt-7">
+                <div class="flex flex-wrap items-center">
+                  <span class="text-md font-medium text-slate-400">
+                    #{{ phase.tag }}
                   </span>
                 </div>
 
-                <h3 class="font-display mt-3 text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl">
+                <h3 class="font-display mt-2 text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl">
                   {{ phase.title }}
                 </h3>
 

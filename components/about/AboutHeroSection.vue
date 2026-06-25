@@ -69,7 +69,7 @@ const heroSectionStyle = {
     <div aria-hidden="true"
       class="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[400px] w-[1100px] -translate-x-1/2 bg-gradient-to-b from-indigo-200/30 to-transparent blur-3xl" />
 
-    <div class="container-page  pt-10 lg:pt-16">
+    <div class="container-page pb-8 pt-10 lg:pt-16">
       <CardHeader variant="hero" heading-id="about-hero-heading" content-class="!px-0 !py-0 max-w-2xl lg:max-w-[46rem]"
         badge="About Indian Mentors" :title="heroTitle" :tagline="heroTagline" :description="heroDescription">
         <div class="flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"

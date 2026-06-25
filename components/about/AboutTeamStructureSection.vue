@@ -11,7 +11,7 @@ const headerTitle = computed(
 </script>
 
 <template>
-  <section id="team-structure" class="bg-white py-14 sm:py-16 lg:py-20" aria-labelledby="team-structure-heading">
+  <section id="team-structure" class="bg-[#f8fafc] py-14 sm:py-16 lg:py-20" aria-labelledby="team-structure-heading">
     <div class="container-page">
       <CardHeader variant="section" heading-id="team-structure-heading" content-class="!px-0 !py-0"
         :badge="aboutTeamStructure.badge" :title="headerTitle" :description="aboutTeamStructure.subtitle" />

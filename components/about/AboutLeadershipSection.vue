@@ -11,7 +11,7 @@ const leadershipCards = computed(() => otherLeaders.value.slice(0, 4))
 </script>
 
 <template>
-  <section id="leadership" class="bg-[#f8fafc] py-14 sm:py-16 lg:py-20" aria-labelledby="leadership-heading">
+  <section id="leadership" class="bg-white py-14 sm:py-16 lg:py-20" aria-labelledby="leadership-heading">
     <div class="container-page">
       <CardHeader variant="section" heading-id="leadership-heading" content-class="!px-0 !py-0"
         title="A structured Team Powering <span class='text-gradient-brand'>Academic Excellence</span>"

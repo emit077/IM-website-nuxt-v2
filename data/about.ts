@@ -438,6 +438,7 @@ export type RoadmapPhase = {
   id: string
   tag: string
   title: string
+  icon: string
   accent: 'blue' | 'indigo' | 'violet'
   items: { title: string; description: string }[]
 }
@@ -454,6 +455,7 @@ export const aboutRoadmap = {
       id: 'short-term',
       tag: 'Short-Term',
       title: 'Strengthening Foundations',
+      icon: 'mdi:rocket-launch-outline',
       accent: 'blue',
       items: [
         {
@@ -474,6 +476,7 @@ export const aboutRoadmap = {
       id: 'mid-term',
       tag: 'Mid-Term',
       title: 'Structuring Academic Excellence',
+      icon: 'mdi:trending-up',
       accent: 'indigo',
       items: [
         {
@@ -494,6 +497,7 @@ export const aboutRoadmap = {
       id: 'long-term',
       tag: 'Long-Term',
       title: 'Nationwide Academic Leadership',
+      icon: 'mdi:earth',
       accent: 'violet',
       items: [
         {
@@ -515,6 +519,105 @@ export const aboutRoadmap = {
       ],
     },
   ] satisfies RoadmapPhase[],
+}
+
+export type StoryMilestone = {
+  id: string
+  step: string
+  year: string
+  title: string
+  description: string
+  icon: string
+  accent: 'blue' | 'indigo' | 'violet' | 'emerald' | 'amber' | 'rose'
+  metric?: { value: string; label: string }
+}
+
+export const aboutStory = {
+  badge: 'Our Story',
+  title: 'A Journey of',
+  titleHighlight: 'Milestones & Achievements',
+  titleSuffix: '',
+  subtitle:
+    'From a single idea to a pan-India mentor network — slide through the moments that shaped Indian Mentors.',
+  milestones: [
+    {
+      id: 'story-1',
+      step: '01',
+      year: 'Year 1',
+      title: 'Concept & Foundation',
+      description:
+        'Establishment of the vision to build a structured, personalised tutoring platform built on trust.',
+      icon: 'mdi:lightbulb-on-outline',
+      accent: 'blue',
+      metric: { value: '1', label: 'Bold vision' },
+    },
+    {
+      id: 'story-2',
+      step: '02',
+      year: 'Year 1',
+      title: 'Mentor Network Development',
+      description:
+        'Recruitment and rigorous verification of qualified subject mentors across disciplines.',
+      icon: 'mdi:account-group-outline',
+      accent: 'indigo',
+      metric: { value: '100%', label: 'Verified mentors' },
+    },
+    {
+      id: 'story-3',
+      step: '03',
+      year: 'Year 2',
+      title: 'Student Mentorship Programs',
+      description:
+        'Launch of personalised tutoring services for students across multiple education boards.',
+      icon: 'mdi:book-education-outline',
+      accent: 'violet',
+      metric: { value: 'Multi', label: 'Board coverage' },
+    },
+    {
+      id: 'story-4',
+      step: '04',
+      year: 'Year 2',
+      title: 'Academic Monitoring Framework',
+      description:
+        'Introduction of structured progress tracking and transparent learning reports for parents.',
+      icon: 'mdi:chart-box-outline',
+      accent: 'emerald',
+      metric: { value: '360°', label: 'Progress tracking' },
+    },
+    {
+      id: 'story-5',
+      step: '05',
+      year: 'Year 3',
+      title: 'Technology Integration',
+      description:
+        'Implementation of ERP-backed digital platforms for tutor management and academic tracking.',
+      icon: 'mdi:laptop',
+      accent: 'amber',
+      metric: { value: 'ERP', label: 'Powered ops' },
+    },
+    {
+      id: 'story-6',
+      step: '06',
+      year: 'Year 3',
+      title: 'Expansion of Services',
+      description:
+        'Online tutoring, academic counselling, and institutional support added to the ecosystem.',
+      icon: 'mdi:rocket-launch-outline',
+      accent: 'rose',
+      metric: { value: '3+', label: 'New services' },
+    },
+    {
+      id: 'story-7',
+      step: '07',
+      year: 'Year 4',
+      title: 'National Mentor Network',
+      description:
+        'Building a pan-India network of verified mentors and academic professionals.',
+      icon: 'mdi:map-marker-radius-outline',
+      accent: 'blue',
+      metric: { value: 'Pan-India', label: 'Reach' },
+    },
+  ] satisfies StoryMilestone[],
 }
 
 export type TeamStructureUnit = {

@@ -5,7 +5,7 @@ import { aboutMission, aboutMissionQuote } from '~/data/about'
 </script>
 
 <template>
-  <section id="mission" class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
+  <section id="mission" class="relative overflow-hidden bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="mission-section-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-24 -top-10 h-80 w-80 rounded-full bg-blue-100/40 blur-3xl" />

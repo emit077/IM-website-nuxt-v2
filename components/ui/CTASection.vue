@@ -27,6 +27,8 @@ const props = withDefaults(
     extraAnchorIds?: readonly string[]
     ctas?: readonly ContactCta[]
     variant?: CtaVariant
+    /** Section background utility class (override to avoid clashing with adjacent sections) */
+    surfaceClass?: string
   }>(),
   {
     sectionId: 'book-demo',
@@ -40,6 +42,7 @@ const props = withDefaults(
     extraAnchorIds: () => [] as readonly string[],
     ctas: () => [] as readonly ContactCta[],
     variant: 'dark',
+    surfaceClass: 'bg-cream-50',
   },
 )
 
@@ -88,7 +91,7 @@ function onCtaMousemove(e: MouseEvent, isPrimary?: boolean) {
 </script>
 
 <template>
-  <section :id="props.sectionId" class="relative scroll-mt-24 bg-cream-50 py-12 sm:py-16"
+  <section :id="props.sectionId" :class="['relative scroll-mt-24 py-12 sm:py-16', props.surfaceClass]"
     :aria-labelledby="props.title ? props.headingId : undefined"
     :aria-label="props.title ? undefined : props.ariaLabel">
     <span v-for="anchorId in props.extraAnchorIds" :id="anchorId" :key="anchorId"

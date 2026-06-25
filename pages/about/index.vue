@@ -7,6 +7,7 @@ import AboutPhilosophySection from '~/components/about/AboutPhilosophySection.vu
 import AboutHowWeWorkSection from '~/components/about/AboutHowWeWorkSection.vue'
 import AboutTeamStructureSection from '~/components/about/AboutTeamStructureSection.vue'
 import AboutJourneySection from '~/components/about/AboutJourneySection.vue'
+import AboutStorySection from '~/components/about/AboutStorySection.vue'
 import AboutRoadmapSection from '~/components/about/AboutRoadmapSection.vue'
 import AboutComparisonSection from '~/components/about/AboutComparisonSection.vue'
 import AboutAudienceSection from '~/components/about/AboutAudienceSection.vue'
@@ -39,10 +40,11 @@ useSeoMeta({
     <AboutLeadershipSection />
     <AboutTeamStructureSection />
     <AboutJourneySection />
+    <AboutStorySection />
     <AboutRoadmapSection />
     <AboutComparisonSection />
     <!-- <AboutAudienceSection /> -->
-    <UiCTASection heading-id="about-cta-heading" title="Ready to Learn Smarter?"
+    <UiCTASection heading-id="about-cta-heading" surface-class="bg-white" title="Ready to Learn Smarter?"
       description="Book a free demo with a verified mentor — personalised learning, transparent progress, no commitment."
       :ctas="aboutCtas" />
     <NewsletterSection />
