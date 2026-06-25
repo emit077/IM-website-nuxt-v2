@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import TrustIndicators from './TrustIndicators.vue'
+import TrustIndicators from '../shared/TrustIndicators.vue'
+import { trustItems } from '~/data/trust'
 import CardHeader from '~/components/ui/cardheader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconBook from '~/components/icons/IconBook.vue'
@@ -68,11 +69,11 @@ const heroSectionStyle = {
         <div class="mt-2 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" v-motion
           :initial="{ opacity: 0 }" :enter="{ opacity: 1, transition: { delay: 1000, duration: 600 } }" />
       </CardHeader>
-
-      <TrustIndicators class="pt-1" variant="hero-blue" />
       <div aria-hidden="true"
         class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-cream-50">
       </div>
+      <TrustIndicators class="pt-1" :stats="trustItems.slice(0, 4)" />
+
     </div>
   </section>
 </template>

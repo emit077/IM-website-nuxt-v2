@@ -13,17 +13,10 @@ import { aboutMission, aboutMissionQuote } from '~/data/about'
       class="pointer-events-none absolute -left-20 bottom-10 h-72 w-72 rounded-full bg-indigo-100/30 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader
-        variant="section"
-        heading-id="mission-section-heading"
-        content-class="!px-0 !py-0 max-w-3xl mx-auto"
-        :badge="aboutMission.badge"
-        title='Mission <span class="text-gradient-brand">First</span>, Always'
-        :description="aboutMission.summary"
-        v-motion
-        :initial="{ opacity: 0, y: 16 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }"
-      />
+      <CardHeader variant="section" heading-id="mission-section-heading" content-class="!px-0 !py-0 max-w-3xl mx-auto"
+        :badge="aboutMission.badge" title='Mission <span class="text-gradient-brand">First</span>, Always'
+        :description="aboutMission.summary" v-motion :initial="{ opacity: 0, y: 16 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }" />
 
       <!-- Quote -->
       <p class="font-display text-md font-semibold italic leading-relaxed text-slate-700 pt-5 text-center sm:text-md">

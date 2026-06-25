@@ -31,8 +31,8 @@ useSeoMeta({
       :title="findMentorSection.title" :description="findMentorSection.description"
       :closing="findMentorSection.closing" />
     <ContactChannelSection />
-    <UiCTASection :badge="contactGetStarted.badge" :title="contactGetStarted.title"
-      :description="contactGetStarted.description" :ctas="contactGetStarted.ctas" />
+    <UiCTASection :title="contactGetStarted.title" :description="contactGetStarted.description"
+      :ctas="contactGetStarted.ctas" />
     <NewsletterSection />
   </div>
 </template>

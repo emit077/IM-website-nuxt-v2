@@ -2,7 +2,8 @@
 import { Icon } from '@iconify/vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
-import TrustIndicators from '~/components/home/TrustIndicators.vue'
+import TrustIndicators from '~/components/shared/TrustIndicators.vue'
+import { trustItems } from '~/data/trust'
 
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
@@ -51,7 +52,7 @@ function rippleHandler(e: MouseEvent) {
         <a href="#enrollment-plans" class="btn-secondary w-full sm:w-auto">View Plans</a>
       </div>
 
-      <TrustIndicators class="mt-10" variant="hero-blue" />
+      <TrustIndicators class="mt-10" variant="hero-blue" :items="trustItems" />
     </div>
   </section>
 </template>

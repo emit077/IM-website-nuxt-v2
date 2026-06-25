@@ -66,9 +66,9 @@ const rootClass = computed(() => {
 })
 
 const sectionWrapClass = computed(() => {
-  if (props.variant === 'section-left') return 'max-w-2xl text-left'
-  if (props.variant === 'section-dark') return 'mx-auto max-w-2xl text-center'
-  if (props.variant === 'section') return 'mx-auto max-w-2xl text-center'
+  if (props.variant === 'section-left') return 'max-w-3xl text-left'
+  if (props.variant === 'section-dark') return 'mx-auto max-w-3xl text-center'
+  if (props.variant === 'section') return 'mx-auto max-w-3xl text-center'
   return ''
 })
 
@@ -130,13 +130,9 @@ const headingTag = computed(() => (props.variant === 'hero' ? 'h1' : 'h2'))
 <template>
   <div data-slot="card-header" :class="[rootClass, !isSectionVariant && contentClass]" v-bind="$attrs">
     <!-- Tiny sparkle accent near the badge -->
-    <svg
-      v-if="variant !== 'hero' && !isSectionVariant"
-      aria-hidden="true"
-      class="pointer-events-none absolute right-0 top-2 hidden h-8 w-8 text-yellow-400/70 sm:block"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-    >
+    <svg v-if="variant !== 'hero' && !isSectionVariant" aria-hidden="true"
+      class="pointer-events-none absolute right-0 top-2 hidden h-8 w-8 text-yellow-400/70 sm:block" viewBox="0 0 24 24"
+      fill="currentColor">
       <path d="M12 2 13.5 8 19 9.5 13.5 11 12 17 10.5 11 5 9.5 10.5 8 12 2z" />
     </svg>
 
@@ -147,40 +143,22 @@ const headingTag = computed(() => (props.variant === 'hero' ? 'h1' : 'h2'))
         </span>
         <span v-html="badge" />
       </span>
-      <h1
-        v-if="title"
-        :id="headingId"
+      <h1 v-if="title" :id="headingId"
         class="heading-display text-balance text-[2.4rem] leading-[1.06] text-slate-900 sm:text-5xl lg:text-[3.7rem] xl:text-[4rem]"
-        v-html="title"
-      />
-      <p
-        v-if="tagline"
-        class="max-w-xl text-pretty text-base font-bold leading-relaxed text-slate-900 sm:text-lg"
-        v-motion
-        :initial="{ opacity: 0, y: 16 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: 150 } }"
-        v-html="tagline"
-      />
-      <p
-        v-if="description"
-        class="max-w-xl text-pretty text-base leading-relaxed text-slate-600 sm:text-lg"
-        v-motion
-        :initial="{ opacity: 0, y: 16 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: 250 } }"
-        v-html="description"
-      />
+        v-html="title" />
+      <p v-if="tagline" class="max-w-xl text-pretty text-base font-bold leading-relaxed text-slate-900 sm:text-lg"
+        v-motion :initial="{ opacity: 0, y: 16 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: 150 } }" v-html="tagline" />
+      <p v-if="description" class="max-w-xl text-pretty text-base leading-relaxed text-slate-600 sm:text-lg" v-motion
+        :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: 250 } }"
+        v-html="description" />
 
       <slot />
     </div>
 
     <div v-else-if="isSectionVariant" :class="sectionWrapClass">
       <span v-if="badge" data-slot="card-badge" :class="kickerClass" v-html="badge" />
-      <component
-        :is="headingTag"
-        v-if="title || titleHighlight"
-        :id="headingId"
-        :class="sectionTitleClass"
-      >
+      <component :is="headingTag" v-if="title || titleHighlight" :id="headingId" :class="sectionTitleClass">
         <span v-if="title" v-html="title" />
         <span v-if="titleHighlight" :class="sectionHighlightClass">{{ titleHighlight }}</span>
       </component>

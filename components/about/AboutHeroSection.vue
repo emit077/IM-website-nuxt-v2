@@ -3,12 +3,34 @@ import CardHeader from '~/components/ui/cardheader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 import IconBook from '~/components/icons/IconBook.vue'
+import TrustIndicators from '~/components/shared/TrustIndicators.vue'
+import { trustItems } from '~/data/trust'
 
 const heroStats = [
-  { value: '50K', suffix: '+', label: 'Active students learning every month' },
-  { value: '5', suffix: '+ lakh', label: 'Verified tutors across every subject' },
-  { value: '50', suffix: '+ lakh', label: 'Sessions delivered to date' },
-  { value: '98', suffix: '%', label: 'Satisfaction rate from verified reviews' },
+  {
+    id: 'students',
+    title: '50K+',
+    description: 'Active students',
+    icon: 'solar:users-group-rounded-bold-duotone',
+  },
+  {
+    id: 'tutors',
+    title: '5+ lakh',
+    description: 'Verified tutors',
+    icon: 'solar:square-academic-cap-bold-duotone',
+  },
+  {
+    id: 'sessions',
+    title: '50+ lakh',
+    description: 'Sessions delivered',
+    icon: 'solar:videocamera-record-bold-duotone',
+  },
+  {
+    id: 'satisfaction',
+    title: '98%',
+    description: 'Satisfaction rate',
+    icon: 'solar:star-bold-duotone',
+  },
 ]
 
 const heroTitle =
@@ -47,7 +69,7 @@ const heroSectionStyle = {
     <div aria-hidden="true"
       class="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[400px] w-[1100px] -translate-x-1/2 bg-gradient-to-b from-indigo-200/30 to-transparent blur-3xl" />
 
-    <div class="container-page pb-12 pt-10 lg:pt-16">
+    <div class="container-page  pt-10 lg:pt-16">
       <CardHeader variant="hero" heading-id="about-hero-heading" content-class="!px-0 !py-0 max-w-2xl lg:max-w-[46rem]"
         badge="About Indian Mentors" :title="heroTitle" :tagline="heroTagline" :description="heroDescription">
         <div class="flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
@@ -60,34 +82,13 @@ const heroSectionStyle = {
             Our Mission
           </a>
         </div>
-
-        <div class="mt-2 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" v-motion
-          :initial="{ opacity: 0 }" :enter="{ opacity: 1, transition: { delay: 1000, duration: 600 } }" />
       </CardHeader>
-      <!-- Platform statistics -->
-      <div class="relative w-full rounded-[2rem] bg-white p-6 sm:p-8 lg:p-10 " role="region"
-        aria-label="Platform statistics">
-
-        <div class="grid  grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-8 sm:gap-y-10 content-center" role="list">
-          <div v-for="(stat, i) in heroStats" :key="stat.label" role="listitem"
-            class="relative border-l-[3px] border-blue-600 pl-6" v-motion :initial="{ opacity: 0, y: 14 }" :enter="{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 600, delay: 900 + i * 110, ease: 'easeOut' },
-            }">
-            <div
-              class="font-display font-extrabold text-[2.35rem] sm:text-[2.6rem] leading-none tracking-tight text-slate-900">
-              {{ stat.value }}<span class="text-blue-600">{{ stat.suffix }}</span>
-            </div>
-            <p class="mt-3 text-[1.1rem] leading-snug text-slate-600 max-w-[18ch]">
-              {{ stat.label }}
-            </p>
-          </div>
-        </div>
-      </div>
 
       <div aria-hidden="true"
         class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-cream-50" />
+
+      <TrustIndicators class="mt-4" :stats="heroStats" />
+
     </div>
   </section>
 </template>

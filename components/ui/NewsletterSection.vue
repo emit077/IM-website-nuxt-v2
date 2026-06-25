@@ -51,8 +51,9 @@ function onSubmit() {
         :initial="{ opacity: 0, y: 20 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
         <div aria-hidden="true"
           class="pointer-events-none absolute inset-x-8 top-0 h-32 rounded-b-full bg-white/70 blur-2xl" />
-        <div class="relative mx-auto max-w-2xl">
-          <CardHeader variant="section" heading-id="newsletter-heading" title="Subscribe to Our Newsletter"
+        <div class="relative mx-auto ">
+          <CardHeader variant="section" heading-id="newsletter-heading"
+            title="Subscribe to Our <span class='text-gradient-brand'>Newsletter</span>"
             description="Get study tips, tutor insights, success stories, and platform updates in one concise monthly email." />
         </div>
 

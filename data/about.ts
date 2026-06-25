@@ -257,6 +257,22 @@ export const aboutLeadership: LeadershipProfile[] = [
     message:
       'Works closely with mentors to strengthen teaching quality, feedback loops, and the student experience across home and online tutoring.',
   },
+  {
+    id: 'technology-lead',
+    name: 'Kavya Patel',
+    role: 'Technology Lead',
+    bio: 'Guides the platform systems, reporting workflows, and digital tools that support transparent academic monitoring.',
+    inTheirWords: [
+      'Technology should make learning progress easier to understand and act on.',
+      'Reliable data helps families and mentors make better academic decisions.',
+      'The best systems stay simple for the people using them every day.',
+    ],
+    initials: 'KP',
+    ringColor: 'ring-indigo-500',
+    image: 'assets/img/hero/hero-3.png',
+    message:
+      'Builds the digital workflows behind tutor coordination, parent visibility, progress reporting, and operational accountability.',
+  },
 ]
 
 export const aboutMissionQuote =
@@ -334,3 +350,234 @@ export const aboutAudience = {
 
 export const aboutLeadershipQuote =
   'Together, we are building India\'s most trusted personalised tutoring ecosystem — where every learner gets structure, every parent gets clarity, and every mentor gets the support to teach with impact.'
+
+export type CommitmentItem = {
+  icon: string
+  title: string
+  description: string
+}
+
+export const aboutCommitment = {
+  badge: 'Our Commitment',
+  title: 'Our Commitment',
+  subtitle: 'Five core commitments that drive everything we do',
+  items: [
+    {
+      icon: 'mdi:account-cog-outline',
+      title: 'Personalised Learning',
+      description: 'Learning paths tailored to individual goals and pace',
+    },
+    {
+      icon: 'mdi:chart-box-outline',
+      title: 'Transparent Systems',
+      description: 'Clear operational and monitoring frameworks',
+    },
+    {
+      icon: 'mdi:earth',
+      title: 'Global Alignment',
+      description: 'Academic and competitive exam standard alignment',
+    },
+    {
+      icon: 'mdi:monitor-dashboard',
+      title: 'Tech-Enabled',
+      description: 'Technology-driven learning and reporting support',
+    },
+    {
+      icon: 'mdi:shield-check-outline',
+      title: 'Verified Mentors',
+      description: 'Professionally screened and verified tutors',
+    },
+  ] satisfies CommitmentItem[],
+}
+
+export type WorkStep = {
+  icon: string
+  title: string
+  description: string
+}
+
+export const aboutHowWeWork = {
+  badge: 'Operational Model',
+  title: 'How We Work',
+  subtitle: 'Our operational framework is designed for scalability, quality control, and transparency.',
+  steps: [
+    {
+      icon: 'mdi:book-open-variant',
+      title: 'Academic Requirement Assessment',
+      description: 'Understanding student goals, syllabus requirements, and learning gaps.',
+    },
+    {
+      icon: 'mdi:account-multiple-outline',
+      title: 'Tutor Matching & Allocation',
+      description: 'Curated allocation based on subject expertise and compatibility.',
+    },
+    {
+      icon: 'mdi:clipboard-check-outline',
+      title: 'Demo & Feedback',
+      description: 'Trial session to ensure alignment before final onboarding.',
+    },
+    {
+      icon: 'mdi:calendar-check-outline',
+      title: 'Structured Session Scheduling',
+      description: 'Pre-planned calendar with defined academic objectives.',
+    },
+    {
+      icon: 'mdi:chart-line',
+      title: 'ERP-Based Monitoring',
+      description: 'Attendance, homework, performance, and reporting tracked systematically.',
+    },
+    {
+      icon: 'mdi:backup-restore',
+      title: 'Continuous Review & Support',
+      description: 'Counsellor intervention and feedback-driven improvements.',
+    },
+  ] satisfies WorkStep[],
+}
+
+export type RoadmapPhase = {
+  id: string
+  tag: string
+  title: string
+  accent: 'blue' | 'indigo' | 'violet'
+  items: { title: string; description: string }[]
+}
+
+export const aboutRoadmap = {
+  badge: 'Growth Roadmap',
+  title: 'Building a',
+  titleHighlight: 'Scalable & Sustainable',
+  titleSuffix: 'Ecosystem',
+  subtitle: 'Growth guided by structure, sustainability, and long-term academic impact.',
+  note: 'Indian Mentors is building more than a tutoring network — we are developing a scalable, technology-enabled, and accountable academic model designed for long-term sustainability.',
+  phases: [
+    {
+      id: 'short-term',
+      tag: 'Short-Term',
+      title: 'Strengthening Foundations',
+      accent: 'blue',
+      items: [
+        {
+          title: 'Strengthen ERP Integration',
+          description: 'Enhanced attendance tracking, analytics, and reporting systems.',
+        },
+        {
+          title: 'Increase Verified Tutor Base',
+          description: 'Expanding rigorously screened mentors for broader coverage.',
+        },
+        {
+          title: 'Expand Tutoring Infrastructure',
+          description: 'Strengthened admin support and onboarding frameworks.',
+        },
+      ],
+    },
+    {
+      id: 'mid-term',
+      tag: 'Mid-Term',
+      title: 'Structuring Academic Excellence',
+      accent: 'indigo',
+      items: [
+        {
+          title: 'Launch Structured Academic Programs',
+          description: 'Curriculum-aligned programs with defined milestones and assessments.',
+        },
+        {
+          title: 'Build City-Level Coordination Teams',
+          description: 'Dedicated academic supervisors in key cities.',
+        },
+        {
+          title: 'Enhance Parent Analytics Dashboards',
+          description: 'Deeper performance insights and transparent reporting.',
+        },
+      ],
+    },
+    {
+      id: 'long-term',
+      tag: 'Long-Term',
+      title: 'Nationwide Academic Leadership',
+      accent: 'violet',
+      items: [
+        {
+          title: 'Nationwide Presence',
+          description: 'Expanding into new cities with consistent compliance standards.',
+        },
+        {
+          title: 'Integrated Academic Ecosystem',
+          description: 'Students, parents, tutors, schools united in one system.',
+        },
+        {
+          title: 'Standardised Tutoring Framework',
+          description: 'Defined benchmarks and quality metrics for uniform excellence.',
+        },
+        {
+          title: 'Strong Institutional Partnerships',
+          description: 'Collaborating with schools and academic networks.',
+        },
+      ],
+    },
+  ] satisfies RoadmapPhase[],
+}
+
+export type TeamStructureUnit = {
+  icon: string
+  title: string
+  description: string
+  roles: string[]
+}
+
+export const aboutTeamStructure = {
+  badge: 'Our Team Structure',
+  title: 'A',
+  titleHighlight: 'System-Driven',
+  titleSuffix: 'Organisation',
+  subtitle: 'Each team member operates within a defined framework of accountability and collaboration.',
+  units: [
+    {
+      icon: 'mdi:eye-outline',
+      title: 'Academic & Admission',
+      description: 'Guide onboarding, monitor progress, and schedule demos for seamless coordination.',
+      roles: ['Admission Counsellors', 'Academic Counsellors', 'Admission Coordinators'],
+    },
+    {
+      icon: 'mdi:account-group-outline',
+      title: 'Tutor Management & Quality',
+      description: 'Screen mentors, monitor sessions, review feedback, and maintain academic standards.',
+      roles: ['Tutor Recruiters', 'Quality Review Team'],
+    },
+    {
+      icon: 'mdi:shield-account-outline',
+      title: 'Customer Support',
+      description: 'Primary communication bridge for parents and students with timely, structured resolution.',
+      roles: ['Support Executives', 'Resolution Specialists'],
+    },
+    {
+      icon: 'mdi:account-heart-outline',
+      title: 'Human Resources',
+      description: 'Onboarding, compliance documentation, performance processes, and professional development.',
+      roles: ['HR Managers', 'Compliance Officers'],
+    },
+    {
+      icon: 'mdi:cash-multiple',
+      title: 'Finance & Accounts',
+      description: 'Transparent billing, payment processing, and financial compliance systems.',
+      roles: ['Finance Team', 'Billing Specialists'],
+    },
+    {
+      icon: 'mdi:code-tags',
+      title: 'Technology & ERP',
+      description: 'Monitoring systems, dashboards, reporting tools, and workflow integrations.',
+      roles: ['ERP Engineers', 'Tech Operations'],
+    },
+    {
+      icon: 'mdi:clipboard-text-outline',
+      title: 'Administration & Compliance',
+      description: 'Documentation accuracy, policy adherence, and operational discipline.',
+      roles: ['Administrative Officers', 'Policy Managers'],
+    },
+    {
+      icon: 'mdi:bank-outline',
+      title: 'Channel Partners',
+      description: 'Regional expansion and local coordination while maintaining centralised standards.',
+      roles: ['Regional Partners', 'Outreach Coordinators'],
+    },
+  ] satisfies TeamStructureUnit[],
+}

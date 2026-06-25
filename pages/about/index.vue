@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import AboutHeroSection from '~/components/about/AboutHeroSection.vue'
 import AboutMissionSection from '~/components/about/AboutMissionSection.vue'
+import AboutCommitmentSection from '~/components/about/AboutCommitmentSection.vue'
 import AboutLeadershipSection from '~/components/about/AboutLeadershipSection.vue'
 import AboutPhilosophySection from '~/components/about/AboutPhilosophySection.vue'
+import AboutHowWeWorkSection from '~/components/about/AboutHowWeWorkSection.vue'
+import AboutTeamStructureSection from '~/components/about/AboutTeamStructureSection.vue'
 import AboutJourneySection from '~/components/about/AboutJourneySection.vue'
+import AboutRoadmapSection from '~/components/about/AboutRoadmapSection.vue'
 import AboutComparisonSection from '~/components/about/AboutComparisonSection.vue'
 import AboutAudienceSection from '~/components/about/AboutAudienceSection.vue'
 import UiCTASection from '~/components/ui/CTASection.vue'
@@ -29,12 +33,16 @@ useSeoMeta({
   <div class="min-h-screen bg-cream-50">
     <AboutHeroSection />
     <AboutMissionSection />
+    <AboutCommitmentSection />
+    <!-- <AboutPhilosophySection /> -->
+    <AboutHowWeWorkSection />
     <AboutLeadershipSection />
-    <AboutPhilosophySection />
+    <AboutTeamStructureSection />
     <AboutJourneySection />
+    <AboutRoadmapSection />
     <AboutComparisonSection />
-    <AboutAudienceSection />
-    <UiCTASection section-id="about-cta" heading-id="about-cta-heading" title="Ready to Learn Smarter?"
+    <!-- <AboutAudienceSection /> -->
+    <UiCTASection heading-id="about-cta-heading" title="Ready to Learn Smarter?"
       description="Book a free demo with a verified mentor — personalised learning, transparent progress, no commitment."
       :ctas="aboutCtas" />
     <NewsletterSection />

@@ -2,7 +2,8 @@
 import { Icon } from '@iconify/vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
-import TrustIndicators from '~/components/home/TrustIndicators.vue'
+import TrustIndicators from '~/components/shared/TrustIndicators.vue'
+import { trustItems } from '~/data/trust'
 
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
@@ -15,6 +16,13 @@ const coverageHighlights = [
   { icon: 'mdi:stairs-up', value: '7', label: 'Curriculum stages', sub: 'Nursery to university' },
   { icon: 'mdi:earth', value: '6+', label: 'Boards covered', sub: 'CBSE, ICSE, IB & more' },
   { icon: 'mdi:book-open-variant', value: '250+', label: 'Subjects', sub: 'Across all streams' },
+]
+
+const heroStats = [
+  { value: '50K', suffix: '+', label: 'Active students learning every month' },
+  { value: '5', suffix: '+ lakh', label: 'Verified tutors across every subject' },
+  { value: '50', suffix: '+ lakh', label: 'Sessions delivered to date' },
+  { value: '98', suffix: '%', label: 'Satisfaction rate from verified reviews' },
 ]
 </script>
 
@@ -56,6 +64,8 @@ const coverageHighlights = [
         </a>
         <a href="#grades-covered" class="btn-secondary w-full sm:w-auto">Explore Coverage</a>
       </div>
+
+      <TrustIndicators class="mt-10 text-left" variant="hero-blue" :stats="heroStats" :items="trustItems" />
     </div>
   </section>
 </template>
