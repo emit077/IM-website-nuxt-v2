@@ -409,14 +409,9 @@ const gridCards = computed(() => current.value.cards)
         class="rounded-[1.75rem] border border-slate-200/70 bg-white p-6 shadow-soft sm:p-8 lg:p-10 lg:shadow-[0_8px_40px_-12px_rgba(15,23,42,0.08)]"
         v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550, ease: 'easeOut' } }">
-        <CardHeader
-          variant="section-left"
-          heading-id="learning-library-heading"
-          content-class="!px-0 !py-0"
-          badge="Learning library"
-          title="Resources built for your grade"
-          description="At Indian Mentors, we provide comprehensive academic mentoring designed to support students across every stage of their educational journey. Our tutoring programs combine experienced mentors, curriculum-aligned teaching methods, and personalised learning strategies to help students build strong academic foundations and achieve their educational goals."
-        />
+        <CardHeader variant="variant-1" heading-id="learning-library-heading" content-class="!px-0 !py-0"
+          badge="Learning library" title="Resources built for your grade"
+          description="At Indian Mentors, we provide comprehensive academic mentoring designed to support students across every stage of their educational journey. Our tutoring programs combine experienced mentors, curriculum-aligned teaching methods, and personalised learning strategies to help students build strong academic foundations and achieve their educational goals." />
 
         <!-- Grade tabs -->
         <div class="mt-8 -mx-1 overflow-x-auto pb-1 [scrollbar-width:thin]" role="tablist" aria-label="Select class">

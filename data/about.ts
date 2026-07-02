@@ -14,7 +14,7 @@ export type TimelineEntry = {
 const timelineSeed: TimelineEntry[] = [
   {
     timeline_id: 1,
-    year: 'Year 1',
+    year: '2019',
     milestone_title: 'Concept & Foundation',
     milestone_description:
       'Establishment of the vision to build a structured personalised tutoring platform.',
@@ -23,7 +23,7 @@ const timelineSeed: TimelineEntry[] = [
   },
   {
     timeline_id: 2,
-    year: 'Year 1',
+    year: '2020',
     milestone_title: 'Mentor Network Development',
     milestone_description:
       'Recruitment and verification of qualified subject mentors.',
@@ -32,7 +32,7 @@ const timelineSeed: TimelineEntry[] = [
   },
   {
     timeline_id: 3,
-    year: 'Year 2',
+    year: '2021',
     milestone_title: 'Student Mentorship Programs',
     milestone_description:
       'Launch of personalised tutoring services for students across multiple boards.',
@@ -41,7 +41,7 @@ const timelineSeed: TimelineEntry[] = [
   },
   {
     timeline_id: 4,
-    year: 'Year 2',
+    year: '2022',
     milestone_title: 'Academic Monitoring Framework',
     milestone_description:
       'Introduction of structured progress tracking and learning reports.',
@@ -50,7 +50,7 @@ const timelineSeed: TimelineEntry[] = [
   },
   {
     timeline_id: 5,
-    year: 'Year 3',
+    year: '2023',
     milestone_title: 'Technology Integration',
     milestone_description:
       'Implementation of digital platforms for tutor management and academic tracking.',
@@ -59,7 +59,7 @@ const timelineSeed: TimelineEntry[] = [
   },
   {
     timeline_id: 6,
-    year: 'Year 3',
+    year: '2024',
     milestone_title: 'Expansion of Services',
     milestone_description:
       'Expansion of services including online tutoring, academic counselling, and institutional support.',
@@ -68,7 +68,7 @@ const timelineSeed: TimelineEntry[] = [
   },
   {
     timeline_id: 7,
-    year: 'Year 4',
+    year: '2025',
     milestone_title: 'National Mentor Network',
     milestone_description:
       'Building a pan-India network of verified mentors and academic professionals.',
@@ -87,38 +87,68 @@ export type AboutPillar = {
   short: string
 }
 
+export type MissionCommitment = {
+  icon: string
+  title: string
+  description: string
+}
+
+export type VisionPoint = {
+  icon: string
+  text: string
+}
+
+export type MissionVisionCta = {
+  label: string
+  href: string
+  icon: string
+  primary?: boolean
+}
+
 export const aboutMission = {
   badge: 'Our Mission',
   title: 'Empowering Every Learner Through Structured Mentorship',
   summary:
     'Structured, transparent mentorship with clear goals, verified tutors, and progress you can measure — not left to chance.',
-  pillars: [
+  intro: [
+    'At Indian Mentors, our mission is to deliver structured, transparent, and personalised academic mentorship that empowers students to achieve consistent and measurable growth.',
+    'We are committed to building an educational ecosystem where learning is not left to chance but guided by planning, monitoring, and accountability. Every student journey is designed with clarity — from goal setting and tutor matching to progress tracking and performance reporting.',
+  ],
+  commitmentsLabel: 'Driven by five core commitments',
+  commitments: [
     {
-      icon: 'mdi:shield-account',
-      title: 'Verified tutors',
-      short: 'Screened for expertise, teaching quality, and integrity',
+      icon: 'mdi:shield-check-outline',
+      title: 'Deliver Verified & High-Quality Tutors',
+      description:
+        'Every mentor undergoes a structured screening and verification process to ensure subject expertise, teaching capability, and professional integrity.',
     },
     {
       icon: 'mdi:eye-outline',
-      title: 'Parent visibility',
-      short: 'Attendance, syllabus, homework, and performance in one place',
+      title: 'Ensure Transparent Tracking for Parents',
+      description:
+        'Clear visibility into attendance, syllabus coverage, homework, and performance updates — creating trust through structured reporting.',
     },
     {
-      icon: 'mdi:chart-box',
-      title: 'Measurable reporting',
-      short: 'Assessments and analytics that show real growth',
+      icon: 'mdi:chart-box-outline',
+      title: 'Provide Measurable Academic Reporting',
+      description:
+        'Regular assessments, feedback systems, and progress analytics help students and parents see real academic growth over time.',
     },
     {
-      icon: 'mdi:school-outline',
-      title: 'Tutor support',
-      short: 'Systems that let mentors focus on teaching',
+      icon: 'mdi:account-tie-outline',
+      title: 'Support Tutors with Professional Systems',
+      description:
+        'Timely processes, structured communication, and performance monitoring help mentors focus on teaching excellence.',
     },
     {
-      icon: 'mdi:laptop-account',
-      title: 'Tech-enabled ops',
-      short: 'Workflows and monitoring for accountability at scale',
+      icon: 'mdi:cog-sync-outline',
+      title: 'Maintain Operational Excellence Through Technology',
+      description:
+        'Structured workflows, tracking systems, and digital monitoring create a seamless and accountable learning environment.',
     },
-  ] satisfies AboutPillar[],
+  ] satisfies MissionCommitment[],
+  closing:
+    "We don't just connect tutors and students — we design organised academic journeys that promote clarity, discipline, and measurable outcomes.",
 }
 
 export const aboutVision = {
@@ -126,29 +156,39 @@ export const aboutVision = {
   title: "Building India's Most Trusted Personalised Tutoring Ecosystem",
   summary:
     "India's trusted personalised tutoring ecosystem — mentorship, structure, and technology working together.",
-  pillars: [
+  intro:
+    "Our vision is to become India's most trusted personalised tutoring ecosystem by combining mentorship, structure, and technology to redefine academic support at scale.",
+  futureLabel: 'We envision a future where',
+  points: [
     {
-      icon: 'mdi:account-child',
-      title: 'Every student',
-      short: 'Custom guidance aligned to their goals',
+      icon: 'mdi:school-outline',
+      text: 'Every student receives customised academic guidance aligned with their goals.',
     },
     {
-      icon: 'mdi:account-heart',
-      title: 'Every parent',
-      short: 'Transparency, reliability, and clear communication',
+      icon: 'mdi:account-group-outline',
+      text: 'Parents experience transparency, reliability, and consistent communication.',
     },
     {
-      icon: 'mdi:human-male-board',
-      title: 'Every tutor',
-      short: 'A professional, technology-enabled workplace',
+      icon: 'mdi:monitor-dashboard',
+      text: 'Tutors operate within a professional, technology-enabled system.',
     },
     {
-      icon: 'mdi:handshake',
-      title: 'Every partner',
-      short: 'Accountability and long-term value',
+      icon: 'mdi:clipboard-check-outline',
+      text: 'Educational partnerships are built on accountability and long-term value.',
     },
-  ] satisfies AboutPillar[],
+  ] satisfies VisionPoint[],
+  closing:
+    'By bringing together structured mentorship and technology-driven operations, Indian Mentors aims to set new standards in personalised academic services across India.',
 }
+
+export const aboutMissionVisionCtas: MissionVisionCta[] = [
+  { label: 'Book Free Demo', href: '#book-demo', icon: 'mdi:calendar-check-outline', primary: true },
+  { label: 'Talk to Counsellor', href: '#contact', icon: 'mdi:headset' },
+  { label: 'Partner With Us', href: '#partner', icon: 'mdi:handshake-outline' },
+]
+
+export const aboutMissionVisionTagline =
+  'Indian Mentors — Building Futures Through Personalised Education.'
 
 /**
  * Database: TEAM_MEMBERS
@@ -440,15 +480,15 @@ export type RoadmapPhase = {
   title: string
   icon: string
   accent: 'blue' | 'indigo' | 'violet'
-  items: { title: string; description: string }[]
+  items: { icon: string; title: string; description: string }[]
 }
 
 export const aboutRoadmap = {
   badge: 'Growth Roadmap',
-  title: 'Building a',
-  titleHighlight: 'Scalable & Sustainable',
-  titleSuffix: 'Ecosystem',
-  subtitle: 'Growth guided by structure, sustainability, and long-term academic impact.',
+  title: 'Our',
+  titleHighlight: 'Growth',
+  titleSuffix: 'Roadmap',
+  subtitle: 'Building the Future of Personalised Learning at Indian Mentors.',
   note: 'Indian Mentors is building more than a tutoring network — we are developing a scalable, technology-enabled, and accountable academic model designed for long-term sustainability.',
   phases: [
     {
@@ -459,16 +499,28 @@ export const aboutRoadmap = {
       accent: 'blue',
       items: [
         {
+          icon: 'mdi:database-cog-outline',
           title: 'Strengthen ERP Integration',
-          description: 'Enhanced attendance tracking, analytics, and reporting systems.',
+          description:
+            'Enhanced attendance tracking, lesson planning, scheduling, analytics, and parent reporting for seamless academic management.',
         },
         {
+          icon: 'mdi:account-check-outline',
           title: 'Increase Verified Tutor Base',
-          description: 'Expanding rigorously screened mentors for broader coverage.',
+          description:
+            'Expand our network of rigorously screened and verified tutors across subjects, boards, competitive exams, and skill-based learning.',
         },
         {
-          title: 'Expand Tutoring Infrastructure',
-          description: 'Strengthened admin support and onboarding frameworks.',
+          icon: 'mdi:certificate-outline',
+          title: 'Enhance Tutor Training & Quality Assurance',
+          description:
+            'Implement continuous tutor training, performance evaluations, teaching audits, and certification programs to maintain academic excellence.',
+        },
+        {
+          icon: 'mdi:face-agent',
+          title: 'Strengthen Student & Parent Support',
+          description:
+            'Improve onboarding, academic counselling, query resolution, and dedicated support systems for a better learning experience.',
         },
       ],
     },
@@ -480,16 +532,28 @@ export const aboutRoadmap = {
       accent: 'indigo',
       items: [
         {
+          icon: 'mdi:book-education-outline',
           title: 'Launch Structured Academic Programs',
-          description: 'Curriculum-aligned programs with defined milestones and assessments.',
+          description:
+            'Introduce curriculum-aligned learning pathways with milestones, assessments, progress tracking, and personalised improvement plans.',
         },
         {
-          title: 'Build City-Level Coordination Teams',
-          description: 'Dedicated academic supervisors in key cities.',
+          icon: 'mdi:city-variant-outline',
+          title: 'Build City-Level Academic Coordination Teams',
+          description:
+            'Establish dedicated academic coordinators and mentor supervisors across major cities to ensure consistent service quality.',
         },
         {
-          title: 'Enhance Parent Analytics Dashboards',
-          description: 'Deeper performance insights and transparent reporting.',
+          icon: 'mdi:chart-box-outline',
+          title: 'Enhance Parent Analytics Dashboard',
+          description:
+            'Provide comprehensive insights into attendance, learning outcomes, tutor feedback, academic progress, and performance trends.',
+        },
+        {
+          icon: 'mdi:layers-plus',
+          title: 'Expand Learning Services Portfolio',
+          description:
+            'Introduce specialised programs including Olympiad preparation, NEET/JEE Foundation, language learning, coding, homeschooling support, and skill development.',
         },
       ],
     },
@@ -501,20 +565,28 @@ export const aboutRoadmap = {
       accent: 'violet',
       items: [
         {
+          icon: 'mdi:map-marker-radius-outline',
           title: 'Nationwide Presence',
-          description: 'Expanding into new cities with consistent compliance standards.',
+          description:
+            'Expand operations across India with standardized onboarding, compliance, and quality assurance frameworks.',
         },
         {
+          icon: 'mdi:hub-outline',
           title: 'Integrated Academic Ecosystem',
-          description: 'Students, parents, tutors, schools united in one system.',
+          description:
+            'Create a unified platform connecting students, parents, tutors, schools, and academic partners through one intelligent learning ecosystem.',
         },
         {
+          icon: 'mdi:ruler-square-compass',
           title: 'Standardised Tutoring Framework',
-          description: 'Defined benchmarks and quality metrics for uniform excellence.',
+          description:
+            'Develop nationally recognised tutoring standards with defined teaching methodologies, quality benchmarks, and measurable learning outcomes.',
         },
         {
+          icon: 'mdi:handshake-outline',
           title: 'Strong Institutional Partnerships',
-          description: 'Collaborating with schools and academic networks.',
+          description:
+            'Collaborate with schools, colleges, educational institutions, and academic organizations to expand learning opportunities and educational impact.',
         },
       ],
     },
@@ -543,7 +615,7 @@ export const aboutStory = {
     {
       id: 'story-1',
       step: '01',
-      year: 'Year 1',
+      year: '2019',
       title: 'Concept & Foundation',
       description:
         'Establishment of the vision to build a structured, personalised tutoring platform built on trust.',
@@ -552,9 +624,9 @@ export const aboutStory = {
       metric: { value: '1', label: 'Bold vision' },
     },
     {
-      id: 'story-2',
+      id: '2020',
       step: '02',
-      year: 'Year 1',
+      year: '2020',
       title: 'Mentor Network Development',
       description:
         'Recruitment and rigorous verification of qualified subject mentors across disciplines.',
@@ -565,7 +637,7 @@ export const aboutStory = {
     {
       id: 'story-3',
       step: '03',
-      year: 'Year 2',
+      year: '2021',
       title: 'Student Mentorship Programs',
       description:
         'Launch of personalised tutoring services for students across multiple education boards.',
@@ -576,7 +648,7 @@ export const aboutStory = {
     {
       id: 'story-4',
       step: '04',
-      year: 'Year 2',
+      year: '2022',
       title: 'Academic Monitoring Framework',
       description:
         'Introduction of structured progress tracking and transparent learning reports for parents.',
@@ -587,7 +659,7 @@ export const aboutStory = {
     {
       id: 'story-5',
       step: '05',
-      year: 'Year 3',
+      year: '2023',
       title: 'Technology Integration',
       description:
         'Implementation of ERP-backed digital platforms for tutor management and academic tracking.',
@@ -598,7 +670,7 @@ export const aboutStory = {
     {
       id: 'story-6',
       step: '06',
-      year: 'Year 3',
+      year: '2024',
       title: 'Expansion of Services',
       description:
         'Online tutoring, academic counselling, and institutional support added to the ecosystem.',
@@ -609,7 +681,7 @@ export const aboutStory = {
     {
       id: 'story-7',
       step: '07',
-      year: 'Year 4',
+      year: '2025',
       title: 'National Mentor Network',
       description:
         'Building a pan-India network of verified mentors and academic professionals.',
@@ -636,15 +708,15 @@ export const aboutTeamStructure = {
   units: [
     {
       icon: 'mdi:eye-outline',
-      title: 'Academic & Admission',
+      title: 'Admission & Academic',
       description: 'Guide onboarding, monitor progress, and schedule demos for seamless coordination.',
       roles: ['Admission Counsellors', 'Academic Counsellors', 'Admission Coordinators'],
     },
     {
       icon: 'mdi:account-group-outline',
-      title: 'Tutor Management & Quality',
+      title: 'Tutor & Quality Management ',
       description: 'Screen mentors, monitor sessions, review feedback, and maintain academic standards.',
-      roles: ['Tutor Recruiters', 'Quality Review Team'],
+      roles: ['Tutor Recruiters', 'Quality Review'],
     },
     {
       icon: 'mdi:shield-account-outline',
@@ -662,7 +734,7 @@ export const aboutTeamStructure = {
       icon: 'mdi:cash-multiple',
       title: 'Finance & Accounts',
       description: 'Transparent billing, payment processing, and financial compliance systems.',
-      roles: ['Finance Team', 'Billing Specialists'],
+      roles: ['Accountent', 'Billing Specialists'],
     },
     {
       icon: 'mdi:code-tags',

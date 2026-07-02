@@ -3,8 +3,24 @@ import CardHeader from '~/components/ui/cardheader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 import IconBook from '~/components/icons/IconBook.vue'
+import IconAcademic from '~/components/icons/IconAcademic.vue'
 import TrustIndicators from '~/components/shared/TrustIndicators.vue'
 import { trustItems } from '~/data/trust'
+
+const heroCtas = [
+  {
+    id: 'join',
+    label: 'Join Our Team',
+    href: '#team-structure',
+    icon: IconAcademic,
+  },
+  {
+    id: 'mission',
+    label: 'Our Mission & vision',
+    href: '#mission',
+    icon: IconBook,
+  }
+]
 
 const heroStats = [
   {
@@ -34,13 +50,13 @@ const heroStats = [
 ]
 
 const heroTitle =
-  'Building futures through <span class="text-gradient-brand">personalised education</span>'
+  'Building Futures through <span class="text-gradient-brand">Personalised Education</span>'
 
 const heroTagline =
   '<span class="text-gradient-brand">Indian Mentors</span> — India\'s trusted tutoring ecosystem'
 
 const heroDescription =
-  'Connecting students, parents, tutors, and institutions with verified mentors, transparent progress tracking, and technology-backed reporting you can rely on.'
+  'Connecting students, parents, tutors, and institutions through verified mentors and transparent, technology-driven learning.'
 
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
@@ -71,15 +87,14 @@ const heroSectionStyle = {
 
     <div class="container-page pb-8 pt-10 lg:pt-16">
       <CardHeader variant="hero" heading-id="about-hero-heading" content-class="!px-0 !py-0 max-w-2xl lg:max-w-[46rem]"
-        badge="About Indian Mentors" :title="heroTitle" :tagline="heroTagline" :description="heroDescription">
-        <div class="flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
+        badge="Your Trusted Academic Partner" :title="heroTitle" :tagline="heroTagline" :description="heroDescription">
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
-          <a href="#mission" class="btn-secondary group w-full sm:w-auto">
-            <span
-              class="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white">
-              <IconBook class="h-3.5 w-3.5" />
-            </span>
-            Our Mission
+          <a v-for="cta in heroCtas" :key="cta.id" :href="cta.href"
+            class="btn-primary group w-full items-center justify-center gap-2 sm:w-auto">
+            <component :is="cta.icon" class="h-[18px] w-[18px] shrink-0" />
+            <span>{{ cta.label }}</span>
+            <IconArrowRight class="hero-cta-arrow h-4 w-4 shrink-0" />
           </a>
         </div>
       </CardHeader>

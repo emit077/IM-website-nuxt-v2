@@ -9,6 +9,7 @@ import AboutTeamStructureSection from '~/components/about/AboutTeamStructureSect
 import AboutJourneySection from '~/components/about/AboutJourneySection.vue'
 import AboutStorySection from '~/components/about/AboutStorySection.vue'
 import AboutRoadmapSection from '~/components/about/AboutRoadmapSection.vue'
+import AboutRoadmapSection2 from '~/components/about/AboutRoadmapSection2.vue'
 import AboutComparisonSection from '~/components/about/AboutComparisonSection.vue'
 import AboutAudienceSection from '~/components/about/AboutAudienceSection.vue'
 import UiCTASection from '~/components/ui/CTASection.vue'
@@ -39,9 +40,10 @@ useSeoMeta({
     <AboutHowWeWorkSection />
     <AboutLeadershipSection />
     <AboutTeamStructureSection />
-    <AboutJourneySection />
+    <!-- <AboutJourneySection /> -->
     <AboutStorySection />
     <AboutRoadmapSection />
+    <AboutRoadmapSection2 />
     <AboutComparisonSection />
     <!-- <AboutAudienceSection /> -->
     <UiCTASection heading-id="about-cta-heading" surface-class="bg-white" title="Ready to Learn Smarter?"

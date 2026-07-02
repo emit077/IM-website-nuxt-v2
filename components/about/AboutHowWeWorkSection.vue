@@ -14,7 +14,8 @@ import { aboutHowWeWork } from '~/data/about'
 
     <div class="container-page relative">
       <CardHeader variant="section" heading-id="how-we-work-heading" content-class="!px-0 !py-0"
-        :badge="aboutHowWeWork.badge" :title="aboutHowWeWork.title" :description="aboutHowWeWork.subtitle" />
+        :badge="aboutHowWeWork.badge" title="Our End-to-End  <span class='text-gradient-brand'> Learning Process</span>"
+        :description="aboutHowWeWork.subtitle" />
 
       <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         <article v-for="(step, i) in aboutHowWeWork.steps" :key="step.title"

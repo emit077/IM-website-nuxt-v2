@@ -27,6 +27,8 @@ const props = withDefaults(
     headingId?: string
     /** Accent color for section kicker badge */
     accent?: HeaderAccent
+    /** Adds a leading dash line before the section kicker text */
+    dashKicker?: boolean
     /** dark: black bg, light text. on-blue: light text on blue/brand sections (no solid bar). light: cards */
     theme?: 'light' | 'dark' | 'on-blue'
     /** Extra classes on root (padding, margins) */
@@ -41,6 +43,7 @@ const props = withDefaults(
     contentClass: '',
     headingId: 'hero-heading',
     accent: 'blue',
+    dashKicker: false,
   },
 )
 
@@ -73,8 +76,11 @@ const sectionWrapClass = computed(() => {
 })
 
 const kickerClass = computed(() => {
-  if (props.variant === 'section-dark') return 'text-xs font-bold uppercase tracking-[0.16em] text-blue-300'
-  return `text-xs font-bold uppercase tracking-[0.16em] ${accentKickerClass[props.accent]}`
+  const dash = props.dashKicker
+    ? "inline-flex items-center gap-3 before:h-0.5 before:w-6 before:rounded-full before:bg-current before:content-[''] "
+    : ''
+  if (props.variant === 'section-dark') return `${dash}text-xs font-bold uppercase tracking-[0.16em] text-blue-300`
+  return `${dash}text-xs font-bold uppercase tracking-[0.16em] ${accentKickerClass[props.accent]}`
 })
 
 const sectionTitleClass = computed(() => {
@@ -94,13 +100,19 @@ const sectionDescriptionClass = computed(() => {
 })
 
 const badgeClass = computed(() => {
+  const kicker =
+    "inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] before:h-0.5 before:w-6 before:rounded-full before:content-['']"
+  const kickerBoth =
+    "inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] before:h-0.5 before:w-6 before:rounded-full before:content-[''] after:h-0.5 after:w-6 after:rounded-full after:content-['']"
   if (props.variant === 'variant-2')
-    return 'inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white'
+    return `${kicker} text-white before:bg-white`
+  if (props.variant === 'variant-1')
+    return `${kicker} text-blue-600 before:bg-blue-600`
   if (props.theme === 'dark')
-    return 'inline-flex rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium text-white/90'
+    return `${kickerBoth} text-white before:bg-white after:bg-white`
   if (props.theme === 'on-blue')
-    return 'inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-white'
-  return 'inline-flex rounded-full bg-blue-100 px-4 py-1.5 text-xs font-medium text-blue-600'
+    return `${kickerBoth} text-white before:bg-white after:bg-white`
+  return `${kickerBoth} text-blue-600 before:bg-blue-600 after:bg-blue-600`
 })
 
 const titleClass = computed(() => {
@@ -179,6 +191,7 @@ const headingTag = computed(() => (props.variant === 'hero' ? 'h1' : 'h2'))
     </div>
 
     <div v-else>
+      <span class="h-0.5 w-6 rounded-full bg-blue-600" aria-hidden="true" />
       <span v-if="badge" data-slot="card-badge" :class="badgeClass" v-html="badge" />
       <h2 v-if="title" data-slot="card-title" :class="titleClass" v-html="title" />
       <p v-if="description" data-slot="card-description" :class="descriptionClass" v-html="description" />

@@ -8,37 +8,46 @@ type Accent = 'blue' | 'indigo' | 'violet'
 
 const accentClasses: Record<
   Accent,
-  { tag: string; node: string; glow: string; check: string; bar: string; hover: string; blob: string; watermark: string }
+  {
+    ring: string
+    header: string
+    tag: string
+    number: string
+    check: string
+    itemHover: string
+    watermark: string
+    glow: string
+  }
 > = {
   blue: {
-    tag: 'bg-blue-50 text-blue-700 ring-1 ring-inset ring-blue-200/70',
-    node: 'bg-gradient-to-br from-blue-500 to-indigo-600',
-    glow: 'shadow-blue-500/30',
+    ring: 'ring-blue-200/60',
+    header: 'from-blue-500 via-blue-600 to-indigo-600',
+    tag: 'bg-white/15 text-white ring-1 ring-inset ring-white/25',
+    number: 'text-white/25',
     check: 'text-blue-600',
-    bar: 'bg-gradient-to-r from-blue-500 to-indigo-600',
-    hover: 'hover:border-blue-200',
-    blob: 'bg-blue-400/20',
-    watermark: 'text-blue-500/[0.06]',
+    itemHover: 'hover:border-blue-200 hover:bg-blue-50/40',
+    watermark: 'text-white/10',
+    glow: 'bg-blue-400/25',
   },
   indigo: {
-    tag: 'bg-indigo-50 text-indigo-700 ring-1 ring-inset ring-indigo-200/70',
-    node: 'bg-gradient-to-br from-indigo-500 to-violet-600',
-    glow: 'shadow-indigo-500/30',
+    ring: 'ring-indigo-200/60',
+    header: 'from-indigo-500 via-indigo-600 to-violet-600',
+    tag: 'bg-white/15 text-white ring-1 ring-inset ring-white/25',
+    number: 'text-white/25',
     check: 'text-indigo-600',
-    bar: 'bg-gradient-to-r from-indigo-500 to-violet-600',
-    hover: 'hover:border-indigo-200',
-    blob: 'bg-indigo-400/20',
-    watermark: 'text-indigo-500/[0.06]',
+    itemHover: 'hover:border-indigo-200 hover:bg-indigo-50/40',
+    watermark: 'text-white/10',
+    glow: 'bg-indigo-400/25',
   },
   violet: {
-    tag: 'bg-violet-50 text-violet-700 ring-1 ring-inset ring-violet-200/70',
-    node: 'bg-gradient-to-br from-violet-500 to-fuchsia-600',
-    glow: 'shadow-violet-500/30',
+    ring: 'ring-violet-200/60',
+    header: 'from-violet-500 via-violet-600 to-fuchsia-600',
+    tag: 'bg-white/15 text-white ring-1 ring-inset ring-white/25',
+    number: 'text-white/25',
     check: 'text-violet-600',
-    bar: 'bg-gradient-to-r from-violet-500 to-fuchsia-600',
-    hover: 'hover:border-violet-200',
-    blob: 'bg-violet-400/20',
-    watermark: 'text-violet-500/[0.06]',
+    itemHover: 'hover:border-violet-200 hover:bg-violet-50/40',
+    watermark: 'text-white/10',
+    glow: 'bg-violet-400/25',
   },
 }
 
@@ -46,68 +55,100 @@ const headerTitle = computed(
   () =>
     `${aboutRoadmap.title} <span class="text-gradient-brand">${aboutRoadmap.titleHighlight}</span> ${aboutRoadmap.titleSuffix}`,
 )
+
+const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
 </script>
 
 <template>
-  <section id="roadmap" class="bg-white py-14 sm:py-16 lg:py-20" aria-labelledby="roadmap-heading">
+  <section id="roadmap" class="bg-slate-50 py-14 sm:py-16 lg:py-20" aria-labelledby="roadmap-heading">
     <div class="container-page">
       <CardHeader variant="section" heading-id="roadmap-heading" content-class="!px-0 !py-0" :badge="aboutRoadmap.badge"
         :title="headerTitle" :description="aboutRoadmap.subtitle" />
 
-      <!-- Connected vertical timeline -->
-      <ol class="relative mx-auto mt-12 max-w-5xl" role="list">
+      <!-- Parallax stacking cards -->
+      <div class="mx-auto mt-12 max-w-4xl">
+        <div
+          v-for="(phase, pi) in aboutRoadmap.phases"
+          :key="phase.id"
+          class="sticky"
+          :style="{ top: `calc(5.5rem + ${pi * 2.25}rem)`, zIndex: 10 + pi }"
+          :class="pi === aboutRoadmap.phases.length - 1 ? '' : 'pb-8 sm:pb-10'"
+        >
+          <article
+            v-motion
+            :initial="{ opacity: 0, y: 40, scale: 0.97 }"
+            :visibleOnce="{ opacity: 1, y: 0, scale: 1, transition: { duration: 520, delay: 60 } }"
+            :class="[
+              'group relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_60px_-25px_rgba(15,23,42,0.35)] ring-1',
+              accentClasses[phase.accent].ring,
+            ]"
+          >
+            <!-- Colored header band -->
+            <div :class="['relative overflow-hidden bg-gradient-to-r px-5 py-5 sm:px-7 sm:py-6', accentClasses[phase.accent].header]">
+              <span
+                :class="['pointer-events-none absolute -right-6 -top-10 h-36 w-36 rounded-full blur-2xl', accentClasses[phase.accent].glow]"
+                aria-hidden="true"
+              />
+              <Icon
+                :icon="phase.icon"
+                :class="[
+                  'pointer-events-none absolute -bottom-6 right-4 h-28 w-28 rotate-6 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3',
+                  accentClasses[phase.accent].watermark,
+                ]"
+                aria-hidden="true"
+              />
 
-        <li v-for="(phase, pi) in aboutRoadmap.phases" :key="phase.id" class="relative"
-          :class="pi === aboutRoadmap.phases.length - 1 ? '' : 'pb-6 sm:pb-8'" v-motion :initial="{ opacity: 0, y: 18 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 80 + pi * 120 } }">
-          <div class="relative pl-14 sm:pl-16">
-            <!-- Phase card -->
-            <div :class="[
-              'group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(15,23,42,0.1)]',
-              accentClasses[phase.accent].hover,
-            ]">
-              <!-- Accent top bar -->
-              <span :class="['absolute inset-x-0 top-0 h-1', accentClasses[phase.accent].bar]" aria-hidden="true" />
-
-              <!-- Decorative background -->
-              <span :class="[
-                'pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full blur-2xl',
-                accentClasses[phase.accent].blob,
-              ]" aria-hidden="true" />
-              <Icon :icon="phase.icon" :class="[
-                'pointer-events-none absolute -bottom-5 -right-3 h-28 w-28 rotate-6 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3',
-                accentClasses[phase.accent].watermark,
-              ]" aria-hidden="true" />
-
-              <div class="relative p-5 pt-6 sm:p-6 sm:pt-7">
-                <div class="flex flex-wrap items-center">
-                  <span class="text-md font-medium text-slate-400">
-                    #{{ phase.tag }}
+              <div class="relative flex items-center gap-4">
+                <span
+                  class="font-display text-4xl font-black leading-none sm:text-5xl"
+                  :class="accentClasses[phase.accent].number"
+                >
+                  {{ phaseNumber(pi) }}
+                </span>
+                <div class="min-w-0">
+                  <span
+                    :class="['inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide', accentClasses[phase.accent].tag]"
+                  >
+                    <Icon :icon="phase.icon" class="h-3.5 w-3.5" aria-hidden="true" />
+                    {{ phase.tag }}
                   </span>
+                  <h3 class="font-display mt-1.5 text-lg font-extrabold tracking-tight text-white sm:text-xl">
+                    {{ phase.title }}
+                  </h3>
                 </div>
-
-                <h3 class="font-display mt-2 text-lg font-extrabold tracking-tight text-slate-900 sm:text-xl">
-                  {{ phase.title }}
-                </h3>
-
-                <ul class="mt-5 grid gap-x-6 gap-y-4 sm:grid-cols-2" role="list">
-                  <li v-for="item in phase.items" :key="item.title" class="flex items-start gap-2.5">
-                    <Icon icon="mdi:check-circle"
-                      :class="['mt-0.5 h-4 w-4 shrink-0', accentClasses[phase.accent].check]" aria-hidden="true" />
-                    <p class="text-sm leading-relaxed text-slate-600">
-                      <span class="font-semibold text-slate-900">{{ item.title }}</span>
-                      <span class="block text-[13px] text-slate-500">{{ item.description }}</span>
-                    </p>
-                  </li>
-                </ul>
               </div>
             </div>
-          </div>
-        </li>
-      </ol>
+
+            <!-- Items -->
+            <div class="p-5 sm:p-7">
+              <ul class="grid gap-3.5 sm:grid-cols-2" role="list">
+                <li
+                  v-for="item in phase.items"
+                  :key="item.title"
+                  :class="[
+                    'flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white p-4 transition-colors duration-300',
+                    accentClasses[phase.accent].itemHover,
+                  ]"
+                >
+                  <span
+                    :class="['mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-50', accentClasses[phase.accent].check]"
+                  >
+                    <Icon :icon="item.icon" class="h-[18px] w-[18px]" aria-hidden="true" />
+                  </span>
+                  <p class="min-w-0">
+                    <span class="block text-sm font-semibold text-slate-900">{{ item.title }}</span>
+                    <span class="mt-1 block text-[13px] leading-relaxed text-slate-500">{{ item.description }}</span>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
 
       <p
-        class="mx-auto mt-10 max-w-3xl rounded-2xl border border-slate-200/80 bg-white px-6 py-5 text-center text-sm leading-relaxed text-slate-600 shadow-[0_1px_3px_rgba(15,23,42,0.04)] sm:text-base">
+        class="relative z-20 mx-auto mt-10 max-w-3xl rounded-2xl border border-slate-200/80 bg-white px-6 py-5 text-center text-sm leading-relaxed text-slate-600 shadow-[0_1px_3px_rgba(15,23,42,0.04)] sm:text-base"
+      >
         {{ aboutRoadmap.note }}
       </p>
     </div>
