@@ -95,7 +95,7 @@ const sectionHighlightClass = computed(() =>
 )
 
 const sectionDescriptionClass = computed(() => {
-  if (props.variant === 'section-dark') return 'mt-3 text-sm leading-relaxed text-slate-400 sm:text-base'
+  if (props.variant === 'section-dark') return 'mt-3 text-sm font-medium leading-relaxed text-white/90 sm:text-base'
   return 'mt-3 text-sm leading-relaxed text-slate-600 sm:text-base'
 })
 

@@ -71,7 +71,7 @@ export type ServiceZone = {
 export const contactHero = {
   badge: 'Cities of Operation',
   subheadline: 'Delivering Personalised Tutoring Services Across Major Cities and Educational Hubs',
-  primaryCta: { label: 'Explore Popular Cities', href: '#branch-offices' },
+  primaryCta: { label: 'Send an Enquiry', href: '#inquiry' },
   secondaryCta: { label: 'Contact Support', href: '#call-us' },
 } as const
 
@@ -194,6 +194,11 @@ export const branchOffices = {
 export const alsoServing = {
   intro:
     'In addition to our branch locations, Indian Mentors actively serves students in numerous growing educational hubs across India through our home tutoring network and online learning ecosystem.',
+  searchPlaceholder: 'Search other cities (e.g. Noida, Patna, Coimbatore)…',
+  emptyState: 'No cities match your search. Try another name, or contact us for home tutoring in your area.',
+  previewLimit: 20,
+  viewAllLabel: 'View all {count} cities',
+  viewLessLabel: 'Show fewer cities',
   supporting:
     'These cities benefit from our centralised mentor verification process, ERP monitoring system, and structured tutoring framework.',
   zones: [
@@ -417,7 +422,88 @@ export const alsoServing = {
   ] satisfies ServiceZone[],
 } as const
 
+export type SupportNumber = PhoneContact & {
+  purpose: string
+}
+
+/** Authorised support lines grouped by the purpose they best serve. */
+export const supportNumbers = [
+  { purpose: 'Enrollment & Admissions', display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
+  { purpose: 'Tutor Allocation', display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
+  { purpose: 'Demo Session Booking', display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
+  { purpose: 'Academic Counselling', display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
+  { purpose: 'Partnership Enquiries', display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
+  { purpose: 'Tutor Recruitment', display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
+] as const satisfies readonly SupportNumber[]
+
+export type FindUsOffice = {
+  id: string
+  kind: string
+  iconMdi: string
+  name: string
+  address: string
+  image: string
+  imageLabel: string
+  description: string
+}
+
+export const findUs = {
+  badge: 'Office Locations',
+  title: 'Headquarters & Central Operations',
+  description:
+    'Visit our headquarters or corporate office for in-person consultations and academic support.',
+  offices: [
+    {
+      id: 'head-office',
+      kind: 'Head Office',
+      iconMdi: 'mdi:office-building-marker-outline',
+      name: 'Indian Mentors – Personalised Tutoring Services',
+      address: headOffice.address,
+      image: 'contact/suyamall',
+      imageLabel: 'Headquarters',
+      description:
+        'The headquarters serves as the central hub for academic operations, tutor coordination, technology systems, and nationwide tutoring services. Our administrative and academic teams work from this location to support students, parents, tutors, and institutional partners across India.',
+    },
+    {
+      id: 'corporate-office',
+      kind: 'Corporate Office',
+      iconMdi: 'mdi:city-variant-outline',
+      name: 'Indian Mentors – Central Operations',
+      address:
+        'Office No 7-8-9, 5th Floor, Surya Treasure Island Mall, South Office Block, Junwani Road, Surya Vihar, Nehru Nagar, Bhilai, District Durg, Chhattisgarh 490020',
+      image: 'contact/suyamall',
+      imageLabel: 'Corporate Office',
+      description:
+        'The corporate office supports academic operations, tutor management, student support, and strategic coordination across India. Located in the educational and commercial hub of Bhilai, it ensures seamless coordination between students, parents, mentors, and institutional partners.',
+    },
+  ] satisfies FindUsOffice[],
+} as const
+
+export const officeLocator = {
+  badge: 'Office Locator',
+  title: 'Search Operational Office Locations',
+  description:
+    'Find the Indian Mentors operational office nearest to you. Search by city or area to view the full address and get directions.',
+  searchPlaceholder: 'Search by city or area (e.g. Mumbai, Sector 33, Junwani)…',
+  emptyState: 'No offices match your search. Try another city, or reach us on WhatsApp for home tutoring in your area.',
+} as const
+
+export const inquiryForm = {
+  badge: 'Send an Enquiry',
+  title: 'Quick Enquiry Form',
+  description: 'Share a few details — we respond within 24–48 working hours.',
+  interests: [
+    'Book a Free Demo',
+    'Enrollment & Admissions',
+    'Become a Tutor',
+    'Institutional Partnership',
+    'General Enquiry',
+  ] as const,
+  privacyNote: 'Your details stay private and are never shared with third parties.',
+} as const
+
 export const findMentorSection = {
+  badge: 'Mentor Network',
   title: 'Find a Mentor in Your City',
   description:
     'Whether you need home tutoring, online academic support, or specialised mentoring, Indian Mentors connects students with trusted educators across India.',

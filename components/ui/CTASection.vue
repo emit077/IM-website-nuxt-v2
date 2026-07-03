@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
+import CardHeader from '~/components/ui/cardheader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 
 type ContactCta = {
@@ -107,22 +108,8 @@ function onCtaMousemove(e: MouseEvent, isPrimary?: boolean) {
           :class="['pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full blur-3xl', styles.glowBottom]" />
 
         <div class="relative mx-auto max-w-2xl">
-          <span v-if="props.badge" :class="[
-            'inline-flex items-center gap-2 mb-5 rounded-full border px-4 py-1.5 text-xs font-bold uppercase tracking-[0.14em]',
-            styles.badge,
-          ]">
-            <Icon :icon="props.badgeIconMdi" class="h-4 w-4" aria-hidden="true" />
-            {{ props.badge }}
-          </span>
-
-          <h2 v-if="props.title" :id="props.headingId"
-            :class="['font-display text-2xl font-bold tracking-tight sm:text-3xl', styles.title]">
-            {{ props.title }}
-          </h2>
-          <p v-if="props.description"
-            :class="['mx-auto mt-3 max-w-xl text-sm leading-relaxed sm:text-base', styles.description]">
-            {{ props.description }}
-          </p>
+          <CardHeader :variant="isLight ? 'variant' : 'section-dark'" :heading-id="props.headingId"
+            content-class="!px-0 !py-0" :badge="props.badge" :title="props.title" :description="props.description" />
 
           <div class="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center"
             v-if="props.ctas.length > 0">

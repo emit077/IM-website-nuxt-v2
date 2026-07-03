@@ -22,8 +22,7 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
       <figure class="mx-auto max-w-3xl text-center" v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
         <Icon icon="mdi:format-quote-open" class="mx-auto h-9 w-9 text-blue-300" aria-hidden="true" />
-        <blockquote
-          class="font-display -mt-2 text-balance text-2xl font-extrabold leading-snug text-slate-900 sm:text-3xl">
+        <blockquote class="font-display -mt-2 text-balance italic text-xl   text-slate-500 sm:text-xl">
           {{ aboutMissionQuote }}
         </blockquote>
         <span aria-hidden="true" class="mx-auto mt-5 block h-1 w-16 rounded-full bg-blue-600" />
@@ -81,13 +80,12 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 560, delay: 120 } }">
         <div aria-hidden="true" class="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full " />
 
-        <div class="relative grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <CardHeader variant="section-left" dash-kicker heading-id="vision-heading" content-class="!px-0 !py-0 "
-            :badge="aboutVision.badge"
+        <div class="relative  items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          <CardHeader dash-kicker heading-id="vision-heading" content-class="!px-0 !py-0 " :badge="aboutVision.badge"
             title="Building India's Most Trusted  <span class='text-gradient-brand pt-2'>Personalised Tutoring Ecosystem</span>"
             :description="aboutVision.intro" />
           <!-- Eye orbit -->
-          <div class="flex justify-center lg:justify-end">
+          <!-- <div class="flex justify-center lg:justify-end">
             <div class="relative h-52 w-52 sm:h-56 sm:w-56">
               <span aria-hidden="true"
                 class="mv-spin absolute inset-2 rounded-full border border-dashed border-blue-200">
@@ -102,7 +100,7 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
                 <Icon icon="mdi:eye" class="h-11 w-11 text-blue-600 sm:h-12 sm:w-12" aria-hidden="true" />
               </span>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <!-- Future items -->
