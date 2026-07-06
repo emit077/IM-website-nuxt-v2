@@ -197,7 +197,7 @@ export const studentStories: StudentStory[] = [
 
 export const parentReviews: QuoteReview[] = [
   { id: 'sharma-delhi', name: 'Mrs. Sharma', location: 'Delhi', quote: 'Transparent system. I can track attendance and progress anytime. Very professional setup.' },
-  { id: 'iyer-bangalore', name: 'Mr. Iyer', location: 'Bangalore', quote: 'Tutor replacement was handled smoothly. Academic coordinator stayed involved throughout.' },
+  { id: 'iyer-bengaluru', name: 'Mr. Iyer', location: 'Bengaluru', quote: 'Tutor replacement was handled smoothly. Academic coordinator stayed involved throughout.' },
   { id: 'gupta-mumbai', name: 'Mr. Gupta', location: 'Mumbai', quote: 'Flexible scheduling helped us manage coaching and school together.' },
   { id: 'khan-hyderabad', name: 'Mrs. Khan', location: 'Hyderabad', quote: "My daughter's grades improved within three months. The dashboard updates are very helpful." },
   { id: 'patel-pune', name: 'Mrs. Patel', location: 'Pune', quote: 'Structured academic planning and regular reports make Indian Mentors different from local tuition services.' },

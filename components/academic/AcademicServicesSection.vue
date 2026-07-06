@@ -102,58 +102,31 @@ function cardWidthClass() {
 </script>
 
 <template>
-  <section
-    id="academic-services"
-    class="relative overflow-hidden bg-cream-50 py-12 sm:py-14 lg:py-16"
-    aria-labelledby="academic-services-heading"
-  >
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#eef1ff] to-transparent"
-    />
+  <section id="academic-services" class="relative overflow-hidden bg-cream-50 py-12 sm:py-14 lg:py-16"
+    aria-labelledby="academic-services-heading">
+    <div aria-hidden="true"
+      class="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[#eef1ff] to-transparent" />
 
     <div class="container-page relative z-[1]">
-      <CardHeader
-        variant="section"
-        heading-id="academic-services-heading"
-        content-class="!px-0 !py-0"
-        badge="Our services"
-        title='Six ways we <span class="text-gradient-brand">reach you</span>'
-      />
+      <CardHeader heading-id="academic-services-heading" content-class="!px-0 !py-0" badge="Our services"
+        title='Six ways we <span class="text-gradient-brand">reach you</span>' />
 
       <!-- Visual mode picker strip -->
-      <div
-        class="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-3"
-        aria-hidden="true"
-      >
-        <span
-          v-for="(icon, i) in modeIcons"
-          :key="icon"
+      <div class="mx-auto mt-8 flex max-w-3xl flex-wrap items-center justify-center gap-3" aria-hidden="true">
+        <span v-for="(icon, i) in modeIcons" :key="icon"
           class="grid h-12 w-12 place-items-center rounded-2xl bg-white text-blue-600 shadow-md ring-1 ring-slate-200/80 transition hover:-translate-y-1 hover:shadow-lg"
-          v-motion
-          :initial="{ opacity: 0, rotate: -8 }"
-          :visibleOnce="{ opacity: 1, rotate: 0, transition: { delay: i * 50, duration: 400 } }"
-        >
+          v-motion :initial="{ opacity: 0, rotate: -8 }"
+          :visibleOnce="{ opacity: 1, rotate: 0, transition: { delay: i * 50, duration: 400 } }">
           <Icon :icon="icon" class="h-6 w-6" />
         </span>
       </div>
 
       <div class="mt-8 flex flex-wrap justify-center gap-4 sm:gap-5">
-        <ServiceOfferingCard
-          v-for="(service, i) in services"
-          :key="service.title"
-          :class="cardWidthClass()"
-          :title="service.title"
-          :description="service.description"
-          :features="service.features"
-          :icon-mdi="service.iconMdi"
-          :animation-index="i"
-          :accent="service.accent"
-          href="#book-demo"
-          v-motion
+        <ServiceOfferingCard v-for="(service, i) in services" :key="service.title" :class="cardWidthClass()"
+          :title="service.title" :description="service.description" :features="service.features"
+          :icon-mdi="service.iconMdi" :animation-index="i" :accent="service.accent" href="#book-demo" v-motion
           :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 100 + i * 70, duration: 480 } }"
-        />
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 100 + i * 70, duration: 480 } }" />
       </div>
     </div>
   </section>

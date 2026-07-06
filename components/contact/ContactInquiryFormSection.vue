@@ -90,7 +90,7 @@ function onWhatsApp() {
     <div class="container-page">
       <div class="mx-auto max-w-xl">
         <CardHeader heading-id="inquiry-heading" content-class="!px-0 !py-0" :badge="inquiryForm.badge"
-          :title="inquiryForm.title" :description="inquiryForm.description" />
+          title="Quick <span class='text-gradient-brand'>Enquiry Form</span>" :description="inquiryForm.description" />
 
         <form novalidate class="mt-6 rounded-2xl border border-slate-200/70 bg-cream-50 p-5 shadow-soft sm:p-6"
           @submit.prevent="onSubmit">

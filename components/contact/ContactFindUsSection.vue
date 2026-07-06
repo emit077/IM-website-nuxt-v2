@@ -12,7 +12,8 @@ function mapsUrl(address: string) {
   <section id="find-us" class="scroll-mt-24 border-b border-slate-200/70 bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="find-us-heading">
     <div class="container-page">
-      <CardHeader heading-id="find-us-heading" content-class="!px-0 !py-0" :badge="findUs.badge" :title="findUs.title"
+      <CardHeader heading-id="find-us-heading" content-class="!px-0 !py-0" :badge="findUs.badge"
+        title="Headquarters & <span class='text-gradient-brand'>Central Operations</span>"
         :description="findUs.description" v-motion :initial="{ opacity: 0, y: 12 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }" />
 

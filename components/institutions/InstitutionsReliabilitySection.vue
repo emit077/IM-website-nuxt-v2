@@ -10,7 +10,7 @@ import { reliabilityPillars } from '~/data/institutions'
     aria-labelledby="reliability-heading">
     <div class="container-page">
       <CardHeader
-        variant="section"
+        
         heading-id="reliability-heading"
         content-class="!px-0 !py-0"
         badge="Quality Assurance"

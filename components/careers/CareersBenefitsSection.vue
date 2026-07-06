@@ -35,50 +35,30 @@ const accentClasses: Record<
 </script>
 
 <template>
-  <section
-    id="benefits"
-    class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
-    aria-labelledby="benefits-heading"
-  >
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute -right-16 top-10 h-72 w-72 rounded-full bg-blue-100/40 blur-3xl"
-    />
+  <section id="benefits" class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
+    aria-labelledby="benefits-heading">
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -right-16 top-10 h-72 w-72 rounded-full bg-blue-100/40 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader
-        variant="section"
-        heading-id="benefits-heading"
-        content-class="!px-0 !py-0"
-        :badge="benefitsSection.kicker"
-        :title="`${benefitsSection.title} `"
-        :title-highlight="benefitsSection.titleHighlight"
-        :description="benefitsSection.description"
-      />
+      <CardHeader heading-id="benefits-heading" content-class="!px-0 !py-0" :badge="benefitsSection.kicker"
+        :title="`${benefitsSection.title} `" :title-highlight="benefitsSection.titleHighlight"
+        :description="benefitsSection.description" />
 
       <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
-        <article
-          v-for="(benefit, i) in careerBenefits"
-          :key="benefit.id"
+        <article v-for="(benefit, i) in careerBenefits" :key="benefit.id"
           class="group relative flex flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_20px_48px_-18px_rgba(15,23,42,0.18)] sm:p-7"
-          v-motion
-          :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: i * 80 } }"
-        >
-          <div
-            aria-hidden="true"
-            :class="[
-              'pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-gradient-to-br to-transparent opacity-0 blur-2xl transition duration-500 group-hover:opacity-100',
-              accentClasses[benefit.accent].glow,
-            ]"
-          />
+          v-motion :initial="{ opacity: 0, y: 14 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: i * 80 } }">
+          <div aria-hidden="true" :class="[
+            'pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-gradient-to-br to-transparent opacity-0 blur-2xl transition duration-500 group-hover:opacity-100',
+            accentClasses[benefit.accent].glow,
+          ]" />
 
-          <span
-            :class="[
-              'relative inline-flex h-12 w-12 items-center justify-center rounded-2xl ring-1 transition duration-300 group-hover:scale-105',
-              accentClasses[benefit.accent].tile,
-            ]"
-          >
+          <span :class="[
+            'relative inline-flex h-12 w-12 items-center justify-center rounded-2xl ring-1 transition duration-300 group-hover:scale-105',
+            accentClasses[benefit.accent].tile,
+          ]">
             <Icon :icon="benefit.iconMdi" class="h-6 w-6" aria-hidden="true" />
           </span>
 
@@ -89,13 +69,10 @@ const accentClasses: Record<
             {{ benefit.description }}
           </p>
 
-          <div
-            aria-hidden="true"
-            :class="[
-              'relative mt-6 h-1 w-10 rounded-full transition-all duration-500 group-hover:w-full',
-              accentClasses[benefit.accent].bar,
-            ]"
-          />
+          <div aria-hidden="true" :class="[
+            'relative mt-6 h-1 w-10 rounded-full transition-all duration-500 group-hover:w-full',
+            accentClasses[benefit.accent].bar,
+          ]" />
         </article>
       </div>
     </div>

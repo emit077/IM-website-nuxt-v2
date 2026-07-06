@@ -22,14 +22,9 @@ const accentClasses: Record<HiringStep['accent'], { badge: string; tile: string;
       class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-blue-100/50 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader
-        variant="section"
-        heading-id="hiring-process-heading"
-        content-class="!px-0 !py-0"
-        badge="Tutor Hiring Process"
+      <CardHeader heading-id="hiring-process-heading" content-class="!px-0 !py-0" badge="Tutor Hiring Process"
         title='From registration to your <span class="text-gradient-brand">first session</span>'
-        description="A structured onboarding process designed to maintain high academic standards — so students and parents always receive reliable, qualified mentors."
-      />
+        description="A structured onboarding process designed to maintain high academic standards — so students and parents always receive reliable, qualified mentors." />
 
       <!-- Steps -->
       <div class="relative mx-auto mt-12 max-w-5xl">

@@ -8,13 +8,8 @@ import { planPositioning, subscriptionComparisonRows } from '~/data/student-pare
   <section id="plan-comparison" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="plan-comparison-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="plan-comparison-heading"
-        content-class="!px-0 !py-0"
-        badge="Compare Plans"
-        title='Gold, Diamond, or Platinum — <span class="text-gradient-brand">side by side</span>'
-      />
+      <CardHeader heading-id="plan-comparison-heading" content-class="!px-0 !py-0" badge="Compare Plans"
+        title='Gold, Diamond, or Platinum — <span class="text-gradient-brand">side by side</span>' />
 
       <!-- Comparison table (desktop) -->
       <div class="mt-10 hidden overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-soft lg:block"
@@ -77,7 +72,8 @@ import { planPositioning, subscriptionComparisonRows } from '~/data/student-pare
           class="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-soft" v-motion
           :initial="{ opacity: 0, y: 10 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 50 + i * 60, duration: 400 } }">
-          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600 ring-1 ring-blue-100">
+          <span
+            class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600 ring-1 ring-blue-100">
             <Icon :icon="pos.iconMdi" class="h-[18px] w-[18px]" aria-hidden="true" />
           </span>
           <div>

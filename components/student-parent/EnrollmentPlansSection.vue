@@ -13,14 +13,9 @@ import {
   <section id="enrollment-plans" class="relative bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="enrollment-plans-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="enrollment-plans-heading"
-        content-class="!px-0 !py-0"
-        badge="Enrollment Plans"
+      <CardHeader heading-id="enrollment-plans-heading" content-class="!px-0 !py-0" badge="Enrollment Plans"
         title="Start free, upgrade <span class=&quot;text-gradient-brand&quot;>when you're ready</span>"
-        description="Try the platform with a Free Student Profile, or unlock priority matching, detailed reports, and dedicated support with Premium."
-      />
+        description="Try the platform with a Free Student Profile, or unlock priority matching, detailed reports, and dedicated support with Premium." />
 
       <!-- Plan cards -->
       <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 lg:grid-cols-2">
@@ -82,8 +77,7 @@ import {
 
       <!-- Comparison table -->
       <div class="mx-auto mt-12 max-w-4xl overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-soft"
-        v-motion :initial="{ opacity: 0, y: 16 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
+        v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
         <div class="border-b border-slate-200/80 px-5 py-4 sm:px-6">
           <h3 class="font-display text-base font-bold text-slate-900 sm:text-lg">Free vs Premium at a glance</h3>
         </div>
@@ -99,8 +93,7 @@ import {
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in planComparisonRows" :key="row.feature"
-                class="border-b border-slate-100 last:border-0">
+              <tr v-for="row in planComparisonRows" :key="row.feature" class="border-b border-slate-100 last:border-0">
                 <td class="px-6 py-3 font-medium text-slate-800">{{ row.feature }}</td>
                 <td class="px-6 py-3 text-slate-500">{{ row.free }}</td>
                 <td class="px-6 py-3 font-medium text-blue-700">{{ row.premium }}</td>

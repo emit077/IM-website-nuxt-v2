@@ -62,53 +62,38 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
 <template>
   <section id="roadmap" class="bg-slate-50 py-14 sm:py-16 lg:py-20" aria-labelledby="roadmap-heading">
     <div class="container-page">
-      <CardHeader variant="section" heading-id="roadmap-heading" content-class="!px-0 !py-0" :badge="aboutRoadmap.badge"
+      <CardHeader heading-id="roadmap-heading" content-class="!px-0 !py-0" :badge="aboutRoadmap.badge"
         :title="headerTitle" :description="aboutRoadmap.subtitle" />
 
       <!-- Parallax stacking cards -->
       <div class="mx-auto mt-12 max-w-4xl">
-        <div
-          v-for="(phase, pi) in aboutRoadmap.phases"
-          :key="phase.id"
-          class="sticky"
+        <div v-for="(phase, pi) in aboutRoadmap.phases" :key="phase.id" class="sticky"
           :style="{ top: `calc(5.5rem + ${pi * 2.25}rem)`, zIndex: 10 + pi }"
-          :class="pi === aboutRoadmap.phases.length - 1 ? '' : 'pb-8 sm:pb-10'"
-        >
-          <article
-            v-motion
-            :initial="{ opacity: 0, y: 40, scale: 0.97 }"
-            :visibleOnce="{ opacity: 1, y: 0, scale: 1, transition: { duration: 520, delay: 60 } }"
-            :class="[
+          :class="pi === aboutRoadmap.phases.length - 1 ? '' : 'pb-8 sm:pb-10'">
+          <article v-motion :initial="{ opacity: 0, y: 40, scale: 0.97 }"
+            :visibleOnce="{ opacity: 1, y: 0, scale: 1, transition: { duration: 520, delay: 60 } }" :class="[
               'group relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_60px_-25px_rgba(15,23,42,0.35)] ring-1',
               accentClasses[phase.accent].ring,
-            ]"
-          >
+            ]">
             <!-- Colored header band -->
-            <div :class="['relative overflow-hidden bg-gradient-to-r px-5 py-5 sm:px-7 sm:py-6', accentClasses[phase.accent].header]">
+            <div
+              :class="['relative overflow-hidden bg-gradient-to-r px-5 py-5 sm:px-7 sm:py-6', accentClasses[phase.accent].header]">
               <span
                 :class="['pointer-events-none absolute -right-6 -top-10 h-36 w-36 rounded-full blur-2xl', accentClasses[phase.accent].glow]"
-                aria-hidden="true"
-              />
-              <Icon
-                :icon="phase.icon"
-                :class="[
-                  'pointer-events-none absolute -bottom-6 right-4 h-28 w-28 rotate-6 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3',
-                  accentClasses[phase.accent].watermark,
-                ]"
-                aria-hidden="true"
-              />
+                aria-hidden="true" />
+              <Icon :icon="phase.icon" :class="[
+                'pointer-events-none absolute -bottom-6 right-4 h-28 w-28 rotate-6 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3',
+                accentClasses[phase.accent].watermark,
+              ]" aria-hidden="true" />
 
               <div class="relative flex items-center gap-4">
-                <span
-                  class="font-display text-4xl font-black leading-none sm:text-5xl"
-                  :class="accentClasses[phase.accent].number"
-                >
+                <span class="font-display text-4xl font-black leading-none sm:text-5xl"
+                  :class="accentClasses[phase.accent].number">
                   {{ phaseNumber(pi) }}
                 </span>
                 <div class="min-w-0">
                   <span
-                    :class="['inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide', accentClasses[phase.accent].tag]"
-                  >
+                    :class="['inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide', accentClasses[phase.accent].tag]">
                     <Icon :icon="phase.icon" class="h-3.5 w-3.5" aria-hidden="true" />
                     {{ phase.tag }}
                   </span>
@@ -122,17 +107,12 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
             <!-- Items -->
             <div class="p-5 sm:p-7">
               <ul class="grid gap-3.5 sm:grid-cols-2" role="list">
-                <li
-                  v-for="item in phase.items"
-                  :key="item.title"
-                  :class="[
-                    'flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white p-4 transition-colors duration-300',
-                    accentClasses[phase.accent].itemHover,
-                  ]"
-                >
+                <li v-for="item in phase.items" :key="item.title" :class="[
+                  'flex items-start gap-3 rounded-2xl border border-slate-200/70 bg-white p-4 transition-colors duration-300',
+                  accentClasses[phase.accent].itemHover,
+                ]">
                   <span
-                    :class="['mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-50', accentClasses[phase.accent].check]"
-                  >
+                    :class="['mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-50', accentClasses[phase.accent].check]">
                     <Icon :icon="item.icon" class="h-[18px] w-[18px]" aria-hidden="true" />
                   </span>
                   <p class="min-w-0">
@@ -147,8 +127,7 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
       </div>
 
       <p
-        class="relative z-20 mx-auto mt-10 max-w-3xl rounded-2xl border border-slate-200/80 bg-white px-6 py-5 text-center text-sm leading-relaxed text-slate-600 shadow-[0_1px_3px_rgba(15,23,42,0.04)] sm:text-base"
-      >
+        class="relative z-20 mx-auto mt-10 max-w-3xl rounded-2xl border border-slate-200/80 bg-white px-6 py-5 text-center text-sm leading-relaxed text-slate-600 shadow-[0_1px_3px_rgba(15,23,42,0.04)] sm:text-base">
         {{ aboutRoadmap.note }}
       </p>
     </div>

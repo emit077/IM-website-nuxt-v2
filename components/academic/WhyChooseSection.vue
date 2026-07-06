@@ -74,13 +74,8 @@ const reasons: Reason[] = [
       class="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-blue-200/25 blur-3xl" />
 
     <div class="container-page relative z-[1]">
-      <CardHeader
-        variant="section"
-        heading-id="why-choose-heading"
-        content-class="!px-0 !py-0"
-        badge="Why Indian Mentors"
-        title='Built for <span class="text-gradient-brand">trust</span>, not just tutoring'
-      />
+      <CardHeader heading-id="why-choose-heading" content-class="!px-0 !py-0" badge="Why Indian Mentors"
+        title='Built for <span class="text-gradient-brand">trust</span>, not just tutoring' />
 
       <!-- Bento mosaic -->
       <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:gap-5">

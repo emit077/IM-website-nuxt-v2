@@ -8,14 +8,9 @@ import { whoCanApplySection, eligibleApplicants } from '~/data/channel-partner'
   <section id="who-can-apply" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="who-can-apply-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="who-can-apply-heading"
-        content-class="!px-0 !py-0"
-        :badge="whoCanApplySection.kicker"
+      <CardHeader heading-id="who-can-apply-heading" content-class="!px-0 !py-0" :badge="whoCanApplySection.kicker"
         title='Ideal <span class="text-gradient-brand">partner profiles</span>'
-        :description="whoCanApplySection.description"
-      />
+        :description="whoCanApplySection.description" />
 
       <!-- Applicant cards -->
       <ul class="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4" role="list">

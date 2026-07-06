@@ -14,14 +14,9 @@ const frameworkSteps = ['Plan', 'Track', 'Review', 'Improve']
 <template>
   <section id="erp-dashboard" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20" aria-labelledby="erp-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="erp-heading"
-        content-class="!px-0 !py-0"
-        badge="Learning Dashboard"
+      <CardHeader heading-id="erp-heading" content-class="!px-0 !py-0" badge="Learning Dashboard"
         title='Complete transparency for <span class="text-gradient-brand">parents and students</span>'
-        description="Every session, report, and payment is tracked in one ERP-powered dashboard — so you always know exactly how learning is progressing."
-      />
+        description="Every session, report, and payment is tracked in one ERP-powered dashboard — so you always know exactly how learning is progressing." />
 
       <!-- Framework strip -->
       <div class="mx-auto mt-8 flex flex-wrap items-center justify-center gap-2" v-motion

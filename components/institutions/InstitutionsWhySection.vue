@@ -10,7 +10,7 @@ import { whyChooseAdvantages, institutionalSupport } from '~/data/institutions'
     aria-labelledby="why-institutions-heading">
     <div class="container-page">
       <CardHeader
-        variant="section"
+        
         heading-id="why-institutions-heading"
         content-class="!px-0 !py-0"
         badge="Why Indian Mentors"

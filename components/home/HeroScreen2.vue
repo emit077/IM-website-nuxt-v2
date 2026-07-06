@@ -26,8 +26,8 @@ const heroSectionStyle = {
 </script>
 
 <template>
-  <section class="relative overflow-hidden bg-white bg-contain bg-center bg-no-repeat"
-    aria-labelledby="hero-screen-2-heading" :style="heroSectionStyle">
+  <section class="relative overflow-hidden bg-white  bg-right bg-no-repeat" aria-labelledby="hero-screen-2-heading"
+    :style="heroSectionStyle">
     <div aria-hidden="true" class="absolute inset-0 -z-10 bg-mesh-light"></div>
     <div aria-hidden="true" class="absolute inset-0 -z-10 opacity-[0.04]"
       style="background-image: radial-gradient(#1e293b 0.8px, transparent 0.8px); background-size: 24px 24px"></div>

@@ -24,6 +24,7 @@ export const popularCities = [
   { id: 'hyderabad', icon: 'hydrabad', label: 'Hyderabad' },
   { id: 'chandigarh', icon: 'chandigarh', label: 'Chandigarh' },
   { id: 'ahmedabad', icon: 'ahmdabad', label: 'Ahmedabad' },
+  { id: 'hydrabad', icon: 'hydrabad', label: 'Hyderabad' },
   { id: 'pune', icon: 'pune', label: 'Pune' },
   { id: 'chennai', icon: 'chennai', label: 'Chennai' },
   { id: 'kolkata', icon: 'kolkata', label: 'Kolkata' },
@@ -44,11 +45,12 @@ export const popularCityImages = [
   { id: 'delhi', image: 'delhi', label: 'Delhi-NCR' },
   { id: 'bengaluru', image: 'bangluru', label: 'Bengaluru' },
   { id: 'chennai', image: 'chennai', label: 'Chennai' },
-  { id: 'kolkata', image: 'kolkata', label: 'Kolkata' },
+  { id: 'hydrabad', image: 'hydrabad', label: 'Hyderabad' },
   { id: 'pune', image: 'pune', label: 'Pune' },
   { id: 'ahmedabad', image: 'ahmdabad', label: 'Ahmedabad' },
   { id: 'raipur', image: 'raipur', label: 'Raipur' },
   { id: 'jaipur', image: 'jaipur', label: 'Jaipur' },
+  { id: 'kolkata', image: 'kolkata', label: 'Kolkata' },
   { id: 'indore', image: 'indore', label: 'Indore' },
   { id: 'lucknow', image: 'lucknow', label: 'Lucknow' },
   { id: 'kochi', image: 'kochi', label: 'Kochi' },
@@ -70,7 +72,7 @@ export type ServiceZone = {
 
 export const contactHero = {
   badge: 'Cities of Operation',
-  subheadline: 'Delivering Personalised Tutoring Services Across Major Cities and Educational Hubs',
+  subheadline: 'Delivering personalised tutoring across major cities with verified tutors, dedicated  support, and technology-driven learning.',
   primaryCta: { label: 'Send an Enquiry', href: '#inquiry' },
   secondaryCta: { label: 'Contact Support', href: '#call-us' },
 } as const
@@ -113,10 +115,10 @@ export const branchOffices = {
       address: 'Sarojini Nagar, New Delhi, Delhi 110023',
     },
     {
-      city: 'Bangalore',
+      city: 'Bengaluru',
       label: 'Bengaluru',
       address:
-        '1st Cross, Near Prakash Traders, 80ft Road, Kattriguppe Grama, Banashankari 3rd Stage, Bangalore, Karnataka 560085',
+        '1st Cross, Near Prakash Traders, 80ft Road, Kattriguppe Grama, Banashankari 3rd Stage, Bengaluru, Karnataka 560085',
     },
     {
       city: 'Hyderabad',
@@ -194,7 +196,7 @@ export const branchOffices = {
 export const alsoServing = {
   intro:
     'In addition to our branch locations, Indian Mentors actively serves students in numerous growing educational hubs across India through our home tutoring network and online learning ecosystem.',
-  searchPlaceholder: 'Search other cities (e.g. Noida, Patna, Coimbatore)…',
+  searchPlaceholder: 'Search all cities and office locations (e.g. Mumbai, Noida, Sector 33)…',
   emptyState: 'No cities match your search. Try another name, or contact us for home tutoring in your area.',
   previewLimit: 20,
   viewAllLabel: 'View all {count} cities',

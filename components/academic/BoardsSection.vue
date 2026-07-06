@@ -66,14 +66,9 @@ const boardsDescription = computed(
       class="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-80 max-w-4xl bg-gradient-to-b from-blue-200/40 to-transparent blur-3xl" />
 
     <div class="container-page relative z-[1]">
-      <CardHeader
-        variant="section"
-        heading-id="boards-heading"
-        content-class="!px-0 !py-0"
-        badge="Boards covered"
+      <CardHeader heading-id="boards-heading" content-class="!px-0 !py-0" badge="Boards covered"
         title='Every major curriculum, <span class="text-gradient-brand">by country</span>'
-        :description="boardsDescription"
-      />
+        :description="boardsDescription" />
 
       <!-- Search + region filters -->
       <div class="mx-auto mt-8 max-w-4xl space-y-4">

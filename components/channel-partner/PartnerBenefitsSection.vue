@@ -16,14 +16,9 @@ const accentClasses: Record<BenefitCard['accent'], { tile: string; icon: string;
   <section id="partner-benefits" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="partner-benefits-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="partner-benefits-heading"
-        content-class="!px-0 !py-0"
-        :badge="benefitsSection.kicker"
+      <CardHeader heading-id="partner-benefits-heading" content-class="!px-0 !py-0" :badge="benefitsSection.kicker"
         title='A transparent and <span class="text-gradient-brand">scalable business model</span>'
-        :description="benefitsSection.description"
-      />
+        :description="benefitsSection.description" />
 
       <!-- Benefit cards -->
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">

@@ -62,59 +62,36 @@ const audienceCards = computed(() =>
 </script>
 
 <template>
-  <section
-    id="audience"
-    class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
-    aria-labelledby="audience-heading"
-  >
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute -left-16 top-16 h-64 w-64 rounded-full bg-blue-100/40 blur-3xl"
-    />
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute -right-20 bottom-8 h-72 w-72 rounded-full bg-violet-100/30 blur-3xl"
-    />
+  <section id="audience" class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
+    aria-labelledby="audience-heading">
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -left-16 top-16 h-64 w-64 rounded-full bg-blue-100/40 blur-3xl" />
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -right-20 bottom-8 h-72 w-72 rounded-full bg-violet-100/30 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader
-        variant="section"
-        heading-id="audience-heading"
-        content-class="!px-0 !py-0"
-        badge="Who we serve"
+      <CardHeader heading-id="audience-heading" content-class="!px-0 !py-0" badge="Who we serve"
         title='Designed for <span class="text-gradient-brand">Students Who…</span>'
-        :description="aboutAudience.subtitle"
-      />
+        :description="aboutAudience.subtitle" />
 
       <div class="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
-        <article
-          v-for="(card, i) in audienceCards"
-          :key="card.text"
-          :class="[
-            'group relative overflow-hidden rounded-[1.5rem] border bg-white p-6 transition duration-500 hover:-translate-y-1 hover:shadow-[0_20px_48px_-18px_rgba(37,99,235,0.18)] sm:p-7',
-            card.theme.border,
-          ]"
-          v-motion
-          :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: i * 80 } }"
-        >
-          <div
-            aria-hidden="true"
-            :class="[
-              'pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br to-transparent opacity-60 blur-2xl transition duration-500 group-hover:opacity-100',
-              card.theme.glow,
-            ]"
-          />
+        <article v-for="(card, i) in audienceCards" :key="card.text" :class="[
+          'group relative overflow-hidden rounded-[1.5rem] border bg-white p-6 transition duration-500 hover:-translate-y-1 hover:shadow-[0_20px_48px_-18px_rgba(37,99,235,0.18)] sm:p-7',
+          card.theme.border,
+        ]" v-motion :initial="{ opacity: 0, y: 14 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: i * 80 } }">
+          <div aria-hidden="true" :class="[
+            'pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br to-transparent opacity-60 blur-2xl transition duration-500 group-hover:opacity-100',
+            card.theme.glow,
+          ]" />
 
           <div class="relative flex items-start justify-between gap-3">
-            <span
-              :class="[
-                'inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ring-1',
-                card.theme.soft,
-                card.theme.accent,
-                card.theme.ring,
-              ]"
-            >
+            <span :class="[
+              'inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ring-1',
+              card.theme.soft,
+              card.theme.accent,
+              card.theme.ring,
+            ]">
               <Icon :icon="card.icon" class="h-6 w-6" aria-hidden="true" />
             </span>
             <span class="text-[11px] font-bold tabular-nums tracking-widest text-slate-300">
@@ -129,22 +106,17 @@ const audienceCards = computed(() =>
             {{ ' ' }}{{ card.body }}
           </p>
 
-          <div
-            aria-hidden="true"
-            :class="[
-              'absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-700 ease-out group-hover:w-full',
-              card.theme.accent.replace('text-', 'bg-'),
-            ]"
-          />
+          <div aria-hidden="true" :class="[
+            'absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-700 ease-out group-hover:w-full',
+            card.theme.accent.replace('text-', 'bg-'),
+          ]" />
         </article>
       </div>
 
       <div
         class="mx-auto mt-10 flex max-w-3xl flex-col items-center justify-between gap-4 rounded-2xl border border-slate-200/80 bg-slate-50/70 px-5 py-5 sm:flex-row sm:px-8 sm:py-6"
-        v-motion
-        :initial="{ opacity: 0, y: 12 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 200 } }"
-      >
+        v-motion :initial="{ opacity: 0, y: 12 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 200 } }">
         <div class="text-center sm:text-left">
           <p class="font-display text-base font-bold text-slate-900 sm:text-lg">
             Sound like your family?

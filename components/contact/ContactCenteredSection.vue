@@ -26,8 +26,8 @@ withDefaults(
   ]" :aria-labelledby="headingId">
     <div class="container-page">
       <div v-motion :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-        <CardHeader :heading-id="headingId" content-class="!px-0 !py-0" :badge="badge" :title="title"
-          :description="description" />
+        <CardHeader :heading-id="headingId" content-class="!px-0 !py-0" :badge="badge"
+          title="Find a Mentor in  <span class='text-gradient-brand'>Your City</span>" :description="description" />
         <p v-if="closing" class="mx-auto mt-3 max-w-3xl text-center text-sm font-semibold text-blue-700 sm:text-base">
           {{ closing }}
         </p>

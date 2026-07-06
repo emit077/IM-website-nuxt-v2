@@ -18,7 +18,7 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
     aria-labelledby="sectors-heading">
     <div class="container-page">
       <CardHeader
-        variant="section"
+        
         heading-id="sectors-heading"
         content-class="!px-0 !py-0"
         badge="Hire Teachers For"

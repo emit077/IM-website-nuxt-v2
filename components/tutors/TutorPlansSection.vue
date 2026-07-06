@@ -9,14 +9,9 @@ import { tutorPlans } from '~/data/tutors'
   <section id="tutor-plans" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="tutor-plans-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="tutor-plans-heading"
-        content-class="!px-0 !py-0"
-        badge="Tutor Registration Plans"
+      <CardHeader heading-id="tutor-plans-heading" content-class="!px-0 !py-0" badge="Tutor Registration Plans"
         title='Flexible plans for <span class="text-gradient-brand">every stage</span> of your career'
-        description="Start with a free profile and verification, or go Premium for priority leads, featured visibility, and faster payouts."
-      />
+        description="Start with a free profile and verification, or go Premium for priority leads, featured visibility, and faster payouts." />
 
       <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 lg:grid-cols-2">
         <article v-for="(plan, i) in tutorPlans" :key="plan.id" :class="[

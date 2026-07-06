@@ -12,14 +12,9 @@ const cards = [brochureCard, landingCard]
   <section id="tutor-resources" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="tutor-resources-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="tutor-resources-heading"
-        content-class="!px-0 !py-0"
-        badge="Know Before You Join"
+      <CardHeader heading-id="tutor-resources-heading" content-class="!px-0 !py-0" badge="Know Before You Join"
         title='Understand the <span class="text-gradient-brand">partnership model</span> first'
-        description="Explore the official tutors brochure and opportunities overview — everything an educator needs to know about collaborating with Indian Mentors."
-      />
+        description="Explore the official tutors brochure and opportunities overview — everything an educator needs to know about collaborating with Indian Mentors." />
 
       <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 lg:grid-cols-2">
         <article v-for="(card, i) in cards" :key="card.badge"

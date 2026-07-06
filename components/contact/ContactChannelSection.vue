@@ -17,7 +17,7 @@ const primaryWa = whatsappSupport.numbers[0]
     aria-labelledby="contact-support-heading">
     <div class="container-page">
       <CardHeader heading-id="contact-support-heading" content-class="!px-0 !py-0" badge="Contact Support"
-        title="Reach Us Through Your Preferred Channel"
+        title="Reach Us Through Your <span class='text-gradient-brand'>Preferred Channel</span>"
         description="Call, chat, or email — our support team is ready to help with enrollment, tutor allocation, and demo bookings." />
 
       <!-- Support channel cards -->
@@ -26,23 +26,21 @@ const primaryWa = whatsappSupport.numbers[0]
         <!-- Call -->
         <div id="call-us-phone"
           class="group flex flex-col rounded-3xl border border-slate-200/70 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg sm:p-7">
-          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-blue-600 text-white ring-4 ring-blue-100"
-            aria-hidden="true">
-            <Icon icon="mdi:phone-outline" class="h-5 w-5" />
-          </span>
-          <h3 class="mt-5 text-lg font-bold text-slate-900">Call Support</h3>
-          <p class="mt-1.5 text-sm leading-relaxed text-slate-600">Speak with our support team</p>
-          <ul class="mt-4 space-y-1.5" role="list">
-            <li v-for="number in whatsappSupport.numbers" :key="`call-${number.tel}`">
-              <a :href="`tel:${number.tel}`"
-                class="text-sm font-semibold tracking-wide text-slate-800 transition hover:text-blue-700">
-                {{ number.display }}
-              </a>
-            </li>
-          </ul>
+          <div class="flex items-center gap-3">
+            <span
+              class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-600 text-white ring-4 ring-blue-100"
+              aria-hidden="true">
+              <Icon icon="mdi:phone-outline" class="h-5 w-5" />
+            </span>
+            <div class="min-w-0">
+              <h3 class="text-lg font-bold text-slate-900">Call Support</h3>
+              <p class="mt-0.5 text-sm leading-snug text-slate-600">Speak with our support team</p>
+            </div>
+          </div>
+
           <a :href="`tel:${phoneSupport.number.tel}`"
             class="mt-auto pt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:gap-2.5">
-            Call Now
+            Call Now {{ phoneSupport.number.display }}
             <Icon icon="mdi:chevron-right" class="h-4 w-4" aria-hidden="true" />
           </a>
         </div>
@@ -50,23 +48,20 @@ const primaryWa = whatsappSupport.numbers[0]
         <!-- WhatsApp -->
         <div id="whatsapp"
           class="group flex flex-col rounded-3xl border border-slate-200/70 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-lg sm:p-7">
-          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-600 text-white ring-4 ring-emerald-100"
-            aria-hidden="true">
-            <Icon icon="mdi:whatsapp" class="h-5 w-5" />
-          </span>
-          <h3 class="mt-5 text-lg font-bold text-slate-900">WhatsApp Support</h3>
-          <p class="mt-1.5 text-sm leading-relaxed text-slate-600">Instant replies during working hours</p>
-          <ul class="mt-4 space-y-1.5" role="list">
-            <li v-for="number in whatsappSupport.numbers" :key="`wa-${number.tel}`">
-              <a v-if="number.wa" :href="`https://wa.me/${number.wa}`" target="_blank" rel="noopener noreferrer"
-                class="text-sm font-semibold tracking-wide text-slate-800 transition hover:text-emerald-700">
-                {{ number.display }}
-              </a>
-            </li>
-          </ul>
+          <div class="flex items-center gap-3">
+            <span
+              class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-600 text-white ring-4 ring-emerald-100"
+              aria-hidden="true">
+              <Icon icon="mdi:whatsapp" class="h-5 w-5" />
+            </span>
+            <div class="min-w-0">
+              <h3 class="text-lg font-bold text-slate-900">WhatsApp Support</h3>
+              <p class="mt-0.5 text-sm leading-snug text-slate-600">Instant replies during working hours</p>
+            </div>
+          </div>
           <a v-if="primaryWa.wa" :href="`https://wa.me/${primaryWa.wa}`" target="_blank" rel="noopener noreferrer"
             class="mt-auto pt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 transition hover:gap-2.5">
-            Chat on WhatsApp
+            Chat on WhatsApp {{ primaryWa.display }}
             <Icon icon="mdi:chevron-right" class="h-4 w-4" aria-hidden="true" />
           </a>
         </div>
@@ -74,16 +69,20 @@ const primaryWa = whatsappSupport.numbers[0]
         <!-- Email -->
         <div id="email"
           class="group flex flex-col rounded-3xl border border-slate-200/70 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-indigo-200 hover:shadow-lg sm:p-7">
-          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-indigo-600 text-white ring-4 ring-indigo-100"
-            aria-hidden="true">
-            <Icon icon="mdi:email-outline" class="h-5 w-5" />
-          </span>
-          <h3 class="mt-5 text-lg font-bold text-slate-900">Email Support</h3>
-          <p class="mt-1.5 text-sm leading-relaxed text-slate-600">Replies within 24–48 working hours</p>
-          <p class="mt-4 break-all text-sm font-semibold tracking-wide text-slate-800">{{ emailSupport.address }}</p>
+          <div class="flex items-center gap-3">
+            <span
+              class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-indigo-600 text-white ring-4 ring-indigo-100"
+              aria-hidden="true">
+              <Icon icon="mdi:email-outline" class="h-5 w-5" />
+            </span>
+            <div class="min-w-0">
+              <h3 class="text-lg font-bold text-slate-900">Email Support</h3>
+              <p class="mt-0.5 text-sm leading-snug text-slate-600">Replies within 24–48 working hours</p>
+            </div>
+          </div>
           <a :href="`mailto:${emailSupport.address}`"
             class="mt-auto pt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-700 transition hover:gap-2.5">
-            Write to Us
+            Write to Us {{ emailSupport.address }}
             <Icon icon="mdi:chevron-right" class="h-4 w-4" aria-hidden="true" />
           </a>
         </div>

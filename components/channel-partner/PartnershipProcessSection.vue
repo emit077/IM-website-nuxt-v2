@@ -23,8 +23,8 @@ const accentClasses: Record<ProcessStep['accent'], { badge: string; tile: string
       class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-blue-100/50 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader variant="section" heading-id="partnership-process-heading" content-class="!px-0 !py-0"
-        :badge="processSection.kicker" title='Simple and <span class="text-gradient-brand">structured onboarding</span>'
+      <CardHeader heading-id="partnership-process-heading" content-class="!px-0 !py-0" :badge="processSection.kicker"
+        title='Simple and <span class="text-gradient-brand">structured onboarding</span>'
         :description="processSection.description" />
 
       <!-- Journey strip: Register → Collaborate → Earn -->

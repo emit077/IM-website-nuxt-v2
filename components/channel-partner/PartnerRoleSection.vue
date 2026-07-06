@@ -8,14 +8,9 @@ import { roleSection, responsibilities } from '~/data/channel-partner'
   <section id="partner-role" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
     aria-labelledby="partner-role-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="partner-role-heading"
-        content-class="!px-0 !py-0"
-        :badge="roleSection.kicker"
+      <CardHeader heading-id="partner-role-heading" content-class="!px-0 !py-0" :badge="roleSection.kicker"
         title='Your role in the <span class="text-gradient-brand">Indian Mentors ecosystem</span>'
-        :description="roleSection.description"
-      />
+        :description="roleSection.description" />
 
       <!-- Responsibilities grid -->
       <ul class="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3" role="list">

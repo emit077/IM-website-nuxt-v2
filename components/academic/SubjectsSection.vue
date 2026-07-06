@@ -82,14 +82,9 @@ const activeStream = computed(() => streams.find((s) => s.id === active.value) ?
   <section id="subjects-offered" class="relative bg-cream-50 py-14 sm:py-16 lg:py-24"
     aria-labelledby="subjects-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="subjects-heading"
-        content-class="!px-0 !py-0 max-w-3xl mx-auto"
-        badge="Subjects offered"
+      <CardHeader heading-id="subjects-heading" content-class="!px-0 !py-0 max-w-3xl mx-auto" badge="Subjects offered"
         title='Pick a stream — <span class="text-gradient-brand">see what we teach</span>'
-        description="250+ subjects across sciences, languages, commerce, humanities and competitive tracks — taught by mentors matched to your board and goals."
-      />
+        description="250+ subjects across sciences, languages, commerce, humanities and competitive tracks — taught by mentors matched to your board and goals." />
 
       <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 auto-rows-[120px] sm:auto-rows-[130px]">
         <button v-for="(stream, i) in streams" :key="stream.id" type="button" :class="[

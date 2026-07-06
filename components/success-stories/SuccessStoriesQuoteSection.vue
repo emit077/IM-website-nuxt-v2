@@ -18,35 +18,20 @@ function initials(name: string) {
 </script>
 
 <template>
-  <section
-    :id="section.id === 'institutions' ? 'institutional-feedback' : `${section.id}-reviews`"
+  <section :id="section.id === 'institutions' ? 'institutional-feedback' : `${section.id}-reviews`"
     :class="['relative scroll-mt-28 py-14 sm:py-16 lg:py-20', bgClass ?? 'bg-white']"
-    :aria-labelledby="`${section.id}-heading`"
-  >
+    :aria-labelledby="`${section.id}-heading`">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        :heading-id="`${section.id}-heading`"
-        content-class="!px-0 !py-0"
-        :badge="section.kicker"
-        :title="`${section.title} `"
-        :title-highlight="section.titleHighlight"
-        :description="section.description"
-        :accent="section.accent"
-      />
+      <CardHeader :heading-id="`${section.id}-heading`" content-class="!px-0 !py-0" :badge="section.kicker"
+        :title="`${section.title} `" :title-highlight="section.titleHighlight" :description="section.description"
+        :accent="section.accent" />
 
       <div class="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">
-        <article
-          v-for="(review, i) in reviews"
-          :key="review.id"
-          :class="[
-            'mb-4 break-inside-avoid rounded-2xl border bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:shadow-card sm:p-6',
-            theme.border,
-          ]"
-          v-motion
-          :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + (i % 3) * 60, duration: 450 } }"
-        >
+        <article v-for="(review, i) in reviews" :key="review.id" :class="[
+          'mb-4 break-inside-avoid rounded-2xl border bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:shadow-card sm:p-6',
+          theme.border,
+        ]" v-motion :initial="{ opacity: 0, y: 14 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + (i % 3) * 60, duration: 450 } }">
           <div class="flex items-center gap-0.5" aria-label="5 out of 5 stars">
             <span v-for="s in 5" :key="s" class="text-xs text-amber-400" aria-hidden="true">★</span>
           </div>
@@ -58,8 +43,7 @@ function initials(name: string) {
           <footer class="mt-4 flex items-center gap-2.5 border-t border-slate-100 pt-3">
             <span
               :class="['grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br text-[11px] font-bold text-white', theme.gradient]"
-              aria-hidden="true"
-            >
+              aria-hidden="true">
               {{ initials(review.name) }}
             </span>
             <div>

@@ -19,14 +19,9 @@ const accentStyles = {
   <section id="subscription-plans" class="relative bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="subscription-plans-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="subscription-plans-heading"
-        content-class="!px-0 !py-0"
-        badge="Subscription Plans"
+      <CardHeader heading-id="subscription-plans-heading" content-class="!px-0 !py-0" badge="Subscription Plans"
         title='A plan for every <span class="text-gradient-brand">academic goal</span>'
-        description="From daily homework help to intensive exam preparation — pick the intensity that matches your child's journey."
-      />
+        description="From daily homework help to intensive exam preparation — pick the intensity that matches your child's journey." />
 
       <!-- Plan cards -->
       <div class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">

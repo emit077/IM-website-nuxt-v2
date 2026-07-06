@@ -494,7 +494,7 @@ export const aboutRoadmap = {
     {
       id: 'short-term',
       tag: 'Short-Term',
-      title: 'Strengthening Foundations',
+      title: 'Building Strong Academic Foundations',
       icon: 'mdi:rocket-launch-outline',
       accent: 'blue',
       items: [
@@ -756,3 +756,18 @@ export const aboutTeamStructure = {
     },
   ] satisfies TeamStructureUnit[],
 }
+
+export type AboutHeroCollageImage = {
+  id: string
+  image: string
+  alt: string
+}
+
+/** About hero collage — 5 images from /public/assets/img/about/ */
+export const aboutHeroCollage = [
+  { id: 'about-1', image: 'images6', alt: 'Students learning with personalised mentoring support' },
+  { id: 'about-2', image: 'images2', alt: 'Verified tutors guiding academic progress' },
+  { id: 'about-3', image: 'images4', alt: 'Collaborative learning session' },
+  { id: 'about-4', image: 'images1', alt: 'Parent and student academic consultation' },
+  { id: 'about-5', image: 'images5', alt: 'Online tutoring with Indian Mentors' },
+] as const satisfies readonly AboutHeroCollageImage[]

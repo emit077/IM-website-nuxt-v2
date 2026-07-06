@@ -52,7 +52,7 @@ function onSubmit() {
         <div aria-hidden="true"
           class="pointer-events-none absolute inset-x-8 top-0 h-32 rounded-b-full bg-white/70 blur-2xl" />
         <div class="relative mx-auto ">
-          <CardHeader variant="section" heading-id="newsletter-heading"
+          <CardHeader heading-id="newsletter-heading"
             title="Subscribe to Our <span class='text-gradient-brand'>Newsletter</span>"
             description="Get study tips, tutor insights, success stories, and platform updates in one concise monthly email." />
         </div>

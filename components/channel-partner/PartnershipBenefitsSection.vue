@@ -8,19 +8,14 @@ import { partnershipBenefitsSection, partnershipBenefits } from '~/data/channel-
   <section id="partnership-benefits" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="partnership-benefits-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="partnership-benefits-heading"
-        content-class="!px-0 !py-0"
+      <CardHeader heading-id="partnership-benefits-heading" content-class="!px-0 !py-0"
         :badge="partnershipBenefitsSection.kicker"
         title='Growth through <span class="text-gradient-brand">educational collaboration</span>'
-        :description="partnershipBenefitsSection.description"
-      />
+        :description="partnershipBenefitsSection.description" />
 
       <!-- Benefits grid -->
       <ul class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3" role="list">
-        <li v-for="(benefit, i) in partnershipBenefits" :key="benefit.title" v-motion
-          :initial="{ opacity: 0, y: 12 }"
+        <li v-for="(benefit, i) in partnershipBenefits" :key="benefit.title" v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + (i % 6) * 40, duration: 400 } }">
           <article
             class="group flex h-full items-start gap-3.5 rounded-2xl border border-slate-200/70 bg-white p-4 transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-soft sm:p-5">

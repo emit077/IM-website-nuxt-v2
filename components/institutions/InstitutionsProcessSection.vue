@@ -11,7 +11,7 @@ import { hiringSteps, hiringProcessOutcome } from '~/data/institutions'
 
     <div class="container-page">
       <CardHeader
-        variant="section"
+        
         heading-id="process-heading"
         content-class="!px-0 !py-0"
         badge="Our Hiring Process"

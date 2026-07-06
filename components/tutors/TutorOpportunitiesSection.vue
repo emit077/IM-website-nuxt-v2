@@ -9,14 +9,9 @@ import { browseFilters } from '~/data/tutors'
   <section id="browse-students" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
     aria-labelledby="browse-students-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="browse-students-heading"
-        content-class="!px-0 !py-0"
-        badge="Browse Student Opportunities"
+      <CardHeader heading-id="browse-students-heading" content-class="!px-0 !py-0" badge="Browse Student Opportunities"
         title='Find students that <span class="text-gradient-brand">match your expertise</span>'
-        description="Registered tutors can explore available tutoring opportunities and connect with suitable students to expand their teaching engagements."
-      />
+        description="Registered tutors can explore available tutoring opportunities and connect with suitable students to expand their teaching engagements." />
 
       <ul class="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-5" role="list">
         <li v-for="(filter, i) in browseFilters" :key="filter.title"

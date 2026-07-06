@@ -7,7 +7,7 @@ import { contactHero, contactHeroCollageBottom, contactHeroCollageTop } from '~/
 const heroTitle = `Contact Us<br class="hidden sm:block" /> <span class="text-gradient-brand">We’re Here to Help</span>`
 
 const heroTagline =
-  '<span class="text-gradient-brand">Indian Mentors</span> – Structured Academic Support, Delivered Nationwide'
+  '<span class="text-gradient-brand">Indian Mentors</span> –  Connecting Learners with Verified Educators'
 
 const heroDescription = contactHero.subheadline
 

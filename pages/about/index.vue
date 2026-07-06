@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AboutHeroSection from '~/components/about/AboutHeroSection.vue'
+import AboutHeroSection2 from '~/components/about/AboutHeroSection copy.vue'
 import AboutMissionSection from '~/components/about/AboutMissionSection.vue'
 import AboutCommitmentSection from '~/components/about/AboutCommitmentSection.vue'
 import AboutLeadershipSection from '~/components/about/AboutLeadershipSection.vue'
@@ -34,6 +35,7 @@ useSeoMeta({
 <template>
   <div class="min-h-screen bg-cream-50">
     <AboutHeroSection />
+    <AboutHeroSection2 />
     <AboutMissionSection />
     <AboutCommitmentSection />
     <!-- <AboutPhilosophySection /> -->
@@ -42,7 +44,7 @@ useSeoMeta({
     <AboutTeamStructureSection />
     <!-- <AboutJourneySection /> -->
     <AboutStorySection />
-    <AboutRoadmapSection />
+    <!-- <AboutRoadmapSection /> -->
     <AboutRoadmapSection2 />
     <AboutComparisonSection />
     <!-- <AboutAudienceSection /> -->

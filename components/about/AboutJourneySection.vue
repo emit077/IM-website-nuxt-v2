@@ -39,14 +39,8 @@ const yearGroups = computed(() => {
 <template>
   <section id="journey" class="border-y border-slate-200/80 bg-white py-14 sm:py-16" aria-labelledby="journey-heading">
     <div class="container-page">
-      <CardHeader
-        variant="section"
-        heading-id="journey-heading"
-        content-class="!px-0 !py-0"
-        badge="Our Journey"
-        title="Milestones that shaped us"
-        :description="journeyDescription"
-      />
+      <CardHeader heading-id="journey-heading" content-class="!px-0 !py-0" badge="Our Journey"
+        title="Milestones that shaped us" :description="journeyDescription" />
 
       <ol class="mx-auto mt-10 max-w-3xl divide-y divide-slate-200 border-y border-slate-200" v-motion
         :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 80 } }">
