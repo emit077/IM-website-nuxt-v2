@@ -1,12 +1,6 @@
-export interface TrustStat {
-  value: string
-  suffix?: string
-  label: string
-  /** Optional icon (Iconify name) rendered above the stat value. */
-  icon?: string
-  /** Optional secondary line rendered below the label. */
-  sub?: string
-}
+import type { TrustIndicatorItem } from '~/components/ui/TrustIndicators.vue'
+
+export type { TrustIndicatorItem }
 
 export interface TrustItem {
   id?: string
@@ -14,6 +8,25 @@ export interface TrustItem {
   description?: string
   icon: string
 }
+
+/** Platform-wide trust stats for hero and landing sections. */
+export const trustStats: TrustIndicatorItem[] = [
+  {
+    value: '1,00,000+',
+    label: 'Verified Tutors',
+    icon: 'solar:square-academic-cap-linear',
+  },
+  {
+    value: '50,000+',
+    label: 'Students Supported',
+    icon: 'solar:users-group-two-rounded-linear',
+  },
+  {
+    value: '50,00,000+',
+    label: 'Sessions Delivered',
+    icon: 'solar:bookmark-linear',
+  },
+]
 
 export const trustItems: TrustItem[] = [
   {

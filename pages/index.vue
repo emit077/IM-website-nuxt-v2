@@ -15,7 +15,7 @@ import NewsletterSection from '~/components/ui/NewsletterSection.vue'
 import PartnerProgrammeSection from '~/components/home/PartnerProgrammeSection.vue'
 import HeroCarousel from '~/components/home/HeroCarousel.vue'
 import TrustIndicators from '~/components/shared/TrustIndicators.vue'
-import { trustItems } from '~/data/trust'
+import { trustStats } from '~/data/trust'
 
 const homeCtas = [
   { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
@@ -38,7 +38,9 @@ useSeoMeta({
     <HeroCarousel />
     <BannerCarousel />
     <PartnersStrip />
-    <TrustIndicators container :stats="trustItems.slice(0, 4)" />
+    <section class="container-page w-full py-8 sm:py-10">
+      <TrustIndicators :items="trustStats" />
+    </section>
     <ServiceSection />
     <LearningLibrarySection />
     <AboutSection />

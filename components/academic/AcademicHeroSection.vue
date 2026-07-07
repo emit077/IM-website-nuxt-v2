@@ -3,7 +3,6 @@ import { Icon } from '@iconify/vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 import TrustIndicators from '~/components/shared/TrustIndicators.vue'
-import { trustItems } from '~/data/trust'
 
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
@@ -19,10 +18,26 @@ const coverageHighlights = [
 ]
 
 const heroStats = [
-  { value: '50K', suffix: '+', label: 'Active students learning every month' },
-  { value: '5', suffix: '+ lakh', label: 'Verified tutors across every subject' },
-  { value: '50', suffix: '+ lakh', label: 'Sessions delivered to date' },
-  { value: '98', suffix: '%', label: 'Satisfaction rate from verified reviews' },
+  {
+    value: '50K+',
+    label: 'Active students learning every month',
+    icon: 'solar:users-group-rounded-bold-duotone',
+  },
+  {
+    value: '5+ lakh',
+    label: 'Verified tutors across every subject',
+    icon: 'solar:square-academic-cap-bold-duotone',
+  },
+  {
+    value: '50+ lakh',
+    label: 'Sessions delivered to date',
+    icon: 'solar:videocamera-record-bold-duotone',
+  },
+  {
+    value: '98%',
+    label: 'Satisfaction rate from verified reviews',
+    icon: 'solar:star-bold-duotone',
+  },
 ]
 </script>
 
@@ -65,7 +80,7 @@ const heroStats = [
         <a href="#grades-covered" class="btn-secondary w-full sm:w-auto">Explore Coverage</a>
       </div>
 
-      <TrustIndicators class="mt-10 text-left" variant="hero-blue" :stats="heroStats" :items="trustItems" />
+      <TrustIndicators class="mt-10 text-left" :items="heroStats" />
     </div>
   </section>
 </template>

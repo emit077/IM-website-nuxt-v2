@@ -36,27 +36,23 @@ const heroCtas = [
 
 const heroStats = [
   {
-    id: 'students',
-    title: '50K+',
-    description: 'Active students',
+    value: '50K+',
+    label: 'Active students',
     icon: 'solar:users-group-rounded-bold-duotone',
   },
   {
-    id: 'tutors',
-    title: '5+ lakh',
-    description: 'Verified tutors',
+    value: '5+ lakh',
+    label: 'Verified tutors',
     icon: 'solar:square-academic-cap-bold-duotone',
   },
   {
-    id: 'sessions',
-    title: '50+ lakh',
-    description: 'Sessions delivered',
+    value: '50+ lakh',
+    label: 'Sessions delivered',
     icon: 'solar:videocamera-record-bold-duotone',
   },
   {
-    id: 'satisfaction',
-    title: '98%',
-    description: 'Satisfaction rate',
+    value: '98%',
+    label: 'Satisfaction rate',
     icon: 'solar:star-bold-duotone',
   },
 ]
@@ -184,7 +180,7 @@ function rippleHandler(e: MouseEvent) {
         </div>
       </div>
 
-      <TrustIndicators class="mt-10 sm:mt-12 lg:mt-14" :stats="heroStats" />
+      <TrustIndicators class="mt-10 sm:mt-12 lg:mt-14" :items="heroStats" />
     </div>
 
     <div aria-hidden="true"
