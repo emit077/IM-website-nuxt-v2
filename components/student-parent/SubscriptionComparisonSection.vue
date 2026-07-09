@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { planPositioning, subscriptionComparisonRows } from '~/data/student-parent'
 </script>
 
@@ -8,10 +8,8 @@ import { planPositioning, subscriptionComparisonRows } from '~/data/student-pare
   <section id="plan-comparison" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="plan-comparison-heading">
     <div class="container-page">
-      <CardHeader heading-id="plan-comparison-heading" content-class="!px-0 !py-0" badge="Compare Plans"
+      <CardHeader heading-id="plan-comparison-heading" classes="!px-0 !py-0" badge="Compare Plans"
         title='Gold, Diamond, or Platinum — <span class="text-gradient-brand">side by side</span>' />
-
-      <!-- Comparison table (desktop) -->
       <div class="mt-10 hidden overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-soft lg:block"
         v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
         <table class="w-full text-left text-sm">
@@ -43,8 +41,6 @@ import { planPositioning, subscriptionComparisonRows } from '~/data/student-pare
           </tbody>
         </table>
       </div>
-
-      <!-- Comparison (mobile / tablet): stacked per feature -->
       <ul class="mt-10 space-y-2.5 lg:hidden" role="list">
         <li v-for="row in subscriptionComparisonRows" :key="row.feature"
           class="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-soft">
@@ -65,8 +61,6 @@ import { planPositioning, subscriptionComparisonRows } from '~/data/student-pare
           </dl>
         </li>
       </ul>
-
-      <!-- Positioning summary -->
       <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
         <div v-for="(pos, i) in planPositioning" :key="pos.name"
           class="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-soft" v-motion

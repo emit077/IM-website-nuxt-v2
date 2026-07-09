@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick, useId } from 'vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 type Step = {
     no: string
     title: string
@@ -415,7 +415,6 @@ onUnmounted(() => {
     <section id="how-it-works"
         class="relative overflow-hidden bg-gradient-to-b from-white via-[#f6f8ff] to-[#eaeefc] py-14 sm:py-20 lg:py-24"
         aria-labelledby="how-it-works-heading">
-        <!-- Soft mesh blobs -->
         <div aria-hidden="true"
             class="pointer-events-none absolute -right-24 top-1/3 h-72 w-72 rounded-full bg-violet-200/40 blur-3xl">
         </div>
@@ -425,25 +424,20 @@ onUnmounted(() => {
 
         <div class="container-page relative">
             <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
-                <!-- ============================== LEFT ============================== -->
-                <div class="relative lg:col-span-5 xl:col-span-5">
-                    <!-- Dot grid (top-left) -->
+                <div class="relative lg:col-span-5 xl:col-span-5 justify-center align-center">
                     <div aria-hidden="true"
                         class="pointer-events-none absolute -left-2 -top-4 hidden h-20 w-24 opacity-50 sm:block lg:-left-6 lg:-top-6"
                         style="background-image: radial-gradient(#a5b4fc 1px, transparent 1px); background-size: 12px 12px;">
                     </div>
 
-                    <CardHeader class="" variant="variant-1" badge="How it works" title=" <span> Start Learning in </span>
-                        <br class='hidden sm:block' />
+                    <CardHeader badge="How it works" align="left" title=" <span> Start Learning in </span>
                         <span class='text-gradient-brand pt-2'>5 Simple Steps</span>" description=" From registration to your first session — simple, transparent,
                         and completely risk-free." />
-                    <!-- sign in form -->
                     <form @submit.prevent="onSubmitSignIn" novalidate v-motion :initial="{ opacity: 0, y: 14 }"
                         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, delay: 280 } }"
                         class="mt-2 max-w-md rounded-2xl border border-white/70 bg-white/80 p-4 shadow-[0_18px_44px_-22px_rgba(29,78,216,0.28)] ring-1 ring-slate-200/70 backdrop-blur sm:p-5"
                         aria-label="Quick sign-up to start learning">
                         <div class="space-y-3">
-                            <!-- Name -->
                             <div>
                                 <label for="signin-name" class="sr-only">Full name</label>
                                 <div :class="[
@@ -469,8 +463,6 @@ onUnmounted(() => {
                                     {{ formErrors.name }}
                                 </p>
                             </div>
-
-                            <!-- Mobile -->
                             <div>
                                 <label for="signin-mobile" class="sr-only">Mobile number</label>
                                 <div :class="[
@@ -502,8 +494,6 @@ onUnmounted(() => {
                                 </p>
                             </div>
                         </div>
-
-                        <!-- Submit (CTA) -->
                         <div class="mt-4">
                             <button type="submit" :disabled="formSubmitting"
                                 class="group inline-flex w-full items-center justify-between gap-4 rounded-2xl bg-gradient-to-r from-indigo-700 via-blue-700 to-indigo-700 bg-[length:200%_100%] px-6 py-4 text-[15px] font-semibold text-white shadow-[0_18px_40px_-14px_rgba(29,78,216,0.55)] ring-1 ring-white/20 transition-all duration-500 hover:-translate-y-0.5 hover:bg-[position:100%_50%] disabled:cursor-not-allowed disabled:opacity-80 disabled:hover:translate-y-0">
@@ -537,8 +527,6 @@ onUnmounted(() => {
                             </p>
                         </div>
                     </form>
-
-                    <!-- Social proof -->
                     <SharedReviewerStrip class="mt-6" v-motion :initial="{ opacity: 0, y: 12 }"
                         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }" variant="avatars"
                         size="md" layout="row" audience="student">
@@ -548,10 +536,7 @@ onUnmounted(() => {
                         </p>
                     </SharedReviewerStrip>
                 </div>
-
-                <!-- ============================== RIGHT ============================== -->
                 <div class="relative lg:col-span-7 xl:col-span-7">
-                    <!-- Decorative sparkles around the steps -->
                     <svg aria-hidden="true"
                         class="pointer-events-none absolute -top-3 right-1 hidden h-5 w-5 text-pink-400/80 sm:block"
                         viewBox="0 0 24 24" fill="currentColor">
@@ -573,8 +558,6 @@ onUnmounted(() => {
                         viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2 13.5 8 19 9.5 13.5 11 12 17 10.5 11 5 9.5 10.5 8 12 2z" />
                     </svg>
-
-                    <!-- Curly arrow accent (between step 1 and step 2) -->
                     <svg aria-hidden="true"
                         class="pointer-events-none absolute left-[calc(50%-30px)] top-[110px] hidden h-12 w-12 text-violet-400/80 lg:block"
                         viewBox="0 0 60 60" fill="none">
@@ -583,10 +566,7 @@ onUnmounted(() => {
                         <path d="M2 38l4 6 6-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
-
-                    <!-- Steps (GSAP ScrollTrigger timeline story) -->
                     <div ref="timelineStoryEl" class="timeline-story relative">
-                        <!-- Single spine connecting badge 01 → 05 (path set in client via GSAP layout) -->
                         <svg ref="spineSvgRef"
                             class="pointer-events-none absolute inset-0 z-[2] block h-full w-full overflow-visible"
                             aria-hidden="true">
@@ -610,7 +590,6 @@ onUnmounted(() => {
                                 i === 1 ? 'lg:pl-6' : '',
                                 i === 3 ? 'lg:pl-4' : '',
                             ]">
-                                <!-- Number badge -->
                                 <div class="timeline-badge relative z-10 shrink-0 self-start pt-1.5">
                                     <span :class="[
                                         'grid h-9 w-9 place-items-center rounded-full text-[12px] font-extrabold text-white shadow-[0_8px_18px_-6px_rgba(15,23,42,0.25)] ring-[3px] ring-white sm:h-11 sm:w-11 sm:text-[13px]',
@@ -619,8 +598,6 @@ onUnmounted(() => {
                                         {{ step.no }}
                                     </span>
                                 </div>
-
-                                <!-- Card (outer: GSAP scroll reveal; inner: buttery hover) -->
                                 <article class="timeline-card relative z-[1] w-full">
                                     <div :class="[
                                         'timeline-card-surface group relative flex w-full items-start gap-4 overflow-hidden rounded-2xl border bg-white p-4 sm:gap-5 sm:p-5',
@@ -628,16 +605,12 @@ onUnmounted(() => {
                                             ? 'timeline-card-surface--highlight border-emerald-300 ring-2 ring-emerald-200/70 shadow-[0_18px_44px_-20px_rgba(16,185,129,0.55)]'
                                             : 'border-slate-200/80 shadow-[0_8px_24px_-14px_rgba(15,23,42,0.18)]',
                                     ]">
-                                        <!-- Soft inner highlight when recommended -->
                                         <span v-if="step.highlight" aria-hidden="true"
                                             class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-50/70 via-white to-white"></span>
-
-                                        <!-- Icon tile -->
                                         <span :class="[
                                             'timeline-card-icon relative grid h-12 w-12 shrink-0 place-items-center rounded-xl sm:h-14 sm:w-14',
                                             accentClasses[step.accent].tile,
                                         ]">
-                                            <!-- 01 register: user profile -->
                                             <svg v-if="step.iconType === 'register'"
                                                 :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
                                                 viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -646,7 +619,6 @@ onUnmounted(() => {
                                                 <path d="M5.5 19.5c1.3-3.4 3.9-5.5 6.5-5.5s5.2 2.1 6.5 5.5"
                                                     stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
                                             </svg>
-                                            <!-- 02 match: people -->
                                             <svg v-else-if="step.iconType === 'match'"
                                                 :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
                                                 viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -656,7 +628,6 @@ onUnmounted(() => {
                                                     d="M3.5 19c.6-3 3-4.5 5.5-4.5s4.9 1.5 5.5 4.5M16.5 14.5a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2zM20.5 19c-.5-2.4-2.2-3.6-4-3.8"
                                                     stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
                                             </svg>
-                                            <!-- 03 demo: calendar w/ check -->
                                             <svg v-else-if="step.iconType === 'demo'"
                                                 :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
                                                 viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -667,7 +638,6 @@ onUnmounted(() => {
                                                 <path d="m9 14.5 2 2 4-4" stroke="currentColor" stroke-width="1.7"
                                                     stroke-linecap="round" stroke-linejoin="round" />
                                             </svg>
-                                            <!-- 04 plan: document -->
                                             <svg v-else-if="step.iconType === 'plan'"
                                                 :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
                                                 viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -677,7 +647,6 @@ onUnmounted(() => {
                                                 <path d="M14 3.5V8h4M8.5 12.5h7M8.5 16h7M8.5 9h3" stroke="currentColor"
                                                     stroke-width="1.6" stroke-linecap="round" />
                                             </svg>
-                                            <!-- 05 learn: open book -->
                                             <svg v-else
                                                 :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
                                                 viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -688,8 +657,6 @@ onUnmounted(() => {
                                                     stroke-linecap="round" />
                                             </svg>
                                         </span>
-
-                                        <!-- Body -->
                                         <div class="relative min-w-0 flex-1">
                                             <h3 :class="[
                                                 'font-display text-[15.5px] font-bold text-slate-900 transition-colors duration-300 sm:text-[17px]',

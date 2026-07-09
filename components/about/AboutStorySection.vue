@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { aboutStory, type StoryMilestone } from '~/data/about'
 
 type Accent = StoryMilestone['accent']
@@ -112,10 +112,8 @@ onBeforeUnmount(() => {
 
     <div class="container-page relative">
       <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <CardHeader variant="section-left" heading-id="our-story-heading" content-class="!px-0 !py-0"
+        <CardHeader align="left" heading-id="our-story-heading" classes="!px-0 !py-0"
           :badge="aboutStory.badge" :title="headerTitle" :description="aboutStory.subtitle" />
-
-        <!-- Slider controls -->
         <div class="hidden shrink-0 items-center gap-2 sm:flex">
           <button type="button" :disabled="!canScrollPrev" aria-label="Previous milestone"
             class="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-blue-300 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-slate-200 disabled:hover:text-slate-700"
@@ -129,10 +127,7 @@ onBeforeUnmount(() => {
           </button>
         </div>
       </div>
-
-      <!-- Horizontal connected slider -->
       <div class="relative mt-10">
-        <!-- Edge fades -->
         <div aria-hidden="true"
           class="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-[#f8fafc] to-transparent sm:w-12" />
         <div aria-hidden="true"
@@ -144,7 +139,6 @@ onBeforeUnmount(() => {
           <li v-for="(item, i) in aboutStory.milestones" :key="item.id" data-story-card
             class="relative w-[280px] shrink-0 snap-start sm:w-[320px]" v-motion :initial="{ opacity: 0, y: 20 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 460, delay: 60 + i * 80 } }">
-            <!-- Card -->
             <article :class="[
               'group relative mt-5 overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_1px_3px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(15,23,42,0.12)] sm:p-6',
             ]">
@@ -187,8 +181,6 @@ onBeforeUnmount(() => {
           </li>
         </ol>
       </div>
-
-      <!-- Mobile hint -->
       <p class="mt-2 flex items-center gap-1.5 text-xs font-medium text-slate-400 sm:hidden">
         <Icon icon="mdi:gesture-swipe-horizontal" class="h-4 w-4" aria-hidden="true" />
         Swipe to explore the journey

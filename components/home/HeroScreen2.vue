@@ -19,12 +19,10 @@ const heroContent = {
   <section class="relative overflow-hidden bg-white  bg-right bg-no-repeat" aria-labelledby="hero-screen-2-heading"
     :style="{ backgroundImage: heroContent.backgroundImage }">
     <div class="container-page pb-12 pt-10 lg:pt-16">
-      <!-- hero header -->
       <HeroHeader variant="hero" heading-id="hero-screen-2-heading"
         badge="Stronger Concepts. Better Grades. Brighter Future." :title="heroContent.title"
         :subtitle="heroContent.subtitle" :description="heroContent.description"
         :content-class="heroContent.contentClass" />
-      <!-- action buttons -->
       <div class="flex flex-col gap-3 sm:flex-row sm:gap-4 my-6" v-motion :initial="{ opacity: 0, y: 16 }"
         :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
         <ActionBtn variant="primary" label="Book Free Demo" :icon="IconCalendar" href="#book-demo" />

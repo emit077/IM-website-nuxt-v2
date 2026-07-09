@@ -17,8 +17,7 @@ function markLogoFailed(id: string) {
 </script>
 
 <template>
-  <section class="relative border-y border-slate-200/70 bg-white/60 backdrop-blur-sm"
-    aria-label="Curriculum and partner ecosystem">
+  <section class="relative bg-white/60 backdrop-blur-sm pb-10" aria-label="Curriculum and partner ecosystem">
     <div class="container-page py-5 text-center">
       <p class="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 shrink-0 text-center mb-5">
         Trusted by parents for boards across India

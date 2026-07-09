@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 
 type SubjectStream = {
   id: string
@@ -75,14 +75,13 @@ const streams: SubjectStream[] = [
 ]
 
 const active = ref(streams[0]!.id)
-const activeStream = computed(() => streams.find((s) => s.id === active.value) ?? streams[0]!)
 </script>
 
 <template>
   <section id="subjects-offered" class="relative bg-cream-50 py-14 sm:py-16 lg:py-24"
     aria-labelledby="subjects-heading">
     <div class="container-page">
-      <CardHeader heading-id="subjects-heading" content-class="!px-0 !py-0 max-w-3xl mx-auto" badge="Subjects offered"
+      <CardHeader heading-id="subjects-heading" classes="!px-0 !py-0 max-w-3xl mx-auto" badge="Subjects offered"
         title='Pick a stream — <span class="text-gradient-brand">see what we teach</span>'
         description="250+ subjects across sciences, languages, commerce, humanities and competitive tracks — taught by mentors matched to your board and goals." />
 

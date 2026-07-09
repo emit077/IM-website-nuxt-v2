@@ -11,12 +11,6 @@ function rippleHandler(e: MouseEvent) {
   target.style.setProperty('--y', `${e.clientY - rect.top}px`)
 }
 
-const coverageHighlights = [
-  { icon: 'mdi:stairs-up', value: '7', label: 'Curriculum stages', sub: 'Nursery to university' },
-  { icon: 'mdi:earth', value: '6+', label: 'Boards covered', sub: 'CBSE, ICSE, IB & more' },
-  { icon: 'mdi:book-open-variant', value: '250+', label: 'Subjects', sub: 'Across all streams' },
-]
-
 const heroStats = [
   {
     value: '50K+',
@@ -43,7 +37,6 @@ const heroStats = [
 
 <template>
   <section class="relative overflow-hidden bg-white" aria-labelledby="academic-hero-heading">
-    <!-- Single soft backdrop glow (kept minimal for a clean look) -->
     <div aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 -top-40 -z-10 mx-auto h-[420px] max-w-5xl bg-gradient-to-b from-blue-100/60 via-indigo-50/40 to-transparent blur-3xl" />
 

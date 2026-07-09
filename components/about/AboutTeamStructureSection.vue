@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { aboutTeamStructure } from '~/data/about'
 
 const headerTitle = computed(
@@ -13,7 +13,7 @@ const headerTitle = computed(
 <template>
   <section id="team-structure" class="bg-[#f8fafc] py-14 sm:py-16 lg:py-20" aria-labelledby="team-structure-heading">
     <div class="container-page">
-      <CardHeader heading-id="team-structure-heading" content-class="!px-0 !py-0" :badge="aboutTeamStructure.badge"
+      <CardHeader heading-id="team-structure-heading" classes="!px-0 !py-0" :badge="aboutTeamStructure.badge"
         :title="headerTitle" :description="aboutTeamStructure.subtitle" />
 
       <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

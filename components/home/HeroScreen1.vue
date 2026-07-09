@@ -18,8 +18,8 @@ const heroContent = {
 </script>
 
 <template>
-  <section class="relative overflow-hidden bg-white bg-contain bg-center bg-no-repeat"
-    aria-labelledby="hero-screen-1-heading" :style="{ backgroundImage: heroContent.backgroundImage }">
+  <section class="relative overflow-hidden bg-white  bg-right bg-no-repeat" aria-labelledby="hero-screen-1-heading"
+    :style="{ backgroundImage: heroContent.backgroundImage }">
     <div class="container-page pb-12 pt-10 lg:pt-16">
       <HeroHeader variant="hero" heading-id="hero-screen-1-heading" badge="India's #1 Verified Tutor Platform"
         :title="heroContent.title" :subtitle="heroContent.subtitle" :description="heroContent.description"

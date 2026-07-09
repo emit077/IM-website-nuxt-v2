@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 
 const metrics = [
   { value: '500K', suffix: '+', label: 'Verified Tutors' },
@@ -35,7 +35,7 @@ function rippleHandler(e: MouseEvent) {
 
         <div class="relative grid gap-8 lg:grid-cols-[1fr_300px] lg:items-start lg:gap-10">
           <div>
-            <CardHeader variant="variant-1" content-class="!px-0 !py-0" badge="INSTITUTIONAL HIRING"
+            <CardHeader classes="!px-0 !py-0" badge="Institutional Hiring" align="left"
               title="Trusted Teacher Recruitment <span class='text-gradient-brand'><br>& Academic Staffing</span> at scale"
               description="Hire qualified, verified, and pre-screened educators for schools, colleges, coaching institutes, EdTech companies, and academic programs across India." />
 

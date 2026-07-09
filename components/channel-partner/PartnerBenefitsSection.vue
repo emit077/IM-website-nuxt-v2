@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { benefitsSection, benefitCards, type BenefitCard } from '~/data/channel-partner'
 
@@ -16,11 +16,9 @@ const accentClasses: Record<BenefitCard['accent'], { tile: string; icon: string;
   <section id="partner-benefits" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="partner-benefits-heading">
     <div class="container-page">
-      <CardHeader heading-id="partner-benefits-heading" content-class="!px-0 !py-0" :badge="benefitsSection.kicker"
+      <CardHeader heading-id="partner-benefits-heading" classes="!px-0 !py-0" :badge="benefitsSection.kicker"
         title='A transparent and <span class="text-gradient-brand">scalable business model</span>'
         :description="benefitsSection.description" />
-
-      <!-- Benefit cards -->
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
         <article v-for="(card, i) in benefitCards" :key="card.id"
           class="group flex h-full flex-col rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card sm:p-7"

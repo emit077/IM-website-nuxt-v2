@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { videoTestimonials, videoTestimonialsSection } from '~/data/success-stories'
 
 const loopItems = [...videoTestimonials, ...videoTestimonials]
@@ -10,8 +10,8 @@ const loopItems = [...videoTestimonials, ...videoTestimonials]
   <section id="video-testimonials" class="scroll-mt-24 border-y border-slate-200/80 bg-white py-14 sm:py-16"
     aria-labelledby="video-testimonials-heading">
     <div class="container-page">
-      <CardHeader variant="section-left" heading-id="video-testimonials-heading" content-class="!px-0 !py-0 max-w-xl"
-        :badge="videoTestimonialsSection.kicker" title="Hear it " title-highlight="in their own words"
+      <CardHeader align="left" heading-id="video-testimonials-heading" classes="!px-0 !py-0 max-w-xl"
+        :badge="videoTestimonialsSection.kicker" title="Hear it <span class='text-gradient-brand'>in their own words</span>"
         :description="videoTestimonialsSection.description" accent="blue" />
 
       <div class="group relative mt-8 overflow-hidden rounded-2xl">

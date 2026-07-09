@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import GradesHeroSection from '~/components/grades/GradesHeroSection.vue'
-import GradesNavSection from '~/components/grades/GradesNavSection.vue'
 import GradesProgramsSection from '~/components/grades/GradesProgramsSection.vue'
 import UiCTASection from '~/components/ui/CTASection.vue'
 

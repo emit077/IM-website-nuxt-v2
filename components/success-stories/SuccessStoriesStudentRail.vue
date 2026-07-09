@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { studentStories, type StoryAccent } from '~/data/success-stories'
 
 const loopItems = [...studentStories, ...studentStories]
@@ -20,8 +20,8 @@ const rotations = ['-rotate-1', 'rotate-1', '-rotate-2', 'rotate-2', '-rotate-1'
   <section id="student-stories" class="scroll-mt-20 overflow-hidden bg-cream-50 py-14 sm:py-16"
     aria-labelledby="student-rail-heading">
     <div class="container-page">
-      <CardHeader variant="section-left" heading-id="student-rail-heading" content-class="!px-0 !py-0 max-w-lg"
-        badge="Student journeys" title="Scroll the " title-highlight="transformation reel"
+      <CardHeader align="left" heading-id="student-rail-heading" classes="!px-0 !py-0 max-w-lg"
+        badge="Student journeys" title="Scroll the <span class='text-gradient-brand'>transformation reel</span>"
         description="Real before-and-after academic outcomes from students across India." accent="blue" />
 
       <div class="group relative mt-8 overflow-hidden rounded-2xl">

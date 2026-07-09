@@ -21,7 +21,7 @@ function markLogoFailed(id: string) {
 </script>
 
 <template>
-  <section class="relative border-y border-slate-200/70 bg-white" aria-label="Partner and recognition ecosystem">
+  <section class="relative border-slate-200/70 bg-white" aria-label="Partner and recognition ecosystem">
     <div class="container-page py-8 text-center">
       <p class="mb-7 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
         Recognised &amp; Partnered With
@@ -29,14 +29,11 @@ function markLogoFailed(id: string) {
 
       <div class="group relative w-full overflow-hidden" v-motion :initial="{ opacity: 0, y: 12 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
-        <!-- side fades -->
         <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent">
         </div>
         <div
           class="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent">
         </div>
-
-        <!-- duplicated track for a seamless loop; pauses on hover; static row when reduced-motion -->
         <div
           class="flex w-max items-center gap-12 animate-marquee group-hover:[animation-play-state:paused] sm:gap-14 motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center">
           <div v-for="(p, i) in [...partners, ...partners]" :key="`${p.id}-${i}`"

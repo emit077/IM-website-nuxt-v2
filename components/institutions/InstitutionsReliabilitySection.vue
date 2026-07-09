@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { reliabilityPillars } from '~/data/institutions'
 </script>
@@ -12,7 +12,7 @@ import { reliabilityPillars } from '~/data/institutions'
       <CardHeader
         
         heading-id="reliability-heading"
-        content-class="!px-0 !py-0"
+        classes="!px-0 !py-0"
         badge="Quality Assurance"
         title='What makes our recruitment <span class="text-gradient-brand">reliable?</span>'
         description="Our teacher recruitment services are built around quality assurance, verification, and efficiency."

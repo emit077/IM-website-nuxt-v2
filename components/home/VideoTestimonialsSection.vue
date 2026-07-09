@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import { useIntervalFn } from '@vueuse/core'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 
 type TestimonialItem = {
   category: string
@@ -131,7 +131,7 @@ function onTouchEnd(e: TouchEvent) {
       aria-hidden="true" />
 
     <div class="relative mx-auto max-w-[1200px]">
-      <CardHeader variant="variant-1" class="!px-0 !py-0" badge="Testimonials"
+      <CardHeader classes="!px-0 !py-0" badge="Testimonials"
         title="Real Stories. Real Growth. Real Trust"
         description="Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors across India." />
 
@@ -204,8 +204,8 @@ function onTouchEnd(e: TouchEvent) {
             <button v-for="(item, idx) in testimonials" :key="`${item.person}-${idx}`" type="button"
               class="flex min-w-[210px] snap-start items-center gap-3 rounded-2xl border p-2 text-left transition sm:min-w-[240px]"
               :class="idx === active
-                  ? 'border-blue-300 bg-blue-50 shadow-sm'
-                  : 'border-blue-100 bg-white hover:border-blue-200 hover:bg-blue-50/40'
+                ? 'border-blue-300 bg-blue-50 shadow-sm'
+                : 'border-blue-100 bg-white hover:border-blue-200 hover:bg-blue-50/40'
                 " @click="goTo(idx)">
               <img :src="item.thumb" :alt="item.category" class="h-14 w-16 shrink-0 rounded-xl object-cover" width="64"
                 height="56" loading="lazy" decoding="async" />

@@ -1,24 +1,11 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { ref } from 'vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 
 const email = ref('')
 const status = ref<'idle' | 'invalid' | 'success'>('idle')
 const toast = useToast()
-
-const newsletterPeople = [
-  { src: '/assets/img/hero/hero-1.png', alt: 'Student attending an online session', position: 'object-right' },
-  { src: '/assets/img/hero/hero-2.png', alt: 'Student holding books', position: 'object-right' },
-  { src: '/assets/img/hero/hero-4.png', alt: 'Mentor in a classroom', position: 'object-right' },
-] as const
-
-const partnerLogos = [
-  { src: '/assets/img/partners/google.png', alt: 'Google' },
-  { src: '/assets/img/partners/aws.png', alt: 'AWS' },
-  { src: '/assets/img/partners/msme.png', alt: 'MSME' },
-  { src: '/assets/img/partners/startup-india.png', alt: 'Startup India' },
-] as const
 
 function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())

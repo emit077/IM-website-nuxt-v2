@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import ServiceOfferingCard from './ServiceOfferingCard.vue'
 
 type ServiceCard = {
@@ -137,7 +137,7 @@ const services: ServiceCard[] = [
         </svg>
 
         <div class="relative z-[1] mx-auto w-full max-w-[1200px] px-4">
-            <CardHeader class="mb-2 text-center" theme="on-blue" badge="WHAT WE OFFER"
+            <CardHeader classes="mb-2 text-center" theme="dark" badge="What We Offer"
                 title="Modern Learning Solutions for Academic Excellence" />
 
             <div class="flex flex-wrap justify-center gap-4 sm:gap-5 mt-10">

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 
 type ContactCta = {
@@ -107,9 +107,9 @@ function onCtaMousemove(e: MouseEvent, isPrimary?: boolean) {
         <span aria-hidden="true"
           :class="['pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full blur-3xl', styles.glowBottom]" />
 
-        <div class="relative mx-auto max-w-2xl">
-          <CardHeader :variant="isLight ? 'variant' : 'section-dark'" :heading-id="props.headingId"
-            content-class="!px-0 !py-0" :badge="props.badge" :title="props.title" :description="props.description" />
+        <div class="relative mx-auto max-w-4xl">
+          <CardHeader :theme="props.variant === 'dark' ? 'dark' : 'light'" :heading-id="props.headingId"
+            classes="!px-0 !py-0" :badge="props.badge" :title="props.title" :description="props.description" />
 
           <div class="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center"
             v-if="props.ctas.length > 0">

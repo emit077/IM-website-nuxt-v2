@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import {
   boardRegions,
   countriesByBoards,
@@ -66,11 +66,9 @@ const boardsDescription = computed(
       class="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-80 max-w-4xl bg-gradient-to-b from-blue-200/40 to-transparent blur-3xl" />
 
     <div class="container-page relative z-[1]">
-      <CardHeader heading-id="boards-heading" content-class="!px-0 !py-0" badge="Boards covered"
+      <CardHeader heading-id="boards-heading" classes="!px-0 !py-0" badge="Boards covered"
         title='Every major curriculum, <span class="text-gradient-brand">by country</span>'
         :description="boardsDescription" />
-
-      <!-- Search + region filters -->
       <div class="mx-auto mt-8 max-w-4xl space-y-4">
         <div class="relative">
           <Icon icon="mdi:magnify"
@@ -95,8 +93,6 @@ const boardsDescription = computed(
           </button>
         </div>
       </div>
-
-      <!-- Empty state -->
       <div v-if="!filteredCountries.length"
         class="mx-auto mt-10 max-w-md rounded-2xl border border-dashed border-slate-300 bg-white/80 px-6 py-14 text-center">
         <Icon icon="mdi:map-search-outline" class="mx-auto h-12 w-12 text-slate-300" aria-hidden="true" />
@@ -104,8 +100,6 @@ const boardsDescription = computed(
         <p class="mt-1 text-sm text-slate-500">Try another keyword or clear the region filter.</p>
         <button type="button" class="btn-secondary mt-6" @click="resetFilters">Reset filters</button>
       </div>
-
-      <!-- Country grid -->
       <template v-else>
         <p class="mt-8 text-center text-xs font-medium text-slate-500">
           Showing {{ filteredCountries.length }} countries · {{ visibleBoardCount }} boards

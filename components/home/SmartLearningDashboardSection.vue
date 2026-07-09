@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 
@@ -14,7 +14,6 @@ function rippleHandler(e: MouseEvent) {
 <template>
   <section id="smart-learning-dashboard" class="relative overflow-hidden bg-cream-50 py-12 sm:py-14 lg:py-16"
     aria-label="Smart Learning Dashboard — ERP and transparency for families">
-    <!-- Match HireInstitute / page rhythm -->
     <div aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#eef1ff] to-transparent"></div>
     <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-mesh-light opacity-90"></div>
@@ -37,9 +36,8 @@ function rippleHandler(e: MouseEvent) {
           class="pointer-events-none absolute -bottom-20 -left-12 h-48 w-48 rounded-full bg-blue-50/90 blur-3xl"></div>
 
         <div class="relative grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-12">
-          <!-- Copy + CTAs -->
           <div class="lg:col-span-6 flex flex-col gap-5 sm:gap-6">
-            <CardHeader variant="variant-1" content-class="!px-0 !py-0" badge="ERP &amp; TRANSPARENCY"
+            <CardHeader classes="!px-0 !py-0" badge="ERP &amp; TRANSPARENCY" align="left"
               title="Smart Learning <span class='text-gradient-brand'>Dashboard</span>" description="The dashboard serves as the central control panel, providing a quick overview of all learning activities and account updates.
 <br>
 <br>
@@ -58,8 +56,6 @@ Provides instant visibility of the student’s academic activities and tutoring 
               </a>
             </div>
           </div>
-
-          <!-- Feature grid (HireInstitute-style tiles) -->
           <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3.5 lg:col-span-6 lg:grid-cols-3" role="list">
             <li v-motion :initial="{ opacity: 0, y: 12 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 60 } }"

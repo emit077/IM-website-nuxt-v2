@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import { browseFilters } from '~/data/tutors'
 </script>
@@ -9,7 +9,7 @@ import { browseFilters } from '~/data/tutors'
   <section id="browse-students" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
     aria-labelledby="browse-students-heading">
     <div class="container-page">
-      <CardHeader heading-id="browse-students-heading" content-class="!px-0 !py-0" badge="Browse Student Opportunities"
+      <CardHeader heading-id="browse-students-heading" classes="!px-0 !py-0" badge="Browse Student Opportunities"
         title='Find students that <span class="text-gradient-brand">match your expertise</span>'
         description="Registered tutors can explore available tutoring opportunities and connect with suitable students to expand their teaching engagements." />
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { placementStories, storyTabs } from '~/data/success-stories'
 
 const section = storyTabs.find((t) => t.id === 'placements')!
@@ -10,8 +10,8 @@ const section = storyTabs.find((t) => t.id === 'placements')!
   <section id="placement-stories" class="relative scroll-mt-28 bg-cream-50 py-14 sm:py-16 lg:py-20"
     aria-labelledby="placement-stories-heading">
     <div class="container-page">
-      <CardHeader heading-id="placement-stories-heading" content-class="!px-0 !py-0" :badge="section.kicker"
-        :title="`${section.title} `" :title-highlight="section.titleHighlight" :description="section.description"
+      <CardHeader heading-id="placement-stories-heading" classes="!px-0 !py-0" :badge="section.kicker"
+        :title="`${section.title} <span class=\'text-gradient-brand\'>${section.titleHighlight}</span>`" :description="section.description"
         accent="violet" />
 
       <div class="mt-10 space-y-4 sm:space-y-5">

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { whyPartnerSection, partnershipAdvantages } from '~/data/channel-partner'
 </script>
 
@@ -9,25 +9,18 @@ import { whyPartnerSection, partnershipAdvantages } from '~/data/channel-partner
     aria-labelledby="why-partner-heading">
     <div class="container-page">
       <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
-        <!-- Left: header -->
         <div class="lg:col-span-5" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-          <CardHeader
-            variant="section-left"
-            heading-id="why-partner-heading"
-            content-class="!px-0 !py-0"
+          <CardHeader align="left" heading-id="why-partner-heading" classes="!px-0 !py-0"
             :badge="whyPartnerSection.kicker"
             title='A strong foundation for your <span class="text-gradient-brand">education business</span>'
-            :description="whyPartnerSection.description"
-          />
+            :description="whyPartnerSection.description" />
           <p
             class="mt-5 flex items-start gap-3 rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3.5 text-[13px] leading-relaxed text-blue-900 sm:text-sm">
             <Icon icon="mdi:hub-outline" class="mt-0.5 h-4 w-4 shrink-0 text-blue-600" aria-hidden="true" />
             {{ whyPartnerSection.note }}
           </p>
         </div>
-
-        <!-- Right: advantages -->
         <div class="lg:col-span-7">
           <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2" role="list">
             <li v-for="(advantage, i) in partnershipAdvantages" :key="advantage.label" v-motion

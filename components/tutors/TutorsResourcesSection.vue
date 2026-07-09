@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { brochureCard, landingCard } from '~/data/tutors'
@@ -12,7 +12,7 @@ const cards = [brochureCard, landingCard]
   <section id="tutor-resources" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="tutor-resources-heading">
     <div class="container-page">
-      <CardHeader heading-id="tutor-resources-heading" content-class="!px-0 !py-0" badge="Know Before You Join"
+      <CardHeader heading-id="tutor-resources-heading" classes="!px-0 !py-0" badge="Know Before You Join"
         title='Understand the <span class="text-gradient-brand">partnership model</span> first'
         description="Explore the official tutors brochure and opportunities overview — everything an educator needs to know about collaborating with Indian Mentors." />
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { aboutRoadmap } from '~/data/about'
 
 type Accent = 'blue' | 'indigo' | 'violet'
@@ -62,10 +62,8 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
 <template>
   <section id="roadmap" class="bg-slate-50 py-14 sm:py-16 lg:py-20" aria-labelledby="roadmap-heading">
     <div class="container-page">
-      <CardHeader heading-id="roadmap-heading" content-class="!px-0 !py-0" :badge="aboutRoadmap.badge"
+      <CardHeader heading-id="roadmap-heading" classes="!px-0 !py-0" :badge="aboutRoadmap.badge"
         :title="headerTitle" :description="aboutRoadmap.subtitle" />
-
-      <!-- Parallax stacking cards -->
       <div class="mx-auto mt-12 max-w-4xl">
         <div v-for="(phase, pi) in aboutRoadmap.phases" :key="phase.id" class="sticky"
           :style="{ top: `calc(5.5rem + ${pi * 2.25}rem)`, zIndex: 10 + pi }"
@@ -75,7 +73,6 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
               'group relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_60px_-25px_rgba(15,23,42,0.35)] ring-1',
               accentClasses[phase.accent].ring,
             ]">
-            <!-- Colored header band -->
             <div
               :class="['relative overflow-hidden bg-gradient-to-r px-5 py-5 sm:px-7 sm:py-6', accentClasses[phase.accent].header]">
               <span
@@ -103,8 +100,6 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
                 </div>
               </div>
             </div>
-
-            <!-- Items -->
             <div class="p-5 sm:p-7">
               <ul class="grid gap-3.5 sm:grid-cols-2" role="list">
                 <li v-for="item in phase.items" :key="item.title" :class="[

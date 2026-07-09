@@ -33,7 +33,6 @@ const navLinks = [
   <footer class="border-t border-slate-800 bg-slate-950 text-slate-100 [color-scheme:dark]">
     <div class="container-page py-12 sm:py-14 lg:py-16">
       <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
-        <!-- Contact -->
         <div class="lg:col-span-5">
           <h2 class="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
             Contact us
@@ -128,7 +127,6 @@ const navLinks = [
             </li>
           </ul>
         </div>
-        <!-- Quick links -->
         <div class="lg:col-span-7">
           <h2 class="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">
             Quick links

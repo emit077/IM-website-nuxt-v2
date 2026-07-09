@@ -15,7 +15,6 @@ function rippleHandler(e: MouseEvent) {
 
 <template>
   <section class="relative overflow-hidden bg-white" aria-labelledby="sp-hero-heading">
-    <!-- Single soft backdrop glow, kept minimal -->
     <div aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 -top-40 -z-10 mx-auto h-[420px] max-w-5xl bg-gradient-to-b from-blue-100/60 via-indigo-50/40 to-transparent blur-3xl" />
 

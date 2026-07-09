@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { processSection, processSteps, type ProcessStep } from '~/data/channel-partner'
 
@@ -16,18 +16,15 @@ const accentClasses: Record<ProcessStep['accent'], { badge: string; tile: string
 <template>
   <section id="partnership-process" class="relative scroll-mt-20 overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="partnership-process-heading">
-    <!-- Soft mesh blobs -->
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-24 top-1/3 h-72 w-72 rounded-full bg-violet-100/50 blur-3xl" />
     <div aria-hidden="true"
       class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-blue-100/50 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="partnership-process-heading" content-class="!px-0 !py-0" :badge="processSection.kicker"
+      <CardHeader heading-id="partnership-process-heading" classes="!px-0 !py-0" :badge="processSection.kicker"
         title='Simple and <span class="text-gradient-brand">structured onboarding</span>'
         :description="processSection.description" />
-
-      <!-- Journey strip: Register → Collaborate → Earn -->
       <div class="mx-auto mt-7 flex flex-wrap items-center justify-center gap-2" v-motion
         :initial="{ opacity: 0, y: 10 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
         <template v-for="(stage, i) in processSection.journey" :key="stage">
@@ -39,25 +36,19 @@ const accentClasses: Record<ProcessStep['accent'], { badge: string; tile: string
             aria-hidden="true" />
         </template>
       </div>
-
-      <!-- Steps -->
       <ol class="relative mx-auto mt-12 max-w-3xl space-y-6 sm:space-y-7" role="list">
-        <!-- Vertical spine -->
         <div aria-hidden="true"
           class="pointer-events-none absolute bottom-8 left-[17px] top-8 w-px bg-gradient-to-b from-violet-200 via-blue-200 to-indigo-200 sm:left-[21px]" />
 
         <li v-for="(step, i) in processSteps" :key="step.no" class="relative flex items-start gap-3.5 sm:gap-5" v-motion
           :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 60, duration: 450 } }">
-          <!-- Number badge -->
           <span :class="[
             'relative z-10 mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-full text-[12px] font-extrabold text-white shadow-[0_8px_18px_-6px_rgba(15,23,42,0.25)] ring-[3px] ring-white sm:h-11 sm:w-11 sm:text-[13px]',
             accentClasses[step.accent].badge,
           ]">
             {{ step.no }}
           </span>
-
-          <!-- Card -->
           <article
             class="group w-full rounded-2xl border border-slate-200/80 bg-white p-4 shadow-[0_8px_24px_-14px_rgba(15,23,42,0.18)] transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-soft sm:p-5">
             <div class="flex items-start gap-4">

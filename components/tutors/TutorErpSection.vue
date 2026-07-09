@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { erpFeatures } from '~/data/tutors'
 
 const frameworkSteps = ['Teach', 'Track', 'Earn', 'Grow']
@@ -10,11 +10,9 @@ const frameworkSteps = ['Teach', 'Track', 'Earn', 'Grow']
   <section id="tutor-erp" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="tutor-erp-heading">
     <div class="container-page">
-      <CardHeader heading-id="tutor-erp-heading" content-class="!px-0 !py-0" badge="ERP System &amp; Transparency"
+      <CardHeader heading-id="tutor-erp-heading" classes="!px-0 !py-0" badge="ERP System &amp; Transparency"
         title='Your teaching, organised by a <span class="text-gradient-brand">smart dashboard</span>'
         description="A structured ERP-based academic management system ensures transparency, accountability, and efficient academic management for every tutor." />
-
-      <!-- Framework strip -->
       <div class="mx-auto mt-8 flex flex-wrap items-center justify-center gap-2" v-motion
         :initial="{ opacity: 0, y: 10 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
         <template v-for="(step, i) in frameworkSteps" :key="step">

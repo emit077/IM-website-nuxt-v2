@@ -22,39 +22,45 @@ export const popularCities = [
   { id: 'delhi', icon: 'delhi', label: 'Delhi-NCR' },
   { id: 'bengaluru', icon: 'bengaluru', label: 'Bengaluru' },
   { id: 'hyderabad', icon: 'hydrabad', label: 'Hyderabad' },
-  { id: 'chandigarh', icon: 'chandigarh', label: 'Chandigarh' },
-  { id: 'ahmedabad', icon: 'ahmdabad', label: 'Ahmedabad' },
-  { id: 'hydrabad', icon: 'hydrabad', label: 'Hyderabad' },
-  { id: 'pune', icon: 'pune', label: 'Pune' },
   { id: 'chennai', icon: 'chennai', label: 'Chennai' },
   { id: 'kolkata', icon: 'kolkata', label: 'Kolkata' },
-  { id: 'raipur', icon: 'raipur', label: 'Raipur' },
+  { id: 'pune', icon: 'pune', label: 'Pune' },
+  { id: 'ahmedabad', icon: 'ahmdabad', label: 'Ahmedabad' },
+  { id: 'chandigarh', icon: 'chandigarh', label: 'Chandigarh' },
+  { id: 'jaipur', icon: 'jaipur', label: 'Jaipur' },
+  { id: 'lucknow', icon: 'lucknow', label: 'Lucknow' },
   { id: 'nagpur', icon: 'nagpur', label: 'Nagpur' },
   { id: 'indore', icon: 'indore', label: 'Indore' },
-  { id: 'lucknow', icon: 'lucknow', label: 'Lucknow' },
-  { id: 'jaipur', icon: 'jaipur', label: 'Jaipur' },
-  { id: 'patna', icon: 'patna', label: 'Patna' },
   { id: 'kochi', icon: 'kochi', label: 'Kochi' },
   { id: 'bhubaneswar', icon: 'bhubneshwar', label: 'Bhubaneswar' },
+  { id: 'patna', icon: 'patna', label: 'Patna' },
   { id: 'vizag', icon: 'vizag', label: 'Visakhapatnam' },
+  { id: 'raipur', icon: 'raipur', label: 'Raipur' },
 ] as const satisfies readonly PopularCity[]
 
 /** Cities with a dedicated image in /public/assets/img/city-img/ */
 export const popularCityImages = [
   { id: 'mumbai', image: 'mumbai', label: 'Mumbai' },
   { id: 'delhi', image: 'delhi', label: 'Delhi-NCR' },
+  { id: 'gurugram', image: 'gurugram', label: 'Gurugram' },
   { id: 'bengaluru', image: 'bangluru', label: 'Bengaluru' },
-  { id: 'chennai', image: 'chennai', label: 'Chennai' },
   { id: 'hydrabad', image: 'hydrabad', label: 'Hyderabad' },
+  { id: 'chennai', image: 'chennai', label: 'Chennai' },
+  { id: 'kolkata', image: 'kolkata', label: 'Kolkata' },
   { id: 'pune', image: 'pune', label: 'Pune' },
   { id: 'ahmedabad', image: 'ahmdabad', label: 'Ahmedabad' },
-  { id: 'raipur', image: 'raipur', label: 'Raipur' },
+  { id: 'surat', image: 'surat', label: 'Surat' },
+  { id: 'chandigarh', image: 'chandigarh', label: 'Chandigarh' },
   { id: 'jaipur', image: 'jaipur', label: 'Jaipur' },
-  { id: 'kolkata', image: 'kolkata', label: 'Kolkata' },
-  { id: 'indore', image: 'indore', label: 'Indore' },
   { id: 'lucknow', image: 'lucknow', label: 'Lucknow' },
-  { id: 'kochi', image: 'kochi', label: 'Kochi' },
+  { id: 'nagpur', image: 'nagpur', label: 'Nagpur' },
+  { id: 'indore', image: 'indore', label: 'Indore' },
   { id: 'bhopal', image: 'bhopal', label: 'Bhopal' },
+  { id: 'kochi', image: 'kochi', label: 'Kochi' },
+  { id: 'bhubaneswar', image: 'bhubneshwar', label: 'Bhubaneswar' },
+  { id: 'raipur', image: 'raipur', label: 'Raipur' },
+  { id: 'durg', image: 'durg', label: 'Durg' },
+  { id: 'bilaspur', image: 'bilaspur', label: 'Bilaspur' },
 ] as const satisfies readonly PopularCityImage[]
 
 export type BranchOffice = {
@@ -73,8 +79,8 @@ export type ServiceZone = {
 export const contactHero = {
   badge: 'Cities of Operation',
   subheadline: 'Delivering personalised tutoring across major cities with verified tutors, dedicated  support, and technology-driven learning.',
-  primaryCta: { label: 'Send an Enquiry', href: '#inquiry' },
-  secondaryCta: { label: 'Contact Support', href: '#call-us' },
+  primaryCta: { label: 'Call Support Team', href: 'tel:+917389563564' },
+  secondaryCta: { label: 'Find Your City Office', href: '#city-images' },
 } as const
 
 /** Contact hero collage — top row (2 cities) + bottom row (4 cities) */
@@ -424,19 +430,17 @@ export const alsoServing = {
   ] satisfies ServiceZone[],
 } as const
 
-export type SupportNumber = PhoneContact & {
-  purpose: string
-}
-
-/** Authorised support lines grouped by the purpose they best serve. */
-export const supportNumbers = [
-  { purpose: 'Enrollment & Admissions', display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
-  { purpose: 'Tutor Allocation', display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
-  { purpose: 'Demo Session Booking', display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
-  { purpose: 'Academic Counselling', display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
-  { purpose: 'Partnership Enquiries', display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
-  { purpose: 'Tutor Recruitment', display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
-] as const satisfies readonly SupportNumber[]
+/** All authorised Indian Mentors support lines. */
+export const authorisedPhoneNumbers = [
+  { display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
+  { display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
+  { display: '+91 70245 68193', tel: '+917024568193', wa: '917024568193' },
+  { display: '+91 74152 63564', tel: '+917415263564', wa: '917415263564' },
+  { display: '+91 74153 63564', tel: '+917415363564', wa: '917415363564' },
+  { display: '+91 74159 13564', tel: '+917415913564', wa: '917415913564' },
+  { display: '+91 74159 23564', tel: '+917415923564', wa: '917415923564' },
+  { display: '+91 91791 84304', tel: '+919179184304', wa: '919179184304' },
+] as const satisfies readonly PhoneContact[]
 
 export type FindUsOffice = {
   id: string
@@ -506,7 +510,7 @@ export const inquiryForm = {
 
 export const findMentorSection = {
   badge: 'Mentor Network',
-  title: 'Find a Mentor in Your City',
+  title: 'Find a Mentor in <span class="text-gradient-brand">Your City</span>',
   description:
     'Whether you need home tutoring, online academic support, or specialised mentoring, Indian Mentors connects students with trusted educators across India.',
   closing: 'Start your learning journey with the right mentor today.',
@@ -569,6 +573,52 @@ export const emailSupport = {
   ],
 } as const
 
+export type ContactAudienceCta = {
+  id: string
+  iconMdi: string
+  title: string
+  tagline: string
+  ctaLabel: string
+  href: string
+  accent: 'blue' | 'indigo' | 'emerald'
+}
+
+export const contactAudienceCtas = {
+  badge: 'Get Involved',
+  title: 'Connect With Indian Mentors <span class="text-gradient-brand">Your Way</span>',
+  description:
+    'Whether you teach, partner locally, or hire educators — explore the path that fits your goals.',
+  audiences: [
+    {
+      id: 'tutor',
+      iconMdi: 'mdi:account-school-outline',
+      title: 'Become a Tutor',
+      tagline: 'Join India\'s verified mentor network',
+      ctaLabel: 'Join as a Tutor',
+      href: '/tutors',
+      accent: 'blue',
+    },
+    {
+      id: 'channel-partner',
+      iconMdi: 'mdi:handshake-outline',
+      title: 'Channel Partner',
+      tagline: 'Build an education business in your territory',
+      ctaLabel: 'Explore Partnership',
+      href: '/channel-partner',
+      accent: 'indigo',
+    },
+    {
+      id: 'institute',
+      iconMdi: 'mdi:domain',
+      title: 'Institute Hiring',
+      tagline: 'Recruit verified educators for your institution',
+      ctaLabel: 'Hire Educators',
+      href: '/institutions',
+      accent: 'emerald',
+    },
+  ] satisfies ContactAudienceCta[],
+} as const
+
 export const contactGetStarted = {
   badge: 'Get Started',
   title: 'Get Personalised Tutoring Support in Your City',
@@ -577,5 +627,16 @@ export const contactGetStarted = {
   ctas: [
     { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
     { label: 'Talk to Counsellor', href: `tel:${phoneSupport.number.tel}`, iconMdi: 'mdi:account-voice' },
+  ],
+} as const
+
+export const contactCTA2 = {
+  title: 'Connect With Indian Mentors Your Way',
+  description:
+    'Whether you teach, partner locally, or hire educators — explore the path that fits your goals.',
+  ctas: [
+    { label: 'Join as a Tutor', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+    { label: 'Explore Partnership', href: `tel:${phoneSupport.number.tel}`, iconMdi: 'mdi:account-voice' },
+    { label: 'Hire Educators', href: `tel:${phoneSupport.number.tel}`, iconMdi: 'mdi:account-voice' },
   ],
 } as const

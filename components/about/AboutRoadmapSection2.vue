@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { aboutRoadmap } from '~/data/about'
 
 type Accent = 'blue' | 'indigo' | 'violet'
@@ -62,17 +62,14 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
 <template>
   <section id="roadmap" class="bg-slate-50/60 py-14 sm:py-16 lg:py-20" aria-labelledby="roadmap2-heading">
     <div class="container-page">
-      <CardHeader heading-id="roadmap2-heading" content-class="!px-0 !py-0" :badge="aboutRoadmap.badge"
+      <CardHeader heading-id="roadmap2-heading" classes="!px-0 !py-0" :badge="aboutRoadmap.badge"
         :title="headerTitle" :description="aboutRoadmap.subtitle" />
-
-      <!-- 3-column card grid -->
       <div class="mt-12 grid items-stretch gap-6 lg:grid-cols-3 lg:gap-7">
         <article v-for="(phase, pi) in aboutRoadmap.phases" :key="phase.id" v-motion :initial="{ opacity: 0, y: 24 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 80 + pi * 120 } }" :class="[
             'group relative flex flex-col overflow-hidden rounded-3xl border border-slate-200/70 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-24px_rgba(15,23,42,0.25)]',
             accentClasses[phase.accent].hover,
           ]">
-          <!-- Filled card header band -->
           <div :class="[
             'relative overflow-hidden bg-gradient-to-r px-5 py-5 sm:px-6 sm:py-6',
             accentClasses[phase.accent].header,
@@ -105,8 +102,6 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
               </div>
             </div>
           </div>
-
-          <!-- Items -->
           <ul class="flex flex-1 flex-col gap-1 p-4 sm:p-5" role="list">
             <li v-for="item in phase.items" :key="item.title"
               class="group/item flex items-start gap-3.5 rounded-2xl p-3 transition-colors duration-200 hover:bg-slate-50">
@@ -120,8 +115,6 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
               </div>
             </li>
           </ul>
-
-          <!-- Bottom accent line -->
           <div :class="['h-1 w-full bg-gradient-to-r', accentClasses[phase.accent].line]" aria-hidden="true" />
         </article>
       </div>

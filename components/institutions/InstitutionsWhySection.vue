@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { whyChooseAdvantages, institutionalSupport } from '~/data/institutions'
 </script>
@@ -12,7 +12,7 @@ import { whyChooseAdvantages, institutionalSupport } from '~/data/institutions'
       <CardHeader
         
         heading-id="why-institutions-heading"
-        content-class="!px-0 !py-0"
+        classes="!px-0 !py-0"
         badge="Why Indian Mentors"
         title='Why institutions <span class="text-gradient-brand">choose us</span>'
         description="Educational organizations across India trust Indian Mentors for structured and reliable teacher recruitment solutions."
@@ -40,8 +40,6 @@ import { whyChooseAdvantages, institutionalSupport } from '~/data/institutions'
         Whether your institution is expanding, replacing faculty, or building a new academic team,
         Indian Mentors provides professional recruitment support with clarity and reliability.
       </p>
-
-      <!-- Institutional collaboration panel -->
       <div id="institutional-support"
         class="mt-12 scroll-mt-24 overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-soft"
         v-motion :initial="{ opacity: 0, y: 16 }"

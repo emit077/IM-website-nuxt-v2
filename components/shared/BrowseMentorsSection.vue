@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 
 type BrowseMode = 'tutors' | 'students'
 type SessionMode = 'online' | 'home'
@@ -687,10 +687,6 @@ const filteredStudents = computed<StudentRequest[]>(() =>
     }),
 )
 
-const resultCount = computed(() =>
-    browseMode.value === 'tutors' ? filteredTutors.value.length : filteredStudents.value.length,
-)
-
 function formatRating(r: number) {
     return r.toFixed(1)
 }
@@ -722,7 +718,6 @@ const headerCopy = computed(() =>
         },
 )
 
-/* ---------------- Slider (scroll-snap) ---------------- */
 const tutorsTrack = ref<HTMLElement | null>(null)
 const studentsTrack = ref<HTMLElement | null>(null)
 const tutorsActiveIndex = ref(0)
@@ -801,7 +796,6 @@ onUnmounted(() => {
 <template>
     <section id="tutors" class="relative mx-auto w-full max-w-[1200px] px-4 py-12 sm:py-16"
         aria-labelledby="browse-mentors-heading">
-        <!-- Anchor for CTAs site-wide -->
         <div id="book-demo" class="sr-only scroll-mt-28" tabindex="-1">
             Book a free demo
         </div>
@@ -810,8 +804,6 @@ onUnmounted(() => {
         </div>
 
         <CardHeader :badge="headerCopy.badge" :title="headerCopy.title" :description="headerCopy.description" />
-
-        <!-- Browse mode tabs -->
         <div class="mt-2 flex justify-center" v-motion :initial="{ opacity: 0, y: 8 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: 80 } }">
             <div role="tablist" aria-label="Browse mode"
@@ -847,8 +839,6 @@ onUnmounted(() => {
                 </button>
             </div>
         </div>
-
-        <!-- Filter bar -->
         <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_8px_30px_-20px_rgba(15,23,42,0.18)] sm:p-4"
             v-motion :initial="{ opacity: 0, y: 12 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150 } }">
@@ -862,7 +852,6 @@ onUnmounted(() => {
                 </span>
 
                 <div class="grid flex-1 grid-cols-1 gap-2 sm:grid-cols-2 lg:flex lg:items-center lg:gap-2">
-                    <!-- Grade -->
                     <label class="relative">
                         <span class="sr-only">Grade</span>
                         <select v-model="filterGrade"
@@ -876,8 +865,6 @@ onUnmounted(() => {
                                 stroke-linejoin="round" />
                         </svg>
                     </label>
-
-                    <!-- Subject -->
                     <label class="relative">
                         <span class="sr-only">Subject</span>
                         <select v-model="filterSubject"
@@ -891,8 +878,6 @@ onUnmounted(() => {
                                 stroke-linejoin="round" />
                         </svg>
                     </label>
-
-                    <!-- City -->
                     <label class="relative flex-1">
                         <span class="sr-only">City or area</span>
                         <input v-model="filterCity" type="text" placeholder="City, area…"
@@ -905,8 +890,6 @@ onUnmounted(() => {
                             <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6" />
                         </svg>
                     </label>
-
-                    <!-- Mode toggle -->
                     <div
                         class="inline-flex shrink-0 items-center justify-self-stretch rounded-full border border-slate-200 bg-slate-50 p-1 sm:justify-self-start">
                         <button type="button" @click="filterMode = 'online'" :class="[
@@ -938,7 +921,6 @@ onUnmounted(() => {
                 </div>
             </div>
         </div>
-        <!-- =================== TUTORS SLIDER =================== -->
         <div v-show="browseMode === 'tutors'" class="relative mt-4">
             <button type="button" @click="scrollSlider(tutorsTrack, -1)" :disabled="tutorsAtStart"
                 aria-label="Previous tutors"
@@ -956,8 +938,6 @@ onUnmounted(() => {
                     class="group relative flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_-18px_rgba(15,23,42,0.25)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(37,99,235,0.35)] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
                     v-motion :initial="{ opacity: 0, y: 14 }"
                     :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150 + i * 90 } }">
-
-                    <!-- Header (gradient) -->
                     <div
                         class="relative bg-gradient-to-br from-indigo-600 via-blue-600 to-blue-700 px-4 pb-3.5 pt-9 text-center">
                         <div aria-hidden="true"
@@ -999,8 +979,6 @@ onUnmounted(() => {
                             </span>
                         </div>
                     </div>
-
-                    <!-- Stats row -->
                     <div
                         class="grid grid-cols-3 divide-x divide-slate-100 border-b border-slate-100 bg-white px-2 py-2 text-center">
                         <div>
@@ -1038,8 +1016,6 @@ onUnmounted(() => {
                             <p class="text-[10px] text-slate-500">students</p>
                         </div>
                     </div>
-
-                    <!-- Body -->
                     <div class="flex flex-1 flex-col gap-2 px-4 py-3">
                         <p class="line-clamp-2 text-[11.5px] leading-snug text-slate-600">
                             {{ t.description }}
@@ -1089,8 +1065,6 @@ onUnmounted(() => {
                     ]"></button>
             </div>
         </div>
-
-        <!-- =================== STUDENTS SLIDER =================== -->
         <div v-show="browseMode === 'students'" class="relative mt-4">
             <button type="button" @click="scrollSlider(studentsTrack, -1)" :disabled="studentsAtStart"
                 aria-label="Previous students"
@@ -1109,7 +1083,6 @@ onUnmounted(() => {
                     class="group relative flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_-18px_rgba(15,23,42,0.25)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(37,99,235,0.32)] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
                     v-motion :initial="{ opacity: 0, y: 14 }"
                     :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150 + i * 90 } }">
-                    <!-- Header (blue gradient — slightly different shade from tutors) -->
                     <div
                         class="relative bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700 px-4 pb-3.5 pt-9 text-center">
                         <span v-if="s.urgent"
@@ -1150,8 +1123,6 @@ onUnmounted(() => {
                             </span>
                         </div>
                     </div>
-
-                    <!-- Quick facts -->
                     <div
                         class="grid grid-cols-3 divide-x divide-slate-100 border-b border-slate-100 bg-white px-2 py-2 text-center">
                         <div>
@@ -1173,8 +1144,6 @@ onUnmounted(() => {
                             <p class="text-[10px] text-slate-500">mode</p>
                         </div>
                     </div>
-
-                    <!-- Body -->
                     <div class="flex flex-1 flex-col gap-2 px-4 py-3">
                         <div class="flex flex-wrap gap-1">
                             <span v-for="sub in s.subjectsNeeded" :key="sub"

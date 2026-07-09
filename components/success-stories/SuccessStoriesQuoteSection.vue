@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { accentThemes, type QuoteReview, type StoryTab } from '~/data/success-stories'
 
 const props = defineProps<{
@@ -22,8 +22,8 @@ function initials(name: string) {
     :class="['relative scroll-mt-28 py-14 sm:py-16 lg:py-20', bgClass ?? 'bg-white']"
     :aria-labelledby="`${section.id}-heading`">
     <div class="container-page">
-      <CardHeader :heading-id="`${section.id}-heading`" content-class="!px-0 !py-0" :badge="section.kicker"
-        :title="`${section.title} `" :title-highlight="section.titleHighlight" :description="section.description"
+      <CardHeader :heading-id="`${section.id}-heading`" classes="!px-0 !py-0" :badge="section.kicker"
+        :title="`${section.title} <span class=\'text-gradient-brand\'>${section.titleHighlight}</span>`" :description="section.description"
         :accent="section.accent" />
 
       <div class="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">

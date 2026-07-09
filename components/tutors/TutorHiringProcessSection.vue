@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { hiringSteps, type HiringStep } from '~/data/tutors'
 
 const accentClasses: Record<HiringStep['accent'], { badge: string; tile: string; icon: string }> = {
@@ -15,20 +15,16 @@ const accentClasses: Record<HiringStep['accent'], { badge: string; tile: string;
 <template>
   <section id="hiring-process" class="relative scroll-mt-20 overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="hiring-process-heading">
-    <!-- Soft mesh blobs -->
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-24 top-1/4 h-72 w-72 rounded-full bg-violet-100/50 blur-3xl" />
     <div aria-hidden="true"
       class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-blue-100/50 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="hiring-process-heading" content-class="!px-0 !py-0" badge="Tutor Hiring Process"
+      <CardHeader heading-id="hiring-process-heading" classes="!px-0 !py-0" badge="Tutor Hiring Process"
         title='From registration to your <span class="text-gradient-brand">first session</span>'
         description="A structured onboarding process designed to maintain high academic standards — so students and parents always receive reliable, qualified mentors." />
-
-      <!-- Steps -->
       <div class="relative mx-auto mt-12 max-w-5xl">
-        <!-- Connector line (desktop) -->
         <div aria-hidden="true"
           class="pointer-events-none absolute left-0 right-0 top-[22px] hidden h-px bg-gradient-to-r from-violet-200 via-blue-300 to-indigo-200 lg:block" />
 
@@ -36,7 +32,6 @@ const accentClasses: Record<HiringStep['accent'], { badge: string; tile: string;
           <li v-for="(step, i) in hiringSteps" :key="step.no" class="relative flex gap-4 lg:flex-col lg:gap-0" v-motion
             :initial="{ opacity: 0, y: 18 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 60 + i * 90, duration: 450 } }">
-            <!-- Mobile connector -->
             <div v-if="i < hiringSteps.length - 1" aria-hidden="true"
               class="absolute left-[21px] top-12 bottom-[-24px] w-px bg-gradient-to-b from-blue-200 to-transparent lg:hidden" />
 

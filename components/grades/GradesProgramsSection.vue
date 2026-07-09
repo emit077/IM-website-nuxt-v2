@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 import { curriculumStages } from '~/components/academic/gradesData'
@@ -18,13 +18,11 @@ import { curriculumStages } from '~/components/academic/gradesData'
       ]" />
 
       <div class="container-page relative">
-        <CardHeader :heading-id="`${stage.id}-heading`" content-class="!px-0 !py-0"
+        <CardHeader :heading-id="`${stage.id}-heading`" classes="!px-0 !py-0"
           :badge="`${stage.emoji} ${stage.title}`"
           :title='`${stage.programTitle}: <span class="text-gradient-brand">${stage.focus.toLowerCase()}</span>`'
           :description="stage.programDescription" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }" />
-
-        <!-- Overview + approach summary -->
         <div class="mx-auto mt-8 max-w-3xl rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm sm:p-6"
           v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80, duration: 450 } }">
@@ -49,8 +47,6 @@ import { curriculumStages } from '~/components/academic/gradesData'
             </p>
           </div>
         </div>
-
-        <!-- Stream details (senior secondary) -->
         <div v-if="stage.streamDetails?.length" class="mx-auto mt-8 max-w-3xl" v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 120, duration: 450 } }">
           <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">Streams offered</p>
@@ -64,8 +60,6 @@ import { curriculumStages } from '~/components/academic/gradesData'
             </article>
           </div>
         </div>
-
-        <!-- Exam groups (competitive) -->
         <div v-if="stage.examGroups?.length" class="mx-auto mt-8 max-w-3xl grid gap-3 sm:grid-cols-2" v-motion
           :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 120, duration: 450 } }">
@@ -80,8 +74,6 @@ import { curriculumStages } from '~/components/academic/gradesData'
             </div>
           </div>
         </div>
-
-        <!-- Class-level cards -->
         <div v-if="stage.classes.length" class="mx-auto mt-10 max-w-4xl">
           <p class="text-center text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">
             {{ stage.gradesLabel }}
@@ -134,8 +126,6 @@ import { curriculumStages } from '~/components/academic/gradesData'
             </li>
           </ol>
         </div>
-
-        <!-- Key features -->
         <div v-if="stage.keyFeatures?.length"
           class="mx-auto mt-10 max-w-3xl rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm sm:p-6" v-motion
           :initial="{ opacity: 0, y: 12 }"
@@ -152,8 +142,6 @@ import { curriculumStages } from '~/components/academic/gradesData'
             </li>
           </ul>
         </div>
-
-        <!-- Stage closing CTA -->
         <div
           class="mx-auto mt-10 max-w-3xl rounded-2xl border border-blue-200/80 bg-gradient-to-br from-blue-50 to-indigo-50/80 p-5 text-center sm:p-7"
           v-motion :initial="{ opacity: 0, y: 12 }"

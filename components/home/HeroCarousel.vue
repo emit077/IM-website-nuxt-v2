@@ -106,21 +106,6 @@ function go(delta: number) {
   if (reduceMotion.value) snapIfOnCloneSync()
 }
 
-/** Jump to a logical slide (0-based) without animating through intermediates. */
-async function goToLogical(target: number) {
-  if (count.value < 2) return
-  const next = target + 1
-  if (next === trackIndex.value) return
-  noTransition.value = true
-  trackIndex.value = next
-  await nextTick()
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      noTransition.value = false
-    })
-  })
-}
-
 function onTrackTransitionEnd(ev: TransitionEvent) {
   if (ev.propertyName !== 'transform') return
   if (ev.target !== ev.currentTarget) return

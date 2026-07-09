@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 const dashboardImage = '/assets/img/home/dashboard.png'
 </script>
 
 <template>
   <section id="partner-programme" class="relative mx-auto w-full max-w-[1200px]  " aria-label="Partner programme">
     <div
-      class="relative overflow-hidden rounded-[28px] border border-indigo-300/35 bg-gradient-to-br from-indigo-900 via-indigo-700 to-indigo-500 px-5  text-white shadow-[0_24px_55px_-30px_rgba(37,99,235,0.85)] pr-0 sm:pl-7 sm:pt-8 lg:pl-8">
-      <div class="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
+      class="relative overflow-hidden  rounded-[28px] border border-indigo-300/35 bg-gradient-to-br from-indigo-900 via-indigo-700 to-indigo-500 px-5  text-white shadow-[0_24px_55px_-30px_rgba(37,99,235,0.85)] pr-0 sm:pl-7 sm:pt-8 lg:pl-8">
+      <div class="grid items-start gap-8 py-8 lg:grid-cols-12 lg:gap-10">
         <div class="lg:col-span-6">
-          <CardHeader variant="variant-2" class="mb-0 mt-[-1.8rem]" badge="Channel Partner Programme"
+          <CardHeader theme="dark" classes="mb-0 mt-[-1.8rem]" badge="Channel Partner Programme" align="left"
             title="Become an Authorised <br/> Regional Channel Partner" description="Launch a premium education business with India's trusted tutoring
               brand. Get verified tutors, proven systems, marketing support and
               technology - while you focus on local growth and relationships.   <br><br>    <b> Simple and Structured Onboarding</b><br>
@@ -19,7 +19,7 @@ const dashboardImage = '/assets/img/home/dashboard.png'
             <b>Register → Collaborate → Earn</b>" />
 
 
-          <div class="flex flex-wrap gap-3 pb-5 ">
+          <div class="flex flex-wrap gap-3 pb-5 mt-5">
             <button
               class="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-700">
               Apply for Partnership
@@ -29,7 +29,7 @@ const dashboardImage = '/assets/img/home/dashboard.png'
               </svg>
             </button>
             <button
-              class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700">
+              class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3  text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700">
               Know More About Partnership
             </button>
           </div>

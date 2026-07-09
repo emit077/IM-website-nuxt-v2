@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import SuccessStoriesHeroSection from '~/components/success-stories/SuccessStoriesHeroSection.vue'
-import SuccessStoriesNavSection from '~/components/success-stories/SuccessStoriesNavSection.vue'
 import SuccessStoriesStudentRail from '~/components/success-stories/SuccessStoriesStudentRail.vue'
 import SuccessStoriesQuoteSection from '~/components/success-stories/SuccessStoriesQuoteSection.vue'
 import SuccessStoriesPlacementSection from '~/components/success-stories/SuccessStoriesPlacementSection.vue'
 import SuccessStoriesVideoSection from '~/components/success-stories/SuccessStoriesVideoSection.vue'
-import SuccessStoriesWhySection from '~/components/success-stories/SuccessStoriesWhySection.vue'
 import UiCTASection from '~/components/ui/CTASection.vue'
 import {
   institutionalFeedback,

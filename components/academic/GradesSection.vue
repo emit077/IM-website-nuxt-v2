@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { curriculumStages, type CurriculumStage } from './gradesData'
 
 const activeId = ref<CurriculumStage['id']>(curriculumStages[0]!.id)
@@ -18,12 +18,10 @@ function toggle(id: CurriculumStage['id']) {
       class="pointer-events-none absolute inset-x-0 -top-32 -z-0 mx-auto h-80 max-w-4xl bg-gradient-to-b from-blue-100/50 to-transparent blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="grades-heading" content-class="!px-0 !py-0" badge="Grades covered"
+      <CardHeader heading-id="grades-heading" classes="!px-0 !py-0" badge="Grades covered"
         title='Support across <span class="text-gradient-brand">every academic stage</span>'
         description="Indian Mentors provides structured tutoring from early childhood to postgraduate studies — adapting to each student's level, learning style, and goals."
         v-motion :initial="{ opacity: 0, y: 14 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }" />
-
-      <!-- Accordion -->
       <div class="mx-auto mt-10 max-w-3xl space-y-3 sm:mt-12" v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 100, duration: 550 } }">
         <div v-for="(stage, i) in curriculumStages" :key="stage.id" :class="[
@@ -32,7 +30,6 @@ function toggle(id: CurriculumStage['id']) {
             ? 'border-blue-300 shadow-[0_16px_44px_-20px_rgba(37,99,235,0.35)] ring-1 ring-blue-100'
             : 'border-slate-200/80 shadow-sm',
         ]">
-          <!-- Row trigger -->
           <button type="button"
             class="flex w-full items-center gap-4 px-4 py-4 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 sm:px-5"
             :aria-expanded="activeId === stage.id" :aria-controls="`stage-panel-${stage.id}`" @click="toggle(stage.id)">
@@ -61,8 +58,6 @@ function toggle(id: CurriculumStage['id']) {
               activeId === stage.id ? 'rotate-180 text-blue-600' : '',
             ]" aria-hidden="true" />
           </button>
-
-          <!-- Expandable panel -->
           <Transition enter-active-class="grid transition-all duration-300 ease-out"
             enter-from-class="grid-rows-[0fr] opacity-0" enter-to-class="grid-rows-[1fr] opacity-100"
             leave-active-class="grid transition-all duration-200 ease-in" leave-from-class="grid-rows-[1fr] opacity-100"
@@ -72,8 +67,6 @@ function toggle(id: CurriculumStage['id']) {
                 <div class="border-t border-slate-100 px-4 pb-5 pt-5 sm:px-5">
                   <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-blue-600">{{ stage.focus }}</p>
                   <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ stage.overview }}</p>
-
-                  <!-- Grades -->
                   <div v-if="stage.classes.length" class="mt-5">
                     <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">Grades in this stage</p>
                     <div class="mt-2.5 flex flex-wrap gap-2">
@@ -83,8 +76,6 @@ function toggle(id: CurriculumStage['id']) {
                       </span>
                     </div>
                   </div>
-
-                  <!-- Streams -->
                   <div v-if="stage.streams?.length" class="mt-5">
                     <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">Streams covered</p>
                     <div class="mt-2.5 flex flex-wrap gap-2">
@@ -94,8 +85,6 @@ function toggle(id: CurriculumStage['id']) {
                       </span>
                     </div>
                   </div>
-
-                  <!-- Exam tracks -->
                   <div v-if="stage.examGroups?.length" class="mt-5 grid gap-3 sm:grid-cols-2">
                     <div v-for="group in stage.examGroups" :key="group.label"
                       class="rounded-xl border border-slate-200/80 bg-slate-50/70 p-3.5">
@@ -108,8 +97,6 @@ function toggle(id: CurriculumStage['id']) {
                       </div>
                     </div>
                   </div>
-
-                  <!-- Learning approach -->
                   <div class="mt-5">
                     <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">Learning approach</p>
                     <ul class="mt-2.5 grid gap-2 sm:grid-cols-2" role="list">
@@ -121,8 +108,6 @@ function toggle(id: CurriculumStage['id']) {
                       </li>
                     </ul>
                   </div>
-
-                  <!-- Goal + CTAs -->
                   <div class="mt-5 flex flex-col gap-4 rounded-xl border border-slate-200/80 bg-slate-50/70 p-4">
                     <div class="flex items-start gap-2.5">
                       <Icon icon="mdi:flag-checkered" class="mt-0.5 h-4 w-4 shrink-0 text-blue-600"

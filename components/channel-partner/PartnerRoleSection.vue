@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { roleSection, responsibilities } from '~/data/channel-partner'
 </script>
 
@@ -8,11 +8,9 @@ import { roleSection, responsibilities } from '~/data/channel-partner'
   <section id="partner-role" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
     aria-labelledby="partner-role-heading">
     <div class="container-page">
-      <CardHeader heading-id="partner-role-heading" content-class="!px-0 !py-0" :badge="roleSection.kicker"
+      <CardHeader heading-id="partner-role-heading" classes="!px-0 !py-0" :badge="roleSection.kicker"
         title='Your role in the <span class="text-gradient-brand">Indian Mentors ecosystem</span>'
         :description="roleSection.description" />
-
-      <!-- Responsibilities grid -->
       <ul class="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3" role="list">
         <li v-for="(item, i) in responsibilities" :key="item.title" v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + (i % 6) * 40, duration: 400 } }"
@@ -31,8 +29,6 @@ import { roleSection, responsibilities } from '~/data/channel-partner'
           </article>
         </li>
       </ul>
-
-      <!-- Note -->
       <div class="mx-auto mt-8 max-w-2xl" v-motion :initial="{ opacity: 0, y: 10 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
         <p

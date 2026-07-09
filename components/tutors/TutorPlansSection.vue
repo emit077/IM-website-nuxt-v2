@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { tutorPlans } from '~/data/tutors'
 </script>
@@ -9,7 +9,7 @@ import { tutorPlans } from '~/data/tutors'
   <section id="tutor-plans" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
     aria-labelledby="tutor-plans-heading">
     <div class="container-page">
-      <CardHeader heading-id="tutor-plans-heading" content-class="!px-0 !py-0" badge="Tutor Registration Plans"
+      <CardHeader heading-id="tutor-plans-heading" classes="!px-0 !py-0" badge="Tutor Registration Plans"
         title='Flexible plans for <span class="text-gradient-brand">every stage</span> of your career'
         description="Start with a free profile and verification, or go Premium for priority leads, featured visibility, and faster payouts." />
 

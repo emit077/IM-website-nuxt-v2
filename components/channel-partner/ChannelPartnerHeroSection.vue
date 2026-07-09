@@ -13,7 +13,6 @@ function rippleHandler(e: MouseEvent) {
 
 <template>
   <section class="relative overflow-hidden bg-white" aria-labelledby="partner-hero-heading">
-    <!-- Soft backdrop glow -->
     <div aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 -top-40 -z-10 mx-auto h-[420px] max-w-5xl bg-gradient-to-b from-blue-100/60 via-indigo-50/40 to-transparent blur-3xl" />
 
@@ -44,8 +43,6 @@ function rippleHandler(e: MouseEvent) {
         :enter="{ opacity: 1, y: 0, transition: { duration: 700, delay: 380 } }">
         {{ heroContent.subDescription }}
       </p>
-
-      <!-- Tagline -->
       <p class="mx-auto mt-6 w-fit rounded-full border border-amber-200 bg-amber-50/80 px-4 py-1.5 text-[13px] font-semibold text-amber-700 sm:text-sm"
         v-motion :initial="{ opacity: 0, y: 12 }"
         :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 430 } }">
@@ -65,8 +62,6 @@ function rippleHandler(e: MouseEvent) {
           {{ heroContent.secondaryCta.label }}
         </a>
       </div>
-
-      <!-- Trust highlights -->
       <ul class="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3" role="list" v-motion
         :initial="{ opacity: 0, y: 14 }" :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 580 } }">
         <li v-for="item in heroHighlights" :key="item.label"

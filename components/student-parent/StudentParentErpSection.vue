@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import {
   dashboardModules,
@@ -14,11 +14,9 @@ const frameworkSteps = ['Plan', 'Track', 'Review', 'Improve']
 <template>
   <section id="erp-dashboard" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20" aria-labelledby="erp-heading">
     <div class="container-page">
-      <CardHeader heading-id="erp-heading" content-class="!px-0 !py-0" badge="Learning Dashboard"
+      <CardHeader heading-id="erp-heading" classes="!px-0 !py-0" badge="Learning Dashboard"
         title='Complete transparency for <span class="text-gradient-brand">parents and students</span>'
         description="Every session, report, and payment is tracked in one ERP-powered dashboard — so you always know exactly how learning is progressing." />
-
-      <!-- Framework strip -->
       <div class="mx-auto mt-8 flex flex-wrap items-center justify-center gap-2" v-motion
         :initial="{ opacity: 0, y: 10 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
         <template v-for="(step, i) in frameworkSteps" :key="step">
@@ -30,8 +28,6 @@ const frameworkSteps = ['Plan', 'Track', 'Review', 'Improve']
             aria-hidden="true" />
         </template>
       </div>
-
-      <!-- Modules grid -->
       <ul class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3" role="list">
         <li v-for="(mod, i) in dashboardModules" :key="mod.id" v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + (i % 6) * 40, duration: 400 } }">
@@ -49,8 +45,6 @@ const frameworkSteps = ['Plan', 'Track', 'Review', 'Improve']
           </article>
         </li>
       </ul>
-
-      <!-- Security + parent visibility -->
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
         <div class="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft sm:p-7" v-motion
           :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">

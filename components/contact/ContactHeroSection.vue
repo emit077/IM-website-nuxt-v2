@@ -1,21 +1,13 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
-import IconArrowRight from '~/components/icons/IconArrowRight.vue'
+import HeroHeader from '~/components/ui/HeroHeader.vue'
+import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import { contactHero, contactHeroCollageBottom, contactHeroCollageTop } from '~/data/contact'
 
-const heroTitle = `Contact Us<br class="hidden sm:block" /> <span class="text-gradient-brand">We’re Here to Help</span>`
-
-const heroTagline =
-  '<span class="text-gradient-brand">Indian Mentors</span> –  Connecting Learners with Verified Educators'
-
-const heroDescription = contactHero.subheadline
-
-function rippleHandler(e: MouseEvent) {
-  const target = e.currentTarget as HTMLElement
-  const rect = target.getBoundingClientRect()
-  target.style.setProperty('--x', `${e.clientX - rect.left}px`)
-  target.style.setProperty('--y', `${e.clientY - rect.top}px`)
+const heroContent = {
+  title: 'Contact Us<br class="hidden sm:block" /> <span class="text-gradient-brand">We’re Here to Help</span>',
+  subtitle: '<span class="text-gradient-brand">Indian Mentors</span> –  Connecting Learners with Verified Educators',
+  description: contactHero.subheadline,
+  contentClass: '!px-0 !py-0 max-w-none',
 }
 </script>
 
@@ -27,35 +19,23 @@ function rippleHandler(e: MouseEvent) {
 
     <div class="container-page py-12 sm:py-14 lg:py-16">
       <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-        <CardHeader variant="hero" heading-id="contact-hero-heading" content-class="!px-0 !py-0 max-w-none"
-          :badge="contactHero.badge" :title="heroTitle" :tagline="heroTagline" :description="heroDescription">
+        <HeroHeader variant="hero" heading-id="contact-hero-heading" badge="India's #1 Verified Tutor Platform"
+          :title="heroContent.title" :subtitle="heroContent.subtitle" :description="heroContent.description"
+          :content-class="heroContent.contentClass">
           <div class="flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
-            :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
-            <a :href="contactHero.primaryCta.href" class="btn-primary ripple group w-full sm:w-auto"
-              @mousemove="rippleHandler">
-              <Icon icon="mdi:map-marker-radius-outline" class="h-4 w-4 shrink-0 opacity-95" aria-hidden="true" />
-              {{ contactHero.primaryCta.label }}
-              <IconArrowRight
-                class="hero-cta-arrow h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
-            <a :href="contactHero.secondaryCta.href" class="btn-secondary group w-full sm:w-auto">
-              <span
-                class="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white">
-                <Icon icon="mdi:phone-outline" class="h-3.5 w-3.5" aria-hidden="true" />
-              </span>
-              {{ contactHero.secondaryCta.label }}
-            </a>
+            :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }">
+            <ActionBtn variant="primary" :label="contactHero.primaryCta.label" icon="mdi:phone-outline"
+              :href="contactHero.primaryCta.href" />
+            <ActionBtn variant="secondary" :label="contactHero.secondaryCta.label" icon="mdi:map-marker-radius-outline"
+              :href="contactHero.secondaryCta.href"
+              icon-wrapper-class="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white" />
           </div>
-
-          <div class="mt-2 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" v-motion
-            :initial="{ opacity: 0 }" :enter="{ opacity: 1, transition: { delay: 1000, duration: 600 } }" />
-        </CardHeader>
+        </HeroHeader>
 
         <div class="relative mx-auto w-full max-w-md lg:max-w-none" v-motion :initial="{ opacity: 0, x: 20 }"
           :enter="{ opacity: 1, x: 0, transition: { duration: 600, delay: 200, ease: [0.22, 1, 0.36, 1] } }">
           <div aria-hidden="true"
             class="pointer-events-none absolute -inset-2 rounded-[1.35rem] bg-gradient-to-br from-blue-100/50 via-indigo-50/30 to-sky-50/40 blur-sm" />
-
           <div
             class="relative overflow-hidden rounded-[1.35rem] border border-slate-200/70 bg-slate-100/80 p-2 shadow-[0_20px_50px_-24px_rgba(37,99,235,0.22)] sm:p-2.5">
             <div class="flex flex-col gap-2 sm:gap-2.5">
@@ -97,29 +77,3 @@ function rippleHandler(e: MouseEvent) {
     </div>
   </section>
 </template>
-
-<style scoped>
-.hero-cta-arrow {
-  animation: hero-arrow-loop 0.95s ease-in-out infinite;
-}
-
-@keyframes hero-arrow-loop {
-
-  0%,
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateX(4px);
-    opacity: 0.7;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-cta-arrow {
-    animation: none;
-  }
-}
-</style>

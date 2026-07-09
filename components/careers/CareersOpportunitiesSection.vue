@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { opportunitiesSection, roleCategories, type RoleCategory } from '~/data/careers'
 
@@ -39,8 +39,8 @@ const accentClasses: Record<
   <section id="opportunities" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
     aria-labelledby="opportunities-heading">
     <div class="container-page">
-      <CardHeader heading-id="opportunities-heading" content-class="!px-0 !py-0" :badge="opportunitiesSection.kicker"
-        :title="`${opportunitiesSection.title} `" :title-highlight="opportunitiesSection.titleHighlight"
+      <CardHeader heading-id="opportunities-heading" classes="!px-0 !py-0" :badge="opportunitiesSection.kicker"
+        :title="`${opportunitiesSection.title} <span class=\'text-gradient-brand\'>${opportunitiesSection.titleHighlight}</span>`"
         :description="opportunitiesSection.description" />
 
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">

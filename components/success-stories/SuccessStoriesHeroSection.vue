@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import HeroHeader from '~/components/ui/HeroHeader.vue'
 import {
   accentThemes,
   studentStories,
@@ -25,71 +25,53 @@ function rippleHandler(e: MouseEvent) {
 
 <template>
   <section class="relative overflow-hidden bg-cream-50" aria-labelledby="success-stories-hero-heading">
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute inset-0"
-      style="background-image: radial-gradient(circle at 15% 20%, rgba(59,130,246,0.12), transparent 40%), radial-gradient(circle at 85% 15%, rgba(99,102,241,0.1), transparent 35%)"
-    />
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0"
+      style="background-image: radial-gradient(circle at 15% 20%, rgba(59,130,246,0.12), transparent 40%), radial-gradient(circle at 85% 15%, rgba(99,102,241,0.1), transparent 35%)" />
 
     <div class="container-page relative py-10 sm:py-14 lg:py-16">
       <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:col-span-7">
-          <CardHeader
-            variant="hero"
+          <HeroHeader
             heading-id="success-stories-hero-heading"
             content-class="!px-0 !py-0 max-w-2xl"
             :badge="successStoriesHero.badge"
             :title="heroTitle"
+            :subtitle="successStoriesHero.intro"
             :description="successStoriesHero.description"
-            :tagline="successStoriesHero.intro"
-          >
-            <div class="flex flex-col gap-3 sm:flex-row">
-              <a
-                :href="successStoriesHero.primaryCta.href"
-                class="btn-primary ripple group w-full sm:w-auto"
-                @mousemove="rippleHandler"
-              >
-                {{ successStoriesHero.primaryCta.label }}
-                <IconArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-              <a :href="successStoriesHero.secondaryCta.href" class="btn-secondary w-full sm:w-auto">
-                <Icon icon="mdi:phone-outline" class="h-4 w-4" aria-hidden="true" />
-                {{ successStoriesHero.secondaryCta.label }}
-              </a>
-            </div>
-          </CardHeader>
+          />
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a :href="successStoriesHero.primaryCta.href" class="btn-primary ripple group w-full sm:w-auto"
+              @mousemove="rippleHandler">
+              {{ successStoriesHero.primaryCta.label }}
+              <IconArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+            <a :href="successStoriesHero.secondaryCta.href" class="btn-secondary w-full sm:w-auto">
+              <Icon icon="mdi:phone-outline" class="h-4 w-4" aria-hidden="true" />
+              {{ successStoriesHero.secondaryCta.label }}
+            </a>
+          </div>
 
           <ul class="mt-8 grid grid-cols-2 gap-2.5 sm:grid-cols-4" role="list">
-            <li
-              v-for="(stat, i) in successStoriesHeroStats"
-              :key="stat.label"
-              class="rounded-xl border border-slate-200/80 bg-white px-3 py-3 shadow-soft"
-              v-motion
+            <li v-for="(stat, i) in successStoriesHeroStats" :key="stat.label"
+              class="rounded-xl border border-slate-200/80 bg-white px-3 py-3 shadow-soft" v-motion
               :initial="{ opacity: 0, y: 10 }"
-              :enter="{ opacity: 1, y: 0, transition: { delay: 420 + i * 60, duration: 400 } }"
-            >
+              :enter="{ opacity: 1, y: 0, transition: { delay: 420 + i * 60, duration: 400 } }">
               <p class="font-display text-lg font-extrabold text-slate-900">{{ stat.value }}</p>
               <p class="text-[10px] font-semibold uppercase tracking-wide text-slate-500">{{ stat.label }}</p>
             </li>
           </ul>
         </div>
 
-        <div
-          class="lg:col-span-5"
-          v-motion
-          :initial="{ opacity: 0, x: 20 }"
-          :enter="{ opacity: 1, x: 0, transition: { duration: 700, delay: 200 } }"
-        >
+        <div class="lg:col-span-5" v-motion :initial="{ opacity: 0, x: 20 }"
+          :enter="{ opacity: 1, x: 0, transition: { duration: 700, delay: 200 } }">
           <article
-            class="relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white p-6 shadow-[0_28px_60px_-28px_rgba(37,99,235,0.35)] sm:p-7"
-          >
-            <span
-              aria-hidden="true"
-              :class="['pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-to-br opacity-30 blur-3xl', theme.gradient]"
-            />
+            class="relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white p-6 shadow-[0_28px_60px_-28px_rgba(37,99,235,0.35)] sm:p-7">
+            <span aria-hidden="true"
+              :class="['pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-gradient-to-br opacity-30 blur-3xl', theme.gradient]" />
 
             <div class="relative">
-              <span class="inline-flex items-center gap-1.5 rounded-full bg-slate-900 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+              <span
+                class="inline-flex items-center gap-1.5 rounded-full bg-slate-900 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
                 <Icon icon="mdi:star-four-points" class="h-3 w-3" aria-hidden="true" />
                 Featured story
               </span>
@@ -97,8 +79,7 @@ function rippleHandler(e: MouseEvent) {
               <div class="mt-5 flex items-center gap-3">
                 <span
                   :class="['grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br text-sm font-bold text-white shadow-md', theme.gradient]"
-                  aria-hidden="true"
-                >
+                  aria-hidden="true">
                   {{ spotlight.initials }}
                 </span>
                 <div>
@@ -125,7 +106,8 @@ function rippleHandler(e: MouseEvent) {
                 </p>
               </blockquote>
 
-              <a href="#student-stories" class="mt-5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-blue-700 transition hover:text-blue-800">
+              <a href="#student-stories"
+                class="mt-5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-blue-700 transition hover:text-blue-800">
                 Explore student journeys
                 <Icon icon="mdi:arrow-down" class="h-4 w-4" aria-hidden="true" />
               </a>

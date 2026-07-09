@@ -74,7 +74,6 @@ onUnmounted(() => {
 
 <template>
   <header ref="navRef" class="sticky top-0 z-50 w-full">
-    <!-- Top utility bar -->
     <div class="hidden border-b border-blue-800/30 bg-blue-700 text-white sm:block">
       <div class="container-page flex h-9 items-center justify-between text-xs sm:text-[13px]">
         <div class="flex min-w-0 items-center gap-3">
@@ -101,14 +100,11 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
-
-    <!-- Main navigation -->
     <div :class="[
       'border-b bg-white transition-shadow duration-300',
       scrolled ? 'border-slate-200 shadow-sm' : 'border-slate-200/80',
     ]">
       <nav class="container-page flex h-16 items-center justify-between gap-4 lg:h-[4.5rem]" aria-label="Primary">
-        <!-- Logo -->
         <NuxtLink to="/" class="group flex min-w-0 shrink-0 items-center gap-3" aria-label="Indian Mentors home">
           <img :src="usePublicAsset('/assets/img/logo/full-logo.svg')" alt="Indian Mentors"
             class="h-8 w-auto max-w-[150px] sm:h-9 sm:max-w-[180px] lg:max-w-[200px]" width="200" height="36" />
@@ -118,8 +114,6 @@ onUnmounted(() => {
             </span>
           </span>
         </NuxtLink>
-
-        <!-- Desktop links -->
         <ul class="hidden items-center lg:flex">
           <li v-for="link in primaryLinks" :key="link.href">
             <a :href="link.href"
@@ -155,16 +149,12 @@ onUnmounted(() => {
             </Transition>
           </li>
         </ul>
-
-        <!-- Desktop CTA -->
         <div class="hidden shrink-0 lg:block">
           <a href="#book-demo"
             class="inline-flex items-center justify-center rounded-full bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800">
             Book Free Consultation
           </a>
         </div>
-
-        <!-- Mobile toggle -->
         <button type="button" class="ml-auto rounded-lg p-2 text-slate-700 transition hover:bg-slate-100 lg:hidden"
           :aria-expanded="mobileOpen" aria-label="Toggle menu" @click="mobileOpen = !mobileOpen">
           <svg v-if="!mobileOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
@@ -178,8 +168,6 @@ onUnmounted(() => {
         </button>
       </nav>
     </div>
-
-    <!-- Mobile menu -->
     <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 -translate-y-1"
       enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-150 ease-in"
       leave-from-class="opacity-100" leave-to-class="opacity-0">

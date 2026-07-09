@@ -38,9 +38,7 @@ useSeoMeta({
     <HeroCarousel />
     <BannerCarousel />
     <PartnersStrip />
-    <section class="container-page w-full py-8 sm:py-10">
-      <TrustIndicators :items="trustStats" />
-    </section>
+
     <ServiceSection />
     <LearningLibrarySection />
     <AboutSection />

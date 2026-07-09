@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { aboutLeadership, aboutLeadershipQuote } from '~/data/about'
 
 const bannerImage = usePublicAsset('assets/img/banner/banner-1.png')
@@ -13,15 +13,12 @@ const leadershipCards = computed(() => otherLeaders.value.slice(0, 4))
 <template>
   <section id="leadership" class="bg-white py-14 sm:py-16 lg:py-20" aria-labelledby="leadership-heading">
     <div class="container-page">
-      <CardHeader heading-id="leadership-heading" content-class="!px-0 !py-0"
+      <CardHeader heading-id="leadership-heading" classes="!px-0 !py-0" badge="Our Leadership"
         title="A structured Team Powering <span class='text-gradient-brand'>Academic Excellence</span>"
         description=" The people guiding academic quality, operations, and mentor excellence across India." />
-
-      <!-- Founder & CEO -->
       <article v-if="founder"
         class="group mx-auto mt-12 overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.04),0_18px_48px_-22px_rgba(15,23,42,0.18)] lg:grid lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)]"
         v-motion :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
-        <!-- Image rail -->
         <div class="relative min-h-[18rem] overflow-hidden lg:min-h-full">
           <img :src="bannerImage" :alt="founder.name"
             class="absolute inset-0 h-full w-full object-cover object-center grayscale transition duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
@@ -38,8 +35,6 @@ const leadershipCards = computed(() => otherLeaders.value.slice(0, 4))
             </p>
           </div>
         </div>
-
-        <!-- Content -->
         <div class="px-8 py-10 sm:px-10 sm:py-12">
           <p class="text-base leading-[1.8] text-slate-600 sm:text-[17px] italic">
             "{{ founder.bio }}"
@@ -67,8 +62,6 @@ const leadershipCards = computed(() => otherLeaders.value.slice(0, 4))
           </ul>
         </div>
       </article>
-
-      <!-- Leadership cards -->
       <div v-if="leadershipCards.length" class="mx-auto mt-8 grid  gap-5 sm:grid-cols-2 lg:grid-cols-4" role="list"
         aria-label="Leadership team">
         <article v-for="(leader, li) in leadershipCards" :key="leader.id"
@@ -98,8 +91,6 @@ const leadershipCards = computed(() => otherLeaders.value.slice(0, 4))
           </div>
         </article>
       </div>
-
-      <!-- closer quote -->
       <div class="group relative mx-auto mt-10 overflow-hidden rounded-2xl">
         <img :src="bannerImage" alt="Indian Mentors leadership team"
           class="h-48 w-full object-cover object-top transition duration-700 ease-out group-hover:scale-105 sm:h-56 lg:h-64"

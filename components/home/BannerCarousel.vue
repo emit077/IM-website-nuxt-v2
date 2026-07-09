@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useIntervalFn, usePreferredReducedMotion } from '@vueuse/core'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 
 export interface BannerSlide {
   /** Public URL, e.g. `/img/banner/banner-1.jpg` */
@@ -26,7 +26,7 @@ const props = withDefaults(
     description?: string
   }>(),
   {
-    badge: 'FEATURED',
+    badge: 'Featured',
     title: 'Programs, offers & next steps',
     description:
       'Seasonal campaigns, partner highlights, and quick links for families — tap a slide to book a demo, explore a program, or jump straight to sign-up.',
@@ -81,10 +81,6 @@ function go(delta: number) {
   active.value = (active.value + delta + count.value) % count.value
 }
 
-function goTo(i: number) {
-  if (i >= 0 && i < count.value) active.value = i
-}
-
 const autoplayEnabled = computed(
   () => props.autoplay && count.value > 1 && !reduceMotion.value,
 )
@@ -119,8 +115,8 @@ function onLeave() {
   <section v-if="count > 0" class="container-page pt-6 pb-2 sm:pt-8 sm:pb-3" aria-roledescription="carousel"
     :aria-label="`${props.title}. Promotional image carousel.`" @mouseenter="onEnter" @mouseleave="onLeave"
     @focusin="onEnter" @focusout="onLeave">
-    <CardHeader class="mb-3 sm:mb-4" content-class="!px-0 !py-0 max-w-3xl mx-auto" :badge="props.badge"
-      :title="props.title" :description="props.description" theme="light" />
+    <CardHeader classes="mb-3 sm:mb-4 !px-0 !py-0 max-w-3xl mx-auto" :badge="props.badge" :title="props.title"
+      :description="props.description" theme="light" />
     <div
       class="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-sm ring-1 ring-black/5">
       <div class="flex transition-transform duration-500 ease-out motion-reduce:transition-none"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import { aboutAudience } from '~/data/about'
 
@@ -70,7 +70,7 @@ const audienceCards = computed(() =>
       class="pointer-events-none absolute -right-20 bottom-8 h-72 w-72 rounded-full bg-violet-100/30 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="audience-heading" content-class="!px-0 !py-0" badge="Who we serve"
+      <CardHeader heading-id="audience-heading" classes="!px-0 !py-0" badge="Who we serve"
         title='Designed for <span class="text-gradient-brand">Students Who…</span>'
         :description="aboutAudience.subtitle" />
 

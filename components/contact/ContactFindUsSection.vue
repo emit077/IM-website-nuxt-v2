@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { findUs, phoneSupport } from '~/data/contact'
 
 function mapsUrl(address: string) {
@@ -12,7 +12,7 @@ function mapsUrl(address: string) {
   <section id="find-us" class="scroll-mt-24 border-b border-slate-200/70 bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="find-us-heading">
     <div class="container-page">
-      <CardHeader heading-id="find-us-heading" content-class="!px-0 !py-0" :badge="findUs.badge"
+      <CardHeader heading-id="find-us-heading" classes="!px-0 !py-0" :badge="findUs.badge"
         title="Headquarters & <span class='text-gradient-brand'>Central Operations</span>"
         :description="findUs.description" v-motion :initial="{ opacity: 0, y: 12 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }" />
@@ -23,7 +23,6 @@ function mapsUrl(address: string) {
           :class="index % 2 === 0 ? 'lg:grid-cols-[2fr_3fr]' : 'lg:grid-cols-[3fr_2fr]'" v-motion
           :initial="{ opacity: 0, y: 20 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: index * 80 } }">
-          <!-- Image -->
           <div class="relative min-h-[240px] overflow-hidden bg-slate-200 lg:min-h-[340px]"
             :class="index % 2 === 1 ? 'lg:order-2' : ''">
             <img :src="usePublicAsset(`/assets/img/${office.image}.png`)" :alt="`${office.kind} — ${office.name}`"
@@ -36,8 +35,6 @@ function mapsUrl(address: string) {
               {{ office.imageLabel }}
             </span>
           </div>
-
-          <!-- Details -->
           <div class="flex flex-col p-6 sm:p-8">
             <div class="flex items-center gap-2.5">
               <span class="grid h-9 w-9 place-items-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100"

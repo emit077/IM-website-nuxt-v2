@@ -6,7 +6,6 @@ import { complianceChecks } from '~/data/tutors'
 <template>
   <section id="compliance" class="relative scroll-mt-20 overflow-hidden bg-slate-900 py-14 sm:py-16 lg:py-20"
     aria-labelledby="compliance-heading">
-    <!-- Ambient glows -->
     <div aria-hidden="true"
       class="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-blue-600/20 blur-3xl" />
     <div aria-hidden="true"
@@ -14,7 +13,6 @@ import { complianceChecks } from '~/data/tutors'
 
     <div class="container-page relative">
       <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
-        <!-- Left: copy -->
         <div class="lg:col-span-5" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
           <span
@@ -42,8 +40,6 @@ import { complianceChecks } from '~/data/tutors'
             <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
           </a>
         </div>
-
-        <!-- Right: verification checklist -->
         <div class="lg:col-span-7">
           <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2" role="list">
             <li v-for="(check, i) in complianceChecks" :key="check.title"

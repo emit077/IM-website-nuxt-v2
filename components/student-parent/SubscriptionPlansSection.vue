@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import {
   commonPlanBenefits,
@@ -19,11 +19,9 @@ const accentStyles = {
   <section id="subscription-plans" class="relative bg-white py-14 sm:py-16 lg:py-20"
     aria-labelledby="subscription-plans-heading">
     <div class="container-page">
-      <CardHeader heading-id="subscription-plans-heading" content-class="!px-0 !py-0" badge="Subscription Plans"
+      <CardHeader heading-id="subscription-plans-heading" classes="!px-0 !py-0" badge="Subscription Plans"
         title='A plan for every <span class="text-gradient-brand">academic goal</span>'
         description="From daily homework help to intensive exam preparation — pick the intensity that matches your child's journey." />
-
-      <!-- Plan cards -->
       <div class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3">
         <article v-for="(plan, i) in subscriptionPlans" :key="plan.id" :class="[
           'relative flex flex-col overflow-hidden rounded-3xl border bg-white transition duration-300 hover:-translate-y-1 hover:shadow-card',
@@ -95,8 +93,6 @@ const accentStyles = {
           </div>
         </article>
       </div>
-
-      <!-- Common benefits + payments -->
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
         <div class="rounded-3xl border border-slate-200/80 bg-slate-50/70 p-6 sm:p-7" v-motion
           :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">

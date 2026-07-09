@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { hiringSteps, hiringProcessOutcome } from '~/data/institutions'
 </script>
 
@@ -13,7 +13,7 @@ import { hiringSteps, hiringProcessOutcome } from '~/data/institutions'
       <CardHeader
         
         heading-id="process-heading"
-        content-class="!px-0 !py-0"
+        classes="!px-0 !py-0"
         badge="Our Hiring Process"
         title='A structured framework, <span class="text-gradient-brand">step by step</span>'
         description="Indian Mentors follows a structured recruitment framework designed to deliver qualified educators efficiently."
@@ -23,7 +23,6 @@ import { hiringSteps, hiringProcessOutcome } from '~/data/institutions'
         <li v-for="(step, i) in hiringSteps" :key="step.step" class="relative flex gap-5 sm:gap-6" v-motion
           :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 60 + i * 80, duration: 450 } }">
-          <!-- Timeline rail -->
           <div class="flex flex-col items-center">
             <span
               class="z-10 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-600 text-white shadow-cta ring-4 ring-blue-100">

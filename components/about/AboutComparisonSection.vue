@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { aboutComparison } from '~/data/about'
 
 type ColumnKey = 'indianMentors' | 'coachingCenters' | 'selfStudy'
@@ -72,10 +72,8 @@ const sectionTitle = "The Difference Behind Every <span class='text-gradient-bra
       class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-indigo-200/15 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="comparison-heading" content-class="!px-0 !py-0" badge="Our Competitive Advantage"
+      <CardHeader heading-id="comparison-heading" classes="!px-0 !py-0" badge="Our Competitive Advantage"
         :title="sectionTitle" :description="aboutComparison.subtitle" />
-
-      <!-- Column summary cards -->
       <div class="mx-auto mt-10 grid  grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4" v-motion
         :initial="{ opacity: 0, y: 14 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
         <div v-for="col in columns" :key="col.key" :class="[
@@ -116,8 +114,6 @@ const sectionTitle = "The Difference Behind Every <span class='text-gradient-bra
           </p>
         </div>
       </div>
-
-      <!-- Desktop table -->
       <div class="mx-auto mt-8  overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white shadow-soft"
         v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 80 } }">
@@ -175,8 +171,6 @@ const sectionTitle = "The Difference Behind Every <span class='text-gradient-bra
             </tbody>
           </table>
         </div>
-
-        <!-- Mobile: stacked per feature -->
         <ul class="divide-y divide-slate-200 lg:hidden" role="list">
           <li v-for="(row, ri) in aboutComparison.rows" :key="row.feature" class="px-4 py-4 sm:px-5">
             <p class="flex items-start gap-2.5 font-medium text-slate-900">

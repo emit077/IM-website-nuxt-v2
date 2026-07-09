@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import CardHeader from '~/components/ui/cardheader.vue'
+import HeroHeader from '~/components/ui/HeroHeader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
-import IconCalendar from '~/components/icons/IconCalendar.vue'
 import IconBook from '~/components/icons/IconBook.vue'
 import IconAcademic from '~/components/icons/IconAcademic.vue'
 import TrustIndicators from '~/components/shared/TrustIndicators.vue'
-import { trustItems } from '~/data/trust'
+import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 
 const heroCtas = [
   {
@@ -54,22 +53,15 @@ const heroTagline =
 const heroDescription =
   'Connecting students, parents, tutors, and institutions through verified mentors and transparent, technology-driven learning.'
 
-function rippleHandler(e: MouseEvent) {
-  const target = e.currentTarget as HTMLElement
-  const rect = target.getBoundingClientRect()
-  target.style.setProperty('--x', `${e.clientX - rect.left}px`)
-  target.style.setProperty('--y', `${e.clientY - rect.top}px`)
-}
-
 const heroSectionStyle = {
   backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-3.png')}')`,
 }
 </script>
 
 <template>
-  <section class="relative overflow-hidden bg-white  bg-center bg-no-repeat container-page"
-    aria-labelledby="about-hero-heading">
-    <div class="bg-contain bg-no-repeat bg-right" :style="heroSectionStyle">
+  <section class="relative overflow-hidden bg-white  bg-right bg-no-repeat " aria-labelledby="about-hero-heading"
+    :style="heroSectionStyle">
+    <div class="bg-contain bg-no-repeat bg-right container-page">
       <div aria-hidden="true" class="absolute inset-0 -z-10 bg-mesh-light" />
       <div aria-hidden="true" class="absolute inset-0 -z-10 opacity-[0.04]"
         style="background-image: radial-gradient(#1e293b 0.8px, transparent 0.8px); background-size: 24px 24px" />
@@ -83,19 +75,15 @@ const heroSectionStyle = {
         class="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[400px] w-[1100px] -translate-x-1/2 bg-gradient-to-b from-indigo-200/30 to-transparent blur-3xl" />
 
       <div class=" pb-8 pt-10 lg:pt-16">
-        <CardHeader variant="hero" heading-id="about-hero-heading"
-          content-class="!px-0 !py-0 max-w-2xl lg:max-w-[46rem]" badge=" About Your Trusted Academic Partner"
-          :title="heroTitle" :tagline="heroTagline" :description="heroDescription">
-          <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
-            :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
-            <a v-for="cta in heroCtas" :key="cta.id" :href="cta.href"
-              class="btn-primary group w-full items-center justify-center gap-2 sm:w-auto">
-              <component :is="cta.icon" class="h-[18px] w-[18px] shrink-0" />
-              <span>{{ cta.label }}</span>
-              <IconArrowRight class="hero-cta-arrow h-4 w-4 shrink-0" />
-            </a>
-          </div>
-        </CardHeader>
+        <HeroHeader heading-id="about-hero-heading" content-class="!px-0 !py-0 max-w-2xl lg:max-w-[46rem]"
+          badge="About Your Trusted Academic Partner" :title="heroTitle" :subtitle="heroTagline"
+          :description="heroDescription" />
+
+        <div class="mt-6 mb-10 flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
+          <ActionBtn variant="primary" v-for="cta in heroCtas" :key="cta.id" :href="cta.href" :label="cta.label"
+            :icon="cta.icon" />
+        </div>
 
         <div aria-hidden="true"
           class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-cream-50" />

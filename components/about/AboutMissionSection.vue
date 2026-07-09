@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import { aboutMission, aboutVision, aboutMissionQuote } from '~/data/about'
 
 const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
@@ -10,15 +10,12 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
   <section id="mission" class="relative overflow-hidden bg-[#f6f8fc] py-16 sm:py-20 lg:py-24"
     aria-labelledby="mission-section-heading">
     <h2 id="mission-section-heading" class="sr-only">Mission &amp; Vision</h2>
-
-    <!-- Ambient decoration -->
     <div aria-hidden="true"
       class="pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full bg-blue-200/25 blur-3xl" />
     <div aria-hidden="true" class="pointer-events-none absolute right-8 top-40 hidden opacity-[0.5] lg:block"
       style="width: 120px; height: 120px; background-image: radial-gradient(#3b82f6 1.4px, transparent 1.4px); background-size: 16px 16px" />
 
     <div class="container-page relative">
-      <!-- Quote -->
       <figure class="mx-auto max-w-3xl text-center" v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
         <Icon icon="mdi:format-quote-open" class="mx-auto h-9 w-9 text-blue-300" aria-hidden="true" />
@@ -27,12 +24,10 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
         </blockquote>
         <span aria-hidden="true" class="mx-auto mt-5 block h-1 w-16 rounded-full bg-blue-600" />
       </figure>
-
-      <!-- Mission -->
       <div class="mt-16 grid items-center gap-10 lg:mt-20 lg:grid-cols-2 lg:gap-14">
         <div v-motion :initial="{ opacity: 0, x: -20 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 560, delay: 100 } }">
-          <CardHeader variant="section-left" dash-kicker heading-id="mission-heading" content-class="!px-0 !py-0 "
+          <CardHeader align="left" heading-id="mission-heading" classes="!px-0 !py-0 "
             :badge="aboutMission.badge"
             title="Empowering Every Learner Through  <span class='text-gradient-brand pt-2'>Structured Mentorship</span>">
             <div class=" mt-6 space-y-4">
@@ -42,8 +37,6 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
             </div>
           </CardHeader>
         </div>
-
-        <!-- Target diagram -->
         <div class="relative flex items-center justify-center gap-3 sm:gap-6 lg:justify-start" v-motion
           :initial="{ opacity: 0, scale: 0.94 }"
           :visibleOnce="{ opacity: 1, scale: 1, transition: { duration: 620, delay: 180 } }">
@@ -74,36 +67,15 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
           </ol>
         </div>
       </div>
-
-      <!-- Vision -->
       <div class="relative mt-14 overflow-hidden lg:mt-20" v-motion :initial="{ opacity: 0, y: 26 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 560, delay: 120 } }">
         <div aria-hidden="true" class="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full " />
 
         <div class="relative  items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <CardHeader dash-kicker heading-id="vision-heading" content-class="!px-0 !py-0 " :badge="aboutVision.badge"
+          <CardHeader heading-id="vision-heading" classes="!px-0 !py-0 " :badge="aboutVision.badge"
             title="Building India's Most Trusted  <span class='text-gradient-brand pt-2'>Personalised Tutoring Ecosystem</span>"
             :description="aboutVision.intro" />
-          <!-- Eye orbit -->
-          <!-- <div class="flex justify-center lg:justify-end">
-            <div class="relative h-52 w-52 sm:h-56 sm:w-56">
-              <span aria-hidden="true"
-                class="mv-spin absolute inset-2 rounded-full border border-dashed border-blue-200">
-                <span class="absolute -left-1 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-blue-500" />
-                <span class="absolute left-1/2 -top-1 h-2 w-2 -translate-x-1/2 rounded-full bg-blue-300" />
-                <span class="absolute -right-1 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-indigo-400" />
-              </span>
-              <span aria-hidden="true"
-                class="absolute inset-10 rounded-full bg-blue-500/[0.06] ring-1 ring-blue-200/60" />
-              <span
-                class="absolute left-1/2 top-1/2 grid h-24 w-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white shadow-[0_20px_45px_-18px_rgba(37,99,235,0.6)] ring-1 ring-blue-100 sm:h-28 sm:w-28">
-                <Icon icon="mdi:eye" class="h-11 w-11 text-blue-600 sm:h-12 sm:w-12" aria-hidden="true" />
-              </span>
-            </div>
-          </div> -->
         </div>
-
-        <!-- Future items -->
         <div class="relative mt-8 border-t border-slate-100 pt-8">
           <div class="flex items-center justify-center gap-4">
             <p class="text-center text-xs font-bold uppercase tracking-[0.22em] text-slate-600 sm:text-sm">
@@ -131,8 +103,6 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
           </ul>
         </div>
       </div>
-
-      <!-- Closing statement -->
       <div
         class="relative mt-8 flex items-start gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_20px_50px_-40px_rgba(15,23,42,0.4)] sm:gap-5 sm:p-6"
         v-motion :initial="{ opacity: 0, y: 18 }"

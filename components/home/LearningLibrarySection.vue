@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 
 type GradeId =
   | '12pass'
@@ -391,8 +391,6 @@ const libraryByGrade: Record<GradeId, GradeLibrary> = {
 
 const selected = ref<GradeId>('10')
 
-const gradeLabel = computed(() => grades.find((g) => g.id === selected.value)?.label ?? 'Class 10')
-
 const current = computed(() => libraryByGrade[selected.value])
 
 const featured = computed(() => current.value.featured)
@@ -409,11 +407,9 @@ const gridCards = computed(() => current.value.cards)
         class="rounded-[1.75rem] border border-slate-200/70 bg-white p-6 shadow-soft sm:p-8 lg:p-10 lg:shadow-[0_8px_40px_-12px_rgba(15,23,42,0.08)]"
         v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550, ease: 'easeOut' } }">
-        <CardHeader variant="variant-1" heading-id="learning-library-heading" content-class="!px-0 !py-0"
+        <CardHeader heading-id="learning-library-heading" classes="!px-0 !py-0"
           badge="Learning library" title="Resources built for your grade"
           description="At Indian Mentors, we provide comprehensive academic mentoring designed to support students across every stage of their educational journey. Our tutoring programs combine experienced mentors, curriculum-aligned teaching methods, and personalised learning strategies to help students build strong academic foundations and achieve their educational goals." />
-
-        <!-- Grade tabs -->
         <div class="mt-8 -mx-1 overflow-x-auto pb-1 [scrollbar-width:thin]" role="tablist" aria-label="Select class">
           <div class="flex min-w-min gap-2 px-1">
             <button v-for="g in grades" :key="g.id" type="button" role="tab" :aria-selected="selected === g.id"
@@ -432,10 +428,7 @@ const gridCards = computed(() => current.value.cards)
             </button>
           </div>
         </div>
-
-        <!-- Featured + grid -->
         <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:grid-rows-2">
-          <!-- Featured -->
           <a href="#book-demo"
             class="group relative flex min-h-[280px] flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 via-blue-500 to-sky-400 p-6 text-white shadow-lg shadow-blue-600/30 ring-1 ring-white/20 transition hover:brightness-[1.03] hover:shadow-xl sm:col-span-2 sm:min-h-[260px] lg:col-span-1 lg:row-span-2 lg:min-h-0"
             v-motion :initial="{ opacity: 0, y: 12 }"
@@ -470,8 +463,6 @@ const gridCards = computed(() => current.value.cards)
               </svg>
             </span>
           </a>
-
-          <!-- Small cards -->
           <a v-for="(card, i) in gridCards" :key="`${selected}-${card.id}`" href="#book-demo"
             class="group flex flex-col rounded-2xl border border-slate-200/90 bg-white p-5 shadow-[0_2px_16px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md"
             v-motion :initial="{ opacity: 0, y: 10 }"

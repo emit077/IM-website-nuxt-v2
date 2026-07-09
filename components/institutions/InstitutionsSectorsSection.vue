@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { hiringSectors } from '~/data/institutions'
 
@@ -20,7 +20,7 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
       <CardHeader
         
         heading-id="sectors-heading"
-        content-class="!px-0 !py-0"
+        classes="!px-0 !py-0"
         badge="Hire Teachers For"
         title='Faculty recruitment for <span class="text-gradient-brand">every education sector</span>'
         description="Indian Mentors supports structured faculty recruitment for multiple education sectors and learning organizations."
