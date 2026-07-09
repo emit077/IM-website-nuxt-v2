@@ -1,0 +1,1 @@
+import{T as e}from"./B3bc8HTH.js";import{e as s,o,q as r}from"./DhhvXNgP.js";const c=s({__name:"TrustIndicators",props:{items:{}},setup(t){return(n,a)=>(o(),r(e,{items:t.items},null,8,["items"]))}});export{c as _};
