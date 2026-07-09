@@ -35,7 +35,7 @@ const accentClasses: Record<
 </script>
 
 <template>
-  <section id="benefits" class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
+  <section id="benefits" class="relative overflow-hidden bg-white section-py"
     aria-labelledby="benefits-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-16 top-10 h-72 w-72 rounded-full bg-blue-100/40 blur-3xl" />

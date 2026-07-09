@@ -38,7 +38,7 @@ useSeoMeta({
     <TutorOpportunitiesSection />
     <TutorErpSection />
     <TutorPolicySection />
-    <UiCTASection section-id="tutor-register" badge-icon-mdi="mdi:rocket-launch-outline" :title="tutorsFinalCta.title"
+    <UiCTASection section-id="tutor-register" surface-class="section-surface-white" badge-icon-mdi="mdi:rocket-launch-outline" :title="tutorsFinalCta.title"
       :description="tutorsFinalCta.description" :ctas="tutorsCtas" />
   </div>
 </template>

@@ -9,7 +9,7 @@ function mapsUrl(address: string) {
 </script>
 
 <template>
-  <section id="find-us" class="scroll-mt-24 border-b border-slate-200/70 bg-white py-14 sm:py-16 lg:py-20"
+  <section id="find-us" class="scroll-mt-24 border-b border-slate-200/70 section-surface-muted section-py"
     aria-labelledby="find-us-heading">
     <div class="container-page">
       <CardHeader heading-id="find-us-heading" classes="!px-0 !py-0" :badge="findUs.badge"

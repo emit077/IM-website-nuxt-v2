@@ -36,7 +36,7 @@ const accentClasses: Record<
 </script>
 
 <template>
-  <section id="opportunities" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
+  <section id="opportunities" class="relative scroll-mt-20 section-surface-muted section-py"
     aria-labelledby="opportunities-heading">
     <div class="container-page">
       <CardHeader heading-id="opportunities-heading" classes="!px-0 !py-0" :badge="opportunitiesSection.kicker"

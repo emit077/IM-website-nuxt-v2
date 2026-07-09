@@ -10,10 +10,17 @@ import AboutRoadmapSection2 from '~/components/about/AboutRoadmapSection2.vue'
 import AboutComparisonSection from '~/components/about/AboutComparisonSection.vue'
 import UiCTASection from '~/components/ui/CTASection.vue'
 import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+import { aboutPartnersCta } from '~/data/about'
 
 const aboutCtas = [
   { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
   { label: 'Explore Academic Coverage', href: '/academic-coverage', iconMdi: 'mdi:book-open-page-variant-outline' },
+] as const
+
+const partnersCtas = [
+  { ...aboutPartnersCta.primaryCta, iconMdi: 'mdi:handshake-outline', primary: true },
+  { ...aboutPartnersCta.secondaryCta, iconMdi: 'mdi:account-school-outline' },
+  { ...aboutPartnersCta.tertiaryCta, iconMdi: 'mdi:domain' },
 ] as const
 
 useSeoMeta({
@@ -28,12 +35,15 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="min-h-screen bg-cream-50">
+  <div class="min-h-screen section-surface-muted">
     <AboutHeroSection />
     <AboutMissionSection />
     <AboutCommitmentSection />
     <AboutHowWeWorkSection />
     <AboutLeadershipSection />
+    <UiCTASection section-id="partner-cta" heading-id="partner-cta-heading" variant="light" surface-class="bg-white"
+      :badge="aboutPartnersCta.badge" badge-icon-mdi="mdi:handshake-outline" :title="aboutPartnersCta.title"
+      :description="aboutPartnersCta.description" :ctas="partnersCtas" />
     <AboutTeamStructureSection />
     <AboutStorySection />
     <AboutRoadmapSection2 />

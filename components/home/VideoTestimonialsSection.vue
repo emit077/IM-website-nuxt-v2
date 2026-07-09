@@ -121,7 +121,7 @@ function onTouchEnd(e: TouchEvent) {
 </script>
 
 <template>
-  <section id="testimonials" class="relative overflow-hidden px-4 py-12 md:py-16">
+  <section id="testimonials" class="relative overflow-hidden section-surface-white section-py">
     <div
       class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.12),transparent_45%)]"
       aria-hidden="true" />

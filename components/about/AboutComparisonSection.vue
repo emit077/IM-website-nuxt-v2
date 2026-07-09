@@ -64,7 +64,7 @@ const sectionTitle = "The Difference Behind Every <span class='text-gradient-bra
 </script>
 
 <template>
-  <section id="comparison" class="relative overflow-hidden bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
+  <section id="comparison" class="relative overflow-hidden section-surface-white section-py"
     aria-labelledby="comparison-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-blue-200/20 blur-3xl" />
@@ -120,7 +120,7 @@ const sectionTitle = "The Difference Behind Every <span class='text-gradient-bra
         <div class="hidden overflow-x-auto lg:block">
           <table class="w-full min-w-[720px] border-collapse text-left text-sm">
             <thead>
-              <tr class="border-b border-slate-200 bg-slate-50/80">
+              <tr class="border-b border-slate-200 bg-cream-50/80">
                 <th class="px-6 py-4 font-semibold text-slate-700" scope="col">
                   Feature
                 </th>
@@ -143,7 +143,7 @@ const sectionTitle = "The Difference Behind Every <span class='text-gradient-bra
             <tbody>
               <tr v-for="(row, ri) in aboutComparison.rows" :key="row.feature" :class="[
                 'border-b border-slate-100 transition-colors last:border-0 hover:bg-blue-50/30',
-                ri % 2 === 0 ? 'bg-white' : 'bg-slate-50/40',
+                ri % 2 === 0 ? 'bg-white' : 'bg-cream-50/40',
               ]">
                 <td class="px-6 py-4 font-medium text-slate-800">
                   <span class="flex items-center gap-3">
@@ -186,7 +186,7 @@ const sectionTitle = "The Difference Behind Every <span class='text-gradient-bra
                 'rounded-xl p-2.5 text-center',
                 col.highlight
                   ? 'bg-blue-50 ring-1 ring-blue-200'
-                  : 'bg-slate-50 ring-1 ring-slate-100',
+                  : 'bg-cream-50 ring-1 ring-slate-100',
               ]">
                 <p :class="[
                   'text-[10px] font-bold uppercase tracking-wide',

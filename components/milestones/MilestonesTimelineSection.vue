@@ -93,7 +93,7 @@ function globalIndex(entry: (typeof activeTimeline.value)[number]) {
 <template>
   <section
     id="timeline"
-    class="relative overflow-hidden py-16 sm:py-20 lg:py-24"
+    class="relative overflow-hidden section-py"
     aria-labelledby="milestones-timeline-heading"
   >
     <div

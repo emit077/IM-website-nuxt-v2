@@ -5,11 +5,11 @@ import { policyPoints } from '~/data/tutors'
 </script>
 
 <template>
-  <section id="tutor-policy" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
+  <section id="tutor-policy" class="relative scroll-mt-20 bg-white section-py"
     aria-labelledby="tutor-policy-heading">
     <div class="container-page">
       <div
-        class="mx-auto grid max-w-5xl grid-cols-1 items-center gap-8 rounded-[1.75rem] border border-slate-200/80 bg-slate-50/70 p-6 sm:p-8 lg:grid-cols-12 lg:gap-12 lg:p-10">
+        class="mx-auto grid max-w-5xl grid-cols-1 items-center gap-8 rounded-[1.75rem] border border-slate-200/80 bg-cream-50/70 p-6 sm:p-8 lg:grid-cols-12 lg:gap-12 lg:p-10">
         <div class="lg:col-span-5" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
           <CardHeader align="left" heading-id="tutor-policy-heading" classes="!px-0 !py-0"

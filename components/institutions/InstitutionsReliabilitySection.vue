@@ -6,7 +6,7 @@ import { reliabilityPillars } from '~/data/institutions'
 </script>
 
 <template>
-  <section id="recruitment-reliability" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
+  <section id="recruitment-reliability" class="relative section-surface-muted section-py"
     aria-labelledby="reliability-heading">
     <div class="container-page">
       <CardHeader

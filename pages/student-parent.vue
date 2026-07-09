@@ -40,7 +40,7 @@ useSeoMeta({
     <StudentParentErpSection />
     <SubscriptionPlansSection />
     <SubscriptionComparisonSection />
-    <UiCTASection title="Give your child the right academic support"
+    <UiCTASection surface-class="section-surface-white" title="Give your child the right academic support"
       description="Start with a free demo class — experience personalised tutoring backed by transparent tracking and professional mentoring."
       supporting="Compare plans anytime in the plan comparison above." :ctas="studentParentCtas" />
   </div>

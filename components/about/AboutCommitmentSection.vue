@@ -5,7 +5,7 @@ import { aboutCommitment } from '~/data/about'
 </script>
 
 <template>
-  <section id="commitment" class="bg-white py-14 sm:py-16 lg:py-20" aria-labelledby="commitment-heading">
+  <section id="commitment" class="bg-white section-py" aria-labelledby="commitment-heading">
     <div class="container-page">
       <CardHeader heading-id="commitment-heading" classes="!px-0 !py-0" badge="Our Commitment"
         title="Our Standards of <span class='text-gradient-brand'>Educational Excellence</span>"

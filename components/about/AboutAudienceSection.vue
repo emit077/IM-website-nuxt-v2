@@ -62,7 +62,7 @@ const audienceCards = computed(() =>
 </script>
 
 <template>
-  <section id="audience" class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
+  <section id="audience" class="relative overflow-hidden bg-white section-py"
     aria-labelledby="audience-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -left-16 top-16 h-64 w-64 rounded-full bg-blue-100/40 blur-3xl" />
@@ -114,7 +114,7 @@ const audienceCards = computed(() =>
       </div>
 
       <div
-        class="mx-auto mt-10 flex max-w-3xl flex-col items-center justify-between gap-4 rounded-2xl border border-slate-200/80 bg-slate-50/70 px-5 py-5 sm:flex-row sm:px-8 sm:py-6"
+        class="mx-auto mt-10 flex max-w-3xl flex-col items-center justify-between gap-4 rounded-2xl border border-slate-200/80 bg-cream-50/70 px-5 py-5 sm:flex-row sm:px-8 sm:py-6"
         v-motion :initial="{ opacity: 0, y: 12 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 200 } }">
         <div class="text-center sm:text-left">

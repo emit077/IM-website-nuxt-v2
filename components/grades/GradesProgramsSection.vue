@@ -9,8 +9,8 @@ import { curriculumStages } from '~/components/academic/gradesData'
 <template>
   <div>
     <section v-for="(stage, stageIndex) in curriculumStages" :id="stage.id" :key="stage.id" :class="[
-      'relative scroll-mt-20 py-14 sm:py-16 lg:py-20',
-      stageIndex % 2 === 0 ? 'bg-cream-50' : 'bg-white',
+      'relative scroll-mt-20 section-py',
+      stageIndex % 2 === 0 ? 'section-surface-muted' : 'bg-white',
     ]" :aria-labelledby="`${stage.id}-heading`">
       <div aria-hidden="true" :class="[
         'pointer-events-none absolute -right-24 top-1/4 h-64 w-64 rounded-full blur-3xl opacity-40',
@@ -40,7 +40,7 @@ import { curriculumStages } from '~/components/academic/gradesData'
             </ul>
           </div>
 
-          <div class="mt-5 flex items-start gap-2.5 rounded-xl border border-slate-100 bg-slate-50/70 p-4">
+          <div class="mt-5 flex items-start gap-2.5 rounded-xl border border-slate-100 bg-cream-50/70 p-4">
             <Icon icon="mdi:flag-checkered" class="mt-0.5 h-4 w-4 shrink-0 text-blue-600" aria-hidden="true" />
             <p class="text-sm text-slate-700">
               <span class="font-semibold text-slate-900">Goal:</span> {{ stage.goal }}
@@ -68,7 +68,7 @@ import { curriculumStages } from '~/components/academic/gradesData'
             <p class="text-[11px] font-bold uppercase tracking-wide text-slate-500">{{ group.label }}</p>
             <div class="mt-3 flex flex-wrap gap-1.5">
               <span v-for="exam in group.items" :key="exam"
-                class="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-semibold text-slate-700">
+                class="rounded-full border border-slate-200 bg-cream-50 px-2.5 py-1 text-xs font-semibold text-slate-700">
                 {{ exam }}
               </span>
             </div>

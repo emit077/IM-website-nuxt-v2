@@ -20,7 +20,7 @@ function rippleHandler(e: MouseEvent) {
 
 <template>
   <section id="course-matching"
-    class="relative overflow-hidden bg-gradient-to-br from-[#0b1220] via-[#101a35] to-[#0a142f] py-14 sm:py-16 lg:py-24"
+    class="relative overflow-hidden bg-gradient-to-br from-[#0b1220] via-[#101a35] to-[#0a142f] section-py"
     aria-labelledby="course-matching-heading">
     <span aria-hidden="true"
       class="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-blue-600/25 blur-3xl" />

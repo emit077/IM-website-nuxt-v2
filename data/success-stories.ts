@@ -360,20 +360,6 @@ export const videoTestimonials: VideoTestimonial[] = [
   },
 ]
 
-export const whyTestimonialsSection = {
-  kicker: 'Why It Matters',
-  title: 'Built on',
-  titleHighlight: 'proof, not promises',
-  description: "We don't just promise results — we build them systematically.",
-  points: [
-    { label: 'Structured tutoring system', iconMdi: 'mdi:clipboard-text-outline' },
-    { label: 'Verified educator network', iconMdi: 'mdi:shield-check-outline' },
-    { label: 'Transparent ERP monitoring', iconMdi: 'mdi:monitor-dashboard' },
-    { label: 'Measurable academic outcomes', iconMdi: 'mdi:chart-line' },
-    { label: 'Strong stakeholder support', iconMdi: 'mdi:hand-heart-outline' },
-  ],
-} as const
-
 export const successStoriesFinalCta = {
   badge: 'Your turn',
   title: 'Ready to Become Our Next Success Story?',

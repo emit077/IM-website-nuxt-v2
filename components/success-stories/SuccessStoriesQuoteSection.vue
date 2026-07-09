@@ -19,7 +19,7 @@ function initials(name: string) {
 
 <template>
   <section :id="section.id === 'institutions' ? 'institutional-feedback' : `${section.id}-reviews`"
-    :class="['relative scroll-mt-28 py-14 sm:py-16 lg:py-20', bgClass ?? 'bg-white']"
+    :class="['relative scroll-mt-28 section-py', bgClass ?? 'bg-white']"
     :aria-labelledby="`${section.id}-heading`">
     <div class="container-page">
       <CardHeader :heading-id="`${section.id}-heading`" classes="!px-0 !py-0" :badge="section.kicker"

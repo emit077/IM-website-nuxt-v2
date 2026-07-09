@@ -6,7 +6,7 @@ import { browseFilters } from '~/data/tutors'
 </script>
 
 <template>
-  <section id="browse-students" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
+  <section id="browse-students" class="relative scroll-mt-20 section-surface-muted section-py"
     aria-labelledby="browse-students-heading">
     <div class="container-page">
       <CardHeader heading-id="browse-students-heading" classes="!px-0 !py-0" badge="Browse Student Opportunities"

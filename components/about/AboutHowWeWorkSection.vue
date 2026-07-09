@@ -5,7 +5,7 @@ import { aboutHowWeWork } from '~/data/about'
 </script>
 
 <template>
-  <section id="how-we-work" class="relative overflow-hidden bg-[#f6f8fc] py-16 sm:py-20 lg:py-24"
+  <section id="how-we-work" class="relative overflow-hidden section-surface-muted section-py"
     aria-labelledby="how-we-work-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -left-24 top-24 h-80 w-80 rounded-full bg-blue-200/30 blur-3xl" />

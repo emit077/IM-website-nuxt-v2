@@ -5,7 +5,7 @@ import { partnershipBenefitsSection, partnershipBenefits } from '~/data/channel-
 </script>
 
 <template>
-  <section id="partnership-benefits" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
+  <section id="partnership-benefits" class="relative scroll-mt-20 bg-white section-py"
     aria-labelledby="partnership-benefits-heading">
     <div class="container-page">
       <CardHeader heading-id="partnership-benefits-heading" classes="!px-0 !py-0"

@@ -38,7 +38,7 @@ function itemEnterDelay(index: number) {
       :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, delay: 80 } }">
       <div class="flex flex-col divide-y divide-slate-200/80 sm:flex-row sm:divide-x sm:divide-y-0">
         <div v-for="(item, index) in items" :key="`${item.label}-${index}`" role="listitem"
-          class="trust-indicator-item group flex min-w-0 flex-1 items-center gap-3.5 px-5 py-4 transition-colors duration-300 hover:bg-slate-50/70 sm:gap-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6"
+          class="trust-indicator-item group flex min-w-0 flex-1 items-center gap-3.5 px-5 py-4 transition-colors duration-300 hover:bg-cream-50/70 sm:gap-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6"
           v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{
             opacity: 1,
             y: 0,

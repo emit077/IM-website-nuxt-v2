@@ -90,12 +90,12 @@ const faqs = [
 </script>
 
 <template>
-    <div class="bg-slate-50 text-slate-900">
+    <div class="section-surface-muted text-slate-900">
         <main>
             <HeroSection />
             <PartnersStrip />
 
-            <section id="how-it-works" class="container-page py-14 sm:py-16 lg:py-20">
+            <section id="how-it-works" class="container-page section-py">
                 <div class="max-w-2xl">
                     <p class="text-xs font-semibold tracking-[0.16em] uppercase text-blue-700">How it works</p>
                     <h2 class="mt-3 text-3xl sm:text-4xl font-display font-extrabold leading-tight">
@@ -131,7 +131,7 @@ const faqs = [
 
                         <div class="mt-6 space-y-4">
                             <article v-for="mode in learningModes" :key="mode.title"
-                                class="flex items-start gap-4 rounded-xl border border-slate-200 bg-slate-50 p-4">
+                                class="flex items-start gap-4 rounded-xl border border-slate-200 bg-cream-50 p-4">
                                 <span :class="['grid h-10 w-10 place-items-center rounded-xl font-bold', mode.tone]">
                                     {{ mode.icon }}
                                 </span>
@@ -150,7 +150,7 @@ const faqs = [
                             stage</h3>
                         <ul class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             <li v-for="subject in subjects" :key="subject"
-                                class="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-700">
+                                class="flex items-center gap-2 rounded-lg border border-slate-200 bg-cream-50 px-3 py-2.5 text-sm text-slate-700">
                                 <span class="grid h-5 w-5 place-items-center rounded-full bg-emerald-600 text-white">
                                     <span class="text-[10px] font-bold">✓</span>
                                 </span>
@@ -179,7 +179,7 @@ const faqs = [
 
                     <div class="mt-7 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
                         <blockquote v-for="item in testimonials" :key="item.name"
-                            class="rounded-2xl border border-slate-200 bg-slate-50 p-5 sm:p-6">
+                            class="rounded-2xl border border-slate-200 bg-cream-50 p-5 sm:p-6">
                             <p class="text-slate-700 leading-relaxed">“{{ item.quote }}”</p>
                             <footer class="mt-4 text-sm text-slate-500">
                                 <span class="font-semibold text-slate-900">{{ item.name }}</span> · {{ item.city }}

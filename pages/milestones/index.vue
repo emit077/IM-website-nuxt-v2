@@ -21,7 +21,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="min-h-screen bg-cream-50">
+  <div class="min-h-screen section-surface-muted">
     <MilestonesHeroSection />
     <MilestonesTimelineSection />
     <UiCTASection section-id="about-cta" heading-id="milestones-cta-heading" title="Ready to Learn Smarter?"

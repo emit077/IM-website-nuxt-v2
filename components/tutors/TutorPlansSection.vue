@@ -6,7 +6,7 @@ import { tutorPlans } from '~/data/tutors'
 </script>
 
 <template>
-  <section id="tutor-plans" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
+  <section id="tutor-plans" class="relative scroll-mt-20 section-surface-muted section-py"
     aria-labelledby="tutor-plans-heading">
     <div class="container-page">
       <CardHeader heading-id="tutor-plans-heading" classes="!px-0 !py-0" badge="Tutor Registration Plans"

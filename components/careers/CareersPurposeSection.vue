@@ -6,7 +6,7 @@ import { purposeSection } from '~/data/careers'
 <template>
   <section
     id="purpose"
-    class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
+    class="relative scroll-mt-20 section-surface-muted section-py"
     aria-labelledby="purpose-heading"
   >
     <div class="container-page">

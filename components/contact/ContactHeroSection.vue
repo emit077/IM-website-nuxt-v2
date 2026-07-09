@@ -17,7 +17,7 @@ const heroContent = {
     <div aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-blue-50/70 to-transparent" />
 
-    <div class="container-page py-12 sm:py-14 lg:py-16">
+    <div class="container-page section-py">
       <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <HeroHeader variant="hero" heading-id="contact-hero-heading" badge="India's #1 Verified Tutor Platform"
           :title="heroContent.title" :subtitle="heroContent.subtitle" :description="heroContent.description"

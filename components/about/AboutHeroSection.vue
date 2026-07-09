@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import HeroHeader from '~/components/ui/HeroHeader.vue'
-import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconBook from '~/components/icons/IconBook.vue'
 import IconAcademic from '~/components/icons/IconAcademic.vue'
-import TrustIndicators from '~/components/shared/TrustIndicators.vue'
+import TrustIndicators from '~/components/ui/TrustIndicators.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 
 const heroCtas = [
@@ -92,29 +91,3 @@ const heroSectionStyle = {
     </div>
   </section>
 </template>
-
-<style scoped>
-.hero-cta-arrow {
-  animation: hero-arrow-loop 0.95s ease-in-out infinite;
-}
-
-@keyframes hero-arrow-loop {
-
-  0%,
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateX(4px);
-    opacity: 0.7;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-cta-arrow {
-    animation: none;
-  }
-}
-</style>

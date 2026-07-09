@@ -122,7 +122,7 @@ const services: ServiceCard[] = [
 
 <template>
     <section id="services"
-        class="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 py-8 sm:py-10"
+        class="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 section-py-compact"
         aria-labelledby="services-heading">
         <div aria-hidden="true"
             class="pointer-events-none absolute left-4 top-8 h-40 w-40 opacity-25 sm:left-10 sm:top-12"

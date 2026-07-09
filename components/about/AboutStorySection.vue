@@ -103,7 +103,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="our-story" class="relative overflow-hidden bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
+  <section id="our-story" class="relative overflow-hidden section-surface-white section-py"
     aria-labelledby="our-story-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-blue-100/50 blur-3xl" />

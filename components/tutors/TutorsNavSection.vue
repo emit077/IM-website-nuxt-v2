@@ -4,7 +4,7 @@ import { quickLinks } from '~/data/tutors'
 </script>
 
 <template>
-  <section class="relative border-y border-slate-200/70 bg-cream-50 py-8 sm:py-10" aria-label="Quick navigation">
+  <section class="relative border-y border-slate-200/70 section-surface-muted section-py-compact" aria-label="Quick navigation">
     <div class="container-page">
       <p class="text-center text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
         Quick links

@@ -14,7 +14,7 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
 </script>
 
 <template>
-  <section id="hire-teachers-for" class="relative bg-white py-14 sm:py-16 lg:py-20"
+  <section id="hire-teachers-for" class="relative bg-white section-py"
     aria-labelledby="sectors-heading">
     <div class="container-page">
       <CardHeader

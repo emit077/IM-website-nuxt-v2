@@ -10,7 +10,7 @@ import {
 </script>
 
 <template>
-  <section id="enrollment-plans" class="relative bg-white py-14 sm:py-16 lg:py-20"
+  <section id="enrollment-plans" class="relative bg-white section-py"
     aria-labelledby="enrollment-plans-heading">
     <div class="container-page">
       <CardHeader heading-id="enrollment-plans-heading" classes="!px-0 !py-0" badge="Enrollment Plans"
@@ -80,7 +80,7 @@ import {
         <div class="hidden sm:block">
           <table class="w-full text-left text-sm">
             <thead>
-              <tr class="border-b border-slate-200/80 bg-slate-50/60 text-xs uppercase tracking-wide">
+              <tr class="border-b border-slate-200/80 bg-cream-50 text-xs uppercase tracking-wide">
                 <th class="px-6 py-3 font-semibold text-slate-500">Feature</th>
                 <th class="px-6 py-3 font-semibold text-slate-500">Free</th>
                 <th class="px-6 py-3 font-semibold text-blue-700">Premium</th>
@@ -105,7 +105,7 @@ import {
           </li>
         </ul>
       </div>
-      <div class="mx-auto mt-8 max-w-4xl rounded-3xl border border-slate-200/80 bg-slate-50/70 p-6 sm:p-7" v-motion
+      <div class="mx-auto mt-8 max-w-4xl rounded-3xl border border-slate-200/80 bg-cream-50/70 p-6 sm:p-7" v-motion
         :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
         <h3 class="font-display text-base font-bold text-slate-900 sm:text-lg">Why families choose Premium</h3>
         <ul class="mt-4 grid grid-cols-1 gap-x-6 gap-y-2.5 sm:grid-cols-2" role="list">

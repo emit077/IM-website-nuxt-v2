@@ -6,7 +6,7 @@ import { whyChooseAdvantages, institutionalSupport } from '~/data/institutions'
 </script>
 
 <template>
-  <section id="why-institutions" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
+  <section id="why-institutions" class="relative section-surface-muted section-py"
     aria-labelledby="why-institutions-heading">
     <div class="container-page">
       <CardHeader

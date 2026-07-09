@@ -60,7 +60,7 @@ const boardsDescription = computed(
 </script>
 
 <template>
-  <section id="boards-covered" class="relative overflow-hidden bg-[#f0f4ff] py-14 sm:py-16 lg:py-24"
+  <section id="boards-covered" class="relative overflow-hidden section-surface-white section-py"
     aria-labelledby="boards-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-80 max-w-4xl bg-gradient-to-b from-blue-200/40 to-transparent blur-3xl" />
@@ -112,7 +112,7 @@ const boardsDescription = computed(
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 30, duration: 360 } }">
             <div class="flex items-center gap-3">
               <span
-                class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-50 text-2xl ring-1 ring-slate-200"
+                class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-cream-50 text-2xl ring-1 ring-slate-200"
                 aria-hidden="true">
                 {{ country.flag }}
               </span>
@@ -125,7 +125,7 @@ const boardsDescription = computed(
             <ul class="mt-4 flex flex-wrap gap-1.5" role="list">
               <li v-for="board in boardsFor(country)" :key="board.id"
                 :title="board.levels ? `${board.name} · ${board.levels}` : board.name"
-                class="inline-flex cursor-default items-center rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-semibold text-slate-700 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700">
+                class="inline-flex cursor-default items-center rounded-lg border border-slate-200 bg-cream-50 px-2.5 py-1 text-xs font-semibold text-slate-700 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700">
                 {{ board.abbr }}
               </li>
             </ul>

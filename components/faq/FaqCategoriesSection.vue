@@ -52,7 +52,7 @@ function resetFilters() {
 </script>
 
 <template>
-  <section class="bg-cream-50 py-14 sm:py-16 lg:py-20" aria-label="Frequently asked questions">
+  <section class="section-surface-muted section-py" aria-label="Frequently asked questions">
     <div class="container-page">
       <p
         v-if="hasActiveFilters && filteredCategories.length"
@@ -111,7 +111,7 @@ function resetFilters() {
                 :open="hasActiveFilters && filteredCategories.length === 1 && category.items.length <= 3"
               >
                 <summary
-                  class="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-slate-50/80 sm:px-5 sm:py-[1.125rem] [&::-webkit-details-marker]:hidden"
+                  class="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-cream-50/80 sm:px-5 sm:py-[1.125rem] [&::-webkit-details-marker]:hidden"
                 >
                   <span class="font-display text-[15px] font-semibold leading-snug text-slate-900 sm:text-base">
                     {{ item.question }}

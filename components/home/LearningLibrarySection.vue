@@ -400,7 +400,7 @@ const gridCards = computed(() => current.value.cards)
 
 <template>
   <section id="learning-library"
-    class="relative bg-gradient-to-b from-indigo-50/80 via-slate-50/40 to-cream-50 py-14 sm:py-16 lg:py-20"
+    class="relative bg-gradient-to-b from-indigo-50/80 via-slate-50/40 to-cream-50 section-py"
     aria-labelledby="learning-library-heading">
     <div class="container-page">
       <div
@@ -416,7 +416,7 @@ const gridCards = computed(() => current.value.cards)
               class="shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
               :class="selected === g.id
                 ? 'border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-600/25'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50'"
+                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-cream-50'"
               @click="selected = g.id">
               <span class="inline-flex items-center gap-1.5">
                 {{ g.label }}

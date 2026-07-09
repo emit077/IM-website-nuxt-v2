@@ -14,7 +14,7 @@ const accentClasses: Record<ProcessStep['accent'], { badge: string; tile: string
 </script>
 
 <template>
-  <section id="partnership-process" class="relative scroll-mt-20 overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
+  <section id="partnership-process" class="relative scroll-mt-20 overflow-hidden bg-white section-py"
     aria-labelledby="partnership-process-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-24 top-1/3 h-72 w-72 rounded-full bg-violet-100/50 blur-3xl" />

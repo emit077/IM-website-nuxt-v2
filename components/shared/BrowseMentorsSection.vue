@@ -794,7 +794,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section id="tutors" class="relative mx-auto w-full max-w-[1200px] px-4 py-12 sm:py-16"
+    <section id="tutors" class="relative mx-auto w-full max-w-[1200px] px-4 section-py"
         aria-labelledby="browse-mentors-heading">
         <div id="book-demo" class="sr-only scroll-mt-28" tabindex="-1">
             Book a free demo
@@ -891,7 +891,7 @@ onUnmounted(() => {
                         </svg>
                     </label>
                     <div
-                        class="inline-flex shrink-0 items-center justify-self-stretch rounded-full border border-slate-200 bg-slate-50 p-1 sm:justify-self-start">
+                        class="inline-flex shrink-0 items-center justify-self-stretch rounded-full border border-slate-200 bg-cream-50 p-1 sm:justify-self-start">
                         <button type="button" @click="filterMode = 'online'" :class="[
                             'rounded-full px-3.5 py-1.5 text-[12.5px] font-semibold transition',
                             filterMode === 'online'

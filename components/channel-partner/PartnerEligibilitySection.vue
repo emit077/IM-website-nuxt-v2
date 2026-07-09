@@ -5,7 +5,7 @@ import { whoCanApplySection, eligibleApplicants } from '~/data/channel-partner'
 </script>
 
 <template>
-  <section id="who-can-apply" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
+  <section id="who-can-apply" class="relative scroll-mt-20 bg-white section-py"
     aria-labelledby="who-can-apply-heading">
     <div class="container-page">
       <CardHeader heading-id="who-can-apply-heading" classes="!px-0 !py-0" :badge="whoCanApplySection.kicker"

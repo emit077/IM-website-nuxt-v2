@@ -27,7 +27,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="min-h-screen bg-cream-50">
+  <div class="min-h-screen section-surface-muted">
     <InstitutionsHeroSection />
     <InstitutionsNavSection />
     <InstitutionsSectorsSection />

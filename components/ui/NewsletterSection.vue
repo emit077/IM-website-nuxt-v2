@@ -29,7 +29,7 @@ function onSubmit() {
 </script>
 
 <template>
-  <section id="newsletter" class="relative overflow-hidden bg-cream-50 py-10 sm:py-12" aria-label="Newsletter signup">
+  <section id="newsletter" class="relative overflow-hidden section-surface-muted section-py" aria-label="Newsletter signup">
     <div aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/70 to-transparent" />
 

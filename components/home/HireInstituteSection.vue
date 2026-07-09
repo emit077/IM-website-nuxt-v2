@@ -17,7 +17,7 @@ function rippleHandler(e: MouseEvent) {
 </script>
 
 <template>
-  <section id="institute-hiring" class="relative bg-cream-50 py-12 sm:py-14 lg:py-16"
+  <section id="institute-hiring" class="relative section-surface-white section-py"
     aria-label="Institute hiring section">
     <div aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#eef1ff] to-transparent"></div>

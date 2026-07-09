@@ -60,7 +60,7 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
 </script>
 
 <template>
-  <section id="roadmap" class="bg-slate-50 py-14 sm:py-16 lg:py-20" aria-labelledby="roadmap-heading">
+  <section id="roadmap" class="section-surface-muted section-py" aria-labelledby="roadmap-heading">
     <div class="container-page">
       <CardHeader heading-id="roadmap-heading" classes="!px-0 !py-0" :badge="aboutRoadmap.badge"
         :title="headerTitle" :description="aboutRoadmap.subtitle" />
@@ -107,7 +107,7 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
                   accentClasses[phase.accent].itemHover,
                 ]">
                   <span
-                    :class="['mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-50', accentClasses[phase.accent].check]">
+                    :class="['mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cream-50', accentClasses[phase.accent].check]">
                     <Icon :icon="item.icon" class="h-[18px] w-[18px]" aria-hidden="true" />
                   </span>
                   <p class="min-w-0">

@@ -7,7 +7,7 @@ const section = storyTabs.find((t) => t.id === 'placements')!
 </script>
 
 <template>
-  <section id="placement-stories" class="relative scroll-mt-28 bg-cream-50 py-14 sm:py-16 lg:py-20"
+  <section id="placement-stories" class="relative scroll-mt-28 section-surface-muted section-py"
     aria-labelledby="placement-stories-heading">
     <div class="container-page">
       <CardHeader heading-id="placement-stories-heading" classes="!px-0 !py-0" :badge="section.kicker"

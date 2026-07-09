@@ -60,7 +60,7 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
 </script>
 
 <template>
-  <section id="roadmap" class="bg-slate-50/60 py-14 sm:py-16 lg:py-20" aria-labelledby="roadmap2-heading">
+  <section id="roadmap" class="section-surface-muted section-py" aria-labelledby="roadmap2-heading">
     <div class="container-page">
       <CardHeader heading-id="roadmap2-heading" classes="!px-0 !py-0" :badge="aboutRoadmap.badge"
         :title="headerTitle" :description="aboutRoadmap.subtitle" />
@@ -104,7 +104,7 @@ const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
           </div>
           <ul class="flex flex-1 flex-col gap-1 p-4 sm:p-5" role="list">
             <li v-for="item in phase.items" :key="item.title"
-              class="group/item flex items-start gap-3.5 rounded-2xl p-3 transition-colors duration-200 hover:bg-slate-50">
+              class="group/item flex items-start gap-3.5 rounded-2xl p-3 transition-colors duration-200 hover:bg-cream-50">
               <span
                 :class="['flex h-9 w-9 shrink-0 items-center justify-center rounded-xl transition-colors duration-200', accentClasses[phase.accent].iconBadge]">
                 <Icon :icon="item.icon" class="h-[18px] w-[18px]" aria-hidden="true" />

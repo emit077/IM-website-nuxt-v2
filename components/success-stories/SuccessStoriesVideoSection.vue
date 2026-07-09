@@ -7,7 +7,7 @@ const loopItems = [...videoTestimonials, ...videoTestimonials]
 </script>
 
 <template>
-  <section id="video-testimonials" class="scroll-mt-24 border-y border-slate-200/80 bg-white py-14 sm:py-16"
+  <section id="video-testimonials" class="scroll-mt-24 border-y border-slate-200/80 bg-white section-py"
     aria-labelledby="video-testimonials-heading">
     <div class="container-page">
       <CardHeader align="left" heading-id="video-testimonials-heading" classes="!px-0 !py-0 max-w-xl"

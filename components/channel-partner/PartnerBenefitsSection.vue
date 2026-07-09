@@ -13,7 +13,7 @@ const accentClasses: Record<BenefitCard['accent'], { tile: string; icon: string;
 </script>
 
 <template>
-  <section id="partner-benefits" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
+  <section id="partner-benefits" class="relative scroll-mt-20 section-surface-muted section-py"
     aria-labelledby="partner-benefits-heading">
     <div class="container-page">
       <CardHeader heading-id="partner-benefits-heading" classes="!px-0 !py-0" :badge="benefitsSection.kicker"

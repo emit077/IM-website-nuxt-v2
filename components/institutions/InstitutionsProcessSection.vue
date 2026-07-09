@@ -5,7 +5,7 @@ import { hiringSteps, hiringProcessOutcome } from '~/data/institutions'
 </script>
 
 <template>
-  <section id="hiring-process" class="relative overflow-hidden bg-white py-14 sm:py-16 lg:py-20"
+  <section id="hiring-process" class="relative overflow-hidden bg-white section-py"
     aria-labelledby="process-heading">
     <div aria-hidden="true" class="absolute inset-0 -z-10 bg-mesh-light opacity-60" />
 

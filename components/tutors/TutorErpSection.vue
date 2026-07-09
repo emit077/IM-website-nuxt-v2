@@ -7,7 +7,7 @@ const frameworkSteps = ['Teach', 'Track', 'Earn', 'Grow']
 </script>
 
 <template>
-  <section id="tutor-erp" class="relative scroll-mt-20 bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
+  <section id="tutor-erp" class="relative scroll-mt-20 section-surface-white section-py"
     aria-labelledby="tutor-erp-heading">
     <div class="container-page">
       <CardHeader heading-id="tutor-erp-heading" classes="!px-0 !py-0" badge="ERP System &amp; Transparency"

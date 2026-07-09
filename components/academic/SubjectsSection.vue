@@ -78,7 +78,7 @@ const active = ref(streams[0]!.id)
 </script>
 
 <template>
-  <section id="subjects-offered" class="relative bg-cream-50 py-14 sm:py-16 lg:py-24"
+  <section id="subjects-offered" class="relative section-surface-muted section-py"
     aria-labelledby="subjects-heading">
     <div class="container-page">
       <CardHeader heading-id="subjects-heading" classes="!px-0 !py-0 max-w-3xl mx-auto" badge="Subjects offered"

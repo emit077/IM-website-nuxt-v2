@@ -12,7 +12,7 @@ const frameworkSteps = ['Plan', 'Track', 'Review', 'Improve']
 </script>
 
 <template>
-  <section id="erp-dashboard" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20" aria-labelledby="erp-heading">
+  <section id="erp-dashboard" class="relative section-surface-muted section-py" aria-labelledby="erp-heading">
     <div class="container-page">
       <CardHeader heading-id="erp-heading" classes="!px-0 !py-0" badge="Learning Dashboard"
         title='Complete transparency for <span class="text-gradient-brand">parents and students</span>'

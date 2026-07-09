@@ -5,7 +5,7 @@ import { planPositioning, subscriptionComparisonRows } from '~/data/student-pare
 </script>
 
 <template>
-  <section id="plan-comparison" class="relative bg-[#f8fafc] py-14 sm:py-16 lg:py-20"
+  <section id="plan-comparison" class="relative section-surface-muted section-py"
     aria-labelledby="plan-comparison-heading">
     <div class="container-page">
       <CardHeader heading-id="plan-comparison-heading" classes="!px-0 !py-0" badge="Compare Plans"
@@ -14,7 +14,7 @@ import { planPositioning, subscriptionComparisonRows } from '~/data/student-pare
         v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
         <table class="w-full text-left text-sm">
           <thead>
-            <tr class="border-b border-slate-200/80 bg-slate-50/60">
+            <tr class="border-b border-slate-200/80 section-surface-muted">
               <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wide text-slate-500">Feature</th>
               <th class="px-4 py-4 text-center">
                 <span class="block text-sm font-bold text-slate-900">Gold</span>

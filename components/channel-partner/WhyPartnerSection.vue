@@ -5,7 +5,7 @@ import { whyPartnerSection, partnershipAdvantages } from '~/data/channel-partner
 </script>
 
 <template>
-  <section id="why-partner" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
+  <section id="why-partner" class="relative scroll-mt-20 section-surface-muted section-py"
     aria-labelledby="why-partner-heading">
     <div class="container-page">
       <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">

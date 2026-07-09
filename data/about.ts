@@ -98,13 +98,6 @@ export type VisionPoint = {
   text: string
 }
 
-export type MissionVisionCta = {
-  label: string
-  href: string
-  icon: string
-  primary?: boolean
-}
-
 export const aboutMission = {
   badge: 'Our Mission',
   title: 'Empowering Every Learner Through Structured Mentorship',
@@ -180,48 +173,6 @@ export const aboutVision = {
   closing:
     'By bringing together structured mentorship and technology-driven operations, Indian Mentors aims to set new standards in personalised academic services across India.',
 }
-
-export const aboutMissionVisionCtas: MissionVisionCta[] = [
-  { label: 'Book Free Demo', href: '#book-demo', icon: 'mdi:calendar-check-outline', primary: true },
-  { label: 'Talk to Counsellor', href: '#contact', icon: 'mdi:headset' },
-  { label: 'Partner With Us', href: '#partner', icon: 'mdi:handshake-outline' },
-]
-
-export const aboutMissionVisionTagline =
-  'Indian Mentors — Building Futures Through Personalised Education.'
-
-/**
- * Database: TEAM_MEMBERS
- */
-export type TeamMember = {
-  team_id: number
-  name: string
-  image: string | null
-  designation: string
-  department: string
-  bio: string
-  linkedin_url: string | null
-  display_order: number
-  status: 'Active' | 'Inactive'
-}
-
-const teamSeed: TeamMember[] = [
-  {
-    team_id: 1,
-    name: 'Ananya Desai',
-    image: null,
-    designation: 'Academic Director',
-    department: 'Academic Operations',
-    bio: 'An experienced education professional with expertise in curriculum development, mentor training, and academic performance management. Responsible for overseeing academic quality standards and mentorship programs across the organisation.',
-    linkedin_url: null,
-    display_order: 1,
-    status: 'Active',
-  },
-]
-
-export const teamMembers = [...teamSeed].sort(
-  (a, b) => a.display_order - b.display_order,
-)
 
 export type LeadershipProfile = {
   id: string
@@ -692,6 +643,25 @@ export const aboutStory = {
   ] satisfies StoryMilestone[],
 }
 
+export const aboutPartnersCta = {
+  badge: 'Get Involved',
+  title: 'Build With <span class="text-gradient-brand">Indian Mentors</span>',
+  description:
+    'Whether you mentor students, grow as a regional partner, or hire educators for your institution — explore the path that fits your goals.',
+  primaryCta: {
+    label: 'Explore Partnership',
+    href: '/channel-partner',
+  },
+  secondaryCta: {
+    label: 'Join as a Tutor',
+    href: '/tutors',
+  },
+  tertiaryCta: {
+    label: 'Hire Educators',
+    href: '/institutions',
+  },
+} as const
+
 export type TeamStructureUnit = {
   icon: string
   title: string
@@ -707,19 +677,19 @@ export const aboutTeamStructure = {
   subtitle: 'Each team member operates within a defined framework of accountability and collaboration.',
   units: [
     {
-      icon: 'mdi:eye-outline',
+      icon: 'mdi:account-school-outline',
       title: 'Admission & Academic',
       description: 'Guide onboarding, monitor progress, and schedule demos for seamless coordination.',
       roles: ['Admission Counsellors', 'Academic Counsellors', 'Admission Coordinators'],
     },
     {
-      icon: 'mdi:account-group-outline',
+      icon: 'mdi:certificate-outline',
       title: 'Tutor & Quality Management ',
       description: 'Screen mentors, monitor sessions, review feedback, and maintain academic standards.',
       roles: ['Tutor Recruiters', 'Quality Review'],
     },
     {
-      icon: 'mdi:shield-account-outline',
+      icon: 'mdi:headset',
       title: 'Customer Support',
       description: 'Primary communication bridge for parents and students with timely, structured resolution.',
       roles: ['Support Executives', 'Resolution Specialists'],
@@ -731,43 +701,28 @@ export const aboutTeamStructure = {
       roles: ['HR Managers', 'Compliance Officers'],
     },
     {
-      icon: 'mdi:cash-multiple',
+      icon: 'mdi:calculator-variant-outline',
       title: 'Finance & Accounts',
       description: 'Transparent billing, payment processing, and financial compliance systems.',
       roles: ['Accountent', 'Billing Specialists'],
     },
     {
-      icon: 'mdi:code-tags',
+      icon: 'mdi:monitor-dashboard',
       title: 'Technology & ERP',
       description: 'Monitoring systems, dashboards, reporting tools, and workflow integrations.',
       roles: ['ERP Engineers', 'Tech Operations'],
     },
     {
-      icon: 'mdi:clipboard-text-outline',
+      icon: 'mdi:file-document-check-outline',
       title: 'Administration & Compliance',
       description: 'Documentation accuracy, policy adherence, and operational discipline.',
       roles: ['Administrative Officers', 'Policy Managers'],
     },
     {
-      icon: 'mdi:bank-outline',
+      icon: 'mdi:handshake-outline',
       title: 'Channel Partners',
       description: 'Regional expansion and local coordination while maintaining centralised standards.',
       roles: ['Regional Partners', 'Outreach Coordinators'],
     },
   ] satisfies TeamStructureUnit[],
 }
-
-export type AboutHeroCollageImage = {
-  id: string
-  image: string
-  alt: string
-}
-
-/** About hero collage — 5 images from /public/assets/img/about/ */
-export const aboutHeroCollage = [
-  { id: 'about-1', image: 'images6', alt: 'Students learning with personalised mentoring support' },
-  { id: 'about-2', image: 'images2', alt: 'Verified tutors guiding academic progress' },
-  { id: 'about-3', image: 'images4', alt: 'Collaborative learning session' },
-  { id: 'about-4', image: 'images1', alt: 'Parent and student academic consultation' },
-  { id: 'about-5', image: 'images5', alt: 'Online tutoring with Indian Mentors' },
-] as const satisfies readonly AboutHeroCollageImage[]

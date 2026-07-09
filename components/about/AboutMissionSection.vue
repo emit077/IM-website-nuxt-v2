@@ -7,7 +7,7 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
 </script>
 
 <template>
-  <section id="mission" class="relative overflow-hidden bg-[#f6f8fc] py-16 sm:py-20 lg:py-24"
+  <section id="mission" class="relative overflow-hidden section-surface-muted section-py"
     aria-labelledby="mission-section-heading">
     <h2 id="mission-section-heading" class="sr-only">Mission &amp; Vision</h2>
     <div aria-hidden="true"

@@ -24,7 +24,7 @@ function rippleHandler(e: MouseEvent) {
 </script>
 
 <template>
-  <section class="relative overflow-hidden bg-cream-50" aria-labelledby="success-stories-hero-heading">
+  <section class="relative overflow-hidden section-surface-muted" aria-labelledby="success-stories-hero-heading">
     <div aria-hidden="true" class="pointer-events-none absolute inset-0"
       style="background-image: radial-gradient(circle at 15% 20%, rgba(59,130,246,0.12), transparent 40%), radial-gradient(circle at 85% 15%, rgba(99,102,241,0.1), transparent 35%)" />
 
@@ -88,7 +88,7 @@ function rippleHandler(e: MouseEvent) {
                 </div>
               </div>
 
-              <div class="mt-5 flex items-center gap-3 rounded-2xl bg-slate-50 px-4 py-3">
+              <div class="mt-5 flex items-center gap-3 rounded-2xl section-surface-muted px-4 py-3">
                 <div class="flex-1 text-center">
                   <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Before</p>
                   <p class="mt-0.5 font-display text-xl font-extrabold text-slate-500">{{ spotlight.beforeLabel }}</p>

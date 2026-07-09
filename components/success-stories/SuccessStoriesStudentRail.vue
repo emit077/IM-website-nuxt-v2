@@ -17,7 +17,7 @@ const rotations = ['-rotate-1', 'rotate-1', '-rotate-2', 'rotate-2', '-rotate-1'
 </script>
 
 <template>
-  <section id="student-stories" class="scroll-mt-20 overflow-hidden bg-cream-50 py-14 sm:py-16"
+  <section id="student-stories" class="scroll-mt-20 overflow-hidden section-surface-muted section-py"
     aria-labelledby="student-rail-heading">
     <div class="container-page">
       <CardHeader align="left" heading-id="student-rail-heading" classes="!px-0 !py-0 max-w-lg"

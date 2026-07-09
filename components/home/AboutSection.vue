@@ -1,34 +1,12 @@
 <script setup lang="ts">
 import HeroStats from './HeroStats.vue'
-import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
-
-function rippleHandler(e: MouseEvent) {
-  const target = e.currentTarget as HTMLElement
-  const rect = target.getBoundingClientRect()
-  target.style.setProperty('--x', `${e.clientX - rect.left}px`)
-  target.style.setProperty('--y', `${e.clientY - rect.top}px`)
-}
+import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 </script>
 
 <template>
-  <section id="about" class="relative overflow-hidden bg-cream-50" aria-label="About us">
-    <div aria-hidden="true" class="absolute inset-0 -z-10 bg-mesh-light"></div>
-    <div aria-hidden="true" class="absolute inset-0 -z-10 opacity-[0.04]"
-      style="background-image: radial-gradient(#1E293B 0.8px, transparent 0.8px); background-size: 24px 24px;"></div>
-    <div aria-hidden="true"
-      class="absolute -top-20 -left-14 w-72 h-72 rounded-full bg-indigo-300/25 blur-3xl -z-10 pointer-events-none">
-    </div>
-    <div aria-hidden="true"
-      class="absolute top-28 -right-20 w-80 h-80 rounded-full bg-sky-300/20 blur-3xl -z-10 pointer-events-none"></div>
-    <div aria-hidden="true"
-      class="absolute bottom-12 right-[18%] w-44 h-44 rounded-full border border-indigo-200/70 bg-white/25 backdrop-blur-[1px] -z-10 pointer-events-none">
-    </div>
-    <div aria-hidden="true"
-      class="absolute -top-32 left-1/2 -translate-x-1/2 w-[1100px] h-[400px] bg-gradient-to-b from-indigo-200/30 to-transparent blur-3xl -z-10">
-    </div>
-
-    <div class="container-page pt-10 lg:pt-16 pb-12 ">
+  <section id="about" class="relative overflow-hidden section-surface-muted section-py" aria-label="About us">
+    <div class="container-page ">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start lg:items-stretch">
         <div class="lg:col-span-7 xl:col-span-6 flex flex-col gap-7 lg:gap-8">
           <CardHeader classes="mb-2 !px-0 !py-0" badge="know more" title="About Us" align="left" />
@@ -46,11 +24,7 @@ function rippleHandler(e: MouseEvent) {
           </p>
           <div class="flex flex-col sm:flex-row gap-3 sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
             :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
-            <a href="#book-demo" class="btn-primary ripple group w-full sm:w-auto" @mousemove="rippleHandler">
-              Know More About Us
-              <IconArrowRight
-                class="hero-cta-arrow w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </a>
+            <ActionBtn variant="primary" href="/about" label="Know More About Us" />
           </div>
           <div class="h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent mt-2" v-motion
             :initial="{ opacity: 0 }" :enter="{ opacity: 1, transition: { delay: 1000, duration: 600 } }"></div>
@@ -65,23 +39,3 @@ function rippleHandler(e: MouseEvent) {
     </div>
   </section>
 </template>
-
-<style scoped>
-.hero-cta-arrow {
-  animation: hero-arrow-loop 0.95s ease-in-out infinite;
-}
-
-@keyframes hero-arrow-loop {
-
-  0%,
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateX(4px);
-    opacity: 0.7;
-  }
-}
-</style>

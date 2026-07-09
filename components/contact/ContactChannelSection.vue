@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/cardheader.vue'
+import CardHeader from '~/components/ui/CardHeader.vue'
 import {
   authorisedPhoneNumbers,
   emailSupport,
@@ -27,7 +27,7 @@ const submitting = ref(false)
 
 function fieldClass(key: string) {
   return [
-    'w-full rounded-xl border-0 bg-slate-100 px-4 py-2.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:bg-slate-50 focus:ring-2 focus:ring-blue-200',
+    'w-full rounded-xl border-0 bg-slate-100 px-4 py-2.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-blue-200',
     errors[key] ? 'ring-2 ring-rose-300' : '',
   ]
 }
@@ -97,7 +97,7 @@ const directContacts = [
 </script>
 
 <template>
-  <section id="call-us" class="scroll-mt-24 border-b border-slate-200/70 bg-slate-100/70 py-14 sm:py-16 lg:py-20"
+  <section id="call-us" class="scroll-mt-24 border-b border-slate-200/70 section-surface-white section-py"
     aria-labelledby="contact-support-heading">
     <div class="container-page">
       <div class="overflow-hidden rounded-[2rem] bg-white p-6 shadow-sm sm:p-8 lg:p-12" v-motion
@@ -163,7 +163,7 @@ const directContacts = [
                     <label for="iq-interest" class="mb-1.5 block text-xs text-slate-400">I need help with</label>
                     <div class="relative">
                       <select id="iq-interest" v-model="form.interest"
-                        class="w-full appearance-none rounded-xl border-0 bg-slate-100 px-4 py-2.5 text-sm text-slate-800 outline-none transition focus:bg-slate-50 focus:ring-2 focus:ring-blue-200">
+                        class="w-full appearance-none rounded-xl border-0 bg-slate-100 px-4 py-2.5 text-sm text-slate-800 outline-none transition focus:bg-white focus:ring-2 focus:ring-blue-200">
                         <option value="">Select…</option>
                         <option v-for="interest in inquiryForm.interests" :key="interest" :value="interest">
                           {{ interest }}

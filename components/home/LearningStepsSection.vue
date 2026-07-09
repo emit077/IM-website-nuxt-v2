@@ -413,7 +413,7 @@ onUnmounted(() => {
 
 <template>
     <section id="how-it-works"
-        class="relative overflow-hidden bg-gradient-to-b from-white via-[#f6f8ff] to-[#eaeefc] py-14 sm:py-20 lg:py-24"
+        class="relative overflow-hidden bg-gradient-to-b from-white via-[#f6f8ff] to-[#eaeefc] section-py"
         aria-labelledby="how-it-works-heading">
         <div aria-hidden="true"
             class="pointer-events-none absolute -right-24 top-1/3 h-72 w-72 rounded-full bg-violet-200/40 blur-3xl">

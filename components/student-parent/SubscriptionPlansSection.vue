@@ -16,7 +16,7 @@ const accentStyles = {
 </script>
 
 <template>
-  <section id="subscription-plans" class="relative bg-white py-14 sm:py-16 lg:py-20"
+  <section id="subscription-plans" class="relative bg-white section-py"
     aria-labelledby="subscription-plans-heading">
     <div class="container-page">
       <CardHeader heading-id="subscription-plans-heading" classes="!px-0 !py-0" badge="Subscription Plans"
@@ -94,7 +94,7 @@ const accentStyles = {
         </article>
       </div>
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
-        <div class="rounded-3xl border border-slate-200/80 bg-slate-50/70 p-6 sm:p-7" v-motion
+        <div class="rounded-3xl border border-slate-200/80 bg-cream-50/70 p-6 sm:p-7" v-motion
           :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
           <h3 class="font-display text-base font-bold text-slate-900">Included in every plan</h3>
           <ul class="mt-4 space-y-2.5" role="list">
@@ -106,7 +106,7 @@ const accentStyles = {
           </ul>
         </div>
 
-        <div class="rounded-3xl border border-slate-200/80 bg-slate-50/70 p-6 sm:p-7" v-motion
+        <div class="rounded-3xl border border-slate-200/80 bg-cream-50/70 p-6 sm:p-7" v-motion
           :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: 80 } }">
           <h3 class="font-display text-base font-bold text-slate-900">Flexible payments</h3>

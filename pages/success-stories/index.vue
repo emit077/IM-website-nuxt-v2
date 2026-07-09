@@ -35,7 +35,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="min-h-screen bg-cream-50">
+  <div class="min-h-screen section-surface-muted">
     <SuccessStoriesHeroSection />
     <SuccessStoriesStudentRail />
     <SuccessStoriesQuoteSection :section="parentSection" :reviews="parentReviews" bg-class="bg-white" />

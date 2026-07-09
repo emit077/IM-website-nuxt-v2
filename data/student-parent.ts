@@ -56,13 +56,6 @@ export type SubscriptionComparisonRow = {
   platinum: string
 }
 
-export const heroContent = {
-  badge: 'Students & Parents',
-  title: 'Personalised Learning. Measurable Progress. Trusted Support.',
-  description:
-    'At Indian Mentors, we understand that every student has unique learning needs and every parent seeks clarity, reliability, and results. Our personalised tutoring services combine one-to-one teaching, academic planning, and transparent systems to deliver a complete and dependable learning experience.',
-}
-
 export const resourceLinks = [
   {
     id: 'student-brochure',

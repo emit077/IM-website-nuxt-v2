@@ -5,7 +5,7 @@ import { roleSection, responsibilities } from '~/data/channel-partner'
 </script>
 
 <template>
-  <section id="partner-role" class="relative scroll-mt-20 bg-cream-50 py-14 sm:py-16 lg:py-20"
+  <section id="partner-role" class="relative scroll-mt-20 section-surface-muted section-py"
     aria-labelledby="partner-role-heading">
     <div class="container-page">
       <CardHeader heading-id="partner-role-heading" classes="!px-0 !py-0" :badge="roleSection.kicker"

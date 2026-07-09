@@ -87,7 +87,7 @@ export const contactHero = {
 export const contactHeroCollageTop = popularCityImages.slice(0, 2)
 export const contactHeroCollageBottom = popularCityImages.slice(2, 6)
 
-export const headOffice = {
+const headOffice = {
   title: 'Indian Mentors – National Operations Center',
   subtitle: 'Headquarters',
   location: 'Bhilai, Chhattisgarh',
@@ -485,15 +485,6 @@ export const findUs = {
   ] satisfies FindUsOffice[],
 } as const
 
-export const officeLocator = {
-  badge: 'Office Locator',
-  title: 'Search Operational Office Locations',
-  description:
-    'Find the Indian Mentors operational office nearest to you. Search by city or area to view the full address and get directions.',
-  searchPlaceholder: 'Search by city or area (e.g. Mumbai, Sector 33, Junwani)…',
-  emptyState: 'No offices match your search. Try another city, or reach us on WhatsApp for home tutoring in your area.',
-} as const
-
 export const inquiryForm = {
   badge: 'Send an Enquiry',
   title: 'Quick Enquiry Form',
@@ -571,52 +562,6 @@ export const emailSupport = {
     'Academic program details',
     'Verification and compliance queries',
   ],
-} as const
-
-export type ContactAudienceCta = {
-  id: string
-  iconMdi: string
-  title: string
-  tagline: string
-  ctaLabel: string
-  href: string
-  accent: 'blue' | 'indigo' | 'emerald'
-}
-
-export const contactAudienceCtas = {
-  badge: 'Get Involved',
-  title: 'Connect With Indian Mentors <span class="text-gradient-brand">Your Way</span>',
-  description:
-    'Whether you teach, partner locally, or hire educators — explore the path that fits your goals.',
-  audiences: [
-    {
-      id: 'tutor',
-      iconMdi: 'mdi:account-school-outline',
-      title: 'Become a Tutor',
-      tagline: 'Join India\'s verified mentor network',
-      ctaLabel: 'Join as a Tutor',
-      href: '/tutors',
-      accent: 'blue',
-    },
-    {
-      id: 'channel-partner',
-      iconMdi: 'mdi:handshake-outline',
-      title: 'Channel Partner',
-      tagline: 'Build an education business in your territory',
-      ctaLabel: 'Explore Partnership',
-      href: '/channel-partner',
-      accent: 'indigo',
-    },
-    {
-      id: 'institute',
-      iconMdi: 'mdi:domain',
-      title: 'Institute Hiring',
-      tagline: 'Recruit verified educators for your institution',
-      ctaLabel: 'Hire Educators',
-      href: '/institutions',
-      accent: 'emerald',
-    },
-  ] satisfies ContactAudienceCta[],
 } as const
 
 export const contactGetStarted = {

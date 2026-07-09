@@ -9,7 +9,7 @@ const cards = [brochureCard, landingCard]
 </script>
 
 <template>
-  <section id="tutor-resources" class="relative scroll-mt-20 bg-white py-14 sm:py-16 lg:py-20"
+  <section id="tutor-resources" class="relative scroll-mt-20 bg-white section-py"
     aria-labelledby="tutor-resources-heading">
     <div class="container-page">
       <CardHeader heading-id="tutor-resources-heading" classes="!px-0 !py-0" badge="Know Before You Join"

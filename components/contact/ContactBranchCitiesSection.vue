@@ -200,7 +200,7 @@ function clearSearch() {
 </script>
 
 <template>
-  <section :id="sectionId" class="scroll-mt-24 border-b border-slate-200/70 py-14 sm:py-16 lg:py-20" :class="bgClass"
+  <section :id="sectionId" class="scroll-mt-24 border-b border-slate-200/70 section-py" :class="bgClass"
     :aria-labelledby="headingId">
     <div class="container-page">
       <CardHeader :heading-id="headingId" classes="!px-0 !py-0" badge="Branch Offices"

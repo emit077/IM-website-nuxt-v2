@@ -12,7 +12,7 @@ function toggle(id: CurriculumStage['id']) {
 </script>
 
 <template>
-  <section id="grades-covered" class="relative overflow-x-clip bg-cream-50 py-14 sm:py-16 lg:py-24"
+  <section id="grades-covered" class="relative overflow-x-clip section-surface-muted section-py"
     aria-labelledby="grades-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute inset-x-0 -top-32 -z-0 mx-auto h-80 max-w-4xl bg-gradient-to-b from-blue-100/50 to-transparent blur-3xl" />
@@ -71,7 +71,7 @@ function toggle(id: CurriculumStage['id']) {
                     <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">Grades in this stage</p>
                     <div class="mt-2.5 flex flex-wrap gap-2">
                       <span v-for="cls in stage.classes" :key="cls.id"
-                        class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700">
+                        class="rounded-full border border-slate-200 bg-cream-50 px-3 py-1.5 text-xs font-semibold text-slate-700">
                         {{ cls.label }}
                       </span>
                     </div>
@@ -87,7 +87,7 @@ function toggle(id: CurriculumStage['id']) {
                   </div>
                   <div v-if="stage.examGroups?.length" class="mt-5 grid gap-3 sm:grid-cols-2">
                     <div v-for="group in stage.examGroups" :key="group.label"
-                      class="rounded-xl border border-slate-200/80 bg-slate-50/70 p-3.5">
+                      class="rounded-xl border border-slate-200/80 bg-cream-50/70 p-3.5">
                       <p class="text-[11px] font-bold uppercase tracking-wide text-slate-500">{{ group.label }}</p>
                       <div class="mt-2 flex flex-wrap gap-1.5">
                         <span v-for="exam in group.items" :key="exam"
@@ -108,7 +108,7 @@ function toggle(id: CurriculumStage['id']) {
                       </li>
                     </ul>
                   </div>
-                  <div class="mt-5 flex flex-col gap-4 rounded-xl border border-slate-200/80 bg-slate-50/70 p-4">
+                  <div class="mt-5 flex flex-col gap-4 rounded-xl border border-slate-200/80 bg-cream-50/70 p-4">
                     <div class="flex items-start gap-2.5">
                       <Icon icon="mdi:flag-checkered" class="mt-0.5 h-4 w-4 shrink-0 text-blue-600"
                         aria-hidden="true" />

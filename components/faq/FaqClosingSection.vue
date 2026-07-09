@@ -4,7 +4,7 @@ import { faqClosing } from '~/data/faq'
 </script>
 
 <template>
-  <section class="bg-white py-14 sm:py-16 lg:py-20" aria-labelledby="faq-closing-heading">
+  <section class="bg-white section-py" aria-labelledby="faq-closing-heading">
     <div class="container-page">
       <div
         class="mx-auto max-w-2xl text-center"

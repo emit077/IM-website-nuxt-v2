@@ -37,7 +37,7 @@ const yearGroups = computed(() => {
 </script>
 
 <template>
-  <section id="journey" class="border-y border-slate-200/80 bg-white py-14 sm:py-16" aria-labelledby="journey-heading">
+  <section id="journey" class="border-y border-slate-200/80 bg-white section-py" aria-labelledby="journey-heading">
     <div class="container-page">
       <CardHeader heading-id="journey-heading" classes="!px-0 !py-0" badge="Our Journey"
         title="Milestones that shaped us" :description="journeyDescription" />
