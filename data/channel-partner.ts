@@ -1,3 +1,5 @@
+import type { TrustIndicatorItem } from '~/components/ui/TrustIndicators.vue'
+
 export type ProcessStep = {
   no: string
   iconMdi: string
@@ -7,88 +9,222 @@ export type ProcessStep = {
   accent: 'violet' | 'blue' | 'emerald' | 'orange' | 'indigo'
 }
 
-export type BenefitCard = {
+export type PartnershipTier = {
   id: string
   iconMdi: string
   title: string
   description: string
-  points: string[]
-  footnote?: string
-  accent: 'blue' | 'emerald' | 'orange' | 'violet'
+  responsibilities: string[]
+  popular?: boolean
+  cta: { label: string; href: string }
+}
+
+export type PartnerTestimonial = {
+  id: string
+  quote: string
+  name: string
+  role: string
+  location: string
+}
+
+export type PartnerFaqItem = {
+  id: string
+  question: string
+  answer: string
 }
 
 export const heroContent = {
   badge: 'Channel Partner Program',
-  titleLead: 'Build your own education business with',
-  titleHighlight: 'Indian Mentors',
+  title: 'Partner with Indian Mentors – <span class="text-gradient-brand">Personalised Tutoring Services</span>',
+  subtitle:
+    '<span class="text-gradient-brand">Indian Mentors</span> — Empowering Education Through Trusted Mentorship',
   description:
-    'Indian Mentors invites passionate entrepreneurs, education consultants, and community leaders to become Authorised Channel Partners and manage personalised tutoring services within their assigned region, city, or territory.',
-  subDescription:
-    'As a Channel Partner, you represent Indian Mentors locally — coordinating student registrations, tutor onboarding, and tutoring operations while leveraging our brand, digital platform, and national academic network.',
-  tagline: 'Empowering Local Leaders to Deliver Quality Education.',
-  primaryCta: { label: 'Register as a Channel Partner', href: '#partner-register' },
-  secondaryCta: { label: 'Schedule a Partnership Discussion', href: '#partner-register' },
+    'Build a rewarding education business by collaborating with Indian Mentors, a growing platform dedicated to delivering high-quality personalised tutoring services to students across India. Our Channel Partner (Authorised Reseller) Program enables individuals, education consultants, coaching centres, and entrepreneurs to offer trusted tutoring solutions in their city while earning attractive commissions.',
+  caption: 'Start your journey in the fast-growing personalised education sector today.',
+  backgroundImage: 'assets/img/hero/hero-4.png',
+  contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
+  primaryCta: { label: 'Apply for Channel Partnership', href: '#partner-register' },
+  secondaryCta: { label: 'Explore Available Territories', href: '#available-territories' },
 }
 
-export const heroHighlights = [
-  { iconMdi: 'mdi:map-marker-radius-outline', label: 'Exclusive Territory' },
-  { iconMdi: 'mdi:chart-line', label: 'Transparent Earnings' },
-  { iconMdi: 'mdi:monitor-dashboard', label: 'Dedicated Dashboard' },
-  { iconMdi: 'mdi:school-outline', label: 'National Academic Network' },
+export const heroTrustStats: TrustIndicatorItem[] = [
+  {
+    value: '100+',
+    label: 'Service Territories',
+    icon: 'solar:map-point-bold-duotone',
+  },
+  {
+    value: '1,00,000+',
+    label: 'Verified Tutors',
+    icon: 'solar:square-academic-cap-bold-duotone',
+  },
+  {
+    value: '50,000+',
+    label: 'Students Supported',
+    icon: 'solar:users-group-rounded-bold-duotone',
+  },
+  {
+    value: '100%',
+    label: 'Transparent Earnings',
+    icon: 'solar:wallet-money-bold-duotone',
+  },
 ]
 
-export const roleSection = {
-  kicker: 'What Does a Channel Partner Do?',
-  title: 'Your role in the Indian Mentors ecosystem',
+export const aboutSection = {
+  kicker: 'About the Partnership Program',
+  title: 'About the <span class="text-gradient-brand">Partnership Program</span>',
+  classes: '!px-0 !py-0',
   description:
-    'As an Authorised Reseller, you operate as the local representative of Indian Mentors, managing academic service coordination within your territory.',
-  note: 'While you operate independently in your region, you remain connected to our centralised digital platform and support system.',
+    'Indian Mentors is expanding its nationwide network of channel partners to connect students with verified and qualified tutors for personalised academic support.',
+  points: [
+    'Partners operate within defined territories and help students access one-to-one tutoring solutions tailored to their learning needs.',
+    'Our structured partnership model ensures that partners receive operational guidance, lead support, and business opportunities while contributing to the growth of quality education services.',
+  ],
 }
 
-export const responsibilities = [
+export const whyPartnerSection = {
+  kicker: 'Why Partner with Indian Mentors',
+  title: 'Why partner with <span class="text-gradient-brand">Indian Mentors</span>',
+  classes: '!px-0 !py-0',
+  description:
+    'Join a platform built for long-term partner success — with demand, structure, and scale already in place.',
+}
+
+export const whyPartnerReasons = [
   {
-    iconMdi: 'mdi:office-building-cog-outline',
-    title: 'Manage Local Operations',
-    description: 'Run day-to-day tutoring operations within your assigned territory.',
+    iconMdi: 'mdi:trending-up',
+    title: 'Growing Demand for Personalised Tutoring',
+    description:
+      'Students and parents are increasingly seeking individual academic attention, making personalised tutoring one of the fastest-growing segments in education.',
+    accent: 'emerald',
+    graphic: 'demand',
+    stat: 'Fastest-growing segment',
   },
   {
-    iconMdi: 'mdi:account-multiple-plus-outline',
-    title: 'Coordinate Registrations',
-    description: 'Handle student and parent registrations in your region.',
+    iconMdi: 'mdi:sitemap-outline',
+    title: 'Established Service Model',
+    description:
+      'Indian Mentors provides a structured tutoring service model with clear processes for student admissions, tutor allocation, and academic coordination.',
+    accent: 'blue',
+    graphic: 'model',
+    stat: 'Clear operational processes',
   },
   {
-    iconMdi: 'mdi:account-check-outline',
-    title: 'Onboard & Verify Tutors',
-    description: 'Recruit and verify qualified tutors in your local market.',
+    iconMdi: 'mdi:account-school-outline',
+    title: 'Nationwide Tutor Network',
+    description:
+      'Access a network of qualified and verified tutors across various subjects, grades, and academic boards.',
+    accent: 'violet',
+    graphic: 'network',
+    stat: 'Verified tutors nationwide',
   },
   {
-    iconMdi: 'mdi:calendar-clock-outline',
-    title: 'Schedule Demo Sessions',
-    description: 'Support demo session scheduling between tutors and students.',
-  },
-  {
-    iconMdi: 'mdi:clipboard-check-outline',
-    title: 'Enrollment Support',
-    description: 'Assist with student enrollment and ongoing service coordination.',
-  },
-  {
-    iconMdi: 'mdi:shield-star-outline',
-    title: 'Maintain Quality Standards',
-    description: 'Ensure tutoring services consistently meet platform standards.',
-  },
-  {
-    iconMdi: 'mdi:account-group-outline',
-    title: 'Build Local Networks',
-    description: 'Develop strong academic relationships within your community.',
+    iconMdi: 'mdi:rocket-launch-outline',
+    title: 'Scalable Business Opportunity',
+    description:
+      'Partners can expand their operations from local area coverage to city and regional levels based on performance and market demand.',
+    accent: 'amber',
+    graphic: 'scale',
+    stat: 'Local to regional growth',
   },
 ]
+
+export const partnershipOpportunitiesSection = {
+  kicker: 'Partnership Opportunities',
+  title: 'Partnership <span class="text-gradient-brand">Opportunities</span>',
+  classes: '!px-0 !py-0',
+  description:
+    'Indian Mentors offers different levels of partnership depending on the partner\'s experience, market reach, and operational capacity.',
+}
+
+export const partnershipTiers: PartnershipTier[] = [
+  {
+    id: 'local-area',
+    iconMdi: 'mdi:map-marker-outline',
+    title: 'Local Area Partner',
+    description: 'Operate within a specific area or pincode cluster.',
+    responsibilities: [
+      'Handling student enquiries',
+      'Parent counselling',
+      'Demo class coordination',
+    ],
+    cta: { label: 'Apply Now', href: '#partner-register' },
+  },
+  {
+    id: 'city-channel',
+    iconMdi: 'mdi:city-variant-outline',
+    title: 'City Channel Partner',
+    description: 'Manage student admissions and tutor coordination across an entire city or town.',
+    responsibilities: [
+      'City-level lead management',
+      'Tutor onboarding support',
+      'Parent relationship management',
+    ],
+    popular: true,
+    cta: { label: 'Apply Now', href: '#partner-register' },
+  },
+  {
+    id: 'regional',
+    iconMdi: 'mdi:earth',
+    title: 'Regional Partner',
+    description:
+      'Operate across multiple cities or districts, supporting the expansion of tutoring services in the region.',
+    responsibilities: [
+      'Territory expansion',
+      'Regional partner support',
+      'Business development activities',
+    ],
+    cta: { label: 'Apply Now', href: '#partner-register' },
+  },
+]
+
+export type TerritoryLevel = {
+  label: string
+  iconMdi: string
+  description: string
+  accent: 'blue' | 'indigo' | 'violet' | 'cyan' | 'emerald' | 'teal' | 'sky' | 'amber'
+}
+
+export const territorySection = {
+  kicker: 'Geographical Territory Structure',
+  title: 'Geographical <span class="text-gradient-brand">Territory Structure</span>',
+  classes: '!px-0 !py-0',
+  description:
+    'Indian Mentors follows a structured Geographical Division Model to manage service territories and partner operations. This hierarchy allows efficient lead distribution, tutor allocation, and operational management.',
+  structureLabel: 'Service Structure',
+  levels: [
+    { label: 'Country', iconMdi: 'mdi:earth', description: 'National coverage and policy framework', accent: 'blue' },
+    { label: 'Zone', iconMdi: 'mdi:map-legend', description: 'Regional zones for coordinated operations', accent: 'indigo' },
+    { label: 'State', iconMdi: 'mdi:map-outline', description: 'State-level service management', accent: 'violet' },
+    { label: 'Division', iconMdi: 'mdi:view-grid-outline', description: 'Administrative divisions within states', accent: 'cyan' },
+    { label: 'District', iconMdi: 'mdi:map-marker-radius-outline', description: 'District-wise partner allocation', accent: 'emerald' },
+    { label: 'City', iconMdi: 'mdi:city-variant-outline', description: 'City or town-level operations', accent: 'teal' },
+    { label: 'Area / Locality', iconMdi: 'mdi:home-group', description: 'Neighbourhood and locality coverage', accent: 'sky' },
+    { label: 'Pincode', iconMdi: 'mdi:mailbox-outline', description: 'Precise service delivery at pincode level', accent: 'amber' },
+  ] satisfies TerritoryLevel[],
+  benefits: [
+    { iconMdi: 'mdi:transit-connection-variant', label: 'Efficient lead distribution' },
+    { iconMdi: 'mdi:account-switch-outline', label: 'Smart tutor allocation' },
+    { iconMdi: 'mdi:chart-timeline-variant', label: 'Scalable partner operations' },
+  ],
+  creativeImage: 'assets/img/channel-partner/territory-structure-map.png',
+  featuredCities: [
+    { image: 'mumbai', label: 'Mumbai' },
+    { image: 'delhi', label: 'Delhi' },
+    { image: 'bangluru', label: 'Bengaluru' },
+    { image: 'chennai', label: 'Chennai' },
+    { image: 'kolkata', label: 'Kolkata' },
+    { image: 'pune', label: 'Pune' },
+  ],
+  note: 'Each partner operates within a clearly defined territory level depending on the partnership model.',
+}
 
 export const processSection = {
-  kicker: 'Partnership Process',
-  title: 'Simple and structured onboarding',
+  kicker: 'How the Channel Partner Program Works',
+  title: 'How the program <span class="text-gradient-brand">works</span>',
+  classes: '!px-0 !py-0',
   description:
     'Our partnership journey is designed to be simple, transparent, and professionally guided.',
-  journey: ['Register', 'Collaborate', 'Earn'],
 }
 
 export const processSteps: ProcessStep[] = [
@@ -97,40 +233,35 @@ export const processSteps: ProcessStep[] = [
     iconMdi: 'mdi:file-document-edit-outline',
     title: 'Submit Partnership Application',
     description:
-      'Complete the online Channel Partner application form to express your interest in joining the Indian Mentors network.',
+      'Complete the online partnership form to express your interest in becoming a Channel Partner.',
     accent: 'violet',
   },
   {
     no: '02',
     iconMdi: 'mdi:phone-in-talk-outline',
     title: 'Initial Discussion',
-    description: 'Our partnership team will connect with you to understand:',
-    points: [
-      'Your professional background',
-      'Preferred operational territory',
-      'Local market understanding',
-      'Business goals and expectations',
-    ],
+    description:
+      'Our team will conduct a discussion to understand your background, territory preference, and business goals.',
     accent: 'blue',
   },
   {
     no: '03',
     iconMdi: 'mdi:check-decagram-outline',
     title: 'Partnership Approval',
-    description: 'Eligible applicants will receive official confirmation, including:',
-    points: ['Territory allocation', 'Partnership agreement', 'Operational guidelines'],
+    description:
+      'Eligible applicants will receive confirmation along with details regarding territory allocation and partnership terms.',
     accent: 'emerald',
   },
   {
     no: '04',
     iconMdi: 'mdi:school-outline',
     title: 'Training and Onboarding',
-    description: 'Approved partners receive structured training on:',
+    description: 'Partners receive training on:',
     points: [
-      'Personalised tutoring service model',
-      'Parent counselling and student assessment process',
+      'Tutoring service model',
+      'Parent counselling process',
       'Student enrollment workflow',
-      'CRM and lead management platform',
+      'CRM and lead management system',
     ],
     accent: 'orange',
   },
@@ -138,166 +269,130 @@ export const processSteps: ProcessStep[] = [
     no: '05',
     iconMdi: 'mdi:rocket-launch-outline',
     title: 'Start Operations',
-    description: 'Once onboarding is complete, you can begin operations by:',
+    description: 'Once onboarded, partners can begin:',
     points: [
-      'Managing student enquiries',
-      'Coordinating demo tutoring sessions',
+      'Handling student enquiries',
+      'Coordinating demo sessions',
       'Facilitating student enrollments',
-      'Expanding the tutor network in your region',
     ],
     accent: 'indigo',
   },
 ]
 
-export const benefitsSection = {
-  kicker: 'Key Benefits of the Channel Partner Panel',
-  title: 'A transparent and scalable education business model',
-  description:
-    'Indian Mentors provides Channel Partners with the tools, technology, and support needed to run a successful local tutoring business.',
-}
-
-export const benefitCards: BenefitCard[] = [
-  {
-    id: 'decentralised-growth',
-    iconMdi: 'mdi:chart-timeline-variant-shimmer',
-    title: 'Decentralised Growth',
-    description: 'Each partner manages operations regionally, allowing:',
-    points: [
-      'Faster response to student needs',
-      'Better local service delivery',
-      'Scalable expansion across multiple regions',
-    ],
-    footnote: 'This decentralised approach strengthens our nationwide academic network.',
-    accent: 'blue',
-  },
-  {
-    id: 'transparent-dashboard',
-    iconMdi: 'mdi:monitor-dashboard',
-    title: 'Transparent Dashboard',
-    description: 'Partners receive access to a dedicated operational dashboard, which provides:',
-    points: [
-      'Student and tutor tracking',
-      'Enrollment and registration analytics',
-      'Revenue and earnings reports',
-      'Payment tracking and management',
-    ],
-    footnote: 'There are no hidden calculations, ensuring complete transparency.',
-    accent: 'emerald',
-  },
-  {
-    id: 'community-engagement',
-    iconMdi: 'mdi:handshake-outline',
-    title: 'Direct Community Engagement',
-    description: 'Channel Partners interact directly with:',
-    points: [
-      'Students and parents',
-      'Local tutors and educators',
-      'Schools and academic institutes',
-      'Corporate learning clients',
-    ],
-    footnote: 'This enables you to build strong educational relationships within your community.',
-    accent: 'orange',
-  },
-  {
-    id: 'scalable-growth',
-    iconMdi: 'mdi:trending-up',
-    title: 'Scalable Growth',
-    description: 'The partnership model allows you to expand operations gradually — grow from:',
-    points: [
-      'Local area partnerships',
-      'City-level operations',
-      'District-level coverage',
-      'State-level educational networks',
-    ],
-    footnote: 'All while maintaining operational control.',
-    accent: 'violet',
-  },
-]
-
 export const whoCanApplySection = {
-  kicker: 'Who Can Apply?',
-  title: 'Ideal partner profiles',
+  kicker: 'Who Can Become a Channel Partner',
+  title: 'We welcome education-focused entrepreneurs',
   description:
-    'The Indian Mentors Channel Partner Program is suitable for individuals and organisations already connected to the education ecosystem.',
-  note: 'If you understand your local education market and academic needs, this partnership provides a strong business opportunity.',
+    'We welcome applications from individuals and organisations interested in contributing to the education sector.',
+  suitableLabel: 'Suitable partners include:',
+  note: 'No large infrastructure investment is required to begin.',
 }
 
 export const eligibleApplicants = [
-  { iconMdi: 'mdi:account-tie-outline', label: 'Education Consultants' },
-  { iconMdi: 'mdi:home-city-outline', label: 'Tuition Bureau Owners' },
-  { iconMdi: 'mdi:human-male-board', label: 'Coaching Centre Operators' },
-  { iconMdi: 'mdi:school-outline', label: 'School Coordinators' },
-  { iconMdi: 'mdi:briefcase-account-outline', label: 'Freelance Academic Managers' },
-  { iconMdi: 'mdi:laptop-account', label: 'EdTech Entrepreneurs' },
-  { iconMdi: 'mdi:storefront-outline', label: 'Local Business Owners in Education' },
+  { iconMdi: 'mdi:account-tie-outline', label: 'Education consultants' },
+  { iconMdi: 'mdi:human-male-board', label: 'Coaching centre owners' },
+  { iconMdi: 'mdi:school-outline', label: 'School teachers' },
+  { iconMdi: 'mdi:account-voice', label: 'Academic counsellors' },
+  { iconMdi: 'mdi:lightbulb-on-outline', label: 'Education entrepreneurs' },
+  { iconMdi: 'mdi:compass-outline', label: 'Career guidance professionals' },
 ]
 
-export const whyPartnerSection = {
-  kicker: 'Why Partner with Indian Mentors?',
-  title: 'A strong foundation for your education business',
-  description:
-    'Indian Mentors combines national brand strength with regional leadership opportunities.',
-  note: 'This hybrid model ensures that partners benefit from both technology and community relationships.',
+export const eligibilityRequirements = {
+  title: 'Eligibility Requirements',
+  subtitle: 'Basic requirements to become a channel partner',
+  items: [
+    'Passion for education sector',
+    'Good communication skills',
+    'Local market knowledge',
+    'Basic smartphone/computer literacy',
+    'Commitment to quality service',
+  ],
 }
 
-export const partnershipAdvantages = [
-  { iconMdi: 'mdi:certificate-outline', label: 'Established academic brand credibility' },
-  { iconMdi: 'mdi:bullhorn-outline', label: 'Centralised marketing and digital promotion' },
-  { iconMdi: 'mdi:sitemap-outline', label: 'Structured operational framework' },
-  { iconMdi: 'mdi:laptop', label: 'Technology-driven management platform' },
-  { iconMdi: 'mdi:cash-check', label: 'Transparent performance-based earnings' },
-  { iconMdi: 'mdi:headset', label: 'Continuous training and operational support' },
+export const territoriesSection = {
+  kicker: 'Available Territories',
+  title: 'Available <span class="text-gradient-brand">Territories</span>',
+  classes: '!px-0 !py-0',
+  description:
+    'Indian Mentors is actively expanding across multiple cities and regions in India. Explore available cities, territory status, and expansion opportunities.',
+  features: [
+    { iconMdi: 'mdi:city-variant-outline', label: 'Available cities' },
+    { iconMdi: 'mdi:map-check-outline', label: 'Territory availability status' },
+    { iconMdi: 'mdi:map-marker-path', label: 'Expansion opportunities' },
+  ],
+  cta: { label: 'View Territory Map', href: '#partner-register' },
+}
+
+export const testimonialsSection = {
+  kicker: 'Success Stories',
+  title: 'Stories from our <span class="text-gradient-brand">Partner Network</span>',
+  classes: '!px-0 !py-0',
+  description:
+    'Hear from channel partners who are building successful education businesses with Indian Mentors.',
+}
+
+export const partnerTestimonials: PartnerTestimonial[] = [
+  {
+    id: 'partner-1',
+    quote:
+      'Partnering with Indian Mentors gave me a structured way to serve my local community. The onboarding was smooth and support has been consistent throughout.',
+    name: 'Rajesh Kumar',
+    role: 'City Channel Partner',
+    location: 'Pune, Maharashtra',
+  },
+  {
+    id: 'partner-2',
+    quote:
+      'The territory model and lead management system helped me focus on building relationships rather than worrying about operations. A truly scalable opportunity.',
+    name: 'Priya Sharma',
+    role: 'Local Area Partner',
+    location: 'Jaipur, Rajasthan',
+  },
+  {
+    id: 'partner-3',
+    quote:
+      'As a regional partner, I appreciate the clear hierarchy and business development support. Indian Mentors makes expansion across districts achievable.',
+    name: 'Anil Mehta',
+    role: 'Regional Partner',
+    location: 'Gujarat',
+  },
 ]
 
-export const partnershipBenefitsSection = {
-  kicker: 'Partnership Benefits',
-  title: 'Growth through educational collaboration',
-  description:
-    'Indian Mentors offers a scalable partnership ecosystem designed for long-term success.',
-  note: 'Together, we aim to expand access to quality personalised tutoring services across India.',
+export const faqSection = {
+  kicker: 'Frequently Asked Questions',
+  title: 'Frequently asked <span class="text-gradient-brand">questions</span>',
+  classes: '!px-0 !py-0',
+  description: 'Common questions about the partnership program',
 }
 
-export const partnershipBenefits = [
+export const partnerFaqs: PartnerFaqItem[] = [
   {
-    iconMdi: 'mdi:sitemap-outline',
-    title: 'Structured Operational Framework',
-    description: 'Clear processes and guidelines for every part of your operations.',
+    id: 'experience',
+    question: 'Do I need experience in education?',
+    answer:
+      'Prior experience is helpful but not mandatory. Training and operational support will be provided.',
   },
   {
-    iconMdi: 'mdi:bullhorn-variant-outline',
-    title: 'Brand & Marketing Support',
-    description: 'Brand association backed by centralised marketing campaigns.',
+    id: 'full-time',
+    question: 'Is this a full-time opportunity?',
+    answer:
+      'Partners may operate full-time or part-time, depending on their availability and business goals.',
   },
   {
-    iconMdi: 'mdi:account-arrow-right-outline',
-    title: 'Lead Generation System',
-    description: 'A managed pipeline of student enquiries for your territory.',
-  },
-  {
-    iconMdi: 'mdi:cash-multiple',
-    title: 'Transparent Revenue Sharing',
-    description: 'Clear, performance-based earnings with no hidden calculations.',
-  },
-  {
-    iconMdi: 'mdi:lifebuoy',
-    title: 'Dedicated Backend Support',
-    description: 'Operational assistance from our central support team.',
-  },
-  {
-    iconMdi: 'mdi:book-open-page-variant-outline',
-    title: 'Continuous Learning Resources',
-    description: 'Ongoing training and development resources for partners.',
+    id: 'start-time',
+    question: 'How soon can I start working?',
+    answer:
+      'Most partners can begin operations within a few weeks after onboarding.',
   },
 ]
 
 export const finalCta = {
-  title: 'Ready to Start Your Education Venture?',
+  title: 'Become a Channel Partner Today',
   description:
-    'If you are passionate about education and entrepreneurship, the Indian Mentors Channel Partner Program offers an opportunity to build a meaningful and scalable business. Join a growing network of partners helping students achieve academic success across multiple cities and regions.',
-  primaryCta: { label: 'Register Now', href: '#partner-register' },
+    'Join the Indian Mentors Channel Partner Network and contribute to delivering high-quality personalised tutoring services to students across India.',
+  primaryCta: { label: 'Apply Now', href: '#partner-register' },
   secondaryCta: { label: 'Talk to a Partnership Expert', href: 'tel:+917389563564' },
-  tertiaryCta: { label: 'Download Partnership Brochure', href: '#partner-register' },
-  closingTitle: 'Indian Mentors — Where Learning Meets Leadership.',
+  closingTitle: 'Start Your Partnership Journey with Indian Mentors',
   closingStatement:
-    'Together, we are building a nationwide ecosystem that connects students, tutors, and communities through personalised education.',
+    'Together, we can create a strong academic support ecosystem that benefits students, parents, tutors, and education partners.',
 }

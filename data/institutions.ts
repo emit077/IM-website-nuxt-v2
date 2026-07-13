@@ -67,6 +67,38 @@ export const institutionsFinalCta = {
   closing: 'Indian Mentors \u2014 Empowering Institutions with Quality Educators',
 }
 
+export const whyInstitutionsSection = {
+  badge: 'Why Indian Mentors',
+  title: 'Why institutions <span class="text-gradient-brand">choose us</span>',
+  description:
+    'Educational organizations across India trust Indian Mentors for structured and reliable teacher recruitment solutions.',
+  classes: '!px-0 !py-0',
+}
+
+export const reliabilitySection = {
+  badge: 'Quality Assurance',
+  title: 'What makes our recruitment <span class="text-gradient-brand">reliable?</span>',
+  description:
+    'Our teacher recruitment services are built around quality assurance, verification, and efficiency.',
+  classes: '!px-0 !py-0',
+}
+
+export const sectorsSection = {
+  badge: 'Hire Teachers For',
+  title: 'Faculty recruitment for <span class="text-gradient-brand">every education sector</span>',
+  description:
+    'Indian Mentors supports structured faculty recruitment for multiple education sectors and learning organizations.',
+  classes: '!px-0 !py-0',
+}
+
+export const institutionsProcessSection = {
+  badge: 'Our Hiring Process',
+  title: 'A structured framework, <span class="text-gradient-brand">step by step</span>',
+  description:
+    'Indian Mentors follows a structured recruitment framework designed to deliver qualified educators efficiently.',
+  classes: '!px-0 !py-0',
+}
+
 export const institutionsQuickLinks = [
   {
     id: 'hire-for',

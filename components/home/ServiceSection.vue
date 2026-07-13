@@ -118,6 +118,13 @@ const services: ServiceCard[] = [
         variant: 'primary',
     },
 ]
+
+const headerContent = {
+    badge: 'What We Offer',
+    title: 'Modern Learning Solutions for Academic Excellence',
+    description: '',
+    classes: 'mb-2 text-center',
+}
 </script>
 
 <template>
@@ -137,8 +144,8 @@ const services: ServiceCard[] = [
         </svg>
 
         <div class="relative z-[1] mx-auto w-full max-w-[1200px] px-4">
-            <CardHeader classes="mb-2 text-center" theme="dark" badge="What We Offer"
-                title="Modern Learning Solutions for Academic Excellence" />
+            <CardHeader theme="dark" :badge="headerContent.badge" :title="headerContent.title"
+                :description="headerContent.description" :classes="headerContent.classes" />
 
             <div class="flex flex-wrap justify-center gap-4 sm:gap-5 mt-10">
                 <ServiceOfferingCard v-for="(service, i) in services" :key="service.title"

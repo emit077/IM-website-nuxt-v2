@@ -9,6 +9,16 @@ function rippleHandler(e: MouseEvent) {
   target.style.setProperty('--x', `${e.clientX - rect.left}px`)
   target.style.setProperty('--y', `${e.clientY - rect.top}px`)
 }
+
+const headerContent = {
+  badge: 'ERP & TRANSPARENCY',
+  title: "Smart Learning <span class='text-gradient-brand'>Dashboard</span>",
+  description: `The dashboard serves as the central control panel, providing a quick overview of all learning activities and account updates.
+<br>
+<br>
+Provides instant visibility of the student's academic activities and tutoring schedule.`,
+  classes: '!px-0 !py-0',
+}
 </script>
 
 <template>
@@ -37,11 +47,8 @@ function rippleHandler(e: MouseEvent) {
 
         <div class="relative grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-12">
           <div class="lg:col-span-6 flex flex-col gap-5 sm:gap-6">
-            <CardHeader classes="!px-0 !py-0" badge="ERP &amp; TRANSPARENCY" align="left"
-              title="Smart Learning <span class='text-gradient-brand'>Dashboard</span>" description="The dashboard serves as the central control panel, providing a quick overview of all learning activities and account updates.
-<br>
-<br>
-Provides instant visibility of the student’s academic activities and tutoring schedule." />
+            <CardHeader align="left" :badge="headerContent.badge" :title="headerContent.title"
+              :description="headerContent.description" :classes="headerContent.classes" />
 
             <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap" v-motion :initial="{ opacity: 0, y: 10 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 120 } }">

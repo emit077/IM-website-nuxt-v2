@@ -3,10 +3,10 @@ import ContactHeroSection from '~/components/contact/ContactHeroSection.vue'
 import ContactChannelSection from '~/components/contact/ContactChannelSection.vue'
 import ContactFindUsSection from '~/components/contact/ContactFindUsSection.vue'
 import ContactBranchCitiesSection from '~/components/contact/ContactBranchCitiesSection.vue'
-import ContactCloserSection from '~/components/contact/ContactCloserSection.vue'
 import UiCTASection from '~/components/ui/CTASection.vue'
 import NewsletterSection from '~/components/ui/NewsletterSection.vue'
 import { findMentorSection, contactGetStarted, contactCTA2 } from '~/data/contact'
+import CardHeader from '~/components/ui/CardHeader.vue'
 
 useSeoMeta({
   title: 'Contact Us — Indian Mentors',
@@ -28,11 +28,14 @@ useSeoMeta({
     <UiCTASection heading-id="contact-cta-heading" variant="light" :title="contactCTA2.title"
       :description="contactCTA2.description" :ctas="contactCTA2.ctas" />
     <ContactChannelSection />
-    <ContactCloserSection id="find-mentor" heading-id="find-mentor-heading" :badge="findMentorSection.badge"
-      :title="findMentorSection.title" :description="findMentorSection.description"
-      :closing="findMentorSection.closing" />
-    <UiCTASection heading-id="contact-cta-heading" variant="dark" surface-class="section-surface-white" :title="contactGetStarted.title"
-      :description="contactGetStarted.description" :ctas="contactGetStarted.ctas" />
+    <!-- closer section -->
+    <div class="container-page pt-10">
+      <CardHeader title="Connect With Indian Mentors"
+        description="At Indian Mentors, your academic success is our priority. Reach out today and let us help you achieve your learning goals with the right guidance and support."
+        classes="mx-auto max-w-2xl" />
+    </div>
+    <UiCTASection heading-id="contact-cta-heading" variant="dark" surface-class="section-surface-white"
+      :title="contactGetStarted.title" :description="contactGetStarted.description" :ctas="contactGetStarted.ctas" />
     <NewsletterSection />
   </div>
 </template>

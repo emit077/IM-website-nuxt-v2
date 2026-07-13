@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import HeroHeader from '~/components/ui/HeroHeader.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
-import { contactHero, contactHeroCollageBottom, contactHeroCollageTop } from '~/data/contact'
+import TrustIndicators from '~/components/ui/TrustIndicators.vue'
+import { contactHero, contactHeroCollageBottom, contactHeroCollageTop, contactHeroTrustStats } from '~/data/contact'
 
 const heroContent = {
+  badge: "India's #1 Verified Tutor Platform",
   title: 'Contact Us<br class="hidden sm:block" /> <span class="text-gradient-brand">We’re Here to Help</span>',
   subtitle: '<span class="text-gradient-brand">Indian Mentors</span> –  Connecting Learners with Verified Educators',
   description: contactHero.subheadline,
@@ -19,7 +21,7 @@ const heroContent = {
 
     <div class="container-page section-py">
       <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-        <HeroHeader variant="hero" heading-id="contact-hero-heading" badge="India's #1 Verified Tutor Platform"
+        <HeroHeader variant="hero" heading-id="contact-hero-heading" :badge="heroContent.badge"
           :title="heroContent.title" :subtitle="heroContent.subtitle" :description="heroContent.description"
           :content-class="heroContent.contentClass">
           <div class="flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
@@ -74,6 +76,8 @@ const heroContent = {
           </div>
         </div>
       </div>
+
+      <TrustIndicators class="mt-10 lg:mt-12" :items="contactHeroTrustStats" />
     </div>
   </section>
 </template>

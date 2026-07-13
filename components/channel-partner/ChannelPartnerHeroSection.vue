@@ -1,44 +1,33 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
+import TrustIndicators from '~/components/ui/TrustIndicators.vue'
 import HeroHeader from '~/components/ui/HeroHeader.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
-import { heroContent, heroHighlights } from '~/data/channel-partner'
+import { heroContent, heroTrustStats } from '~/data/channel-partner'
 
-const heroTitle = `${heroContent.titleLead} <span class="text-gradient-brand">${heroContent.titleHighlight}</span>`
-const heroDescription = `${heroContent.description}<br><br>${heroContent.subDescription}`
+const heroSectionStyle = {
+  backgroundImage: `url('${usePublicAsset(heroContent.backgroundImage)}')`,
+}
 </script>
 
 <template>
-  <section class="relative overflow-hidden section-surface-white" aria-labelledby="partner-hero-heading">
-    <div aria-hidden="true"
-      class="pointer-events-none absolute inset-x-0 -top-40 -z-10 mx-auto h-[420px] max-w-5xl bg-gradient-to-b from-blue-100/60 via-indigo-50/40 to-transparent blur-3xl" />
+  <section class="relative overflow-hidden bg-white bg-right bg-no-repeat" aria-labelledby="partner-hero-heading"
+    :style="heroSectionStyle">
+    <div class="container-page pb-12 pt-10 lg:pt-16">
+      <HeroHeader variant="hero" heading-id="partner-hero-heading" :badge="heroContent.badge" :title="heroContent.title"
+        :subtitle="heroContent.subtitle" :description="heroContent.description"
+        :content-class="heroContent.contentClass" />
 
-    <div class="container-page pb-14 pt-10 text-center sm:pb-16 lg:pt-16">
-      <HeroHeader heading-id="partner-hero-heading" content-class="!px-0 !py-0 mx-auto max-w-3xl text-center"
-        :badge="heroContent.badge" :title="heroTitle" :description="heroDescription">
-        <p class="mx-auto mt-2 w-fit rounded-full border border-amber-200 bg-amber-50/80 px-4 py-1.5 text-[13px] font-semibold text-amber-700 sm:text-sm"
-          v-motion :initial="{ opacity: 0, y: 12 }"
-          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 430 } }">
-          {{ heroContent.tagline }}
-        </p>
-
-        <div class="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row" v-motion
-          :initial="{ opacity: 0, y: 16 }" :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 480 } }">
-          <ActionBtn variant="primary" :href="heroContent.primaryCta.href" :label="heroContent.primaryCta.label"
-            icon="mdi:account-plus-outline" />
-          <ActionBtn variant="secondary" :href="heroContent.secondaryCta.href" :label="heroContent.secondaryCta.label"
-            icon="mdi:calendar-clock-outline" :show-arrow="false" />
-        </div>
-      </HeroHeader>
-
-      <ul class="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3" role="list" v-motion
-        :initial="{ opacity: 0, y: 14 }" :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 580 } }">
-        <li v-for="item in heroHighlights" :key="item.label"
-          class="flex items-center justify-center gap-2 rounded-xl border border-slate-200/80 bg-white/80 px-3 py-2.5 shadow-soft">
-          <Icon :icon="item.iconMdi" class="h-4 w-4 shrink-0 text-emerald-600" aria-hidden="true" />
-          <span class="text-[12px] font-semibold leading-tight text-slate-700 sm:text-[12.5px]">{{ item.label }}</span>
-        </li>
-      </ul>
+      <div class="my-7 flex flex-col gap-3 sm:flex-row" v-motion :initial="{ opacity: 0, y: 16 }"
+        :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 480 } }">
+        <ActionBtn variant="primary" :href="heroContent.primaryCta.href" :label="heroContent.primaryCta.label"
+          icon="mdi:account-plus-outline" />
+        <ActionBtn variant="secondary" :href="heroContent.secondaryCta.href" :label="heroContent.secondaryCta.label"
+          icon="mdi:map-search-outline" :show-arrow="false" />
+      </div>
+      <p class="mb-6 ml-2 text-sm text-gray-500" v-html="heroContent.caption" />
+      <div aria-hidden="true"
+        class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-cream-50" />
+      <TrustIndicators class="pt-1" :items="heroTrustStats" />
     </div>
   </section>
 </template>

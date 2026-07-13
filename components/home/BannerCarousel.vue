@@ -52,6 +52,13 @@ const props = withDefaults(
   },
 )
 
+const headerContent = computed(() => ({
+  badge: props.badge,
+  title: props.title,
+  description: props.description,
+  classes: 'mb-3 sm:mb-4 !px-0 !py-0 max-w-3xl mx-auto',
+}))
+
 const reduceMotion = usePreferredReducedMotion()
 const active = ref(0)
 const paused = ref(false)
@@ -115,8 +122,8 @@ function onLeave() {
   <section v-if="count > 0" class="container-page pt-6 pb-2 sm:pt-8 sm:pb-3" aria-roledescription="carousel"
     :aria-label="`${props.title}. Promotional image carousel.`" @mouseenter="onEnter" @mouseleave="onLeave"
     @focusin="onEnter" @focusout="onLeave">
-    <CardHeader classes="mb-3 sm:mb-4 !px-0 !py-0 max-w-3xl mx-auto" :badge="props.badge" :title="props.title"
-      :description="props.description" theme="light" />
+    <CardHeader theme="light" :badge="headerContent.badge" :title="headerContent.title"
+      :description="headerContent.description" :classes="headerContent.classes" />
     <div
       class="relative overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-sm ring-1 ring-black/5">
       <div class="flex transition-transform duration-500 ease-out motion-reduce:transition-none"

@@ -708,6 +708,7 @@ const headerCopy = computed(() =>
                 "Find Your <span class='text-gradient-brand'>Perfect Learning</span> Partner",
             description:
                 'Explore verified tutors matched to your academic needs, learning preferences, and goals',
+            classes: '!px-0 !py-0',
         }
         : {
             badge: 'Discover the perfect match',
@@ -715,6 +716,7 @@ const headerCopy = computed(() =>
                 "Discover   <span class='text-gradient-brand'>Students Ready</span> to Learn",
             description:
                 'Explore verified student requirements based on subject, grade, location, and preferred mode.',
+            classes: '!px-0 !py-0',
         },
 )
 
@@ -803,7 +805,8 @@ onUnmounted(() => {
             class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-[#eef1ff] via-[#f6f8ff] to-transparent">
         </div>
 
-        <CardHeader :badge="headerCopy.badge" :title="headerCopy.title" :description="headerCopy.description" />
+        <CardHeader heading-id="browse-mentors-heading" :badge="headerCopy.badge" :title="headerCopy.title"
+            :description="headerCopy.description" :classes="headerCopy.classes" />
         <div class="mt-2 flex justify-center" v-motion :initial="{ opacity: 0, y: 8 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: 80 } }">
             <div role="tablist" aria-label="Browse mode"

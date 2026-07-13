@@ -10,9 +10,9 @@ const loopItems = [...videoTestimonials, ...videoTestimonials]
   <section id="video-testimonials" class="scroll-mt-24 border-y border-slate-200/80 bg-white section-py"
     aria-labelledby="video-testimonials-heading">
     <div class="container-page">
-      <CardHeader align="left" heading-id="video-testimonials-heading" classes="!px-0 !py-0 max-w-xl"
-        :badge="videoTestimonialsSection.kicker" title="Hear it <span class='text-gradient-brand'>in their own words</span>"
-        :description="videoTestimonialsSection.description" accent="blue" />
+      <CardHeader align="left" heading-id="video-testimonials-heading" :badge="videoTestimonialsSection.kicker"
+        :title="videoTestimonialsSection.title" :description="videoTestimonialsSection.description"
+        :classes="videoTestimonialsSection.classes" />
 
       <div class="group relative mt-8 overflow-hidden rounded-2xl">
         <div

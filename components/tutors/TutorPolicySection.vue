@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
-import { policyPoints } from '~/data/tutors'
+import { policyPoints, tutorPolicySection } from '~/data/tutors'
 </script>
 
 <template>
@@ -12,10 +12,9 @@ import { policyPoints } from '~/data/tutors'
         class="mx-auto grid max-w-5xl grid-cols-1 items-center gap-8 rounded-[1.75rem] border border-slate-200/80 bg-cream-50/70 p-6 sm:p-8 lg:grid-cols-12 lg:gap-12 lg:p-10">
         <div class="lg:col-span-5" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-          <CardHeader align="left" heading-id="tutor-policy-heading" classes="!px-0 !py-0"
-            badge="Tutor Registration Policy"
-            title='Fair, professional, and <span class="text-gradient-brand">respectful for everyone</span>'
-            description="All tutors associated with Indian Mentors follow established policies designed to maintain professional and ethical tutoring practices — ensuring a fair environment for tutors, students, and parents alike." />
+          <CardHeader align="left" heading-id="tutor-policy-heading" :badge="tutorPolicySection.badge"
+            :title="tutorPolicySection.title" :description="tutorPolicySection.description"
+            :classes="tutorPolicySection.classes" />
           <a href="#tutor-register"
             class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 underline-offset-4 transition hover:underline">
             Read Tutor Registration Policy

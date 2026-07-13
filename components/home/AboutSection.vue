@@ -2,6 +2,13 @@
 import HeroStats from './HeroStats.vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
+
+const headerContent = {
+  badge: 'know more',
+  title: 'About <span class="text-gradient-brand">Indian Mentors</span>',
+  description: '',
+  classes: 'mb-2 !px-0 !py-0',
+}
 </script>
 
 <template>
@@ -9,7 +16,8 @@ import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
     <div class="container-page ">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start lg:items-stretch">
         <div class="lg:col-span-7 xl:col-span-6 flex flex-col gap-7 lg:gap-8">
-          <CardHeader classes="mb-2 !px-0 !py-0" badge="know more" title="About Us" align="left" />
+          <CardHeader :badge="headerContent.badge" :title="headerContent.title" :description="headerContent.description"
+            :classes="headerContent.classes" align="left" />
           <p class="text-pretty text-base sm:text-lg text-slate-600 leading-relaxed" v-motion
             :initial="{ opacity: 0, y: 16 }" :enter="{ opacity: 1, y: 0, transition: { duration: 700, delay: 350 } }">
             <b>Building Futures Through Personalised Education.</b> <br><br>

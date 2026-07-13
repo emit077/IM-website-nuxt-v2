@@ -100,7 +100,9 @@ export type VisionPoint = {
 
 export const aboutMission = {
   badge: 'Our Mission',
-  title: 'Empowering Every Learner Through Structured Mentorship',
+  title:
+    'Empowering Every Learner Through <span class="text-gradient-brand pt-2">Structured Mentorship</span>',
+  classes: '!px-0 !py-0',
   summary:
     'Structured, transparent mentorship with clear goals, verified tutors, and progress you can measure — not left to chance.',
   intro: [
@@ -146,7 +148,9 @@ export const aboutMission = {
 
 export const aboutVision = {
   badge: 'Our Vision',
-  title: "Building India's Most Trusted Personalised Tutoring Ecosystem",
+  title:
+    'Building India\'s Most Trusted <span class="text-gradient-brand pt-2">Personalised Tutoring Ecosystem</span>',
+  classes: '!px-0 !py-0',
   summary:
     "India's trusted personalised tutoring ecosystem — mentorship, structure, and technology working together.",
   intro:
@@ -266,8 +270,6 @@ export const aboutLeadership: LeadershipProfile[] = [
   },
 ]
 
-export const aboutMissionQuote =
-  'We believe that students don\'t need guesswork, unverified tutors, or opaque progress reports to achieve academic excellence.'
 
 export type PhilosophyValue = {
   icon: string
@@ -276,8 +278,10 @@ export type PhilosophyValue = {
 }
 
 export const aboutPhilosophy = {
-  title: 'Our Philosophy',
-  subtitle: 'Three simple values. Powered by technology, delivered by humans.',
+  badge: 'What we stand for',
+  title: 'Our <span class="text-gradient-brand">Philosophy</span>',
+  description: 'Three simple values. Powered by technology, delivered by humans.',
+  classes: '!px-0 !py-0',
   values: [
     {
       icon: 'mdi:lightning-bolt',
@@ -308,8 +312,11 @@ export type ComparisonRow = {
 }
 
 export const aboutComparison = {
-  title: 'What Makes Us Different',
-  subtitle: 'How Indian Mentors compares to traditional coaching and self-study.',
+  badge: 'Our Competitive Advantage',
+  title:
+    'The Difference Behind Every <span class="text-gradient-brand">Student\'s Success</span>',
+  description: 'How Indian Mentors compares to traditional coaching and self-study.',
+  classes: '!px-0 !py-0',
   columns: ['Indian Mentors', 'Coaching Centers', 'Self-Study'] as const,
   rows: [
     { feature: 'Verified & background-checked tutors', indianMentors: true, coachingCenters: false, selfStudy: false },
@@ -329,14 +336,31 @@ export type AudienceCard = {
 }
 
 export const aboutAudience = {
-  title: 'Designed for Students Who…',
-  subtitle: 'Our team becomes your academic support system — structured, transparent, and scalable.',
+  badge: 'Who we serve',
+  title: 'Designed for <span class="text-gradient-brand">Students Who…</span>',
+  description:
+    'Our team becomes your academic support system — structured, transparent, and scalable.',
+  classes: '!px-0 !py-0',
   cards: [
     { icon: 'mdi:rocket-launch-outline', text: 'Want personalised guidance beyond crowded classroom coaching.' },
     { icon: 'mdi:clock-fast', text: 'Need flexible scheduling that fits school, exams, and family life.' },
     { icon: 'mdi:account-group-outline', text: 'Value transparency — parents, students, and mentors aligned on goals.' },
     { icon: 'mdi:school-outline', text: 'Aim for board excellence, competitive exams, or long-term academic growth.' },
   ] satisfies AudienceCard[],
+}
+
+export const aboutLeadershipSection = {
+  badge: 'Our Leadership',
+  title: 'A structured Team Powering <span class="text-gradient-brand">Academic Excellence</span>',
+  description:
+    'The people guiding academic quality, operations, and mentor excellence across India.',
+  classes: '!px-0 !py-0',
+}
+
+export const aboutJourneySection = {
+  badge: 'Our Journey',
+  title: 'Milestones that shaped us',
+  classes: '!px-0 !py-0',
 }
 
 export const aboutLeadershipQuote =
@@ -350,8 +374,9 @@ export type CommitmentItem = {
 
 export const aboutCommitment = {
   badge: 'Our Commitment',
-  title: 'Our Commitment',
-  subtitle: 'Five core commitments that drive everything we do',
+  title: 'Our Standards of <span class="text-gradient-brand">Educational Excellence</span>',
+  description: 'Five core commitments that drive everything we do',
+  classes: '!px-0 !py-0',
   items: [
     {
       icon: 'mdi:account-cog-outline',
@@ -389,8 +414,10 @@ export type WorkStep = {
 
 export const aboutHowWeWork = {
   badge: 'Operational Model',
-  title: 'How We Work',
-  subtitle: 'Our operational framework is designed for scalability, quality control, and transparency.',
+  title: 'Our End-to-End <span class="text-gradient-brand">Learning Process</span>',
+  description:
+    'Our operational framework is designed for scalability, quality control, and transparency.',
+  classes: '!px-0 !py-0',
   steps: [
     {
       icon: 'mdi:book-open-variant',
@@ -435,11 +462,10 @@ export type RoadmapPhase = {
 }
 
 export const aboutRoadmap = {
-  badge: 'Growth Roadmap',
-  title: 'Our',
-  titleHighlight: 'Growth',
-  titleSuffix: 'Roadmap',
-  subtitle: 'Building the Future of Personalised Learning at Indian Mentors.',
+  badge: ' Our Growth Roadmap',
+  title: 'Our Path to <span class="text-gradient-brand"> Academic Excellence</span>',
+  description: 'Building the Future of Personalised Learning at Indian Mentors.',
+  classes: '!px-0 !py-0',
   note: 'Indian Mentors is building more than a tutoring network — we are developing a scalable, technology-enabled, and accountable academic model designed for long-term sustainability.',
   phases: [
     {
@@ -557,11 +583,10 @@ export type StoryMilestone = {
 
 export const aboutStory = {
   badge: 'Our Story',
-  title: 'A Journey of',
-  titleHighlight: 'Milestones & Achievements',
-  titleSuffix: '',
-  subtitle:
+  title: 'A Journey of <span class="text-gradient-brand">Milestones & Achievements</span>',
+  description:
     'From a single idea to a pan-India mentor network — slide through the moments that shaped Indian Mentors.',
+  classes: '!px-0 !py-0',
   milestones: [
     {
       id: 'story-1',
@@ -671,10 +696,10 @@ export type TeamStructureUnit = {
 
 export const aboutTeamStructure = {
   badge: 'Our Team Structure',
-  title: 'A',
-  titleHighlight: 'System-Driven',
-  titleSuffix: 'Organisation',
-  subtitle: 'Each team member operates within a defined framework of accountability and collaboration.',
+  title: 'A <span class="text-gradient-brand">System-Driven</span> Organisation',
+  description:
+    'Each team member operates within a defined framework of accountability and collaboration.',
+  classes: '!px-0 !py-0',
   units: [
     {
       icon: 'mdi:account-school-outline',

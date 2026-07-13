@@ -2,21 +2,16 @@
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
-import { whyChooseAdvantages, institutionalSupport } from '~/data/institutions'
+import { institutionalSupport, whyChooseAdvantages, whyInstitutionsSection } from '~/data/institutions'
 </script>
 
 <template>
   <section id="why-institutions" class="relative section-surface-muted section-py"
     aria-labelledby="why-institutions-heading">
     <div class="container-page">
-      <CardHeader
-        
-        heading-id="why-institutions-heading"
-        classes="!px-0 !py-0"
-        badge="Why Indian Mentors"
-        title='Why institutions <span class="text-gradient-brand">choose us</span>'
-        description="Educational organizations across India trust Indian Mentors for structured and reliable teacher recruitment solutions."
-      />
+      <CardHeader heading-id="why-institutions-heading" :badge="whyInstitutionsSection.badge"
+        :title="whyInstitutionsSection.title" :description="whyInstitutionsSection.description"
+        :classes="whyInstitutionsSection.classes" />
 
       <ul class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3" role="list">
         <li v-for="(adv, i) in whyChooseAdvantages" :key="adv.label" v-motion :initial="{ opacity: 0, y: 12 }"

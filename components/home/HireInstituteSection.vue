@@ -14,6 +14,13 @@ function rippleHandler(e: MouseEvent) {
   target.style.setProperty('--x', `${e.clientX - rect.left}px`)
   target.style.setProperty('--y', `${e.clientY - rect.top}px`)
 }
+
+const headerContent = {
+  badge: 'Institutional Hiring',
+  title: "Trusted Teacher Recruitment <span class='text-gradient-brand'><br>& Academic Staffing</span> at scale",
+  description: 'Hire qualified, verified, and pre-screened educators for schools, colleges, coaching institutes, EdTech companies, and academic programs across India.',
+  classes: '!px-0 !py-0',
+}
 </script>
 
 <template>
@@ -35,9 +42,8 @@ function rippleHandler(e: MouseEvent) {
 
         <div class="relative grid gap-8 lg:grid-cols-[1fr_300px] lg:items-start lg:gap-10">
           <div>
-            <CardHeader classes="!px-0 !py-0" badge="Institutional Hiring" align="left"
-              title="Trusted Teacher Recruitment <span class='text-gradient-brand'><br>& Academic Staffing</span> at scale"
-              description="Hire qualified, verified, and pre-screened educators for schools, colleges, coaching institutes, EdTech companies, and academic programs across India." />
+            <CardHeader align="left" :badge="headerContent.badge" :title="headerContent.title"
+              :description="headerContent.description" :classes="headerContent.classes" />
 
             <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
               <div v-for="metric in metrics" :key="metric.label"

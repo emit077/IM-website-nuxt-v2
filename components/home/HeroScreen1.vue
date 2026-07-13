@@ -7,6 +7,7 @@ import IconBook from '~/components/icons/IconBook.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 
 const heroContent = {
+  badge: "India's #1 Verified Tutor Platform",
   title: 'Find the <span class="text-gradient-brand">Perfect Tutor</span><br class="hidden sm:block" /> for Your Child',
   subtitle: '<span class="text-gradient-brand">Indian Mentors</span> - Where Learning Meets Mentorship',
   description:

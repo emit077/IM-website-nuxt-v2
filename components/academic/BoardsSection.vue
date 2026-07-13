@@ -57,6 +57,13 @@ const boardsDescription = computed(
   () =>
     `From Indian national boards to international programmes — explore the curricula we support across ${totalCountryCount} countries and ${totalBoardCount}+ examination systems.`,
 )
+
+const headerContent = computed(() => ({
+  badge: 'Boards covered',
+  title: 'Every major curriculum, <span class="text-gradient-brand">by country</span>',
+  description: boardsDescription.value,
+  classes: '!px-0 !py-0',
+}))
 </script>
 
 <template>
@@ -66,9 +73,8 @@ const boardsDescription = computed(
       class="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-80 max-w-4xl bg-gradient-to-b from-blue-200/40 to-transparent blur-3xl" />
 
     <div class="container-page relative z-[1]">
-      <CardHeader heading-id="boards-heading" classes="!px-0 !py-0" badge="Boards covered"
-        title='Every major curriculum, <span class="text-gradient-brand">by country</span>'
-        :description="boardsDescription" />
+      <CardHeader heading-id="boards-heading" :badge="headerContent.badge" :title="headerContent.title"
+        :description="headerContent.description" :classes="headerContent.classes" />
       <div class="mx-auto mt-8 max-w-4xl space-y-4">
         <div class="relative">
           <Icon icon="mdi:magnify"

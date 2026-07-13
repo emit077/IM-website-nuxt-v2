@@ -11,10 +11,9 @@ import { heroContent, heroHighlights } from '~/data/tutors'
       class="pointer-events-none absolute inset-x-0 -top-40 -z-10 mx-auto h-[420px] max-w-5xl bg-gradient-to-b from-blue-100/60 via-indigo-50/40 to-transparent blur-3xl" />
 
     <div class="container-page pb-14 pt-10 text-center sm:pb-16 lg:pt-16">
-      <HeroHeader heading-id="tutors-hero-heading" content-class="!px-0 !py-0 mx-auto max-w-3xl text-center"
-        :badge="heroContent.badge"
-        title="Join India's growing network of <span class='text-gradient-brand'>professional mentors</span>"
-        :description="heroContent.description">
+      <HeroHeader heading-id="tutors-hero-heading" :badge="heroContent.badge" :title="heroContent.title"
+        :subtitle="heroContent.subtitle" :description="heroContent.description"
+        :content-class="heroContent.contentClass">
         <div class="mt-6 flex flex-wrap items-center justify-center gap-2" v-motion :initial="{ opacity: 0, y: 12 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 380 } }">
           <span v-for="audience in heroContent.audiences" :key="audience"

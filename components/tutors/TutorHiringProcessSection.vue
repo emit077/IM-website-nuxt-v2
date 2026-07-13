@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
-import { hiringSteps, type HiringStep } from '~/data/tutors'
+import { hiringSteps, hiringProcessSection, type HiringStep } from '~/data/tutors'
 
 const accentClasses: Record<HiringStep['accent'], { badge: string; tile: string; icon: string }> = {
   violet: { badge: 'bg-violet-600', tile: 'bg-violet-100', icon: 'text-violet-600' },
@@ -21,9 +21,9 @@ const accentClasses: Record<HiringStep['accent'], { badge: string; tile: string;
       class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-blue-100/50 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="hiring-process-heading" classes="!px-0 !py-0" badge="Tutor Hiring Process"
-        title='From registration to your <span class="text-gradient-brand">first session</span>'
-        description="A structured onboarding process designed to maintain high academic standards — so students and parents always receive reliable, qualified mentors." />
+      <CardHeader heading-id="hiring-process-heading" :badge="hiringProcessSection.badge"
+        :title="hiringProcessSection.title" :description="hiringProcessSection.description"
+        :classes="hiringProcessSection.classes" />
       <div class="relative mx-auto mt-12 max-w-5xl">
         <div aria-hidden="true"
           class="pointer-events-none absolute left-0 right-0 top-[22px] hidden h-px bg-gradient-to-r from-violet-200 via-blue-300 to-indigo-200 lg:block" />

@@ -7,9 +7,8 @@ import { aboutCommitment } from '~/data/about'
 <template>
   <section id="commitment" class="bg-white section-py" aria-labelledby="commitment-heading">
     <div class="container-page">
-      <CardHeader heading-id="commitment-heading" classes="!px-0 !py-0" badge="Our Commitment"
-        title="Our Standards of <span class='text-gradient-brand'>Educational Excellence</span>"
-        :description="aboutCommitment.subtitle" />
+      <CardHeader heading-id="commitment-heading" :badge="aboutCommitment.badge" :title="aboutCommitment.title"
+        :description="aboutCommitment.description" :classes="aboutCommitment.classes" />
 
       <ul class="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5" role="list">
         <li v-for="(item, i) in aboutCommitment.items" :key="item.title" class="flex flex-col items-center text-center"

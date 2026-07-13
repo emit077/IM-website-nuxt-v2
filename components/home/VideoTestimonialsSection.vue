@@ -72,6 +72,13 @@ const testimonials: TestimonialItem[] = [
   },
 ]
 
+const headerContent = {
+  badge: 'Testimonials',
+  title: 'Real Stories. Real Growth. Real Trust',
+  description: 'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors across India.',
+  classes: '!px-0 !py-0',
+}
+
 const active = ref(0)
 const paused = ref(false)
 const touchStartX = ref<number | null>(null)
@@ -131,9 +138,8 @@ function onTouchEnd(e: TouchEvent) {
       aria-hidden="true" />
 
     <div class="relative mx-auto max-w-[1200px]">
-      <CardHeader classes="!px-0 !py-0" badge="Testimonials"
-        title="Real Stories. Real Growth. Real Trust"
-        description="Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors across India." />
+      <CardHeader :badge="headerContent.badge" :title="headerContent.title"
+        :description="headerContent.description" :classes="headerContent.classes" />
 
       <div
         class="mt-8 overflow-hidden rounded-[2rem] border border-blue-100/80 bg-white/85 p-4 shadow-[0_24px_70px_rgba(37,99,235,0.14)] backdrop-blur-xl sm:p-5 md:p-6">

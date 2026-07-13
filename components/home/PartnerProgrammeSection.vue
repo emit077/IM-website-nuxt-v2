@@ -1,6 +1,19 @@
 <script setup lang="ts">
 import CardHeader from '~/components/ui/CardHeader.vue'
 const dashboardImage = '/assets/img/home/dashboard.png'
+
+const headerContent = {
+  badge: 'Channel Partner Programme',
+  title: 'Become an Authorised <br/> Regional Channel Partner',
+  description: `Launch a premium education business with India's trusted tutoring
+              brand. Get verified tutors, proven systems, marketing support and
+              technology - while you focus on local growth and relationships.   <br><br>    <b> Simple and Structured Onboarding</b><br>
+            Our partnership journey is designed to be simple, transparent, and professionally guided.
+            <br>
+            <br>
+            <b>Register → Collaborate → Earn</b>`,
+  classes: 'mb-0 mt-[-1.8rem]',
+}
 </script>
 
 <template>
@@ -9,14 +22,8 @@ const dashboardImage = '/assets/img/home/dashboard.png'
       class="relative overflow-hidden  rounded-[28px] border border-indigo-300/35 bg-gradient-to-br from-indigo-900 via-indigo-700 to-indigo-500 px-5  text-white shadow-[0_24px_55px_-30px_rgba(37,99,235,0.85)] pr-0 sm:pl-7 sm:pt-8 lg:pl-8">
       <div class="grid items-start gap-8 py-8 lg:grid-cols-12 lg:gap-10">
         <div class="lg:col-span-6">
-          <CardHeader theme="dark" classes="mb-0 mt-[-1.8rem]" badge="Channel Partner Programme" align="left"
-            title="Become an Authorised <br/> Regional Channel Partner" description="Launch a premium education business with India's trusted tutoring
-              brand. Get verified tutors, proven systems, marketing support and
-              technology - while you focus on local growth and relationships.   <br><br>    <b> Simple and Structured Onboarding</b><br>
-            Our partnership journey is designed to be simple, transparent, and professionally guided.
-            <br>
-            <br>
-            <b>Register → Collaborate → Earn</b>" />
+          <CardHeader theme="dark" align="left" :badge="headerContent.badge" :title="headerContent.title"
+            :description="headerContent.description" :classes="headerContent.classes" />
 
 
           <div class="flex flex-wrap gap-3 pb-5 mt-5">

@@ -38,15 +38,15 @@ const navLinks = [
             Contact us
           </h2>
 
-          <p class="mt-5 max-w-md text-sm leading-relaxed text-slate-400">
-            India's #1 verified tutor platform. Building futures through personalised education with structured tutoring
-            services and reliable teacher recruitment solutions across India.
+          <p class="mt-5 max-w-md text-sm leading-relaxed text-white-200">
+            India's #1 trusted verified tutor platform, delivering personalised tutoring, structured academic support,
+            and reliable teacher recruitment solutions to empower every student's learning journey through quality
+            education and expert mentorship.
           </p>
 
           <ul class="mt-10 space-y-5 text-sm" role="list">
             <li>
-              <a :href="`tel:${phoneTel}`"
-                class="group flex items-center gap-4 transition hover:opacity-90">
+              <a :href="`tel:${phoneTel}`" class="group flex items-center gap-4 transition hover:opacity-90">
                 <span
                   class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20">
                   <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" aria-hidden="true">

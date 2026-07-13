@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import { aboutStory, type StoryMilestone } from '~/data/about'
@@ -66,10 +66,6 @@ const accentClasses: Record<
   },
 }
 
-const headerTitle = computed(
-  () =>
-    `${aboutStory.title} <span class="text-gradient-brand">${aboutStory.titleHighlight}</span> ${aboutStory.titleSuffix}`,
-)
 
 const scroller = ref<HTMLElement | null>(null)
 const canScrollPrev = ref(false)
@@ -112,8 +108,8 @@ onBeforeUnmount(() => {
 
     <div class="container-page relative">
       <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <CardHeader align="left" heading-id="our-story-heading" classes="!px-0 !py-0"
-          :badge="aboutStory.badge" :title="headerTitle" :description="aboutStory.subtitle" />
+        <CardHeader align="left" heading-id="our-story-heading" :badge="aboutStory.badge" :title="aboutStory.title"
+          :description="aboutStory.description" :classes="aboutStory.classes" />
         <div class="hidden shrink-0 items-center gap-2 sm:flex">
           <button type="button" :disabled="!canScrollPrev" aria-label="Previous milestone"
             class="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-blue-300 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-slate-200 disabled:hover:text-slate-700"

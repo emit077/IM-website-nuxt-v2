@@ -4,6 +4,14 @@ import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import { curriculumStages, type CurriculumStage } from './gradesData'
 
+const headerContent = {
+  badge: 'Grades covered',
+  title: 'Support across <span class="text-gradient-brand">every academic stage</span>',
+  description:
+    "Indian Mentors provides structured tutoring from early childhood to postgraduate studies — adapting to each student's level, learning style, and goals.",
+  classes: '!px-0 !py-0',
+}
+
 const activeId = ref<CurriculumStage['id']>(curriculumStages[0]!.id)
 
 function toggle(id: CurriculumStage['id']) {
@@ -18,10 +26,9 @@ function toggle(id: CurriculumStage['id']) {
       class="pointer-events-none absolute inset-x-0 -top-32 -z-0 mx-auto h-80 max-w-4xl bg-gradient-to-b from-blue-100/50 to-transparent blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="grades-heading" classes="!px-0 !py-0" badge="Grades covered"
-        title='Support across <span class="text-gradient-brand">every academic stage</span>'
-        description="Indian Mentors provides structured tutoring from early childhood to postgraduate studies — adapting to each student's level, learning style, and goals."
-        v-motion :initial="{ opacity: 0, y: 14 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }" />
+      <CardHeader heading-id="grades-heading" :badge="headerContent.badge" :title="headerContent.title"
+        :description="headerContent.description" :classes="headerContent.classes" v-motion
+        :initial="{ opacity: 0, y: 14 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }" />
       <div class="mx-auto mt-10 max-w-3xl space-y-3 sm:mt-12" v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 100, duration: 550 } }">
         <div v-for="(stage, i) in curriculumStages" :key="stage.id" :class="[

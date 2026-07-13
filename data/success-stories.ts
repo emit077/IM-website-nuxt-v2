@@ -37,17 +37,19 @@ export type StoryTab = {
   iconMdi: string
   kicker: string
   title: string
-  titleHighlight: string
+  classes: string
   description: string
   accent: 'blue' | 'emerald' | 'amber' | 'violet' | 'indigo' | 'rose'
 }
 
 export const successStoriesHero = {
   badge: 'Testimonials',
-  title: 'Real Stories.',
-  titleHighlight: 'Real Growth. Real Trust.',
+  title: 'Real Stories. <span class="text-gradient-brand">Real Growth. Real Trust.</span>',
+  subtitle:
+    'Our credibility is built on real outcomes and authentic relationships — from every corner of our academic ecosystem.',
   description:
     'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors across India.',
+  contentClass: '!px-0 !py-0 max-w-2xl',
   tagline: 'Structured Mentorship. Measurable Results. Trusted Nationwide.',
   intro:
     'Our credibility is built on real outcomes and authentic relationships — from every corner of our academic ecosystem.',
@@ -68,8 +70,8 @@ export const storyTabs: StoryTab[] = [
     label: 'Students',
     iconMdi: 'mdi:school-outline',
     kicker: 'Student Success',
-    title: 'Measurable outcomes from',
-    titleHighlight: 'real learners',
+    title: 'Measurable outcomes from <span class="text-gradient-brand">real learners</span>',
+    classes: '!px-0 !py-0',
     description: 'Structured planning, regular assessments, and personalised mentorship with results you can track.',
     accent: 'blue',
   },
@@ -78,8 +80,8 @@ export const storyTabs: StoryTab[] = [
     label: 'Parents',
     iconMdi: 'mdi:account-child-outline',
     kicker: 'Parent Reviews',
-    title: 'Transparency parents',
-    titleHighlight: 'can trust',
+    title: 'Transparency parents <span class="text-gradient-brand">can trust</span>',
+    classes: '!px-0 !py-0',
     description: 'Families who value structured academic planning and visible progress.',
     accent: 'emerald',
   },
@@ -88,8 +90,8 @@ export const storyTabs: StoryTab[] = [
     label: 'Tutors',
     iconMdi: 'mdi:human-male-board',
     kicker: 'Tutor Reviews',
-    title: 'Educators who grow',
-    titleHighlight: 'with structure',
+    title: 'Educators who grow <span class="text-gradient-brand">with structure</span>',
+    classes: '!px-0 !py-0',
     description: 'Verified leads, transparent payments, and organised support across our network.',
     accent: 'amber',
   },
@@ -98,8 +100,8 @@ export const storyTabs: StoryTab[] = [
     label: 'Institutions',
     iconMdi: 'mdi:domain',
     kicker: 'Institutional Feedback',
-    title: 'Trusted by schools',
-    titleHighlight: 'and colleges',
+    title: 'Trusted by schools <span class="text-gradient-brand">and colleges</span>',
+    classes: '!px-0 !py-0',
     description: 'Recruitment and faculty support that saves time and maintains quality.',
     accent: 'indigo',
   },
@@ -108,8 +110,8 @@ export const storyTabs: StoryTab[] = [
     label: 'Placements',
     iconMdi: 'mdi:briefcase-check-outline',
     kicker: 'Teacher Placements',
-    title: 'Verified opportunities for',
-    titleHighlight: 'educators',
+    title: 'Verified opportunities for <span class="text-gradient-brand">educators</span>',
+    classes: '!px-0 !py-0',
     description: 'Real placement journeys connecting teachers with reputed institutions nationwide.',
     accent: 'violet',
   },
@@ -118,8 +120,8 @@ export const storyTabs: StoryTab[] = [
     label: 'Partners',
     iconMdi: 'mdi:handshake-outline',
     kicker: 'Channel Partners',
-    title: 'Partners who scale',
-    titleHighlight: 'with clarity',
+    title: 'Partners who scale <span class="text-gradient-brand">with clarity</span>',
+    classes: '!px-0 !py-0',
     description: 'Transparent earnings, structured reporting, and strong brand support.',
     accent: 'rose',
   },
@@ -265,10 +267,17 @@ export const partnerReviews: QuoteReview[] = [
   { id: 'priyanka-desai', name: 'Priyanka Desai', role: 'City Partner', quote: 'Scalable model with structured reporting ensures business clarity.' },
 ]
 
+export const studentRailSection = {
+  badge: 'Student journeys',
+  title: 'Scroll the <span class="text-gradient-brand">transformation reel</span>',
+  classes: '!px-0 !py-0 max-w-lg',
+  description: 'Real before-and-after academic outcomes from students across India.',
+} as const
+
 export const videoTestimonialsSection = {
   kicker: 'Video Testimonials',
-  title: 'Hear it',
-  titleHighlight: 'in their own words',
+  title: 'Hear it <span class="text-gradient-brand">in their own words</span>',
+  classes: '!px-0 !py-0 max-w-xl',
   description: 'Authentic video reviews from every stakeholder — real experiences that reflect trust and measurable impact.',
 } as const
 

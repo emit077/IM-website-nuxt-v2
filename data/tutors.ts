@@ -22,10 +22,12 @@ export type HiringStep = {
 
 export const heroContent = {
   badge: 'For Tutors',
-  title: "Join India's Growing Network of Professional Mentors",
+  title: "Join India's growing network of <span class='text-gradient-brand'>professional mentors</span>",
+  subtitle: '',
   description:
     'At Indian Mentors, tutors are not just instructors — they are mentors shaping the academic journeys of students across India. We connect qualified educators with verified student opportunities, structured operational support, and transparent systems — so you can focus on teaching while we handle coordination and administration.',
   audiences: ['School Teachers', 'Subject Experts', 'Home Tutors', 'Academic Professionals'],
+  contentClass: '!px-0 !py-0 mx-auto max-w-3xl text-center',
   primaryCta: { label: 'Join as a Teaching Partner', href: '#tutor-register' },
   secondaryCta: { label: 'Register as a Tutor', href: '#tutor-register' },
 }
@@ -290,6 +292,54 @@ export const policyPoints = [
   { iconMdi: 'mdi:swap-horizontal', title: 'Cancellation & Replacement Procedures' },
   { iconMdi: 'mdi:gavel', title: 'Platform Usage Rules' },
 ]
+
+export const erpSection = {
+  badge: 'ERP System & Transparency',
+  title: 'Your teaching, organised by a <span class="text-gradient-brand">smart dashboard</span>',
+  description:
+    'A structured ERP-based academic management system ensures transparency, accountability, and efficient academic management for every tutor.',
+  classes: '!px-0 !py-0',
+}
+
+export const hiringProcessSection = {
+  badge: 'Tutor Hiring Process',
+  title: 'From registration to your <span class="text-gradient-brand">first session</span>',
+  description:
+    'A structured onboarding process designed to maintain high academic standards — so students and parents always receive reliable, qualified mentors.',
+  classes: '!px-0 !py-0',
+}
+
+export const tutorPlansSection = {
+  badge: 'Tutor Registration Plans',
+  title: 'Flexible plans for <span class="text-gradient-brand">every stage</span> of your career',
+  description:
+    'Start with a free profile and verification, or go Premium for priority leads, featured visibility, and faster payouts.',
+  classes: '!px-0 !py-0',
+}
+
+export const tutorResourcesSection = {
+  badge: 'Know Before You Join',
+  title: 'Understand the <span class="text-gradient-brand">partnership model</span> first',
+  description:
+    'Explore the official tutors brochure and opportunities overview — everything an educator needs to know about collaborating with Indian Mentors.',
+  classes: '!px-0 !py-0',
+}
+
+export const browseStudentsSection = {
+  badge: 'Browse Student Opportunities',
+  title: 'Find students that <span class="text-gradient-brand">match your expertise</span>',
+  description:
+    'Registered tutors can explore available tutoring opportunities and connect with suitable students to expand their teaching engagements.',
+  classes: '!px-0 !py-0',
+}
+
+export const tutorPolicySection = {
+  badge: 'Tutor Registration Policy',
+  title: 'Fair, professional, and <span class="text-gradient-brand">respectful for everyone</span>',
+  description:
+    'All tutors associated with Indian Mentors follow established policies designed to maintain professional and ethical tutoring practices — ensuring a fair environment for tutors, students, and parents alike.',
+  classes: '!px-0 !py-0',
+}
 
 export const finalCta = {
   title: 'Start Your Journey as a Tutor',

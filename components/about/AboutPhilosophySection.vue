@@ -57,8 +57,8 @@ const values = computed(() =>
       class="pointer-events-none absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-emerald-100/30 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="philosophy-heading" classes="!px-0 !py-0" badge="What we stand for"
-        title='Our <span class="text-gradient-brand">Philosophy</span>' :description="aboutPhilosophy.subtitle" />
+      <CardHeader heading-id="philosophy-heading" :badge="aboutPhilosophy.badge" :title="aboutPhilosophy.title"
+        :description="aboutPhilosophy.description" :classes="aboutPhilosophy.classes" />
 
       <div class="mt-12 grid gap-6 sm:grid-cols-3 sm:gap-5 lg:gap-6">
         <article v-for="(value, i) in values" :key="value.title"

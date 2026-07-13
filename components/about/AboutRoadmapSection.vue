@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import { aboutRoadmap } from '~/data/about'
@@ -51,19 +50,14 @@ const accentClasses: Record<
   },
 }
 
-const headerTitle = computed(
-  () =>
-    `${aboutRoadmap.title} <span class="text-gradient-brand">${aboutRoadmap.titleHighlight}</span> ${aboutRoadmap.titleSuffix}`,
-)
-
 const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
 </script>
 
 <template>
   <section id="roadmap" class="section-surface-muted section-py" aria-labelledby="roadmap-heading">
     <div class="container-page">
-      <CardHeader heading-id="roadmap-heading" classes="!px-0 !py-0" :badge="aboutRoadmap.badge"
-        :title="headerTitle" :description="aboutRoadmap.subtitle" />
+      <CardHeader heading-id="roadmap-heading" :badge="aboutRoadmap.badge" :title="aboutRoadmap.title"
+        :description="aboutRoadmap.description" :classes="aboutRoadmap.classes" />
       <div class="mx-auto mt-12 max-w-4xl">
         <div v-for="(phase, pi) in aboutRoadmap.phases" :key="phase.id" class="sticky"
           :style="{ top: `calc(5.5rem + ${pi * 2.25}rem)`, zIndex: 10 + pi }"

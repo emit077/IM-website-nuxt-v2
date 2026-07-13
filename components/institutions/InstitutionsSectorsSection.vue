@@ -2,7 +2,7 @@
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
-import { hiringSectors } from '~/data/institutions'
+import { hiringSectors, sectorsSection } from '~/data/institutions'
 
 const accentClasses: Record<string, { chip: string; check: string }> = {
   blue: { chip: 'bg-blue-50 text-blue-600 ring-blue-100', check: 'text-blue-600' },
@@ -17,14 +17,8 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
   <section id="hire-teachers-for" class="relative bg-white section-py"
     aria-labelledby="sectors-heading">
     <div class="container-page">
-      <CardHeader
-        
-        heading-id="sectors-heading"
-        classes="!px-0 !py-0"
-        badge="Hire Teachers For"
-        title='Faculty recruitment for <span class="text-gradient-brand">every education sector</span>'
-        description="Indian Mentors supports structured faculty recruitment for multiple education sectors and learning organizations."
-      />
+      <CardHeader heading-id="sectors-heading" :badge="sectorsSection.badge" :title="sectorsSection.title"
+        :description="sectorsSection.description" :classes="sectorsSection.classes" />
 
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
         <article v-for="(sector, i) in hiringSectors" :key="sector.id"

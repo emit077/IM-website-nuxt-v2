@@ -3,7 +3,7 @@ import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
-import { curriculumStages } from '~/components/academic/gradesData'
+import { curriculumStages, stageHeaderContent } from '~/components/academic/gradesData'
 </script>
 
 <template>
@@ -18,10 +18,9 @@ import { curriculumStages } from '~/components/academic/gradesData'
       ]" />
 
       <div class="container-page relative">
-        <CardHeader :heading-id="`${stage.id}-heading`" classes="!px-0 !py-0"
-          :badge="`${stage.emoji} ${stage.title}`"
-          :title='`${stage.programTitle}: <span class="text-gradient-brand">${stage.focus.toLowerCase()}</span>`'
-          :description="stage.programDescription" v-motion :initial="{ opacity: 0, y: 14 }"
+        <CardHeader :heading-id="`${stage.id}-heading`" :badge="stageHeaderContent(stage).badge"
+          :title="stageHeaderContent(stage).title" :description="stageHeaderContent(stage).description"
+          :classes="stageHeaderContent(stage).classes" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }" />
         <div class="mx-auto mt-8 max-w-3xl rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm sm:p-6"
           v-motion :initial="{ opacity: 0, y: 12 }"

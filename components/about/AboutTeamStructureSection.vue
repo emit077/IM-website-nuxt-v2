@@ -21,11 +21,6 @@ const iconThemes: IconTheme[] = [
   { bg: 'bg-teal-50', text: 'text-teal-600', ring: 'ring-teal-100' },
 ]
 
-const headerTitle = computed(
-  () =>
-    `${aboutTeamStructure.title} <span class="text-gradient-brand">${aboutTeamStructure.titleHighlight}</span> ${aboutTeamStructure.titleSuffix}`,
-)
-
 const units = computed(() =>
   aboutTeamStructure.units.map((unit, i) => ({
     ...unit,
@@ -37,8 +32,9 @@ const units = computed(() =>
 <template>
   <section id="team-structure" class="section-surface-muted section-py" aria-labelledby="team-structure-heading">
     <div class="container-page">
-      <CardHeader heading-id="team-structure-heading" classes="!px-0 !py-0" :badge="aboutTeamStructure.badge"
-        :title="headerTitle" :description="aboutTeamStructure.subtitle" />
+      <CardHeader heading-id="team-structure-heading" :badge="aboutTeamStructure.badge"
+        :title="aboutTeamStructure.title" :description="aboutTeamStructure.description"
+        :classes="aboutTeamStructure.classes" />
 
       <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         <article v-for="(unit, i) in units" :key="unit.title"

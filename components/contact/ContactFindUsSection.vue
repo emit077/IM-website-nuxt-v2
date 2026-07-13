@@ -12,9 +12,8 @@ function mapsUrl(address: string) {
   <section id="find-us" class="scroll-mt-24 border-b border-slate-200/70 section-surface-muted section-py"
     aria-labelledby="find-us-heading">
     <div class="container-page">
-      <CardHeader heading-id="find-us-heading" classes="!px-0 !py-0" :badge="findUs.badge"
-        title="Headquarters & <span class='text-gradient-brand'>Central Operations</span>"
-        :description="findUs.description" v-motion :initial="{ opacity: 0, y: 12 }"
+      <CardHeader heading-id="find-us-heading" :badge="findUs.badge" :title="findUs.title"
+        :description="findUs.description" :classes="findUs.classes" v-motion :initial="{ opacity: 0, y: 12 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }" />
 
       <div class="mt-10 flex flex-col gap-6 lg:mt-12 lg:gap-8">
@@ -59,7 +58,7 @@ function mapsUrl(address: string) {
               <a :href="`tel:${phoneSupport.number.tel}`"
                 class="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-700">
                 <Icon icon="mdi:phone-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
-                Contact This Office
+                {{ office.directionsCta }}
               </a>
             </div>
           </div>

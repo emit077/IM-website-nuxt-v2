@@ -10,6 +10,14 @@ const matchCriteria = [
   'Preferred learning format',
 ]
 
+const headerContent = {
+  badge: '🔎 INTELLIGENT COURSE MATCHING',
+  title: 'Smart academic matching for <span class="text-gradient-brand">optimal outcomes</span>',
+  description:
+    'Our system pairs students with the most suitable mentor based on academic profile and learning preferences.',
+  classes: '!px-0 !py-0',
+}
+
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
   const rect = target.getBoundingClientRect()
@@ -31,9 +39,8 @@ function rippleHandler(e: MouseEvent) {
       <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12" v-motion
         :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
         <div>
-          <CardHeader theme="dark" classes="!px-0 !py-0" badge="🔎 INTELLIGENT COURSE MATCHING"
-            title="Smart academic matching for optimal outcomes"
-            description="Our system pairs students with the most suitable mentor based on academic profile and learning preferences." />
+          <CardHeader theme="dark" heading-id="course-matching-heading" :badge="headerContent.badge"
+            :title="headerContent.title" :description="headerContent.description" :classes="headerContent.classes" />
 
           <p class="mt-5 text-sm leading-relaxed text-blue-100/85 sm:text-base">
             This ensures students receive the most suitable mentor for optimal learning outcomes — not a generic

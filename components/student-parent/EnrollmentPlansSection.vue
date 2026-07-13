@@ -4,6 +4,7 @@ import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import {
   enrollmentPlans,
+  enrollmentPlansSection,
   planComparisonRows,
   premiumWhyChoose,
 } from '~/data/student-parent'
@@ -13,9 +14,9 @@ import {
   <section id="enrollment-plans" class="relative bg-white section-py"
     aria-labelledby="enrollment-plans-heading">
     <div class="container-page">
-      <CardHeader heading-id="enrollment-plans-heading" classes="!px-0 !py-0" badge="Enrollment Plans"
-        title="Start free, upgrade <span class=&quot;text-gradient-brand&quot;>when you're ready</span>"
-        description="Try the platform with a Free Student Profile, or unlock priority matching, detailed reports, and dedicated support with Premium." />
+      <CardHeader heading-id="enrollment-plans-heading" :badge="enrollmentPlansSection.badge"
+        :title="enrollmentPlansSection.title" :description="enrollmentPlansSection.description"
+        :classes="enrollmentPlansSection.classes" />
       <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 lg:grid-cols-2">
         <article v-for="(plan, i) in enrollmentPlans" :key="plan.id" :class="[
           'relative flex flex-col rounded-3xl border bg-white p-6 sm:p-7',

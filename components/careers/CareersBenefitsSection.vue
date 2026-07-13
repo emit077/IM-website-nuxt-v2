@@ -41,9 +41,8 @@ const accentClasses: Record<
       class="pointer-events-none absolute -right-16 top-10 h-72 w-72 rounded-full bg-blue-100/40 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="benefits-heading" classes="!px-0 !py-0" :badge="benefitsSection.kicker"
-        :title="`${benefitsSection.title} <span class=\'text-gradient-brand\'>${benefitsSection.titleHighlight}</span>`"
-        :description="benefitsSection.description" />
+      <CardHeader heading-id="benefits-heading" :badge="benefitsSection.kicker" :title="benefitsSection.title"
+        :description="benefitsSection.description" :classes="benefitsSection.classes" />
 
       <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
         <article v-for="(benefit, i) in careerBenefits" :key="benefit.id"

@@ -4,6 +4,7 @@ import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import {
   dashboardModules,
+  erpDashboardSection,
   parentVisibilityPoints,
   secureEcosystemPoints,
 } from '~/data/student-parent'
@@ -14,9 +15,8 @@ const frameworkSteps = ['Plan', 'Track', 'Review', 'Improve']
 <template>
   <section id="erp-dashboard" class="relative section-surface-muted section-py" aria-labelledby="erp-heading">
     <div class="container-page">
-      <CardHeader heading-id="erp-heading" classes="!px-0 !py-0" badge="Learning Dashboard"
-        title='Complete transparency for <span class="text-gradient-brand">parents and students</span>'
-        description="Every session, report, and payment is tracked in one ERP-powered dashboard — so you always know exactly how learning is progressing." />
+      <CardHeader heading-id="erp-heading" :badge="erpDashboardSection.badge" :title="erpDashboardSection.title"
+        :description="erpDashboardSection.description" :classes="erpDashboardSection.classes" />
       <div class="mx-auto mt-8 flex flex-wrap items-center justify-center gap-2" v-motion
         :initial="{ opacity: 0, y: 10 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
         <template v-for="(step, i) in frameworkSteps" :key="step">

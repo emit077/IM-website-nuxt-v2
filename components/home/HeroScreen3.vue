@@ -7,6 +7,7 @@ import IconBook from '~/components/icons/IconBook.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 
 const heroContent = {
+  badge: 'Safety, Quality &amp; Transparency in Every Session',
   title:
     'Learn from <span class="text-gradient-brand">  Background</span><br class="hidden sm:block" /> Verified Tutors',
   subtitle: 'Building Strong Foundations for Lifelong Learning',

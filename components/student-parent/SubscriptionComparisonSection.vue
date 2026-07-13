@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
-import { planPositioning, subscriptionComparisonRows } from '~/data/student-parent'
+import { planComparisonSection, planPositioning, subscriptionComparisonRows } from '~/data/student-parent'
 </script>
 
 <template>
   <section id="plan-comparison" class="relative section-surface-muted section-py"
     aria-labelledby="plan-comparison-heading">
     <div class="container-page">
-      <CardHeader heading-id="plan-comparison-heading" classes="!px-0 !py-0" badge="Compare Plans"
-        title='Gold, Diamond, or Platinum — <span class="text-gradient-brand">side by side</span>' />
+      <CardHeader heading-id="plan-comparison-heading" :badge="planComparisonSection.badge"
+        :title="planComparisonSection.title" :description="planComparisonSection.description"
+        :classes="planComparisonSection.classes" />
       <div class="mt-10 hidden overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-soft lg:block"
         v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
         <table class="w-full text-left text-sm">

@@ -5,6 +5,7 @@ import CardHeader from '~/components/ui/CardHeader.vue'
 import {
   authorisedPhoneNumbers,
   emailSupport,
+  contactInquirySection,
   inquiryForm,
   phoneSupport,
   whatsappSupport,
@@ -104,10 +105,9 @@ const directContacts = [
         :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
         <div class="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
           <div class="flex flex-col lg:justify-between lg:py-2">
-            <CardHeader heading-id="inquiry-heading" classes="!px-0 !py-0" :align="'left'"
-              badge="We're here to help you" title='Discuss Your
-              <span class="text-gradient-brand">Learning Needs</span>' description="Looking for personalised tutoring, demo sessions, or academic guidance ? Reach out to our support team —
-              we're available for enrollment, tutor allocation, and demo bookings." />
+            <CardHeader heading-id="inquiry-heading" :align="'left'" :badge="contactInquirySection.badge"
+              :title="contactInquirySection.title" :description="contactInquirySection.description"
+              :classes="contactInquirySection.classes" />
 
             <div class="mt-10 sm:mt-12">
               <ul class="space-y-7 sm:space-y-8">
@@ -129,9 +129,20 @@ const directContacts = [
                 </li>
               </ul>
 
-              <p class="mt-8 text-sm text-slate-400">
-                {{ workingHours.days }} · {{ workingHours.hours }}
-              </p>
+              <div
+                class="mt-8 flex items-center gap-4 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/90 to-slate-50/80 px-5 py-4 shadow-sm">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-600 text-white shadow-sm"
+                  aria-hidden="true">
+                  <Icon icon="mdi:clock-outline" class="h-5 w-5" />
+                </span>
+                <div>
+                  <span class="block text-xs font-semibold uppercase tracking-[0.12em] text-blue-700">Working
+                    Hours</span>
+                  <span class="mt-1 block text-sm font-semibold text-slate-900 sm:text-base">
+                    {{ workingHours.days }} | {{ workingHours.hours }}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
           <div id="inquiry" class="scroll-mt-24 flex flex-col">
@@ -199,20 +210,32 @@ const directContacts = [
           </div>
         </div>
       </div>
-      <div class="mt-10 lg:mt-14" v-motion :initial="{ opacity: 0, y: 16 }"
+      <div v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 120 } }"
         aria-labelledby="authorised-numbers-heading">
-        <h4 id="authorised-numbers-heading"
-          class="font-display text-center text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
-          Our Authorised Phone Numbers
-        </h4>
 
-        <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-3 sm:mt-8 sm:gap-x-8 max-w-4xl mx-auto"
+        <div class="text-center p-6 sm:p-8  lg:p-10">
+          <div class="inline-flex items-center justify-center gap-3">
+            <CardHeader heading-id="inquiry-heading" title=" <span class='text-xl'>Our Authorised Phone Numbers</span>"
+              description="Call any of our verified support lines during working hours for enrollment, demos, and
+              academic guidance." :classes="contactInquirySection.classes" />
+          </div>
+        </div>
+
+        <ul class="mx-auto  grid max-w-5xl grid-cols-1 gap-3  sm:grid-cols-2 lg:grid-cols-4"
           aria-label="Authorised phone numbers">
           <li v-for="line in authorisedPhoneNumbers" :key="line.tel">
             <a :href="`tel:${line.tel}`"
-              class="font-display text-base font-semibold tracking-tight text-slate-500 transition-colors hover:text-blue-700 sm:text-lg">
-              {{ line.display }}
+              class="group flex items-center gap-3 rounded-2xl border border-slate-200/90 bg-white px-4 py-3.5 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md">
+              <span
+                class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white group-hover:ring-blue-600"
+                aria-hidden="true">
+                <Icon icon="mdi:phone-outline" class="h-4 w-4" />
+              </span>
+              <span
+                class="font-display text-sm font-semibold tracking-tight text-slate-800 transition-colors group-hover:text-blue-700 sm:text-[15px]">
+                {{ line.display }}
+              </span>
             </a>
           </li>
         </ul>

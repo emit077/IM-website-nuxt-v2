@@ -3,6 +3,14 @@ import { Icon } from '@iconify/vue'
 import { ref } from 'vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 
+const headerContent = {
+  badge: '',
+  title: "Subscribe to Our <span class='text-gradient-brand'>Newsletter</span>",
+  description:
+    'Get study tips, tutor insights, success stories, and platform updates in one concise monthly email.',
+  classes: '!px-0 !py-0',
+}
+
 const email = ref('')
 const status = ref<'idle' | 'invalid' | 'success'>('idle')
 const toast = useToast()
@@ -29,9 +37,7 @@ function onSubmit() {
 </script>
 
 <template>
-  <section id="newsletter" class="relative overflow-hidden section-surface-muted section-py" aria-label="Newsletter signup">
-    <div aria-hidden="true"
-      class="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/70 to-transparent" />
+  <section id="newsletter" class="relative overflow-hidden section-surface-muted py-10" aria-label="Newsletter signup">
 
     <div class=" relative">
       <div class="relative mx-auto  overflow-hidden rounded-[2rem]  sm:px-8 sm:pb-10" v-motion
@@ -39,11 +45,9 @@ function onSubmit() {
         <div aria-hidden="true"
           class="pointer-events-none absolute inset-x-8 top-0 h-32 rounded-b-full bg-white/70 blur-2xl" />
         <div class="relative mx-auto ">
-          <CardHeader heading-id="newsletter-heading"
-            title="Subscribe to Our <span class='text-gradient-brand'>Newsletter</span>"
-            description="Get study tips, tutor insights, success stories, and platform updates in one concise monthly email." />
+          <CardHeader heading-id="newsletter-heading" :badge="headerContent.badge" :title="headerContent.title"
+            :description="headerContent.description" :classes="headerContent.classes" />
         </div>
-
         <div class="relative mx-auto mt-6 max-w-2xl">
           <form
             class="flex flex-col gap-2 rounded-[1.75rem] border border-slate-200 bg-white p-2 shadow-[0_18px_50px_-28px_rgba(15,23,42,0.45)] sm:flex-row sm:items-center"

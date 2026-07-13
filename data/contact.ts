@@ -1,3 +1,5 @@
+import type { TrustIndicatorItem } from '~/components/ui/TrustIndicators.vue'
+
 export type PhoneContact = {
   display: string
   tel: string
@@ -40,14 +42,15 @@ export const popularCities = [
 
 /** Cities with a dedicated image in /public/assets/img/city-img/ */
 export const popularCityImages = [
-  { id: 'mumbai', image: 'mumbai', label: 'Mumbai' },
-  { id: 'delhi', image: 'delhi', label: 'Delhi-NCR' },
-  { id: 'gurugram', image: 'gurugram', label: 'Gurugram' },
   { id: 'bengaluru', image: 'bangluru', label: 'Bengaluru' },
+  { id: 'delhi', image: 'delhi', label: 'Delhi-NCR' },
+  { id: 'mumbai', image: 'mumbai', label: 'Mumbai' },
   { id: 'hydrabad', image: 'hydrabad', label: 'Hyderabad' },
+  { id: 'gurugram', image: 'gurugram', label: 'Gurugram' },
+  { id: 'pune', image: 'pune', label: 'Pune' },
+
   { id: 'chennai', image: 'chennai', label: 'Chennai' },
   { id: 'kolkata', image: 'kolkata', label: 'Kolkata' },
-  { id: 'pune', image: 'pune', label: 'Pune' },
   { id: 'ahmedabad', image: 'ahmdabad', label: 'Ahmedabad' },
   { id: 'surat', image: 'surat', label: 'Surat' },
   { id: 'chandigarh', image: 'chandigarh', label: 'Chandigarh' },
@@ -83,6 +86,24 @@ export const contactHero = {
   secondaryCta: { label: 'Find Your City Office', href: '#city-images' },
 } as const
 
+export const contactHeroTrustStats: TrustIndicatorItem[] = [
+  {
+    value: '20+',
+    label: 'Cities Served',
+    icon: 'solar:map-point-linear',
+  },
+  {
+    value: '15+',
+    label: 'Branch Offices',
+    icon: 'solar:buildings-2-linear',
+  },
+  {
+    value: '98%',
+    label: 'Parent Satisfaction',
+    icon: 'solar:like-linear',
+  },
+]
+
 /** Contact hero collage — top row (2 cities) + bottom row (4 cities) */
 export const contactHeroCollageTop = popularCityImages.slice(0, 2)
 export const contactHeroCollageBottom = popularCityImages.slice(2, 6)
@@ -107,7 +128,9 @@ const headOffice = {
 } as const
 
 export const branchOffices = {
-  title: 'Major Cities with Operational Presence',
+  kicker: 'Branch Offices',
+  title: 'Major Cities with <span class="text-gradient-brand">Operational Presence</span>',
+  classes: '!px-0 !py-0',
   intro:
     'Indian Mentors currently maintains operational activities in several key metropolitan and regional cities across India.',
   offices: [
@@ -195,6 +218,15 @@ export const branchOffices = {
       city: 'Jaipur',
       address:
         'Near Tagore Residency, Hanuman Nagar, Rawan Gate, Jhotwara, Jaipur, Rajasthan 302012',
+    }, {
+      city: 'Kochi',
+      address:
+        'Heaven Street, Perumpilly, Vypin, Kochi, Kerala 682503',
+    },
+    {
+      city: 'Bhubaneswar',
+      address:
+        'Jalvayu Towers, Lumbini Vihar, Niladri Vihar, Chandrasekharpur, Bhubaneswar, Odisha 751021',
     },
   ] satisfies BranchOffice[],
 } as const
@@ -202,7 +234,7 @@ export const branchOffices = {
 export const alsoServing = {
   intro:
     'In addition to our branch locations, Indian Mentors actively serves students in numerous growing educational hubs across India through our home tutoring network and online learning ecosystem.',
-  searchPlaceholder: 'Search all cities and office locations (e.g. Mumbai, Noida, Sector 33)…',
+  searchPlaceholder: 'Search all cities and office locations (e.g. Bengaluru, Delhi, Pune)…',
   emptyState: 'No cities match your search. Try another name, or contact us for home tutoring in your area.',
   previewLimit: 20,
   viewAllLabel: 'View all {count} cities',
@@ -430,16 +462,16 @@ export const alsoServing = {
   ] satisfies ServiceZone[],
 } as const
 
-/** All authorised Indian Mentors support lines. */
+/** All authorised Indian Mentors support lines (excluding the primary support line). */
 export const authorisedPhoneNumbers = [
   { display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
   { display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
   { display: '+91 70245 68193', tel: '+917024568193', wa: '917024568193' },
+  { display: '+91 91791 84304', tel: '+919179184304', wa: '919179184304' },
   { display: '+91 74152 63564', tel: '+917415263564', wa: '917415263564' },
   { display: '+91 74153 63564', tel: '+917415363564', wa: '917415363564' },
   { display: '+91 74159 13564', tel: '+917415913564', wa: '917415913564' },
   { display: '+91 74159 23564', tel: '+917415923564', wa: '917415923564' },
-  { display: '+91 91791 84304', tel: '+919179184304', wa: '919179184304' },
 ] as const satisfies readonly PhoneContact[]
 
 export type FindUsOffice = {
@@ -451,6 +483,7 @@ export type FindUsOffice = {
   image: string
   imageLabel: string
   description: string
+  directionsCta: string
 }
 
 export const findUs = {
@@ -469,6 +502,7 @@ export const findUs = {
       imageLabel: 'Headquarters',
       description:
         'The headquarters serves as the central hub for academic operations, tutor coordination, technology systems, and nationwide tutoring services. Our administrative and academic teams work from this location to support students, parents, tutors, and institutional partners across India.',
+      directionsCta: 'Contact Headquarter',
     },
     {
       id: 'corporate-office',
@@ -481,8 +515,17 @@ export const findUs = {
       imageLabel: 'Corporate Office',
       description:
         'The corporate office supports academic operations, tutor management, student support, and strategic coordination across India. Located in the educational and commercial hub of Bhilai, it ensures seamless coordination between students, parents, mentors, and institutional partners.',
+      directionsCta: 'Contact Corporate Office',
     },
   ] satisfies FindUsOffice[],
+} as const
+
+export const contactInquirySection = {
+  badge: "Get in Touch",
+  title: 'Discuss Your <span class="text-gradient-brand">Learning Needs</span>',
+  description:
+    "Looking for personalised tutoring, demo sessions, or academic guidance? Reach out to our support team — we're available for enrollment, tutor allocation, and demo bookings.",
+  classes: '!px-0 !py-0',
 } as const
 
 export const inquiryForm = {
@@ -500,11 +543,11 @@ export const inquiryForm = {
 } as const
 
 export const findMentorSection = {
-  badge: 'Mentor Network',
-  title: 'Find a Mentor in <span class="text-gradient-brand">Your City</span>',
+  badge: '',
+  title: 'We’re Always Here for You',
   description:
-    'Whether you need home tutoring, online academic support, or specialised mentoring, Indian Mentors connects students with trusted educators across India.',
-  closing: 'Start your learning journey with the right mentor today.',
+    'At Indian Mentors, your academic success is our priority. Reach out today and let us help you achieve your learning goals with the right guidance and support.',
+  closing: '',
 } as const
 
 export const phoneSupport = {

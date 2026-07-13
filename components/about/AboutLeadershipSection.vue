@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
-import { aboutLeadership, aboutLeadershipQuote } from '~/data/about'
+import { aboutLeadership, aboutLeadershipQuote, aboutLeadershipSection } from '~/data/about'
 
 const bannerImage = usePublicAsset('assets/img/banner/banner-1.png')
 
@@ -13,9 +13,9 @@ const leadershipCards = computed(() => otherLeaders.value.slice(0, 4))
 <template>
   <section id="leadership" class="bg-white section-py" aria-labelledby="leadership-heading">
     <div class="container-page">
-      <CardHeader heading-id="leadership-heading" classes="!px-0 !py-0" badge="Our Leadership"
-        title="A structured Team Powering <span class='text-gradient-brand'>Academic Excellence</span>"
-        description=" The people guiding academic quality, operations, and mentor excellence across India." />
+      <CardHeader heading-id="leadership-heading" :badge="aboutLeadershipSection.badge"
+        :title="aboutLeadershipSection.title" :description="aboutLeadershipSection.description"
+        :classes="aboutLeadershipSection.classes" />
       <article v-if="founder"
         class="group mx-auto mt-12 overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.04),0_18px_48px_-22px_rgba(15,23,42,0.18)] lg:grid lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)]"
         v-motion :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">

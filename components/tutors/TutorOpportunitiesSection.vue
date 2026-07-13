@@ -2,16 +2,16 @@
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
-import { browseFilters } from '~/data/tutors'
+import { browseFilters, browseStudentsSection } from '~/data/tutors'
 </script>
 
 <template>
   <section id="browse-students" class="relative scroll-mt-20 section-surface-muted section-py"
     aria-labelledby="browse-students-heading">
     <div class="container-page">
-      <CardHeader heading-id="browse-students-heading" classes="!px-0 !py-0" badge="Browse Student Opportunities"
-        title='Find students that <span class="text-gradient-brand">match your expertise</span>'
-        description="Registered tutors can explore available tutoring opportunities and connect with suitable students to expand their teaching engagements." />
+      <CardHeader heading-id="browse-students-heading" :badge="browseStudentsSection.badge"
+        :title="browseStudentsSection.title" :description="browseStudentsSection.description"
+        :classes="browseStudentsSection.classes" />
 
       <ul class="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-5" role="list">
         <li v-for="(filter, i) in browseFilters" :key="filter.title"

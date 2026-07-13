@@ -13,8 +13,6 @@ import {
 const spotlight = computed(() => studentStories.find((s) => s.spotlight) ?? studentStories[0]!)
 const theme = computed(() => accentThemes[spotlight.value.accent])
 
-const heroTitle = `${successStoriesHero.title}<span class="text-gradient-brand">${successStoriesHero.titleHighlight}</span>`
-
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
   const rect = target.getBoundingClientRect()
@@ -31,14 +29,9 @@ function rippleHandler(e: MouseEvent) {
     <div class="container-page relative py-10 sm:py-14 lg:py-16">
       <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:col-span-7">
-          <HeroHeader
-            heading-id="success-stories-hero-heading"
-            content-class="!px-0 !py-0 max-w-2xl"
-            :badge="successStoriesHero.badge"
-            :title="heroTitle"
-            :subtitle="successStoriesHero.intro"
-            :description="successStoriesHero.description"
-          />
+          <HeroHeader heading-id="success-stories-hero-heading" :badge="successStoriesHero.badge"
+            :title="successStoriesHero.title" :subtitle="successStoriesHero.subtitle"
+            :description="successStoriesHero.description" :content-class="successStoriesHero.contentClass" />
           <div class="flex flex-col gap-3 sm:flex-row">
             <a :href="successStoriesHero.primaryCta.href" class="btn-primary ripple group w-full sm:w-auto"
               @mousemove="rippleHandler">

@@ -2,21 +2,15 @@
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
-import { reliabilityPillars } from '~/data/institutions'
+import { reliabilityPillars, reliabilitySection } from '~/data/institutions'
 </script>
 
 <template>
   <section id="recruitment-reliability" class="relative section-surface-muted section-py"
     aria-labelledby="reliability-heading">
     <div class="container-page">
-      <CardHeader
-        
-        heading-id="reliability-heading"
-        classes="!px-0 !py-0"
-        badge="Quality Assurance"
-        title='What makes our recruitment <span class="text-gradient-brand">reliable?</span>'
-        description="Our teacher recruitment services are built around quality assurance, verification, and efficiency."
-      />
+      <CardHeader heading-id="reliability-heading" :badge="reliabilitySection.badge" :title="reliabilitySection.title"
+        :description="reliabilitySection.description" :classes="reliabilitySection.classes" />
 
       <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         <article v-for="(pillar, i) in reliabilityPillars" :key="pillar.id"

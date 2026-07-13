@@ -53,6 +53,14 @@ const steps: Step[] = [
     },
 ]
 
+const headerContent = {
+    badge: 'How it works',
+    title: `<span> Start Learning in </span>
+                        <span class='text-gradient-brand pt-2'>5 Simple Steps</span>`,
+    description: ' From registration to your first session — simple, transparent, and completely risk-free.',
+    classes: '',
+}
+
 const accentClasses: Record<Step['accent'], { badge: string; tile: string; icon: string }> = {
     violet: {
         badge: 'bg-violet-600',
@@ -430,9 +438,8 @@ onUnmounted(() => {
                         style="background-image: radial-gradient(#a5b4fc 1px, transparent 1px); background-size: 12px 12px;">
                     </div>
 
-                    <CardHeader badge="How it works" align="left" title=" <span> Start Learning in </span>
-                        <span class='text-gradient-brand pt-2'>5 Simple Steps</span>" description=" From registration to your first session — simple, transparent,
-                        and completely risk-free." />
+                    <CardHeader align="left" :badge="headerContent.badge" :title="headerContent.title"
+                        :description="headerContent.description" :classes="headerContent.classes" />
                     <form @submit.prevent="onSubmitSignIn" novalidate v-motion :initial="{ opacity: 0, y: 14 }"
                         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, delay: 280 } }"
                         class="mt-2 max-w-md rounded-2xl border border-white/70 bg-white/80 p-4 shadow-[0_18px_44px_-22px_rgba(29,78,216,0.28)] ring-1 ring-slate-200/70 backdrop-blur sm:p-5"

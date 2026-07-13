@@ -60,7 +60,6 @@ function cellWrapClass(value: boolean, highlight = false) {
     ? 'bg-white/10 text-white/50 ring-white/20'
     : 'bg-slate-100 text-slate-300 ring-slate-200'
 }
-const sectionTitle = "The Difference Behind Every <span class='text-gradient-brand'>Student's Success</span> "
 </script>
 
 <template>
@@ -72,8 +71,8 @@ const sectionTitle = "The Difference Behind Every <span class='text-gradient-bra
       class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-indigo-200/15 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="comparison-heading" classes="!px-0 !py-0" badge="Our Competitive Advantage"
-        :title="sectionTitle" :description="aboutComparison.subtitle" />
+      <CardHeader heading-id="comparison-heading" :badge="aboutComparison.badge" :title="aboutComparison.title"
+        :description="aboutComparison.description" :classes="aboutComparison.classes" />
       <div class="mx-auto mt-10 grid  grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4" v-motion
         :initial="{ opacity: 0, y: 14 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
         <div v-for="col in columns" :key="col.key" :class="[

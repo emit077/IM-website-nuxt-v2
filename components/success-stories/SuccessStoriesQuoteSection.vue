@@ -22,9 +22,8 @@ function initials(name: string) {
     :class="['relative scroll-mt-28 section-py', bgClass ?? 'bg-white']"
     :aria-labelledby="`${section.id}-heading`">
     <div class="container-page">
-      <CardHeader :heading-id="`${section.id}-heading`" classes="!px-0 !py-0" :badge="section.kicker"
-        :title="`${section.title} <span class=\'text-gradient-brand\'>${section.titleHighlight}</span>`" :description="section.description"
-        :accent="section.accent" />
+      <CardHeader :heading-id="`${section.id}-heading`" :badge="section.kicker" :title="section.title"
+        :description="section.description" :classes="section.classes" />
 
       <div class="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">
         <article v-for="(review, i) in reviews" :key="review.id" :class="[

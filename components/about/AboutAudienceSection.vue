@@ -70,9 +70,8 @@ const audienceCards = computed(() =>
       class="pointer-events-none absolute -right-20 bottom-8 h-72 w-72 rounded-full bg-violet-100/30 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="audience-heading" classes="!px-0 !py-0" badge="Who we serve"
-        title='Designed for <span class="text-gradient-brand">Students Who…</span>'
-        :description="aboutAudience.subtitle" />
+      <CardHeader heading-id="audience-heading" :badge="aboutAudience.badge" :title="aboutAudience.title"
+        :description="aboutAudience.description" :classes="aboutAudience.classes" />
 
       <div class="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
         <article v-for="(card, i) in audienceCards" :key="card.text" :class="[

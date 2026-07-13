@@ -109,7 +109,7 @@ function onCtaMousemove(e: MouseEvent, isPrimary?: boolean) {
 
         <div class="relative mx-auto max-w-4xl">
           <CardHeader :theme="props.variant === 'dark' ? 'dark' : 'light'" :heading-id="props.headingId"
-            classes="!px-0 !py-0" :badge="props.badge" :title="props.title" :description="props.description" />
+            :classes="'!px-0 !py-0'" :badge="props.badge" :title="props.title" :description="props.description" />
 
           <div class="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center"
             v-if="props.ctas.length > 0">

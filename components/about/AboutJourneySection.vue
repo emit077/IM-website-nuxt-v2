@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
-import { aboutTimeline } from '~/data/about'
+import { aboutTimeline, aboutJourneySection } from '~/data/about'
 
 const yearLabels: Record<string, string> = {
   'Year 1': 'Foundation',
@@ -39,8 +39,8 @@ const yearGroups = computed(() => {
 <template>
   <section id="journey" class="border-y border-slate-200/80 bg-white section-py" aria-labelledby="journey-heading">
     <div class="container-page">
-      <CardHeader heading-id="journey-heading" classes="!px-0 !py-0" badge="Our Journey"
-        title="Milestones that shaped us" :description="journeyDescription" />
+      <CardHeader heading-id="journey-heading" :badge="aboutJourneySection.badge" :title="aboutJourneySection.title"
+        :description="journeyDescription" :classes="aboutJourneySection.classes" />
 
       <ol class="mx-auto mt-10 max-w-3xl divide-y divide-slate-200 border-y border-slate-200" v-motion
         :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 80 } }">

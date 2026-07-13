@@ -5,6 +5,16 @@ import IconAcademic from '~/components/icons/IconAcademic.vue'
 import TrustIndicators from '~/components/ui/TrustIndicators.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 
+const heroContent = {
+  badge: 'About Your Trusted Academic Partner',
+  title: 'Building Futures through <span class="text-gradient-brand">Personalised Education</span>',
+  subtitle: '<span class="text-gradient-brand">Indian Mentors</span> — India\'s trusted tutoring ecosystem',
+  description:
+    'Connecting students, parents, tutors, and institutions through verified mentors and transparent, technology-driven learning.',
+  contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
+  backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-3.png')}')`,
+}
+
 const heroCtas = [
   {
     id: 'join',
@@ -43,23 +53,11 @@ const heroStats = [
   },
 ]
 
-const heroTitle =
-  'Building Futures through <span class="text-gradient-brand">Personalised Education</span>'
-
-const heroTagline =
-  '<span class="text-gradient-brand">Indian Mentors</span> — India\'s trusted tutoring ecosystem'
-
-const heroDescription =
-  'Connecting students, parents, tutors, and institutions through verified mentors and transparent, technology-driven learning.'
-
-const heroSectionStyle = {
-  backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-3.png')}')`,
-}
 </script>
 
 <template>
   <section class="relative overflow-hidden bg-white  bg-right bg-no-repeat " aria-labelledby="about-hero-heading"
-    :style="heroSectionStyle">
+    :style="{ backgroundImage: heroContent.backgroundImage }">
     <div class="bg-contain bg-no-repeat bg-right container-page">
       <div aria-hidden="true" class="absolute inset-0 -z-10 bg-mesh-light" />
       <div aria-hidden="true" class="absolute inset-0 -z-10 opacity-[0.04]"
@@ -74,9 +72,9 @@ const heroSectionStyle = {
         class="pointer-events-none absolute -top-32 left-1/2 -z-10 h-[400px] w-[1100px] -translate-x-1/2 bg-gradient-to-b from-indigo-200/30 to-transparent blur-3xl" />
 
       <div class=" pb-8 pt-10 lg:pt-16">
-        <HeroHeader heading-id="about-hero-heading" content-class="!px-0 !py-0 max-w-2xl lg:max-w-[46rem]"
-          badge="About Your Trusted Academic Partner" :title="heroTitle" :subtitle="heroTagline"
-          :description="heroDescription" />
+        <HeroHeader heading-id="about-hero-heading" :badge="heroContent.badge" :title="heroContent.title"
+          :subtitle="heroContent.subtitle" :description="heroContent.description"
+          :content-class="heroContent.contentClass" />
 
         <div class="mt-6 mb-10 flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">

@@ -13,9 +13,8 @@ import { aboutHowWeWork } from '~/data/about'
       class="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-indigo-200/25 blur-3xl" />
 
     <div class="container-page relative">
-      <CardHeader heading-id="how-we-work-heading" classes="!px-0 !py-0" :badge="aboutHowWeWork.badge"
-        title="Our End-to-End  <span class='text-gradient-brand'> Learning Process</span>"
-        :description="aboutHowWeWork.subtitle" />
+      <CardHeader heading-id="how-we-work-heading" :badge="aboutHowWeWork.badge" :title="aboutHowWeWork.title"
+        :description="aboutHowWeWork.description" :classes="aboutHowWeWork.classes" />
 
       <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         <article v-for="(step, i) in aboutHowWeWork.steps" :key="step.title"

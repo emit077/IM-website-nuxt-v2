@@ -75,15 +75,22 @@ const streams: SubjectStream[] = [
 ]
 
 const active = ref(streams[0]!.id)
+
+const headerContent = {
+  badge: 'Subjects offered',
+  title: 'Pick a stream — <span class="text-gradient-brand">see what we teach</span>',
+  description:
+    '250+ subjects across sciences, languages, commerce, humanities and competitive tracks — taught by mentors matched to your board and goals.',
+  classes: '!px-0 !py-0 max-w-3xl mx-auto',
+}
 </script>
 
 <template>
   <section id="subjects-offered" class="relative section-surface-muted section-py"
     aria-labelledby="subjects-heading">
     <div class="container-page">
-      <CardHeader heading-id="subjects-heading" classes="!px-0 !py-0 max-w-3xl mx-auto" badge="Subjects offered"
-        title='Pick a stream — <span class="text-gradient-brand">see what we teach</span>'
-        description="250+ subjects across sciences, languages, commerce, humanities and competitive tracks — taught by mentors matched to your board and goals." />
+      <CardHeader heading-id="subjects-heading" :badge="headerContent.badge" :title="headerContent.title"
+        :description="headerContent.description" :classes="headerContent.classes" />
 
       <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 auto-rows-[120px] sm:auto-rows-[130px]">
         <button v-for="(stream, i) in streams" :key="stream.id" type="button" :class="[

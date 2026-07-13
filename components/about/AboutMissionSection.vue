@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
-import { aboutMission, aboutVision, aboutMissionQuote } from '~/data/about'
+import Quotes from '~/components/ui/Quotes.vue'
+import { aboutMission, aboutVision } from '~/data/about'
 
 const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
 </script>
@@ -16,20 +17,12 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
       style="width: 120px; height: 120px; background-image: radial-gradient(#3b82f6 1.4px, transparent 1.4px); background-size: 16px 16px" />
 
     <div class="container-page relative">
-      <figure class="mx-auto max-w-3xl text-center" v-motion :initial="{ opacity: 0, y: 16 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-        <Icon icon="mdi:format-quote-open" class="mx-auto h-9 w-9 text-blue-300" aria-hidden="true" />
-        <blockquote class="font-display -mt-2 text-balance italic text-xl   text-slate-500 sm:text-xl">
-          {{ aboutMissionQuote }}
-        </blockquote>
-        <span aria-hidden="true" class="mx-auto mt-5 block h-1 w-16 rounded-full bg-blue-600" />
-      </figure>
+      <Quotes :quotes="[0, 1]" class="mx-auto " />
       <div class="mt-16 grid items-center gap-10 lg:mt-20 lg:grid-cols-2 lg:gap-14">
         <div v-motion :initial="{ opacity: 0, x: -20 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 560, delay: 100 } }">
-          <CardHeader align="left" heading-id="mission-heading" classes="!px-0 !py-0 "
-            :badge="aboutMission.badge"
-            title="Empowering Every Learner Through  <span class='text-gradient-brand pt-2'>Structured Mentorship</span>">
+          <CardHeader align="left" heading-id="mission-heading" :badge="aboutMission.badge" :title="aboutMission.title"
+            :classes="aboutMission.classes">
             <div class=" mt-6 space-y-4">
               <p v-for="(para, i) in aboutMission.intro" :key="i" class="leading-relaxed text-slate-600">
                 {{ para }}
@@ -72,9 +65,8 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
         <div aria-hidden="true" class="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full " />
 
         <div class="relative  items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <CardHeader heading-id="vision-heading" classes="!px-0 !py-0 " :badge="aboutVision.badge"
-            title="Building India's Most Trusted  <span class='text-gradient-brand pt-2'>Personalised Tutoring Ecosystem</span>"
-            :description="aboutVision.intro" />
+          <CardHeader heading-id="vision-heading" :badge="aboutVision.badge" :title="aboutVision.title"
+            :description="aboutVision.intro" :classes="aboutVision.classes" />
         </div>
         <div class="relative mt-8 border-t border-slate-100 pt-8">
           <div class="flex items-center justify-center gap-4">

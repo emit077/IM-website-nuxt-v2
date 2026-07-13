@@ -39,9 +39,9 @@ const accentClasses: Record<
   <section id="opportunities" class="relative scroll-mt-20 section-surface-muted section-py"
     aria-labelledby="opportunities-heading">
     <div class="container-page">
-      <CardHeader heading-id="opportunities-heading" classes="!px-0 !py-0" :badge="opportunitiesSection.kicker"
-        :title="`${opportunitiesSection.title} <span class=\'text-gradient-brand\'>${opportunitiesSection.titleHighlight}</span>`"
-        :description="opportunitiesSection.description" />
+      <CardHeader heading-id="opportunities-heading" :badge="opportunitiesSection.kicker"
+        :title="opportunitiesSection.title" :description="opportunitiesSection.description"
+        :classes="opportunitiesSection.classes" />
 
       <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
         <article v-for="(category, i) in roleCategories" :key="category.id" :class="[

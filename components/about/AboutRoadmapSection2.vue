@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
 import { aboutRoadmap } from '~/data/about'
@@ -51,19 +50,14 @@ const accentClasses: Record<
   },
 }
 
-const headerTitle = computed(
-  () =>
-    `${aboutRoadmap.title} <span class="text-gradient-brand">${aboutRoadmap.titleHighlight}</span> ${aboutRoadmap.titleSuffix}`,
-)
-
 const phaseNumber = (i: number) => String(i + 1).padStart(2, '0')
 </script>
 
 <template>
   <section id="roadmap" class="section-surface-muted section-py" aria-labelledby="roadmap2-heading">
     <div class="container-page">
-      <CardHeader heading-id="roadmap2-heading" classes="!px-0 !py-0" :badge="aboutRoadmap.badge"
-        :title="headerTitle" :description="aboutRoadmap.subtitle" />
+      <CardHeader heading-id="roadmap2-heading" :badge="aboutRoadmap.badge" :title="aboutRoadmap.title"
+        :description="aboutRoadmap.description" :classes="aboutRoadmap.classes" />
       <div class="mt-12 grid items-stretch gap-6 lg:grid-cols-3 lg:gap-7">
         <article v-for="(phase, pi) in aboutRoadmap.phases" :key="phase.id" v-motion :initial="{ opacity: 0, y: 24 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 80 + pi * 120 } }" :class="[

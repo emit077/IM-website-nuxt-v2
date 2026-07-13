@@ -396,6 +396,13 @@ const current = computed(() => libraryByGrade[selected.value])
 const featured = computed(() => current.value.featured)
 
 const gridCards = computed(() => current.value.cards)
+
+const headerContent = {
+  badge: 'Learning library',
+  title: 'Resources built for your grade',
+  description: 'At Indian Mentors, we provide comprehensive academic mentoring designed to support students across every stage of their educational journey. Our tutoring programs combine experienced mentors, curriculum-aligned teaching methods, and personalised learning strategies to help students build strong academic foundations and achieve their educational goals.',
+  classes: '!px-0 !py-0',
+}
 </script>
 
 <template>
@@ -407,9 +414,9 @@ const gridCards = computed(() => current.value.cards)
         class="rounded-[1.75rem] border border-slate-200/70 bg-white p-6 shadow-soft sm:p-8 lg:p-10 lg:shadow-[0_8px_40px_-12px_rgba(15,23,42,0.08)]"
         v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550, ease: 'easeOut' } }">
-        <CardHeader heading-id="learning-library-heading" classes="!px-0 !py-0"
-          badge="Learning library" title="Resources built for your grade"
-          description="At Indian Mentors, we provide comprehensive academic mentoring designed to support students across every stage of their educational journey. Our tutoring programs combine experienced mentors, curriculum-aligned teaching methods, and personalised learning strategies to help students build strong academic foundations and achieve their educational goals." />
+        <CardHeader heading-id="learning-library-heading" :badge="headerContent.badge"
+          :title="headerContent.title" :description="headerContent.description"
+          :classes="headerContent.classes" />
         <div class="mt-8 -mx-1 overflow-x-auto pb-1 [scrollbar-width:thin]" role="tablist" aria-label="Select class">
           <div class="flex min-w-min gap-2 px-1">
             <button v-for="g in grades" :key="g.id" type="button" role="tab" :aria-selected="selected === g.id"

@@ -56,6 +56,37 @@ export type SubscriptionComparisonRow = {
   platinum: string
 }
 
+export const subscriptionPlansSection = {
+  badge: 'Subscription Plans',
+  title: 'A plan for every <span class="text-gradient-brand">academic goal</span>',
+  description:
+    "From daily homework help to intensive exam preparation — pick the intensity that matches your child's journey.",
+  classes: '!px-0 !py-0',
+}
+
+export const erpDashboardSection = {
+  badge: 'Learning Dashboard',
+  title: 'Complete transparency for <span class="text-gradient-brand">parents and students</span>',
+  description:
+    'Every session, report, and payment is tracked in one ERP-powered dashboard — so you always know exactly how learning is progressing.',
+  classes: '!px-0 !py-0',
+}
+
+export const enrollmentPlansSection = {
+  badge: 'Enrollment Plans',
+  title: "Start free, upgrade <span class=\"text-gradient-brand\">when you're ready</span>",
+  description:
+    'Try the platform with a Free Student Profile, or unlock priority matching, detailed reports, and dedicated support with Premium.',
+  classes: '!px-0 !py-0',
+}
+
+export const planComparisonSection = {
+  badge: 'Compare Plans',
+  title: 'Gold, Diamond, or Platinum — <span class="text-gradient-brand">side by side</span>',
+  description: '',
+  classes: '!px-0 !py-0',
+}
+
 export const resourceLinks = [
   {
     id: 'student-brochure',

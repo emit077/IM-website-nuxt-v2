@@ -35,8 +35,8 @@ export const careersHeroHighlights = [
 
 export const opportunitiesSection = {
   kicker: 'Opportunities at Indian Mentors',
-  title: 'Roles we regularly',
-  titleHighlight: 'invite applications for',
+  title: 'Roles we regularly <span class="text-gradient-brand">invite applications for</span>',
+  classes: '!px-0 !py-0',
   description:
     'Each role is aligned with defined responsibilities, measurable KPIs, and structured reporting systems to ensure clarity and performance accountability.',
 } as const
@@ -74,8 +74,8 @@ export const roleCategories: RoleCategory[] = [
 
 export const benefitsSection = {
   kicker: 'What We Offer',
-  title: 'A workplace built on',
-  titleHighlight: 'structure and integrity',
+  title: 'A workplace built on <span class="text-gradient-brand">structure and integrity</span>',
+  classes: '!px-0 !py-0',
   description:
     'At Indian Mentors, we provide an environment where professional discipline meets meaningful academic impact.',
 } as const

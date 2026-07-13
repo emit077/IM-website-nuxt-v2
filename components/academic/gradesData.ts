@@ -49,6 +49,15 @@ export const gradesPageIntro = {
     'We combine experienced mentors, structured learning plans, and performance monitoring to help students achieve their full academic potential.',
 }
 
+export function stageHeaderContent(stage: CurriculumStage) {
+  return {
+    badge: `${stage.emoji} ${stage.title}`,
+    title: `${stage.programTitle}: <span class="text-gradient-brand">${stage.focus.toLowerCase()}</span>`,
+    description: stage.programDescription,
+    classes: '!px-0 !py-0',
+  }
+}
+
 export const curriculumStages: CurriculumStage[] = [
   {
     id: 'pre-primary',

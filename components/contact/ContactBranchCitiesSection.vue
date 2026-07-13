@@ -203,9 +203,8 @@ function clearSearch() {
   <section :id="sectionId" class="scroll-mt-24 border-b border-slate-200/70 section-py" :class="bgClass"
     :aria-labelledby="headingId">
     <div class="container-page">
-      <CardHeader :heading-id="headingId" classes="!px-0 !py-0" badge="Branch Offices"
-        title="Major Cities with <span class='text-gradient-brand'>Operational Presence</span>"
-        :description="branchOffices.intro" />
+      <CardHeader :heading-id="headingId" :badge="branchOffices.kicker" :title="branchOffices.title"
+        :description="branchOffices.intro" :classes="branchOffices.classes" />
       <div class="mx-auto mt-10 " v-motion :initial="{ opacity: 0, y: 12 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
         <div class="relative border-b border-slate-100 px-5 py-4 sm:px-6 mx-auto max-w-4xl">
@@ -232,7 +231,7 @@ function clearSearch() {
 
           <div class="flex h-full items-center py-6 sm:py-8">
             <div :class="[
-              'city-rail-track flex w-max items-center gap-5 px-4',
+              'flex w-max items-center gap-5 px-4',
               useMarquee
                 ? 'animate-marquee [animation-duration:50s] group-hover/rail:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center'
                 : '-mx-4 snap-x snap-mandatory overflow-x-auto pb-1 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
@@ -295,9 +294,12 @@ function clearSearch() {
       <div v-if="showOtherCities" :id="otherCitiesId" class="mt-10 sm:mt-10">
 
         <div v-if="displayedCities.length" class=" overflow-hidden  ">
-          <div class="flex flex-wrap gap-2.5" role="list" aria-label="Other cities" v-if="showAll">
+          <div class="flex flex-wrap gap-2.5 text-center justify-center" role="list" aria-label="Other cities"
+            v-if="showAll || isSearching">
             <span v-for="city in displayedCities" :key="city" role="listitem"
-              class="inline-flex items-center gap-1.5  px-3.5 py-2 text-[13px] font-semibold text-slate-500   hover:text-blue-500  sm:text-sm">
+              class="inline-flex items-center gap-1.5 border border-slate-200/90 rounded-full px-3.5 py-2 text-[13px] font-semibold text-slate-500   hover:text-blue-500  sm:text-sm">
+              <Icon icon="mdi:map-marker-radius-outline"
+                class="h-3.5 w-3.5 shrink-0 text-slate-400 transition group-hover:text-current" aria-hidden="true" />
               {{ city }}
             </span>
           </div>
@@ -347,13 +349,7 @@ function clearSearch() {
     0 32px 64px -20px rgb(37 99 235 / 0.38);
 }
 
-.city-rail-track:has(.city-card-slot:hover) .city-card-slot:not(:hover) {
-  opacity: 0.5;
-}
 
-.city-rail-track:has(.city-card-slot:hover) .city-card-slot:not(:hover) .city-card {
-  transform: translate3d(0, 0, 0) scale(0.97);
-}
 
 @media (prefers-reduced-motion: reduce) {
   .city-card {
@@ -368,14 +364,6 @@ function clearSearch() {
   .city-card-slot:hover .city-card {
     transform: none;
     box-shadow: 0 10px 30px -24px rgb(15 23 42 / 0.55);
-  }
-
-  .city-rail-track:has(.city-card-slot:hover) .city-card-slot:not(:hover) {
-    opacity: 0.65;
-  }
-
-  .city-rail-track:has(.city-card-slot:hover) .city-card-slot:not(:hover) .city-card {
-    transform: none;
   }
 }
 </style>

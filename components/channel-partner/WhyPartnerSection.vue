@@ -1,45 +1,30 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeader.vue'
-import { whyPartnerSection, partnershipAdvantages } from '~/data/channel-partner'
+import { whyPartnerSection, whyPartnerReasons } from '~/data/channel-partner'
 </script>
 
 <template>
-  <section id="why-partner" class="relative scroll-mt-20 section-surface-muted section-py"
-    aria-labelledby="why-partner-heading">
+  <section id="why-partner" class="relative scroll-mt-20 bg-white section-py" aria-labelledby="why-partner-heading">
     <div class="container-page">
-      <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
-        <div class="lg:col-span-5" v-motion :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-          <CardHeader align="left" heading-id="why-partner-heading" classes="!px-0 !py-0"
-            :badge="whyPartnerSection.kicker"
-            title='A strong foundation for your <span class="text-gradient-brand">education business</span>'
-            :description="whyPartnerSection.description" />
-          <p
-            class="mt-5 flex items-start gap-3 rounded-2xl border border-blue-100 bg-blue-50/70 px-4 py-3.5 text-[13px] leading-relaxed text-blue-900 sm:text-sm">
-            <Icon icon="mdi:hub-outline" class="mt-0.5 h-4 w-4 shrink-0 text-blue-600" aria-hidden="true" />
-            {{ whyPartnerSection.note }}
-          </p>
-        </div>
-        <div class="lg:col-span-7">
-          <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2" role="list">
-            <li v-for="(advantage, i) in partnershipAdvantages" :key="advantage.label" v-motion
-              :initial="{ opacity: 0, y: 12 }"
-              :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 50, duration: 400 } }">
-              <div
-                class="group flex h-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3.5 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200">
-                <span
-                  class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white">
-                  <Icon :icon="advantage.iconMdi" class="h-[18px] w-[18px]" aria-hidden="true" />
-                </span>
-                <span class="text-[13px] font-semibold leading-snug text-slate-800 sm:text-[13.5px]">
-                  {{ advantage.label }}
-                </span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <CardHeader heading-id="why-partner-heading" :badge="whyPartnerSection.kicker" :title="whyPartnerSection.title"
+        :description="whyPartnerSection.description" :classes="whyPartnerSection.classes" />
+
+      <ul class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-5" role="list">
+        <li v-for="(reason, i) in whyPartnerReasons" :key="reason.title" v-motion :initial="{ opacity: 0, y: 14 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 60, duration: 450 } }">
+          <article
+            class="group flex h-full flex-col rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card sm:p-7">
+            <span
+              class="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white"
+              aria-hidden="true">
+              <Icon :icon="reason.iconMdi" class="h-6 w-6" />
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold text-slate-900 sm:text-lg">{{ reason.title }}</h3>
+            <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600 sm:text-sm">{{ reason.description }}</p>
+          </article>
+        </li>
+      </ul>
     </div>
   </section>
 </template>

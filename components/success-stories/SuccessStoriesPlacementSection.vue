@@ -10,9 +10,8 @@ const section = storyTabs.find((t) => t.id === 'placements')!
   <section id="placement-stories" class="relative scroll-mt-28 section-surface-muted section-py"
     aria-labelledby="placement-stories-heading">
     <div class="container-page">
-      <CardHeader heading-id="placement-stories-heading" classes="!px-0 !py-0" :badge="section.kicker"
-        :title="`${section.title} <span class=\'text-gradient-brand\'>${section.titleHighlight}</span>`" :description="section.description"
-        accent="violet" />
+      <CardHeader heading-id="placement-stories-heading" :badge="section.kicker" :title="section.title"
+        :description="section.description" :classes="section.classes" />
 
       <div class="mt-10 space-y-4 sm:space-y-5">
         <article v-for="(story, i) in placementStories" :key="story.id"

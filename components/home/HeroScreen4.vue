@@ -6,6 +6,7 @@ import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import IconAcademic from '~/components/icons/IconAcademic.vue'
 
 const heroContent = {
+  badge: 'Structured System. Verified Students. Transparent Earnings',
   title: 'Join India\'s <span class="text-gradient-brand"> Trusted Tutor</span> Network',
   subtitle: 'Empowering Educators with Smart Opportunities',
   description:
@@ -20,9 +21,8 @@ const heroContent = {
   <section class="relative overflow-hidden bg-white  bg-right bg-no-repeat" aria-labelledby="hero-screen-4-heading"
     :style="{ backgroundImage: heroContent.backgroundImage }">
     <div class="container-page pb-12 pt-10 lg:pt-16">
-      <HeroHeader variant="hero" heading-id="hero-screen-4-heading"
-        badge="Structured System. Verified Students. Transparent Earnings" :title="heroContent.title"
-        :subtitle="heroContent.subtitle" :description="heroContent.description"
+      <HeroHeader variant="hero" heading-id="hero-screen-4-heading" :badge="heroContent.badge"
+        :title="heroContent.title" :subtitle="heroContent.subtitle" :description="heroContent.description"
         :content-class="heroContent.contentClass" />
       <div class="my-6 flex flex-col gap-3 sm:flex-row sm:gap-4 " v-motion :initial="{ opacity: 0, y: 16 }"
         :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
