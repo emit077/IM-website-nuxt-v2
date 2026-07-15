@@ -7,7 +7,7 @@ import SubscriptionPlansSection from '~/components/student-parent/SubscriptionPl
 import SubscriptionComparisonSection from '~/components/student-parent/SubscriptionComparisonSection.vue'
 import LearningStepsSection from '~/components/home/LearningStepsSection.vue'
 import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 
 const studentParentCtas = [
   { label: 'Book Free Demo Class', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },

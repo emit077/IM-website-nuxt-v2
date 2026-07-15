@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/CardHeader.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { tutorPlans, tutorPlansSection } from '~/data/tutors'
 </script>

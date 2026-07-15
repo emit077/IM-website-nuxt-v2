@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/CardHeader.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { territorySection } from '~/data/channel-partner'
 
 const territoryMapImage = usePublicAsset(territorySection.creativeImage)

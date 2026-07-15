@@ -5,8 +5,8 @@ import InstitutionsSectorsSection from '~/components/institutions/InstitutionsSe
 import InstitutionsReliabilitySection from '~/components/institutions/InstitutionsReliabilitySection.vue'
 import InstitutionsProcessSection from '~/components/institutions/InstitutionsProcessSection.vue'
 import InstitutionsWhySection from '~/components/institutions/InstitutionsWhySection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
-import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import { institutionsFinalCta } from '~/data/institutions'
 
 const institutionsCtas = [

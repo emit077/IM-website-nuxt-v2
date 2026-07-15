@@ -8,8 +8,8 @@ import AboutTeamStructureSection from '~/components/about/AboutTeamStructureSect
 import AboutStorySection from '~/components/about/AboutStorySection.vue'
 import AboutRoadmapSection2 from '~/components/about/AboutRoadmapSection2.vue'
 import AboutComparisonSection from '~/components/about/AboutComparisonSection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
-import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import { aboutPartnersCta } from '~/data/about'
 
 const aboutCtas = [

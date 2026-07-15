@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/CardHeader.vue'
-import Quotes from '~/components/ui/Quotes.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import Quotes from '~/components/ui/QuotesLayout.vue'
 import { aboutMission, aboutVision } from '~/data/about'
 
 const stepNumber = (i: number) => String(i + 1).padStart(2, '0')

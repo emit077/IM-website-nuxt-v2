@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AppNavbar from '~/components/ui/AppNavbar.vue'
-import Footer from '~/components/ui/Footer.vue'
+import AppNavbar from '~/components/ui/shared/AppNavbar.vue'
+import Footer from '~/components/ui/shared/Footer.vue'
 </script>
 
 <template>

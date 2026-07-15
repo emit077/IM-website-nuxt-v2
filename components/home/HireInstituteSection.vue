@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CardHeader from '~/components/ui/CardHeader.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 
 const metrics = [
   { value: '500K', suffix: '+', label: 'Verified Tutors' },

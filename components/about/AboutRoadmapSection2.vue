@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/CardHeader.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { aboutRoadmap } from '~/data/about'
 
 type Accent = 'blue' | 'indigo' | 'violet'

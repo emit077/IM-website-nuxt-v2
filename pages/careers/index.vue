@@ -3,7 +3,7 @@ import CareersHeroSection from '~/components/careers/CareersHeroSection.vue'
 import CareersOpportunitiesSection from '~/components/careers/CareersOpportunitiesSection.vue'
 import CareersBenefitsSection from '~/components/careers/CareersBenefitsSection.vue'
 import CareersPurposeSection from '~/components/careers/CareersPurposeSection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { careersFinalCta } from '~/data/careers'
 
 const careersCtas = [

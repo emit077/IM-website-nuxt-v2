@@ -4,7 +4,7 @@ import GradesSection from '~/components/academic/GradesSection.vue'
 import BoardsSection from '~/components/academic/BoardsSection.vue'
 import SubjectsSection from '~/components/academic/SubjectsSection.vue'
 import CourseMatchingSection from '~/components/academic/CourseMatchingSection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 
 const academicCtas = [
   { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },

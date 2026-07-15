@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import CardHeader from '~/components/ui/CardHeader.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import { aboutTimeline, aboutJourneySection } from '~/data/about'
 

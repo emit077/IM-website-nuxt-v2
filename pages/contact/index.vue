@@ -3,10 +3,10 @@ import ContactHeroSection from '~/components/contact/ContactHeroSection.vue'
 import ContactChannelSection from '~/components/contact/ContactChannelSection.vue'
 import ContactFindUsSection from '~/components/contact/ContactFindUsSection.vue'
 import ContactBranchCitiesSection from '~/components/contact/ContactBranchCitiesSection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
-import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import { findMentorSection, contactGetStarted, contactCTA2 } from '~/data/contact'
-import CardHeader from '~/components/ui/CardHeader.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 
 useSeoMeta({
   title: 'Contact Us — Indian Mentors',

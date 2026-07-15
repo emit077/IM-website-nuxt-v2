@@ -9,7 +9,7 @@ import PartnerEligibilitySection from '~/components/channel-partner/PartnerEligi
 import AvailableTerritoriesSection from '~/components/channel-partner/AvailableTerritoriesSection.vue'
 import PartnerTestimonialsSection from '~/components/channel-partner/PartnerTestimonialsSection.vue'
 import PartnerFaqSection from '~/components/channel-partner/PartnerFaqSection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { finalCta } from '~/data/channel-partner'
 
 const partnerCtas = [

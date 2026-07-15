@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import HeroHeader from '~/components/ui/HeroHeader.vue'
+import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import { heroContent, heroHighlights } from '~/data/tutors'
 </script>

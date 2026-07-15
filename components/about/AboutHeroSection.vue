@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import HeroHeader from '~/components/ui/HeroHeader.vue'
+import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
 import IconBook from '~/components/icons/IconBook.vue'
 import IconAcademic from '~/components/icons/IconAcademic.vue'
-import TrustIndicators from '~/components/ui/TrustIndicators.vue'
+import TrustIndicators from '~/components/ui/TrustIndicatorsLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 
 const heroContent = {

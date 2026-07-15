@@ -1,4 +1,4 @@
-import type { TrustIndicatorItem } from '~/components/ui/TrustIndicators.vue'
+import type { TrustIndicatorItem } from '~/components/ui/TrustIndicatorsLayout.vue'
 
 /** Platform-wide trust stats for hero and landing sections. */
 export const trustStats: TrustIndicatorItem[] = [

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/CardHeader.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { hiringSteps, hiringProcessSection, type HiringStep } from '~/data/tutors'
 
 const accentClasses: Record<HiringStep['accent'], { badge: string; tile: string; icon: string }> = {

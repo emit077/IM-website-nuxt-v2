@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import HeroHeader from '~/components/ui/HeroHeader.vue'
+import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
-import TrustIndicators from '~/components/ui/TrustIndicators.vue'
+import TrustIndicators from '~/components/ui/TrustIndicatorsLayout.vue'
 import { contactHero, contactHeroCollageBottom, contactHeroCollageTop, contactHeroTrustStats } from '~/data/contact'
 
 const heroContent = {

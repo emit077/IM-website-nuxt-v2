@@ -1,4 +1,4 @@
-import type { TrustIndicatorItem } from '~/components/ui/TrustIndicators.vue'
+import type { TrustIndicatorItem } from '~/components/ui/TrustIndicatorsLayout.vue'
 
 export type ProcessStep = {
   no: string

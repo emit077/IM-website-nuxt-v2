@@ -26,9 +26,9 @@ withDefaults(
 
 <template>
   <div class="relative text-left px-0 py-0" :class="contentClass">
-    <div class="flex flex-col gap-7 lg:gap-8">
+    <div class="flex flex-col gap-7 lg:gap-8 md:text-left text-center">
       <slot name="badge">
-        <span v-if="badge" class="badge-pill w-fit">
+        <span v-if="badge" class="badge-pill w-fit ">
           <span class="grid h-5 w-5 place-items-center rounded-full bg-emerald-500 text-white">
             <IconCheck class="h-3 w-3" />
           </span>
@@ -36,8 +36,7 @@ withDefaults(
         </span>
       </slot>
       <slot name="title">
-        <h1 v-if="title"
-          :id="headingId || undefined"
+        <h1 v-if="title" :id="headingId || undefined"
           class="heading-display text-balance text-[2.4rem] leading-[1.06] text-slate-900 sm:text-5xl lg:text-[3.7rem] xl:text-[4rem]"
           v-html="title" />
       </slot>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import MilestonesHeroSection from '~/components/milestones/MilestonesHeroSection.vue'
 import MilestonesTimelineSection from '~/components/milestones/MilestonesTimelineSection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
-import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 
 const milestoneCtas = [
   { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },

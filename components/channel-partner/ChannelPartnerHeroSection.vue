@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import TrustIndicators from '~/components/ui/TrustIndicators.vue'
-import HeroHeader from '~/components/ui/HeroHeader.vue'
+import TrustIndicators from '~/components/ui/TrustIndicatorsLayout.vue'
+import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import { heroContent, heroTrustStats } from '~/data/channel-partner'
 

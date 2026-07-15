@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TrustIndicators from '../ui/TrustIndicators.vue'
+import TrustIndicators from '~/components/ui/TrustIndicatorsLayout.vue'
 import { trustStats } from '~/data/trust'
-import HeroHeader from '~/components/ui/HeroHeader.vue'
+import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import IconBook from '~/components/icons/IconBook.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'

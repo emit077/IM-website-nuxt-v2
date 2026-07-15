@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CardHeader from '~/components/ui/CardHeader.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { accentThemes, type QuoteReview, type StoryTab } from '~/data/success-stories'
 
 const props = defineProps<{

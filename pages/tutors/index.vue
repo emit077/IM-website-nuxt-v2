@@ -8,7 +8,7 @@ import TutorComplianceSection from '~/components/tutors/TutorComplianceSection.v
 import TutorOpportunitiesSection from '~/components/tutors/TutorOpportunitiesSection.vue'
 import TutorErpSection from '~/components/tutors/TutorErpSection.vue'
 import TutorPolicySection from '~/components/tutors/TutorPolicySection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { finalCta as tutorsFinalCta } from '~/data/tutors'
 
 const tutorsCtas = [

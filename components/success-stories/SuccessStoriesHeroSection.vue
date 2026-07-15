@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
-import HeroHeader from '~/components/ui/HeroHeader.vue'
+import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
 import {
   accentThemes,
   studentStories,

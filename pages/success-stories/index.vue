@@ -4,7 +4,7 @@ import SuccessStoriesStudentRail from '~/components/success-stories/SuccessStori
 import SuccessStoriesQuoteSection from '~/components/success-stories/SuccessStoriesQuoteSection.vue'
 import SuccessStoriesPlacementSection from '~/components/success-stories/SuccessStoriesPlacementSection.vue'
 import SuccessStoriesVideoSection from '~/components/success-stories/SuccessStoriesVideoSection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import {
   institutionalFeedback,
   parentReviews,

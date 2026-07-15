@@ -4,8 +4,8 @@ import FaqHeroSection from '~/components/faq/FaqHeroSection.vue'
 import FaqSearchFilterSection from '~/components/faq/FaqSearchFilterSection.vue'
 import FaqCategoriesSection from '~/components/faq/FaqCategoriesSection.vue'
 import FaqClosingSection from '~/components/faq/FaqClosingSection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
-import NewsletterSection from '~/components/ui/NewsletterSection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import { faqCta } from '~/data/faq'
 
 const searchQuery = ref('')

@@ -1,192 +1,147 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
-import { computed, nextTick, ref, shallowRef, watch } from 'vue'
-import { useIntervalFn, usePreferredReducedMotion } from '@vueuse/core'
-import type { Component } from 'vue'
-import HeroScreen1 from './HeroScreen1.vue'
-import HeroScreen2 from './HeroScreen2.vue'
-import HeroScreen3 from './HeroScreen3.vue'
-import HeroScreen4 from './HeroScreen4.vue'
+import CarouselLayout from '~/components/ui/CarouselLayout.vue'
+import HeroLayout from '~/components/ui/HeroLayout.vue'
+import type { HeroContent } from '~/components/ui/HeroLayout.vue'
+import IconBook from '~/components/icons/IconBook.vue'
+import IconCalendar from '~/components/icons/IconCalendar.vue'
+import IconAcademic from '~/components/icons/IconAcademic.vue'
 
 const props = withDefaults(
   defineProps<{
     /** Auto-advance interval in ms */
     interval?: number
     autoplay?: boolean
+    showButtons?: boolean
+    showDots?: boolean
   }>(),
   {
     interval: 6500,
     autoplay: true,
+    showButtons: true,
+    showDots: false,
   },
 )
 
-const heroScreens = shallowRef<Component[]>([
-  HeroScreen1,
-  HeroScreen2,
-  HeroScreen3,
-  HeroScreen4,
-])
 
-const reduceMotion = usePreferredReducedMotion()
-const paused = ref(false)
-/** No CSS transition while snapping off a clone (same frame / instant reposition). */
-const noTransition = ref(false)
-const trackIndex = ref(0)
+const secondaryIconClass =
+  'grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white'
 
-const count = computed(() => heroScreens.value.length)
-
-/** [last, …slides, first] so we can always move one step in the track without reversing the wrap. */
-const extendedScreens = computed((): Component[] => {
-  const s = heroScreens.value
-  if (s.length < 2) return [...s]
-  const last = s[s.length - 1]!
-  const first = s[0]!
-  return [last, ...s, first]
-})
-
-function syncTrackStart() {
-  if (count.value >= 2) trackIndex.value = 1
-  else trackIndex.value = 0
+const bookDemoBtn = {
+  variant: 'primary' as const,
+  label: 'Book Free Demo',
+  icon: IconCalendar,
+  link: '#book-demo',
 }
-
-watch(count, syncTrackStart, { immediate: true })
-
-/** 0-based index of the “logical” slide shown (for copy + live region). */
-const realActiveIndex = computed(() => {
-  const len = count.value
-  const t = trackIndex.value
-  if (len < 2) return t
-  if (t === 0) return len - 1
-  if (t === len + 1) return 0
-  return t - 1
-})
-
-const slideTransitionOn = computed(
-  () => !noTransition.value && !reduceMotion.value,
-)
-
-/** Instant wrap when motion is reduced (no transitionend, no clone frame). */
-function snapIfOnCloneSync() {
-  const len = count.value
-  const t = trackIndex.value
-  if (len < 2) return
-  if (t === len + 1) trackIndex.value = 1
-  else if (t === 0) trackIndex.value = len
-}
-
-/** After a linear slide onto a clone, jump to the matching real panel without animating back. */
-async function snapIfOnCloneAfterTransition() {
-  const len = count.value
-  const t = trackIndex.value
-  if (len < 2) return
-  if (t === len + 1) {
-    noTransition.value = true
-    trackIndex.value = 1
-    await nextTick()
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        noTransition.value = false
-      })
-    })
-  } else if (t === 0) {
-    noTransition.value = true
-    trackIndex.value = len
-    await nextTick()
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        noTransition.value = false
-      })
-    })
-  }
-}
-
-function go(delta: number) {
-  if (count.value < 2) return
-  trackIndex.value += delta
-  if (reduceMotion.value) snapIfOnCloneSync()
-}
-
-function onTrackTransitionEnd(ev: TransitionEvent) {
-  if (ev.propertyName !== 'transform') return
-  if (ev.target !== ev.currentTarget) return
-  if (reduceMotion.value) return
-  void snapIfOnCloneAfterTransition()
-}
-
-const autoplayEnabled = computed(
-  () => props.autoplay && count.value > 1 && !reduceMotion.value,
-)
-
-const { pause, resume } = useIntervalFn(
-  () => {
-    if (!paused.value && autoplayEnabled.value) go(1)
+const trustStats = [
+  {
+    value: '1,00,000+',
+    label: 'Verified Tutors',
+    icon: 'solar:square-academic-cap-linear',
   },
-  props.interval,
-  { immediate: false },
-)
-
-watch(
-  autoplayEnabled,
-  (on) => {
-    if (on) resume()
-    else pause()
+  {
+    value: '50,000+',
+    label: 'Students Supported',
+    icon: 'solar:users-group-two-rounded-linear',
   },
-  { immediate: true },
-)
-
-function onEnter() {
-  paused.value = true
+  {
+    value: '50,00,000+',
+    label: 'Sessions Delivered',
+    icon: 'solar:bookmark-linear',
+  },
+]
+const browseTutorsBtn = {
+  variant: 'secondary' as const,
+  label: 'Browse Tutors',
+  icon: IconBook,
+  link: '#tutors',
+  iconWrapperClass: secondaryIconClass,
 }
 
-function onLeave() {
-  paused.value = false
-}
-
-function onFocusIn() {
-  paused.value = true
-}
-
-function onFocusOut() {
-  paused.value = false
-}
+const heroScreens: HeroContent[] = [
+  {
+    badge: "India's #1 Verified Tutor Platform",
+    title:
+      'Find the <span class="text-gradient-brand">Perfect Tutor</span><br class="hidden sm:block" /> for Your Child',
+    subtitle:
+      '<span class="text-gradient-brand">Indian Mentors</span> - Where Learning Meets Mentorship',
+    description:
+      'Structured tutoring and reliable teacher recruitment — built for families and educators across India. Background-checked mentors. Personalised plans. Real progress.',
+    contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
+    backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-1.png')}')`,
+    caption: 'Trusted by 50,000+ students & Parents.',
+    headingId: 'hero-screen-1-heading',
+    actionBtns: [bookDemoBtn, browseTutorsBtn],
+    trustStats,
+  },
+  {
+    badge: 'Stronger Concepts. Better Grades. Brighter Future.',
+    title:
+      'Personalised <span class="text-gradient-brand"> </span> Learning for <span class="text-gradient-brand"> Your Success</span>',
+    subtitle:
+      '<span class="text-gradient-brand">Indian Mentors</span> - Guiding Every Student Towards Academic Excellence',
+    description:
+      'Providing structured tutoring services and reliable teacher recruitment solutions across India.',
+    contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
+    backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-2.png')}')`,
+    caption: 'Trusted by 50,000+ students & Parents.',
+    headingId: 'hero-screen-2-heading',
+    actionBtns: [bookDemoBtn, browseTutorsBtn],
+    trustStats,
+  },
+  {
+    badge: 'Safety, Quality &amp; Transparency in Every Session',
+    title:
+      'Learn from <span class="text-gradient-brand">  Background</span><br class="hidden sm:block" /> Verified Tutors',
+    subtitle: 'Building Strong Foundations for Lifelong Learning',
+    description:
+      '<span class="text-gradient-brand">Indian Mentors</span> - Building Strong Foundations for Lifelong Learning<br />Every tutor undergoes structured verification and performance monitoring.',
+    contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
+    backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-3.png')}')`,
+    caption: 'Trusted by 50,000+ students & Parents.',
+    headingId: 'hero-screen-3-heading',
+    actionBtns: [bookDemoBtn, browseTutorsBtn],
+    trustStats,
+  },
+  {
+    badge: 'Structured System. Verified Students. Transparent Earnings',
+    title:
+      'Join India\'s <span class="text-gradient-brand"> Trusted Tutor</span> Network',
+    subtitle: 'Empowering Educators with Smart Opportunities',
+    description:
+      '<span class="text-gradient-brand">Indian Mentors</span> - Empowering Educators with Smart Opportunities. Access quality student leads and build your teaching career with institutional support.',
+    contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
+    backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-4.png')}')`,
+    caption: 'Trusted by 1,00,000+ Educators across India.',
+    headingId: 'hero-screen-4-heading',
+    actionBtns: [
+      {
+        variant: 'primary',
+        label: 'Become A Tutor',
+        icon: IconAcademic,
+        link: '#book-demo',
+      },
+      {
+        variant: 'secondary',
+        label: 'Talk to Recruiter',
+        link: '#tutors',
+      },
+    ],
+    trustStats,
+  },
+]
 </script>
 
 <template>
-  <section class="relative w-full overflow-hidden" role="region" aria-roledescription="carousel"
-    aria-label="Featured highlights" @mouseenter="onEnter" @mouseleave="onLeave" @focusin="onFocusIn"
-    @focusout="onFocusOut">
-    <div class="relative">
-      <div class="flex w-full duration-500 ease-linear motion-reduce:transition-none"
-        :class="slideTransitionOn ? 'transition-transform' : 'transition-none'"
-        :style="{ transform: `translateX(-${trackIndex * 100}%)` }" @transitionend="onTrackTransitionEnd">
-        <div v-for="(Screen, i) in extendedScreens" :key="`track-${i}`" class="relative w-full shrink-0"
-          :aria-hidden="i !== trackIndex">
-          <component :is="Screen" />
-        </div>
-      </div>
-
-      <template v-if="count > 1">
-        <div
-          class="pointer-events-none absolute inset-y-0 left-0 right-0 z-[2] flex items-center justify-between px-2 sm:px-4"
-          aria-hidden="true">
-          <button type="button"
-            class="pointer-events-auto grid h-10 w-10 place-items-center rounded-full border border-indigo-100/90 bg-white/95 text-indigo-600 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.2)] backdrop-blur-md transition hover:border-indigo-200 hover:bg-white hover:text-indigo-700 hover:shadow-lg active:scale-[0.96] focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 sm:h-11 sm:w-11"
-            aria-label="Previous slide" @click="go(-1)">
-            <Icon icon="mdi:chevron-left" class="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true" />
-          </button>
-          <button type="button"
-            class="pointer-events-auto grid h-10 w-10 place-items-center rounded-full border border-indigo-100/90 bg-white/95 text-indigo-600 shadow-[0_4px_20px_-2px_rgba(15,23,42,0.2)] backdrop-blur-md transition hover:border-indigo-200 hover:bg-white hover:text-indigo-700 hover:shadow-lg active:scale-[0.96] focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 sm:h-11 sm:w-11"
-            aria-label="Next slide" @click="go(1)">
-            <Icon icon="mdi:chevron-right" class="h-6 w-6 sm:h-7 sm:w-7" aria-hidden="true" />
-          </button>
-        </div>
-      </template>
-    </div>
-
-    <p class="sr-only" aria-live="polite">
-      <template v-if="count > 1">
-        Slide {{ realActiveIndex + 1 }} of {{ count }}.
-      </template>
-    </p>
-  </section>
+  <CarouselLayout
+    :items="heroScreens"
+    :interval="props.interval"
+    :autoplay="props.autoplay"
+    :show-buttons="props.showButtons"
+    :show-dots="props.showDots"
+    aria-label="Featured highlights"
+  >
+    <template #default="{ item }">
+      <HeroLayout :hero-content="item" />
+    </template>
+  </CarouselLayout>
 </template>

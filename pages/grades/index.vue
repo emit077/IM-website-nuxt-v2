@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import GradesHeroSection from '~/components/grades/GradesHeroSection.vue'
 import GradesProgramsSection from '~/components/grades/GradesProgramsSection.vue'
-import UiCTASection from '~/components/ui/CTASection.vue'
+import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 
 const gradesCtas = [
   { label: 'Find a Personalised Tutor', href: '#book-demo', iconMdi: 'mdi:account-search-outline' },

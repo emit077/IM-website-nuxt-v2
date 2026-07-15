@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import CardHeader from '~/components/ui/CardHeader.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { aboutLeadership, aboutLeadershipQuote, aboutLeadershipSection } from '~/data/about'
 
 const bannerImage = usePublicAsset('assets/img/banner/banner-1.png')

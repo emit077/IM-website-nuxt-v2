@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/CardHeader.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { placementStories, storyTabs } from '~/data/success-stories'
 
 const section = storyTabs.find((t) => t.id === 'placements')!
