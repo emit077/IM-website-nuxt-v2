@@ -26,13 +26,13 @@ withDefaults(
 
 <template>
   <div class="relative text-left px-0 py-0" :class="contentClass">
-    <div class="flex flex-col gap-7 lg:gap-8 md:text-left text-center">
+    <div class="flex flex-col gap-7 lg:gap-8 md:text-left text-center  items-center md:items-start">
       <slot name="badge">
-        <span v-if="badge" class="badge-pill w-fit ">
-          <span class="grid h-5 w-5 place-items-center rounded-full bg-emerald-500 text-white">
+        <span v-if="badge" class="badge-pill w-fit hidden md:flex">
+          <span class="grid h-5 w-5 place-items-center rounded-full bg-emerald-500 text-white hidden md:grid">
             <IconCheck class="h-3 w-3" />
           </span>
-          <span v-html="badge" />
+          <span class=" text-xs md:text-base" v-html="badge" />
         </span>
       </slot>
       <slot name="title">

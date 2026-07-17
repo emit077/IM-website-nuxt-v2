@@ -55,7 +55,7 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
                 class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-600 text-[11px] font-bold text-white shadow-sm">
                 {{ stepNumber(i) }}
               </span>
-              <p class="text-sm font-semibold leading-snug text-slate-700">{{ item.title }}</p>
+              <p class="min-w-0 text-sm font-semibold leading-snug text-slate-700 line-clamp-2">{{ item.title }}</p>
             </li>
           </ol>
         </div>

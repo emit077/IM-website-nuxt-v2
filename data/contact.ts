@@ -88,12 +88,12 @@ export const contactHero = {
 
 export const contactHeroTrustStats: TrustIndicatorItem[] = [
   {
-    value: '20+',
+    value: '200+',
     label: 'Cities Served',
     icon: 'solar:map-point-linear',
   },
   {
-    value: '15+',
+    value: '20+',
     label: 'Branch Offices',
     icon: 'solar:buildings-2-linear',
   },
@@ -102,6 +102,12 @@ export const contactHeroTrustStats: TrustIndicatorItem[] = [
     label: 'Parent Satisfaction',
     icon: 'solar:like-linear',
   },
+  {
+    value: '4.9',
+    label: 'Average Rating',
+    icon: 'solar:star-linear',
+  },
+
 ]
 
 /** Contact hero collage — top row (2 cities) + bottom row (4 cities) */
@@ -498,7 +504,7 @@ export const findUs = {
       iconMdi: 'mdi:office-building-marker-outline',
       name: 'Indian Mentors – Personalised Tutoring Services',
       address: headOffice.address,
-      image: 'contact/suyamall',
+      image: 'contact/im-building',
       imageLabel: 'Headquarters',
       description:
         'The headquarters serves as the central hub for academic operations, tutor coordination, technology systems, and nationwide tutoring services. Our administrative and academic teams work from this location to support students, parents, tutors, and institutional partners across India.',

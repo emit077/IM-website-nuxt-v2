@@ -75,6 +75,15 @@ const timelineSeed: TimelineEntry[] = [
     display_order: 7,
     status: 'Active',
   },
+  {
+    timeline_id: 8,
+    year: '2026',
+    milestone_title: 'Integrated Learning Ecosystem',
+    milestone_description:
+      'Strengthened Indian Mentors as a personalised learning ecosystem with ERP operations, AI tutor matching, nationwide support, and institutional collaborations.',
+    display_order: 8,
+    status: 'Active',
+  },
 ]
 
 export const aboutTimeline = [...timelineSeed].sort(
@@ -137,7 +146,7 @@ export const aboutMission = {
     },
     {
       icon: 'mdi:cog-sync-outline',
-      title: 'Maintain Operational Excellence Through Technology',
+      title: 'Maintain Operational Excellence with Technology',
       description:
         'Structured workflows, tracking systems, and digital monitoring create a seamless and accountable learning environment.',
     },
@@ -664,6 +673,17 @@ export const aboutStory = {
       icon: 'mdi:map-marker-radius-outline',
       accent: 'blue',
       metric: { value: 'Pan-India', label: 'Reach' },
+    },
+    {
+      id: 'story-8',
+      step: '08',
+      year: '2026',
+      title: 'Integrated Learning Ecosystem',
+      description:
+        'Strengthened Indian Mentors as a personalised learning ecosystem with ERP operations, AI tutor matching, nationwide support, and institutional collaborations.',
+      icon: 'mdi:layers-triple-outline',
+      accent: 'indigo',
+      metric: { value: 'AI + ERP', label: 'Ecosystem' },
     },
   ] satisfies StoryMilestone[],
 }

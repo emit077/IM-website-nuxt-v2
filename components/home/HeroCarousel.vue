@@ -15,7 +15,7 @@ const props = withDefaults(
     showDots?: boolean
   }>(),
   {
-    interval: 6500,
+    interval: 5000,
     autoplay: true,
     showButtons: true,
     showDots: false,
@@ -68,6 +68,7 @@ const heroScreens: HeroContent[] = [
       'Structured tutoring and reliable teacher recruitment — built for families and educators across India. Background-checked mentors. Personalised plans. Real progress.',
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-1.png')}')`,
+    mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-1.png')}`,
     caption: 'Trusted by 50,000+ students & Parents.',
     headingId: 'hero-screen-1-heading',
     actionBtns: [bookDemoBtn, browseTutorsBtn],
@@ -83,6 +84,7 @@ const heroScreens: HeroContent[] = [
       'Providing structured tutoring services and reliable teacher recruitment solutions across India.',
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-2.png')}')`,
+    mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-2.png')}`,
     caption: 'Trusted by 50,000+ students & Parents.',
     headingId: 'hero-screen-2-heading',
     actionBtns: [bookDemoBtn, browseTutorsBtn],
@@ -97,6 +99,7 @@ const heroScreens: HeroContent[] = [
       '<span class="text-gradient-brand">Indian Mentors</span> - Building Strong Foundations for Lifelong Learning<br />Every tutor undergoes structured verification and performance monitoring.',
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-3.png')}')`,
+    mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-3.png')}`,
     caption: 'Trusted by 50,000+ students & Parents.',
     headingId: 'hero-screen-3-heading',
     actionBtns: [bookDemoBtn, browseTutorsBtn],
@@ -111,6 +114,7 @@ const heroScreens: HeroContent[] = [
       '<span class="text-gradient-brand">Indian Mentors</span> - Empowering Educators with Smart Opportunities. Access quality student leads and build your teaching career with institutional support.',
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-4.png')}')`,
+    mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-4.png')}`,
     caption: 'Trusted by 1,00,000+ Educators across India.',
     headingId: 'hero-screen-4-heading',
     actionBtns: [
@@ -132,14 +136,8 @@ const heroScreens: HeroContent[] = [
 </script>
 
 <template>
-  <CarouselLayout
-    :items="heroScreens"
-    :interval="props.interval"
-    :autoplay="props.autoplay"
-    :show-buttons="props.showButtons"
-    :show-dots="props.showDots"
-    aria-label="Featured highlights"
-  >
+  <CarouselLayout :items="heroScreens" :interval="props.interval" :autoplay="props.autoplay"
+    :show-buttons="props.showButtons" :show-dots="props.showDots" aria-label="Featured highlights">
     <template #default="{ item }">
       <HeroLayout :hero-content="item" />
     </template>

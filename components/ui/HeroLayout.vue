@@ -12,6 +12,7 @@ export interface HeroContent {
     description?: string
     contentClass?: string
     backgroundImage?: string
+    mobileBackgroundImage?: string
     caption?: string
     headingId?: string
     actionBtns: HeroActionBtn[]
@@ -43,6 +44,16 @@ defineProps<{
             </div>
         </div>
 
+        <!-- <img :src="heroContent.mobileBackgroundImage" alt="Hero Image" class="h-full"> -->
+
+
+        <div class="absolute top-0 left-0  h-full w-full md:hidden">
+            <div class="grid grid-cols-3 h-full w-full">
+                <!-- <div v-if="heroContent.backgroundImage"
+                    class="col-span-2 col-start-2 h-full w-full bg-contain bg-top bg-no-repeat"
+                    :style="{ backgroundImage: `url(${heroContent.mobileBackgroundImage})` }" /> -->
+            </div>
+        </div>
         <div class="container-page pb-12 pt-10 lg:pt-16 ">
             <div class="grid grid-cols-2">
                 <div class="col-span-2">
@@ -56,9 +67,9 @@ defineProps<{
                             v-motion :initial="{ opacity: 0, y: 16 }"
                             :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
 
-                            <div class="block md:hidden text-center">
-                                <img :src="heroContent.backgroundImage" alt="Hero Image" class=" mx-auto">
-                            </div>
+                            <img :src="heroContent.mobileBackgroundImage" alt="Hero Image"
+                                class="h-full mt-[-80px] mb-[-40px]  md:hidden">
+
                             <ActionBtn v-for="(btn, index) in heroContent.actionBtns" :key="`${btn.label}-${index}`"
                                 :variant="btn.variant" :label="btn.label" :icon="btn.icon" :href="btn.link"
                                 :icon-wrapper-class="btn.iconWrapperClass" />
