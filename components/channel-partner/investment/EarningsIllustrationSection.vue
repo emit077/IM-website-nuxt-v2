@@ -134,7 +134,8 @@ const dataset = computed<BarChartDataset>(() => ({
             </div>
             <!-- bar chart -->
             <div class="mt-8 flex flex-1 items-center">
-              <BarChart layout="fill" :dataset="dataset" :chart-key="chartPeriod" :aria-label="chartAriaLabel" />
+              <BarChart layout="fill" :dataset="dataset" :chart-key="chartPeriod" :aria-label="chartAriaLabel"
+                show-gridlines :gridline-count="4" />
             </div>
             <div class="mt-5 flex items-start gap-3 rounded-2xl border border-blue-100 bg-blue-50/90 px-4 py-3.5">
               <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-100 text-blue-700"

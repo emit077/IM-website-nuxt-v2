@@ -58,11 +58,9 @@ const dataset: BarChartDataset = {
           </div>
 
           <div class="lg:col-span-4">
-            <BarChart
-              class="lg:ml-auto lg:mr-4"
-              :dataset="dataset"
+            <BarChart class="lg:ml-auto lg:mr-4" :dataset="dataset"
               :aria-label="`Revenue split chart: Channel Partner ${partnerShare.percent} percent, Indian Mentors ${platformShare.percent} percent`"
-            />
+              show-gridlines :gridline-count="4" />
           </div>
         </div>
       </div>

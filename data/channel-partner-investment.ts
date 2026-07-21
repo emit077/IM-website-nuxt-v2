@@ -49,14 +49,18 @@ export const investmentStructureSection = {
     'This structure enables partners to operate within a designated academic territory while accessing the Indian Mentors platform and operational ecosystem.',
   components: [
     {
-      iconMdi: 'mdi:shield-lock-outline',
+      iconMdi: 'solar:shield-check-bold-duotone',
       title: 'Security Deposit',
       description: 'A one-time refundable amount that secures your authorised operational territory.',
+      tag: 'One-time · Refundable',
+      accent: 'emerald',
     },
     {
-      iconMdi: 'mdi:monitor-dashboard',
+      iconMdi: 'solar:widget-5-bold-duotone',
       title: 'Digital Platform Licensing Fee (ERP)',
       description: 'Subscription access to the Indian Mentors digital platform and operational tools.',
+      tag: 'Subscription · ERP Access',
+      accent: 'blue',
     },
   ],
 }
@@ -120,13 +124,13 @@ export const platformLicenseSection = {
   ],
   accessTitle: 'Platform Access Includes',
   accessIncludes: [
-    'Student Enrollment Management',
-    'Tutor Allocation & Tracking',
-    'Subscription Plan Management',
-    'Payment Reports & Revenue Tracking',
-    'CRM & Communication Tools',
-    'Academic Dashboard',
-    'Marketing and Branding Support',
+    { label: 'Student Enrollment Management', iconMdi: 'solar:user-plus-bold' },
+    { label: 'Tutor Allocation & Tracking', iconMdi: 'solar:users-group-two-rounded-bold' },
+    { label: 'Subscription Plan Management', iconMdi: 'solar:card-2-bold' },
+    { label: 'Payment Reports & Revenue Tracking', iconMdi: 'solar:chart-2-bold' },
+    { label: 'CRM & Communication Tools', iconMdi: 'solar:chat-round-line-bold' },
+    { label: 'Academic Dashboard', iconMdi: 'solar:notebook-bold' },
+    { label: 'Marketing and Branding Support', iconMdi: 'solar:presentation-graph-bold' },
   ],
 }
 
@@ -370,7 +374,7 @@ export const revenueCalculatorSection = {
   title: 'Revenue <span class="text-gradient-brand">Calculator</span>',
   classes: '!px-0 !py-0',
   description:
-    'Explore your potential earnings as a Channel Partner. Adjust the parameters to see projected subscription and registration revenue.',
+    'Explore your potential earnings as a Channel Partner. Adjust the parameters to see projected subscription revenue.',
   configureTitle: 'Configure Parameters',
   students: {
     label: 'Number of Students',
@@ -389,19 +393,9 @@ export const revenueCalculatorSection = {
     step: 500,
     default: 6000,
   },
-  registrationFee: {
-    label: 'Avg. Registration / Enrollment Fee',
-    iconMdi: 'mdi:clipboard-account-outline',
-    min: 500,
-    max: 10000,
-    step: 100,
-    default: 2000,
-  },
   /** Partner share of subscription revenue */
   subscriptionPartnerShare: 90,
-  /** Partner share of registration / enrollment fee */
-  registrationPartnerShare: 10,
-  note: 'Estimates assume the standard partner share: 90% of subscription revenue and 10% of registration fees. Actual earnings may vary by territory and plan mix.',
+  note: 'Estimates assume the standard partner share: 90% of subscription revenue. Actual earnings may vary by territory and plan mix.',
 }
 
 export const revenueStreamsSection = {
@@ -411,12 +405,8 @@ export const revenueStreamsSection = {
   description:
     'Partners can generate revenue through multiple sources. This multi-layered revenue structure ensures long-term business growth within the education sector.',
   streams: [
-    { iconMdi: 'mdi:cash-multiple', title: 'Student Enrollment Commissions' },
     { iconMdi: 'mdi:calendar-month-outline', title: 'Monthly Subscription Plans' },
-    { iconMdi: 'mdi:account-network-outline', title: 'Tutor Network Expansion' },
     { iconMdi: 'mdi:domain', title: 'Institutional Partnerships' },
-    { iconMdi: 'mdi:book-open-page-variant-outline', title: 'Academic Programs & Test Preparation' },
-    { iconMdi: 'mdi:lightbulb-on-outline', title: 'Specialised Skill Learning Programs' },
   ],
   chartTitle: 'Partner Earnings Advantage',
   chartDescription: 'Subscription revenue stays with the local partner — the platform only takes a small fee.',
@@ -442,18 +432,64 @@ export const revenueStreamsSection = {
 
 export const whyModelWorksSection = {
   kicker: 'Why This Model Works',
-  title: 'A Win-Win Ecosystem',
+  title: 'A Win-Win <span class="text-gradient-brand">Ecosystem</span>',
   classes: '!px-0 !py-0',
   description:
     'The Indian Mentors partnership framework is designed to create a win-win ecosystem for partners and the platform.',
   advantagesTitle: 'Key Advantages',
+  /** Two sides of the ecosystem shown in the central balance graphic */
+  balance: {
+    partner: {
+      label: 'Channel Partner',
+      caption: 'Runs the local business',
+      iconMdi: 'mdi:handshake-outline',
+      points: ['Owns the territory', 'Keeps 90% subscription revenue', 'Local relationships'],
+    },
+    platform: {
+      label: 'Indian Mentors',
+      caption: 'Powers the operation',
+      iconMdi: 'mdi:office-building-outline',
+      points: ['Technology & ERP', 'National brand', 'Academic network'],
+    },
+    centerLabel: 'Win-Win',
+  },
   advantages: [
-    { iconMdi: 'mdi:home-outline', title: 'Low infrastructure investment' },
-    { iconMdi: 'mdi:chart-timeline-variant', title: 'High recurring revenue potential' },
-    { iconMdi: 'mdi:map-marker-radius-outline', title: 'Territory-based exclusivity' },
-    { iconMdi: 'mdi:cloud-outline', title: 'Centralised digital platform' },
-    { iconMdi: 'mdi:shield-star-outline', title: 'National brand credibility' },
-    { iconMdi: 'mdi:graphql', title: 'Scalable tutoring network' },
+    {
+      iconMdi: 'mdi:home-outline',
+      title: 'Low infrastructure investment',
+      description: 'Start lean — no expensive setup, run operations from the digital platform.',
+      accent: 'blue',
+    },
+    {
+      iconMdi: 'mdi:chart-timeline-variant',
+      title: 'High recurring revenue potential',
+      description: 'Subscription-based tutoring builds predictable, compounding monthly income.',
+      accent: 'emerald',
+    },
+    {
+      iconMdi: 'mdi:map-marker-radius-outline',
+      title: 'Territory-based exclusivity',
+      description: 'Operate a protected area with room to grow from pincode to zone.',
+      accent: 'violet',
+    },
+    {
+      iconMdi: 'mdi:cloud-outline',
+      title: 'Centralised digital platform',
+      description: 'Manage students, tutors, payments and reports from one ERP dashboard.',
+      accent: 'sky',
+    },
+    {
+      iconMdi: 'mdi:shield-star-outline',
+      title: 'National brand <br/> credibility',
+      description: 'Win parents’ trust with the strength of a recognised national academic brand.',
+      accent: 'amber',
+    },
+    {
+      iconMdi: 'mdi:graphql',
+      title: 'Scalable tutoring network',
+      description: 'Add tutors and students continuously as demand in your territory grows.',
+      accent: 'rose',
+    },
   ],
 }
 

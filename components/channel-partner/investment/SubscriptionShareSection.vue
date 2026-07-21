@@ -60,7 +60,7 @@ const dataset: BarChartDataset = {
 
           <div class="lg:col-span-5">
             <div class="rounded-3xl border border-slate-200/80 bg-white px-4 py-8 shadow-soft sm:px-6 sm:py-10">
-              <BarChart :dataset="dataset"
+              <BarChart :dataset="dataset" show-gridlines :gridline-count="4"
                 :aria-label="`Subscription revenue split: Channel Partner ${partnerShare.percent} percent, Indian Mentors ${platformShare.percent} percent`" />
             </div>
           </div>

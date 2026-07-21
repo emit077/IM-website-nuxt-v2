@@ -7,9 +7,7 @@ import { revenueCalculatorSection } from '~/data/channel-partner-investment'
 const {
   students: studentsCfg,
   subscriptionFee: subCfg,
-  registrationFee: regCfg,
   subscriptionPartnerShare,
-  registrationPartnerShare,
   configureTitle,
   note,
 } = revenueCalculatorSection
@@ -18,28 +16,27 @@ type Period = 'monthly' | 'annual'
 
 const studentCount = ref(studentsCfg.default)
 const subscriptionFee = ref(subCfg.default)
-const registrationFee = ref(regCfg.default)
 const period = ref<Period>('annual')
 const pulseKey = ref(0)
 
 const subShare = subscriptionPartnerShare / 100
-const regShare = registrationPartnerShare / 100
 
 const subscriptionMonthlyTotal = computed(() => studentCount.value * subscriptionFee.value)
 const subscriptionPartnerMonthly = computed(() => Math.round(subscriptionMonthlyTotal.value * subShare))
 
-const registrationTotal = computed(() => studentCount.value * registrationFee.value)
-const registrationPartner = computed(() => Math.round(registrationTotal.value * regShare))
-
 const subscriptionPartnerAnnual = computed(() => subscriptionPartnerMonthly.value * 12)
-const partnerCombinedAnnual = computed(() => subscriptionPartnerAnnual.value + registrationPartner.value)
-const partnerCombinedMonthly = computed(
-  () => subscriptionPartnerMonthly.value + Math.round(registrationPartner.value / 12),
+const totalAnnual = computed(() => subscriptionMonthlyTotal.value * 12)
+
+const subscriptionPlatformMonthly = computed(
+  () => subscriptionMonthlyTotal.value - subscriptionPartnerMonthly.value,
 )
-const totalAnnual = computed(() => subscriptionMonthlyTotal.value * 12 + registrationTotal.value)
+const subscriptionPlatformAnnual = computed(() => subscriptionPlatformMonthly.value * 12)
+
+const partnerShare = { label: 'Channel Partner', percent: subscriptionPartnerShare }
+const platformShare = { label: 'Indian Mentors', percent: 100 - subscriptionPartnerShare }
 
 const heroAmount = computed(() =>
-  period.value === 'annual' ? partnerCombinedAnnual.value : partnerCombinedMonthly.value,
+  period.value === 'annual' ? subscriptionPartnerAnnual.value : subscriptionPartnerMonthly.value,
 )
 
 const displayHero = ref(heroAmount.value)
@@ -63,12 +60,6 @@ watch(heroAmount, (next) => {
 })
 
 onUnmounted(() => cancelAnimationFrame(rafId))
-
-const mixTotal = computed(() => Math.max(partnerCombinedAnnual.value, 1))
-const subMixPercent = computed(() =>
-  Math.round((subscriptionPartnerAnnual.value / mixTotal.value) * 100),
-)
-const regMixPercent = computed(() => 100 - subMixPercent.value)
 
 const sliders = computed(() => [
   {
@@ -97,55 +88,77 @@ const sliders = computed(() => [
     maxLabel: formatInr(subCfg.max),
     set: (v: number) => { subscriptionFee.value = v },
   },
-  {
-    id: 'calc-reg-fee',
-    label: regCfg.label,
-    iconMdi: regCfg.iconMdi,
-    value: registrationFee.value,
-    display: formatInr(registrationFee.value),
-    min: regCfg.min,
-    max: regCfg.max,
-    step: regCfg.step,
-    minLabel: formatInr(regCfg.min),
-    maxLabel: formatInr(regCfg.max),
-    set: (v: number) => { registrationFee.value = v },
-  },
 ])
 
-const resultRows = computed(() => [
-  {
-    key: 'sub',
-    title: 'Subscription',
-    badge: 'Recurring',
-    badgeClass: 'bg-blue-50 text-blue-700',
-    iconMdi: 'mdi:calendar-month-outline',
-    formula: `${studentCount.value} × ${formatInr(subscriptionFee.value)}/mo`,
-    amount: formatInr(subscriptionPartnerMonthly.value),
-    ofTotal: formatInr(subscriptionMonthlyTotal.value),
-    share: subscriptionPartnerShare,
-    barClass: 'bg-blue-500',
-    barWidth: subscriptionPartnerShare,
-  },
-  {
-    key: 'reg',
-    title: 'Registration',
-    badge: 'One-time',
-    badgeClass: 'bg-amber-50 text-amber-700',
-    iconMdi: 'mdi:clipboard-account-outline',
-    formula: `${studentCount.value} × ${formatInr(registrationFee.value)}`,
-    amount: formatInr(registrationPartner.value),
-    ofTotal: formatInr(registrationTotal.value),
-    share: registrationPartnerShare,
-    barClass: 'bg-blue-500',
-    barWidth: registrationPartnerShare,
-  },
-])
+const subscriptionFormula = computed(
+  () => `${studentCount.value} × ${formatInr(subscriptionFee.value)}/mo`,
+)
+
+const DONUT_RADIUS = 80
+const DONUT_CIRCUMFERENCE = 2 * Math.PI * DONUT_RADIUS
+
+const donutSegments = computed(() => {
+  const partnerLen = (partnerShare.percent / 100) * DONUT_CIRCUMFERENCE
+  const platformLen = (platformShare.percent / 100) * DONUT_CIRCUMFERENCE
+  const gap = 3
+  return [
+    {
+      key: 'partner',
+      color: '#2563eb',
+      dashArray: `${Math.max(partnerLen - gap, 0)} ${DONUT_CIRCUMFERENCE - Math.max(partnerLen - gap, 0)}`,
+      dashOffset: 0,
+    },
+    {
+      key: 'platform',
+      color: '#bfdbfe',
+      dashArray: `${Math.max(platformLen - gap, 0)} ${DONUT_CIRCUMFERENCE - Math.max(platformLen - gap, 0)}`,
+      dashOffset: -partnerLen,
+    },
+  ]
+})
+
+const totalRevenue = computed(() =>
+  period.value === 'annual' ? totalAnnual.value : subscriptionMonthlyTotal.value,
+)
+
+const legendRows = computed(() => {
+  const isAnnual = period.value === 'annual'
+  const partnerAmount = isAnnual ? subscriptionPartnerAnnual.value : subscriptionPartnerMonthly.value
+  const platformAmount = isAnnual ? subscriptionPlatformAnnual.value : subscriptionPlatformMonthly.value
+  return [
+    {
+      key: 'partner',
+      label: partnerShare.label,
+      percent: partnerShare.percent,
+      amount: formatInrDecimals(partnerAmount),
+      dotClass: 'bg-blue-600',
+      highlight: true,
+    },
+    {
+      key: 'platform',
+      label: platformShare.label,
+      percent: platformShare.percent,
+      amount: formatInrDecimals(platformAmount),
+      dotClass: 'bg-blue-300',
+      highlight: false,
+    },
+  ]
+})
 
 function formatInr(value: number) {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
     currency: 'INR',
     maximumFractionDigits: 0,
+  }).format(value)
+}
+
+function formatInrDecimals(value: number) {
+  return new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   }).format(value)
 }
 
@@ -228,93 +241,82 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
           </div>
 
           <!-- Results -->
-          <div class="flex flex-col justify-center gap-7 px-7 py-9 sm:px-10 sm:py-11 lg:col-span-7">
-            <!-- Hero earnings -->
-            <div
-              class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1e3a8a] via-blue-700 to-indigo-800 px-6 py-8 text-white sm:px-8 sm:py-9">
-              <div aria-hidden="true"
-                class="pointer-events-none absolute -right-8 top-0 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
-              <div aria-hidden="true"
-                class="pointer-events-none absolute -bottom-12 left-10 h-32 w-32 rounded-full bg-emerald-300/15 blur-2xl" />
-
-              <div class="relative flex flex-wrap items-center justify-between gap-4">
-                <p class="text-sm font-semibold text-blue-100 sm:text-base">Your projected earnings</p>
-                <div class="inline-flex rounded-full border border-white/15 bg-white/10 p-1" role="tablist"
-                  aria-label="Earnings period">
+          <div class="flex flex-col justify-center px-7 py-9 sm:px-10 sm:py-11 lg:col-span-7">
+            <div class="relative overflow-hidden rounded-[24px] border border-slate-200/70 bg-white shadow-md" v-motion
+              :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
+              <!-- Card header -->
+              <div
+                class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 px-6 py-5 sm:px-7">
+                <div class="flex items-center gap-3">
+                  <span class="grid h-9 w-9 place-items-center rounded-xl bg-blue-50 text-blue-600" aria-hidden="true">
+                    <Icon icon="mdi:wallet-outline" class="h-[18px] w-[18px]" />
+                  </span>
+                  <div>
+                    <p class="text-sm font-semibold text-slate-900">Your projected earnings</p>
+                    <p class="mt-0.5 text-xs text-slate-400">{{ subscriptionFormula }}</p>
+                  </div>
+                </div>
+                <div class="inline-flex rounded-lg bg-slate-100 p-1" role="tablist" aria-label="Earnings period">
                   <button v-for="tab in [
                     { id: 'monthly' as const, label: 'Monthly' },
                     { id: 'annual' as const, label: 'Annual' },
                   ]" :key="tab.id" type="button" role="tab" :aria-selected="period === tab.id" :class="[
-                    'rounded-full px-4 py-2 text-xs font-bold transition sm:text-sm',
-                    period === tab.id ? 'bg-white text-[#1e3a8a] shadow-sm' : 'text-blue-100 hover:text-white',
+                    'rounded-md px-3.5 py-1.5 text-xs font-semibold transition sm:text-sm',
+                    period === tab.id ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700',
                   ]" @click="period = tab.id">
                     {{ tab.label }}
                   </button>
                 </div>
               </div>
 
-              <p :key="pulseKey"
-                class="relative mt-5 font-display text-4xl font-bold tabular-nums tracking-tight sm:text-5xl hero-pulse">
-                {{ formatLakhs(displayHero) }}
-              </p>
-              <p class="relative mt-3 text-sm leading-relaxed text-blue-100/85">
-                <template v-if="period === 'annual'">
-                  Sub {{ formatLakhs(subscriptionPartnerAnnual) }}/yr + Reg {{ formatInr(registrationPartner) }}
-                </template>
-                <template v-else>
-                  Sub {{ formatInr(subscriptionPartnerMonthly) }}/mo + Reg avg
-                  {{ formatInr(Math.round(registrationPartner / 12)) }}/mo
-                </template>
-              </p>
-
-              <div class="relative mt-7">
-                <div class="mb-2.5 flex items-center justify-between text-xs font-semibold text-blue-100/90">
-                  <span>Earnings mix</span>
-                  <span>{{ subMixPercent }}% sub · {{ regMixPercent }}% reg</span>
-                </div>
-                <div class="flex h-3 overflow-hidden rounded-full bg-white/15" aria-hidden="true">
-                  <div class="h-full bg-sky-300 transition-all duration-500 ease-out"
-                    :style="{ width: `${subMixPercent}%` }" />
-                  <div class="h-full bg-emerald-300 transition-all duration-500 ease-out"
-                    :style="{ width: `${regMixPercent}%` }" />
-                </div>
-              </div>
-            </div>
-
-            <!-- Stream cards -->
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
-              <div v-for="(row, i) in resultRows" :key="row.key"
-                class="rounded-3xl border border-slate-200/80 bg-slate-50/40 p-5 transition duration-300 hover:border-blue-200 hover:bg-white hover:shadow-soft sm:p-6"
-                v-motion :initial="{ opacity: 0, y: 10 }"
-                :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 60, duration: 400 } }">
-                <div class="flex items-start justify-between gap-3">
-                  <div class="flex items-center gap-3">
-                    <div>
-                      <p class="text-sm font-semibold text-slate-800 sm:text-base">{{ row.title }}</p>
-                      <p class="mt-0.5 text-xs text-slate-400">{{ row.formula }}</p>
-                    </div>
+              <!-- Card body: donut + legend -->
+              <div class="flex flex-col items-center gap-8 px-6 py-8 sm:flex-row sm:gap-10 sm:px-7">
+                <!-- Donut -->
+                <div class="relative shrink-0" aria-hidden="true">
+                  <svg viewBox="0 0 200 200" class="h-44 w-44 -rotate-45">
+                    <circle cx="100" cy="100" :r="DONUT_RADIUS" fill="none" stroke="#f1f5f9" stroke-width="40" />
+                    <circle v-for="seg in donutSegments" :key="seg.key" cx="100" cy="100" :r="DONUT_RADIUS" fill="none"
+                      :stroke="seg.color" stroke-width="40" stroke-linecap="butt" :stroke-dasharray="seg.dashArray"
+                      :stroke-dashoffset="seg.dashOffset" class="donut-seg" />
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <p :key="pulseKey"
+                      class="font-display text-xl font-bold leading-none tabular-nums tracking-tight text-slate-900 hero-pulse">
+                      90%
+                    </p>
                   </div>
-                  <span class="rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide"
-                    :class="row.badgeClass">
-                    {{ row.badge }}
-                  </span>
                 </div>
 
-                <p class="mt-5 font-display text-2xl font-bold tabular-nums text-emerald-600">
-                  {{ row.amount }}
-                </p>
-                <p class="mt-1 text-xs text-slate-400 sm:text-sm">
-                  your <b> {{ row.share }}% </b>of <b>{{ row.ofTotal }}</b>
-                </p>
-
-                <div class="mt-4 h-2 overflow-hidden rounded-full bg-slate-200/80" aria-hidden="true">
-                  <div class="h-full rounded-full transition-all duration-500 ease-out" :class="row.barClass"
-                    :style="{ width: `${Math.max(row.barWidth, 8)}%` }" />
+                <!-- Legend + totals -->
+                <div class="w-full min-w-0 flex-1">
+                  <ul class="divide-y divide-slate-100">
+                    <li v-for="row in legendRows" :key="row.key"
+                      class="flex items-center justify-between gap-3 py-3 first:pt-0  px-4">
+                      <div class="flex min-w-0 items-center gap-2.5">
+                        <span class="h-2.5 w-2.5 shrink-0 rounded-full" :class="row.dotClass" aria-hidden="true" />
+                        <span class="truncate text-sm font-medium text-slate-700">{{ row.label }}</span>
+                        <span
+                          class="shrink-0 rounded-md bg-slate-100 px-1.5 py-0.5 text-[11px] font-semibold text-slate-500">
+                          {{ row.percent }}%
+                        </span>
+                      </div>
+                      <p class="shrink-0 whitespace-nowrap text-right font-display text-sm font-bold tabular-nums"
+                        :class="row.highlight ? 'text-emerald-600' : 'text-slate-500'">
+                        {{ row.amount }}
+                      </p>
+                    </li>
+                  </ul>
+                  <div
+                    class="flex items-center justify-between gap-4 border-t border-slate-600  bg-slate-50 px-4 py-3 ">
+                    <span class="text-xs font-medium text-slate-500">Total revenue pool</span>
+                    <span
+                      class="whitespace-nowrap text-right font-display text-sm font-bold tabular-nums text-slate-700">
+                      {{ formatInrDecimals(totalRevenue) }}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
@@ -364,6 +366,10 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
   border: 3px solid #fff;
   box-shadow: 0 1px 4px rgb(37 99 235 / 35%);
   cursor: pointer;
+}
+
+.donut-seg {
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
 }
 
 .hero-pulse {

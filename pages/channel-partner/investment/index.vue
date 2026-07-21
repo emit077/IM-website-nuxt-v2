@@ -2,7 +2,6 @@
 import InvestmentHeroSection from '~/components/channel-partner/investment/InvestmentHeroSection.vue'
 import InvestmentStructureSection from '~/components/channel-partner/investment/InvestmentStructureSection.vue'
 import SecurityDepositSection from '~/components/channel-partner/investment/SecurityDepositSection.vue'
-import PlatformLicenseSection from '~/components/channel-partner/investment/PlatformLicenseSection.vue'
 import TerritoryInvestmentTableSection from '~/components/channel-partner/investment/TerritoryInvestmentTableSection.vue'
 import RevenueSharingOverviewSection from '~/components/channel-partner/investment/RevenueSharingOverviewSection.vue'
 import EnrollmentFeeShareSection from '~/components/channel-partner/investment/EnrollmentFeeShareSection.vue'
@@ -36,18 +35,17 @@ useSeoMeta({
     <InvestmentHeroSection />
     <InvestmentStructureSection />
     <!-- <SecurityDepositSection /> -->
-    <PlatformLicenseSection />
     <TerritoryInvestmentTableSection />
-    <RevenueSharingOverviewSection />
-    <EnrollmentFeeShareSection />
+    <!-- <RevenueSharingOverviewSection /> -->
+    <!-- <EnrollmentFeeShareSection /> -->
     <SubscriptionShareSection />
     <EarningsIllustrationSection />
     <RevenueCalculatorSection />
     <InvestmentAdvantagesSection />
-    <NewsletterSection />
-
     <UiCTASection section-id="partner-investment-register" heading-id="investment-cta-heading" surface-class="bg-white"
       :title="investmentFinalCta.title" :description="investmentFinalCta.description"
       :supporting="investmentFinalCta.opportunities.join(' · ')" :ctas="investmentCtas" />
+    <NewsletterSection />
+
   </div>
 </template>

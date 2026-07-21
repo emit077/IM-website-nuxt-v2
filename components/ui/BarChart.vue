@@ -30,11 +30,15 @@ const props = withDefaults(
     ariaLabel?: string
     layout?: BarChartLayout
     showBaseline?: boolean
+    showGridlines?: boolean
+    gridlineCount?: number
     chartKey?: string | number
   }>(),
   {
     layout: 'absolute',
     showBaseline: true,
+    showGridlines: true,
+    gridlineCount: 4,
   },
 )
 
@@ -48,6 +52,7 @@ const themeClasses = computed(() =>
   isDark.value
     ? {
       baseline: 'bg-white/20',
+      gridline: 'bg-white/10',
       label: 'text-white',
       detail: 'text-white/80',
       suffix: 'text-white/70',
@@ -55,6 +60,7 @@ const themeClasses = computed(() =>
     }
     : {
       baseline: 'bg-slate-200',
+      gridline: 'bg-slate-100',
       label: 'text-slate-900',
       detail: 'text-slate-500',
       suffix: 'text-slate-500',
@@ -81,6 +87,14 @@ function barHeight(item: BarChartDataItem) {
     : Math.max(Math.round(value * HEIGHT_SCALE), MIN_HEIGHT_PX)
 }
 
+const maxBarHeight = computed(() =>
+  items.value.reduce((max, item) => Math.max(max, barHeight(item)), MIN_HEIGHT_PX),
+)
+
+const gridlines = computed(() =>
+  props.showGridlines ? Math.max(1, Math.round(props.gridlineCount)) + 1 : 0,
+)
+
 function labelClass(item: BarChartDataItem) {
   return item.highlight ? themeClasses.value.highlight : themeClasses.value.label
 }
@@ -96,8 +110,14 @@ function valueClass(index: number) {
     <div :key="chartKey ?? 'bar-chart'" :class="isFill ? 'mx-auto w-full max-w-md' : 'mx-auto w-fit'">
       <!-- Absolute layout -->
       <template v-if="!isFill">
-        <div class="flex items-end justify-center">
-          <div v-for="(item, i) in items" :key="`${item.label}-${i}`" class="flex w-36 flex-col items-center sm:w-40">
+        <div class="relative flex items-end justify-center">
+          <div v-if="showGridlines"
+            class="pointer-events-none absolute inset-x-0 bottom-0 z-0 flex flex-col justify-between"
+            :style="{ height: `${maxBarHeight}px` }" aria-hidden="true">
+            <span v-for="n in gridlines" :key="`grid-${n}`" class="h-px w-full" :class="themeClasses.gridline" />
+          </div>
+          <div v-for="(item, i) in items" :key="`${item.label}-${i}`"
+            class="relative z-10 flex w-36 flex-col items-center sm:w-40">
             <span class="mb-2 font-display text-xl font-bold" :class="valueClass(i)" v-motion
               :initial="{ opacity: 0, scale: 0.85 }"
               :visibleOnce="{ opacity: 1, scale: 1, transition: { delay: 380 + i * 80, duration: 450 } }">
@@ -129,9 +149,15 @@ function valueClass(index: number) {
 
       <!-- Fill layout -->
       <template v-else>
-        <div class="grid h-44 items-end gap-2 pt-8 sm:h-56 sm:gap-4 sm:pt-9"
+        <div class="relative grid h-44 items-end gap-2 pt-8 sm:h-56 sm:gap-4 sm:pt-9"
           :style="{ gridTemplateColumns: `repeat(${colCount}, minmax(0, 1fr))` }">
-          <div v-for="(item, i) in items" :key="`${item.label}-${i}`" class="flex h-full items-end justify-center">
+          <div v-if="showGridlines"
+            class="pointer-events-none absolute inset-x-0 bottom-0 top-8 z-0 flex flex-col justify-between sm:top-9"
+            aria-hidden="true">
+            <span v-for="n in gridlines" :key="`grid-fill-${n}`" class="h-px w-full" :class="themeClasses.gridline" />
+          </div>
+          <div v-for="(item, i) in items" :key="`${item.label}-${i}`"
+            class="relative z-10 flex h-full items-end justify-center">
             <div class="relative w-16 sm:w-20 md:w-24" aria-hidden="true" :style="{ height: `${barHeight(item)}%` }">
               <div class="absolute bottom-full left-0 right-0 mb-1.5 flex justify-center sm:mb-2" v-motion
                 :initial="{ opacity: 0 }"
