@@ -796,8 +796,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section id="tutors" class="relative mx-auto w-full max-w-[1200px] px-4 section-py"
-        aria-labelledby="browse-mentors-heading">
+    <section id="tutors" class="relative section-py" aria-labelledby="browse-mentors-heading">
         <div id="book-demo" class="sr-only scroll-mt-28" tabindex="-1">
             Book a free demo
         </div>
@@ -805,6 +804,7 @@ onUnmounted(() => {
             class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-[#eef1ff] via-[#f6f8ff] to-transparent">
         </div>
 
+        <div class="container-page relative">
         <CardHeader heading-id="browse-mentors-heading" :badge="headerCopy.badge" :title="headerCopy.title"
             :description="headerCopy.description" :classes="headerCopy.classes" />
         <div class="mt-2 flex justify-center" v-motion :initial="{ opacity: 0, y: 8 }"
@@ -1194,6 +1194,7 @@ onUnmounted(() => {
                         studentsActiveIndex === idx ? 'w-6 bg-blue-600' : 'w-2 bg-slate-300 hover:bg-slate-400',
                     ]"></button>
             </div>
+        </div>
         </div>
     </section>
 </template>

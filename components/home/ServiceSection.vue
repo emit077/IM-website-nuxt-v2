@@ -51,7 +51,7 @@ const services: ServiceCard[] = [
     },
     {
         title: 'Live-In Tutors',
-        description: 'Daily immersive coaching and structured academic support.',
+        description: 'Full-Time Residential Academic Mentorship for Consistent Learning & Holistic Development',
         img: 'assets/img/services/live-in-tutor.svg',
         features: ['Structured daily routine', 'Academic discipline', 'Result-oriented approach'],
         columns: 'col-span-1',
@@ -94,28 +94,30 @@ function cardSpanClass(columns?: ServiceCard['columns'] | 'col-span-full') {
 </script>
 
 <template>
-    <section id="services" class="relative overflow-hidden" aria-labelledby="services-heading">
+    <section id="services" class="relative overflow-hidden section-py" aria-labelledby="services-heading">
         <div aria-hidden="true"
             class="pointer-events-none absolute left-4 top-8 h-40 w-40 opacity-25 sm:left-10 sm:top-12"
             style="background-image: radial-gradient(rgba(255,255,255,0.45) 1px, transparent 1px); background-size: 14px 14px;" />
 
-        <div class="relative z-[1] mx-auto w-full max-w-[1200px] px-4">
+        <div class="container-page relative z-[1]">
             <CardHeader heading-id="services-heading" :badge="sectionConfig.badge" :title="sectionConfig.title"
                 :classes="sectionConfig.classes" />
 
             <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
                 <div v-for="(service, i) in services" :key="service.title" v-motion :initial="{ opacity: 0, y: 14 }"
-                    class="service-card relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_4px_24px_rgba(15,23,42,0.05)]"
+                    class="service-card group/card relative flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_4px_24px_rgba(15,23,42,0.05)]"
                     :class="cardSpanClass(service.columns)" :visibleOnce="{
                         opacity: 1,
                         y: 0,
                         transition: { delay: 120 + i * 70, duration: 480, ease: 'easeOut' },
                     }">
+                    <span class="service-card__index" aria-hidden="true">{{ String(i + 1).padStart(2, '0') }}</span>
+
                     <div class="relative z-10 flex flex-1 flex-col">
                         <div
-                            class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 ring-1 ring-blue-100/90">
+                            class="service-card__icon mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 ring-1 ring-blue-100/90 transition-colors duration-300 group-hover/card:bg-blue-600 group-hover/card:ring-blue-600">
                             <img :src="usePublicAsset(service.img)" :alt="`${service.title} icon`" width="28"
-                                height="28" class="h-7 w-7 object-contain" loading="lazy" />
+                                height="28" class="h-7 w-7 object-contain transition group-hover/card:brightness-0 group-hover/card:invert" loading="lazy" />
                         </div>
 
                         <h3 class="mb-2 font-display text-base font-bold tracking-tight text-slate-900 sm:text-lg">
@@ -151,10 +153,7 @@ function cardSpanClass(columns?: ServiceCard['columns'] | 'col-span-full') {
                         </div>
                     </div>
 
-                    <div class="service-card-decor" aria-hidden="true">
-                        <span class="service-card-decor__ring service-card-decor__ring--outer" />
-                        <span class="service-card-decor__ring service-card-decor__ring--inner" />
-                    </div>
+                    <span class="service-card__accent" aria-hidden="true" />
                 </div>
 
                 <article
@@ -283,6 +282,51 @@ function cardSpanClass(columns?: ServiceCard['columns'] | 'col-span-full') {
         0 20px 48px -16px rgba(51, 65, 85, 0.14);
 }
 
+/* Large faded outlined index number in the top-right corner */
+.service-card__index {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    z-index: 0;
+    font-family: var(--font-display, inherit);
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(148, 163, 184, 0.25);
+    transition: -webkit-text-stroke-color 0.3s ease, color 0.3s ease;
+    pointer-events: none;
+}
+
+@media (min-width: 640px) {
+    .service-card__index {
+        font-size: 4rem;
+    }
+}
+
+.service-card:hover .service-card__index {
+    -webkit-text-stroke-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Blue accent bar that reveals along the bottom edge on hover */
+.service-card__accent {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 3px;
+    width: 0;
+    transform: translateX(-50%);
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #3b82f6, #2563eb);
+    transition: width 0.35s ease;
+    pointer-events: none;
+}
+
+.service-card:hover .service-card__accent {
+    width: 92%;
+}
+
 .service-card--primary {
     background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 55%, #1e3a8a 100%);
 }
@@ -359,41 +403,6 @@ function cardSpanClass(columns?: ServiceCard['columns'] | 'col-span-full') {
     transform: translateY(-2px);
 }
 
-.service-card-decor {
-    position: absolute;
-    right: -150px;
-    bottom: -130px;
-    width: 270px;
-    height: 270px;
-    pointer-events: none;
-}
-
-.service-card-decor__ring {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 50%;
-    box-sizing: border-box;
-    transform: translate(-50%, -50%);
-}
-
-.service-card-decor__ring--outer {
-    width: 250px;
-    height: 250px;
-    border: 60px solid #f1f5f9;
-}
-
-.service-card-decor__ring--inner {
-    width: 270px;
-    height: 270px;
-    border: 2px solid #f1f5f9;
-}
-
-.service-card-decor--muted .service-card-decor__ring--outer,
-.service-card-decor--muted .service-card-decor__ring--inner {
-    border-color: rgba(241, 245, 249, 0.35);
-}
-
 .services-trust-icon {
     animation: services-trust-pulse 3s ease-in-out infinite;
 }
@@ -454,11 +463,18 @@ function cardSpanClass(columns?: ServiceCard['columns'] | 'col-span-full') {
 
     .service-card,
     .service-card:hover,
+    .service-card__index,
+    .service-card__accent,
+    .service-card__icon,
     .custom-service,
     .custom-service:hover,
     .custom-service__feature:hover {
         transition: none;
         transform: none;
+    }
+
+    .service-card:hover .service-card__accent {
+        width: 0;
     }
 
     .services-trust-icon,

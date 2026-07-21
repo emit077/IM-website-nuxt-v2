@@ -137,12 +137,12 @@ function onTouchEnd(e: TouchEvent) {
     <div class="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-indigo-300/20 blur-3xl"
       aria-hidden="true" />
 
-    <div class="relative mx-auto max-w-[1200px]">
-      <CardHeader :badge="headerContent.badge" :title="headerContent.title"
-        :description="headerContent.description" :classes="headerContent.classes" />
+    <div class="container-page relative">
+      <CardHeader :badge="headerContent.badge" :title="headerContent.title" :description="headerContent.description"
+        :classes="headerContent.classes" />
 
       <div
-        class="mt-8 overflow-hidden rounded-[2rem] border border-blue-100/80 bg-white/85 p-4 shadow-[0_24px_70px_rgba(37,99,235,0.14)] backdrop-blur-xl sm:p-5 md:p-6">
+        class="mt-8 overflow-hidden rounded-[2rem] border border-blue-100/80 bg-white/85 p-4 shadow-[0_24px_70px_rgba(37,99,235,0.14)] backdrop-blur-xl sm:p-5 md:p-6 ">
         <article :key="`testimonial-${active}`" v-motion :initial="{ opacity: 0, y: 14 }" :enter="{
           opacity: 1,
           y: 0,

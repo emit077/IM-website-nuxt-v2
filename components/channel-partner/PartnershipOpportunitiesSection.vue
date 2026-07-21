@@ -6,7 +6,7 @@ import { partnershipOpportunitiesSection, partnershipTiers } from '~/data/channe
 </script>
 
 <template>
-  <section id="partnership-opportunities" class="relative scroll-mt-20 section-surface-muted section-py"
+  <section id="partnership-opportunities" class="relative scroll-mt-20 bg-white section-py"
     aria-labelledby="partnership-opportunities-heading">
     <div class="container-page">
       <CardHeader heading-id="partnership-opportunities-heading" :badge="partnershipOpportunitiesSection.kicker"

@@ -53,7 +53,7 @@ function itemEnterDelay(index: number) {
           <div class="min-w-0 transition-transform duration-300 group-hover:translate-x-0.5">
             <p class="font-display text-xl font-extrabold leading-none tracking-tight text-slate-900 sm:text-2xl"
               v-html="item.value" />
-            <p class="mt-1 text-xs font-medium text-slate-500 sm:text-sm" v-html="item.label" />
+            <p class="mt-1 text-xs font-medium text-slate-500 sm:text-sm capitalize" v-html="item.label" />
           </div>
         </div>
       </div>

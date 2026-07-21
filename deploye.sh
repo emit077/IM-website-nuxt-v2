@@ -30,13 +30,50 @@ fi
 
 export NODE_ENV=production
 
-echo "Building static site (repo: $REPO, base: $NUXT_APP_BASE_URL)..."
-npm run generate
-
 OUT="$ROOT/.output/public"
+
+# Concurrent `nuxt dev` can leave `nuxt generate` hanging after a successful build.
+if pgrep -f '[n]uxt dev' >/dev/null 2>&1; then
+  echo "warning: nuxt dev appears to be running — generate may hang; stop it if deploy stalls." >&2
+fi
+
+echo "Building static site (repo: $REPO, base: $NUXT_APP_BASE_URL)..."
+# Nuxt generate sometimes never exits after writing .output/public (open handles).
+# Run it in the background and continue once the static site is ready.
+rm -rf "$OUT"
+npm run generate &
+GEN_PID=$!
+
+i=0
+while [ ! -f "$OUT/index.html" ]; do
+  i=$((i + 1))
+  if [ "$i" -gt 300 ]; then
+    echo "error: timed out waiting for $OUT/index.html" >&2
+    kill "$GEN_PID" 2>/dev/null || true
+    exit 1
+  fi
+  if ! kill -0 "$GEN_PID" 2>/dev/null; then
+    wait "$GEN_PID" || true
+    break
+  fi
+  sleep 1
+done
+
 if [ ! -f "$OUT/index.html" ]; then
   echo "error: $OUT/index.html missing after generate" >&2
   exit 1
+fi
+
+# Give Nitro a moment to finish writing, then stop a hung generate process.
+if kill -0 "$GEN_PID" 2>/dev/null; then
+  sleep 5
+  if kill -0 "$GEN_PID" 2>/dev/null; then
+    echo "Generate finished writing output but process hung; terminating pid $GEN_PID..."
+    kill "$GEN_PID" 2>/dev/null || true
+    sleep 2
+    kill -9 "$GEN_PID" 2>/dev/null || true
+  fi
+  wait "$GEN_PID" 2>/dev/null || true
 fi
 
 touch "$OUT/.nojekyll"

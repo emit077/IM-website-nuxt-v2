@@ -23,8 +23,7 @@ const levels = computed(() =>
         :classes="territorySection.classes" />
 
       <div class="relative mt-10 overflow-hidden rounded-[28px] border border-slate-200/90 bg-white shadow-soft"
-        v-motion :initial="{ opacity: 0, y: 18 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
+        v-motion :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
         <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-[0.24]"
           style="background-image: radial-gradient(#cbd5e1 0.45px, transparent 0.45px); background-size: 22px 22px;" />
         <div aria-hidden="true"
@@ -42,18 +41,16 @@ const levels = computed(() =>
                   Broad coverage to precise delivery
                 </h3>
               </div>
-              <span
-                class="shrink-0 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-blue-700">
-                8 Levels
-              </span>
             </div>
 
-            <div class="relative mt-6 overflow-hidden rounded-2xl border border-slate-200/80 bg-gradient-to-br from-blue-50/80 to-indigo-50/40 shadow-[0_12px_40px_-20px_rgba(37,99,235,0.35)]">
+            <div
+              class="relative mt-6 overflow-hidden rounded-2xl border border-slate-200/80 bg-gradient-to-br from-blue-50/80 to-indigo-50/40 shadow-[0_12px_40px_-20px_rgba(37,99,235,0.35)]">
               <img :src="territoryMapImage" alt="India territory map showing national to pincode-level coverage"
                 class="h-auto w-full object-cover" loading="lazy" decoding="async" />
 
               <!-- Overlay badges -->
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/25 via-transparent to-transparent"
+              <div
+                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/25 via-transparent to-transparent"
                 aria-hidden="true" />
               <div class="absolute left-4 top-4 flex flex-col gap-2 sm:left-5 sm:top-5">
                 <span
@@ -69,22 +66,6 @@ const levels = computed(() =>
               </div>
             </div>
 
-            <!-- City strip -->
-            <div class="mt-4">
-              <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">Active across India</p>
-              <div class="mt-2.5 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                <div v-for="city in territorySection.featuredCities" :key="city.image"
-                  class="group relative h-14 w-20 shrink-0 overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100 shadow-sm sm:h-16 sm:w-24">
-                  <img :src="usePublicAsset(`assets/img/city-img/${city.image}.png`)" :alt="`${city.label} territory`"
-                    class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    loading="lazy" decoding="async" />
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" aria-hidden="true" />
-                  <span class="absolute bottom-1 left-1.5 text-[9px] font-bold text-white sm:text-[10px]">
-                    {{ city.label }}
-                  </span>
-                </div>
-              </div>
-            </div>
 
             <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3" role="list">
               <li v-for="benefit in territorySection.benefits" :key="benefit.label"
@@ -106,8 +87,8 @@ const levels = computed(() =>
             </p>
 
             <ol class="relative mt-6 space-y-0" role="list">
-              <li v-for="(level, i) in levels" :key="level.label" class="relative flex gap-4 pb-5 last:pb-0"
-                v-motion :initial="{ opacity: 0, x: 12 }"
+              <li v-for="(level, i) in levels" :key="level.label" class="relative flex gap-4 pb-5 last:pb-0" v-motion
+                :initial="{ opacity: 0, x: 12 }"
                 :visibleOnce="{ opacity: 1, x: 0, transition: { delay: 70 + i * 45, duration: 400 } }">
                 <div class="relative flex flex-col items-center">
                   <span
@@ -133,10 +114,7 @@ const levels = computed(() =>
 
         <div class="relative border-t border-slate-100 bg-[#f6f8fd]/60 px-6 py-4 sm:px-8">
           <p class="flex items-start gap-2.5 text-[13px] leading-relaxed text-slate-600 sm:items-center sm:text-sm">
-            <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-blue-100 text-blue-600"
-              aria-hidden="true">
-              <Icon icon="mdi:information-outline" class="h-4 w-4" />
-            </span>
+            <Icon icon="mdi:information-outline" class="h-4 w-4" />
             {{ territorySection.note }}
           </p>
         </div>

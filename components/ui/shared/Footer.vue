@@ -22,6 +22,7 @@ const navLinks = [
   { label: 'Success stories', to: '/success-stories' },
   { label: 'Partner programme', to: '/#partner-programme' },
   { label: 'Channel partner program', to: '/channel-partner' },
+  { label: 'Partner investment model', to: '/channel-partner/investment' },
   { label: 'Hire for institute', to: '/institutions' },
   { label: 'Join as a tutor', to: '/tutors' },
   { label: 'Careers', to: '/careers' },

@@ -5,7 +5,7 @@ import { whyPartnerSection, whyPartnerReasons } from '~/data/channel-partner'
 </script>
 
 <template>
-  <section id="why-partner" class="relative scroll-mt-20 bg-white section-py" aria-labelledby="why-partner-heading">
+  <section id="why-partner" class="relative scroll-mt-20 section-surface-muted section-py" aria-labelledby="why-partner-heading">
     <div class="container-page">
       <CardHeader heading-id="why-partner-heading" :badge="whyPartnerSection.kicker" :title="whyPartnerSection.title"
         :description="whyPartnerSection.description" :classes="whyPartnerSection.classes" />

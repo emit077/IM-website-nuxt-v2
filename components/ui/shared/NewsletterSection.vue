@@ -37,14 +37,14 @@ function onSubmit() {
 </script>
 
 <template>
-  <section id="newsletter" class="relative overflow-hidden section-surface-muted py-10" aria-label="Newsletter signup">
-
-    <div class=" relative">
-      <div class="relative mx-auto  overflow-hidden rounded-[2rem]  sm:px-8 sm:pb-10" v-motion
-        :initial="{ opacity: 0, y: 20 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
+  <section id="newsletter" class="relative overflow-hidden section-surface-muted section-py"
+    aria-label="Newsletter signup">
+    <div class="container-page relative">
+      <div class="relative overflow-hidden rounded-[2rem]" v-motion :initial="{ opacity: 0, y: 20 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
         <div aria-hidden="true"
           class="pointer-events-none absolute inset-x-8 top-0 h-32 rounded-b-full bg-white/70 blur-2xl" />
-        <div class="relative mx-auto ">
+        <div class="relative mx-auto">
           <CardHeader heading-id="newsletter-heading" :badge="headerContent.badge" :title="headerContent.title"
             :description="headerContent.description" :classes="headerContent.classes" />
         </div>
@@ -64,7 +64,7 @@ function onSubmit() {
               <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
             </button>
           </form>
-          <p id="newsletter-hint" class="mx-auto mt-2  text-xs leading-relaxed text-slate-500">
+          <p id="newsletter-hint" class="mx-auto mt-2 text-xs leading-relaxed text-slate-500">
             Your information will never be shared with third parties, and you can unsubscribe from our updates anytime.
           </p>
         </div>

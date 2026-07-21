@@ -21,9 +21,10 @@ function markLogoFailed(id: string) {
 </script>
 
 <template>
-  <section class="relative border-slate-200/70 bg-white" aria-label="Partner and recognition ecosystem">
-    <div class="container-page py-8 text-center">
-      <p class="mb-7 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+  <section class="relative border-slate-200/70 bg-white section-py-compact"
+    aria-label="Partner and recognition ecosystem">
+    <div class="container-page text-center">
+      <p class="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
         Recognised &amp; Partnered With
       </p>
 

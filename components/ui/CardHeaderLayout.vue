@@ -77,7 +77,7 @@ const dynamicClass = computed(() => {
   height: 2px;
   position: relative;
   bottom: 4px;
-  left: 10px;
+  margin-left: 10px;
   border-radius: 3px;
 }
 
@@ -88,7 +88,7 @@ const dynamicClass = computed(() => {
   height: 2px;
   position: relative;
   bottom: 4px;
-  right: 10px;
+  margin-right: 10px;
   border-radius: 3px;
 }
 </style>

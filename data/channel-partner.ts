@@ -6,7 +6,6 @@ export type ProcessStep = {
   title: string
   description: string
   points?: string[]
-  accent: 'violet' | 'blue' | 'emerald' | 'orange' | 'indigo'
 }
 
 export type PartnershipTier = {
@@ -35,13 +34,12 @@ export type PartnerFaqItem = {
 
 export const heroContent = {
   badge: 'Channel Partner Program',
-  title: 'Partner with Indian Mentors – <span class="text-gradient-brand">Personalised Tutoring Services</span>',
+  title: 'Become a <span class="text-gradient-brand">Channel Partner</span>',
   subtitle:
-    '<span class="text-gradient-brand">Indian Mentors</span> — Empowering Education Through Trusted Mentorship',
+    '<span class="text-gradient-brand">Indian Mentors</span> - Authorised Reseller Program for Education Consultants',
   description:
-    'Build a rewarding education business by collaborating with Indian Mentors, a growing platform dedicated to delivering high-quality personalised tutoring services to students across India. Our Channel Partner (Authorised Reseller) Program enables individuals, education consultants, coaching centres, and entrepreneurs to offer trusted tutoring solutions in their city while earning attractive commissions.',
-  caption: 'Start your journey in the fast-growing personalised education sector today.',
-  backgroundImage: 'assets/img/hero/hero-4.png',
+    'Build a rewarding education business by collaborating with Indian Mentors, a growing platform dedicated to delivering high-quality personalised tutoring services to students across India. ',
+  backgroundImage: 'assets/img/hero/hero-1.png',
   contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
   primaryCta: { label: 'Apply for Channel Partnership', href: '#partner-register' },
   secondaryCta: { label: 'Explore Available Territories', href: '#available-territories' },
@@ -79,6 +77,81 @@ export const aboutSection = {
   points: [
     'Partners operate within defined territories and help students access one-to-one tutoring solutions tailored to their learning needs.',
     'Our structured partnership model ensures that partners receive operational guidance, lead support, and business opportunities while contributing to the growth of quality education services.',
+  ],
+}
+
+export const partnerRoleSection = {
+  kicker: 'Your Role',
+  title: 'What Does a <span class="text-gradient-brand">Channel Partner</span> Do?',
+  classes: '!px-0 !py-0',
+  description:
+    'As an Authorised Reseller, you operate as the local representative of Indian Mentors, managing academic service coordination within your territory.',
+  responsibilitiesTitle: 'Key Responsibilities',
+  responsibilities: [
+    'Manage local tutoring operations within your assigned territory',
+    'Coordinate student and parent registrations',
+    'Onboard and verify qualified tutors in your region',
+    'Support demo session scheduling between tutors and students',
+    'Assist with student enrollment and service coordination',
+    'Maintain quality standards for tutoring services',
+    'Build strong local academic networks',
+  ],
+  highlights: [
+    {
+      iconMdi: 'mdi:map-marker-radius-outline',
+      title: 'Territory-Based',
+      description: 'Operate exclusively in your assigned region with full autonomy.',
+    },
+    {
+      iconMdi: 'mdi:account-group-outline',
+      title: 'Community Focus',
+      description: 'Build lasting relationships with students, parents, and tutors.',
+    },
+    {
+      iconMdi: 'mdi:tablet-dashboard',
+      title: 'Platform Support',
+      description: 'Stay connected to our centralized digital management system.',
+    },
+    {
+      iconMdi: 'mdi:account-plus-outline',
+      title: 'Network Growth',
+      description: 'Expand the tutor and student network in your local area.',
+    },
+  ],
+}
+
+export const revenueSplitSection = {
+  kicker: 'Revenue Model',
+  title: 'The 90/10 Split — Visualised',
+  description:
+    'For every subscription rupee collected in your territory, <strong class="text-white">90% flows to you</strong>. The platform retains only 10% to maintain and improve the national ecosystem.',
+  partnerShare: {
+    label: 'Channel Partner',
+    percent: 90,
+    detail: 'Subscription Revenue',
+  },
+  platformShare: {
+    label: 'Indian Mentors Platform',
+    shortLabel: 'Indian Mentors',
+    percent: 10,
+    detail: 'Platform Fee',
+  },
+  highlights: [
+    {
+      iconMdi: 'mdi:wallet-outline',
+      title: 'Highest Partner Earnings',
+      description: 'Keep the majority of every subscription from your territory.',
+    },
+    {
+      iconMdi: 'mdi:shield-check-outline',
+      title: 'Transparent Sharing',
+      description: 'Clear 90/10 split with no hidden deductions or fees.',
+    },
+    {
+      iconMdi: 'mdi:rocket-launch-outline',
+      title: 'Platform Handles the Rest',
+      description: 'Tech, support, and national brand stay with Indian Mentors.',
+    },
   ],
 }
 
@@ -199,7 +272,6 @@ export const territorySection = {
     { label: 'Division', iconMdi: 'mdi:view-grid-outline', description: 'Administrative divisions within states', accent: 'cyan' },
     { label: 'District', iconMdi: 'mdi:map-marker-radius-outline', description: 'District-wise partner allocation', accent: 'emerald' },
     { label: 'City', iconMdi: 'mdi:city-variant-outline', description: 'City or town-level operations', accent: 'teal' },
-    { label: 'Area / Locality', iconMdi: 'mdi:home-group', description: 'Neighbourhood and locality coverage', accent: 'sky' },
     { label: 'Pincode', iconMdi: 'mdi:mailbox-outline', description: 'Precise service delivery at pincode level', accent: 'amber' },
   ] satisfies TerritoryLevel[],
   benefits: [
@@ -225,6 +297,12 @@ export const processSection = {
   classes: '!px-0 !py-0',
   description:
     'Our partnership journey is designed to be simple, transparent, and professionally guided.',
+  journeyLabel: 'Your 5-step journey',
+  ctaTitle: 'Ready to start Step 01?',
+  ctaDescription:
+    'Submit your application today and our partnership team will guide you from discussion to launch.',
+  primaryCta: { label: 'Start Your Partnership Application', href: '#partner-register' },
+  secondaryCta: { label: 'Talk to a Partnership Expert', href: 'tel:+917389563564' },
 }
 
 export const processSteps: ProcessStep[] = [
@@ -234,7 +312,6 @@ export const processSteps: ProcessStep[] = [
     title: 'Submit Partnership Application',
     description:
       'Complete the online partnership form to express your interest in becoming a Channel Partner.',
-    accent: 'violet',
   },
   {
     no: '02',
@@ -242,7 +319,6 @@ export const processSteps: ProcessStep[] = [
     title: 'Initial Discussion',
     description:
       'Our team will conduct a discussion to understand your background, territory preference, and business goals.',
-    accent: 'blue',
   },
   {
     no: '03',
@@ -250,7 +326,6 @@ export const processSteps: ProcessStep[] = [
     title: 'Partnership Approval',
     description:
       'Eligible applicants will receive confirmation along with details regarding territory allocation and partnership terms.',
-    accent: 'emerald',
   },
   {
     no: '04',
@@ -263,7 +338,6 @@ export const processSteps: ProcessStep[] = [
       'Student enrollment workflow',
       'CRM and lead management system',
     ],
-    accent: 'orange',
   },
   {
     no: '05',
@@ -275,7 +349,6 @@ export const processSteps: ProcessStep[] = [
       'Coordinating demo sessions',
       'Facilitating student enrollments',
     ],
-    accent: 'indigo',
   },
 ]
 

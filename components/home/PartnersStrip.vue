@@ -17,34 +17,34 @@ function markLogoFailed(id: string) {
 </script>
 
 <template>
-  <section class="relative bg-white/60 backdrop-blur-sm pb-10" aria-label="Curriculum and partner ecosystem">
-    <div class="container-page py-5 text-center">
-      <p class="text-xs font-semibold tracking-[0.18em] uppercase text-slate-500 shrink-0 text-center mb-5">
+  <section class="relative bg-white/60 backdrop-blur-sm section-py-compact"
+    aria-label="Curriculum and partner ecosystem">
+    <div class="container-page text-center">
+      <p class="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
         Trusted by parents for boards across India
       </p>
-      <div class="flex flex-col md:flex-row md:items-center gap-5 md:gap-10" v-motion :initial="{ opacity: 0, y: 12 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
 
-        <div class="relative flex-1 overflow-hidden">
-          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-2.5 sm:gap-3">
-            <div v-for="(p, i) in partners" :key="p.id"
-              class="flex items-center text-left gap-2.5 rounded-xl border border-slate-200 bg-white px-2.5 sm:px-3 py-2.5 hover:border-blue-200 hover:shadow-sm transition-all duration-300"
-              v-motion :initial="{ opacity: 0, y: 8 }" :visibleOnce="{
-                opacity: 1,
-                y: 0,
-                transition: { duration: 500, delay: i * 70 },
-              }">
-              <span class="grid h-11 w-11 place-items-center overflow-hidden shrink-0">
-                <img v-if="!failedLogos[p.id]" :src="usePublicAsset(p.logo)" :alt="`${p.name} logo`"
-                  class="h-10 w-10 object-contain" loading="lazy" @error="markLogoFailed(p.id)" />
-                <span v-else class="text-[10px] font-bold text-slate-600">
-                  {{ p.fallback }}
-                </span>
+      <div class="group relative w-full overflow-hidden" v-motion :initial="{ opacity: 0, y: 12 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
+        <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent">
+        </div>
+        <div
+          class="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent">
+        </div>
+        <div
+          class="flex w-max items-center gap-4 animate-marquee group-hover:[animation-play-state:paused] sm:gap-5 motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center">
+          <div v-for="(p, i) in [...partners, ...partners]" :key="`${p.id}-${i}`"
+            class="flex shrink-0 items-center gap-2.5 whitespace-nowrap rounded-xl border border-slate-200 bg-white px-3 py-2.5 transition-all duration-300 hover:border-blue-200 hover:shadow-sm">
+            <span class="grid h-10 w-10 shrink-0 place-items-center overflow-hidden">
+              <img v-if="!failedLogos[p.id]" :src="usePublicAsset(p.logo)" :alt="`${p.name} logo`"
+                class="h-9 w-9 object-contain" loading="lazy" @error="markLogoFailed(p.id)" />
+              <span v-else class="text-[10px] font-bold text-slate-600">
+                {{ p.fallback }}
               </span>
-              <span class="text-xs sm:text-sm font-semibold text-slate-700 leading-tight">
-                {{ p.name }}
-              </span>
-            </div>
+            </span>
+            <span class="text-sm font-semibold leading-none text-slate-700">
+              {{ p.name }}
+            </span>
           </div>
         </div>
       </div>

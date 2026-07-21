@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import ChannelPartnerHeroSection from '~/components/channel-partner/ChannelPartnerHeroSection.vue'
 import AboutPartnershipSection from '~/components/channel-partner/AboutPartnershipSection.vue'
+import PartnerRoleSection from '~/components/channel-partner/PartnerRoleSection.vue'
 import WhyPartnerSection from '~/components/channel-partner/WhyPartnerSection.vue'
 import PartnershipOpportunitiesSection from '~/components/channel-partner/PartnershipOpportunitiesSection.vue'
+import RevenueSplitSection from '~/components/channel-partner/RevenueSplitSection.vue'
 import TerritoryStructureSection from '~/components/channel-partner/TerritoryStructureSection.vue'
 import PartnershipProcessSection from '~/components/channel-partner/PartnershipProcessSection.vue'
 import PartnerEligibilitySection from '~/components/channel-partner/PartnerEligibilitySection.vue'
@@ -32,8 +34,17 @@ useSeoMeta({
   <div>
     <ChannelPartnerHeroSection />
     <AboutPartnershipSection />
+    <PartnerRoleSection />
     <WhyPartnerSection />
     <PartnershipOpportunitiesSection />
+    <RevenueSplitSection />
+    <div class="container-page -mt-4 mb-2 pb-10 text-center">
+      <NuxtLink to="/channel-partner/investment"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-blue-700 transition hover:text-blue-800">
+        Explore Investment & Revenue-Sharing Model
+        <span aria-hidden="true">→</span>
+      </NuxtLink>
+    </div>
     <TerritoryStructureSection />
     <PartnershipProcessSection />
     <PartnerEligibilitySection />

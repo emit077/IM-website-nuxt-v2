@@ -91,8 +91,9 @@ function wrapBind(slide: BannerSlide): Record<string, string> | { to: string } {
 </script>
 
 <template>
-  <section v-if="list.length > 0" class="container-page pt-6 pb-2 sm:pt-8 sm:pb-3"
+  <section v-if="list.length > 0" class="relative section-py-compact"
     :aria-label="`${props.title}. Promotional image carousel.`">
+    <div class="container-page">
     <CardHeader theme="light" :badge="headerContent.badge" :title="headerContent.title"
       :description="headerContent.description" :classes="headerContent.classes" />
 
@@ -108,6 +109,7 @@ function wrapBind(slide: BannerSlide): Record<string, string> | { to: string } {
           </component>
         </template>
       </CarouselLayout>
+    </div>
     </div>
   </section>
 </template>
