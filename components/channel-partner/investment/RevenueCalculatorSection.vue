@@ -10,9 +10,17 @@ const {
   subscriptionPartnerShare,
   configureTitle,
   note,
+  periodTabs,
 } = revenueCalculatorSection
 
-type Period = 'monthly' | 'annual'
+type Period = (typeof periodTabs)[number]['id']
+
+const PERIOD_MONTHS: Record<Period, number> = {
+  monthly: 1,
+  quarterly: 3,
+  halfYearly: 6,
+  annual: 12,
+}
 
 const studentCount = ref(studentsCfg.default)
 const subscriptionFee = ref(subCfg.default)
@@ -24,20 +32,18 @@ const subShare = subscriptionPartnerShare / 100
 const subscriptionMonthlyTotal = computed(() => studentCount.value * subscriptionFee.value)
 const subscriptionPartnerMonthly = computed(() => Math.round(subscriptionMonthlyTotal.value * subShare))
 
-const subscriptionPartnerAnnual = computed(() => subscriptionPartnerMonthly.value * 12)
 const totalAnnual = computed(() => subscriptionMonthlyTotal.value * 12)
 
 const subscriptionPlatformMonthly = computed(
   () => subscriptionMonthlyTotal.value - subscriptionPartnerMonthly.value,
 )
-const subscriptionPlatformAnnual = computed(() => subscriptionPlatformMonthly.value * 12)
+
+const periodMonths = computed(() => PERIOD_MONTHS[period.value])
 
 const partnerShare = { label: 'Channel Partner', percent: subscriptionPartnerShare }
 const platformShare = { label: 'Indian Mentors', percent: 100 - subscriptionPartnerShare }
 
-const heroAmount = computed(() =>
-  period.value === 'annual' ? subscriptionPartnerAnnual.value : subscriptionPartnerMonthly.value,
-)
+const heroAmount = computed(() => subscriptionPartnerMonthly.value * periodMonths.value)
 
 const displayHero = ref(heroAmount.value)
 let rafId = 0
@@ -117,14 +123,11 @@ const donutSegments = computed(() => {
   ]
 })
 
-const totalRevenue = computed(() =>
-  period.value === 'annual' ? totalAnnual.value : subscriptionMonthlyTotal.value,
-)
+const totalRevenue = computed(() => subscriptionMonthlyTotal.value * periodMonths.value)
 
 const legendRows = computed(() => {
-  const isAnnual = period.value === 'annual'
-  const partnerAmount = isAnnual ? subscriptionPartnerAnnual.value : subscriptionPartnerMonthly.value
-  const platformAmount = isAnnual ? subscriptionPlatformAnnual.value : subscriptionPlatformMonthly.value
+  const partnerAmount = subscriptionPartnerMonthly.value * periodMonths.value
+  const platformAmount = subscriptionPlatformMonthly.value * periodMonths.value
   return [
     {
       key: 'partner',
@@ -256,14 +259,12 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
                     <p class="mt-0.5 text-xs text-slate-400">{{ subscriptionFormula }}</p>
                   </div>
                 </div>
-                <div class="inline-flex rounded-lg bg-slate-100 p-1" role="tablist" aria-label="Earnings period">
-                  <button v-for="tab in [
-                    { id: 'monthly' as const, label: 'Monthly' },
-                    { id: 'annual' as const, label: 'Annual' },
-                  ]" :key="tab.id" type="button" role="tab" :aria-selected="period === tab.id" :class="[
-                    'rounded-md px-3.5 py-1.5 text-xs font-semibold transition sm:text-sm',
-                    period === tab.id ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700',
-                  ]" @click="period = tab.id">
+                <div class="inline-flex flex-wrap rounded-lg bg-slate-100 p-1" role="tablist" aria-label="Earnings period">
+                  <button v-for="tab in periodTabs" :key="tab.id" type="button" role="tab"
+                    :aria-selected="period === tab.id" :class="[
+                      'rounded-md px-2.5 py-1.5 text-xs font-semibold transition sm:px-3.5 sm:text-sm',
+                      period === tab.id ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-700',
+                    ]" @click="period = tab.id">
                     {{ tab.label }}
                   </button>
                 </div>

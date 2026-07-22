@@ -107,7 +107,7 @@ function valueClass(index: number) {
 
 <template>
   <div class="w-full" role="img" :aria-label="ariaLabel">
-    <div :key="chartKey ?? 'bar-chart'" :class="isFill ? 'mx-auto w-full max-w-md' : 'mx-auto w-fit'">
+    <div :key="chartKey ?? 'bar-chart'" :class="isFill ? 'mx-auto w-full max-w-xl' : 'mx-auto w-fit'">
       <!-- Absolute layout -->
       <template v-if="!isFill">
         <div class="relative flex items-end justify-center">

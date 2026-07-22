@@ -3,6 +3,7 @@ import { Icon } from '@iconify/vue'
 import type { BarChartDataset } from '~/components/ui/BarChart.vue'
 import BarChart from '~/components/ui/BarChart.vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import { revenueSplitSection } from '~/data/channel-partner'
 
 const { partnerShare, platformShare, highlights } = revenueSplitSection
@@ -13,7 +14,7 @@ const dataset: BarChartDataset = {
     {
       label: 'Partner Share',
       data: partnerShare.percent,
-      bgColor: 'bg-green-300',
+      bgColor: 'bg-emerald-300',
       detail: partnerShare.detail,
     },
     {
@@ -30,7 +31,7 @@ const dataset: BarChartDataset = {
   <section id="revenue-split" class="relative scroll-mt-20 section-py" aria-labelledby="revenue-split-heading">
     <div class="container-page">
       <div
-        class="relative overflow-hidden rounded-[22px] border border-indigo-300/35 bg-gradient-to-br from-indigo-950 via-indigo-900 to-indigo-700 px-6 py-8 text-white shadow-[0_24px_55px_-30px_rgba(37,99,235,0.85)] sm:rounded-[28px] sm:px-8 sm:py-10 lg:px-12 lg:py-12"
+        class="relative overflow-hidden rounded-[22px] border border-indigo-300/35 bg-gradient-to-br from-indigo-950 via-indigo-900 to-indigo-700 px-6 pt-8 text-white shadow-[0_24px_55px_-30px_rgba(37,99,235,0.85)] sm:rounded-[28px] sm:px-8 sm:pt-10 lg:px-12 lg:pt-12"
         v-motion :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
         <div aria-hidden="true"
           class="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-amber-400/10 blur-3xl" />
@@ -63,7 +64,35 @@ const dataset: BarChartDataset = {
               show-gridlines :gridline-count="4" />
           </div>
         </div>
+        <div class="mt-8 pb-10 text-center">
+          <NuxtLink to="/channel-partner/investment"
+            class="btn-secondary group inline-flex items-center gap-2.5 bg-white px-6 py-3.5 text-sm hover:text-blue-950 sm:px-8 sm:text-[15px]">
+            Explore Investment & Revenue-Sharing Model
+            <IconArrowRight
+              class="hero-cta-arrow h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.hero-cta-arrow {
+  animation: hero-arrow-loop 0.95s ease-in-out infinite;
+}
+
+@keyframes hero-arrow-loop {
+
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateX(4px);
+    opacity: 0.7;
+  }
+}
+</style>

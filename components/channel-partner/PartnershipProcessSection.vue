@@ -99,7 +99,7 @@ function goNext() {
             "
             :aria-expanded="activeIndex === i"
             :aria-controls="`process-mobile-panel-${step.no}`"
-            :aria-label="`Step ${step.no}: ${step.title}`"
+            :aria-label="`Step ${step.no}: ${step.tabTitle}`"
             @click="selectStep(i)"
           >
             <Icon
@@ -138,7 +138,7 @@ function goNext() {
                   Step {{ step.no }}
                 </span>
                 <span class="mt-0.5 block font-display text-[15px] font-bold leading-snug text-slate-900">
-                  {{ step.title }}
+                  {{ step.tabTitle }}
                 </span>
               </span>
               <Icon
@@ -232,7 +232,7 @@ function goNext() {
               class="line-clamp-2 text-[13px] font-semibold leading-snug"
               :class="activeIndex === i ? 'text-white' : 'text-slate-800'"
             >
-              {{ step.title }}
+              {{ step.tabTitle }}
             </span>
           </button>
         </div>

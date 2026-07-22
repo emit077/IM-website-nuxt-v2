@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import {
   whoCanApplySection,
   eligibleApplicants,
@@ -9,7 +10,8 @@ import {
 </script>
 
 <template>
-  <section id="who-can-apply" class="relative scroll-mt-20 overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 section-py"
+  <section id="who-can-apply"
+    class="relative scroll-mt-20 overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 section-py"
     aria-labelledby="who-can-apply-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
@@ -20,16 +22,9 @@ import {
       <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
         <div class="lg:col-span-7" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-          <p class="badge-ui-left text-sm font-semibold uppercase tracking-wide text-blue-200 before:bg-blue-200 after:bg-blue-200">
-            {{ whoCanApplySection.kicker }}
-          </p>
-          <h2 id="who-can-apply-heading"
-            class="mt-3 font-display text-2xl font-bold tracking-tight text-white sm:text-3xl">
-            {{ whoCanApplySection.title }}
-          </h2>
-          <p class="mt-4 max-w-xl text-sm leading-relaxed text-blue-100 sm:text-base">
-            {{ whoCanApplySection.description }}
-          </p>
+          <CardHeader heading-id="revenue-split-heading" align="left" :badge="whoCanApplySection.kicker" show
+            theme="dark" :title="whoCanApplySection.title" :description="whoCanApplySection.description"
+            classes="!px-0 !py-0" />
 
           <p class="mt-6 text-sm font-semibold text-white">{{ whoCanApplySection.suitableLabel }}</p>
           <ul class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2" role="list">
@@ -38,8 +33,7 @@ import {
               :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 40, duration: 400 } }">
               <div
                 class="flex items-center gap-3 rounded-xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-sm">
-                <span
-                  class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white/15 text-white"
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white/15 text-white"
                   aria-hidden="true">
                   <Icon :icon="applicant.iconMdi" class="h-4 w-4" />
                 </span>
@@ -66,8 +60,7 @@ import {
             <ul class="mt-6 space-y-3" role="list">
               <li v-for="item in eligibilityRequirements.items" :key="item"
                 class="flex items-center gap-3 rounded-xl bg-slate-50 px-4 py-3">
-                <span
-                  class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-600 text-white"
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-600 text-white"
                   aria-hidden="true">
                   <IconCheck class="h-3.5 w-3.5" />
                 </span>

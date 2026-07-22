@@ -38,13 +38,7 @@ useSeoMeta({
     <WhyPartnerSection />
     <PartnershipOpportunitiesSection />
     <RevenueSplitSection />
-    <div class="container-page -mt-4 mb-2 pb-10 text-center">
-      <NuxtLink to="/channel-partner/investment"
-        class="inline-flex items-center gap-2 text-sm font-semibold text-blue-700 transition hover:text-blue-800">
-        Explore Investment & Revenue-Sharing Model
-        <span aria-hidden="true">→</span>
-      </NuxtLink>
-    </div>
+
     <TerritoryStructureSection />
     <PartnershipProcessSection />
     <PartnerEligibilitySection />

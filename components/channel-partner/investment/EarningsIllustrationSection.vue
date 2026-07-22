@@ -11,31 +11,46 @@ const {
   annualProjection,
   scale,
   scaleTabs,
+  scaleSubtitles,
   growthTip,
   closing,
 } = earningsIllustrationSection
 
-type ScalePeriod = 'monthly' | 'annual'
+type ScalePeriod = (typeof scaleTabs)[number]['id']
 const chartPeriod = ref<ScalePeriod>('monthly')
 
-const BAR_COLORS = ['bg-blue-300', 'bg-blue-500', 'bg-blue-700'] as const
+const BAR_COLORS = ['bg-blue-200', 'bg-blue-400', 'bg-blue-600', 'bg-blue-800'] as const
 
-const chartAriaLabel = computed(() =>
-  chartPeriod.value === 'monthly'
-    ? 'Partner monthly earnings by student count'
-    : 'Partner annual earnings by student count',
-)
+const PERIOD_ARIA: Record<ScalePeriod, string> = {
+  monthly: 'Partner monthly earnings by student count',
+  quarterly: 'Partner quarterly earnings by student count',
+  halfYearly: 'Partner half-yearly earnings by student count',
+  annual: 'Partner annual earnings by student count',
+}
+
+const chartAriaLabel = computed(() => PERIOD_ARIA[chartPeriod.value])
 
 const dataset = computed<BarChartDataset>(() => ({
   theme: 'light',
-  data: scale.map((row, i) => ({
-    label: String(row.students),
-    data: row.percent,
-    bgColor: BAR_COLORS[i % BAR_COLORS.length],
-    labelSuffix: 'students',
-    valueLabel: chartPeriod.value === 'monthly' ? row.monthly : row.annual,
-    valueLabelShort: chartPeriod.value === 'monthly' ? row.monthlyShort : row.annualShort,
-  })),
+  data: scale.map((row, i) => {
+    const period = chartPeriod.value
+    const valueByPeriod = {
+      monthly: { full: row.monthly, short: row.monthlyShort },
+      quarterly: { full: row.quarterly, short: row.quarterlyShort },
+      halfYearly: { full: row.halfYearly, short: row.halfYearlyShort },
+      annual: { full: row.annual, short: row.annualShort },
+    }[period]
+
+    return {
+      label: String(row.students),
+      data: row.percent,
+      bgColor: BAR_COLORS[i % BAR_COLORS.length],
+      labelSuffix: 'students',
+      valueLabel: valueByPeriod.full,
+      valueLabelShort: valueByPeriod.short,
+      highlight: row.highlight,
+    }
+  }),
 }))
 </script>
 
@@ -118,12 +133,12 @@ const dataset = computed<BarChartDataset>(() => ({
 
           <div class="flex flex-col  px-5 py-7 sm:px-8 sm:py-8 lg:col-span-7 lg:px-8 lg:py-9 border-l border-slate-200">
             <!-- tabs -->
-            <div class="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
-              <div class="inline-flex rounded-full border border-slate-200 bg-slate-100/80 p-1" role="tablist"
-                aria-label="Chart period">
+            <div class="flex flex-col items-center gap-3 sm:items-start">
+              <div class="inline-flex flex-wrap justify-center rounded-full border border-slate-200 bg-slate-100/80 p-1"
+                role="tablist" aria-label="Chart period">
                 <button v-for="tab in scaleTabs" :key="tab.id" type="button" role="tab"
                   :aria-selected="chartPeriod === tab.id" :class="[
-                    'rounded-full px-4 py-1.5 text-xs font-bold transition-colors sm:text-sm',
+                    'rounded-full px-3 py-1.5 text-xs font-bold transition-colors sm:px-4 sm:text-sm',
                     chartPeriod === tab.id
                       ? 'bg-blue-600 text-white shadow-sm'
                       : 'text-slate-600 hover:text-slate-900',
@@ -131,6 +146,9 @@ const dataset = computed<BarChartDataset>(() => ({
                   {{ tab.label }}
                 </button>
               </div>
+              <p class="text-xs font-medium text-slate-500 sm:text-sm">
+                {{ scaleSubtitles[chartPeriod] }}
+              </p>
             </div>
             <!-- bar chart -->
             <div class="mt-8 flex flex-1 items-center">
