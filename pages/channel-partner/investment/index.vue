@@ -3,6 +3,7 @@ import InvestmentHeroSection from '~/components/channel-partner/investment/Inves
 import InvestmentStructureSection from '~/components/channel-partner/investment/InvestmentStructureSection.vue'
 import SecurityDepositSection from '~/components/channel-partner/investment/SecurityDepositSection.vue'
 import TerritoryInvestmentTableSection from '~/components/channel-partner/investment/TerritoryInvestmentTableSection.vue'
+import TerritoryModelSection from '~/components/channel-partner/investment/TerritoryModelSection.vue'
 import RevenueSharingOverviewSection from '~/components/channel-partner/investment/RevenueSharingOverviewSection.vue'
 import EnrollmentFeeShareSection from '~/components/channel-partner/investment/EnrollmentFeeShareSection.vue'
 import SubscriptionShareSection from '~/components/channel-partner/investment/SubscriptionShareSection.vue'
@@ -36,6 +37,7 @@ useSeoMeta({
     <InvestmentStructureSection />
     <!-- <SecurityDepositSection /> -->
     <TerritoryInvestmentTableSection />
+    <TerritoryModelSection />
     <!-- <RevenueSharingOverviewSection /> -->
     <!-- <EnrollmentFeeShareSection /> -->
     <SubscriptionShareSection />

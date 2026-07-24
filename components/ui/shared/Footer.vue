@@ -23,6 +23,7 @@ const navLinks = [
   { label: 'Partner programme', to: '/#partner-programme' },
   { label: 'Channel partner program', to: '/channel-partner' },
   { label: 'Partner investment model', to: '/channel-partner/investment' },
+  { label: 'Platform access includes', to: '/channel-partner/platform-access' },
   { label: 'Hire for institute', to: '/institutions' },
   { label: 'Join as a tutor', to: '/tutors' },
   { label: 'Careers', to: '/careers' },

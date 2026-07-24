@@ -133,7 +133,7 @@ const legendRows = computed(() => {
       key: 'partner',
       label: partnerShare.label,
       percent: partnerShare.percent,
-      amount: formatInrDecimals(partnerAmount),
+      amount: formatCompactInr(partnerAmount),
       dotClass: 'bg-blue-600',
       highlight: true,
     },
@@ -141,7 +141,7 @@ const legendRows = computed(() => {
       key: 'platform',
       label: platformShare.label,
       percent: platformShare.percent,
-      amount: formatInrDecimals(platformAmount),
+      amount: formatCompactInr(platformAmount),
       dotClass: 'bg-blue-300',
       highlight: false,
     },
@@ -156,20 +156,20 @@ function formatInr(value: number) {
   }).format(value)
 }
 
-function formatInrDecimals(value: number) {
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  }).format(value)
+/** ₹ with L / Cr once past thousands (₹1L+). */
+function formatCompactInr(value: number) {
+  const abs = Math.abs(value)
+  if (abs >= 1_00_00_000) {
+    return `₹${trimAmount(value / 1_00_00_000)}Cr`
+  }
+  if (abs >= 1_00_000) {
+    return `₹${trimAmount(value / 1_00_000)}L`
+  }
+  return formatInr(value)
 }
 
-function formatLakhs(value: number) {
-  const lakhs = value / 100000
-  if (lakhs >= 100) return `₹${(lakhs / 100).toFixed(1)}Cr`
-  if (lakhs >= 1) return `₹${lakhs.toFixed(1)}L`
-  return formatInr(value)
+function trimAmount(n: number) {
+  return Number.parseFloat(n.toFixed(2)).toString()
 }
 
 function sliderPercent(value: number, min: number, max: number) {
@@ -239,7 +239,7 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
               </div>
             </div>
             <p class="text-sm leading-relaxed text-slate-400">
-              Total potential {{ formatLakhs(totalAnnual) }}. {{ note }}
+              Total potential {{ formatCompactInr(totalAnnual) }}. {{ note }}
             </p>
           </div>
 
@@ -312,7 +312,7 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
                     <span class="text-xs font-medium text-slate-500">Total revenue pool</span>
                     <span
                       class="whitespace-nowrap text-right font-display text-sm font-bold tabular-nums text-slate-700">
-                      {{ formatInrDecimals(totalRevenue) }}
+                      {{ formatCompactInr(totalRevenue) }}
                     </span>
                   </div>
                 </div>

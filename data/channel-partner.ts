@@ -50,20 +50,21 @@ export const heroContent = {
 
 export const heroTrustStats: TrustIndicatorItem[] = [
   {
-    value: '200+',
+    value: '1000+',
     label: 'Service Territories',
     icon: 'solar:map-point-bold-duotone',
-  },
-  {
-    value: '25+',
-    label: 'States & UTs',
-    icon: 'solar:map-bold-duotone',
   },
   {
     value: '100+',
     label: 'Channel Partners',
     icon: 'solar:users-group-rounded-bold-duotone',
   },
+  {
+    value: '25+',
+    label: 'States & UTs',
+    icon: 'solar:map-bold-duotone',
+  },
+
   {
     value: '100%',
     label: 'Transparent Earnings',
@@ -72,47 +73,25 @@ export const heroTrustStats: TrustIndicatorItem[] = [
 ]
 
 export const aboutSection = {
-  kicker: 'Channel Partner Program',
-  title: 'Unlock Growth With Our<span class="text-gradient-brand"> Channel Partner Program</span>',
+  kicker: 'Partnership Benefits',
+  title: 'Growth Through <span class="text-gradient-brand">Educational Collaboration</span>',
   classes: '!px-0 !py-0',
   description:
-    'Indian Mentors is expanding its nationwide network of channel partners to connect students with verified and qualified tutors for personalised academic support.',
-  images: {
-    primary: 'assets/img/about/images2.jpg',
-    secondary: 'assets/img/about/images4.jpg',
+    'Indian Mentors offers a scalable partnership ecosystem designed for long-term success. Together, we expand access to quality personalised tutoring services across India.',
+  image: 'assets/img/about/images2.jpg',
+  imageBadge: 'Expanding across India',
+  benefits: [
+    'Structured operational framework',
+    'Brand association and marketing support',
+    'Lead generation and management system',
+    'Transparent revenue-sharing model',
+    'Dedicated backend operational support',
+    'Continuous learning and development resources',
+  ],
+  quote: {
+    text: 'Together, we aim to expand access to quality personalised tutoring services across India.',
+    attribution: 'Indian Mentors',
   },
-  stats: [
-    {
-      iconMdi: 'solar:map-point-bold-duotone',
-      value: '200+',
-      label: 'Service territories',
-    },
-    {
-      iconMdi: 'solar:handshake-duotone',
-      value: '100+',
-      label: 'Active partners',
-    },
-  ],
-  points: [
-    {
-      iconMdi: 'solar:map-point-wave-bold-duotone',
-      title: 'Defined territories',
-      description:
-        'Partners operate within defined territories and help students access one-to-one tutoring solutions tailored to their learning needs.',
-    },
-    {
-      iconMdi: 'solar:diploma-verified-bold-duotone',
-      title: 'Structured partnership model',
-      description:
-        'Our structured partnership model ensures that partners receive operational guidance, lead support, and business opportunities while contributing to the growth of quality education services.',
-    },
-    {
-      iconMdi: 'solar:hand-heart-bold-duotone',
-      title: 'Guidance at every step',
-      description:
-        'From onboarding to local growth, every partner gets operational guidance, lead support, and clear business opportunities.',
-    },
-  ],
 }
 
 export const partnerRoleSection = {
@@ -191,8 +170,8 @@ export const revenueSplitSection = {
 }
 
 export const whyPartnerSection = {
-  kicker: 'Why Partner with Indian Mentors',
-  title: 'Why Join the Indian Mentors <span class="text-gradient-brand">Channel Partner Network</span>',
+  kicker: 'Why Partner with Indian Mentors?',
+  title: ' Join the Indian Mentors <span class="text-gradient-brand">Channel Partner Network</span>',
   classes: '!px-0 !py-0',
   description:
     'Join a platform built for long-term partner success — with demand, structure, and scale already in place.',
@@ -414,7 +393,7 @@ export const processSteps: ProcessStep[] = [
 
 export const whoCanApplySection = {
   kicker: 'Who Can Become a Channel Partner?',
-  title: 'Who Is Eligible to Join Our  Channel <br>Partner Network?',
+  title: 'Eligibility to Join Our  Channel Partner <br> Network',
   description:
     'We welcome applications from individuals and organisations interested in contributing to the education sector.',
   suitableLabel: 'Suitable partners include:',

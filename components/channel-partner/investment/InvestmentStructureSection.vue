@@ -71,6 +71,7 @@ const license = investmentStructureSection.components[1]
           </p>
           <ul class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3" role="list">
             <li v-for="plan in platformLicenseSection.plans" :key="plan.name">
+
               <div :class="[
                 'relative flex h-full flex-col rounded-2xl p-4 transition duration-300 hover:-translate-y-1',
                 plan.popular
@@ -103,22 +104,32 @@ const license = investmentStructureSection.components[1]
 
           <!-- Access includes -->
           <div class="mt-6 rounded-2xl border border-slate-100 bg-slate-50/60 p-5">
-            <h4 class="flex items-center gap-2 font-display text-sm font-bold text-slate-900">
-              {{ platformLicenseSection.accessTitle }}
-            </h4>
-            <div class="mt-4 overflow-hidden rounded-xl ">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <h4 class="flex items-center gap-2 font-display text-sm font-bold text-slate-900">
+                {{ platformLicenseSection.accessTitle }}
+              </h4>
+              <NuxtLink :to="platformLicenseSection.accessPageHref"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 transition hover:text-blue-800">
+                View full details
+                <Icon icon="mdi:arrow-right" class="h-3.5 w-3.5" aria-hidden="true" />
+              </NuxtLink>
+            </div>
+            <div class="mt-4 overflow-hidden rounded-xl">
               <ul class="grid grid-cols-1 gap-px bg-slate-200 sm:grid-cols-2" role="list">
                 <li v-for="(item, i) in platformLicenseSection.accessIncludes" :key="item.label" :class="[
-                  'flex items-center gap-3 bg-white px-4 py-3 text-[13px] font-medium text-slate-700 transition hover:bg-blue-50/50',
                   i === platformLicenseSection.accessIncludes.length - 1 && platformLicenseSection.accessIncludes.length % 2 !== 0
                     ? 'sm:col-span-2'
                     : '',
                 ]">
-                  <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600"
-                    aria-hidden="true">
-                    <Icon :icon="item.iconMdi" class="h-[18px] w-[18px]" />
-                  </span>
-                  <span>{{ item.label }}</span>
+                  <NuxtLink :to="`${platformLicenseSection.accessPageHref}#${item.id}`" :class="[
+                    'flex items-center gap-3 bg-white px-4 py-3 text-[13px] font-medium text-slate-700 transition hover:bg-blue-50/50 hover:text-blue-800',
+                  ]">
+                    <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600"
+                      aria-hidden="true">
+                      <Icon :icon="item.iconMdi" class="h-[18px] w-[18px]" />
+                    </span>
+                    <span>{{ item.label }}</span>
+                  </NuxtLink>
                 </li>
               </ul>
             </div>

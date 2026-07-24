@@ -49,13 +49,13 @@ const dataset: BarChartDataset = {
                     aria-hidden="true">
                     <Icon :icon="item.iconMdi" class="h-4 w-4" />
                   </span>
-                  <p class="mt-2.5 text-[13px] font-bold text-white">{{ item.title }}</p>
-                  <p class="mt-1 text-[11.5px] leading-relaxed text-blue-100/80">{{ item.description }}</p>
+                  <p class="mt-2.5 text-[13px] font-bold text-white" v-html="item.title"></p>
+                  <p class="mt-1 text-[11.5px] leading-relaxed text-blue-100/80" v-html="item.description"></p>
                 </div>
               </li>
             </ul>
 
-            <p class="mt-6 text-sm leading-relaxed text-blue-100/90">{{ subscriptionShareSection.closing }}</p>
+            <p class="mt-6 text-sm leading-relaxed text-blue-white" v-html="subscriptionShareSection.closing"></p>
           </div>
 
           <div class="lg:col-span-5">

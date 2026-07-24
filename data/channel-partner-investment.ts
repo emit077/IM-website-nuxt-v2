@@ -123,15 +123,16 @@ export const platformLicenseSection = {
     },
   ],
   accessTitle: 'Platform Access Includes',
+  accessPageHref: '/channel-partner/platform-access',
   accessIncludes: [
-    { label: 'Student Enrollment Management', iconMdi: 'solar:user-plus-bold' },
-    { label: 'Tutor Allocation & Tracking', iconMdi: 'solar:users-group-two-rounded-bold' },
-    { label: 'Subscription Plan Management', iconMdi: 'solar:card-2-bold' },
-    { label: 'Payment Reports & Revenue Tracking', iconMdi: 'solar:chart-2-bold' },
-    { label: 'CRM & Communication Tools', iconMdi: 'solar:chat-round-line-bold' },
-    { label: 'Academic Dashboard', iconMdi: 'solar:notebook-bold' },
-    { label: 'Marketing and Branding Support', iconMdi: 'solar:presentation-graph-bold' },
-    { label: 'Recruitment & Training Support', iconMdi: 'solar:users-group-two-rounded-bold' },
+    { id: 'student-enrollment', label: 'Student Enrollment Management', iconMdi: 'solar:user-plus-bold' },
+    { id: 'recruitment-training', label: 'Recruitment & Training Support', iconMdi: 'solar:diploma-bold' },
+    { id: 'tutor-allocation', label: 'Tutor Allocation & Tracking', iconMdi: 'solar:users-group-two-rounded-bold' },
+    { id: 'subscription-plans', label: 'Subscription Plan Management', iconMdi: 'solar:card-2-bold' },
+    { id: 'payment-reports', label: 'Payment Reports & Revenue Tracking', iconMdi: 'solar:chart-2-bold' },
+    { id: 'crm-communication', label: 'CRM & Communication Tools', iconMdi: 'solar:chat-round-line-bold' },
+    { id: 'academic-dashboard', label: 'Academic Dashboard', iconMdi: 'solar:notebook-bold' },
+    { id: 'marketing-branding', label: 'Marketing & Branding Support', iconMdi: 'solar:presentation-graph-bold' },
   ],
 }
 
@@ -155,7 +156,6 @@ export const territoryInvestmentSection = {
   rows: [
     {
       level: 'Pincode',
-      initial: 'P',
       iconMdi: 'mdi:mailbox-outline',
       coverage: 'Single locality',
       deposit: '₹25,000',
@@ -165,17 +165,17 @@ export const territoryInvestmentSection = {
     },
     {
       level: 'City',
-      initial: 'C',
       iconMdi: 'mdi:city-variant-outline',
       coverage: 'Full city operations',
       deposit: '₹1,00,000',
       license1: '₹50,000',
       license2: '₹85,000',
       license5: '₹2,00,000',
+      highlight: true,
+
     },
     {
       level: 'District',
-      initial: 'D',
       iconMdi: 'mdi:map-marker-radius-outline',
       coverage: 'Multiple cities',
       deposit: '₹2,50,000',
@@ -185,7 +185,6 @@ export const territoryInvestmentSection = {
     },
     {
       level: 'Division',
-      initial: 'D',
       iconMdi: 'mdi:view-grid-outline',
       coverage: 'Regional cluster',
       deposit: '₹5,00,000',
@@ -195,18 +194,15 @@ export const territoryInvestmentSection = {
     },
     {
       level: 'State',
-      initial: 'S',
       iconMdi: 'mdi:map-outline',
       coverage: 'Statewide operations',
       deposit: '₹10,00,000',
       license1: '₹4,00,000',
       license2: '₹7,00,000',
       license5: '₹15,00,000',
-      highlight: true,
     },
     {
       level: 'Zone',
-      initial: 'Z',
       iconMdi: 'mdi:map-legend',
       coverage: 'Multi-state region',
       deposit: '₹25,00,000',
@@ -215,6 +211,140 @@ export const territoryInvestmentSection = {
       license5: '₹30,00,000',
     },
   ],
+}
+
+export type TerritoryModelLevel = {
+  id: string
+  label: string
+  subtitle: string
+  iconMdi: string
+  description: string
+  responsibilitiesTitle?: string
+  responsibilities?: string[]
+  majorZonesTitle?: string
+  majorZones?: string[]
+  closing?: string
+  connectsTitle?: string
+  connects?: string[]
+  example?: string
+}
+
+export const territoryModelSection = {
+  kicker: 'Territory Model',
+  title: 'Channel Partner <span class="text-gradient-brand">Territory Model</span>',
+  classes: '!px-0 !py-0',
+  description:
+    'A structured multi-level geographical hierarchy for partners to operate within clearly defined service territories.',
+  levels: [
+    {
+      id: 'pincode',
+      label: 'Pincode',
+      subtitle: 'Micro Service Coverage',
+      iconMdi: 'mdi:map-marker-outline',
+      description:
+        'The Pincode is the smallest serviceable unit within the Indian Mentors partner network. It identifies the exact location of the student enquiry and allows channel partners to connect the student with nearby tutors.',
+      responsibilitiesTitle: 'Partner Role at Pincode Level',
+      responsibilities: [
+        'Capture local student enquiries',
+        'Identify nearby tutors',
+        'Coordinate demo sessions',
+        'Support local service delivery',
+      ],
+      example: '560034',
+    },
+    {
+      id: 'city',
+      label: 'City / Town',
+      subtitle: 'Primary Partner Territory',
+      iconMdi: 'mdi:city-variant-outline',
+      description:
+        'Cities represent the primary operational territory for most Indian Mentors Channel Partners. Each city includes multiple localities and student clusters.',
+      responsibilitiesTitle: 'Partner Responsibilities',
+      responsibilities: [
+        'Student counselling and admissions',
+        'Tutor recruitment and onboarding',
+        'Demo class coordination',
+        'Parent relationship management',
+      ],
+      example: 'Bengaluru',
+    },
+    {
+      id: 'district',
+      label: 'District',
+      subtitle: 'Multi-City Service Coverage',
+      iconMdi: 'mdi:map-marker-radius-outline',
+      description:
+        'A District-level territory includes several cities and towns. Larger partners may operate at this level to manage regional tutoring operations.',
+      responsibilitiesTitle: 'Partner Responsibilities',
+      responsibilities: [
+        'Expand tutoring services across nearby cities',
+        'Develop a strong regional tutor network',
+        'Coordinate operations across multiple locations',
+      ],
+      example: 'Bengaluru Urban District',
+    },
+    {
+      id: 'division',
+      label: 'Division',
+      subtitle: 'Regional Operations Management',
+      iconMdi: 'mdi:view-grid-outline',
+      description:
+        'A Division groups multiple districts into a broader operational territory. This level is typically managed by regional partners or master channel partners.',
+      responsibilitiesTitle: 'Partner Responsibilities',
+      responsibilities: [
+        'Manage multi-district tutoring networks',
+        'Support city-level partners',
+        'Coordinate regional operations and tutor supply',
+      ],
+      example: 'Bengaluru Division',
+    },
+    {
+      id: 'state',
+      label: 'State / UT',
+      subtitle: 'State-Level Partnership',
+      iconMdi: 'mdi:map-outline',
+      description:
+        'State-level partnerships allow larger channel partners to manage operations across multiple divisions and districts.',
+      responsibilitiesTitle: 'Partner Responsibilities',
+      responsibilities: [
+        'State-wide business development',
+        'Tutor network expansion',
+        'Regional marketing and brand representation',
+      ],
+      example: 'Karnataka',
+    },
+    {
+      id: 'zone',
+      label: 'Zone',
+      subtitle: 'National Regional Partnership',
+      iconMdi: 'mdi:map-legend',
+      description:
+        'India is divided into major operational zones for large-scale expansion of Indian Mentors tutoring services.',
+      majorZonesTitle: 'Major Zones',
+      majorZones: [
+        'North Zone',
+        'South Zone',
+        'East Zone',
+        'West Zone',
+        'Central Zone',
+        'North-East Zone',
+      ],
+      closing:
+        'Zone-level partners may coordinate multi-state operations and regional growth strategies.',
+      example: 'South Zone',
+    },
+    {
+      id: 'country',
+      label: 'Country',
+      subtitle: 'National Tutoring Network',
+      iconMdi: 'mdi:earth',
+      description:
+        'At the national level, Indian Mentors operates a centralised tutoring platform that connects students, parents, tutors, and channel partners into a scalable ecosystem for personalised tutoring services across India.',
+      connectsTitle: 'Platform connects',
+      connects: ['Students', 'Parents', 'Tutors', 'Channel partners'],
+      example: 'India',
+    },
+  ] satisfies TerritoryModelLevel[],
 }
 
 export const revenueSharingOverview = {
@@ -280,7 +410,7 @@ export const subscriptionShareSection = {
   partnerShare: { label: 'Channel Partner', percent: 90, detail: 'Subscription Revenue' },
   platformShare: { label: 'Indian Mentors', percent: 10, detail: 'Platform Fee' },
   closing:
-    'Create Long-Term Business Value -  Develop a sustainable education business by combining local partnerships with the reach and resources of Indian Mentors.',
+    '<b>Create Long-Term Business Value</b> -  Develop a sustainable education business by combining local partnerships with the reach and resources of Indian Mentors.',
   highlights: [
     {
       iconMdi: 'mdi:wallet-outline',
@@ -309,26 +439,26 @@ export const earningsIllustrationSection = {
   scenarioBadge: 'City Level · 50 · ₹8,000/mo',
   annual: {
     title: 'Annual partner earnings',
-    value: '₹43,20,000',
-    subtitle: '90% of ₹48,00,000 total annual revenue',
+    value: '₹43.2L',
+    subtitle: '90% of ₹48L total annual revenue',
   },
   monthlyBreakdown: {
     title: 'Monthly Breakdown',
     totalLabel: 'Total Subscription Revenue',
     formula: '50 × ₹8,000',
-    total: '₹4,00,000',
+    total: '₹4L',
     rows: [
-      { label: 'Channel Partner (90%)', value: '₹3,60,000', highlight: true },
+      { label: 'Channel Partner (90%)', value: '₹3.6L', highlight: true },
       { label: 'Indian Mentors (10%)', value: '₹40,000' },
     ],
   },
   annualProjection: {
     title: 'Annual Projection',
     totalLabel: 'Total Annual Revenue',
-    total: '₹48,00,000',
+    total: '₹48L',
     rows: [
-      { label: 'Your Annual Earnings', value: '₹43,20,000', highlight: true },
-      { label: 'Indian Mentors Annual', value: '₹4,80,000' },
+      { label: 'Your Annual Earnings', value: '₹43.2L', highlight: true },
+      { label: 'Indian Mentors Annual', value: '₹4.8L' },
     ],
   },
   scaleTitle: 'Earnings grow with your student base',
@@ -347,32 +477,32 @@ export const earningsIllustrationSection = {
   scale: [
     {
       students: 50,
-      monthly: '₹3,60,000',
+      monthly: '₹3.6L',
       monthlyShort: '₹3.6L',
-      quarterly: '₹10,80,000',
+      quarterly: '₹10.8L',
       quarterlyShort: '₹10.8L',
-      halfYearly: '₹21,60,000',
+      halfYearly: '₹21.6L',
       halfYearlyShort: '₹21.6L',
-      annual: '₹43,20,000',
+      annual: '₹43.2L',
       annualShort: '₹43.2L',
       percent: 22,
       highlight: true,
     },
     {
       students: 100,
-      monthly: '₹7,20,000',
+      monthly: '₹7.2L',
       monthlyShort: '₹7.2L',
-      quarterly: '₹21,60,000',
+      quarterly: '₹21.6L',
       quarterlyShort: '₹21.6L',
-      halfYearly: '₹43,20,000',
+      halfYearly: '₹43.2L',
       halfYearlyShort: '₹43.2L',
-      annual: '₹86,40,000',
+      annual: '₹86.4L',
       annualShort: '₹86.4L',
       percent: 32,
     },
     {
       students: 500,
-      monthly: '₹36,00,000',
+      monthly: '₹36L',
       monthlyShort: '₹36L',
       quarterly: '₹1.08Cr',
       quarterlyShort: '₹1.08Cr',
@@ -384,7 +514,7 @@ export const earningsIllustrationSection = {
     },
     {
       students: 1000,
-      monthly: '₹72,00,000',
+      monthly: '₹72L',
       monthlyShort: '₹72L',
       quarterly: '₹2.16Cr',
       quarterlyShort: '₹2.16Cr',
@@ -548,4 +678,188 @@ export const investmentFinalCta = {
   primaryCta: { label: 'Apply for Channel Partnership', href: '#partner-investment-register' },
   secondaryCta: { label: 'Schedule a Partnership Consultation', href: 'tel:+917389563564' },
   tertiaryCta: { label: 'Download Channel Partner Brochure', href: '#territory-investment' },
+}
+
+export type PlatformAccessFeature = {
+  id: string
+  no: string
+  title: string
+  iconMdi: string
+  description: string
+  points: string[]
+}
+
+export const platformAccessHero = {
+  badge: 'Digital Platform · Channel Partner ERP',
+  title: 'Platform Access <span class="text-gradient-brand">Includes</span>',
+  subtitle: '<span class="text-gradient-brand">Indian Mentors</span> — Tools that power your tutoring territory',
+  description:
+    'Your Digital Platform License unlocks a complete operating system for enrollments, tutors, subscriptions, payments, CRM, academics, and local marketing — built for Channel Partners.',
+  caption: 'One platform. Eight capability areas. End-to-end territory operations.',
+  backgroundImage: 'assets/img/hero/hero-1.png',
+  contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
+  primaryCta: { label: 'Explore Platform Modules', href: '#platform-features' },
+  secondaryCta: { label: 'View Investment Model', href: '/channel-partner/investment' },
+}
+
+export const platformAccessHeroStats: TrustIndicatorItem[] = [
+  {
+    value: '08',
+    label: 'Core Modules',
+    icon: 'solar:widget-5-bold-duotone',
+  },
+  {
+    value: 'ERP',
+    label: 'Partner Dashboard',
+    icon: 'solar:monitor-smartphone-bold-duotone',
+  },
+  {
+    value: '360°',
+    label: 'Territory Ops',
+    icon: 'solar:map-point-bold-duotone',
+  },
+  {
+    value: '24×7',
+    label: 'Cloud Access',
+    icon: 'solar:cloud-bold-duotone',
+  },
+]
+
+export const platformAccessSection = {
+  kicker: 'What Your License Unlocks',
+  title: 'Everything You Need to <span class="text-gradient-brand">Run Your Territory</span>',
+  classes: '!px-0 !py-0',
+  description:
+    'From the first student enquiry to recurring subscriptions, tutor coordination, and local brand presence — explore each capability included with your Digital Platform License.',
+  features: [
+    {
+      id: 'student-enrollment',
+      no: '01',
+      title: 'Student Enrollment Management',
+      iconMdi: 'solar:user-plus-bold',
+      description:
+        'Manage the complete student enrollment journey through a structured digital workflow.',
+      points: [
+        'Capture and manage student enquiries',
+        'Maintain student and parent information',
+        'Track counseling and enrollment status',
+        'Manage service and subscription selections',
+        'Monitor enrollment progress from inquiry to activation',
+      ],
+    },
+    {
+      id: 'recruitment-training',
+      no: '02',
+      title: 'Recruitment & Training Support',
+      iconMdi: 'solar:diploma-bold',
+      description:
+        'Build a reliable tutor network with support from the Indian Mentors recruitment ecosystem.',
+      points: [
+        'Access tutor recruitment processes and guidelines',
+        'Support tutor sourcing within your territory',
+        'Follow structured screening and verification procedures',
+        'Coordinate tutor onboarding and orientation',
+        'Access recruitment and training resources',
+      ],
+    },
+    {
+      id: 'tutor-allocation',
+      no: '03',
+      title: 'Tutor Allocation & Tracking',
+      iconMdi: 'solar:users-group-two-rounded-bold',
+      description:
+        'Efficiently coordinate tutors with students based on academic requirements, availability, and service preferences.',
+      points: [
+        'Review suitable tutor profiles',
+        'Coordinate tutor-student matching',
+        'Track tutor allocation status',
+        'Monitor tutor availability and engagement',
+        'Support tutor replacement and coordination workflows',
+      ],
+    },
+    {
+      id: 'subscription-plans',
+      no: '04',
+      title: 'Subscription Plan Management',
+      iconMdi: 'solar:card-2-bold',
+      description:
+        'Manage subscription-based tutoring services through a structured platform.',
+      points: [
+        'Access available tutoring plans and packages',
+        'Manage student subscription details',
+        'Track plan activation and renewal status',
+        'Monitor subscription history',
+        'Support upgrades, renewals, and service continuation',
+      ],
+    },
+    {
+      id: 'payment-reports',
+      no: '05',
+      title: 'Payment Reports & Revenue Tracking',
+      iconMdi: 'solar:chart-2-bold',
+      description:
+        'Gain greater visibility into financial activity and partner revenue through organised reporting tools.',
+      points: [
+        'Monitor subscription payment status',
+        'Track transaction records and payment activity',
+        'Access revenue and earning reports',
+        'Review partner revenue-sharing information',
+        'Support financial reconciliation and reporting',
+      ],
+    },
+    {
+      id: 'crm-communication',
+      no: '06',
+      title: 'CRM & Communication Tools',
+      iconMdi: 'solar:chat-round-line-bold',
+      description:
+        'Build stronger relationships with parents, students, tutors, and prospects through organised communication management.',
+      points: [
+        'Manage leads and enquiries',
+        'Track follow-ups and customer interactions',
+        'Maintain communication history',
+        'Coordinate with students, parents, and tutors',
+        'Improve lead conversion and relationship management',
+      ],
+    },
+    {
+      id: 'academic-dashboard',
+      no: '07',
+      title: 'Academic Dashboard',
+      iconMdi: 'solar:notebook-bold',
+      description:
+        'Monitor key academic and operational activities through a centralised dashboard.',
+      points: [
+        'View active student enrollments',
+        'Monitor tutoring sessions and schedules',
+        'Track attendance and academic activities',
+        'Review student and tutor engagement',
+        'Access relevant academic and operational insights',
+      ],
+    },
+    {
+      id: 'marketing-branding',
+      no: '08',
+      title: 'Marketing & Branding Support',
+      iconMdi: 'solar:presentation-graph-bold',
+      description:
+        'Strengthen your local presence with access to the Indian Mentors brand ecosystem and marketing resources.',
+      points: [
+        'Use approved brand identity and communication guidelines',
+        'Access marketing creatives and promotional materials',
+        'Receive support for local promotional activities',
+        'Leverage established Indian Mentors brand positioning',
+        'Promote personalised tutoring services within your territory',
+      ],
+    },
+  ] satisfies PlatformAccessFeature[],
+}
+
+export const platformAccessCta = {
+  badge: 'Ready to operate digitally?',
+  title: 'Get Full Platform Access with Your Partner License',
+  description:
+    'Apply to become an Authorised Channel Partner and unlock the Indian Mentors digital platform for your territory.',
+  primaryCta: { label: 'Apply for Channel Partnership', href: '/channel-partner/investment#partner-investment-register' },
+  secondaryCta: { label: 'Explore Investment & Revenue Model', href: '/channel-partner/investment' },
 }

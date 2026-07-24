@@ -45,7 +45,7 @@ const dataset = computed<BarChartDataset>(() => ({
       label: String(row.students),
       data: row.percent,
       bgColor: BAR_COLORS[i % BAR_COLORS.length],
-      labelSuffix: 'students',
+      labelSuffix: 'Students',
       valueLabel: valueByPeriod.full,
       valueLabelShort: valueByPeriod.short,
       highlight: row.highlight,

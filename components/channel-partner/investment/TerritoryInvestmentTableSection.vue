@@ -22,19 +22,13 @@ import { territoryInvestmentSection } from '~/data/channel-partner-investment'
         <div class="relative overflow-x-auto">
           <table class="w-full min-w-[880px] text-left text-sm">
             <thead>
-              <tr class="bg-[#0f1f3d]">
+              <tr class="bg-blue-800">
                 <th v-for="(col, ci) in territoryInvestmentSection.columns" :key="col.key" :class="[
                   'px-4 py-4 text-[13px] font-semibold tracking-wide text-white',
                   ci === 0 ? 'pl-5' : '',
                   ci === territoryInvestmentSection.columns.length - 1 ? 'pr-5' : '',
                 ]">
                   <span class="block">{{ col.label }}</span>
-                  <span v-if="col.sub" :class="[
-                    'mt-0.5 block text-[11px] font-medium',
-                    col.accent ? 'text-amber-300' : 'text-white/55',
-                  ]">
-                    {{ col.sub }}
-                  </span>
                 </th>
               </tr>
             </thead>

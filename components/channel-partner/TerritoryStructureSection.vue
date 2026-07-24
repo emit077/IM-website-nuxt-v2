@@ -56,7 +56,7 @@ const levels = computed(() =>
                 <span
                   class="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/90 px-3 py-1.5 text-[11px] font-bold text-slate-800 shadow-lg backdrop-blur-sm sm:text-xs">
                   <Icon icon="mdi:map-marker-radius" class="h-3.5 w-3.5 text-blue-600" aria-hidden="true" />
-                  100+ Service Territories
+                  1000+ Service Territories
                 </span>
                 <span
                   class="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/20 bg-blue-600/90 px-3 py-1.5 text-[11px] font-bold text-white shadow-lg backdrop-blur-sm sm:text-xs">

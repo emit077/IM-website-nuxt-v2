@@ -74,7 +74,7 @@ const services: ServiceCard[] = [
 
 const customService = {
     badge: 'Tailored for your family',
-    title: 'Need something more specific?',
+    title: 'Need Something More Specific?',
     description:
         'Tell us your goals, schedule, and learning style — we match you with a mentor and plan built around your family, not a fixed package.',
     features: [
@@ -117,7 +117,9 @@ function cardSpanClass(columns?: ServiceCard['columns'] | 'col-span-full') {
                         <div
                             class="service-card__icon mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 ring-1 ring-blue-100/90 transition-colors duration-300 group-hover/card:bg-blue-600 group-hover/card:ring-blue-600">
                             <img :src="usePublicAsset(service.img)" :alt="`${service.title} icon`" width="28"
-                                height="28" class="h-7 w-7 object-contain transition group-hover/card:brightness-0 group-hover/card:invert" loading="lazy" />
+                                height="28"
+                                class="h-7 w-7 object-contain transition group-hover/card:brightness-0 group-hover/card:invert"
+                                loading="lazy" />
                         </div>
 
                         <h3 class="mb-2 font-display text-base font-bold tracking-tight text-slate-900 sm:text-lg">

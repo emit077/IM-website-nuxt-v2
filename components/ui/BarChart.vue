@@ -182,7 +182,7 @@ function valueClass(index: number) {
         <div class="grid gap-2 pt-3 sm:gap-4" :style="{ gridTemplateColumns: `repeat(${colCount}, minmax(0, 1fr))` }">
           <div v-for="(item, i) in items" :key="`${item.label}-${i}-caption`"
             class="flex flex-col items-center text-center">
-            <p class="font-display text-sm font-bold sm:text-base" :class="labelClass(item)">
+            <p class="font-display text-sm font-bold sm:text-base">
               {{ item.label }}
               <span v-if="item.labelSuffix" class="text-xs font-medium" :class="themeClasses.suffix">
                 {{ item.labelSuffix }}
