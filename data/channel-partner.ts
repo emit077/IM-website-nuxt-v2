@@ -73,25 +73,48 @@ export const heroTrustStats: TrustIndicatorItem[] = [
 ]
 
 export const aboutSection = {
-  kicker: 'Partnership Benefits',
-  title: 'Growth Through <span class="text-gradient-brand">Educational Collaboration</span>',
-  classes: '!px-0 !py-0',
+  kicker: 'Channel Partner Program',
+  title: 'Unlock Growth With Our <span class="text-blue-600">Channel Partner Program</span>',
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
   description:
-    'Indian Mentors offers a scalable partnership ecosystem designed for long-term success. Together, we expand access to quality personalised tutoring services across India.',
+    'Indian Mentors is expanding its nationwide network of channel partners to connect students with verified and qualified tutors for personalised academic support.',
   image: 'assets/img/about/images2.jpg',
-  imageBadge: 'Expanding across India',
-  benefits: [
-    'Structured operational framework',
-    'Brand association and marketing support',
-    'Lead generation and management system',
-    'Transparent revenue-sharing model',
-    'Dedicated backend operational support',
-    'Continuous learning and development resources',
+  secondaryImage: 'assets/img/about/images4.jpg',
+  stats: [
+    {
+      value: '200+',
+      label: 'Service territories',
+      iconMdi: 'mdi:map-marker',
+    },
+    {
+      value: '100+',
+      label: 'Active partners',
+      iconMdi: 'mdi:account-group-outline',
+    },
   ],
-  quote: {
-    text: 'Together, we aim to expand access to quality personalised tutoring services across India.',
-    attribution: 'Indian Mentors',
-  },
+  features: [
+    {
+      no: '01',
+      iconMdi: 'mdi:map-marker-radius-outline',
+      title: 'Defined territories',
+      description:
+        'Partners operate within defined territories and help students access one-to-one tutoring solutions tailored to their learning needs.',
+    },
+    {
+      no: '02',
+      iconMdi: 'mdi:clipboard-check-outline',
+      title: 'Structured partnership model',
+      description:
+        'Our structured partnership model ensures that partners receive operational guidance, lead support, and business opportunities while contributing to the growth of quality education services.',
+    },
+    {
+      no: '03',
+      iconMdi: 'mdi:hand-heart-outline',
+      title: 'Guidance at every step',
+      description:
+        'From onboarding to local growth, every partner gets operational guidance, lead support, and clear business opportunities.',
+    },
+  ],
 }
 
 export const partnerRoleSection = {
@@ -167,6 +190,14 @@ export const revenueSplitSection = {
       description: 'Tech, support, and national brand stay with Indian Mentors.',
     },
   ],
+  primaryCta: {
+    label: 'Apply Now',
+    href: '#partner-register',
+  },
+  secondaryCta: {
+    label: 'Explore Investment & Revenue-Sharing Model',
+    href: '/channel-partner/investment',
+  },
 }
 
 export const whyPartnerSection = {

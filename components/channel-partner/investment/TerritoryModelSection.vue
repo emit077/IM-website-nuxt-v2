@@ -80,30 +80,6 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
               class="border-t border-slate-100 px-4 pb-5 pt-4">
               <p class="text-[14px] leading-relaxed text-slate-600">{{ level.description }}</p>
 
-              <div v-if="level.example"
-                class="mt-4 rounded-xl bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-800">
-                Example: {{ level.example }}
-              </div>
-
-              <div v-if="level.responsibilities?.length"
-                class="mt-5 border-t border-slate-100 pt-5">
-                <p class="flex items-center gap-2 text-[13px] font-bold text-slate-800">
-                  <Icon icon="mdi:briefcase-outline" class="h-4 w-4 text-blue-600" aria-hidden="true" />
-                  {{ level.responsibilitiesTitle }}
-                </p>
-                <ul class="mt-3 space-y-2.5" role="list">
-                  <li v-for="item in level.responsibilities" :key="item"
-                    class="flex items-start gap-2.5 text-[13.5px] leading-snug text-slate-700">
-                    <span
-                      class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
-                      aria-hidden="true">
-                      <IconCheck class="h-3 w-3" />
-                    </span>
-                    <span>{{ item }}</span>
-                  </li>
-                </ul>
-              </div>
-
               <div v-if="level.majorZones?.length" class="mt-5 border-t border-slate-100 pt-5">
                 <p class="text-[13px] font-bold text-slate-800">{{ level.majorZonesTitle }}</p>
                 <ul class="mt-3 grid grid-cols-2 gap-2" role="list">
@@ -130,6 +106,30 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
                     <span>{{ item }}</span>
                   </li>
                 </ul>
+              </div>
+
+              <div v-if="level.responsibilities?.length"
+                class="mt-5 border-t border-slate-100 pt-5">
+                <p class="flex items-center gap-2 text-[13px] font-bold text-slate-800">
+                  <Icon icon="mdi:briefcase-outline" class="h-4 w-4 text-blue-600" aria-hidden="true" />
+                  {{ level.responsibilitiesTitle }}
+                </p>
+                <ul class="mt-3 space-y-2.5" role="list">
+                  <li v-for="item in level.responsibilities" :key="item"
+                    class="flex items-start gap-2.5 text-[13.5px] leading-snug text-slate-700">
+                    <span
+                      class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
+                      aria-hidden="true">
+                      <IconCheck class="h-3 w-3" />
+                    </span>
+                    <span>{{ item }}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div v-if="level.example"
+                class="mt-5 rounded-xl bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-800">
+                Example: {{ level.example }}
               </div>
             </div>
           </div>
@@ -185,30 +185,6 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
                 {{ level.description }}
               </p>
 
-              <div v-if="level.example"
-                class="mt-5 inline-flex rounded-xl bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-800">
-                Example: {{ level.example }}
-              </div>
-
-              <div v-if="level.responsibilities?.length"
-                class="mt-6 border-t border-slate-100 pt-6">
-                <p class="flex items-center gap-2 text-sm font-bold text-slate-800">
-                  <Icon icon="mdi:briefcase-outline" class="h-4 w-4 text-blue-600" aria-hidden="true" />
-                  {{ level.responsibilitiesTitle }}
-                </p>
-                <ul class="mt-4 space-y-3" role="list">
-                  <li v-for="item in level.responsibilities" :key="item"
-                    class="flex items-start gap-3 text-[14px] leading-snug text-slate-700">
-                    <span
-                      class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
-                      aria-hidden="true">
-                      <IconCheck class="h-3 w-3" />
-                    </span>
-                    <span>{{ item }}</span>
-                  </li>
-                </ul>
-              </div>
-
               <div v-if="level.majorZones?.length" class="mt-6 border-t border-slate-100 pt-6">
                 <p class="text-sm font-bold text-slate-800">{{ level.majorZonesTitle }}</p>
                 <ul class="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3" role="list">
@@ -235,6 +211,30 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
                     <span>{{ item }}</span>
                   </li>
                 </ul>
+              </div>
+
+              <div v-if="level.responsibilities?.length"
+                class="mt-6 border-t border-slate-100 pt-6">
+                <p class="flex items-center gap-2 text-sm font-bold text-slate-800">
+                  <Icon icon="mdi:briefcase-outline" class="h-4 w-4 text-blue-600" aria-hidden="true" />
+                  {{ level.responsibilitiesTitle }}
+                </p>
+                <ul class="mt-4 space-y-3" role="list">
+                  <li v-for="item in level.responsibilities" :key="item"
+                    class="flex items-start gap-3 text-[14px] leading-snug text-slate-700">
+                    <span
+                      class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
+                      aria-hidden="true">
+                      <IconCheck class="h-3 w-3" />
+                    </span>
+                    <span>{{ item }}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div v-if="level.example"
+                class="mt-6 inline-flex rounded-xl bg-blue-50 px-4 py-2.5 text-sm font-semibold text-blue-800">
+                Example: {{ level.example }}
               </div>
             </div>
           </div>

@@ -51,7 +51,8 @@ export const investmentStructureSection = {
     {
       iconMdi: 'solar:shield-check-bold-duotone',
       title: 'Security Deposit',
-      description: 'A one-time refundable amount that secures your authorised operational territory.',
+      description:
+        'A one-time refundable amount submitted to secure your authorised operational territory and demonstrate commitment to the Indian Mentors partnership framework.',
       tag: 'One-time · Refundable',
       accent: 'emerald',
     },
@@ -66,19 +67,45 @@ export const investmentStructureSection = {
 }
 
 export const securityDepositSection = {
-  kicker: 'Security Deposit',
-  title: 'Security Deposit <span class="text-gradient-brand">(Refundable)</span>',
+  kicker: 'Security Deposit (Refundable)',
+  title: 'Secure Your Territory with <span class="text-gradient-brand">Confidence</span>',
   classes: '!px-0 !py-0',
   description:
-    'The Security Deposit is a one-time refundable amount submitted by the Channel Partner to secure the authorised operational territory.',
-  body: 'This deposit ensures professional conduct, commitment to service quality, and adherence to the Indian Mentors operational guidelines.',
+    'The Security Deposit is a one-time refundable amount submitted by the Channel Partner to secure their authorised operational territory and demonstrate commitment to the Indian Mentors partnership framework.',
+  body: 'This deposit helps promote professional conduct, responsible platform usage, service quality, and compliance with the operational standards established by Indian Mentors.',
   note: 'The deposit value depends on market potential, student population, and service demand.',
   featuresTitle: 'Key Features',
   features: [
-    'Fully refundable upon termination of the partnership agreement',
-    'Secures exclusive or semi-exclusive operational territory',
-    'Protects brand integrity and service standards',
-    'Ensures responsible platform usage',
+    {
+      iconMdi: 'mdi:cash-refund',
+      title: 'Fully Refundable',
+      description:
+        'Returned upon successful termination or completion of the partnership agreement, subject to applicable terms and conditions.',
+    },
+    {
+      iconMdi: 'mdi:map-marker-radius-outline',
+      title: 'Territory Security',
+      description:
+        'Supports the allocation of an exclusive or semi-exclusive operational territory, as defined in the partnership agreement.',
+    },
+    {
+      iconMdi: 'mdi:shield-check-outline',
+      title: 'Brand Protection',
+      description:
+        'Helps safeguard the reputation, professional image, and service standards of Indian Mentors.',
+    },
+    {
+      iconMdi: 'mdi:clipboard-check-outline',
+      title: 'Responsible Operations',
+      description:
+        'Encourages partners to follow approved operational procedures and maintain responsible use of the Indian Mentors ecosystem.',
+    },
+    {
+      iconMdi: 'mdi:handshake-outline',
+      title: 'Partnership Commitment',
+      description:
+        "Demonstrates the Channel Partner's commitment to actively developing and managing the assigned territory.",
+    },
   ],
   tableTitle: 'Security Deposit Based on Territory Level',
   tableDescription: 'Security deposits vary depending on the geographical scope of the operational territory.',
@@ -234,7 +261,7 @@ export const territoryModelSection = {
   title: 'Channel Partner <span class="text-gradient-brand">Territory Model</span>',
   classes: '!px-0 !py-0',
   description:
-    'A structured multi-level geographical hierarchy for partners to operate within clearly defined service territories.',
+    'A structured multi-level geographical hierarchy for partners to operate within clearly defined service territories — from pincode micro-coverage to the national tutoring network.',
   levels: [
     {
       id: 'pincode',
@@ -242,46 +269,56 @@ export const territoryModelSection = {
       subtitle: 'Micro Service Coverage',
       iconMdi: 'mdi:map-marker-outline',
       description:
-        'The Pincode is the smallest serviceable unit within the Indian Mentors partner network. It identifies the exact location of the student enquiry and allows channel partners to connect the student with nearby tutors.',
+        'The Pincode is the smallest serviceable unit within the Indian Mentors partner network. It identifies the exact location of a student enquiry and enables channel partners to connect students and families with nearby verified tutors.',
       responsibilitiesTitle: 'Partner Role at Pincode Level',
       responsibilities: [
         'Capture local student enquiries',
-        'Identify nearby tutors',
+        'Identify and coordinate with nearby tutors',
+        'Match students with suitable subject and board-specific tutors',
         'Coordinate demo sessions',
-        'Support local service delivery',
+        'Support local parent communication',
+        'Facilitate smooth service delivery within the designated pincode',
       ],
-      example: '560034',
+      example: '560034 – Koramangala, Bengaluru',
     },
+
     {
       id: 'city',
       label: 'City / Town',
       subtitle: 'Primary Partner Territory',
       iconMdi: 'mdi:city-variant-outline',
       description:
-        'Cities represent the primary operational territory for most Indian Mentors Channel Partners. Each city includes multiple localities and student clusters.',
+        'Cities represent the primary operational territory for most Indian Mentors Channel Partners. Each city consists of multiple pincodes, localities, residential communities, schools, and student clusters. A city-level Channel Partner may manage tutoring operations across multiple localities and pincodes within the designated city.',
       responsibilitiesTitle: 'Partner Responsibilities',
       responsibilities: [
         'Student counselling and admissions',
         'Tutor recruitment and onboarding',
         'Demo class coordination',
         'Parent relationship management',
+        'Student–tutor matching',
+        'Local marketing and business development',
+        'Development of a strong city-level tutor network',
+        'Coordination of home, online, shadow, and specialised tutoring services',
       ],
-      example: 'Bengaluru',
+      example: 'Bengaluru, Karnataka',
     },
     {
       id: 'district',
       label: 'District',
-      subtitle: 'Multi-City Service Coverage',
+      subtitle: 'Multi-City / Regional Service Coverage',
       iconMdi: 'mdi:map-marker-radius-outline',
       description:
-        'A District-level territory includes several cities and towns. Larger partners may operate at this level to manage regional tutoring operations.',
+        'A District-level territory includes the designated city and surrounding towns, localities, and service areas. Larger Channel Partners may operate at the district level to manage broader tutoring operations and expand the Indian Mentors network.',
       responsibilitiesTitle: 'Partner Responsibilities',
       responsibilities: [
-        'Expand tutoring services across nearby cities',
+        'Expand tutoring services across multiple cities and towns within the district',
         'Develop a strong regional tutor network',
-        'Coordinate operations across multiple locations',
+        'Coordinate student admissions across multiple service locations',
+        'Support city-level operations',
+        'Manage tutor recruitment and onboarding at scale',
+        'Coordinate operations across multiple localities and cities',
       ],
-      example: 'Bengaluru Urban District',
+      example: 'Bengaluru Urban District, Karnataka',
     },
     {
       id: 'division',
@@ -289,27 +326,34 @@ export const territoryModelSection = {
       subtitle: 'Regional Operations Management',
       iconMdi: 'mdi:view-grid-outline',
       description:
-        'A Division groups multiple districts into a broader operational territory. This level is typically managed by regional partners or master channel partners.',
+        'A Division groups multiple districts into a broader administrative and operational territory. This level is typically suitable for regional partners or master channel partners responsible for coordinating multiple district-level operations.',
       responsibilitiesTitle: 'Partner Responsibilities',
       responsibilities: [
         'Manage multi-district tutoring networks',
-        'Support city-level partners',
-        'Coordinate regional operations and tutor supply',
+        'Support city and district-level Channel Partners',
+        'Coordinate regional tutor recruitment and supply',
+        'Monitor service quality across multiple territories',
+        'Facilitate regional business development',
+        'Support expansion into new cities and districts',
       ],
-      example: 'Bengaluru Division',
+      example: 'Bengaluru Division / Bengaluru Region',
     },
     {
       id: 'state',
-      label: 'State / UT',
+      label: 'State / Union Territory',
       subtitle: 'State-Level Partnership',
       iconMdi: 'mdi:map-outline',
       description:
-        'State-level partnerships allow larger channel partners to manage operations across multiple divisions and districts.',
+        'A State-level partnership enables larger Channel Partners to manage Indian Mentors operations across multiple districts and regional territories within a state. The State Partner may act as a strategic growth partner responsible for expanding the Indian Mentors tutoring ecosystem across the state.',
       responsibilitiesTitle: 'Partner Responsibilities',
       responsibilities: [
         'State-wide business development',
         'Tutor network expansion',
+        'Recruitment and onboarding of tutors at scale',
         'Regional marketing and brand representation',
+        'Development and support of district and city-level partners',
+        'Expansion of Indian Mentors services across major cities and towns',
+        'Coordination of state-level operational growth',
       ],
       example: 'Karnataka',
     },
@@ -319,18 +363,19 @@ export const territoryModelSection = {
       subtitle: 'National Regional Partnership',
       iconMdi: 'mdi:map-legend',
       description:
-        'India is divided into major operational zones for large-scale expansion of Indian Mentors tutoring services.',
-      majorZonesTitle: 'Major Zones',
-      majorZones: [
-        'North Zone',
-        'South Zone',
-        'East Zone',
-        'West Zone',
-        'Central Zone',
-        'North-East Zone',
-      ],
+        'India is divided into major operational zones to support the large-scale expansion and structured management of Indian Mentors tutoring services.',
       closing:
-        'Zone-level partners may coordinate multi-state operations and regional growth strategies.',
+        'Zone-level partners or Master Channel Partners may coordinate multi-state operations, support state-level partners, and drive regional expansion strategies.',
+      responsibilitiesTitle: 'Partner Responsibilities',
+      responsibilities: [
+        'Manage multi-state tutoring operations',
+        'Support state-level Channel Partners',
+        'Coordinate regional tutor supply',
+        'Develop large-scale tutor recruitment networks',
+        'Facilitate regional marketing initiatives',
+        'Monitor business growth across multiple states',
+        'Support the expansion of Indian Mentors into new markets',
+      ],
       example: 'South Zone',
     },
     {
@@ -339,9 +384,16 @@ export const territoryModelSection = {
       subtitle: 'National Tutoring Network',
       iconMdi: 'mdi:earth',
       description:
-        'At the national level, Indian Mentors operates a centralised tutoring platform that connects students, parents, tutors, and channel partners into a scalable ecosystem for personalised tutoring services across India.',
-      connectsTitle: 'Platform connects',
-      connects: ['Students', 'Parents', 'Tutors', 'Channel partners'],
+        'At the National Level, Indian Mentors operates a centralised tutoring platform that connects and coordinates students, parents, tutors, channel partners, institutional clients, and educational organisations. The national network creates a scalable, structured, and technology-enabled ecosystem for delivering personalised tutoring services across India.',
+      connectsTitle: 'National network connects',
+      connects: [
+        'Students',
+        'Parents',
+        'Tutors',
+        'Channel Partners',
+        'Institutional Clients',
+        'Educational Organisations',
+      ],
       example: 'India',
     },
   ] satisfies TerritoryModelLevel[],

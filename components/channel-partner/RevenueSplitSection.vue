@@ -64,10 +64,17 @@ const dataset: BarChartDataset = {
               show-gridlines :gridline-count="4" />
           </div>
         </div>
-        <div class="mt-8 pb-10 text-center">
-          <NuxtLink to="/channel-partner/investment"
-            class="btn-secondary group inline-flex items-center gap-2.5 bg-white px-6 py-3.5 text-sm hover:text-blue-950 sm:px-8 sm:text-[15px]">
-            Explore Investment & Revenue-Sharing Model
+        <div class="mt-8 flex flex-col items-stretch justify-center gap-3 pb-10 sm:flex-row sm:items-center sm:gap-4">
+          <a :href="revenueSplitSection.primaryCta.href"
+            class="btn-secondary group inline-flex items-center justify-center gap-2.5 bg-white px-6 py-3.5 text-sm hover:text-blue-950 sm:px-8 sm:text-[15px]">
+            <Icon icon="mdi:account-plus-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
+            {{ revenueSplitSection.primaryCta.label }}
+            <IconArrowRight
+              class="hero-cta-arrow h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </a>
+          <NuxtLink :to="revenueSplitSection.secondaryCta.href"
+            class="group inline-flex items-center justify-center gap-2.5 rounded-2xl border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-white/55 hover:bg-white/15 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/30 sm:px-8 sm:text-[15px]">
+            {{ revenueSplitSection.secondaryCta.label }}
             <IconArrowRight
               class="hero-cta-arrow h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </NuxtLink>

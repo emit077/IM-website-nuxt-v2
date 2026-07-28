@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import InvestmentHeroSection from '~/components/channel-partner/investment/InvestmentHeroSection.vue'
 import InvestmentStructureSection from '~/components/channel-partner/investment/InvestmentStructureSection.vue'
-import SecurityDepositSection from '~/components/channel-partner/investment/SecurityDepositSection.vue'
 import TerritoryInvestmentTableSection from '~/components/channel-partner/investment/TerritoryInvestmentTableSection.vue'
 import TerritoryModelSection from '~/components/channel-partner/investment/TerritoryModelSection.vue'
 import RevenueSharingOverviewSection from '~/components/channel-partner/investment/RevenueSharingOverviewSection.vue'
@@ -35,7 +34,6 @@ useSeoMeta({
   <div>
     <InvestmentHeroSection />
     <InvestmentStructureSection />
-    <!-- <SecurityDepositSection /> -->
     <TerritoryInvestmentTableSection />
     <TerritoryModelSection />
     <!-- <RevenueSharingOverviewSection /> -->

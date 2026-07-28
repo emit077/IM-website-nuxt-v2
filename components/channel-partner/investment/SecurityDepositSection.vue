@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import IconCheck from '~/components/icons/IconCheck.vue'
 import { securityDepositSection } from '~/data/channel-partner-investment'
 </script>
 
@@ -16,27 +15,37 @@ import { securityDepositSection } from '~/data/channel-partner-investment'
         {{ securityDepositSection.body }}
       </p>
 
-      <div class="mt-10 grid grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-8">
-        <article
-          class="rounded-3xl border border-blue-100 bg-blue-50/70 p-6 shadow-soft sm:p-8 lg:col-span-5"
-          v-motion :initial="{ opacity: 0, y: 16 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-          <h3 class="font-display text-lg font-bold text-blue-700">{{ securityDepositSection.featuresTitle }}</h3>
-          <ul class="mt-5 space-y-3.5" role="list">
-            <li v-for="(item, i) in securityDepositSection.features" :key="item"
-              class="flex items-start gap-3 text-[13.5px] leading-relaxed text-slate-700 sm:text-sm"
-              v-motion :initial="{ opacity: 0, x: -8 }"
-              :visibleOnce="{ opacity: 1, x: 0, transition: { delay: 40 + i * 45, duration: 400 } }">
-              <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-blue-600 text-white"
+      <div class="mt-10">
+        <h3 class="text-center font-display text-lg font-bold text-slate-900 sm:text-xl">
+          {{ securityDepositSection.featuresTitle }}
+        </h3>
+        <ul class="mt-6 grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-3" role="list">
+          <li v-for="(item, i) in securityDepositSection.features" :key="item.title" v-motion
+            :initial="{ opacity: 0, y: 14 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 55, duration: 420 } }"
+            :class="i === securityDepositSection.features.length - 1 && securityDepositSection.features.length % 3 === 2
+              ? 'lg:col-span-2 lg:max-w-none lg:justify-self-center lg:w-[calc(50%-0.45rem)]'
+              : i === securityDepositSection.features.length - 1 && securityDepositSection.features.length % 3 === 1
+                ? 'sm:col-span-2 sm:max-w-md sm:justify-self-center lg:col-span-1 lg:max-w-none'
+                : ''">
+            <article
+              class="flex h-full gap-3.5 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-card sm:p-5">
+              <span
+                class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100"
                 aria-hidden="true">
-                <IconCheck class="h-3.5 w-3.5" />
+                <Icon :icon="item.iconMdi" class="h-5 w-5" />
               </span>
-              <span>{{ item }}</span>
-            </li>
-          </ul>
-        </article>
+              <div class="min-w-0">
+                <h4 class="font-display text-[15px] font-bold text-slate-900">{{ item.title }}</h4>
+                <p class="mt-1 text-[13px] leading-relaxed text-slate-600">{{ item.description }}</p>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
 
-        <div class="lg:col-span-7" v-motion :initial="{ opacity: 0, y: 16 }"
+      <div class="mt-10 grid grid-cols-1 items-start gap-6 lg:grid-cols-12 lg:gap-8">
+        <div class="lg:col-span-12" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 80 } }">
           <div class="overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-soft">
             <div class="border-b border-slate-200/80 px-5 py-4 section-surface-muted sm:px-6">

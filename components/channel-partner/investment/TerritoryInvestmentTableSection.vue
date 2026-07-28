@@ -35,22 +35,14 @@ import { territoryInvestmentSection } from '~/data/channel-partner-investment'
             <tbody>
               <tr v-for="row in territoryInvestmentSection.rows" :key="row.level" :class="[
                 'border-b border-slate-100 transition duration-200 last:border-0',
-                row.highlight ? 'bg-amber-50/90' : 'bg-white hover:bg-slate-50/80',
+                row.highlight ? 'bg-blue-50/90' : 'bg-white hover:bg-slate-50/80',
               ]">
                 <td class="px-4 py-4 pl-5">
                   <div class="flex items-center gap-3">
-                    <span :class="[
-                      'grid h-9 w-9 shrink-0 place-items-center rounded-lg text-sm font-bold',
-                      row.highlight
-                        ? 'bg-amber-100 text-amber-800'
-                        : 'bg-slate-100 text-slate-600',
-                    ]" aria-hidden="true">
-                      {{ row.initial }}
-                    </span>
                     <div class="flex flex-wrap items-center gap-2">
                       <span class="font-display text-[15px] font-bold text-slate-900">{{ row.level }}</span>
                       <span v-if="row.highlight"
-                        class="inline-flex items-center rounded-md bg-amber-500 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-white">
+                        class="inline-flex items-center rounded-md bg-blue-500 px-1.5 py-0 text-[10px] font-bold tracking-wide text-white">
                         Popular
                       </span>
                     </div>
@@ -64,7 +56,7 @@ import { territoryInvestmentSection } from '~/data/channel-partner-investment'
                 <td class="px-4 py-4 font-medium tabular-nums text-slate-700">{{ row.license1 }}</td>
                 <td class="px-4 py-4 font-medium tabular-nums text-slate-700">{{ row.license2 }}</td>
                 <td class="px-4 py-4 pr-5">
-                  <p class="font-display text-[15px] font-bold tabular-nums text-amber-700">{{ row.license5 }}</p>
+                  <p class="font-display text-[15px] font-bold tabular-nums text-blue-700">{{ row.license5 }}</p>
                   <p class="mt-0.5 text-[11px] font-medium text-slate-400">Best Value</p>
                 </td>
               </tr>

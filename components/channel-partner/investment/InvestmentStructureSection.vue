@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import { investmentStructureSection, platformLicenseSection } from '~/data/channel-partner-investment'
+import { investmentStructureSection, platformLicenseSection, securityDepositSection } from '~/data/channel-partner-investment'
 
 const deposit = investmentStructureSection.components[0]
 const license = investmentStructureSection.components[1]
+import PlatformAccessFeaturesSection from '../platform-access/PlatformAccessFeaturesSection.vue'
 </script>
 
 <template>
@@ -20,26 +21,53 @@ const license = investmentStructureSection.components[1]
         <article
           class="mb-5 group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card sm:p-7">
           <span aria-hidden="true"
-            class="pointer-events-none absolute -right-3 -top-8 select-none font-display text-[8rem] font-black leading-none text-slate-100 transition-colors duration-300 group-hover:text-blue-100/70">
+            class="pointer-events-none absolute -right-3 -top-8 select-none font-display text-[8rem] font-black leading-none text-slate-100 transition-colors duration-300 group-hover:text-emerald-100/70">
             01
           </span>
           <div class="relative flex items-start gap-4">
             <span
-              class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 font-bold"
+              class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100 font-bold"
               aria-hidden="true">
               01
             </span>
-            <div class="min-w-0">
+            <div class="min-w-0 max-w-3xl">
               <div class="flex flex-wrap items-center gap-2">
                 <h3 class="font-display text-lg font-bold text-slate-900">{{ deposit.title }}</h3>
                 <span
-                  class="rounded-full bg-blue-50 px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wide text-blue-700">
+                  class="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wide text-emerald-700">
                   {{ deposit.tag }}
                 </span>
               </div>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ deposit.description }}</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ securityDepositSection.description }}</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ securityDepositSection.body }}</p>
             </div>
           </div>
+
+          <p class="mt-6 text-xs font-bold uppercase tracking-wide text-slate-500">
+            {{ securityDepositSection.featuresTitle }}
+          </p>
+          <ul class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
+            <li v-for="(feature, i) in securityDepositSection.features" :key="feature.title"
+              :class="i === securityDepositSection.features.length - 1 ? 'sm:col-span-2 lg:col-span-1' : ''">
+              <div
+                class="flex h-full gap-3 rounded-2xl border border-slate-200/80 bg-slate-50/50 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-white hover:shadow-soft">
+                <span
+                  class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100"
+                  aria-hidden="true">
+                  <Icon :icon="feature.iconMdi" class="h-5 w-5" />
+                </span>
+                <div class="min-w-0">
+                  <p class="text-sm font-semibold text-slate-800">{{ feature.title }}</p>
+                  <p class="mt-1 text-xs leading-relaxed text-slate-500">{{ feature.description }}</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <p class="mt-5 flex items-center gap-2 text-sm text-slate-500">
+            <Icon icon="solar:info-circle-bold-duotone" class="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
+            {{ securityDepositSection.note }}
+          </p>
         </article>
         <article
           class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft sm:p-7">
@@ -103,7 +131,7 @@ const license = investmentStructureSection.components[1]
           </ul>
 
           <!-- Access includes -->
-          <div class="mt-6 rounded-2xl border border-slate-100 bg-slate-50/60 p-5">
+          <!-- <div class="mt-6 rounded-2xl border border-slate-100 bg-slate-50/60 p-5">
             <div class="flex flex-wrap items-center justify-between gap-3">
               <h4 class="flex items-center gap-2 font-display text-sm font-bold text-slate-900">
                 {{ platformLicenseSection.accessTitle }}
@@ -133,8 +161,9 @@ const license = investmentStructureSection.components[1]
                 </li>
               </ul>
             </div>
-          </div>
+          </div> -->
 
+          <PlatformAccessFeaturesSection />
           <p class="mt-5 flex items-center gap-2 text-sm text-slate-500">
             <Icon icon="solar:info-circle-bold-duotone" class="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
             {{ platformLicenseSection.note }}

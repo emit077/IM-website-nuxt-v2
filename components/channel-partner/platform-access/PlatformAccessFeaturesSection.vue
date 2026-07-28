@@ -61,13 +61,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section id="platform-features" class="relative scroll-mt-20 bg-white section-py"
-    aria-labelledby="platform-features-heading">
-    <div class="container-page">
-      <CardHeader heading-id="platform-features-heading" :badge="platformAccessSection.kicker"
-        :title="platformAccessSection.title" :description="platformAccessSection.description"
-        :classes="platformAccessSection.classes" />
-
+  <section id="platform-features" class="relative scroll-mt-20 bg-white " aria-labelledby="platform-features-heading">
+    <div>
       <!-- Mobile accordion -->
       <ol class="mt-10 space-y-3 lg:hidden" role="list" aria-label="Platform access modules">
         <li v-for="(feature, i) in features" :id="feature.id" :key="feature.id" class="scroll-mt-24">
@@ -82,10 +77,10 @@ onUnmounted(() => {
               :aria-expanded="activeIndex === i" :aria-controls="`platform-feature-mobile-${feature.id}`"
               @click="selectFeature(i)">
               <span :class="[
-                'grid h-10 w-10 shrink-0 place-items-center rounded-xl text-[12px] font-extrabold',
+                'grid h-10 w-10 shrink-0 place-items-center rounded-xl',
                 activeIndex === i ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500',
               ]" aria-hidden="true">
-                {{ feature.no }}
+                <Icon :icon="feature.iconMdi" class="h-5 w-5" />
               </span>
               <span class="min-w-0 flex-1">
                 <span class="block font-display text-[15px] font-bold leading-snug text-slate-900">
@@ -108,8 +103,7 @@ onUnmounted(() => {
               <ul class="mt-4 space-y-2.5" role="list">
                 <li v-for="point in feature.points" :key="point"
                   class="flex items-start gap-2.5 text-[13.5px] leading-snug text-slate-700">
-                  <span
-                    class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
+                  <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
                     aria-hidden="true">
                     <IconCheck class="h-3 w-3" />
                   </span>
@@ -122,9 +116,8 @@ onUnmounted(() => {
       </ol>
 
       <!-- Desktop: sidebar + detail -->
-      <div
-        class="relative mt-10 hidden overflow-hidden rounded-[28px] border border-slate-200/90 bg-white shadow-soft lg:block"
-        v-motion :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
+      <div class="relative mt-10 hidden overflow-hidden rounded-[28px] lg:block" v-motion
+        :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
         <div class="grid lg:grid-cols-[minmax(280px,0.95fr)_1.35fr]">
           <aside class="border-b border-slate-100 bg-[#f8fafc] p-4 lg:border-b-0 lg:border-r lg:p-5" role="tablist"
             aria-label="Platform modules" aria-orientation="vertical">
@@ -133,16 +126,15 @@ onUnmounted(() => {
               :aria-controls="`platform-feature-panel-${feature.id}`" :tabindex="activeIndex === i ? 0 : -1"
               class="flex w-full items-center gap-3 rounded-2xl px-3.5 py-3 text-left transition duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300/70"
               :class="activeIndex === i
-                ? 'bg-white shadow-[0_8px_24px_-12px_rgba(37,99,235,0.45)] ring-1 ring-blue-100'
-                : 'hover:bg-white/70'"
-              @click="selectFeature(i)" @keydown="onTabKeydown($event, i)">
+                ? 'bg-white border border-blue-400'
+                : 'hover:bg-white/70'" @click="selectFeature(i)" @keydown="onTabKeydown($event, i)">
               <span :class="[
-                'grid h-10 w-10 shrink-0 place-items-center rounded-xl text-[11px] font-extrabold transition',
+                'grid h-10 w-10 shrink-0 place-items-center rounded-xl transition',
                 activeIndex === i
                   ? 'bg-blue-600 text-white'
                   : 'bg-white text-slate-500 ring-1 ring-slate-200',
               ]" aria-hidden="true">
-                {{ feature.no }}
+                <Icon :icon="feature.iconMdi" class="h-5 w-5" />
               </span>
               <span class="min-w-0">
                 <span class="block font-display text-[14px] font-bold leading-snug text-slate-900">
@@ -180,8 +172,7 @@ onUnmounted(() => {
                 <ul class="mt-4 space-y-3" role="list">
                   <li v-for="point in feature.points" :key="point"
                     class="flex items-start gap-3 text-[14px] leading-snug text-slate-700">
-                    <span
-                      class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
+                    <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
                       aria-hidden="true">
                       <IconCheck class="h-3 w-3" />
                     </span>
