@@ -1,0 +1,1 @@
+import{ae as i,af as r}from"./VhY-7Z_j.js";function u(s){if(!s)return"";if(/^https?:\/\//i.test(s)||s.startsWith("data:"))return s;const{app:t}=i(),e=s.startsWith("/")?s:`/${s}`;return r(e,t.baseURL||"/")}export{u};
