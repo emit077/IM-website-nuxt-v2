@@ -81,7 +81,7 @@ import PlatformAccessFeaturesSection from '../platform-access/PlatformAccessFeat
               aria-hidden="true">
               02
             </span>
-            <div class="min-w-0 max-w-3xl">
+            <div class="min-w-0 max-w-4xl">
               <div class="flex flex-wrap items-center gap-2 ">
                 <h3 class="font-display text-lg font-bold text-slate-900">{{ license.title }}</h3>
                 <span
@@ -89,7 +89,7 @@ import PlatformAccessFeaturesSection from '../platform-access/PlatformAccessFeat
                   {{ license.tag }}
                 </span>
               </div>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ platformLicenseSection.description }}</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600" v-html="platformLicenseSection.description"></p>
             </div>
           </div>
 

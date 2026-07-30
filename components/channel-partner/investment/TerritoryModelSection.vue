@@ -98,8 +98,7 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
                 <ul class="mt-3 space-y-2.5" role="list">
                   <li v-for="item in level.connects" :key="item"
                     class="flex items-start gap-2.5 text-[13.5px] leading-snug text-slate-700">
-                    <span
-                      class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
+                    <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
                       aria-hidden="true">
                       <IconCheck class="h-3 w-3" />
                     </span>
@@ -108,8 +107,7 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
                 </ul>
               </div>
 
-              <div v-if="level.responsibilities?.length"
-                class="mt-5 border-t border-slate-100 pt-5">
+              <div v-if="level.responsibilities?.length" class="mt-5 border-t border-slate-100 pt-5">
                 <p class="flex items-center gap-2 text-[13px] font-bold text-slate-800">
                   <Icon icon="mdi:briefcase-outline" class="h-4 w-4 text-blue-600" aria-hidden="true" />
                   {{ level.responsibilitiesTitle }}
@@ -117,8 +115,7 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
                 <ul class="mt-3 space-y-2.5" role="list">
                   <li v-for="item in level.responsibilities" :key="item"
                     class="flex items-start gap-2.5 text-[13.5px] leading-snug text-slate-700">
-                    <span
-                      class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
+                    <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
                       aria-hidden="true">
                       <IconCheck class="h-3 w-3" />
                     </span>
@@ -141,16 +138,15 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
         class="relative mt-10 hidden overflow-hidden rounded-[28px] border border-slate-200/90 bg-white shadow-soft lg:block"
         v-motion :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
         <div class="grid lg:grid-cols-[minmax(260px,0.9fr)_1.35fr]">
-          <aside class="border-b border-slate-100 bg-[#f8fafc] p-4 lg:border-b-0 lg:border-r lg:p-5"
-            role="tablist" aria-label="Territory levels" aria-orientation="vertical">
-            <button v-for="(level, i) in levels" :id="`territory-model-tab-${level.id}`" :key="level.id"
-              type="button" role="tab" :aria-selected="activeIndex === i"
-              :aria-controls="`territory-model-panel-${level.id}`" :tabindex="activeIndex === i ? 0 : -1"
+          <aside class="border-b border-slate-100 bg-[#f8fafc] p-4 lg:border-b-0 lg:border-r lg:p-5" role="tablist"
+            aria-label="Territory levels" aria-orientation="vertical">
+            <button v-for="(level, i) in levels" :id="`territory-model-tab-${level.id}`" :key="level.id" type="button"
+              role="tab" :aria-selected="activeIndex === i" :aria-controls="`territory-model-panel-${level.id}`"
+              :tabindex="activeIndex === i ? 0 : -1"
               class="flex w-full items-center gap-3 rounded-2xl px-3.5 py-3 text-left transition duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300/70"
               :class="activeIndex === i
                 ? 'bg-white shadow-[0_8px_24px_-12px_rgba(37,99,235,0.45)] ring-1 ring-blue-100'
-                : 'hover:bg-white/70'"
-              @click="selectLevel(i)" @keydown="onTabKeydown($event, i)">
+                : 'hover:bg-white/70'" @click="selectLevel(i)" @keydown="onTabKeydown($event, i)">
               <span :class="[
                 'grid h-10 w-10 shrink-0 place-items-center rounded-xl transition',
                 activeIndex === i ? 'bg-blue-600 text-white' : 'bg-white text-slate-500 ring-1 ring-slate-200',
@@ -165,8 +161,8 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
           </aside>
 
           <div class="p-6 sm:p-8 lg:p-10">
-            <div v-for="(level, i) in levels" :id="`territory-model-panel-${level.id}`" :key="level.id"
-              role="tabpanel" :aria-labelledby="`territory-model-tab-${level.id}`" :hidden="activeIndex !== i">
+            <div v-for="(level, i) in levels" :id="`territory-model-panel-${level.id}`" :key="level.id" role="tabpanel"
+              :aria-labelledby="`territory-model-tab-${level.id}`" :hidden="activeIndex !== i">
               <div class="flex items-start gap-5">
                 <span
                   class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-blue-600 text-white shadow-[0_10px_24px_-10px_rgba(37,99,235,0.7)]"
@@ -203,8 +199,7 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
                 <ul class="mt-4 grid grid-cols-2 gap-3" role="list">
                   <li v-for="item in level.connects" :key="item"
                     class="flex items-center gap-3 text-[14px] leading-snug text-slate-700">
-                    <span
-                      class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
+                    <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
                       aria-hidden="true">
                       <IconCheck class="h-3 w-3" />
                     </span>
@@ -213,8 +208,7 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
                 </ul>
               </div>
 
-              <div v-if="level.responsibilities?.length"
-                class="mt-6 border-t border-slate-100 pt-6">
+              <div v-if="level.responsibilities?.length" class="mt-6 border-t border-slate-100 pt-6">
                 <p class="flex items-center gap-2 text-sm font-bold text-slate-800">
                   <Icon icon="mdi:briefcase-outline" class="h-4 w-4 text-blue-600" aria-hidden="true" />
                   {{ level.responsibilitiesTitle }}
@@ -222,8 +216,7 @@ function onTabKeydown(event: KeyboardEvent, index: number) {
                 <ul class="mt-4 space-y-3" role="list">
                   <li v-for="item in level.responsibilities" :key="item"
                     class="flex items-start gap-3 text-[14px] leading-snug text-slate-700">
-                    <span
-                      class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
+                    <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
                       aria-hidden="true">
                       <IconCheck class="h-3 w-3" />
                     </span>

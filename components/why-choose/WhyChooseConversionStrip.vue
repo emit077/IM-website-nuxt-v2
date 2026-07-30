@@ -24,7 +24,6 @@ import { whyChooseConversionStrip } from '~/data/why-choose'
               {{ whyChooseConversionStrip.description }}
             </p>
           </div>
-
           <div class=" shrink-0 flex-col gap-3 sm:flex-row sm:items-center">
             <a v-for="cta in whyChooseConversionStrip.ctas" :key="cta.label" :href="cta.href" :class="[
               'inline-flex mt-5 w-full items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold transition duration-300 hover:-translate-y-0.5',

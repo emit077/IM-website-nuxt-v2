@@ -137,7 +137,7 @@ export const platformLicenseSection = {
     'Digital Platform <span class="text-gradient-brand">Licensing Fee</span>',
   classes: "!px-0 !py-0",
   description:
-    "The Digital Platform Licensing Fee provides Channel Partners with authorised access to the Indian Mentors digital ecosystem, designed to support efficient management of student enquiries, enrollments, tutor coordination, subscriptions, communication, and academic operations. The platform enables Channel Partners to operate their designated territory through a structured, technology- enabled environment while benefiting from the systems and infrastructure developed by Indian Mentors.",
+    "The Digital Platform Licensing Fee provides Channel Partners with authorised access to the Indian Mentors digital ecosystem, designed to support efficient management of student enquiries, enrollments, tutor coordination, subscriptions, communication, and academic operations.<br><br> The platform enables Channel Partners to operate their designated territory through a structured, technology- enabled environment while benefiting from the systems and infrastructure developed by Indian Mentors.",
   body: "Partners subscribe to the Digital Platform License to access this ecosystem.",
   note: "License pricing varies based on territory scale and operational coverage.",
   plansTitle: "License Duration Options",
@@ -326,7 +326,6 @@ export const territoryModelSection = {
         "Match students with suitable subject and board-specific tutors",
         "Coordinate demo sessions",
         "Support local parent communication",
-        "Facilitate smooth service delivery within the designated pincode",
       ],
       example: "560034 – Koramangala, Bengaluru",
     },
@@ -337,7 +336,7 @@ export const territoryModelSection = {
       subtitle: "Primary Partner Territory",
       iconMdi: "mdi:city-variant-outline",
       description:
-        "Cities represent the primary operational territory for most Indian Mentors Channel Partners. Each city consists of multiple pincodes, localities, residential communities, schools, and student clusters. A city-level Channel Partner may manage tutoring operations across multiple localities and pincodes within the designated city.",
+        "Cities represent the primary operational territory for most Indian Mentors Channel Partners. Each city consists of multiple pincodes, localities, residential communities, schools, and student clusters.",
       responsibilitiesTitle: "Partner Responsibilities",
       responsibilities: [
         "Student counselling and admissions",
@@ -346,8 +345,6 @@ export const territoryModelSection = {
         "Parent relationship management",
         "Student–tutor matching",
         "Local marketing and business development",
-        "Development of a strong city-level tutor network",
-        "Coordination of home, online, shadow, and specialised tutoring services",
       ],
       example: "Bengaluru, Karnataka",
     },
@@ -383,7 +380,6 @@ export const territoryModelSection = {
         "Coordinate regional tutor recruitment and supply",
         "Monitor service quality across multiple territories",
         "Facilitate regional business development",
-        "Support expansion into new cities and districts",
       ],
       example: "Bengaluru Division / Bengaluru Region",
     },
@@ -393,15 +389,13 @@ export const territoryModelSection = {
       subtitle: "State-Level Partnership",
       iconMdi: "mdi:map-outline",
       description:
-        "A State-level partnership enables larger Channel Partners to manage Indian Mentors operations across multiple districts and regional territories within a state. The State Partner may act as a strategic growth partner responsible for expanding the Indian Mentors tutoring ecosystem across the state.",
+        "A State-level partnership enables larger Channel Partners to manage Indian Mentors operations across multiple districts and regional territories within a state.",
       responsibilitiesTitle: "Partner Responsibilities",
       responsibilities: [
         "State-wide business development",
         "Tutor network expansion",
         "Recruitment and onboarding of tutors at scale",
         "Regional marketing and brand representation",
-        "Development and support of district and city-level partners",
-        "Expansion of Indian Mentors services across major cities and towns",
         "Coordination of state-level operational growth",
       ],
       example: "Karnataka",
@@ -421,9 +415,7 @@ export const territoryModelSection = {
         "Support state-level Channel Partners",
         "Coordinate regional tutor supply",
         "Develop large-scale tutor recruitment networks",
-        "Facilitate regional marketing initiatives",
         "Monitor business growth across multiple states",
-        "Support the expansion of Indian Mentors into new markets",
       ],
       example: "South Zone",
     },
@@ -433,7 +425,7 @@ export const territoryModelSection = {
       subtitle: "National Tutoring Network",
       iconMdi: "mdi:earth",
       description:
-        "At the National Level, Indian Mentors operates a centralised tutoring platform that connects and coordinates students, parents, tutors, channel partners, institutional clients, and educational organisations. The national network creates a scalable, structured, and technology-enabled ecosystem for delivering personalised tutoring services across India.",
+        "At the National Level, Indian Mentors operates a centralised tutoring platform that connects and coordinates students, parents, tutors, channel partners, institutional clients, and educational organisations.",
       connectsTitle: "National network connects",
       connects: [
         "Students",
@@ -505,12 +497,52 @@ export const enrollmentFeeShareSection = {
 };
 
 export const subscriptionShareSection = {
-  kicker: "Revenue Distribution",
-  title: "A Transparent Revenue-Sharing Structure",
+  kicker: "Subscription Revenue",
+  title:
+    'Keep <span class="text-gradient-brand">90%</span> of Every Subscription',
   classes: "!px-0 !py-0",
   description:
-    "Build recurring revenue through subscription-based personalised tutoring services. Enjoy a transparent 90:10 revenue split designed to maximise partner earnings.",
-  services: ["Home Tutoring", "Online Tutoring", "Hybrid Learning Programs"],
+    "Personalised tutoring subscriptions in your territory create ongoing income. You retain 90% of eligible subscription revenue; Indian Mentors keeps 10% for platform and academic infrastructure.",
+  descriptionSecondary: "",
+  model: {
+    title: "How the Revenue Model Works",
+    columns: [
+      { key: "component", label: "Revenue Component" },
+      { key: "amount", label: "Indicative Amount" },
+      { key: "partnerShare", label: "Partner Share" },
+      { key: "platformShare", label: "Platform Share" },
+    ],
+    rows: [
+      {
+        component: "Student Enrollment Fee",
+        amount: "₹1,200 / Student",
+        partnerShare: "Not Applicable",
+        platformShare: "100% Indian Mentors",
+        highlight: false,
+      },
+      {
+        component: "Tutor Registration Fee",
+        amount: "₹1,000 / Tutor",
+        partnerShare: "Not Applicable",
+        platformShare: "100% Indian Mentors",
+        highlight: false,
+      },
+      {
+        component: "Subscription Fee",
+        amount: "Average ₹8,000 / Student*",
+        partnerShare: "90%",
+        platformShare: "10%",
+        highlight: true,
+      },
+    ],
+    note: "The average subscription value is indicative and may vary based on the selected tutoring plan, number of subjects, class level, board, session frequency, service type, and other applicable factors.",
+  },
+  structure: {
+    kicker: "Partner-First Split",
+    title: "Built to Maximise Partner Earnings",
+    description:
+      "A transparent 90:10 revenue split on personalised tutoring subscriptions — designed so most of the value stays with the Channel Partner.",
+  },
   partnerShare: {
     label: "Channel Partner",
     percent: 90,
@@ -522,25 +554,25 @@ export const subscriptionShareSection = {
     detail: "Platform Fee",
   },
   closing:
-    "<b>Create Long-Term Business Value</b> -  Develop a sustainable education business by combining local partnerships with the reach and resources of Indian Mentors.",
+    "<b>Compound value over time</b> — grow enrollments in your territory and turn each subscription into predictable, long-term partner income.",
   highlights: [
     {
       iconMdi: "mdi:wallet-outline",
-      title: "Earn More from Every Subscription",
+      title: "Recurring Income, Territory by Territory",
       description:
-        "Build recurring income by growing personalised tutoring subscriptions within your territory.",
+        "Earn from home, online, and hybrid tutoring subscriptions as your local student base grows.",
     },
     {
       iconMdi: "mdi:shield-check-outline",
-      title: "A Fair & Transparent Distribution",
+      title: "Clear Split. No Hidden Cuts.",
       description:
-        "Receive 90% of eligible subscription revenue, with a clearly defined 10% platform share.",
+        "90% of eligible subscription revenue goes to the Channel Partner; 10% covers the platform.",
     },
     {
       iconMdi: "mdi:rocket-launch-outline",
-      title: "Focus on Growth, We Support the Platform",
+      title: "You Grow the Market. We Run the Stack.",
       description:
-        "Indian Mentors manages technology, academic systems, customer support, and operational infrastructure.",
+        "Indian Mentors handles technology, academics, support, and operations — so you can focus on enrollment and relationships.",
     },
   ],
 };
