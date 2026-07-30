@@ -8,7 +8,6 @@ import RevenueSplitSection from '~/components/channel-partner/RevenueSplitSectio
 import TerritoryStructureSection from '~/components/channel-partner/TerritoryStructureSection.vue'
 import PartnershipProcessSection from '~/components/channel-partner/PartnershipProcessSection.vue'
 import PartnerEligibilitySection from '~/components/channel-partner/PartnerEligibilitySection.vue'
-import AvailableTerritoriesSection from '~/components/channel-partner/AvailableTerritoriesSection.vue'
 import PartnerTestimonialsSection from '~/components/channel-partner/PartnerTestimonialsSection.vue'
 import PartnerFaqSection from '~/components/channel-partner/PartnerFaqSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
@@ -38,11 +37,9 @@ useSeoMeta({
     <WhyPartnerSection />
     <PartnershipOpportunitiesSection />
     <RevenueSplitSection />
-
     <TerritoryStructureSection />
     <PartnershipProcessSection />
     <PartnerEligibilitySection />
-    <!-- <AvailableTerritoriesSection /> -->
     <PartnerTestimonialsSection />
     <PartnerFaqSection />
     <UiCTASection section-id="partner-register" heading-id="partner-cta-heading" :title="finalCta.title"

@@ -3,19 +3,16 @@ import InvestmentHeroSection from '~/components/channel-partner/investment/Inves
 import InvestmentStructureSection from '~/components/channel-partner/investment/InvestmentStructureSection.vue'
 import TerritoryInvestmentTableSection from '~/components/channel-partner/investment/TerritoryInvestmentTableSection.vue'
 import TerritoryModelSection from '~/components/channel-partner/investment/TerritoryModelSection.vue'
-import RevenueSharingOverviewSection from '~/components/channel-partner/investment/RevenueSharingOverviewSection.vue'
-import EnrollmentFeeShareSection from '~/components/channel-partner/investment/EnrollmentFeeShareSection.vue'
 import SubscriptionShareSection from '~/components/channel-partner/investment/SubscriptionShareSection.vue'
 import RevenueCalculatorSection from '~/components/channel-partner/investment/RevenueCalculatorSection.vue'
 import EarningsIllustrationSection from '~/components/channel-partner/investment/EarningsIllustrationSection.vue'
 import InvestmentAdvantagesSection from '~/components/channel-partner/investment/InvestmentAdvantagesSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
-import { investmentFinalCta } from '~/data/channel-partner-investment'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
+import { investmentFinalCta } from '~/data/channel-partner-investment'
 
 const investmentCtas = [
   { ...investmentFinalCta.primaryCta, iconMdi: 'mdi:account-plus-outline', primary: true },
-  // { ...investmentFinalCta.secondaryCta, iconMdi: 'mdi:headset' },
   { ...investmentFinalCta.tertiaryCta, iconMdi: 'mdi:file-download-outline' },
 ] as const
 
@@ -36,8 +33,6 @@ useSeoMeta({
     <InvestmentStructureSection />
     <TerritoryInvestmentTableSection />
     <TerritoryModelSection />
-    <!-- <RevenueSharingOverviewSection /> -->
-    <!-- <EnrollmentFeeShareSection /> -->
     <SubscriptionShareSection />
     <EarningsIllustrationSection />
     <RevenueCalculatorSection />
@@ -46,6 +41,5 @@ useSeoMeta({
       :title="investmentFinalCta.title" :description="investmentFinalCta.description"
       :supporting="investmentFinalCta.opportunities.join(' · ')" :ctas="investmentCtas" />
     <NewsletterSection />
-
   </div>
 </template>

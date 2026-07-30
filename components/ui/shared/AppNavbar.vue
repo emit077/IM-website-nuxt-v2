@@ -14,6 +14,7 @@ const email = 'info@indianmentors.in'
 const primaryLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
+  { label: 'Our Services', href: '/services' },
   { label: 'Contact Us', href: '/contact' },
   { label: 'Tutors', href: '/tutors' },
 ]
@@ -23,6 +24,7 @@ const navMenus = [
     id: 'more',
     label: 'More',
     items: [
+      { label: 'Why Choose Us', href: '/why-choose' },
       { label: 'Students & Parents', href: '/student-parent' },
       { label: 'Academic Coverage', href: '/academic-coverage' },
       { label: 'How it Works', href: '/#how-it-works' },

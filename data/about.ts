@@ -279,40 +279,6 @@ export const aboutLeadership: LeadershipProfile[] = [
   },
 ]
 
-
-export type PhilosophyValue = {
-  icon: string
-  title: string
-  description: string
-}
-
-export const aboutPhilosophy = {
-  badge: 'What we stand for',
-  title: 'Our <span class="text-gradient-brand">Philosophy</span>',
-  description: 'Three simple values. Powered by technology, delivered by humans.',
-  classes: '!px-0 !py-0',
-  values: [
-    {
-      icon: 'mdi:lightning-bolt',
-      title: 'Structure, support, and speed',
-      description:
-        'Personalised learning plans, verified mentors, and ERP-backed tracking — so families see progress from day one.',
-    },
-    {
-      icon: 'mdi:heart-outline',
-      title: 'Trust at every touchpoint',
-      description:
-        'Background-verified tutors, transparent reporting, and open communication between students, parents, and mentors.',
-    },
-    {
-      icon: 'mdi:send-outline',
-      title: 'Outcomes that scale',
-      description:
-        'From home tutoring to institutional partnerships — structured systems that grow with every learner.',
-    },
-  ] satisfies PhilosophyValue[],
-}
-
 export type ComparisonRow = {
   feature: string
   indianMentors: boolean
@@ -339,36 +305,11 @@ export const aboutComparison = {
   ] satisfies ComparisonRow[],
 }
 
-export type AudienceCard = {
-  icon: string
-  text: string
-}
-
-export const aboutAudience = {
-  badge: 'Who we serve',
-  title: 'Designed for <span class="text-gradient-brand">Students Who…</span>',
-  description:
-    'Our team becomes your academic support system — structured, transparent, and scalable.',
-  classes: '!px-0 !py-0',
-  cards: [
-    { icon: 'mdi:rocket-launch-outline', text: 'Want personalised guidance beyond crowded classroom coaching.' },
-    { icon: 'mdi:clock-fast', text: 'Need flexible scheduling that fits school, exams, and family life.' },
-    { icon: 'mdi:account-group-outline', text: 'Value transparency — parents, students, and mentors aligned on goals.' },
-    { icon: 'mdi:school-outline', text: 'Aim for board excellence, competitive exams, or long-term academic growth.' },
-  ] satisfies AudienceCard[],
-}
-
 export const aboutLeadershipSection = {
   badge: 'Our Leadership',
   title: 'A structured Team Powering <span class="text-gradient-brand">Academic Excellence</span>',
   description:
     'The people guiding academic quality, operations, and mentor excellence across India.',
-  classes: '!px-0 !py-0',
-}
-
-export const aboutJourneySection = {
-  badge: 'Our Journey',
-  title: 'Milestones that shaped us',
   classes: '!px-0 !py-0',
 }
 

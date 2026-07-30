@@ -45,7 +45,7 @@ export const heroContent = {
   backgroundImage: 'assets/img/hero/hero-1.png',
   contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
   primaryCta: { label: 'Apply for Channel Partnership', href: '#partner-register' },
-  secondaryCta: { label: 'Explore Available Territories', href: '#available-territories' },
+  secondaryCta: { label: 'Explore Available Territories', href: '#territory-structure' },
 }
 
 export const heroTrustStats: TrustIndicatorItem[] = [
@@ -483,7 +483,7 @@ export const partnerTestimonials: PartnerTestimonial[] = [
       'Partnering with Indian Mentors gave me a structured way to serve my local community. The onboarding was smooth and support has been consistent throughout.',
     name: 'Rajesh Kumar',
     role: 'City Channel Partner',
-    location: 'Pune, Maharashtra',
+    location: 'Vijayawada, Andhra Pradesh',
   },
   {
     id: 'partner-2',

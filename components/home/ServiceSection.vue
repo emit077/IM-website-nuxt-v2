@@ -8,6 +8,7 @@ type ServiceCard = {
     description: string
     img: string
     features: string[]
+    href: string
     /** Grid width: `col-span-1`, `col-span-2`, or `col-span-full` */
     columns?: 'col-span-1' | 'col-span-2' | 'col-span-full'
 }
@@ -26,6 +27,7 @@ const services: ServiceCard[] = [
         description: 'One-on-one personalised learning in the comfort of your home.',
         img: 'assets/img/services/home-tutor.svg',
         features: ['Personalised learning plans', 'Flexible scheduling', 'All subjects & boards'],
+        href: '/services#home-tutors',
         columns: 'col-span-1',
     },
     {
@@ -33,6 +35,7 @@ const services: ServiceCard[] = [
         description: 'Live interactive classes from anywhere, anytime.',
         img: 'assets/img/services/online-tutor.svg',
         features: ['Live video sessions', 'Digital whiteboard', 'Recorded revisions'],
+        href: '/services#online-tutors',
         columns: 'col-span-1',
     },
     {
@@ -40,6 +43,7 @@ const services: ServiceCard[] = [
         description: 'Extra focus and depth beyond regular school curriculum.',
         img: 'assets/img/services/shadow-tutor.svg',
         features: ['Concept reinforcement', 'Homework guidance', 'Exam preparation'],
+        href: '/services#shadow-tutors',
         columns: 'col-span-1',
     },
     {
@@ -47,6 +51,7 @@ const services: ServiceCard[] = [
         description: 'Verified mentors available at your location while you travel.',
         img: 'assets/img/services/travel-tutor.svg',
         features: ['On-demand support', 'Location flexibility', 'Continuity in learning'],
+        href: '/services#travel-tutors',
         columns: 'col-span-1',
     },
     {
@@ -54,6 +59,7 @@ const services: ServiceCard[] = [
         description: 'Full-Time Residential Academic Mentorship for Consistent Learning & Holistic Development',
         img: 'assets/img/services/live-in-tutor.svg',
         features: ['Structured daily routine', 'Academic discipline', 'Result-oriented approach'],
+        href: '/services#live-in-tutors',
         columns: 'col-span-1',
     },
     {
@@ -61,6 +67,7 @@ const services: ServiceCard[] = [
         description: 'Home-based learning with board-aligned curriculum and guidance.',
         img: 'assets/img/services/home-schooling.svg',
         features: ['Board-aligned curriculum', 'Dedicated mentor', 'Progress & assessments'],
+        href: '/services#home-schooling',
         columns: 'col-span-1',
     },
     {
@@ -68,6 +75,7 @@ const services: ServiceCard[] = [
         description: 'Individualised educational support for children with diverse learning and developmental needs.',
         img: 'assets/img/services/special-tutor.svg',
         features: ['ADHD (Attention Deficit Hyperactivity Disorder)', 'ASD (Autism Spectrum Disorder)', 'SLD (Specific Learning Disorder)', 'Dyslexia, Dysgraphia, Dyscalculia,', 'Behavioural & Learning Challenges'],
+        href: '/services#special-educators',
         columns: 'col-span-2',
     },
 ]
@@ -82,7 +90,7 @@ const customService = {
         { label: 'Mixed subjects or boards', detail: 'CBSE, ICSE, State & international curricula' },
         { label: 'Dedicated coordinator', detail: 'One point of contact from match to milestones' },
     ],
-    primaryCta: { label: 'Know more', href: '#book-demo', icon: 'mdi:clipboard-edit-outline' },
+    primaryCta: { label: 'Know more', href: '/services#custom-tutor', icon: 'mdi:clipboard-edit-outline' },
 }
 
 /** Keep wider cards single-column on mobile; expand from sm+ */
@@ -142,7 +150,7 @@ function cardSpanClass(columns?: ServiceCard['columns'] | 'col-span-full') {
                         </ul>
 
                         <div class="mt-auto flex justify-center pt-5">
-                            <a href="#tutors"
+                            <a :href="service.href"
                                 class="cursor-pointer group/know inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 transition hover:text-blue-700">
                                 Know more
                                 <svg class="h-4 w-4 shrink-0 transition-transform duration-200 group-hover/know:translate-x-0.5"
