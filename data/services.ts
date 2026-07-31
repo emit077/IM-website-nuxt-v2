@@ -33,6 +33,10 @@ export const tutoringServicesSection = {
   classes: '!px-0 !py-0',
   description:
     'Our tutoring services are designed to provide students with the right combination of academic expertise, personal attention, flexibility, and ongoing support.',
+  consultationCta: {
+    label: 'Book Free Consultation',
+    href: '#book-demo',
+  },
 }
 
 export const tutoringServices: ServiceItem[] = [

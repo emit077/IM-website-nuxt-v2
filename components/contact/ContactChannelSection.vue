@@ -71,13 +71,7 @@ function onSubmit() {
 }
 
 const directContacts = [
-  {
-    id: 'email',
-    icon: 'mdi:email-outline',
-    label: 'E-mail',
-    value: emailSupport.address,
-    href: `mailto:${emailSupport.address}`,
-  },
+
   {
     id: 'call-us-phone',
     icon: 'mdi:phone-outline',
@@ -93,6 +87,13 @@ const directContacts = [
     href: primaryWa.wa ? `https://wa.me/${primaryWa.wa}` : undefined,
     external: true,
   },
+  {
+    id: 'email',
+    icon: 'mdi:email-outline',
+    label: 'E-mail',
+    value: emailSupport.address,
+    href: `mailto:${emailSupport.address}`,
+  }
 ] as const
 
 </script>
@@ -194,9 +195,9 @@ const directContacts = [
                   </div>
                 </div>
 
-                <div class="mt-5">
+                <div class="mt-5 text-right">
                   <button type="submit" :disabled="submitting"
-                    class="inline-flex items-center gap-3 rounded-full bg-blue-600 py-1.5 pl-1.5 pr-7 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:opacity-70">
+                    class=" inline-flex items-center gap-3 rounded-full bg-blue-600 py-1.5 pl-1.5 pr-7 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:opacity-70">
                     <span class="grid h-10 w-10 place-items-center rounded-full bg-white text-blue-600"
                       aria-hidden="true">
                       <Icon :icon="submitting ? 'mdi:loading' : 'mdi:arrow-right'"

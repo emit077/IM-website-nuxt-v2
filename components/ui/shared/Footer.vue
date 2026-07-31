@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
+
 const phoneNumber = '+91 7389563564'
 const phoneTel = '917389563564'
 const email = 'info@indianmentors.in'
@@ -7,6 +9,35 @@ const workingHours = {
   label: 'Working hours',
   value: 'Monday – Saturday · 10:00 AM – 7:00 PM',
 }
+
+/** Social profiles from https://indianmentors.in/ footer (X uses clean profile URL). */
+const socialLinks = [
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/indianmentors/',
+    icon: 'mdi:instagram',
+  },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/indianmentors',
+    icon: 'mdi:facebook',
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/channel/UCwZbfBmijkVQDnsQmKhc_-A',
+    icon: 'mdi:youtube',
+  },
+  {
+    label: 'X',
+    href: 'https://x.com/indian_mentors',
+    icon: 'simple-icons:x',
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/indianmentors/',
+    icon: 'mdi:linkedin',
+  },
+] as const
 
 /** In-page anchors match `pages/index.vue` sections; use `/#…` so links work from any route. */
 const navLinks = [
@@ -129,6 +160,18 @@ const navLinks = [
               </span>
             </li>
           </ul>
+
+          <div class="mt-7">
+            <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">Follow us</p>
+            <ul class="mt-3 flex flex-wrap gap-2.5" role="list" aria-label="Social media">
+              <li v-for="social in socialLinks" :key="social.label">
+                <a :href="social.href" :aria-label="social.label" target="_blank" rel="noopener noreferrer"
+                  class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-slate-300 ring-1 ring-white/10 transition hover:bg-blue-500/15 hover:text-white hover:ring-blue-400/30">
+                  <Icon :icon="social.icon" class="h-5 w-5" aria-hidden="true" />
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="lg:col-span-7">
           <h2 class="text-xs font-bold uppercase tracking-[0.14em] text-slate-500">

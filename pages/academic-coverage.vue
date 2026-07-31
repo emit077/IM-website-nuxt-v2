@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import AcademicHeroSection from '~/components/academic/AcademicHeroSection.vue'
+import CoverageOverviewSection from '~/components/academic/CoverageOverviewSection.vue'
 import GradesSection from '~/components/academic/GradesSection.vue'
 import BoardsSection from '~/components/academic/BoardsSection.vue'
 import SubjectsSection from '~/components/academic/SubjectsSection.vue'
 import CourseMatchingSection from '~/components/academic/CourseMatchingSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import { academicFinalCta } from '~/data/academic-coverage'
 
 const academicCtas = [
-  { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
-  { label: 'Find a Personalised Tutor', href: '#book-demo', iconMdi: 'mdi:account-search-outline' },
+  { ...academicFinalCta.primaryCta, iconMdi: 'mdi:calendar-check-outline', primary: true },
+  { ...academicFinalCta.secondaryCta, iconMdi: 'mdi:account-search-outline' },
 ] as const
 
 useSeoMeta({
@@ -25,12 +27,12 @@ useSeoMeta({
 <template>
   <div>
     <AcademicHeroSection />
+    <CoverageOverviewSection />
     <GradesSection />
     <BoardsSection />
     <SubjectsSection />
     <CourseMatchingSection />
-    <UiCTASection title="Start Your Personalised Learning Journey Today"
-      description="Whether your child needs foundation learning, board exam preparation, or competitive mentoring, we connect you with verified tutors across India."
-      supporting="No commitment required · Background-verified tutors · Free demo session" :ctas="academicCtas" />
+    <UiCTASection heading-id="academic-cta-heading" :title="academicFinalCta.title"
+      :description="academicFinalCta.description" :supporting="academicFinalCta.supporting" :ctas="academicCtas" />
   </div>
 </template>

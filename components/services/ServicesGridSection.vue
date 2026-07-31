@@ -97,8 +97,11 @@ const customService = computed(() => tutoringServices.find((s) => s.id === 'cust
               </div>
             </div>
 
-            <div class="mt-10">
+            <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <ActionBtn variant="primary" :href="service.cta.href" :label="service.cta.label" />
+              <ActionBtn variant="secondary" :href="tutoringServicesSection.consultationCta.href"
+                :label="tutoringServicesSection.consultationCta.label" icon="mdi:calendar-account-outline"
+                :show-arrow="false" />
             </div>
           </div>
         </div>
