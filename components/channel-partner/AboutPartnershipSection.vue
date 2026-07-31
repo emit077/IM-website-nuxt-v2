@@ -4,7 +4,6 @@ import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { aboutSection } from '~/data/channel-partner'
 
 const primaryImage = usePublicAsset(aboutSection.image)
-const secondaryImage = usePublicAsset(aboutSection.secondaryImage)
 </script>
 
 <template>
@@ -25,41 +24,22 @@ const secondaryImage = usePublicAsset(aboutSection.secondaryImage)
         </template>
       </CardHeader>
 
-      <div class="mt-12 grid items-center gap-10 lg:mt-14 lg:grid-cols-12 lg:gap-12">
-        <!-- Left: image collage + floating stats -->
-        <div class="relative lg:col-span-6" v-motion :initial="{ opacity: 0, y: 18 }"
+      <div class="mt-12 grid items-stretch gap-10 lg:mt-14 lg:grid-cols-12 lg:gap-12">
+        <!-- Left: single image -->
+        <div class="relative lg:col-span-5" v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
-          <div class="relative mx-auto max-w-xl pb-16 sm:pb-20 lg:mx-0 lg:max-w-none">
-            <div class="overflow-hidden rounded-2xl sm:rounded-3xl">
-              <img :src="primaryImage" alt="Indian Mentors team celebrating partnership growth"
-                class="aspect-[16/11] w-full object-cover" loading="lazy" decoding="async" />
-            </div>
+          <div class="relative mx-auto   overflow-hidden rounded-[28px]  sm:min-h-[420px] lg:mx-0 lg:max-w-none">
+            <img :src="primaryImage" alt="Indian Mentors channel partner program"
+              class=" inset-0 h-full object- object-center" loading="lazy" decoding="async" />
 
             <!-- Floating stats -->
-            <div
-              class="absolute left-3 top-4 z-20 flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white px-3 py-2.5 shadow-[0_14px_36px_-14px_rgba(30,58,138,0.35)] sm:left-4 sm:top-6 sm:gap-3 sm:px-3.5 sm:py-3"
-              v-motion :initial="{ opacity: 0, x: -12, scale: 0.92 }"
-              :visibleOnce="{ opacity: 1, x: 0, scale: 1, transition: { delay: 280, duration: 450 } }">
-              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-600 text-white sm:h-10 sm:w-10"
-                aria-hidden="true">
-                <Icon :icon="aboutSection.stats[0].iconMdi" class="h-[18px] w-[18px]" />
-              </span>
-              <div class="leading-tight">
-                <p class="font-display text-base font-bold text-slate-900 sm:text-lg">
-                  {{ aboutSection.stats[0].value }}
-                </p>
-                <p class="text-[11px] font-medium text-slate-500 sm:text-xs">
-                  {{ aboutSection.stats[0].label }}
-                </p>
-              </div>
-            </div>
+
 
             <div
-              class="absolute bottom-20 left-3 z-20 flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white px-3 py-2.5 shadow-[0_14px_36px_-14px_rgba(30,58,138,0.35)] sm:bottom-24 sm:left-4 sm:gap-3 sm:px-3.5 sm:py-3"
+              class="absolute bottom-4 left-4 z-10 flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/95 px-3 py-2.5 shadow-[0_14px_36px_-14px_rgba(30,58,138,0.35)] backdrop-blur-sm sm:bottom-5 sm:left-5 sm:gap-3 sm:px-3.5 sm:py-3"
               v-motion :initial="{ opacity: 0, x: -12, scale: 0.92 }"
               :visibleOnce="{ opacity: 1, x: 0, scale: 1, transition: { delay: 420, duration: 450 } }">
-              <span
-                class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-600 text-white sm:h-10 sm:w-10"
+              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-600 text-white sm:h-10 sm:w-10"
                 aria-hidden="true">
                 <Icon :icon="aboutSection.stats[1].iconMdi" class="h-[18px] w-[18px]" />
               </span>
@@ -72,22 +52,12 @@ const secondaryImage = usePublicAsset(aboutSection.secondaryImage)
                 </p>
               </div>
             </div>
-
-            <!-- Secondary overlapping image -->
-            <div
-              class="absolute -bottom-1 right-2 z-10 w-[42%] max-w-[200px] overflow-hidden rounded-2xl border-[5px] border-white shadow-[0_18px_40px_-16px_rgba(15,23,42,0.35)] sm:right-4 sm:max-w-[220px] sm:border-[6px] sm:rounded-[1.25rem]"
-              v-motion :initial="{ opacity: 0, y: 16, scale: 0.94 }"
-              :visibleOnce="{ opacity: 1, y: 0, scale: 1, transition: { delay: 200, duration: 500 } }">
-              <img :src="secondaryImage" alt="Mentor guiding a student during a personalised tutoring session"
-                class="aspect-[4/5] w-full object-cover" loading="lazy" decoding="async" />
-            </div>
           </div>
         </div>
 
         <!-- Right: feature cards -->
-        <ul class="flex flex-col gap-4 sm:gap-5 lg:col-span-6" role="list">
-          <li v-for="(feature, i) in aboutSection.features" :key="feature.no" v-motion
-            :initial="{ opacity: 0, x: 14 }"
+        <ul class="flex flex-col justify-center gap-4 sm:gap-5 lg:col-span-7" role="list">
+          <li v-for="(feature, i) in aboutSection.features" :key="feature.no" v-motion :initial="{ opacity: 0, x: 14 }"
             :visibleOnce="{ opacity: 1, x: 0, transition: { delay: 80 + i * 90, duration: 450 } }">
             <article
               class="group flex gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-card sm:gap-5 sm:rounded-3xl sm:p-6">

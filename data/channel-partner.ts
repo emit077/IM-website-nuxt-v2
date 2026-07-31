@@ -78,8 +78,7 @@ export const aboutSection = {
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   description:
     'Indian Mentors is expanding its nationwide network of channel partners to connect students with verified and qualified tutors for personalised academic support.',
-  image: 'assets/img/about/images2.jpg',
-  secondaryImage: 'assets/img/about/images4.jpg',
+  image: 'assets/img/channel-partner/channel-partner.webp',
   stats: [
     {
       value: '200+',
@@ -324,7 +323,7 @@ export const territorySection = {
     { iconMdi: 'mdi:account-switch-outline', label: 'Smart tutor allocation' },
     { iconMdi: 'mdi:chart-timeline-variant', label: 'Scalable partner operations' },
   ],
-  creativeImage: 'assets/img/channel-partner/territory-structure-map.png',
+  creativeImage: 'assets/img/channel-partner/map.webp',
   featuredCities: [
     { image: 'mumbai', label: 'Mumbai' },
     { image: 'delhi', label: 'Delhi' },
@@ -538,6 +537,4 @@ export const finalCta = {
   primaryCta: { label: 'Apply Now', href: '#partner-register' },
   secondaryCta: { label: 'Talk to a Partnership Expert', href: 'tel:+917389563564' },
   closingTitle: 'Start Your Partnership Journey with Indian Mentors',
-  closingStatement:
-    'Together, we can create a strong academic support ecosystem that benefits students, parents, tutors, and education partners.',
 }

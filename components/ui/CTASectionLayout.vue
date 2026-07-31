@@ -121,7 +121,7 @@ function onCtaMousemove(e: MouseEvent, isPrimary?: boolean) {
                   cta.primary ? styles.primaryCta : styles.secondaryCta,
                 ]" @mousemove="onCtaMousemove($event, cta.primary)">
                 <Icon :icon="cta.iconMdi" class="h-4 w-4 shrink-0" aria-hidden="true" />
-                {{ cta.label }}
+                <span v-html="cta.label" />
                 <IconArrowRight v-if="cta.primary"
                   class="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
               </a>
@@ -129,9 +129,8 @@ function onCtaMousemove(e: MouseEvent, isPrimary?: boolean) {
           </div>
 
           <p v-if="props.supporting"
-            :class="['mx-auto mt-6 max-w-xl text-[13px] font-medium leading-relaxed sm:text-sm', styles.supporting]">
-            {{ props.supporting }}
-          </p>
+            :class="['mx-auto mt-6 max-w-xl text-[13px] font-medium leading-relaxed sm:text-sm', styles.supporting]"
+            v-html="props.supporting" />
           <slot name="footer" />
         </div>
       </div>

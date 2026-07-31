@@ -61,7 +61,7 @@ const floatingStats = [
             <div aria-hidden="true"
               class="pointer-events-none absolute inset-x-8 bottom-2 -z-10 h-10 rounded-full bg-slate-900/10 blur-xl" />
 
-            <img src="/assets/img/channel-partner/win-win.png"
+            <img src="/assets/img/channel-partner/win-win.webp"
               alt="Win-win partnership between Channel Partner and Indian Mentors" class="relative w-full"
               loading="lazy" decoding="async" />
 
