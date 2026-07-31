@@ -117,54 +117,295 @@ export const securityDepositSection = {
       description:
         "Demonstrates the Channel Partner's commitment to actively developing and managing the assigned territory.",
     },
+    {
+      iconMdi: "mdi:account-check-outline",
+      title: "Operational Accountability",
+      description:
+        "Ensures adherence to agreed policies, service standards, and partnership responsibilities.",
+    },
   ],
   tableTitle: "Security Deposit Based on Territory Level",
   tableDescription:
     "Security deposits vary depending on the geographical scope of the operational territory.",
+  tableColumns: [
+    { key: "level", label: "Territory Level" },
+    { key: "coverage", label: "Operational Coverage" },
+  ],
   territoryLevels: [
-    { level: "Pincode Territory", coverage: "Single locality" },
-    { level: "City Territory", coverage: "Entire city" },
-    { level: "District Territory", coverage: "Multi-city district" },
-    { level: "Division Territory", coverage: "Regional coverage" },
-    { level: "State Territory", coverage: "State-wide operations" },
-    { level: "Zone Territory", coverage: "Multi-state regional operations" },
+    {
+      level: "Pincode Territory",
+      coverage: "Single locality",
+      iconMdi: "mdi:map-marker-outline",
+      scope: 1,
+    },
+    {
+      level: "City Territory",
+      coverage: "Entire city",
+      iconMdi: "mdi:city-variant-outline",
+      scope: 2,
+    },
+    {
+      level: "District Territory",
+      coverage: "Multi-city district",
+      iconMdi: "mdi:map-outline",
+      scope: 3,
+    },
+    {
+      level: "Division Territory",
+      coverage: "Regional coverage",
+      iconMdi: "mdi:map-legend",
+      scope: 4,
+    },
+    {
+      level: "State Territory",
+      coverage: "State-wide operations",
+      iconMdi: "mdi:flag-outline",
+      scope: 5,
+    },
+    {
+      level: "Zone Territory",
+      coverage: "Multi-state regional operations",
+      iconMdi: "mdi:earth",
+      scope: 6,
+    },
   ],
 };
 
 export const platformLicenseSection = {
-  kicker: "Platform License",
+  kicker: "Platform License Duration Options",
   title:
-    'Digital Platform <span class="text-gradient-brand">Licensing Fee</span>',
+    'Choose a License Term That Fits Your <span class="text-gradient-brand">Growth Plans</span>',
   classes: "!px-0 !py-0",
+  feeKicker: "Digital Platform Licensing Fee",
+  feeTitle:
+    'Access the Technology That Powers Your <span class="text-gradient-brand">Partnership</span>',
+  feeDescription:
+    "The Digital Platform Licensing Fee provides Channel Partners with authorised access to the Indian Mentors digital ecosystem, designed to support efficient management of student enquiries, enrollments, tutor coordination, subscriptions, communication, and academic operations.",
+  feeBody:
+    "The platform enables Channel Partners to operate their designated territory through a structured, technology-enabled environment while benefiting from the systems and infrastructure developed by Indian Mentors.",
+  feeFeaturesTitle: "Key Features",
+  feeFeatures: [
+    {
+      iconMdi: "mdi:account-school-outline",
+      title: "Student Management",
+      description:
+        "Manage student profiles, enquiries, enrollment information, and service requirements through a centralised platform.",
+    },
+    {
+      iconMdi: "mdi:account-group-outline",
+      title: "Tutor Coordination",
+      description:
+        "Support tutor discovery, allocation, coordination, and tracking through structured digital workflows.",
+    },
+    {
+      iconMdi: "mdi:card-account-details-outline",
+      title: "Subscription Management",
+      description:
+        "Monitor student subscription plans, activation status, renewals, and related service information.",
+    },
+    {
+      iconMdi: "mdi:chart-timeline-variant",
+      title: "CRM & Lead Management",
+      description:
+        "Capture, organise, and track leads, enquiries, follow-ups, and communication activities.",
+    },
+    {
+      iconMdi: "mdi:cash-multiple",
+      title: "Payment & Revenue Tracking",
+      description:
+        "Access relevant payment information, transaction records, and partner revenue reports as applicable.",
+    },
+    {
+      iconMdi: "mdi:notebook-outline",
+      title: "Academic Operations",
+      description:
+        "Support the coordination and monitoring of tutoring sessions, schedules, attendance, and academic activities.",
+    },
+    {
+      iconMdi: "mdi:view-dashboard-outline",
+      title: "Operational Dashboard",
+      description:
+        "Access centralised dashboards and reporting tools to monitor territory-level activities and performance.",
+    },
+    {
+      iconMdi: "mdi:cloud-sync-outline",
+      title: "Technology & Platform Support",
+      description:
+        "Benefit from ongoing platform improvements, technical infrastructure, and designated support mechanisms.",
+    },
+  ],
+  feeNoteTitle: "Important Note",
+  feeNote:
+    "The Digital Platform Licensing Fee is separate from the Security Deposit and any applicable territory or partnership investment. The applicable licensing fee may vary based on the territory size, operational scope, platform access level, and partnership model selected by the Channel Partner.",
   description:
-    "The Digital Platform Licensing Fee provides Channel Partners with authorised access to the Indian Mentors digital ecosystem, designed to support efficient management of student enquiries, enrollments, tutor coordination, subscriptions, communication, and academic operations.<br><br> The platform enables Channel Partners to operate their designated territory through a structured, technology- enabled environment while benefiting from the systems and infrastructure developed by Indian Mentors.",
+    "Flexible Digital Platform License terms tailored to your partnership goals, investment preferences, and territory growth plans.",
   body: "Partners subscribe to the Digital Platform License to access this ecosystem.",
-  note: "License pricing varies based on territory scale and operational coverage.",
+  note: "Platform license duration, renewal terms, territory rights, platform access, and applicable fees are subject to the Channel Partner Agreement and selected partnership model.",
+  overviewTitle: "At a Glance",
+  overviewColumns: [
+    { key: "plan", label: "Platform License" },
+    { key: "duration", label: "Duration" },
+    { key: "suited", label: "Best Suited For" },
+  ],
+  overviewRows: [
+    {
+      plan: "Starter Plan",
+      duration: "1 Year",
+      suited: "New partners testing and establishing their territory",
+    },
+    {
+      plan: "Growth Plan",
+      duration: "2 Years",
+      suited: "Partners focused on building a stable and expanding operation",
+      highlight: true,
+    },
+    {
+      plan: "Strategic Plan",
+      duration: "5 Years",
+      suited: "Long-term partners committed to sustained territory development",
+    },
+  ],
   plansTitle: "License Duration Options",
   plans: [
     {
+      id: "starter",
+      number: "01",
       name: "Starter Plan",
       duration: "1 Year",
+      licenseLabel: "1-Year Platform License",
       iconMdi: "mdi:rocket-launch-outline",
-      description:
+      tagline:
         "Ideal for partners testing a territory with a flexible, low-commitment entry.",
+      description:
+        "A flexible entry-level option for new Channel Partners looking to establish their operations, understand the market, and build their initial student and tutor network.",
+      benefitsTitle: "Key Benefits",
+      benefits: [
+        {
+          title: "Low-Commitment Entry",
+          description:
+            "Start your partnership journey with a shorter license duration.",
+        },
+        {
+          title: "Market Validation",
+          description:
+            "Evaluate the demand for personalised tutoring services within your territory.",
+        },
+        {
+          title: "Structured Launch Support",
+          description:
+            "Access the platform and operational ecosystem required to begin your activities.",
+        },
+        {
+          title: "Build Your Network",
+          description:
+            "Develop relationships with parents, students, tutors, and local education communities.",
+        },
+        {
+          title: "Growth Assessment",
+          description:
+            "Review your territory performance and future expansion potential before renewing.",
+        },
+      ],
+      idealFor:
+        "New entrepreneurs and first-time partners exploring a territory.",
+      visionLabel: "Start & Explore",
     },
     {
+      id: "growth",
+      number: "02",
       name: "Growth Plan",
       duration: "2 Years",
+      licenseLabel: "2-Year Platform License",
       iconMdi: "mdi:trending-up",
       popular: true,
-      description:
+      tagline:
         "Best balance of value and runway to build enrollment and recurring revenue.",
+      description:
+        "Designed for Channel Partners who want sufficient time to establish a strong local presence, expand their student base, and develop a sustainable tutoring operation.",
+      benefitsTitle: "Key Benefits",
+      benefits: [
+        {
+          title: "Extended Growth Period",
+          description:
+            "More time to build and strengthen your territory operations.",
+        },
+        {
+          title: "Student Base Development",
+          description:
+            "Focus on increasing student enrollments and recurring subscriptions.",
+        },
+        {
+          title: "Tutor Network Expansion",
+          description:
+            "Develop a wider network of qualified tutors within your operational territory.",
+        },
+        {
+          title: "Stronger Market Presence",
+          description:
+            "Build greater visibility and recognition for personalised tutoring services.",
+        },
+        {
+          title: "Long-Term Planning",
+          description:
+            "Create structured strategies for territory growth, customer retention, and operational expansion.",
+        },
+      ],
+      idealFor:
+        "Growing partners and education professionals with expansion goals.",
+      visionLabel: "Build & Grow",
     },
     {
+      id: "strategic",
+      number: "03",
       name: "Strategic Plan",
       duration: "5 Years",
+      licenseLabel: "5-Year Platform License",
       iconMdi: "mdi:crown-outline",
-      description:
+      tagline:
         "Long-term license for partners scaling across city, district, or regional coverage.",
+      description:
+        "A long-term partnership option for ambitious Channel Partners committed to developing a significant and sustainable personalised education business within their designated territory.",
+      benefitsTitle: "Key Benefits",
+      benefits: [
+        {
+          title: "Long-Term Territory Development",
+          description:
+            "Build a sustainable presence with a multi-year growth vision.",
+        },
+        {
+          title: "Strategic Business Expansion",
+          description:
+            "Develop and scale your student, tutor, and operational network over an extended period.",
+        },
+        {
+          title: "Sustained Revenue Opportunity",
+          description:
+            "Build a recurring subscription-based revenue stream through continued student growth and retention.",
+        },
+        {
+          title: "Strong Brand Positioning",
+          description:
+            "Establish a stronger presence within your local education market over time.",
+        },
+        {
+          title: "Scalable Growth Strategy",
+          description:
+            "Plan city, district, or regional expansion with a long-term operational roadmap.",
+        }
+      ],
+      idealFor:
+        "Experienced partners and investors seeking long-term growth.",
+      visionLabel: "Scale & Lead",
     },
   ],
+  vision: {
+    title: "Find the Right License for Your Vision",
+    items: [
+      { duration: "1 Year", label: "Start & Explore" },
+      { duration: "2 Years", label: "Build & Grow" },
+      { duration: "5 Years", label: "Scale & Lead" },
+    ],
+  },
   accessTitle: "Platform Access Includes",
   accessPageHref: "/channel-partner/platform-access",
   accessIncludes: [
@@ -517,21 +758,21 @@ export const subscriptionShareSection = {
         component: "Student Enrollment Fee",
         amount: "₹1,200 / Student",
         partnerShare: "Not Applicable",
-        platformShare: "100% Indian Mentors",
+        platformShare: "100% Platform",
         highlight: false,
       },
       {
         component: "Tutor Registration Fee",
         amount: "₹1,000 / Tutor",
         partnerShare: "Not Applicable",
-        platformShare: "100% Indian Mentors",
+        platformShare: "100% Platform ",
         highlight: false,
       },
       {
         component: "Subscription Fee",
         amount: "Average ₹8,000 / Student*",
-        partnerShare: "90%",
-        platformShare: "10%",
+        partnerShare: "90% Partner ",
+        platformShare: "10% Platform ",
         highlight: true,
       },
     ],
@@ -912,7 +1153,7 @@ export const platformAccessSection = {
   features: [
     {
       id: "academic-dashboard",
-      no: "07",
+      no: "01",
       title: "Academic Dashboard",
       iconMdi: "solar:notebook-bold",
       description:
@@ -927,7 +1168,7 @@ export const platformAccessSection = {
     },
     {
       id: "tutor-allocation",
-      no: "03",
+      no: "02",
       title: "Tutor Allocation & Tracking",
       iconMdi: "solar:users-group-two-rounded-bold",
       description:
@@ -942,7 +1183,7 @@ export const platformAccessSection = {
     },
     {
       id: "crm-communication",
-      no: "06",
+      no: "03",
       title: "CRM & Communication Tools",
       iconMdi: "solar:chat-round-line-bold",
       description:
@@ -956,7 +1197,7 @@ export const platformAccessSection = {
       ],
     }, {
       id: "marketing-branding",
-      no: "08",
+      no: "04",
       title: "Marketing & Branding Support",
       iconMdi: "solar:presentation-graph-bold",
       description:
@@ -972,7 +1213,7 @@ export const platformAccessSection = {
 
     {
       id: "subscription-plans",
-      no: "04",
+      no: "05",
       title: "Subscription Plan Management",
       iconMdi: "solar:card-2-bold",
       description:
@@ -987,7 +1228,7 @@ export const platformAccessSection = {
     },
     {
       id: "recruitment-training",
-      no: "02",
+      no: "06",
       title: "Recruitment & Training Support",
       iconMdi: "solar:diploma-bold",
       description:
@@ -1003,7 +1244,7 @@ export const platformAccessSection = {
 
     {
       id: "student-enrollment",
-      no: "01",
+      no: "07",
       title: "Student Enrollment Management",
       iconMdi: "solar:user-plus-bold",
       description:
@@ -1019,7 +1260,7 @@ export const platformAccessSection = {
 
     {
       id: "payment-reports",
-      no: "05",
+      no: "08",
       title: "Payment Reports & Revenue Tracking",
       iconMdi: "solar:chart-2-bold",
       description:

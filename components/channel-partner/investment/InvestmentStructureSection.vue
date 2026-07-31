@@ -1,177 +1,198 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import { investmentStructureSection, platformLicenseSection, securityDepositSection } from '~/data/channel-partner-investment'
+import PlatformAccessFeaturesSection from '../platform-access/PlatformAccessFeaturesSection.vue'
+import {
+  investmentStructureSection,
+  platformLicenseSection,
+  securityDepositSection,
+} from '~/data/channel-partner-investment'
 
 const deposit = investmentStructureSection.components[0]
 const license = investmentStructureSection.components[1]
-import PlatformAccessFeaturesSection from '../platform-access/PlatformAccessFeaturesSection.vue'
+const maxScope = Math.max(...securityDepositSection.territoryLevels.map((t) => t.scope))
 </script>
 
 <template>
-  <section id="investment-structure" class="relative scroll-mt-20 section-surface-muted section-py"
+  <section id="investment-structure" class="relative scroll-mt-20 overflow-hidden section-surface-muted section-py"
     aria-labelledby="investment-structure-heading">
-    <div class="container-page">
-      <CardHeader heading-id="investment-structure-heading" :badge="investmentStructureSection.kicker"
-        :title="investmentStructureSection.title" :description="investmentStructureSection.description"
-        :classes="investmentStructureSection.classes" />
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -right-28 -top-32 h-96 w-96 rounded-full bg-emerald-200/25 blur-3xl" />
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -bottom-36 -left-28 h-80 w-80 rounded-full bg-blue-200/25 blur-3xl" />
 
-      <!-- Journey timeline -->
-      <div class="relative mx-auto mt-14 ">
-        <article
-          class="mb-5 group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-card sm:p-7">
-          <span aria-hidden="true"
-            class="pointer-events-none absolute -right-3 -top-8 select-none font-display text-[8rem] font-black leading-none text-slate-100 transition-colors duration-300 group-hover:text-emerald-100/70">
-            01
-          </span>
-          <div class="relative flex items-start gap-4">
-            <span
-              class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100 font-bold"
-              aria-hidden="true">
+    <div class="container-page relative">
+      <div class="mx-auto max-w-3xl text-center">
+        <CardHeader heading-id="investment-structure-heading" :badge="investmentStructureSection.kicker"
+          :title="investmentStructureSection.title" :description="investmentStructureSection.description"
+          :classes="investmentStructureSection.classes" />
+      </div>
+
+
+      <div class="mx-auto mt-12 space-y-8 lg:mt-14 lg:space-y-10">
+        <!-- ── Section 3: Security Deposit ── -->
+        <article id="security-deposit"
+          class="scroll-mt-24 overflow-hidden rounded-[28px] border border-emerald-200/60 bg-white shadow-soft" v-motion
+          :initial="{ opacity: 0, y: 20 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 560 } }">
+          <div
+            class="relative border-b border-emerald-100/80 bg-gradient-to-br from-emerald-50 via-white to-white px-6 py-7 sm:px-8 sm:py-8">
+            <span aria-hidden="true"
+              class="pointer-events-none absolute -right-2 -top-4 select-none font-display text-[7.5rem] font-black leading-none text-emerald-100/80">
               01
             </span>
-            <div class="min-w-0 max-w-3xl">
-              <div class="flex flex-wrap items-center gap-2">
-                <h3 class="font-display text-lg font-bold text-slate-900">{{ deposit.title }}</h3>
-                <span
-                  class="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wide text-emerald-700">
-                  {{ deposit.tag }}
-                </span>
+
+            <div class="relative flex flex-wrap items-start gap-4">
+              <span
+                class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-emerald-600 text-white shadow-[0_12px_28px_-12px_rgba(5,150,105,0.55)]"
+                aria-hidden="true">
+                <Icon :icon="deposit.iconMdi" class="h-6 w-6" />
+              </span>
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-emerald-700">
+                    {{ securityDepositSection.kicker }}
+                  </p>
+                  <span
+                    class="rounded-full bg-emerald-100/80 px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wide text-emerald-800">
+                    {{ deposit.tag }}
+                  </span>
+                </div>
+                <h3 class="mt-2 font-display text-xl font-bold tracking-tight text-slate-900 sm:text-2xl"
+                  v-html="securityDepositSection.title" />
+                <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600">
+                  {{ securityDepositSection.description }}
+                </p>
+                <p class="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
+                  {{ securityDepositSection.body }}
+                </p>
               </div>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ securityDepositSection.description }}</p>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ securityDepositSection.body }}</p>
             </div>
           </div>
 
-          <p class="mt-6 text-xs font-bold uppercase tracking-wide text-slate-500">
-            {{ securityDepositSection.featuresTitle }}
-          </p>
-          <ul class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
-            <li v-for="(feature, i) in securityDepositSection.features" :key="feature.title"
-              :class="i === securityDepositSection.features.length - 1 ? 'sm:col-span-2 lg:col-span-1' : ''">
-              <div
-                class="flex h-full gap-3 rounded-2xl border border-slate-200/80 bg-slate-50/50 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-white hover:shadow-soft">
-                <span
-                  class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100"
-                  aria-hidden="true">
-                  <Icon :icon="feature.iconMdi" class="h-5 w-5" />
-                </span>
-                <div class="min-w-0">
-                  <p class="text-sm font-semibold text-slate-800">{{ feature.title }}</p>
-                  <p class="mt-1 text-xs leading-relaxed text-slate-500">{{ feature.description }}</p>
+          <div class="px-6 py-7 sm:px-8 sm:py-8">
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">
+              {{ securityDepositSection.featuresTitle }}
+            </p>
+            <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
+              <li v-for="(feature, i) in securityDepositSection.features" :key="feature.title" v-motion
+                :initial="{ opacity: 0, y: 12 }" :visibleOnce="{
+                  opacity: 1,
+                  y: 0,
+                  transition: { delay: 40 + i * 50, duration: 420 },
+                }">
+                <div
+                  class="flex h-full gap-3 rounded-2xl border border-slate-100 bg-slate-50/40 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-emerald-200 hover:bg-white hover:shadow-soft">
+                  <span
+                    class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-600 ring-1 ring-emerald-100"
+                    aria-hidden="true">
+                    <Icon :icon="feature.iconMdi" class="h-5 w-5" />
+                  </span>
+                  <div class="min-w-0">
+                    <p class="text-sm font-semibold text-slate-800">{{ feature.title }}</p>
+                    <p class="mt-1 text-xs leading-relaxed text-slate-500">
+                      {{ feature.description }}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </li>
-          </ul>
+              </li>
+            </ul>
 
-          <p class="mt-5 flex items-center gap-2 text-sm text-slate-500">
-            <Icon icon="solar:info-circle-bold-duotone" class="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
-            {{ securityDepositSection.note }}
-          </p>
+
+          </div>
         </article>
-        <article
-          class="group relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft sm:p-7">
-          <span aria-hidden="true"
-            class="pointer-events-none absolute -right-3 -top-8 select-none font-display text-[8rem] font-black leading-none text-slate-100 transition-colors duration-300 group-hover:text-blue-100/70">
-            02
-          </span>
-          <div class="relative flex items-start gap-4">
-            <span
-              class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 font-bold"
-              aria-hidden="true">
+
+        <!-- ── Section 4: Digital Platform Licensing ── -->
+        <article id="platform-licensing"
+          class="scroll-mt-24 overflow-hidden rounded-[28px] border border-blue-200/60 bg-white shadow-soft" v-motion
+          :initial="{ opacity: 0, y: 20 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80, duration: 560 } }">
+          <div
+            class="relative border-b border-blue-100/80 bg-gradient-to-br from-blue-50 via-white to-white px-6 py-7 sm:px-8 sm:py-8">
+            <span aria-hidden="true"
+              class="pointer-events-none absolute -right-2 -top-4 select-none font-display text-[7.5rem] font-black leading-none text-blue-100/80">
               02
             </span>
-            <div class="min-w-0 max-w-4xl">
-              <div class="flex flex-wrap items-center gap-2 ">
-                <h3 class="font-display text-lg font-bold text-slate-900">{{ license.title }}</h3>
-                <span
-                  class="rounded-full bg-blue-50 px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wide text-blue-700">
-                  {{ license.tag }}
-                </span>
+
+            <div class="relative flex flex-wrap items-start gap-4">
+              <span
+                class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-600 text-white shadow-[0_12px_28px_-12px_rgba(37,99,235,0.55)]"
+                aria-hidden="true">
+                <Icon :icon="license.iconMdi" class="h-6 w-6" />
+              </span>
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-700">
+                    {{ platformLicenseSection.feeKicker }}
+                  </p>
+                  <span
+                    class="rounded-full bg-blue-100/80 px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wide text-blue-800">
+                    {{ license.tag }}
+                  </span>
+                </div>
+                <h3 class="mt-2 font-display text-xl font-bold tracking-tight text-slate-900 sm:text-2xl"
+                  v-html="platformLicenseSection.feeTitle" />
+                <p class="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600">
+                  {{ platformLicenseSection.feeDescription }}
+                </p>
+                <p class="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
+                  {{ platformLicenseSection.feeBody }}
+                </p>
               </div>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600" v-html="platformLicenseSection.description"></p>
             </div>
           </div>
 
-          <!-- Plan options -->
-          <p class="mt-6 text-xs font-bold uppercase tracking-wide text-slate-500">
-            {{ platformLicenseSection.plansTitle }}
-          </p>
-          <ul class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3" role="list">
-            <li v-for="plan in platformLicenseSection.plans" :key="plan.name">
+          <div class="px-6 py-7 sm:px-8 sm:py-8">
+            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">
+              {{ platformLicenseSection.feeFeaturesTitle }}
+            </p>
+            <PlatformAccessFeaturesSection embedded />
+            <!-- <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2" role="list">
+              <li v-for="(feature, i) in platformLicenseSection.feeFeatures" :key="feature.title" v-motion
+                :initial="{ opacity: 0, y: 12 }" :visibleOnce="{
+                  opacity: 1,
+                  y: 0,
+                  transition: { delay: 40 + i * 45, duration: 420 },
+                }">
+                <div
+                  class="flex h-full gap-3 rounded-2xl border border-slate-100 bg-slate-50/40 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:bg-white hover:shadow-soft">
+                  <span
+                    class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100"
+                    aria-hidden="true">
+                    <Icon :icon="feature.iconMdi" class="h-5 w-5" />
+                  </span>
+                  <div class="min-w-0">
+                    <p class="text-sm font-semibold text-slate-800">{{ feature.title }}</p>
+                    <p class="mt-1 text-xs leading-relaxed text-slate-500">
+                      {{ feature.description }}
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul> -->
 
-              <div :class="[
-                'relative flex h-full flex-col rounded-2xl p-4 transition duration-300 hover:-translate-y-1',
-                plan.popular
-                  ? 'bg-gradient-to-b from-blue-600 to-blue-700 text-white shadow-[0_18px_44px_-20px_rgba(37,99,235,0.55)]'
-                  : 'border border-slate-200/80 bg-slate-50/50 hover:border-blue-200 hover:bg-white hover:shadow-soft',
-              ]">
-                <span v-if="plan.popular"
-                  class="absolute right-3 top-3 rounded-full bg-green-400 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide text-blue-900">
-                  Popular
+            <div
+              class="mt-7 overflow-hidden rounded-2xl border border-blue-200/70 bg-gradient-to-br from-blue-700 via-blue-600 to-sky-600 px-5 py-5 shadow-[0_18px_40px_-24px_rgba(37,99,235,0.55)] sm:px-6 sm:py-6">
+              <div class="flex items-start gap-3">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white/15 text-white"
+                  aria-hidden="true">
+                  <Icon icon="mdi:information-outline" class="h-5 w-5" />
                 </span>
-                <span :class="[
-                  'grid h-9 w-9 place-items-center rounded-xl',
-                  plan.popular ? 'bg-white/15 text-white' : 'bg-blue-50 text-blue-600 ring-1 ring-blue-100',
-                ]" aria-hidden="true">
-                  <Icon :icon="plan.iconMdi" class="h-5 w-5" />
-                </span>
-                <p
-                  :class="['mt-3 font-display text-2xl font-bold leading-none', plan.popular ? 'text-white' : 'text-slate-900']">
-                  {{ plan.duration }}
-                </p>
-                <p :class="['mt-1 text-sm font-semibold', plan.popular ? 'text-blue-100' : 'text-slate-700']">
-                  {{ plan.name.replace(' Plan', '') }}
-                </p>
-                <p :class="['mt-2 text-xs leading-relaxed', plan.popular ? 'text-blue-50/90' : 'text-slate-500']">
-                  {{ plan.description }}
-                </p>
+                <div>
+                  <p class="text-xs font-bold uppercase tracking-wide text-blue-100">
+                    {{ platformLicenseSection.feeNoteTitle }}
+                  </p>
+                  <p class="mt-1.5 text-sm leading-relaxed text-white/95">
+                    {{ platformLicenseSection.feeNote }}
+                  </p>
+                </div>
               </div>
-            </li>
-          </ul>
-
-          <!-- Access includes -->
-          <!-- <div class="mt-6 rounded-2xl border border-slate-100 bg-slate-50/60 p-5">
-            <div class="flex flex-wrap items-center justify-between gap-3">
-              <h4 class="flex items-center gap-2 font-display text-sm font-bold text-slate-900">
-                {{ platformLicenseSection.accessTitle }}
-              </h4>
-              <NuxtLink :to="platformLicenseSection.accessPageHref"
-                class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 transition hover:text-blue-800">
-                View full details
-                <Icon icon="mdi:arrow-right" class="h-3.5 w-3.5" aria-hidden="true" />
-              </NuxtLink>
             </div>
-            <div class="mt-4 overflow-hidden rounded-xl">
-              <ul class="grid grid-cols-1 gap-px bg-slate-200 sm:grid-cols-2" role="list">
-                <li v-for="(item, i) in platformLicenseSection.accessIncludes" :key="item.label" :class="[
-                  i === platformLicenseSection.accessIncludes.length - 1 && platformLicenseSection.accessIncludes.length % 2 !== 0
-                    ? 'sm:col-span-2'
-                    : '',
-                ]">
-                  <NuxtLink :to="`${platformLicenseSection.accessPageHref}#${item.id}`" :class="[
-                    'flex items-center gap-3 bg-white px-4 py-3 text-[13px] font-medium text-slate-700 transition hover:bg-blue-50/50 hover:text-blue-800',
-                  ]">
-                    <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600"
-                      aria-hidden="true">
-                      <Icon :icon="item.iconMdi" class="h-[18px] w-[18px]" />
-                    </span>
-                    <span>{{ item.label }}</span>
-                  </NuxtLink>
-                </li>
-              </ul>
-            </div>
-          </div> -->
-
-          <PlatformAccessFeaturesSection />
-          <p class="mt-5 flex items-center gap-2 text-sm text-slate-500">
-            <Icon icon="solar:info-circle-bold-duotone" class="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
-            {{ platformLicenseSection.note }}
-          </p>
+          </div>
         </article>
       </div>
 
-      <p class="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-slate-600">
+      <p class="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-slate-600" v-motion
+        :initial="{ opacity: 0, y: 10 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
         {{ investmentStructureSection.intro }}
       </p>
     </div>

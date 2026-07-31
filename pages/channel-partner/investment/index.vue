@@ -10,6 +10,7 @@ import InvestmentAdvantagesSection from '~/components/channel-partner/investment
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import { investmentFinalCta } from '~/data/channel-partner-investment'
+import InvestmentDigitalPlatformLicensing from '~/components/channel-partner/investment/InvestmentDigitalPlatformLicensing.vue'
 
 const investmentCtas = [
   { ...investmentFinalCta.primaryCta, iconMdi: 'mdi:account-plus-outline', primary: true },
@@ -31,6 +32,8 @@ useSeoMeta({
   <div>
     <InvestmentHeroSection />
     <InvestmentStructureSection />
+    <InvestmentDigitalPlatformLicensing />
+
     <TerritoryInvestmentTableSection />
     <TerritoryModelSection />
     <SubscriptionShareSection />

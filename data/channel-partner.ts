@@ -481,7 +481,7 @@ export const partnerTestimonials: PartnerTestimonial[] = [
     quote:
       'Partnering with Indian Mentors gave me a structured way to serve my local community. The onboarding was smooth and support has been consistent throughout.',
     name: 'Rajesh Kumar',
-    role: 'City Channel Partner',
+    role: 'City Partner',
     location: 'Vijayawada, Andhra Pradesh',
   },
   {

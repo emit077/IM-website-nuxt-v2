@@ -11,7 +11,7 @@ const heroContent: HeroContent = {
   title: investmentHero.title,
   subtitle: investmentHero.subtitle,
   description: investmentHero.description,
-  contentClass: investmentHero.contentClass,
+  // contentClass: investmentHero.contentClass,
   backgroundImage: `url('${usePublicAsset(investmentHero.backgroundImage)}')`,
   mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-4.png')}`,
   caption: investmentHero.caption,

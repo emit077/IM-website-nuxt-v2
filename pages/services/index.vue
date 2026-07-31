@@ -24,7 +24,7 @@ useSeoMeta({
     <PartnersStrip />
     <ServicesGridSection />
     <ServicesSpecialisedSection />
-    <ServicesWhyChooseSection />
+    <!-- <ServicesWhyChooseSection /> -->
     <ServicesAudienceSection />
     <ServicesConversionStrip />
   </div>

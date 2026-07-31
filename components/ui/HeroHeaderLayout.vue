@@ -57,7 +57,7 @@ withDefaults(
       </div>
     </div>
   </div>
-  <div v-else class="container-page">
+  <div v-else class="">
     <div class="relative text-left px-0 py-0" :class="contentClass">
       <div class="flex flex-col gap-7 lg:gap-8 md:text-left text-center  items-center md:items-start">
         <slot name="badge">
