@@ -7,6 +7,7 @@ import SubjectsSection from '~/components/academic/SubjectsSection.vue'
 import CourseMatchingSection from '~/components/academic/CourseMatchingSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { academicFinalCta } from '~/data/academic-coverage'
+import BoardCovered from '~/components/academic/BoardCovered.vue'
 
 const academicCtas = [
   { ...academicFinalCta.primaryCta, iconMdi: 'mdi:calendar-check-outline', primary: true },
@@ -25,11 +26,12 @@ useSeoMeta({
 </script>
 
 <template>
-  <div>
+  <div class="academic-coverage">
     <AcademicHeroSection />
-    <CoverageOverviewSection />
+    <!-- <CoverageOverviewSection /> -->
+    <BoardCovered />
     <GradesSection />
-    <BoardsSection />
+    <!-- <BoardsSection /> -->
     <SubjectsSection />
     <CourseMatchingSection />
     <UiCTASection heading-id="academic-cta-heading" :title="academicFinalCta.title"

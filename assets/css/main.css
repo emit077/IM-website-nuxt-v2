@@ -142,6 +142,34 @@
     opacity: 0.55;
     pointer-events: none;
   }
+
+  /* Academic Coverage — neon only on blue backgrounds */
+  .academic-coverage {
+    --ac-blue: #2a2fff;
+    --ac-lime: #d4ff00;
+    --ac-lime-ink: #111111;
+    --ac-lime-glow: rgba(212, 255, 0, 0.45);
+  }
+
+  .ac-btn-lime {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold shadow-md transition duration-300 hover:-translate-y-0.5;
+    background: var(--ac-lime);
+    color: var(--ac-lime-ink);
+    box-shadow: 0 14px 32px -14px var(--ac-lime-glow);
+  }
+
+  .ac-btn-lime:hover {
+    filter: brightness(1.05);
+  }
+
+  .academic-coverage #book-demo a.ripple {
+    background-color: var(--ac-lime) !important;
+    color: var(--ac-lime-ink) !important;
+  }
+
+  .academic-coverage #book-demo a.ripple:hover {
+    filter: brightness(1.05);
+  }
 }
 
 @layer utilities {

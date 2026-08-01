@@ -1,87 +1,159 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import { courseMatchingSection } from '~/data/academic-coverage'
 
-function rippleHandler(e: MouseEvent) {
-  const target = e.currentTarget as HTMLElement
-  const rect = target.getBoundingClientRect()
-  target.style.setProperty('--x', `${e.clientX - rect.left}px`)
-  target.style.setProperty('--y', `${e.clientY - rect.top}px`)
+const activeStep = ref(0)
+const steps = courseMatchingSection.flow
+const criteria = courseMatchingSection.criteria
+
+function selectStep(index: number) {
+  activeStep.value = index
 }
 </script>
 
 <template>
-  <section id="course-matching"
-    class="relative scroll-mt-20 overflow-hidden bg-gradient-to-br from-[#0b1220] via-[#101a35] to-[#0a142f] section-py"
+  <section id="course-matching" class="relative scroll-mt-20 overflow-hidden section-surface-muted section-py"
     aria-labelledby="course-matching-heading">
-    <span aria-hidden="true"
-      class="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-blue-600/25 blur-3xl" />
-    <span aria-hidden="true"
-      class="pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 rounded-full bg-sky-500/15 blur-3xl" />
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -right-28 -top-24 h-96 w-96 rounded-full bg-blue-200/25 blur-3xl" />
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-sky-200/20 blur-3xl" />
 
     <div class="container-page relative z-[1]">
-      <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14" v-motion
-        :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
-        <div>
-          <CardHeader theme="dark" heading-id="course-matching-heading" :badge="courseMatchingSection.kicker"
-            :title="courseMatchingSection.title" :description="courseMatchingSection.description"
-            :classes="courseMatchingSection.classes" />
+      <div class="mx-auto max-w-3xl text-center">
+        <CardHeader heading-id="course-matching-heading" :badge="courseMatchingSection.kicker"
+          :title="courseMatchingSection.title" :description="courseMatchingSection.description"
+          :classes="courseMatchingSection.classes" />
+      </div>
 
-          <p class="mt-5 text-sm leading-relaxed text-blue-100/85 sm:text-base">
-            {{ courseMatchingSection.body }}
-          </p>
+      <!-- Match journey: interactive steps -->
+      <div class="mt-12 lg:mt-14" v-motion :initial="{ opacity: 0, y: 16 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
+        <div class="grid gap-3 sm:grid-cols-3 sm:gap-4">
+          <button v-for="(step, i) in steps" :key="step.step" type="button" :class="[
+            'group relative overflow-hidden rounded-[24px] border p-5 text-left transition duration-300 sm:p-6',
+            activeStep === i
+              ? 'border-blue-300 bg-white shadow-[0_18px_40px_-22px_rgba(37,99,235,0.45)] ring-1 ring-blue-100'
+              : 'border-slate-200/80 bg-white/70 hover:-translate-y-0.5 hover:border-blue-200 hover:bg-white hover:shadow-soft',
+          ]" :aria-pressed="activeStep === i" @click="selectStep(i)">
+            <span aria-hidden="true" :class="[
+              'pointer-events-none absolute -right-1 -top-3 select-none font-display text-[5.5rem] font-black leading-none transition',
+              activeStep === i ? 'text-blue-100' : 'text-slate-100',
+            ]">
+              {{ step.step }}
+            </span>
 
-          <ul class="mt-7 grid gap-3 sm:grid-cols-2" role="list">
-            <li v-for="(item, i) in courseMatchingSection.criteria" :key="item.label"
-              class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3.5 text-sm text-white/95 backdrop-blur-sm"
-              v-motion :initial="{ opacity: 0, y: 10 }"
-              :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 60, duration: 400 } }">
-              <span
-                class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-500/25 text-blue-200 ring-1 ring-blue-400/30"
-                aria-hidden="true">
-                <Icon :icon="item.iconMdi" class="h-4.5 w-4.5 h-[18px] w-[18px]" />
-              </span>
-              {{ item.label }}
-            </li>
-          </ul>
+            <span :class="[
+              'relative grid h-11 w-11 place-items-center rounded-2xl transition',
+              activeStep === i
+                ? 'bg-blue-600 text-white shadow-[0_10px_24px_-12px_rgba(37,99,235,0.7)]'
+                : 'bg-slate-100 text-slate-600 ring-1 ring-slate-200',
+            ]">
+              <Icon :icon="step.iconMdi" class="h-5 w-5" />
+            </span>
 
-          <div class="mt-8">
-            <a :href="courseMatchingSection.ctaHref" class="btn-primary ripple group inline-flex w-full sm:w-auto"
-              @mousemove="rippleHandler">
-              {{ courseMatchingSection.ctaLabel }}
-              <IconArrowRight class="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-          </div>
+            <p class="relative mt-4 text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600">
+              Step {{ step.step }}
+            </p>
+            <h3 class="relative mt-1.5 font-display text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
+              {{ step.title }}
+            </h3>
+            <p class="relative mt-2 text-[13px] leading-relaxed text-slate-500">
+              {{ step.description }}
+            </p>
+          </button>
         </div>
 
-        <div class="relative mx-auto w-full max-w-md lg:max-w-none" aria-hidden="true" v-motion
-          :initial="{ opacity: 0, scale: 0.96 }"
-          :visibleOnce="{ opacity: 1, scale: 1, transition: { delay: 180, duration: 600 } }">
-          <div
-            class="overflow-hidden rounded-[28px] border border-white/15 bg-white/5 p-6 shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] backdrop-blur-md sm:p-8">
-            <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-300">Match flow</p>
+        <!-- Active step detail -->
+        <div
+          class="relative mt-4 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white px-5 py-5 shadow-soft sm:px-7 sm:py-6">
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <span
+              class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-50 text-blue-700 ring-1 ring-blue-100"
+              aria-hidden="true">
+              <Icon :icon="steps[activeStep]!.iconMdi" class="h-6 w-6" />
+            </span>
+            <div class="min-w-0 flex-1">
+              <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                How step {{ steps[activeStep]!.step }} works
+              </p>
+              <p class="mt-1 text-[15px] leading-relaxed text-slate-600">
+                {{ steps[activeStep]!.detail }}
+              </p>
+            </div>
+            <div class="flex shrink-0 gap-2">
+              <button v-for="(_, i) in steps" :key="`dot-${i}`" type="button" :class="[
+                'h-2.5 rounded-full transition',
+                activeStep === i ? 'w-7 bg-blue-600' : 'w-2.5 bg-slate-200 hover:bg-slate-300',
+              ]" :aria-label="`Show step ${i + 1}`" @click="selectStep(i)" />
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <ol class="relative mt-6 space-y-0" role="list">
-              <li v-for="(step, i) in courseMatchingSection.flow" :key="step.title" class="relative flex gap-4 pb-8 last:pb-0">
-                <div class="flex flex-col items-center">
-                  <span
-                    class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-blue-500/25 text-blue-100 ring-1 ring-blue-400/30">
-                    <Icon :icon="step.iconMdi" class="h-5 w-5" />
-                  </span>
-                  <span v-if="i < courseMatchingSection.flow.length - 1"
-                    class="mt-2 w-px flex-1 bg-gradient-to-b from-blue-400/50 to-transparent" />
-                </div>
-                <div class="min-w-0 pt-1.5">
-                  <p class="text-[11px] font-bold uppercase tracking-wide text-blue-300/80">
-                    Step {{ String(i + 1).padStart(2, '0') }}
-                  </p>
-                  <p class="mt-1 text-base font-semibold text-white">{{ step.title }}</p>
-                  <p class="mt-0.5 text-sm text-blue-100/70">{{ step.description }}</p>
-                </div>
-              </li>
-            </ol>
+      <!-- Matching factors -->
+      <div class="mt-12 lg:mt-14">
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600">
+            {{ courseMatchingSection.factorsTitle }}
+          </p>
+          <p class="mt-2 text-sm text-slate-500 sm:text-base">
+            {{ courseMatchingSection.factorsDescription }}
+          </p>
+        </div>
+
+        <ul class="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5" role="list">
+          <li v-for="(item, i) in criteria" :key="item.label"
+            class="group relative overflow-hidden rounded-[22px] border border-slate-200/80 bg-white p-4 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-card sm:p-5"
+            v-motion :initial="{ opacity: 0, y: 12 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 50 + i * 50, duration: 400 } }">
+            <span aria-hidden="true"
+              class="pointer-events-none absolute -bottom-3 -right-3 text-slate-900/[0.04] transition group-hover:scale-105">
+              <Icon :icon="item.iconMdi" class="h-20 w-20" />
+            </span>
+            <span
+              class="relative grid h-10 w-10 place-items-center rounded-xl bg-blue-50 text-blue-700 ring-1 ring-blue-100"
+              aria-hidden="true">
+              <Icon :icon="item.iconMdi" class="h-5 w-5" />
+            </span>
+            <p class="relative mt-3 font-display text-[15px] font-bold text-slate-900">
+              {{ item.label }}
+            </p>
+            <p class="relative mt-1 text-[12.5px] leading-relaxed text-slate-500">
+              {{ item.description }}
+            </p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CTA strip -->
+      <div
+        class="mt-10 overflow-hidden rounded-[24px] border border-blue-200/70 bg-gradient-to-br from-blue-700 via-blue-600 to-sky-600 px-5 py-6 shadow-[0_18px_40px_-24px_rgba(37,99,235,0.55)] sm:mt-12 sm:px-8 sm:py-7"
+        v-motion :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
+        <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div class="min-w-0">
+            <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-100">
+              Ready to get matched?
+            </p>
+            <p class="mt-1 font-display text-xl font-bold text-white sm:text-2xl">
+              Start with a free demo — we’ll handle the matching.
+            </p>
+            <p class="mt-1.5 text-sm text-blue-100/90">
+              {{ courseMatchingSection.supporting }}
+            </p>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a :href="courseMatchingSection.ctaHref" class="ac-btn-lime">
+              {{ courseMatchingSection.ctaLabel }}
+              <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a :href="courseMatchingSection.secondaryCtaHref"
+              class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/40 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-white/10">
+              <Icon icon="mdi:calendar-account-outline" class="h-4 w-4" aria-hidden="true" />
+              {{ courseMatchingSection.secondaryCtaLabel }}
+            </a>
           </div>
         </div>
       </div>
