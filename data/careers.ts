@@ -16,12 +16,12 @@ export type CareerBenefit = {
 
 export const careersHero = {
   badge: 'Careers at Indian Mentors',
-  title: 'Build Your Career in a',
-  titleHighlight: 'Structured Academic Ecosystem',
+  title: 'Build Your Career in',
+  titleHighlight: 'Structured Mentorship',
   description:
-    'At Indian Mentors, we believe that strong institutions are built by disciplined professionals who value structure, accountability, and long-term impact. We welcome individuals who are passionate about education and committed to responsible mentorship within a professionally managed system.',
+    'We build strong institutions with professionals who value structure, accountability, and long-term impact. Join a team passionate about education and responsible mentorship.',
   supporting:
-    'Whether you are an educator, administrator, strategist, or technology expert, Indian Mentors offers an environment where your contribution directly supports measurable academic outcomes.',
+    'Whether you teach, lead, strategise, or build technology — your work here drives measurable academic outcomes.',
   primaryCta: { label: 'Apply Now', href: '#apply' },
   secondaryCta: { label: 'View Open Roles', href: '#opportunities' },
 } as const

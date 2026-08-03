@@ -14,7 +14,7 @@ function resetFilters() {
 </script>
 
 <template>
-  <section class="relative border-y border-slate-200/70 section-surface-muted section-py-compact" aria-label="Search and filter FAQs">
+  <section id="faq-topics" class="relative scroll-mt-24 border-y border-slate-200/70 section-surface-muted section-py-compact" aria-label="Search and filter FAQs">
     <div class="container-page">
       <div class="mx-auto max-w-3xl">
         <div class="relative">

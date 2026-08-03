@@ -29,11 +29,10 @@ export type HiringStep = {
 
 export const institutionsHero = {
   badge: 'Institutional Hiring Division',
-  tagline: 'Build Strong Academic Teams with Confidence',
   title: 'Trusted Teacher Recruitment &',
-  titleHighlight: 'Academic Staffing Solutions',
+  titleHighlight: 'Staffing',
   description:
-    'Hire qualified, verified, and pre-screened educators for schools, colleges, coaching institutes, EdTech companies, and academic programs across India.',
+    'Hire verified, pre-screened educators for schools, colleges, institutes, and EdTech programs across India.',
   intro:
     'Indian Mentors operates a dedicated Institutional Hiring Division that supports schools, coaching institutes, colleges, and educational organizations in recruiting qualified, verified, and performance-ready teachers across India. Beyond personalised tutoring services, our recruitment platform is designed to help institutions build strong academic teams with efficiency and confidence.',
   supporting:

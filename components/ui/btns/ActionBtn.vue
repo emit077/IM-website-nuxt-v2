@@ -4,7 +4,7 @@ import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 
-type ActionBtnVariant = 'primary' | 'secondary'
+export type ActionBtnVariant = 'primary' | 'secondary' | 'theme-secondary'
 
 const props = withDefaults(
     defineProps<{
@@ -30,13 +30,19 @@ const iconComponent = computed(() =>
 const resolvedIconClass = computed(() => {
     if (props.iconClass) return props.iconClass
 
-    if (props.variant === 'primary') {
+    if (props.variant === 'primary' || props.variant === 'theme-secondary') {
         return 'h-4 w-4 shrink-0 opacity-95'
     }
 
     return props.iconWrapperClass
         ? 'h-3.5 w-3.5'
         : 'h-4 w-4 shrink-0 text-blue-700 opacity-95'
+})
+
+const rootClass = computed(() => {
+    if (props.variant === 'primary') return 'btn-primary ripple group w-full sm:w-auto'
+    if (props.variant === 'theme-secondary') return 'theme-btn-secondary ripple group w-full sm:w-auto'
+    return 'btn-secondary group w-full sm:w-auto'
 })
 
 function rippleHandler(e: MouseEvent) {
@@ -48,8 +54,7 @@ function rippleHandler(e: MouseEvent) {
 </script>
 
 <template>
-    <a v-if="variant === 'primary'" :href="href" class="btn-primary ripple group w-full sm:w-auto"
-        @mousemove="rippleHandler">
+    <a :href="href" :class="rootClass" @mousemove="variant !== 'secondary' ? rippleHandler($event) : undefined">
         <slot name="icon">
             <span v-if="icon && iconWrapperClass" :class="iconWrapperClass">
                 <Icon v-if="isIconifyIcon" :icon="icon as string" :class="resolvedIconClass" aria-hidden="true" />
@@ -61,21 +66,15 @@ function rippleHandler(e: MouseEvent) {
             </template>
         </slot>
         <span v-html="label" />
-        <IconArrowRight v-if="showArrow"
+        <span
+            v-if="variant === 'theme-secondary' && showArrow"
+            class="hero-cta-arrow theme-btn-secondary-icon transition-transform duration-300 group-hover:translate-x-1"
+            aria-hidden="true">
+            <Icon icon="mdi:arrow-right" class="h-3.5 w-3.5" />
+        </span>
+        <IconArrowRight
+            v-else-if="showArrow"
             class="hero-cta-arrow h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-    </a>
-    <a v-else :href="href" class="btn-secondary group w-full sm:w-auto">
-        <slot name="icon">
-            <span v-if="icon && iconWrapperClass" :class="iconWrapperClass">
-                <Icon v-if="isIconifyIcon" :icon="icon as string" :class="resolvedIconClass" aria-hidden="true" />
-                <component :is="iconComponent" v-else :class="resolvedIconClass" />
-            </span>
-            <template v-else-if="icon">
-                <Icon v-if="isIconifyIcon" :icon="icon as string" :class="resolvedIconClass" aria-hidden="true" />
-                <component :is="iconComponent" v-else :class="resolvedIconClass" />
-            </template>
-        </slot>
-        <span v-html="label" />
     </a>
 </template>
 

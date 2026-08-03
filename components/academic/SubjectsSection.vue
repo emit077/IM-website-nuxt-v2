@@ -321,7 +321,7 @@ watch(categoryTiles, (tiles) => {
             </p>
             <p class="mt-1 text-sm text-blue-100/85">{{ subjectsSection.footerNote }}</p>
           </div>
-          <a href="#book-demo" class="ac-btn-lime shrink-0">
+          <a href="#book-demo" class="theme-btn-lime shrink-0">
             {{ subjectsSection.detailCta }}
             <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
           </a>

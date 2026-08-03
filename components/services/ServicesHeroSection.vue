@@ -1,13 +1,32 @@
 <script setup lang="ts">
-import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
+import SecondaryHeroLayout from '~/components/ui/SecondaryHeroLayout.vue'
+import type { SecondaryHeroContent } from '~/components/ui/SecondaryHeroLayout.vue'
 import { servicesHero } from '~/data/services'
+
+const secondaryHero: SecondaryHeroContent = {
+  badge: 'Our Services',
+  title: 'Personalised Learning Solutions for Every Student',
+  description: servicesHero.description,
+  actionBtns: [
+    { label: 'Book Free Consultation', href: '#book-demo', variant: 'theme-secondary' },
+    { label: 'Explore Services', href: '#tutoring-services', variant: 'secondary' },
+  ],
+  ticker: [
+    'Home Tutors',
+    'Online Tutors',
+    'Shadow Tutors',
+    'Travel Tutors',
+    'Live-In Tutors',
+    'Home Schooling',
+    'Special Educators',
+    'Custom Tutor Services',
+  ],
+  headingId: 'services-hero-heading',
+  tickerAriaLabel: 'Tutoring services highlights',
+  patternId: 'services-hero-waves',
+}
 </script>
 
 <template>
-  <section class="relative overflow-hidden section-surface-white" aria-labelledby="services-hero-heading">
-    <div class="container-page pb-14 pt-10 text-center sm:pb-16 lg:pt-16">
-      <HeroHeader heading-id="services-hero-heading" :title="servicesHero.title"
-        :description="servicesHero.description" variant="variant2" />
-    </div>
-  </section>
+  <SecondaryHeroLayout :hero-content="secondaryHero" />
 </template>

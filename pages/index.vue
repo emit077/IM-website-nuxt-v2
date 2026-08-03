@@ -14,6 +14,7 @@ import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import PartnerProgrammeSection from '~/components/home/PartnerProgrammeSection.vue'
 import HeroCarousel from '~/components/home/HeroCarousel.vue'
+import WhyChooseUs from '~/components/ui/shared/WhyChooseUs.vue'
 
 const homeCtas = [
   { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
@@ -42,6 +43,7 @@ useSeoMeta({
     <UiCTASection surface-class="section-surface-white" title="Ready to start with Indian Mentors?"
       description="Book a free demo with a background-verified mentor, or join India's trusted tutor network."
       :ctas="homeCtas" />
+    <WhyChooseUs />
     <PartneredWithStrip />
     <LearningStepsSection />
     <BrowseMentorsSection />

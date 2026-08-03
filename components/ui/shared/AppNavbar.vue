@@ -7,6 +7,7 @@ const mobileOpen = ref(false)
 const openMenuId = ref<string | null>(null)
 const mobileOpenMenuId = ref<string | null>(null)
 const navRef = ref<HTMLElement | null>(null)
+const { isSecondaryHeroActive } = useSecondaryHeroTheme()
 
 const phone = { display: '+91 73895 63564', tel: '+917389563564' }
 const email = 'info@indianmentors.in'
@@ -76,7 +77,12 @@ onUnmounted(() => {
 
 <template>
   <header ref="navRef" class="sticky top-0 z-50 w-full">
-    <div class="hidden border-b border-blue-800/30 bg-blue-700 text-white sm:block">
+    <div :class="[
+      'hidden border-b text-white sm:block',
+      isSecondaryHeroActive
+        ? 'app-navbar-top--secondary-hero'
+        : 'border-blue-800/30 bg-blue-700',
+    ]">
       <div class="container-page flex h-9 items-center justify-between text-xs sm:text-[13px]">
         <div class="flex min-w-0 items-center gap-3">
           <a :href="`tel:${phone.tel}`" class="inline-flex items-center gap-1.5 transition hover:text-blue-100">

@@ -24,12 +24,15 @@
     width: 10px;
     height: 10px;
   }
+
   ::-webkit-scrollbar-track {
     @apply bg-cream-100;
   }
+
   ::-webkit-scrollbar-thumb {
     @apply bg-indigo-200 rounded-full;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-indigo-300;
   }
@@ -79,38 +82,23 @@
   }
 
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2
-      px-7 py-3.5 rounded-2xl font-semibold text-white
-      bg-cta-gradient bg-[length:200%_200%] shadow-cta
-      transition-all duration-300 ease-out
-      hover:-translate-y-0.5
-      hover:bg-[position:100%_50%]
-      focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300/60
-      active:translate-y-0;
+    @apply relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-white bg-cta-gradient bg-[length:200%_200%] shadow-cta transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[position:100%_50%] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300/60 active:translate-y-0;
   }
+
   .btn-primary:hover {
     box-shadow: 0 18px 40px -12px rgba(29, 78, 216, 0.55);
   }
 
   .btn-secondary {
-    @apply relative inline-flex items-center justify-center gap-2
-      px-7 py-3.5 rounded-2xl font-semibold
-      text-brand-ink bg-white/70 border border-slate-200
-      transition-all duration-300 ease-out
-      hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-700 hover:shadow-soft
-      focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200/70;
+    @apply relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-semibold text-brand-ink bg-white/70 border border-slate-200 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-700 hover:shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200/70;
   }
 
   .badge-pill {
-    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full
-      bg-white/80 border border-slate-200/80 shadow-soft
-      text-sm font-medium text-slate-700;
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-slate-200/80 shadow-soft text-sm font-medium text-slate-700;
   }
 
   .trust-chip {
-    @apply inline-flex items-center gap-2 px-3.5 py-2 rounded-xl
-      bg-white/70 border border-slate-200/70 shadow-soft
-      text-[13px] sm:text-sm font-medium text-slate-700;
+    @apply inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/70 border border-slate-200/70 shadow-soft text-[13px] sm:text-sm font-medium text-slate-700;
   }
 
   .stat-card {
@@ -121,15 +109,17 @@
     position: relative;
     overflow: hidden;
   }
+
   .ripple::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.45) 0%, rgba(255,255,255,0) 60%);
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 60%);
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
   }
+
   .ripple:hover::after {
     opacity: 1;
   }
@@ -143,32 +133,79 @@
     pointer-events: none;
   }
 
-  /* Academic Coverage — neon only on blue backgrounds */
-  .academic-coverage {
-    --ac-blue: #2a2fff;
-    --ac-lime: #d4ff00;
-    --ac-lime-ink: #111111;
-    --ac-lime-glow: rgba(212, 255, 0, 0.45);
+  /* Theme accent system — secondary highlight #8BFF00 */
+  :root {
+    --theme-blue: #2a2fff;
+    --theme-secondary: #ffffff;
+    /* --theme-secondary: #8bff00; */
+    --theme-secondary-ink: #111111;
+    --theme-secondary-glow: rgba(255, 255, 255, 0.45);
+    /* --theme-secondary-glow: rgba(139, 255, 0, 0.45); */
   }
 
-  .ac-btn-lime {
+  .app-navbar-top--secondary-hero {
+    background-color: var(--theme-blue);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .bg-theme-secondary {
+    background-color: var(--theme-secondary);
+    color: var(--theme-secondary-ink);
+  }
+
+  .text-theme-secondary {
+    color: var(--theme-secondary);
+  }
+
+  .theme-btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl px-7 py-3.5 font-semibold transition duration-300 hover:-translate-y-0.5 hover:brightness-105;
+    background-color: var(--theme-secondary);
+    color: var(--theme-secondary-ink);
+    box-shadow: 0 14px 32px -12px var(--theme-secondary-glow);
+  }
+
+  .theme-btn-secondary-icon {
+    @apply grid h-5 w-5 place-items-center rounded-full bg-black;
+    color: var(--theme-secondary);
+  }
+
+  .theme-ticker-strip {
+    background-color: var(--theme-secondary);
+    color: var(--theme-secondary-ink);
+  }
+
+  .theme-badge-recommended {
+    @apply rounded-full px-3.5 py-1 text-[10px] font-black uppercase tracking-[0.12em];
+    background-color: var(--theme-secondary);
+    color: var(--theme-secondary-ink);
+    box-shadow: 0 8px 20px -8px var(--theme-secondary-glow);
+  }
+
+  .theme-btn-lime {
     @apply inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold shadow-md transition duration-300 hover:-translate-y-0.5;
-    background: var(--ac-lime);
-    color: var(--ac-lime-ink);
-    box-shadow: 0 14px 32px -14px var(--ac-lime-glow);
+    background: var(--theme-secondary);
+    color: var(--theme-secondary-ink);
+    box-shadow: 0 14px 32px -14px var(--theme-secondary-glow);
   }
 
-  .ac-btn-lime:hover {
+  .theme-btn-lime:hover {
     filter: brightness(1.05);
   }
 
-  .academic-coverage #book-demo a.ripple {
-    background-color: var(--ac-lime) !important;
-    color: var(--ac-lime-ink) !important;
+  .academic-coverage #book-demo a.ripple,
+  .student-parent #book-demo a.ripple {
+    background-color: var(--theme-secondary) !important;
+    color: var(--theme-secondary-ink) !important;
   }
 
-  .academic-coverage #book-demo a.ripple:hover {
+  .academic-coverage #book-demo a.ripple:hover,
+  .student-parent #book-demo a.ripple:hover {
     filter: brightness(1.05);
+  }
+
+  /* Outline secondary stays readable on the blue secondary-hero surface */
+  .secondary-hero .btn-secondary {
+    @apply border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white;
   }
 }
 
@@ -176,6 +213,7 @@
   .text-balance {
     text-wrap: balance;
   }
+
   .text-pretty {
     text-wrap: pretty;
   }

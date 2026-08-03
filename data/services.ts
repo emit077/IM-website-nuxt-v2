@@ -260,7 +260,7 @@ export const specialisedSupportCategories: SpecialSupportCategory[] = [
   {
     id: 'adhd',
     iconMdi: 'mdi:brain',
-    title: 'ADHD Support',
+    title: 'Attention Deficit Hyperactivity Disorder (ADHD) Support',
     description: 'Helping students develop attention, organisation, and learning routines.',
     supportMayInclude: [
       'Attention and focus strategies',
@@ -456,7 +456,7 @@ export const whoWeServeSection = {
     },
     {
       iconMdi: 'mdi:file-document-edit-outline',
-      title: 'Examination Candidates',
+      title: 'Exam Aspirants',
       description: 'Structured support for board and selected competitive examinations.',
     },
     {
@@ -466,7 +466,7 @@ export const whoWeServeSection = {
     },
     {
       iconMdi: 'mdi:puzzle-outline',
-      title: 'Students Requiring Specialised Support',
+      title: 'Student needs Specialised Support',
       description: 'Individualised educational assistance based on learning requirements.',
     },
   ],

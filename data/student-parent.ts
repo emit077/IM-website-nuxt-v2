@@ -1,3 +1,28 @@
+export const studentParentHero = {
+  brand: 'Students & Parents',
+  titleLine1: 'Personalised learning with measurable progress',
+  description:
+    'One-to-one teaching, structured academic planning, and transparent tracking — a complete, dependable learning experience for every family.',
+  primaryCta: {
+    label: 'Book Free Demo',
+    href: '#book-demo',
+  },
+  secondaryCta: {
+    label: 'View Plans',
+    href: '#enrollment-plans',
+  },
+  ticker: [
+    'Free Demo Class',
+    'Verified Mentors',
+    'Parent Dashboard',
+    'Progress Reports',
+    'Gold · Diamond · Platinum',
+    'ERP Tracking',
+    '1:1 Tutoring',
+    'Priority Support',
+  ],
+}
+
 export type EnrollmentPlan = {
   id: 'free' | 'premium'
   iconMdi: string
@@ -159,7 +184,7 @@ export const enrollmentPlans: EnrollmentPlan[] = [
     iconMdi: 'mdi:star-four-points-outline',
     name: 'Premium Student Profile',
     price: '₹1200',
-    priceNote: 'per Year (≈ ₹100 per Month)',
+    priceNote: 'per Year (₹100 per Month)',
     tagline: 'The complete personalised tutoring experience',
     description:
       'The Premium Student Profile unlocks advanced academic tracking, priority tutor access, AI-powered tutor recommendations, and dedicated support to ensure consistent academic progress.',

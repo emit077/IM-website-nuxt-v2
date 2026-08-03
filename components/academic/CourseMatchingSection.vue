@@ -145,7 +145,7 @@ function selectStep(index: number) {
             </p>
           </div>
           <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a :href="courseMatchingSection.ctaHref" class="ac-btn-lime">
+            <a :href="courseMatchingSection.ctaHref" class="theme-btn-lime">
               {{ courseMatchingSection.ctaLabel }}
               <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
             </a>

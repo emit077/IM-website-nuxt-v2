@@ -6,7 +6,6 @@ import WhyChooseDifferentiatorsSection from '~/components/why-choose/WhyChooseDi
 import WhyChooseDetailsSection from '~/components/why-choose/WhyChooseDetailsSection.vue'
 import WhyChooseEcosystemSection from '~/components/why-choose/WhyChooseEcosystemSection.vue'
 import WhyChooseCommitmentsSection from '~/components/why-choose/WhyChooseCommitmentsSection.vue'
-import WhyChooseAdvantageSection from '~/components/why-choose/WhyChooseAdvantageSection.vue'
 import WhyChooseConversionStrip from '~/components/why-choose/WhyChooseConversionStrip.vue'
 import WhyChooseBrandMessage from '~/components/why-choose/WhyChooseBrandMessage.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
@@ -34,7 +33,6 @@ useSeoMeta({
     <!-- <WhyChooseDetailsSection /> -->
     <WhyChooseEcosystemSection />
     <WhyChooseCommitmentsSection />
-    <WhyChooseAdvantageSection />
     <!-- <UiCTASection section-id="ready-cta" heading-id="ready-cta-heading" variant="light" surface-class="bg-white"
       :badge="whyChooseReadyCta.badge" badge-icon-mdi="mdi:rocket-launch-outline" :title="whyChooseReadyCta.title"
       :description="whyChooseReadyCta.description" :supporting="whyChooseReadyCta.supporting"

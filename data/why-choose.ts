@@ -395,7 +395,7 @@ export const whyChooseDetails: WhyChooseDetail[] = [
 export const whyChooseEcosystem = {
   kicker: 'The Academic Ecosystem',
   title:
-    'One Platform. Multiple Stakeholders. <span class="text-gradient-brand">One Shared Goal.</span>',
+    'One Platform.  <span class="text-gradient-brand">Multiple Stakeholders.</span>One Shared Goal.',
   classes: '!px-0 !py-0',
   description:
     'Indian Mentors brings students, parents, tutors, academic counsellors, coordinators, and support teams together within a structured academic ecosystem.',

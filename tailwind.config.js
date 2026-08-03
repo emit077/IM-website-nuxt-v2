@@ -43,8 +43,13 @@ export default {
           primary: "#1D4ED8",
           secondary: "#10B981",
           accent: "#F59E0B",
+          highlight: "#8BFF00",
           surface: "#FCFCFA",
           ink: "#1E293B",
+        },
+        theme: {
+          blue: "#2A2FFF",
+          secondary: "#8BFF00",
         },
       },
       fontFamily: {

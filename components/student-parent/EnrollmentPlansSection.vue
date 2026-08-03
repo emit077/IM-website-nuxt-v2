@@ -8,100 +8,116 @@ import {
   planComparisonRows,
   premiumWhyChoose,
 } from '~/data/student-parent'
+
+const freePlan = enrollmentPlans.find((p) => p.id === 'free')!
+const premiumPlan = enrollmentPlans.find((p) => p.id === 'premium')!
 </script>
 
 <template>
-  <section id="enrollment-plans" class="relative bg-white section-py"
-    aria-labelledby="enrollment-plans-heading">
+  <section id="enrollment-plans" class="relative bg-white section-py" aria-labelledby="enrollment-plans-heading">
     <div class="container-page">
       <CardHeader heading-id="enrollment-plans-heading" :badge="enrollmentPlansSection.badge"
         :title="enrollmentPlansSection.title" :description="enrollmentPlansSection.description"
         :classes="enrollmentPlansSection.classes" />
-      <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 lg:grid-cols-2">
-        <article v-for="(plan, i) in enrollmentPlans" :key="plan.id" :class="[
-          'relative flex flex-col rounded-3xl border bg-white p-6 sm:p-7',
-          plan.variant === 'featured'
-            ? 'border-blue-600 shadow-[0_20px_50px_-20px_rgba(37,99,235,0.35)]'
-            : 'border-slate-200/80 shadow-soft',
-        ]" v-motion :initial="{ opacity: 0, y: 20 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 100, duration: 500 } }">
-          <span v-if="plan.variant === 'featured'"
-            class="absolute -top-3 left-6 rounded-full bg-blue-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
-            Recommended
-          </span>
 
-          <div class="flex items-center gap-3">
-            <span :class="[
-              'grid h-11 w-11 shrink-0 place-items-center rounded-xl ring-1',
-              plan.variant === 'featured'
-                ? 'bg-blue-600 text-white ring-blue-500/30'
-                : 'bg-slate-100 text-slate-600 ring-slate-200',
-            ]">
-              <Icon :icon="plan.iconMdi" class="h-5 w-5" aria-hidden="true" />
-            </span>
-            <div>
-              <h3 class="font-display text-lg font-bold text-slate-900">{{ plan.name }}</h3>
-              <p class="text-[13px] text-slate-500">{{ plan.tagline }}</p>
-            </div>
-          </div>
+      <div class="mx-auto mt-12 " v-motion :initial="{ opacity: 0, y: 16 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
 
-          <p class="mt-5 font-display text-3xl font-extrabold text-slate-900">
-            {{ plan.price }}
-            <span v-if="plan.priceNote" class="ml-1 text-sm font-medium text-slate-500">{{ plan.priceNote }}</span>
-          </p>
-
-          <p class="mt-3 text-sm leading-relaxed text-slate-600">{{ plan.description }}</p>
-
-          <div class="mt-6 flex-1 border-t border-slate-100 pt-5">
-            <p class="text-xs font-bold uppercase tracking-wide text-slate-500">{{ plan.featuresLabel }}</p>
-            <ul class="mt-3 space-y-2" role="list">
-              <li v-for="feature in plan.features" :key="feature"
-                class="flex items-start gap-2.5 text-[13px] text-slate-600">
-                <IconCheck class="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-                {{ feature }}
-              </li>
-            </ul>
-          </div>
-
-          <a :href="plan.cta.href" :class="[
-            'mt-7 inline-flex w-full items-center justify-center rounded-2xl px-6 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-0.5',
-            plan.variant === 'featured'
-              ? 'bg-blue-600 text-white shadow-cta hover:bg-blue-700'
-              : 'border border-slate-300 bg-white text-slate-800 hover:border-blue-400 hover:text-blue-700',
-          ]">
-            {{ plan.cta.label }}
-          </a>
-        </article>
-      </div>
-      <div class="mx-auto mt-12 max-w-4xl overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-soft"
-        v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-        <div class="border-b border-slate-200/80 px-5 py-4 sm:px-6">
-          <h3 class="font-display text-base font-bold text-slate-900 sm:text-lg">Free vs Premium at a glance</h3>
-        </div>
+        <!-- Desktop: reference-style comparison card -->
         <div class="hidden sm:block">
-          <table class="w-full text-left text-sm">
+          <table
+            class="w-full table-fixed border-separate border-spacing-x-3 border-spacing-y-0 bg-transparent text-sm">
             <thead>
-              <tr class="border-b border-slate-200/80 bg-cream-50 text-xs uppercase tracking-wide">
-                <th class="px-6 py-3 font-semibold text-slate-500">Feature</th>
-                <th class="px-6 py-3 font-semibold text-slate-500">Free</th>
-                <th class="px-6 py-3 font-semibold text-blue-700">Premium</th>
+              <tr class="bg-transparent align-bottom">
+                <th scope="col"
+                  class="w-[28%] rounded-t-2xl border border-b-0 border-slate-200 bg-cream-50 px-5 py-5 text-left">
+                  <span class="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                    Feature
+                  </span>
+                </th>
+
+                <th scope="col" class="w-[36%] rounded-t-2xl border border-slate-200 bg-white p-5 text-left border-b-0">
+                  <div class="flex items-start gap-3">
+                    <span
+                      class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-600 ring-1 ring-slate-200">
+                      <Icon :icon="freePlan.iconMdi" class="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div class="min-w-0">
+                      <p class="font-display text-lg font-bold leading-snug text-slate-900">
+                        {{ freePlan.name }}
+                      </p>
+                      <p class="mt-0.5 text-[12px] leading-snug text-slate-500">{{ freePlan.tagline }}</p>
+                      <p class="mt-4 font-display text-2xl font-extrabold text-slate-900">
+                        {{ freePlan.price }}
+                        <span v-if="freePlan.priceNote" class="ml-1 text-xs font-medium text-slate-500">
+                          {{ freePlan.priceNote }}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+
+                </th>
+
+                <th scope="col"
+                  class="relative w-[36%] rounded-t-2xl border border-b-0 border-[var(--theme-blue,#2a2fff)] bg-[var(--theme-blue,#2a2fff)] p-5 text-left">
+                  <span
+                    class="theme-badge-recommended absolute left-1/2 top-0 z-[1] -translate-x-1/2 -translate-y-1/2">
+                    Recommended
+                  </span>
+                  <div class="flex items-start gap-3">
+                    <span
+                      class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/15 text-white ring-1 ring-white/25">
+                      <Icon :icon="premiumPlan.iconMdi" class="h-5 w-5" aria-hidden="true" />
+                    </span>
+                    <div class="min-w-0">
+                      <p class="font-display text-lg font-bold leading-snug text-white">
+                        {{ premiumPlan.name }}
+                      </p>
+                      <p class="mt-0.5 text-[12px] leading-snug text-white/75">{{ premiumPlan.tagline }}</p>
+                      <p class="mt-4 font-display text-2xl font-extrabold text-white">
+                        {{ premiumPlan.price }}
+                        <span v-if="premiumPlan.priceNote" class="ml-1 text-xs font-medium text-white/70">
+                          {{ premiumPlan.priceNote }}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in planComparisonRows" :key="row.feature" class="border-b border-slate-100 last:border-0">
-                <td class="px-6 py-3 font-medium text-slate-800">{{ row.feature }}</td>
-                <td class="px-6 py-3 text-slate-500">{{ row.free }}</td>
-                <td class="px-6 py-3 font-medium text-blue-700">{{ row.premium }}</td>
+              <tr v-for="(row, i) in planComparisonRows" :key="row.feature">
+                <td class="border-x border-slate-200 bg-white px-5 py-3.5 text-left text-slate-700"
+                  :class="{ 'rounded-b-2xl border-b': i === planComparisonRows.length - 1 }">
+                  {{ row.feature }}
+                </td>
+                <td class="border-x border-slate-200 bg-white px-4 py-3.5 text-center text-slate-500"
+                  :class="{ 'rounded-b-2xl border-b': i === planComparisonRows.length - 1 }">
+                  {{ row.free }}
+                </td>
+                <td
+                  class="border-x border-[var(--theme-blue,#2a2fff)] bg-[var(--theme-blue,#2a2fff)] px-4 py-3.5 text-center font-medium text-white"
+                  :class="{ 'rounded-b-2xl border-b': i === planComparisonRows.length - 1 }">
+                  {{ row.premium }}
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <ul class="divide-y divide-slate-100 sm:hidden" role="list">
-          <li v-for="row in planComparisonRows" :key="row.feature" class="px-5 py-3.5">
+
+        <!-- Mobile -->
+        <ul class="overflow-hidden rounded-t-2xl border border-slate-200 bg-white sm:hidden" role="list">
+          <li v-for="row in planComparisonRows" :key="row.feature" class="px-4 py-3.5">
             <p class="text-[13px] font-semibold text-slate-900">{{ row.feature }}</p>
-            <div class="mt-1.5 grid grid-cols-2 gap-3 text-[12px]">
-              <p class="text-slate-500"><span class="font-medium text-slate-400">Free: </span>{{ row.free }}</p>
-              <p class="font-medium text-blue-700"><span class="text-blue-400">Premium: </span>{{ row.premium }}</p>
+            <div class="mt-2 grid grid-cols-2">
+              <p class="border-r border-slate-200 pr-3 text-[12px] text-slate-500">
+                <span class="block text-[10px] font-bold uppercase tracking-wide text-slate-400">Free</span>
+                {{ row.free }}
+              </p>
+              <p class="pl-3 text-[12px] font-medium text-blue-700">
+                <span class="block text-[10px] font-bold uppercase tracking-wide text-blue-400">Premium</span>
+                {{ row.premium }}
+              </p>
             </div>
           </li>
         </ul>

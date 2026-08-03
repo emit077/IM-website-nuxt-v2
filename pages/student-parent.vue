@@ -27,7 +27,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div>
+  <div class="student-parent">
     <StudentParentHeroSection />
     <StudentParentNavSection />
     <EnrollmentPlansSection />
