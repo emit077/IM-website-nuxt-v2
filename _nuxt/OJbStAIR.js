@@ -1,0 +1,1 @@
+import{R as s,S as u,U as r,V as o,W as c,X as i}from"./DPooV_qE.js";function a(t){const e=t||u();return e?.ssrContext?.head||e?.runWithContext(()=>{if(r())return o(c)})}function d(t,e={}){const n=a(e.nuxt);if(n)return i(t,{head:n,...e})}function f(t,e={}){const n=a(e.nuxt);if(n)return s(t,{head:n,...e})}export{f as a,d as u};
