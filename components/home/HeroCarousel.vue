@@ -2,6 +2,7 @@
 import CarouselLayout from '~/components/ui/CarouselLayout.vue'
 import HeroLayout from '~/components/ui/HeroLayout.vue'
 import type { HeroContent } from '~/components/ui/HeroLayout.vue'
+import HeroTickerStrip from '~/components/ui/HeroTickerStrip.vue'
 import IconBook from '~/components/icons/IconBook.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 import IconAcademic from '~/components/icons/IconAcademic.vue'
@@ -34,21 +35,28 @@ const bookDemoBtn = {
 }
 const trustStats = [
   {
-    value: '1,00,000+',
-    label: 'Verified Tutors',
-    icon: 'solar:square-academic-cap-linear',
-  },
-  {
     value: '50,000+',
     label: 'Students Supported',
     icon: 'solar:users-group-two-rounded-linear',
+  },
+  {
+    value: '1,00,000+',
+    label: 'Verified Tutors',
+    icon: 'solar:square-academic-cap-linear',
   },
   {
     value: '50,00,000+',
     label: 'Sessions Delivered',
     icon: 'solar:bookmark-linear',
   },
+  {
+    value: '98%',
+    label: 'Satisfaction Rate',
+    icon: 'solar:star-bold-duotone',
+  },
 ]
+
+const heroTickerItems = trustStats.map((stat) => `${stat.value} ${stat.label}`)
 const browseTutorsBtn = {
   variant: 'secondary' as const,
   label: 'Browse Tutors',
@@ -136,10 +144,24 @@ const heroScreens: HeroContent[] = [
 </script>
 
 <template>
-  <CarouselLayout :items="heroScreens" :interval="props.interval" :autoplay="props.autoplay"
-    :show-buttons="props.showButtons" :show-dots="props.showDots" aria-label="Featured highlights">
-    <template #default="{ item }">
-      <HeroLayout :hero-content="item" />
-    </template>
-  </CarouselLayout>
+  <div class="hero-carousel overflow-x-clip">
+    <CarouselLayout :items="heroScreens" :interval="props.interval" :autoplay="props.autoplay"
+      :show-buttons="props.showButtons" :show-dots="props.showDots" aria-label="Featured highlights">
+      <template #default="{ item }">
+        <HeroLayout :hero-content="item" />
+      </template>
+    </CarouselLayout>
+
+    <div class="hero-carousel-ticker mb-10 mt-[-20px]">
+      <HeroTickerStrip :items="heroTickerItems" aria-label="Platform highlights" />
+    </div>
+  </div>
 </template>
+
+<style scoped>
+.hero-carousel-ticker {
+  --theme-secondary: var(--theme-blue, #2a2fff);
+  --theme-secondary-ink: #ffffff;
+  --theme-secondary-glow: rgba(42, 47, 255, 0.45);
+}
+</style>

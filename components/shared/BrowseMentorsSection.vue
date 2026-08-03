@@ -2,6 +2,7 @@
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import { tutoringServices } from '~/data/services'
 
 type BrowseMode = 'tutors' | 'students'
 type SessionMode = 'online' | 'home'
@@ -56,10 +57,57 @@ const subjectOptions = [
     'English',
     'Computer Science',
 ]
+const serviceOptions = [
+    { id: 'all', title: 'All services' },
+    ...tutoringServices.map((service) => ({ id: service.id, title: service.title })),
+]
 const filterGrade = ref('Grade 6-8')
 const filterSubject = ref('Mathematics')
 const filterCity = ref('')
 const filterMode = ref<SessionMode>('online')
+const filterService = ref('all')
+
+const tutorServiceExtras: Record<string, string[]> = {
+    t1: ['shadow-tutors'],
+    t3: ['travel-tutors'],
+    t4: ['custom-tutor'],
+    t5: ['special-educators'],
+    t6: ['home-schooling'],
+    t7: ['live-in-tutors'],
+    t8: ['custom-tutor', 'travel-tutors'],
+    t10: ['shadow-tutors', 'live-in-tutors'],
+    t12: ['home-schooling'],
+}
+
+const studentServiceExtras: Record<string, string[]> = {
+    s1: ['shadow-tutors'],
+    s3: ['home-schooling'],
+    s5: ['special-educators'],
+    s8: ['special-educators'],
+    s9: ['live-in-tutors'],
+    s11: ['home-schooling'],
+    s14: ['custom-tutor'],
+}
+
+function servicesFromModes(modes: SessionMode[], extras: string[] = []) {
+    const services = new Set<string>(extras)
+    if (modes.includes('online')) services.add('online-tutors')
+    if (modes.includes('home')) services.add('home-tutors')
+    return [...services]
+}
+
+function getTutorServices(tutor: Tutor) {
+    return servicesFromModes(tutor.modes, tutorServiceExtras[tutor.id] ?? [])
+}
+
+function getStudentServices(student: StudentRequest) {
+    return servicesFromModes([student.preferredMode], studentServiceExtras[student.id] ?? [])
+}
+
+watch(filterService, (serviceId) => {
+    if (serviceId === 'online-tutors') filterMode.value = 'online'
+    if (serviceId === 'home-tutors') filterMode.value = 'home'
+})
 
 const tutors: Tutor[] = [
     {
@@ -663,7 +711,12 @@ const filteredTutors = computed<Tutor[]>(() =>
             )
         )
             return false
-        if (!t.modes.includes(filterMode.value)) return false
+        const services = getTutorServices(t)
+        if (filterService.value !== 'all') {
+            if (!services.includes(filterService.value)) return false
+        } else if (!t.modes.includes(filterMode.value)) {
+            return false
+        }
         const city = filterCity.value.trim().toLowerCase()
         if (city && !t.cities.some((c) => c.includes(city))) return false
         return true
@@ -680,7 +733,12 @@ const filteredStudents = computed<StudentRequest[]>(() =>
             )
         )
             return false
-        if (s.preferredMode !== filterMode.value) return false
+        const services = getStudentServices(s)
+        if (filterService.value !== 'all') {
+            if (!services.includes(filterService.value)) return false
+        } else if (s.preferredMode !== filterMode.value) {
+            return false
+        }
         const city = filterCity.value.trim().toLowerCase()
         if (city && !s.cities.some((c) => c.includes(city))) return false
         return true
@@ -873,6 +931,21 @@ onUnmounted(() => {
                         <select v-model="filterSubject"
                             class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 lg:w-auto">
                             <option v-for="s in subjectOptions" :key="s">{{ s }}</option>
+                        </select>
+                        <svg aria-hidden="true"
+                            class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
+                            viewBox="0 0 24 24" fill="none">
+                            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </label>
+                    <label class="relative">
+                        <span class="sr-only">Service</span>
+                        <select v-model="filterService"
+                            class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 lg:min-w-[10.5rem] lg:w-auto">
+                            <option v-for="service in serviceOptions" :key="service.id" :value="service.id">
+                                {{ service.title }}
+                            </option>
                         </select>
                         <svg aria-hidden="true"
                             class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"

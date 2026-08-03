@@ -83,9 +83,9 @@ defineProps<{
             </div>
             <div aria-hidden="true"
                 class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-cream-50" />
-            <slot name="trust-indicators">
+            <!-- <slot name="trust-indicators">
                 <TrustIndicators v-if="heroContent.trustStats.length" class="pt-1" :items="heroContent.trustStats" />
-            </slot>
+            </slot> -->
         </div>
     </section>
 </template>

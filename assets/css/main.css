@@ -165,8 +165,9 @@
   }
 
   .theme-btn-secondary-icon {
-    @apply grid h-5 w-5 place-items-center rounded-full bg-black;
+    @apply grid h-5 w-5 place-items-center rounded-full;
     color: var(--theme-secondary);
+    background-color: var(--theme-secondary-ink);
   }
 
   .theme-ticker-strip {

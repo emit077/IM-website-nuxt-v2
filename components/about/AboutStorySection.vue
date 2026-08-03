@@ -105,7 +105,6 @@ onBeforeUnmount(() => {
       class="pointer-events-none absolute -left-24 top-16 h-72 w-72 rounded-full bg-blue-100/50 blur-3xl" />
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-violet-100/50 blur-3xl" />
-
     <div class="container-page relative">
       <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <CardHeader align="left" heading-id="our-story-heading" :badge="aboutStory.badge" :title="aboutStory.title"

@@ -220,79 +220,80 @@ function clearSearch() {
           </button>
         </div>
       </div>
-      <div class="mt-5">
-        <div v-if="displayCards.length" class="group/rail relative mt-6 min-h-[400px] overflow-hidden sm:min-h-[420px]">
-          <div v-if="useMarquee"
-            class="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r to-transparent sm:w-16"
-            :class="edgeFadeFromClass" aria-hidden="true" />
-          <div v-if="useMarquee"
-            class="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l to-transparent sm:w-16"
-            :class="edgeFadeFromClass" aria-hidden="true" />
+    </div>
+    <div class="mt-5">
+      <div v-if="displayCards.length" class="group/rail relative mt-6 min-h-[400px] overflow-hidden sm:min-h-[420px]">
+        <!-- <div v-if="useMarquee"
+          class="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r to-transparent sm:w-16"
+          :class="edgeFadeFromClass" aria-hidden="true" />
+        <div v-if="useMarquee"
+          class="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l to-transparent sm:w-16"
+          :class="edgeFadeFromClass" aria-hidden="true" /> -->
 
-          <div class="flex h-full items-center py-6 sm:py-8">
-            <div :class="[
-              'flex w-max items-center gap-5 px-4',
-              useMarquee
-                ? 'animate-marquee [animation-duration:50s] group-hover/rail:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center'
-                : '-mx-4 snap-x snap-mandatory overflow-x-auto pb-1 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
-            ]" role="list" aria-label="City office locations">
-              <div v-for="(card, index) in marqueeCards" :key="`${card.id}-${index}`"
-                class="city-card-slot relative z-10 flex w-[280px] shrink-0 items-center justify-center sm:w-[300px]"
-                :class="useMarquee ? '' : 'snap-start'" role="listitem">
-                <article
-                  class="city-card group/card relative flex w-full flex-col overflow-hidden rounded-[1.35rem] border border-slate-200/80 bg-white shadow-[0_10px_30px_-24px_rgba(15,23,42,0.55)]"
-                  v-motion="!useMarquee && { initial: { opacity: 0, y: 18 }, visibleOnce: { opacity: 1, y: 0, transition: { duration: 480, delay: 60 + index * 70 } } }">
-                  <div class="relative aspect-[5/4] overflow-hidden bg-slate-200">
-                    <img v-if="card.image" :src="card.image" :alt="`${card.label} city`"
-                      class="h-full w-full object-cover grayscale-[30%] transition-[transform,filter] duration-500 ease-out group-hover/card:scale-105 group-hover/card:grayscale-0"
-                      loading="lazy" decoding="async" />
-                    <div v-else
-                      class="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-800 via-slate-700 to-blue-900">
-                      <Icon icon="mdi:office-building-marker-outline" class="h-14 w-14 text-white/30"
-                        aria-hidden="true" />
-                    </div>
-                    <div aria-hidden="true"
-                      class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/25 to-slate-900/5 transition-opacity duration-500 group-hover/card:opacity-95" />
-
-                    <span
-                      class="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] backdrop-blur-md"
-                      :class="card.hasOffice ? 'bg-emerald-500/90 text-white' : 'bg-white/20 text-white ring-1 ring-white/25'">
-                      {{ card.subtitle }}
-                    </span>
-
-                    <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                      <h3 class="font-display text-lg font-bold tracking-tight text-white">
-                        {{ card.label }}
-                      </h3>
-                    </div>
+        <div class="flex h-full items-center py-6 sm:py-8">
+          <div :class="[
+            'flex w-max items-center gap-5 px-4',
+            useMarquee
+              ? 'animate-marquee [animation-duration:50s] group-hover/rail:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center'
+              : '-mx-4 snap-x snap-mandatory overflow-x-auto pb-1 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+          ]" role="list" aria-label="City office locations">
+            <div v-for="(card, index) in marqueeCards" :key="`${card.id}-${index}`"
+              class="city-card-slot relative z-10 flex w-[280px] shrink-0 items-center justify-center sm:w-[300px]"
+              :class="useMarquee ? '' : 'snap-start'" role="listitem">
+              <article
+                class="city-card group/card relative flex w-full flex-col overflow-hidden rounded-[1.35rem] border border-slate-200/80 bg-white shadow-[0_10px_30px_-24px_rgba(15,23,42,0.55)]"
+                v-motion="!useMarquee && { initial: { opacity: 0, y: 18 }, visibleOnce: { opacity: 1, y: 0, transition: { duration: 480, delay: 60 + index * 70 } } }">
+                <div class="relative aspect-[5/4] overflow-hidden bg-slate-200">
+                  <img v-if="card.image" :src="card.image" :alt="`${card.label} city`"
+                    class="h-full w-full object-cover grayscale-[30%] transition-[transform,filter] duration-500 ease-out group-hover/card:scale-105 group-hover/card:grayscale-0"
+                    loading="lazy" decoding="async" />
+                  <div v-else
+                    class="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-800 via-slate-700 to-blue-900">
+                    <Icon icon="mdi:office-building-marker-outline" class="h-14 w-14 text-white/30"
+                      aria-hidden="true" />
                   </div>
-                  <div class="flex min-h-[140px] flex-1 flex-col p-5">
-                    <address
-                      class="flex-1 not-italic text-[13px] leading-relaxed text-slate-600 transition-colors duration-500 group-hover/card:text-slate-800">
-                      {{ card.address }}
-                    </address>
+                  <div aria-hidden="true"
+                    class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/25 to-slate-900/5 transition-opacity duration-500 group-hover/card:opacity-95" />
 
-                    <div class="mt-auto border-t border-slate-100 pt-4">
-                      <a v-if="card.hasOffice" :href="mapsUrl(card.address)" target="_blank" rel="noopener noreferrer"
-                        class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:gap-2.5 hover:text-blue-800">
-                        <Icon icon="mdi:directions" class="h-4 w-4 shrink-0" aria-hidden="true" />
-                        Get Directions
-                      </a>
-                      <a v-else href="#inquiry"
-                        class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:gap-2.5 hover:text-blue-800">
-                        <Icon icon="mdi:message-text-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
-                        Enquire for This City
-                      </a>
-                    </div>
+                  <span
+                    class="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] backdrop-blur-md"
+                    :class="card.hasOffice ? 'bg-emerald-500/90 text-white' : 'bg-white/20 text-white ring-1 ring-white/25'">
+                    {{ card.subtitle }}
+                  </span>
+
+                  <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                    <h3 class="font-display text-lg font-bold tracking-tight text-white">
+                      {{ card.label }}
+                    </h3>
                   </div>
-                </article>
-              </div>
+                </div>
+                <div class="flex min-h-[140px] flex-1 flex-col p-5">
+                  <address
+                    class="flex-1 not-italic text-[13px] leading-relaxed text-slate-600 transition-colors duration-500 group-hover/card:text-slate-800">
+                    {{ card.address }}
+                  </address>
+
+                  <div class="mt-auto border-t border-slate-100 pt-4">
+                    <a v-if="card.hasOffice" :href="mapsUrl(card.address)" target="_blank" rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:gap-2.5 hover:text-blue-800">
+                      <Icon icon="mdi:directions" class="h-4 w-4 shrink-0" aria-hidden="true" />
+                      Get Directions
+                    </a>
+                    <a v-else href="#inquiry"
+                      class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:gap-2.5 hover:text-blue-800">
+                      <Icon icon="mdi:message-text-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
+                      Enquire for This City
+                    </a>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="container-page">
       <div v-if="showOtherCities" :id="otherCitiesId" class="mt-10 sm:mt-10">
-
         <div v-if="displayedCities.length" class=" overflow-hidden  ">
           <div class="flex flex-wrap gap-2.5 text-center justify-center" role="list" aria-label="Other cities"
             v-if="showAll || isSearching">
