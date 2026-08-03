@@ -144,8 +144,13 @@
   }
 
   .app-navbar-top--secondary-hero {
+    background-color: #ffffff;
+  }
+
+  .app-navbar-main--secondary-hero {
     background-color: var(--theme-blue);
-    border-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-bottom-width: 0;
   }
 
   .bg-theme-secondary {
