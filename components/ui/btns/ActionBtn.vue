@@ -45,6 +45,11 @@ const rootClass = computed(() => {
     return 'btn-secondary group w-full sm:w-auto'
 })
 
+const shouldShowArrow = computed(() => {
+    if (props.variant === 'secondary') return false
+    return props.showArrow
+})
+
 function rippleHandler(e: MouseEvent) {
     const target = e.currentTarget as HTMLElement
     const rect = target.getBoundingClientRect()
@@ -67,13 +72,13 @@ function rippleHandler(e: MouseEvent) {
         </slot>
         <span v-html="label" />
         <span
-            v-if="variant === 'theme-secondary' && showArrow"
+            v-if="variant === 'theme-secondary' && shouldShowArrow"
             class="hero-cta-arrow theme-btn-secondary-icon transition-transform duration-300 group-hover:translate-x-1"
             aria-hidden="true">
             <Icon icon="mdi:arrow-right" class="h-3.5 w-3.5" />
         </span>
         <IconArrowRight
-            v-else-if="showArrow"
+            v-else-if="shouldShowArrow"
             class="hero-cta-arrow h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
     </a>
 </template>

@@ -36,13 +36,9 @@ defineProps<{
     <section class="relative overflow-hidden bg-white bg-right bg-no-repeat"
         :aria-labelledby="heroContent.headingId || undefined">
 
-        <div class="absolute top-0 left-0 hidden h-full w-full md:block">
-            <div class="grid grid-cols-3 h-full w-full">
-                <div v-if="heroContent.backgroundImage"
-                    class="col-span-2 col-start-2 h-full w-full bg-cover bg-right bg-no-repeat"
-                    :style="{ backgroundImage: heroContent.backgroundImage }" />
-            </div>
-        </div>
+        <div v-if="heroContent.backgroundImage"
+            class="absolute top-0 right-0 hidden h-full w-1/2 max-w-[50%] bg-cover bg-left bg-no-repeat md:block"
+            :style="{ backgroundImage: heroContent.backgroundImage }" />
 
         <!-- <img :src="heroContent.mobileBackgroundImage" alt="Hero Image" class="h-full"> -->
 

@@ -73,7 +73,7 @@ const heroScreens: HeroContent[] = [
     subtitle:
       '<span class="text-gradient-brand">Indian Mentors</span> - Where Learning Meets Mentorship',
     description:
-      'Structured tutoring and reliable teacher recruitment — built for families and educators across India. Background-checked mentors. Personalised plans. Real progress.',
+      'Structured tutoring and teacher recruitment for families across India.<br class="hidden sm:block" /> Background-checked mentors. Personalised plans. Real progress.',
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-1.png')}')`,
     mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-1.png')}`,
@@ -102,9 +102,9 @@ const heroScreens: HeroContent[] = [
     badge: 'Safety, Quality &amp; Transparency in Every Session',
     title:
       'Learn from <span class="text-gradient-brand">  Background</span><br class="hidden sm:block" /> Verified Tutors',
-    subtitle: 'Building Strong Foundations for Lifelong Learning',
+    subtitle: '<span class="text-gradient-brand">Indian Mentors</span> - Building Strong Foundations for Lifelong Learning',
     description:
-      '<span class="text-gradient-brand">Indian Mentors</span> - Building Strong Foundations for Lifelong Learning<br />Every tutor undergoes structured verification and performance monitoring.',
+      'Building Strong Foundations for Lifelong Learning<br />Every tutor undergoes structured verification and performance monitoring.',
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-3.png')}')`,
     mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-3.png')}`,
@@ -117,9 +117,9 @@ const heroScreens: HeroContent[] = [
     badge: 'Structured System. Verified Students. Transparent Earnings',
     title:
       'Join India\'s <span class="text-gradient-brand"> Trusted Tutor</span> Network',
-    subtitle: 'Empowering Educators with Smart Opportunities',
+    subtitle: '<span class="text-gradient-brand">Indian Mentors</span> - Empowering Educators with Smart Opportunities',
     description:
-      '<span class="text-gradient-brand">Indian Mentors</span> - Empowering Educators with Smart Opportunities. Access quality student leads and build your teaching career with institutional support.',
+      'Empowering Educators with Smart Opportunities. Access quality student leads and build your teaching career with institutional support.',
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-4.png')}')`,
     mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-4.png')}`,

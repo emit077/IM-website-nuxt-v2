@@ -6,6 +6,8 @@ import CarouselLayout from '~/components/ui/CarouselLayout.vue'
 export interface BannerSlide {
   /** Public URL, e.g. `/img/banner/banner-1.jpg` */
   image: string
+  /** Optional 2:1 mobile crop; falls back to `image` when omitted. */
+  mobileImage?: string
   /** Internal path (`/about`, `/#section`) or external URL (`https://…`). Omit for a non-clickable slide. */
   link?: string
   /** Accessible name when the slide is a link (recommended for SEO and screen readers). */
@@ -40,26 +42,23 @@ const props = withDefaults(
     slides: () => [
       {
         image: '/assets/img/banner/banner-1.png',
+        mobileImage: '/assets/img/banner/mobile-banner-1.png',
         link: '/#book-demo',
         label: 'Book a free demo — verified tutors',
       },
       {
-        image: '/assets/img/banner/banner-1.png',
+        image: '/assets/img/banner/banner-2.png',
+        mobileImage: '/assets/img/banner/mobile-banner-2.png',
         link: '/home',
         label: 'Explore the home experience',
       },
-      {
-        image: '/assets/img/banner/banner-1.png',
-        link: '/#join',
-        label: 'Join as a parent or tutor',
-      },
     ],
-    interval: 1000,
+    interval: 5000,
     autoplay: true,
-    showButtons: true,
-    showDots: false,
+    showButtons: false,
+    showDots: true,
     aspectRatio:
-      'aspect-[21/5] min-h-[140px] w-full max-sm:aspect-[4/3] sm:min-h-[160px] lg:min-h-[200px]',
+      'aspect-[4/1] min-h-[140px] w-full max-sm:aspect-[2/1] sm:min-h-[160px] lg:min-h-[200px]',
   },
 )
 
@@ -91,25 +90,35 @@ function wrapBind(slide: BannerSlide): Record<string, string> | { to: string } {
 </script>
 
 <template>
-  <section v-if="list.length > 0" class="relative section-py-compact"
-    :aria-label="`${props.title}. Promotional image carousel.`">
-    <div class="container-page">
-    <CardHeader theme="light" :badge="headerContent.badge" :title="headerContent.title"
-      :description="headerContent.description" :classes="headerContent.classes" />
+  <div class="my-10">
+    <section v-if="list.length > 0" class="relative section-py-compact"
+      :aria-label="`${props.title}. Promotional image carousel.`">
+      <div class="container-page mt-12 ">
+        <!-- <CardHeader theme="light" :badge="headerContent.badge" :title="headerContent.title"
+        :description="headerContent.description" :classes="headerContent.classes" /> -->
 
-    <div class="overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-100 shadow-sm ring-1 ring-black/5">
-      <CarouselLayout :items="list" :interval="props.interval" :autoplay="props.autoplay"
-        :show-buttons="props.showButtons" :show-dots="props.showDots" :aria-label="`${props.title} banners`">
-        <template #default="{ item: slide }">
-          <component :is="wrapTag(slide)" v-bind="wrapBind(slide)"
-            class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50"
-            :class="props.aspectRatio" :aria-label="slide.link ? slide.label : undefined">
-            <img :src="usePublicAsset(slide.image)" :alt="slide.label ?? 'Banner'" class="h-full w-full object-cover"
-              loading="lazy" decoding="async" />
-          </component>
-        </template>
-      </CarouselLayout>
-    </div>
-    </div>
-  </section>
+        <div class="overflow-hidden ">
+          <CarouselLayout :items="list" :interval="props.interval" :autoplay="props.autoplay"
+            :show-buttons="props.showButtons" :show-dots="props.showDots" :aria-label="`${props.title} banners`">
+            <template #default="{ item: slide }">
+              <component :is="wrapTag(slide)" v-bind="wrapBind(slide)"
+                class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-50"
+                :class="props.aspectRatio" :aria-label="slide.link ? slide.label : undefined">
+                <picture>
+                  <source v-if="slide.mobileImage" :srcset="usePublicAsset(slide.mobileImage)"
+                    media="(max-width: 639px)" />
+
+                  <img :src="usePublicAsset(slide.image)" :alt="slide.label ?? 'Banner'"
+                    class="h-full w-full object-cover rounded-2xl shadow-soft " loading="lazy" decoding="async" />
+
+                </picture>
+
+              </component>
+
+            </template>
+          </CarouselLayout>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
