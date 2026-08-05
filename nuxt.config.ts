@@ -60,7 +60,7 @@ export default defineNuxtConfig({
         { name: 'twitter:card', content: 'summary_large_image' },
       ],
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: `${appBaseURL}favicon.svg`.replace(/\/{2,}/g, '/') },
+        { rel: 'icon', type: 'image/png', href: `${appBaseURL}assets/img/logo/favicon.png`.replace(/\/{2,}/g, '/') },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {

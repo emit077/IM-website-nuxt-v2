@@ -453,20 +453,6 @@ export const eligibilityRequirements = {
   ],
 }
 
-export const territoriesSection = {
-  kicker: 'Available Territories',
-  title: 'Available <span class="text-gradient-brand">Territories</span>',
-  classes: '!px-0 !py-0',
-  description:
-    'Indian Mentors is actively expanding across multiple cities and regions in India. Explore available cities, territory status, and expansion opportunities.',
-  features: [
-    { iconMdi: 'mdi:city-variant-outline', label: 'Available cities' },
-    { iconMdi: 'mdi:map-check-outline', label: 'Territory availability status' },
-    { iconMdi: 'mdi:map-marker-path', label: 'Expansion opportunities' },
-  ],
-  cta: { label: 'View Territory Map', href: '#partner-register' },
-}
-
 export const testimonialsSection = {
   kicker: 'Success Stories',
   title: 'Stories from our <span class="text-gradient-brand">Partner Network</span>',
@@ -506,7 +492,6 @@ export const faqSection = {
   kicker: 'Explore Our Partnership FAQs',
   title: 'Frequently Asked <span class="text-gradient-brand">Questions</span>',
   classes: '!px-0 !py-0',
-  // description: 'Common questions about the partnership program',
 }
 
 export const partnerFaqs: PartnerFaqItem[] = [

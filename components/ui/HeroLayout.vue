@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
-import TrustIndicators from '~/components/ui/TrustIndicatorsLayout.vue'
 import type { TrustIndicatorItem } from '~/components/ui/TrustIndicatorsLayout.vue'
 import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
@@ -40,16 +39,6 @@ defineProps<{
             class="absolute top-0 right-0 hidden h-full w-1/2 max-w-[50%] bg-cover bg-left bg-no-repeat md:block"
             :style="{ backgroundImage: heroContent.backgroundImage }" />
 
-        <!-- <img :src="heroContent.mobileBackgroundImage" alt="Hero Image" class="h-full"> -->
-
-
-        <div class="absolute top-0 left-0  h-full w-full md:hidden">
-            <div class="grid grid-cols-3 h-full w-full">
-                <!-- <div v-if="heroContent.backgroundImage"
-                    class="col-span-2 col-start-2 h-full w-full bg-contain bg-top bg-no-repeat"
-                    :style="{ backgroundImage: `url(${heroContent.mobileBackgroundImage})` }" /> -->
-            </div>
-        </div>
         <div class="container-page pb-12 pt-10 lg:pt-16 ">
             <div class="grid grid-cols-2">
                 <div class="col-span-2">
@@ -79,9 +68,6 @@ defineProps<{
             </div>
             <div aria-hidden="true"
                 class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-cream-50" />
-            <!-- <slot name="trust-indicators">
-                <TrustIndicators v-if="heroContent.trustStats.length" class="pt-1" :items="heroContent.trustStats" />
-            </slot> -->
         </div>
     </section>
 </template>

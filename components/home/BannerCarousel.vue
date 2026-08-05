@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import CarouselLayout from '~/components/ui/CarouselLayout.vue'
 
 export interface BannerSlide {
-  /** Public URL, e.g. `/img/banner/banner-1.jpg` */
+  /** Public URL, e.g. `/assets/img/banner/banner-1.png` */
   image: string
-  /** Optional 2:1 mobile crop; falls back to `image` when omitted. */
+  /** Optional mobile crop; falls back to `image` when omitted. */
   mobileImage?: string
   /** Internal path (`/about`, `/#section`) or external URL (`https://…`). Omit for a non-clickable slide. */
   link?: string
@@ -27,18 +26,10 @@ const props = withDefaults(
      * Default keeps a wide desktop banner and a taller mobile crop.
      */
     aspectRatio?: string
-    /** Section badge (CardHeader) */
-    badge?: string
-    /** Section title (CardHeader) */
     title?: string
-    /** Short supporting copy under the title */
-    description?: string
   }>(),
   {
-    badge: 'Featured',
     title: 'Programs, offers & next steps',
-    description:
-      'Seasonal campaigns, partner highlights, and quick links for families — tap a slide to book a demo, explore a program, or jump straight to sign-up.',
     slides: () => [
       {
         image: '/assets/img/banner/banner-1.png',
@@ -49,8 +40,8 @@ const props = withDefaults(
       {
         image: '/assets/img/banner/banner-2.png',
         mobileImage: '/assets/img/banner/mobile-banner-2.png',
-        link: '/home',
-        label: 'Explore the home experience',
+        link: '/services',
+        label: 'Explore tutoring services',
       },
     ],
     interval: 5000,
@@ -61,13 +52,6 @@ const props = withDefaults(
       'aspect-[4/1] min-h-[140px] w-full max-sm:aspect-[2/1] sm:min-h-[160px] lg:min-h-[200px]',
   },
 )
-
-const headerContent = computed(() => ({
-  badge: props.badge,
-  title: props.title,
-  description: props.description,
-  classes: 'mb-3 sm:mb-4 !px-0 !py-0 max-w-3xl mx-auto',
-}))
 
 const list = computed(() => props.slides.filter((s) => s.image))
 
@@ -93,11 +77,8 @@ function wrapBind(slide: BannerSlide): Record<string, string> | { to: string } {
   <div class="my-10">
     <section v-if="list.length > 0" class="relative section-py-compact"
       :aria-label="`${props.title}. Promotional image carousel.`">
-      <div class="container-page mt-12 ">
-        <!-- <CardHeader theme="light" :badge="headerContent.badge" :title="headerContent.title"
-        :description="headerContent.description" :classes="headerContent.classes" /> -->
-
-        <div class="overflow-hidden ">
+      <div class="container-page mt-12">
+        <div class="overflow-hidden">
           <CarouselLayout :items="list" :interval="props.interval" :autoplay="props.autoplay"
             :show-buttons="props.showButtons" :show-dots="props.showDots" :aria-label="`${props.title} banners`">
             <template #default="{ item: slide }">
@@ -107,14 +88,10 @@ function wrapBind(slide: BannerSlide): Record<string, string> | { to: string } {
                 <picture>
                   <source v-if="slide.mobileImage" :srcset="usePublicAsset(slide.mobileImage)"
                     media="(max-width: 639px)" />
-
                   <img :src="usePublicAsset(slide.image)" :alt="slide.label ?? 'Banner'"
-                    class="h-full w-full object-cover rounded-2xl shadow-soft " loading="lazy" decoding="async" />
-
+                    class="h-full w-full object-cover rounded-2xl shadow-soft" loading="lazy" decoding="async" />
                 </picture>
-
               </component>
-
             </template>
           </CarouselLayout>
         </div>

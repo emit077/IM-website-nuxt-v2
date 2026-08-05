@@ -30,12 +30,8 @@ const dataset: BarChartDataset = {
   <section id="subscription-share" class="relative scroll-mt-20 bg-white section-py"
     aria-labelledby="subscription-share-heading">
     <div class="container-page">
-      <!-- How the Revenue Model Works -->
       <div class="mt-12" v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
-        <!-- <h3 class="text-center font-display text-lg font-bold text-slate-900 sm:text-xl">
-          {{ model.title }}
-        </h3> -->
         <CardHeader heading-id="subscription-share-heading" :badge="subscriptionShareSection.kicker"
           :title="subscriptionShareSection.title" :description="subscriptionShareSection.description"
           :classes="subscriptionShareSection.classes" />

@@ -53,52 +53,6 @@ export const academicHeroStats: TrustIndicatorItem[] = [
   },
 ]
 
-export const coverageOverviewSection = {
-  kicker: 'Coverage at a glance',
-  title: 'Three pillars of our <span class="text-gradient-brand">academic ecosystem</span>',
-  description:
-    'From early foundations to university mentoring — we organise coverage so families can find the right stage, curriculum, and subject path quickly.',
-  classes: '!px-0 !py-0',
-  pillars: [
-    {
-      id: 'grades',
-      number: '01',
-      iconMdi: 'solar:notebook-bookmark-bold-duotone',
-      title: 'Grades & stages',
-      metric: 'Nursery → PG',
-      description:
-        'Structured programmes across every academic stage, adapted to age, pace, and learning goals.',
-      href: '#grades-covered',
-      cta: 'Browse grades',
-      accent: 'blue' as const,
-    },
-    {
-      id: 'boards',
-      number: '02',
-      iconMdi: 'solar:global-bold-duotone',
-      title: 'Boards & curricula',
-      metric: '40+ systems',
-      description:
-        'National and international boards supported — CBSE, ICSE, IB, Cambridge, state boards, and more.',
-      href: '#boards-covered',
-      cta: 'Explore boards',
-      accent: 'sky' as const,
-    },
-    {
-      id: 'subjects',
-      number: '03',
-      iconMdi: 'solar:book-2-bold-duotone',
-      title: 'Subjects & streams',
-      metric: '250+ subjects',
-      description:
-        'Sciences, languages, commerce, humanities, and competitive tracks taught by matched mentors.',
-      href: '#subjects-offered',
-      cta: 'View subjects',
-      accent: 'indigo' as const,
-    },
-  ],
-}
-
 export const gradesSection = {
   kicker: 'Grades covered',
   title: 'Support across <span class="text-gradient-brand">every academic stage</span>',
@@ -247,17 +201,6 @@ export const gradesSection = {
       ctaHref: '#book-demo',
     },
   ],
-}
-
-export const boardsSection = {
-  kicker: 'Boards covered',
-  title: 'Every major curriculum, <span class="text-gradient-brand">by country</span>',
-  classes: '!px-0 !py-0',
-  searchPlaceholder: 'Search country or board (e.g. CBSE, IB, GCSE)…',
-  emptyTitle: 'No boards match your search',
-  emptyDescription: 'Try another keyword or clear the region filter.',
-  resetLabel: 'Reset filters',
-  findTutorsLabel: 'Find tutors',
 }
 
 export type SubjectStream = {

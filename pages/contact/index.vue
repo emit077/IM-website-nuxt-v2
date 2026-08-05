@@ -28,7 +28,6 @@ useSeoMeta({
     <UiCTASection heading-id="contact-cta-heading" variant="light" :title="contactCTA2.title"
       :description="contactCTA2.description" :ctas="contactCTA2.ctas" />
     <ContactChannelSection />
-    <!-- closer section -->
     <div class="container-page pt-10">
       <CardHeader title="Connect With Indian Mentors"
         description="At Indian Mentors, your academic success is our priority. Reach out today and let us help you achieve your learning goals with the right guidance and support."

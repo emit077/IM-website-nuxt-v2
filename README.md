@@ -16,7 +16,7 @@ Built with **Nuxt 3 + Vue 3 + Tailwind CSS + Vue Motion (`@vueuse/motion`)**.
 - Fully responsive (mobile → tablet → desktop)
 - SEO-ready (`useSeoMeta`, OG tags, semantic HTML, lang attr)
 - Accessibility: aria labels, focus rings, semantic landmarks, prefers-reduced-motion friendly
-- Lazy/optimised imagery via `@nuxt/image`
+- Public static imagery via `usePublicAsset` helpers
 - Brand tokens: Indigo `#4338CA` · Emerald `#10B981` · Amber `#F59E0B` · Cream `#FCFCFA`
 
 ---
@@ -29,7 +29,7 @@ Built with **Nuxt 3 + Vue 3 + Tailwind CSS + Vue Motion (`@vueuse/motion`)**.
 | UI           | Vue 3 Composition API + Tailwind CSS|
 | Animations   | `@vueuse/motion` (Vue Motion)       |
 | Fonts        | Plus Jakarta Sans + Inter (Google)  |
-| Images       | `@nuxt/image` (WebP/AVIF, lazy)     |
+| Images       | Public assets + native lazy loading |
 
 ---
 

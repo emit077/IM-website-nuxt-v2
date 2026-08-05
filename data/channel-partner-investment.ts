@@ -184,56 +184,7 @@ export const platformLicenseSection = {
   feeBody:
     "The platform enables Channel Partners to operate their designated territory through a structured, technology-enabled environment while benefiting from the systems and infrastructure developed by Indian Mentors.",
   feeFeaturesTitle: "Key Features",
-  feeFeatures: [
-    {
-      iconMdi: "mdi:account-school-outline",
-      title: "Student Management",
-      description:
-        "Manage student profiles, enquiries, enrollment information, and service requirements through a centralised platform.",
-    },
-    {
-      iconMdi: "mdi:account-group-outline",
-      title: "Tutor Coordination",
-      description:
-        "Support tutor discovery, allocation, coordination, and tracking through structured digital workflows.",
-    },
-    {
-      iconMdi: "mdi:card-account-details-outline",
-      title: "Subscription Management",
-      description:
-        "Monitor student subscription plans, activation status, renewals, and related service information.",
-    },
-    {
-      iconMdi: "mdi:chart-timeline-variant",
-      title: "CRM & Lead Management",
-      description:
-        "Capture, organise, and track leads, enquiries, follow-ups, and communication activities.",
-    },
-    {
-      iconMdi: "mdi:cash-multiple",
-      title: "Payment & Revenue Tracking",
-      description:
-        "Access relevant payment information, transaction records, and partner revenue reports as applicable.",
-    },
-    {
-      iconMdi: "mdi:notebook-outline",
-      title: "Academic Operations",
-      description:
-        "Support the coordination and monitoring of tutoring sessions, schedules, attendance, and academic activities.",
-    },
-    {
-      iconMdi: "mdi:view-dashboard-outline",
-      title: "Operational Dashboard",
-      description:
-        "Access centralised dashboards and reporting tools to monitor territory-level activities and performance.",
-    },
-    {
-      iconMdi: "mdi:cloud-sync-outline",
-      title: "Technology & Platform Support",
-      description:
-        "Benefit from ongoing platform improvements, technical infrastructure, and designated support mechanisms.",
-    },
-  ],
+
   feeNoteTitle: "Important Note",
   feeNote:
     "The Digital Platform Licensing Fee is separate from the Security Deposit and any applicable territory or partnership investment. The applicable licensing fee may vary based on the territory size, operational scope, platform access level, and partnership model selected by the Channel Partner.",
@@ -679,62 +630,6 @@ export const territoryModelSection = {
       example: "India",
     },
   ] satisfies TerritoryModelLevel[],
-};
-
-export const revenueSharingOverview = {
-  kicker: "Revenue Sharing",
-  title: 'Revenue Sharing <span class="text-gradient-brand">Model</span>',
-  classes: "!px-0 !py-0",
-  description:
-    "Indian Mentors offers a balanced and sustainable revenue-sharing framework between the platform and the local Channel Partner.",
-  sourcesTitle: "Partners earn revenue from:",
-  sources: [
-    {
-      no: "01",
-      iconMdi: "mdi:account-school-outline",
-      title: "Student Enrollment Fees",
-      description:
-        "Commission on every student enrollment generated within your territory.",
-    },
-    {
-      no: "02",
-      iconMdi: "mdi:calendar-sync-outline",
-      title: "Subscription-Based Tutoring Services",
-      description:
-        "Recurring earnings from home, online, and hybrid tutoring subscriptions.",
-    },
-  ],
-};
-
-export const enrollmentFeeShareSection = {
-  kicker: "Enrollment Fee",
-  title:
-    'Revenue Sharing on <span class="text-gradient-brand">Enrollment Fee</span>',
-  classes: "!px-0 !py-0",
-  description:
-    "When a student enrolls through the platform within the partner’s territory, the Enrollment Fee is shared between the Channel Partner and Indian Mentors.",
-  partnerShare: {
-    label: "Channel Partner",
-    percent: 10,
-    detail: "Commission per enrollment in your territory",
-    iconMdi: "mdi:handshake-outline",
-  },
-  platformShare: {
-    label: "Indian Mentors",
-    percent: 90,
-    detail: "Supports onboarding and platform operations",
-    iconMdi: "mdi:office-building-outline",
-  },
-  purposeTitle: "Purpose of Enrollment Fee",
-  purposeIntro: "The enrollment fee supports:",
-  purposes: [
-    { label: "Student onboarding", iconMdi: "mdi:account-school-outline" },
-    { label: "Academic assessment", iconMdi: "mdi:clipboard-text-outline" },
-    { label: "Tutor matching", iconMdi: "mdi:account-search-outline" },
-    { label: "Administrative services", iconMdi: "mdi:briefcase-outline" },
-    { label: "Platform operations", iconMdi: "mdi:cog-outline" },
-  ],
-  note: "Partners receive 10% commission for each enrollment generated within their territory.",
 };
 
 export const subscriptionShareSection = {

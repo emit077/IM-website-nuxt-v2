@@ -3,6 +3,13 @@
 .output
 .data
 .cache
+_nuxt
+dist
+/200.html
+/404.html
+/index.html
+/home
+/robots.txt
 
 # Node
 node_modules

@@ -179,10 +179,6 @@ const marqueeCards = computed(() =>
   useMarquee.value ? [...displayCards.value, ...displayCards.value] : displayCards.value,
 )
 
-const edgeFadeFromClass = computed(() =>
-  props.bgClass?.includes('cream') ? 'from-cream-50' : 'from-white',
-)
-
 const filteredCities = computed(() => {
   if (!searchTerm.value) return otherCities.value
   return otherCities.value.filter((city) => matchesSearch(city))
@@ -223,13 +219,6 @@ function clearSearch() {
     </div>
     <div class="mt-5">
       <div v-if="displayCards.length" class="group/rail relative mt-6 min-h-[400px] overflow-hidden sm:min-h-[420px]">
-        <!-- <div v-if="useMarquee"
-          class="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r to-transparent sm:w-16"
-          :class="edgeFadeFromClass" aria-hidden="true" />
-        <div v-if="useMarquee"
-          class="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l to-transparent sm:w-16"
-          :class="edgeFadeFromClass" aria-hidden="true" /> -->
-
         <div class="flex h-full items-center py-6 sm:py-8">
           <div :class="[
             'flex w-max items-center gap-5 px-4',

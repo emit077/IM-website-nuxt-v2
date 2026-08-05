@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import AcademicHeroSection from '~/components/academic/AcademicHeroSection.vue'
-import CoverageOverviewSection from '~/components/academic/CoverageOverviewSection.vue'
 import GradesSection from '~/components/academic/GradesSection.vue'
-import BoardsSection from '~/components/academic/BoardsSection.vue'
 import SubjectsSection from '~/components/academic/SubjectsSection.vue'
 import CourseMatchingSection from '~/components/academic/CourseMatchingSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
@@ -28,10 +26,8 @@ useSeoMeta({
 <template>
   <div class="academic-coverage">
     <AcademicHeroSection />
-    <!-- <CoverageOverviewSection /> -->
     <BoardCovered />
     <GradesSection />
-    <!-- <BoardsSection /> -->
     <SubjectsSection />
     <CourseMatchingSection />
     <UiCTASection heading-id="academic-cta-heading" :title="academicFinalCta.title"

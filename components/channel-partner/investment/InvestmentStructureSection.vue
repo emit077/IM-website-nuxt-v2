@@ -146,29 +146,6 @@ const maxScope = Math.max(...securityDepositSection.territoryLevels.map((t) => t
               {{ platformLicenseSection.feeFeaturesTitle }}
             </p>
             <PlatformAccessFeaturesSection embedded />
-            <!-- <ul class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2" role="list">
-              <li v-for="(feature, i) in platformLicenseSection.feeFeatures" :key="feature.title" v-motion
-                :initial="{ opacity: 0, y: 12 }" :visibleOnce="{
-                  opacity: 1,
-                  y: 0,
-                  transition: { delay: 40 + i * 45, duration: 420 },
-                }">
-                <div
-                  class="flex h-full gap-3 rounded-2xl border border-slate-100 bg-slate-50/40 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:bg-white hover:shadow-soft">
-                  <span
-                    class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100"
-                    aria-hidden="true">
-                    <Icon :icon="feature.iconMdi" class="h-5 w-5" />
-                  </span>
-                  <div class="min-w-0">
-                    <p class="text-sm font-semibold text-slate-800">{{ feature.title }}</p>
-                    <p class="mt-1 text-xs leading-relaxed text-slate-500">
-                      {{ feature.description }}
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul> -->
 
             <div
               class="mt-7 overflow-hidden rounded-2xl border border-blue-200/70 bg-gradient-to-br from-blue-700 via-blue-600 to-sky-600 px-5 py-5 shadow-[0_18px_40px_-24px_rgba(37,99,235,0.55)] sm:px-6 sm:py-6">

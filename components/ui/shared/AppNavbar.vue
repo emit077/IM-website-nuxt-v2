@@ -141,13 +141,6 @@ onUnmounted(() => {
             :src="usePublicAsset(isSecondaryHeroActive ? '/assets/img/logo/IM-logo-white.svg' : '/assets/img/logo/IM-logo-blue.svg')"
             alt="Indian Mentors" class="h-8 w-auto max-w-[150px] sm:h-9 sm:max-w-[180px] lg:max-w-[200px]" width="200"
             height="36" />
-          <!-- <span class="hidden min-w-0 flex-col border-l pl-3 sm:flex"
-            :class="isSecondaryHeroActive ? 'border-white/25' : 'border-slate-200'">
-            <span class="truncate text-[11px] font-medium leading-tight lg:text-xs"
-              :class="isSecondaryHeroActive ? 'text-white/70' : 'text-slate-500'">
-              Find Verified Tutors
-            </span>
-          </span> -->
         </NuxtLink>
         <ul class="hidden items-center lg:flex">
           <li v-for="link in primaryLinks" :key="link.href">
