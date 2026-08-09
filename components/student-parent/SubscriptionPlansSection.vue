@@ -17,8 +17,7 @@ const accentStyles = {
 </script>
 
 <template>
-  <section id="subscription-plans" class="relative bg-white section-py"
-    aria-labelledby="subscription-plans-heading">
+  <section id="subscription-plans" class="relative bg-white section-py" aria-labelledby="subscription-plans-heading">
     <div class="container-page">
       <CardHeader heading-id="subscription-plans-heading" :badge="subscriptionPlansSection.badge"
         :title="subscriptionPlansSection.title" :description="subscriptionPlansSection.description"

@@ -412,3 +412,58 @@ export const servicesConversionStrip = {
     { label: 'Talk to Counsellor', href: 'tel:+917389563564', iconMdi: 'mdi:phone-outline' },
   ],
 }
+
+export const quickServiceCategories = {
+  kicker: 'Service Categories',
+  title: 'Choose the format. <span class="text-gradient-brand">Match your schedule.</span>',
+  description:
+    'Five structured tutoring formats — select the option that best matches your child\'s academic needs and schedule.',
+  itemCtaLabel: 'View details',
+  cta: {
+    label: 'Explore All Services',
+    href: '/services',
+    supporting: 'Compare formats, subject coverage, and support levels in one place.',
+  },
+  items: [
+    {
+      id: 'home-tutors',
+      title: 'Home Tutors',
+      description: 'Personalised one-to-one learning at home.',
+      iconMdi: 'solar:home-2-linear',
+      img: 'assets/img/services/home-tutor.svg',
+      href: '/services#home-tutors',
+    },
+    {
+      id: 'online-tutors',
+      title: 'Online Tutors',
+      description: 'Live interactive classes from anywhere.',
+      iconMdi: 'solar:laptop-minimalistic-linear',
+      img: 'assets/img/services/online-tutor.svg',
+      href: '/services#online-tutors',
+    },
+    {
+      id: 'shadow-tutors',
+      title: 'Shadow Tutors',
+      description: 'In-school support for focus and learning.',
+      iconMdi: 'solar:users-group-rounded-linear',
+      img: 'assets/img/services/shadow-tutor.svg',
+      href: '/services#shadow-tutors',
+    },
+    {
+      id: 'travel-tutors',
+      title: 'Travel Tutors',
+      description: 'Learning continuity while travelling.',
+      iconMdi: 'lucide:plane',
+      img: 'assets/img/services/travel-tutor.svg',
+      href: '/services#travel-tutors',
+    },
+    {
+      id: 'special-educators',
+      title: 'Special Educators',
+      description: 'Individualised support for unique needs.',
+      iconMdi: 'solar:widget-2-linear',
+      img: 'assets/img/services/special-tutor.svg',
+      href: '/services#special-educators',
+    },
+  ],
+}

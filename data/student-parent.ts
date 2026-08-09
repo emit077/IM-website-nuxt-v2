@@ -91,10 +91,21 @@ export const subscriptionPlansSection = {
 
 export const erpDashboardSection = {
   badge: 'Learning Dashboard',
-  title: 'Complete transparency for <span class="text-gradient-brand">parents and students</span>',
-  description:
-    'Every session, report, and payment is tracked in one ERP-powered dashboard — so you always know exactly how learning is progressing.',
-  classes: '!px-0 !py-0',
+  title: 'Watch progress unfold — <br class="hidden sm:inline"/> live, clear, and honest',
+  description: `Sessions, attendance, reports, and payments — one ERP-powered hub for the whole learning journey.
+<br><br>
+<b>Parents in the loop. Students organised.</b><br>
+No chasing tutors for updates. See what’s done, what’s next, and where to improve.`,
+  classes: 'mb-0 mt-0 !px-0 !py-0',
+  ctaPrimary: { label: 'Book Free Demo', href: '#book-demo' },
+  ctaSecondary: { label: 'Explore Plans', href: '#plan-comparison' },
+  previewLabel: 'Live parent view',
+  previewStudent: 'Aarav · Class 9 · CBSE',
+  frameworkSteps: [
+    { label: 'Plan', hint: 'Goals & schedule' },
+    { label: 'Track', hint: 'Sessions & scores' },
+    { label: 'Improve', hint: 'Clear next steps' },
+  ],
 }
 
 export const enrollmentPlansSection = {
@@ -111,6 +122,121 @@ export const planComparisonSection = {
   description: '',
   classes: '!px-0 !py-0',
 }
+
+export type EnrollmentStep = {
+  id: string
+  no: string
+  title: string
+  summary: string
+  iconMdi: string
+  accent: 'violet' | 'blue' | 'emerald' | 'orange' | 'fuchsia'
+  highlight?: boolean
+  engagement?: {
+    label: string
+    href: string
+    iconMdi: string
+  }
+}
+
+export const enrollmentProcessSection = {
+  badge: 'How it works',
+  title: `Your Learning Journey in <span class="text-gradient-brand">5 Simple Steps</span>`,
+  description:
+    'From registration to your first session — simple, transparent, and completely risk-free.',
+  classes: '!px-0 !py-0',
+  formTitle: 'Get Started in Minutes',
+  formCta: "Let's Get Started",
+  formNote: 'By continuing, you agree to receive a call from our counsellor about your free demo class.',
+  annotationTop: 'Find the right tutor. Learn better. Achieve more.',
+  annotationBottom: "You're just a few clicks away from your goals!",
+  socialProof: '50,000+ students already learning with us.',
+}
+
+export const enrollmentSteps: EnrollmentStep[] = [
+  {
+    id: 'register',
+    no: '01',
+    title: 'Register Online',
+    summary: 'Fill out the quick enrollment form and share your details.',
+    iconMdi: 'mdi:account-outline',
+    accent: 'violet',
+  },
+  {
+    id: 'match',
+    no: '02',
+    title: 'Get Tutor Matched',
+    summary: 'Our experts match you with the right tutor based on your needs.',
+    iconMdi: 'mdi:account-multiple-outline',
+    accent: 'blue',
+    engagement: {
+      label: 'Browse tutors',
+      href: '#browse-tutors',
+      iconMdi: 'mdi:account-search-outline',
+    },
+  },
+  {
+    id: 'demo',
+    no: '03',
+    title: 'Attend Free Demo',
+    summary: "Experience the tutor's teaching style in a free demo session.",
+    iconMdi: 'mdi:calendar-check-outline',
+    accent: 'emerald',
+    highlight: true,
+    engagement: {
+      label: 'Book free demo',
+      href: '#book-demo',
+      iconMdi: 'mdi:calendar-plus',
+    },
+  },
+  {
+    id: 'plan',
+    no: '04',
+    title: 'Choose Your Plan',
+    summary: 'Select from Gold, Diamond, or Platinum — flexible & affordable.',
+    iconMdi: 'mdi:file-document-outline',
+    accent: 'orange',
+    engagement: {
+      label: 'Compare plans',
+      href: '#plan-comparison',
+      iconMdi: 'mdi:scale-balance',
+    },
+  },
+  {
+    id: 'learn',
+    no: '05',
+    title: 'Start Learning',
+    summary: 'Begin your learning journey with structured sessions & support.',
+    iconMdi: 'mdi:book-open-page-variant-outline',
+    accent: 'fuchsia',
+  },
+]
+
+export const enrollmentTrustPoints = [
+  {
+    id: 'secure',
+    iconMdi: 'mdi:shield-check-outline',
+    title: '100% Safe & Secure',
+    description: 'Your data stays protected end to end.',
+  },
+  {
+    id: 'support',
+    iconMdi: 'mdi:headset',
+    title: 'Expert Support',
+    description: 'Counsellors ready whenever you need help.',
+  },
+  {
+    id: 'commitment',
+    iconMdi: 'mdi:thumb-up-outline',
+    title: 'No Commitment',
+    description: 'Attend the demo first, decide later.',
+  },
+  {
+    id: 'match',
+    iconMdi: 'mdi:check-decagram-outline',
+    title: 'Best Match Guarantee',
+    description: 'We match you with the right tutor fit.',
+  },
+] as const
 
 export const resourceLinks = [
   {
@@ -184,8 +310,8 @@ export const enrollmentPlans: EnrollmentPlan[] = [
     iconMdi: 'mdi:star-four-points-outline',
     name: 'Premium Student Profile',
     price: '₹1200',
-    priceNote: 'per Year (₹100 per Month)',
-    tagline: 'The complete personalised tutoring experience',
+    priceNote: 'per year',
+    tagline: 'Complete personalised tutoring experience',
     description:
       'The Premium Student Profile unlocks advanced academic tracking, priority tutor access, AI-powered tutor recommendations, and dedicated support to ensure consistent academic progress.',
     featuresLabel: 'Premium Benefits — includes all Free Plan features, plus:',

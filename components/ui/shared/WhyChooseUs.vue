@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import { whyChooseAdvantage } from '~/data/why-choose'
 
 const advantageImage = usePublicAsset(whyChooseAdvantage.image)
@@ -21,7 +22,7 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
           <div class="group relative mx-auto max-w-lg lg:mx-0 lg:max-w-none">
             <img :src="advantageImage" :alt="whyChooseAdvantage.imageAlt"
-              class="aspect-[4/5] w-full object-cover object-center transition duration-700 group-hover:scale-[1.03] lg:min-h-[34rem]"
+              class="  object-cover object-center transition duration-700 group-hover:scale-[1.03] lg:min-h-[34rem]"
               loading="lazy" decoding="async" />
 
             <span
@@ -35,7 +36,6 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
                 {{ whyChooseAdvantage.imageBadge }}
               </span>
             </span>
-
           </div>
         </div>
 
@@ -66,6 +66,11 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
               </article>
             </li>
           </ul>
+
+          <div class="mt-8 grid grid-cols-2 gap-3 text-left">
+            <ActionBtn v-for="cta in whyChooseAdvantage.ctas" :key="cta.label" class="!w-full !justify-start sm:!w-full"
+              :variant="cta.variant" :href="cta.href" :label="cta.label" :icon="cta.icon" />
+          </div>
         </div>
       </div>
     </div>

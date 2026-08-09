@@ -30,15 +30,16 @@ useSeoMeta({
 <template>
   <div>
     <TutorsHeroSection />
-    <TutorsNavSection />
-    <TutorsResourcesSection />
+    <!-- <TutorsNavSection /> -->
+    <!-- <TutorsResourcesSection /> -->
     <TutorPlansSection />
     <TutorHiringProcessSection />
     <TutorComplianceSection />
     <TutorOpportunitiesSection />
     <TutorErpSection />
     <TutorPolicySection />
-    <UiCTASection section-id="tutor-register" surface-class="section-surface-white" badge-icon-mdi="mdi:rocket-launch-outline" :title="tutorsFinalCta.title"
-      :description="tutorsFinalCta.description" :ctas="tutorsCtas" />
+    <UiCTASection section-id="tutor-register" surface-class="section-surface-white"
+      badge-icon-mdi="mdi:rocket-launch-outline" :title="tutorsFinalCta.title" :description="tutorsFinalCta.description"
+      :ctas="tutorsCtas" />
   </div>
 </template>

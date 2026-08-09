@@ -23,7 +23,7 @@ useSeoMeta({
     <ServicesGridSection />
     <ServicesSpecialisedSection />
     <ServicesAudienceSection />
-    <WhyChooseDifferentiatorsSection />
+    <!-- <WhyChooseDifferentiatorsSection /> -->
     <ServicesConversionStrip />
   </div>
 </template>

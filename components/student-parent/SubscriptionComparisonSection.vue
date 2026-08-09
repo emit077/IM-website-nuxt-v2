@@ -1,79 +1,151 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import { planComparisonSection, planPositioning, subscriptionComparisonRows } from '~/data/student-parent'
+import {
+  planComparisonSection,
+  subscriptionComparisonRows,
+  subscriptionPlans,
+} from '~/data/student-parent'
+
+const goldPlan = subscriptionPlans.find((p) => p.id === 'gold')!
+const diamondPlan = subscriptionPlans.find((p) => p.id === 'diamond')!
+const platinumPlan = subscriptionPlans.find((p) => p.id === 'platinum')!
 </script>
 
 <template>
-  <section id="plan-comparison" class="relative section-surface-muted section-py"
-    aria-labelledby="plan-comparison-heading">
+  <section id="plan-comparison" class="relative bg-white section-py" aria-labelledby="plan-comparison-heading">
     <div class="container-page">
       <CardHeader heading-id="plan-comparison-heading" :badge="planComparisonSection.badge"
         :title="planComparisonSection.title" :description="planComparisonSection.description"
         :classes="planComparisonSection.classes" />
-      <div class="mt-10 hidden overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-soft lg:block"
-        v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-        <table class="w-full text-left text-sm">
-          <thead>
-            <tr class="border-b border-slate-200/80 section-surface-muted">
-              <th class="px-6 py-4 text-xs font-semibold uppercase tracking-wide text-slate-500">Feature</th>
-              <th class="px-4 py-4 text-center">
-                <span class="block text-sm font-bold text-slate-900">Gold</span>
-                <span class="text-xs font-normal text-slate-500">1 hr / day</span>
-              </th>
-              <th class="bg-blue-50/70 px-4 py-4 text-center">
-                <span class="block text-sm font-bold text-blue-700">Diamond</span>
-                <span class="text-xs font-medium text-blue-600">1.5 hrs / day · Popular</span>
-              </th>
-              <th class="px-4 py-4 text-center">
-                <span class="block text-sm font-bold text-slate-900">Platinum</span>
-                <span class="text-xs font-normal text-slate-500">2 hrs / day</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="row in subscriptionComparisonRows" :key="row.feature"
-              class="border-b border-slate-100 last:border-0">
-              <td class="px-6 py-3.5 font-medium text-slate-800">{{ row.feature }}</td>
-              <td class="px-4 py-3.5 text-center text-slate-600">{{ row.gold }}</td>
-              <td class="bg-blue-50/40 px-4 py-3.5 text-center font-medium text-blue-700">{{ row.diamond }}</td>
-              <td class="px-4 py-3.5 text-center text-slate-600">{{ row.platinum }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <ul class="mt-10 space-y-2.5 lg:hidden" role="list">
-        <li v-for="row in subscriptionComparisonRows" :key="row.feature"
-          class="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-soft">
-          <p class="text-[13px] font-bold text-slate-900">{{ row.feature }}</p>
-          <dl class="mt-2.5 space-y-1.5 text-[13px]">
-            <div class="flex gap-2">
-              <dt class="w-20 shrink-0 font-semibold text-slate-500">Gold</dt>
-              <dd class="text-slate-600">{{ row.gold }}</dd>
-            </div>
-            <div class="flex gap-2">
-              <dt class="w-20 shrink-0 font-semibold text-blue-600">Diamond</dt>
-              <dd class="font-medium text-blue-700">{{ row.diamond }}</dd>
-            </div>
-            <div class="flex gap-2">
-              <dt class="w-20 shrink-0 font-semibold text-slate-500">Platinum</dt>
-              <dd class="text-slate-600">{{ row.platinum }}</dd>
-            </div>
-          </dl>
-        </li>
-      </ul>
-      <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <div v-for="(pos, i) in planPositioning" :key="pos.name"
-          class="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-soft" v-motion
-          :initial="{ opacity: 0, y: 10 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 50 + i * 60, duration: 400 } }">
-          <span
-            class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600 ring-1 ring-blue-100">
-            <Icon :icon="pos.iconMdi" class="h-[18px] w-[18px]" aria-hidden="true" />
-          </span>
-          <div>
-            <p class="font-display text-[13px] font-bold text-slate-900">{{ pos.name }}</p>
-            <p class="mt-0.5 text-xs leading-relaxed text-slate-500">{{ pos.description }}</p>
+
+      <div class="mx-auto mt-12" v-motion :initial="{ opacity: 0, y: 16 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
+        <!-- Desktop -->
+        <div class="hidden lg:block">
+          <table
+            class="w-full table-fixed border-separate border-spacing-x-3 border-spacing-y-0 bg-transparent text-sm">
+            <thead>
+              <tr class="bg-transparent align-bottom">
+                <th scope="col"
+                  class="w-[22%] rounded-t-2xl border border-b-0 border-slate-200 bg-cream-50 px-5 py-5 text-left">
+                  <span class="text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-500">
+                    Feature
+                  </span>
+                </th>
+
+                <th scope="col" class="w-[26%] rounded-t-2xl border border-b-0 border-slate-200 bg-white p-5 text-left">
+                  <div class="text-center">
+                    <p class="font-display text-2xl font-bold leading-snug text-slate-900">
+                      {{ goldPlan.name.replace(' Plan', '') }}
+                    </p>
+                    <p class="mt-0.5 text-sm text-slate-500">{{ goldPlan.duration }}</p>
+                    <p class="mt-3 text-xs font-medium text-slate-500">{{ goldPlan.subtitle }}</p>
+                  </div>
+                </th>
+
+                <th scope="col"
+                  class="relative w-[26%] rounded-t-2xl border border-b-0 border-[var(--theme-blue,#2a2fff)] bg-[var(--theme-blue,#2a2fff)] p-5 text-left">
+                  <span
+                    class="theme-badge-recommended absolute left-1/2 top-0 z-[1] -translate-x-1/2 -translate-y-1/2 bg-yellow-400">
+                    Recommended
+                  </span>
+                  <div class="text-center">
+                    <p class="font-display text-2xl font-bold leading-snug text-white">
+                      {{ diamondPlan.name.replace(' Plan', '') }}
+                    </p>
+                    <p class="mt-0.5 text-sm text-white/80">{{ diamondPlan.duration }}</p>
+                    <p class="mt-3 text-xs font-medium text-white/70">{{ diamondPlan.subtitle }}</p>
+                  </div>
+                </th>
+
+                <th scope="col" class="w-[26%] rounded-t-2xl border border-b-0 border-slate-200 bg-white p-5 text-left">
+                  <div class="text-center">
+                    <p class="font-display text-2xl font-bold leading-snug text-slate-900">
+                      {{ platinumPlan.name.replace(' Plan', '') }}
+                    </p>
+                    <p class="mt-0.5 text-sm text-slate-500">{{ platinumPlan.duration }}</p>
+                    <p class="mt-3 text-xs font-medium text-slate-500">{{ platinumPlan.subtitle }}</p>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="row in subscriptionComparisonRows" :key="row.feature">
+                <td class="border-x border-slate-200 bg-white px-5 py-3.5 text-left text-slate-700">
+                  {{ row.feature }}
+                </td>
+                <td class="border-x border-slate-200 bg-white px-4 py-3.5 text-center text-slate-500">
+                  {{ row.gold }}
+                </td>
+                <td
+                  class="border-x border-[var(--theme-blue,#2a2fff)] bg-[var(--theme-blue,#2a2fff)] px-4 py-3.5 text-center font-medium text-white">
+                  {{ row.diamond }}
+                </td>
+                <td class="border-x border-slate-200 bg-white px-4 py-3.5 text-center text-slate-500">
+                  {{ row.platinum }}
+                </td>
+              </tr>
+              <tr>
+                <td class="rounded-b-2xl border border-t-0 border-slate-200 bg-cream-50 px-5 py-4" />
+                <td class="rounded-b-2xl border border-t-0 border-slate-200 bg-white px-4 py-4 text-center">
+                  <a :href="goldPlan.cta.href"
+                    class="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-[13px] font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-blue-400 hover:text-blue-700">
+                    {{ goldPlan.cta.label }}
+                  </a>
+                </td>
+                <td
+                  class="rounded-b-2xl border border-t-0 border-[var(--theme-blue,#2a2fff)] bg-[var(--theme-blue,#2a2fff)] px-4 py-4 text-center">
+                  <a :href="diamondPlan.cta.href"
+                    class="inline-flex w-full items-center justify-center rounded-xl bg-white px-3 py-2.5 text-[13px] font-semibold text-[var(--theme-blue,#2a2fff)] shadow-sm transition hover:-translate-y-0.5 hover:bg-cream-50">
+                    {{ diamondPlan.cta.label }}
+                  </a>
+                </td>
+                <td class="rounded-b-2xl border border-t-0 border-slate-200 bg-white px-4 py-4 text-center">
+                  <a :href="platinumPlan.cta.href"
+                    class="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-[13px] font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-blue-400 hover:text-blue-700">
+                    {{ platinumPlan.cta.label }}
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile / tablet -->
+        <div class="lg:hidden">
+          <ul class="overflow-hidden rounded-t-2xl border border-b-0 border-slate-200 bg-white" role="list">
+            <li v-for="row in subscriptionComparisonRows" :key="row.feature"
+              class="border-b border-slate-100 px-4 py-3.5">
+              <p class="text-[13px] font-semibold text-slate-900">{{ row.feature }}</p>
+              <div class="mt-2 grid grid-cols-3 gap-2">
+                <p class="text-[12px] text-slate-500">
+                  <span class="block text-[10px] font-bold uppercase tracking-wide text-slate-400">Gold</span>
+                  {{ row.gold }}
+                </p>
+                <p class="text-[12px] font-medium text-blue-700">
+                  <span class="block text-[10px] font-bold uppercase tracking-wide text-blue-400">Diamond</span>
+                  {{ row.diamond }}
+                </p>
+                <p class="text-[12px] text-slate-500">
+                  <span class="block text-[10px] font-bold uppercase tracking-wide text-slate-400">Platinum</span>
+                  {{ row.platinum }}
+                </p>
+              </div>
+            </li>
+          </ul>
+          <div class="grid grid-cols-3 gap-2 rounded-b-2xl border border-slate-200 bg-white p-3">
+            <a :href="goldPlan.cta.href"
+              class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-2 py-2.5 text-center text-[12px] font-semibold text-slate-800">
+              {{ goldPlan.cta.label }}
+            </a>
+            <a :href="diamondPlan.cta.href"
+              class="inline-flex items-center justify-center rounded-xl bg-[var(--theme-blue,#2a2fff)] px-2 py-2.5 text-center text-[12px] font-semibold text-white">
+              {{ diamondPlan.cta.label }}
+            </a>
+            <a :href="platinumPlan.cta.href"
+              class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-2 py-2.5 text-center text-[12px] font-semibold text-slate-800">
+              {{ platinumPlan.cta.label }}
+            </a>
           </div>
         </div>
       </div>

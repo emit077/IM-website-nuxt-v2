@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { courseMatchingSection } from '~/data/academic-coverage'
 
-const activeStep = ref(0)
+type StepTone = 'orange' | 'violet' | 'lime' | 'sky' | 'coral' | 'mint' | 'amber' | 'navy'
+
 const steps = courseMatchingSection.flow
 const criteria = courseMatchingSection.criteria
+const paramTones = ['purple', 'blue', 'green'] as const
+const lightTextTones: StepTone[] = ['orange', 'violet', 'sky', 'coral', 'navy']
 
-function selectStep(index: number) {
-  activeStep.value = index
+function isLightText(tone: StepTone) {
+  return lightTextTones.includes(tone)
 }
 </script>
 
@@ -28,104 +30,75 @@ function selectStep(index: number) {
           :classes="courseMatchingSection.classes" />
       </div>
 
-      <!-- Match journey: interactive steps -->
-      <div class="mt-12 lg:mt-14" v-motion :initial="{ opacity: 0, y: 16 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
-        <div class="grid gap-3 sm:grid-cols-3 sm:gap-4">
-          <button v-for="(step, i) in steps" :key="step.step" type="button" :class="[
-            'group relative overflow-hidden rounded-[24px] border p-5 text-left transition duration-300 sm:p-6',
-            activeStep === i
-              ? 'border-blue-300 bg-white shadow-[0_18px_40px_-22px_rgba(37,99,235,0.45)] ring-1 ring-blue-100'
-              : 'border-slate-200/80 bg-white/70 hover:-translate-y-0.5 hover:border-blue-200 hover:bg-white hover:shadow-soft',
-          ]" :aria-pressed="activeStep === i" @click="selectStep(i)">
-            <span aria-hidden="true" :class="[
-              'pointer-events-none absolute -right-1 -top-3 select-none font-display text-[5.5rem] font-black leading-none transition',
-              activeStep === i ? 'text-blue-100' : 'text-slate-100',
-            ]">
-              {{ step.step }}
+      <!-- Match journey: multi-color cards (aligned with home service tones) -->
+      <ul class="mt-12 grid gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-4" role="list" aria-label="Matching process steps"
+        v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
+        <li v-for="(step, i) in steps" :key="step.step" v-motion :initial="{ opacity: 0, y: 14 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 50 + i * 70, duration: 420 } }">
+          <article class="match-card group" :class="[
+            `match-card--${step.tone}`,
+            isLightText(step.tone) ? 'match-card--light-text' : 'match-card--dark-text',
+          ]">
+            <span class="match-card__deco" aria-hidden="true">
+              <span class="match-card__deco-orb" />
+              <span class="match-card__deco-dots" />
             </span>
 
-            <span :class="[
-              'relative grid h-11 w-11 place-items-center rounded-2xl transition',
-              activeStep === i
-                ? 'bg-blue-600 text-white shadow-[0_10px_24px_-12px_rgba(37,99,235,0.7)]'
-                : 'bg-slate-100 text-slate-600 ring-1 ring-slate-200',
-            ]">
-              <Icon :icon="step.iconMdi" class="h-5 w-5" />
-            </span>
+            <span class="match-card__step" aria-hidden="true">{{ step.step }}</span>
 
-            <p class="relative mt-4 text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600">
-              Step {{ step.step }}
-            </p>
-            <h3 class="relative mt-1.5 font-display text-lg font-bold tracking-tight text-slate-900 sm:text-xl">
-              {{ step.title }}
-            </h3>
-            <p class="relative mt-2 text-[13px] leading-relaxed text-slate-500">
-              {{ step.description }}
-            </p>
-          </button>
-        </div>
-
-        <!-- Active step detail -->
-        <div
-          class="relative mt-4 overflow-hidden rounded-[24px] border border-slate-200/80 bg-white px-5 py-5 shadow-soft sm:px-7 sm:py-6">
-          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-            <span
-              class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-50 text-blue-700 ring-1 ring-blue-100"
-              aria-hidden="true">
-              <Icon :icon="steps[activeStep]!.iconMdi" class="h-6 w-6" />
-            </span>
-            <div class="min-w-0 flex-1">
-              <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
-                How step {{ steps[activeStep]!.step }} works
-              </p>
-              <p class="mt-1 text-[15px] leading-relaxed text-slate-600">
-                {{ steps[activeStep]!.detail }}
-              </p>
+            <div class="match-card__body">
+              <span class="match-card__icon" aria-hidden="true">
+                <Icon :icon="step.iconMdi" class="h-6 w-6" />
+              </span>
+              <p class="match-card__label">Step {{ step.step }}</p>
+              <h3 class="match-card__title font-display">{{ step.title }}</h3>
+              <p class="match-card__desc">{{ step.description }}</p>
             </div>
-            <div class="flex shrink-0 gap-2">
-              <button v-for="(_, i) in steps" :key="`dot-${i}`" type="button" :class="[
-                'h-2.5 rounded-full transition',
-                activeStep === i ? 'w-7 bg-blue-600' : 'w-2.5 bg-slate-200 hover:bg-slate-300',
-              ]" :aria-label="`Show step ${i + 1}`" @click="selectStep(i)" />
-            </div>
-          </div>
-        </div>
-      </div>
+          </article>
+        </li>
+      </ul>
 
-      <!-- Matching factors -->
-      <div class="mt-12 lg:mt-14">
-        <div class="mx-auto max-w-2xl text-center">
-          <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-600">
+      <!-- Matching parameters -->
+      <div class="mt-10 lg:mt-12">
+        <div class="mx-auto max-w-xl text-center">
+          <p class="text-[10.5px] font-bold uppercase tracking-[0.16em] text-blue-600">
             {{ courseMatchingSection.factorsTitle }}
           </p>
-          <p class="mt-2 text-sm text-slate-500 sm:text-base">
+          <p class="mt-1.5 text-sm leading-snug text-slate-500">
             {{ courseMatchingSection.factorsDescription }}
           </p>
         </div>
 
-        <ul class="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5" role="list">
-          <li v-for="(item, i) in criteria" :key="item.label"
-            class="group relative overflow-hidden rounded-[22px] border border-slate-200/80 bg-white p-4 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-card sm:p-5"
-            v-motion :initial="{ opacity: 0, y: 12 }"
-            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 50 + i * 50, duration: 400 } }">
-            <span aria-hidden="true"
-              class="pointer-events-none absolute -bottom-3 -right-3 text-slate-900/[0.04] transition group-hover:scale-105">
-              <Icon :icon="item.iconMdi" class="h-20 w-20" />
+        <ul class="mx-auto mt-5 grid grid-cols-2 gap-2.5 sm:mt-6 sm:grid-cols-4" role="list">
+          <li v-for="(item, i) in criteria" :key="item.label" class="param-chip group"
+            :class="`param-chip--${paramTones[i % paramTones.length]}`" v-motion :initial="{ opacity: 0, y: 8 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 35, duration: 340 } }">
+            <span class="param-chip__icon" aria-hidden="true">
+              <Icon :icon="item.iconMdi" class="h-4 w-4" />
             </span>
-            <span
-              class="relative grid h-10 w-10 place-items-center rounded-xl bg-blue-50 text-blue-700 ring-1 ring-blue-100"
-              aria-hidden="true">
-              <Icon :icon="item.iconMdi" class="h-5 w-5" />
-            </span>
-            <p class="relative mt-3 font-display text-[15px] font-bold text-slate-900">
+            <h3 class="param-chip__label font-display">
               {{ item.label }}
-            </p>
-            <p class="relative mt-1 text-[12.5px] leading-relaxed text-slate-500">
-              {{ item.description }}
-            </p>
+            </h3>
           </li>
         </ul>
+
+        <div
+          class="mt-4 flex items-start gap-3 rounded-2xl border border-emerald-200/60 bg-gradient-to-r from-emerald-50/80 via-white to-violet-50/50 px-4 py-3.5 sm:items-center sm:px-5"
+          v-motion :initial="{ opacity: 0, y: 8 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 380 } }">
+          <span
+            class="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-emerald-100 text-emerald-700 sm:mt-0"
+            aria-hidden="true">
+            <Icon icon="mdi:check-decagram" class="h-4 w-4" />
+          </span>
+          <div class="min-w-0">
+            <p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-emerald-700">
+              {{ courseMatchingSection.benefitTitle }}
+            </p>
+            <p class="mt-0.5 text-sm leading-snug text-slate-600">
+              {{ courseMatchingSection.benefit }}
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- CTA strip -->
@@ -160,3 +133,282 @@ function selectStep(index: number) {
     </div>
   </section>
 </template>
+
+<style scoped>
+.match-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  padding: 1.35rem 1.35rem 1.5rem;
+  isolation: isolate;
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s ease;
+  box-shadow: 0 14px 32px -22px rgba(15, 23, 42, 0.35);
+}
+
+.match-card:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 22px 40px -20px rgba(15, 23, 42, 0.42);
+}
+
+.match-card--orange {
+  background: #ff7a33;
+}
+
+.match-card--violet {
+  background: #8b7dff;
+}
+
+.match-card--lime {
+  background: #c4ff61;
+}
+
+.match-card--sky {
+  background: #3b9eff;
+}
+
+.match-card--coral {
+  background: #ff6b6b;
+}
+
+.match-card--mint {
+  background: #7dffb3;
+}
+
+.match-card--amber {
+  background: #ffd24a;
+}
+
+.match-card--navy {
+  background: linear-gradient(145deg, #1e40af 0%, #1d4ed8 48%, #2563eb 100%);
+}
+
+.match-card__deco {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.match-card__deco-orb {
+  position: absolute;
+  right: -18%;
+  top: -22%;
+  height: 9.5rem;
+  width: 9.5rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, transparent 68%);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.match-card:hover .match-card__deco-orb {
+  transform: scale(1.12) translate(-4%, 4%);
+}
+
+.match-card__deco-dots {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.85rem;
+  height: 4.5rem;
+  width: 4.5rem;
+  opacity: 0.35;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.9) 1px, transparent 1px);
+  background-size: 9px 9px;
+  mask-image: radial-gradient(circle at center, #000 20%, transparent 70%);
+}
+
+.match-card--dark-text .match-card__deco-orb {
+  background: radial-gradient(circle, rgba(26, 26, 26, 0.1) 0%, transparent 68%);
+}
+
+.match-card--dark-text .match-card__deco-dots {
+  background-image: radial-gradient(rgba(26, 26, 26, 0.55) 1px, transparent 1px);
+}
+
+.match-card__step {
+  pointer-events: none;
+  position: absolute;
+  right: 0.35rem;
+  top: -0.35rem;
+  z-index: 0;
+  font-family: inherit;
+  font-size: 5.25rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  opacity: 0.16;
+  user-select: none;
+}
+
+.match-card__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.match-card__icon {
+  display: grid;
+  height: 2.75rem;
+  width: 2.75rem;
+  place-items: center;
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(4px);
+}
+
+.match-card--dark-text .match-card__icon {
+  background: rgba(26, 26, 26, 0.08);
+}
+
+.match-card__label {
+  margin-top: 1.1rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.match-card__title {
+  margin-top: 0.35rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.match-card__desc {
+  margin-top: 0.55rem;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  opacity: 0.92;
+}
+
+.match-card--light-text,
+.match-card--light-text .match-card__title,
+.match-card--light-text .match-card__label,
+.match-card--light-text .match-card__desc,
+.match-card--light-text .match-card__icon,
+.match-card--light-text .match-card__step {
+  color: #ffffff;
+}
+
+.match-card--dark-text,
+.match-card--dark-text .match-card__title,
+.match-card--dark-text .match-card__label,
+.match-card--dark-text .match-card__icon,
+.match-card--dark-text .match-card__step {
+  color: #1a1a1a;
+}
+
+.match-card--dark-text .match-card__desc {
+  color: rgba(26, 26, 26, 0.8);
+}
+
+.param-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.85rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.95rem;
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.param-chip:hover {
+  transform: translateY(-1px);
+}
+
+.param-chip__icon {
+  display: grid;
+  height: 1.9rem;
+  width: 1.9rem;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 0.55rem;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.param-chip__label {
+  min-width: 0;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: #1e293b;
+}
+
+.param-chip--purple .param-chip__icon {
+  background: #efe9ff;
+  color: #7c3aed;
+}
+
+.param-chip--blue .param-chip__icon {
+  background: #e8f1ff;
+  color: #2563eb;
+}
+
+.param-chip--green .param-chip__icon {
+  background: #e7f8f2;
+  color: #0d9488;
+}
+
+.param-chip--purple:hover {
+  border-color: rgba(124, 58, 237, 0.25);
+  box-shadow: 0 8px 18px -14px rgba(124, 58, 237, 0.5);
+}
+
+.param-chip--blue:hover {
+  border-color: rgba(37, 99, 235, 0.25);
+  box-shadow: 0 8px 18px -14px rgba(37, 99, 235, 0.5);
+}
+
+.param-chip--green:hover {
+  border-color: rgba(13, 148, 136, 0.25);
+  box-shadow: 0 8px 18px -14px rgba(13, 148, 136, 0.5);
+}
+
+.param-chip--purple:hover .param-chip__icon {
+  background: #7c3aed;
+  color: #ffffff;
+}
+
+.param-chip--blue:hover .param-chip__icon {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.param-chip--green:hover .param-chip__icon {
+  background: #0d9488;
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .match-card,
+  .match-card:hover,
+  .match-card__deco-orb,
+  .match-card:hover .match-card__deco-orb,
+  .param-chip,
+  .param-chip:hover {
+    transition: none;
+    transform: none;
+  }
+}
+</style>

@@ -10,7 +10,7 @@ const stages = gradesSection.stages
 
 <template>
   <div id="grades-covered" class="scroll-mt-20">
-    <section class="relative overflow-hidden section-surface-muted py-10 sm:py-12 lg:py-14"
+    <section class="relative overflow-hidden section-surface-muted mt-10 pt-10 sm:pt-12 lg:pt-14"
       aria-labelledby="grades-heading">
       <div class="container-page">
         <CardHeader heading-id="grades-heading" :badge="gradesSection.kicker" :title="gradesSection.title"

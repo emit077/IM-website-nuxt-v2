@@ -5,6 +5,7 @@ import WhyChooseDifferentiatorsSection from '~/components/why-choose/WhyChooseDi
 import WhyChooseEcosystemSection from '~/components/why-choose/WhyChooseEcosystemSection.vue'
 import WhyChooseCommitmentsSection from '~/components/why-choose/WhyChooseCommitmentsSection.vue'
 import WhyChooseConversionStrip from '~/components/why-choose/WhyChooseConversionStrip.vue'
+import QuickServiceCategoriesSection from '~/components/ui/shared/QuickServiceCategoriesSection.vue'
 
 useSeoMeta({
   title: 'Why Choose Indian Mentors — Personalised Tutoring Ecosystem',
@@ -20,8 +21,9 @@ useSeoMeta({
 <template>
   <div class="min-h-screen">
     <WhyChooseHeroSection />
-    <WhyChooseTrustStrip />
+    <!-- <WhyChooseTrustStrip /> -->
     <WhyChooseDifferentiatorsSection />
+    <QuickServiceCategoriesSection />
     <WhyChooseEcosystemSection />
     <WhyChooseCommitmentsSection />
     <WhyChooseConversionStrip />

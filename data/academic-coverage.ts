@@ -55,7 +55,7 @@ export const academicHeroStats: TrustIndicatorItem[] = [
 
 export const gradesSection = {
   kicker: 'Grades covered',
-  title: 'Support across <span class="text-gradient-brand">every academic stage</span>',
+  title: 'Support across every stage. <span class="text-gradient-brand">Nursery to university.</span>',
   description:
     'Structured tutoring from early childhood to postgraduate — adapted to each student’s level, pace, and goals.',
   classes: '!px-0 !py-0',
@@ -203,11 +203,16 @@ export const gradesSection = {
   ],
 }
 
+export type SubjectItem = {
+  name: string
+  iconMdi: string
+}
+
 export type SubjectStream = {
   id: string
   title: string
   tagline: string
-  subjects: string[]
+  subjects: SubjectItem[]
   iconMdi: string
   accent: 'blue' | 'teal' | 'amber' | 'sky' | 'indigo' | 'rose' | 'slate'
 }
@@ -216,12 +221,8 @@ export const subjectsSection = {
   kicker: 'Subjects offered',
   title: 'Browse by category. <span class="text-gradient-brand">Pick your stream.</span>',
   description:
-    'Explore Sciences, Languages, Commerce, and more — select a category to see subjects, then match with a verified tutor for your board and goals.',
+    'Choose a stream to explore subjects — then pick one and match with a verified tutor for your board and goals.',
   classes: '!px-0 !py-0 max-w-3xl mx-auto',
-  searchPlaceholder: 'Search a category or subject — Sciences, NEET, French…',
-  emptyTitle: 'No categories match that search',
-  emptyDescription: 'Try another keyword, or clear search to browse all streams.',
-  resetLabel: 'Clear search',
   selectHint: 'Select a category to continue',
   subjectsLabel: 'Subjects in this category',
   detailCta: 'Match me with a tutor',
@@ -235,14 +236,14 @@ export const subjectsSection = {
       title: 'Sciences',
       tagline: 'STEM foundations with concept clarity',
       subjects: [
-        'Mathematics',
-        'Physics',
-        'Chemistry',
-        'Biology',
-        'EVS',
-        'Computer Science',
-        'Applied Maths',
-        'Statistics',
+        { name: 'Mathematics', iconMdi: 'mdi:calculator-variant-outline' },
+        { name: 'Physics', iconMdi: 'mdi:atom' },
+        { name: 'Chemistry', iconMdi: 'mdi:flask-outline' },
+        { name: 'Biology', iconMdi: 'mdi:dna' },
+        { name: 'EVS', iconMdi: 'mdi:leaf' },
+        { name: 'Computer Science', iconMdi: 'mdi:laptop' },
+        { name: 'Applied Maths', iconMdi: 'mdi:function-variant' },
+        { name: 'Statistics', iconMdi: 'mdi:chart-bell-curve-cumulative' },
       ],
       iconMdi: 'mdi:flask-outline',
       accent: 'teal',
@@ -251,7 +252,16 @@ export const subjectsSection = {
       id: 'languages',
       title: 'Languages',
       tagline: 'Fluency, writing, and communication',
-      subjects: ['English', 'Hindi', 'Sanskrit', 'French', 'German', 'Spanish', 'Marathi', 'Tamil'],
+      subjects: [
+        { name: 'English', iconMdi: 'mdi:alphabetical-variant' },
+        { name: 'Hindi', iconMdi: 'mdi:abugida-devanagari' },
+        { name: 'Sanskrit', iconMdi: 'mdi:book-alphabet' },
+        { name: 'French', iconMdi: 'mdi:eiffel-tower' },
+        { name: 'German', iconMdi: 'mdi:castle' },
+        { name: 'Spanish', iconMdi: 'mdi:guitar-acoustic' },
+        { name: 'Marathi', iconMdi: 'mdi:script-text-outline' },
+        { name: 'Tamil', iconMdi: 'mdi:syllabary-tamil' },
+      ],
       iconMdi: 'mdi:translate',
       accent: 'blue',
     },
@@ -260,13 +270,13 @@ export const subjectsSection = {
       title: 'Social Sciences',
       tagline: 'Context, analysis, and civic literacy',
       subjects: [
-        'History',
-        'Geography',
-        'Civics',
-        'Political Science',
-        'Economics',
-        'Sociology',
-        'Psychology',
+        { name: 'History', iconMdi: 'mdi:bank-outline' },
+        { name: 'Geography', iconMdi: 'mdi:earth' },
+        { name: 'Civics', iconMdi: 'mdi:scale-balance' },
+        { name: 'Political Science', iconMdi: 'mdi:gavel' },
+        { name: 'Economics', iconMdi: 'mdi:currency-inr' },
+        { name: 'Sociology', iconMdi: 'mdi:account-group-outline' },
+        { name: 'Psychology', iconMdi: 'mdi:brain' },
       ],
       iconMdi: 'mdi:earth',
       accent: 'amber',
@@ -276,12 +286,12 @@ export const subjectsSection = {
       title: 'Commerce',
       tagline: 'Accounts, business, and finance tracks',
       subjects: [
-        'Accountancy',
-        'Business Studies',
-        'Economics',
-        'Entrepreneurship',
-        'Financial Markets',
-        'Cost Accounting',
+        { name: 'Accountancy', iconMdi: 'mdi:book-account-outline' },
+        { name: 'Business Studies', iconMdi: 'mdi:briefcase-outline' },
+        { name: 'Economics', iconMdi: 'mdi:chart-line' },
+        { name: 'Entrepreneurship', iconMdi: 'mdi:lightbulb-on-outline' },
+        { name: 'Financial Markets', iconMdi: 'mdi:finance' },
+        { name: 'Cost Accounting', iconMdi: 'mdi:calculator' },
       ],
       iconMdi: 'mdi:chart-bar',
       accent: 'sky',
@@ -290,7 +300,14 @@ export const subjectsSection = {
       id: 'school-entrance',
       title: 'School Entrance',
       tagline: 'Prep for selective school admissions',
-      subjects: ['Navodaya', 'Sainik', 'RIMC', 'RMS', 'Army Public Schools', 'Other school entrance'],
+      subjects: [
+        { name: 'Navodaya', iconMdi: 'mdi:school-outline' },
+        { name: 'Sainik', iconMdi: 'mdi:shield-star-outline' },
+        { name: 'RIMC', iconMdi: 'mdi:medal-outline' },
+        { name: 'RMS', iconMdi: 'mdi:shield-sword-outline' },
+        { name: 'Army Public Schools', iconMdi: 'mdi:shield-half-full' },
+        { name: 'Other school entrance', iconMdi: 'mdi:door-open' },
+      ],
       iconMdi: 'mdi:school-outline',
       accent: 'indigo',
     },
@@ -298,7 +315,15 @@ export const subjectsSection = {
       id: 'college-entrance',
       title: 'College Entrance',
       tagline: 'Competitive mentoring for higher studies',
-      subjects: ['JEE Main', 'JEE Advanced', 'NEET', 'CUET', 'CA Foundation', 'CS Executive', 'CMA'],
+      subjects: [
+        { name: 'JEE Main', iconMdi: 'mdi:rocket-launch-outline' },
+        { name: 'JEE Advanced', iconMdi: 'mdi:rocket' },
+        { name: 'NEET', iconMdi: 'mdi:hospital-box-outline' },
+        { name: 'CUET', iconMdi: 'mdi:university' },
+        { name: 'CA Foundation', iconMdi: 'mdi:certificate-outline' },
+        { name: 'CS Executive', iconMdi: 'mdi:seal-variant' },
+        { name: 'CMA', iconMdi: 'mdi:clipboard-text-outline' },
+      ],
       iconMdi: 'mdi:medal-outline',
       accent: 'rose',
     },
@@ -306,52 +331,119 @@ export const subjectsSection = {
       id: 'additional',
       title: 'Enrichment',
       tagline: 'Skills beyond the core syllabus',
-      subjects: ['Coding', 'Olympiad', 'NTSE', 'KVPY', 'Public speaking', 'Vedic Maths', 'Robotics'],
+      subjects: [
+        { name: 'Coding', iconMdi: 'mdi:code-tags' },
+        { name: 'Olympiad', iconMdi: 'mdi:trophy-outline' },
+        { name: 'NTSE', iconMdi: 'mdi:head-lightbulb-outline' },
+        { name: 'KVPY', iconMdi: 'mdi:microscope' },
+        { name: 'Public speaking', iconMdi: 'mdi:microphone-outline' },
+        { name: 'Vedic Maths', iconMdi: 'mdi:abacus' },
+        { name: 'Robotics', iconMdi: 'mdi:robot-outline' },
+      ],
       iconMdi: 'mdi:rocket-launch-outline',
       accent: 'slate',
     },
   ] satisfies SubjectStream[],
 }
 
+export const examPreparationSection = {
+  kicker: 'Exam preparation programmes',
+  title: 'Structured programmes. <span class="text-gradient-brand">Exam-ready focus.</span>',
+  description:
+    'Personalised mentoring for school, board, and competitive exams — with clear study plans and subject-focused guidance.',
+  classes: '!px-0 !py-0',
+  programmes: [
+    {
+      id: 'school-entrance',
+      title: 'School Entrance',
+      description:
+        'Focused prep for selective school admissions with aptitude building, practice papers, and guided mock assessments.',
+      iconMdi: 'mdi:school-outline',
+      programmes: ['Navodaya', 'Sainik School', 'RIMC', 'RMS', 'APS'],
+      includes: ['Maths, English & Reasoning', 'General Awareness', 'Mock Assessments'],
+    },
+    {
+      id: 'board-exams',
+      title: 'Board Exams',
+      description:
+        'Syllabus-complete support for Class X and XII — revision plans, question practice, and exam-day strategy.',
+      iconMdi: 'mdi:certificate-outline',
+      programmes: ['Class X', 'Class XII'],
+      includes: ['Syllabus Revision', 'Question Bank Practice', 'Exam Strategy'],
+    },
+    {
+      id: 'competitive',
+      title: 'Competitive Entrance',
+      description:
+        'Structured mentoring for JEE, NEET, CUET, and professional entrances with practice analysis and clear strategy.',
+      iconMdi: 'mdi:rocket-launch-outline',
+      programmes: ['JEE', 'NEET', 'CUET', 'CA / CS / CMA'],
+      includes: ['Subject Mentoring', 'Practice & Test Analysis', 'Strategy Planning'],
+    },
+  ],
+}
+
+export const enrichmentSection = {
+  kicker: 'Enrichment & skill development',
+  title: 'Beyond textbooks. <span class="text-gradient-brand">Skills that last.</span>',
+  description:
+    'Enrichment programmes that build creativity, logical thinking, and future-ready skills alongside regular academics.',
+  classes: '!px-0 !py-0',
+  ctaLabel: 'Find tutors',
+  ctaHref: '#book-demo',
+  categories: [
+    {
+      id: 'technology',
+      title: 'Technology & Innovation',
+      description:
+        'Hands-on programmes that introduce coding, robotics, and AI basics for curious, future-ready learners.',
+      iconMdi: 'mdi:laptop',
+      programmes: ['Coding', 'Robotics', 'AI Basics'],
+    },
+    {
+      id: 'olympiad',
+      title: 'Olympiad & Scholarships',
+      description:
+        'Guided preparation for olympiads and scholarship tests with reasoning practice and maths challenges.',
+      iconMdi: 'mdi:medal-outline',
+      programmes: ['Olympiads', 'Scholarship Tests', 'Logical Reasoning'],
+    },
+    {
+      id: 'skills',
+      title: 'Skill Development',
+      description:
+        'Communication, confidence, and study skills that help students express ideas and learn independently.',
+      iconMdi: 'mdi:account-voice',
+      programmes: ['Public Speaking', 'Creative Writing', 'Critical Thinking'],
+    },
+  ],
+}
+
 export const courseMatchingSection = {
   kicker: 'Intelligent course matching',
-  title: 'The right mentor — <span class="text-gradient-brand">matched with intent</span>',
+  title: 'Personalised matching. <span class="text-gradient-brand">The right tutor fit.</span>',
   description:
-    'Not a random assignment. We build a clear academic profile, shortlist verified mentors, and start with a free demo so every student begins with the right fit.',
+    'Our structured academic matching process helps identify the most suitable tutor and learning pathway based on each student\'s educational requirements.',
   classes: '!px-0 !py-0',
-  factorsTitle: 'What we match on',
-  factorsDescription: 'Five signals that shape every mentor recommendation.',
+  factorsTitle: 'Matching Parameters',
+  factorsDescription: 'Key signals that shape every mentor and pathway recommendation.',
+  benefitTitle: 'Key Benefit',
+  benefit:
+    'Students receive personalised academic support designed around their learning needs and educational aspirations.',
   ctaLabel: 'Find your perfect tutor',
   ctaHref: '#book-demo',
   secondaryCtaLabel: 'Book Free Consultation',
   secondaryCtaHref: '#book-demo',
   supporting: 'Free demo · Verified mentors · Matched to board & goals',
   criteria: [
-    {
-      label: 'Subject expertise',
-      description: 'Deep mastery in the exact subjects your child needs.',
-      iconMdi: 'mdi:book-open-page-variant-outline',
-    },
-    {
-      label: 'Grade level',
-      description: 'Mentors experienced at the student’s current stage.',
-      iconMdi: 'mdi:numeric',
-    },
-    {
-      label: 'Academic board',
-      description: 'Aligned to CBSE, ICSE, IB, Cambridge, state boards & more.',
-      iconMdi: 'mdi:certificate-outline',
-    },
-    {
-      label: 'Learning objectives',
-      description: 'Foundation, boards, entrances, or enrichment goals.',
-      iconMdi: 'mdi:target',
-    },
-    {
-      label: 'Learning format',
-      description: 'Home, online, shadow, travel, or live-in tutoring.',
-      iconMdi: 'mdi:laptop',
-    },
+    { label: 'Grade Level', iconMdi: 'mdi:school' },
+    { label: 'Board', iconMdi: 'mdi:certificate' },
+    { label: 'Subjects', iconMdi: 'mdi:book-open-page-variant' },
+    { label: 'Objectives', iconMdi: 'mdi:bullseye-arrow' },
+    { label: 'Format', iconMdi: 'mdi:monitor-cellphone' },
+    { label: 'Schedule', iconMdi: 'mdi:calendar-clock' },
+    { label: 'Goals', iconMdi: 'mdi:flag' },
+    { label: 'Tutor Expertise', iconMdi: 'mdi:account-star' },
   ],
   flow: [
     {
@@ -360,6 +452,7 @@ export const courseMatchingSection = {
       description: 'Tell us grade, board, subjects, and the outcomes you care about most.',
       detail: 'A short intake replaces guesswork — we capture what success looks like for your child.',
       iconMdi: 'mdi:account-school-outline',
+      tone: 'violet' as const,
     },
     {
       step: '02',
@@ -367,6 +460,7 @@ export const courseMatchingSection = {
       description: 'We filter verified mentors by expertise, board fit, and teaching style.',
       detail: 'Only background-checked tutors with the right academic match make the shortlist.',
       iconMdi: 'mdi:vector-link',
+      tone: 'sky' as const,
     },
     {
       step: '03',
@@ -374,12 +468,53 @@ export const courseMatchingSection = {
       description: 'Start with a free demo, lock the learning plan, and begin with confidence.',
       detail: 'If the first fit isn’t right, we rematch quickly — no commitment until you’re sure.',
       iconMdi: 'mdi:check-decagram-outline',
+      tone: 'mint' as const,
     },
   ],
 }
 
+export const whyChooseAcademicSection = {
+  kicker: 'Why choose our academic programmes?',
+  title: 'Structured learning. <span class="text-gradient-brand">Every academic stage.</span>',
+  description:
+    'A complete academic ecosystem — personalised plans, verified specialists, and flexible formats across grades and boards.',
+  classes: '!px-0 !py-0',
+  features: [
+    { title: 'Personalised Learning Plans', iconMdi: 'mdi:clipboard-check-outline' },
+    { title: 'All Grades Covered', iconMdi: 'mdi:bookshelf' },
+    { title: 'National & International Boards', iconMdi: 'mdi:domain' },
+    { title: 'Qualified Subject Specialists', iconMdi: 'mdi:account-tie-outline' },
+    { title: 'Continuous Academic Monitoring', iconMdi: 'mdi:chart-timeline-variant' },
+    { title: 'Home & Online Learning', iconMdi: 'mdi:laptop' },
+    { title: 'Examination Preparation', iconMdi: 'mdi:target' },
+    { title: 'Comprehensive Subject Coverage', iconMdi: 'mdi:book-open-variant' },
+    { title: 'Dedicated Academic Support', iconMdi: 'mdi:handshake-outline' },
+    { title: 'Safe Learning Environment', iconMdi: 'mdi:shield-check-outline' },
+    { title: 'Flexible Learning Options', iconMdi: 'mdi:sync' },
+    { title: 'Quality-Focused Teaching', iconMdi: 'mdi:star-outline' },
+  ],
+}
+
+export const learningJourneySection = {
+  kicker: 'Learning journey',
+  title: 'A clear path. <span class="text-gradient-brand">Steady academic growth.</span>',
+  description:
+    'A clear path from requirement to continuous improvement — with counselling, the right tutor, and measurable progress.',
+  classes: '!px-0 !py-0',
+  steps: [
+    { title: 'Student Requirement', iconMdi: 'mdi:account-question-outline' },
+    { title: 'Academic Counselling', iconMdi: 'mdi:chat-processing-outline' },
+    { title: 'Tutor Selection', iconMdi: 'mdi:account-search-outline' },
+    { title: 'Personalised Learning Plan', iconMdi: 'mdi:clipboard-text-outline' },
+    { title: 'Regular Tutoring Sessions', iconMdi: 'mdi:calendar-check-outline' },
+    { title: 'Progress Monitoring', iconMdi: 'mdi:chart-line' },
+    { title: 'Assessment & Feedback', iconMdi: 'mdi:file-document-check-outline' },
+    { title: 'Continuous Academic Improvement', iconMdi: 'mdi:trending-up' },
+  ],
+}
+
 export const academicFinalCta = {
-  title: 'Start your personalised learning journey today',
+  title: 'Start your personalised learning journeytoday',
   description:
     'Whether your child needs foundation learning, board exam preparation, or competitive mentoring, we connect you with verified tutors across India.',
   supporting: 'No commitment required · Background-verified tutors · Free demo session',

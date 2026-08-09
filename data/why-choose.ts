@@ -48,79 +48,148 @@ export const whyChooseTrustStrip = {
 }
 
 export const whyChooseDifferentiators = {
-  kicker: 'What Sets Us Apart',
+  kicker: 'Our Standards of Excellence',
   title:
     'What Sets <span class="text-gradient-brand">Indian Mentors</span> Apart?',
   classes: '!px-0 !py-0',
   description:
-    'Indian Mentors combines professional tutoring, personalised academic planning, technology-enabled systems, and continuous support to create a structured learning ecosystem that extends beyond conventional tuition classes.',
+    'Verified tutors, personalised plans, and transparent support — built for every learner.',
   features: [
     {
-      iconMdi: 'mdi:account-check-outline',
-      title: 'Verified & Qualified Tutors',
+      iconMdi: 'mdi:shield-check-outline',
+      title: 'Verified Tutors',
       description:
-        'Learn with confidence through carefully screened tutors who meet our standards of academic qualification, credibility, and teaching capability.',
+        'Every tutor is screened for quality, credibility, and teaching excellence before joining our network.',
+      pointsLabel: 'Our Screening Process Includes',
       points: [
-        'Identity and background verification',
-        'Academic qualification validation',
-        'Interview and teaching assessment',
+        'Identity & KYC Verification',
+        'Academic Qualification Validation',
+        'Teaching Experience Assessment',
       ],
+      benefit:
+        'Students learn from trusted, carefully screened educators while parents gain confidence in tutor quality.',
+      cta: { label: 'Explore Verified Tutors', href: '/tutors' },
+    },
+    {
+      iconMdi: 'mdi:robot-outline',
+      title: 'Smart Tutor Matching',
+      description:
+        'We match tutors by academic fit, learning preferences, and practical requirements — not subject alone.',
+      pointsLabel: 'Matching Considerations',
+      points: [
+        'Subject Expertise',
+        'Board Specialisation',
+        'Learning Style Compatibility',
+      ],
+      benefit:
+        'Better tutor compatibility creates stronger engagement and improved learning outcomes.',
     },
     {
       iconMdi: 'mdi:target',
-      title: 'Personalised Learning Plans',
+      title: 'Personalised Plans',
       description:
-        'Every student receives a structured learning approach designed around individual needs, academic performance, and educational goals.',
+        'Every learner gets a custom strategy built around strengths, pace, and academic goals.',
+      pointsLabel: 'Learning Plans Include',
       points: [
-        'Student-specific academic strategies',
-        'Learning pace-based teaching approach',
-        'Goal-oriented exam preparation',
+        'Learning Gap Analysis',
+        'Academic Goal Setting',
+        'Regular Learning Reviews',
       ],
+      benefit:
+        'Students receive structured learning aligned with their individual academic journey.',
     },
     {
       iconMdi: 'mdi:book-education-outline',
-      title: 'Curriculum-Aligned Teaching',
+      title: 'Board-Aligned Teaching',
       description:
-        'Our tutors follow recognised academic curricula to provide structured lessons that support syllabus completion and examination readiness.',
-      points: [
-        'Board and syllabus-aligned lessons',
-        'Structured subject-wise learning plans',
-        'Focused preparation for academic success',
-      ],
+        'Sessions follow recognised boards and frameworks for structured, syllabus-focused learning.',
+      pointsLabel: 'Supported Curricula',
+      points: ['CBSE', 'ICSE / IB & IGCSE', 'State Boards & NIOS'],
+      benefit:
+        'Syllabus-focused learning that strengthens concepts and exam readiness.',
     },
     {
       iconMdi: 'mdi:chart-box-outline',
-      title: 'Transparent Academic Monitoring',
+      title: 'Progress Monitoring',
       description:
-        "Parents stay informed about their child's learning journey through regular updates, performance insights, and academic feedback.",
-      points: [
-        'Regular student progress updates',
-        'Performance and learning analysis',
-        'Parent feedback and review sessions',
-      ],
+        "Parents stay informed through structured monitoring of their child's academic progress.",
+      pointsLabel: 'Monitoring Includes',
+      points: ['Attendance Tracking', 'Progress Reports', 'Parent Communication'],
+      benefit:
+        'Transparent reporting enables better planning and continuous improvement.',
     },
     {
       iconMdi: 'mdi:clock-outline',
-      title: 'Flexible Scheduling Options',
+      title: 'Flexible Scheduling',
       description:
-        "Choose convenient learning schedules and formats that fit comfortably into the student's academic routine and family requirements.",
-      points: [
-        'Weekday and weekend class options',
-        'Morning and evening session choices',
-        'Home and online learning formats',
-      ],
+        'Tutoring that fits comfortably into every student’s academic routine and family schedule.',
+      pointsLabel: 'Flexible Options',
+      points: ['Weekday & Weekend Classes', 'Morning or Evening Sessions', 'Convenient Rescheduling'],
+      benefit:
+        'Students can learn without disrupting academic or personal commitments.',
+    },
+    {
+      iconMdi: 'mdi:home-variant-outline',
+      title: 'Learning Formats',
+      description:
+        'Choose the tutoring format that best suits your child’s learning needs and environment.',
+      pointsLabel: 'Available Formats',
+      points: ['Home & Online Tutors', 'Shadow & Live-In Tutors', 'Special Educators'],
+      benefit:
+        'Families pick the tutoring model that matches their educational requirements.',
+      cta: { label: 'Explore Our Tutoring Services', href: '/services' },
+    },
+    {
+      iconMdi: 'mdi:sync',
+      title: 'Tutor Replacement Support',
+      description:
+        'If a tutor change is needed, we coordinate a smooth transition with minimal learning disruption.',
+      pointsLabel: 'Replacement Process',
+      points: ['Parent Consultation', 'Alternative Tutor Selection', 'Smooth Transition'],
+      benefit:
+        'Students continue learning with minimal interruption and ongoing support.',
     },
     {
       iconMdi: 'mdi:laptop',
-      title: 'Technology-Enabled Learning',
+      title: 'Academic ERP System',
       description:
-        'Our technology-driven ecosystem connects learning, attendance, performance, and academic resources through a transparent digital platform.',
-      points: [
-        'ERP-powered attendance tracking',
-        'Digital performance monitoring',
-        'Accessible learning resources and updates',
-      ],
+        'Our ERP system improves coordination, transparency, and communication across tutoring.',
+      pointsLabel: 'ERP Features',
+      points: ['Session Scheduling', 'Attendance Management', 'Payment Tracking'],
+      benefit:
+        'A transparent, organised tutoring experience for students, parents, and tutors.',
     },
+    {
+      iconMdi: 'mdi:account-group-outline',
+      title: 'Dedicated Support Team',
+      description:
+        'Support professionals assist families at every stage of the academic journey.',
+      pointsLabel: 'Support Services',
+      points: ['Academic Counselling', 'Tutor Coordination', 'Parent Relationship Support'],
+      benefit:
+        'Continuous guidance from enquiry through ongoing academic success.',
+    },
+    {
+      iconMdi: 'mdi:shield-account-outline',
+      title: 'Safe Learning Environment',
+      description:
+        'A secure, respectful, and professional setting is central to every tutoring engagement.',
+      pointsLabel: 'Our Safety Standards',
+      points: ['Student Safety & Privacy', 'Verified Tutor Profiles', 'Ethical Academic Practices'],
+      benefit:
+        'Students and parents can learn with confidence in a trustworthy environment.',
+    },
+    {
+      iconMdi: 'mdi:sprout-outline',
+      title: 'Confidence & Holistic Development',
+      description:
+        'We help students become confident, independent learners with lifelong study skills.',
+      pointsLabel: 'Development Focus',
+      points: ['Confidence Building', 'Positive Learning Habits', 'Critical Thinking'],
+      benefit:
+        'Stronger academics paired with confidence, responsibility, and lifelong skills.',
+    },
+
   ],
 }
 
@@ -214,12 +283,12 @@ export const whyChooseCommitments = {
 }
 
 export const whyChooseAdvantage = {
-  kicker: 'The Indian Mentors Advantage',
-  title: 'Why <span class="text-gradient-brand">Indian Mentors</span>?',
+  kicker: 'Our Distinct Advantages',
+  title: 'Why choose  <span class="text-gradient-brand">Indian Mentors</span>?',
   classes: '!px-0 !py-0',
   description:
     'Indian Mentors brings together verified educators, personalised tutoring, curriculum-aligned teaching, flexible learning formats, structured academic monitoring, technology-enabled management, and dedicated support to create a comprehensive tutoring ecosystem.',
-  image: 'assets/img/why-choose/why-1.webp',
+  image: 'assets/img/why-choose/why-1.png',
   imageAlt: 'A student considering personalised learning options with Indian Mentors',
   imageBadge: 'Structured Academic Partnership',
   advantages: [
@@ -235,7 +304,7 @@ export const whyChooseAdvantage = {
     },
     {
       title: 'Structured Teaching',
-      meaning: 'Curriculum and goal-aligned instruction',
+      meaning: 'Curriculum and goal-aligned',
       iconMdi: 'mdi:book-education-outline',
     },
     {
@@ -243,16 +312,20 @@ export const whyChooseAdvantage = {
       meaning: 'Visibility into academic progress',
       iconMdi: 'mdi:chart-box-outline',
     },
+  ],
+  ctas: [
     {
-      title: 'Flexible Formats',
-      meaning: 'Home, online, and specialised tutoring',
-      iconMdi: 'mdi:home-outline',
+      label: 'Book Demo',
+      href: '#book-demo',
+      variant: 'primary' as const,
+      icon: 'mdi:calendar-outline',
     },
     {
-      title: 'Dedicated Support',
-      meaning: 'Ongoing academic and service coordination',
-      iconMdi: 'mdi:handshake-outline',
+      label: 'Learn More',
+      href: '/why-choose',
+      variant: 'secondary' as const,
     },
+
   ],
 }
 
@@ -261,8 +334,8 @@ export const whyChooseConversionStrip = {
   description:
     "Book a demo and experience a personalised tutoring approach built around your child's needs, goals and preferred learning environment.",
   ctas: [
-    { label: 'Book Free Demo', href: '/contact', primary: true },
-    { label: 'Talk to Counsellor', href: 'tel:+917389563564' },
+    { label: 'Book Free Demo', href: '/contact', variant: 'secondary' as const },
+    { label: 'Talk to Counsellor', href: 'tel:+917389563564', variant: 'secondary' as const },
   ],
 }
 

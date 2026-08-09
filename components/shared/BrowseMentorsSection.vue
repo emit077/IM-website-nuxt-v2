@@ -2,10 +2,21 @@
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import { subjectsSection } from '~/data/academic-coverage'
 import { tutoringServices } from '~/data/services'
 
 type BrowseMode = 'tutors' | 'students'
 type SessionMode = 'online' | 'home'
+
+function subjectsOverlap(owned: string[], targets: string[]) {
+    return owned.some((ownedSubject) =>
+        targets.some((target) => {
+            const a = ownedSubject.toLowerCase()
+            const b = target.toLowerCase()
+            return a.includes(b.slice(0, 4)) || b.includes(a.slice(0, 4))
+        }),
+    )
+}
 
 interface Tutor {
     id: string
@@ -48,24 +59,35 @@ interface StudentRequest {
 const browseMode = ref<BrowseMode>('tutors')
 
 const grades = ['All grades', 'Grade 1-5', 'Grade 6-8', 'Grade 9-10', 'Grade 11-12', 'JEE/NEET']
-const subjectOptions = [
-    'All subjects',
-    'Mathematics',
-    'Physics',
-    'Chemistry',
-    'Biology',
-    'English',
-    'Computer Science',
+const categoryOptions = [
+    { id: 'all', title: 'All categories' },
+    ...subjectsSection.streams.map((stream) => ({ id: stream.id, title: stream.title })),
+]
+const allSubjects = [
+    ...new Set(subjectsSection.streams.flatMap((stream) => stream.subjects.map((s) => s.name))),
 ]
 const serviceOptions = [
     { id: 'all', title: 'All services' },
     ...tutoringServices.map((service) => ({ id: service.id, title: service.title })),
 ]
 const filterGrade = ref('Grade 6-8')
+const filterCategory = ref('sciences')
 const filterSubject = ref('Mathematics')
 const filterCity = ref('')
 const filterMode = ref<SessionMode>('online')
 const filterService = ref('all')
+
+const subjectOptions = computed(() => {
+    if (filterCategory.value === 'all') return ['All subjects', ...allSubjects]
+    const stream = subjectsSection.streams.find((s) => s.id === filterCategory.value)
+    return stream ? ['All subjects', ...stream.subjects.map((s) => s.name)] : ['All subjects']
+})
+
+watch(filterCategory, () => {
+    if (!subjectOptions.value.includes(filterSubject.value)) {
+        filterSubject.value = 'All subjects'
+    }
+})
 
 const tutorServiceExtras: Record<string, string[]> = {
     t1: ['shadow-tutors'],
@@ -701,14 +723,24 @@ const students: StudentRequest[] = [
     },
 ]
 
+const selectedCategorySubjects = computed(() => {
+    if (filterCategory.value === 'all') return null
+    return (
+        subjectsSection.streams
+            .find((s) => s.id === filterCategory.value)
+            ?.subjects.map((s) => s.name) ?? null
+    )
+})
+
 const filteredTutors = computed<Tutor[]>(() =>
     tutors.filter((t) => {
         if (filterGrade.value !== 'All grades' && !t.grades.includes(filterGrade.value)) return false
+        if (selectedCategorySubjects.value && !subjectsOverlap(t.subjects, selectedCategorySubjects.value)) {
+            return false
+        }
         if (
             filterSubject.value !== 'All subjects' &&
-            !t.subjects.some((s) =>
-                s.toLowerCase().includes(filterSubject.value.toLowerCase().slice(0, 4)),
-            )
+            !subjectsOverlap(t.subjects, [filterSubject.value])
         )
             return false
         const services = getTutorServices(t)
@@ -727,10 +759,14 @@ const filteredStudents = computed<StudentRequest[]>(() =>
     students.filter((s) => {
         if (filterGrade.value !== 'All grades' && !s.grades.includes(filterGrade.value)) return false
         if (
+            selectedCategorySubjects.value &&
+            !subjectsOverlap(s.subjectsNeeded, selectedCategorySubjects.value)
+        ) {
+            return false
+        }
+        if (
             filterSubject.value !== 'All subjects' &&
-            !s.subjectsNeeded.some((sb) =>
-                sb.toLowerCase().includes(filterSubject.value.toLowerCase().slice(0, 4)),
-            )
+            !subjectsOverlap(s.subjectsNeeded, [filterSubject.value])
         )
             return false
         const services = getStudentServices(s)
@@ -918,6 +954,21 @@ onUnmounted(() => {
                         <select v-model="filterGrade"
                             class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 lg:w-auto">
                             <option v-for="g in grades" :key="g">{{ g }}</option>
+                        </select>
+                        <svg aria-hidden="true"
+                            class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
+                            viewBox="0 0 24 24" fill="none">
+                            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </label>
+                    <label class="relative">
+                        <span class="sr-only">Category</span>
+                        <select v-model="filterCategory"
+                            class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 lg:min-w-[9.5rem] lg:w-auto">
+                            <option v-for="category in categoryOptions" :key="category.id" :value="category.id">
+                                {{ category.title }}
+                            </option>
                         </select>
                         <svg aria-hidden="true"
                             class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
