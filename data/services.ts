@@ -7,6 +7,7 @@ type ServiceItem = {
   overview: string
   features: string[]
   bestSuitedFor: string[]
+  keyBenefit?: string
   coverage?: string[]
   supportAreas?: string[]
   mayInclude?: string[]
@@ -49,19 +50,15 @@ export const tutoringServices: ServiceItem[] = [
     overview:
       'Dedicated one-to-one academic support at home — customised learning plans, concept clarity, and steady progress in a familiar environment.',
     features: [
-      'One-to-one personalised teaching',
-      'Customised learning strategies',
-      'Flexible scheduling options',
-      'Homework and assignment support',
-      'Regular academic assessments',
-      'Parent progress communication',
+      'One-to-one teaching',
+      'Custom learning plans',
+      'Flexible scheduling',
+      'Homework support',
     ],
-    bestSuitedFor: [
-      'School students from Nursery to Class XII',
-      'Undergraduate and postgraduate learners',
-      'Students preparing for examinations',
-    ],
-    coverage: ['CBSE', 'ICSE', 'IGCSE', 'IB', 'State Boards', 'Other recognised curricula'],
+    bestSuitedFor: ['Nursery–Class XII', 'College learners', 'Exam preparation'],
+    coverage: ['CBSE', 'ICSE', 'IGCSE', 'IB', 'State Boards', 'Other curricula'],
+    keyBenefit:
+      'Focused face-to-face attention in a personalised learning environment designed around each student’s academic needs.',
     cta: { label: 'Find a Home Tutor', href: '#book-demo' },
   },
   {
@@ -73,19 +70,15 @@ export const tutoringServices: ServiceItem[] = [
     overview:
       'Live interactive classes with qualified educators — learn from anywhere with digital tools, flexible timings, and structured academic support.',
     features: [
-      'Live interactive online classes',
-      'Digital whiteboard and screen sharing',
-      'Online notes and study resources',
-      'Assignment and homework support',
-      'Interactive doubt-solving sessions',
-      'Academic progress monitoring',
+      'Live interactive classes',
+      'Whiteboard & screen share',
+      'Doubt-solving sessions',
+      'Progress monitoring',
     ],
-    bestSuitedFor: [
-      'Students across India and overseas',
-      'Learners requiring flexible schedules',
-      'International curriculum students',
-    ],
-    coverage: ['School subjects', 'Board examinations', 'Competitive examinations', 'International curricula', 'Skill-based learning'],
+    bestSuitedFor: ['India & overseas', 'Flexible schedules', 'Int’l curricula'],
+    coverage: ['School subjects', 'Board exams', 'Competitive exams', 'Int’l curricula', 'Skills'],
+    keyBenefit:
+      'Access personalised tutoring without geographical limits through structured, interactive digital learning.',
     cta: { label: 'Find an Online Tutor', href: '#book-demo' },
   },
   {
@@ -93,22 +86,18 @@ export const tutoringServices: ServiceItem[] = [
     img: 'assets/img/services/shadow-tutor.svg',
     visual: 'assets/img/services/shadow-tutors.webp',
     title: 'Shadow Tutors',
-    tagline: 'Personalised Academic & School-Based Support',
+    tagline: 'In-School Academic Support',
     overview:
       'One-to-one classroom assistance for students who need extra academic, organisational, or behavioural support during school hours.',
     features: [
-      'Classroom learning support',
-      'Attention and focus assistance',
-      'Behavioural and organisational guidance',
+      'Classroom support',
+      'Attention & focus help',
+      'Behaviour guidance',
       'Concept reinforcement',
-      'Homework and academic assistance',
-      'Social and classroom participation support',
     ],
-    bestSuitedFor: [
-      'Students requiring additional school-based support',
-      'Learners needing help with attention and organisation',
-      'Students requiring consistent classroom assistance',
-    ],
+    bestSuitedFor: ['School-based support', 'Attention & organisation', 'Classroom assistance'],
+    keyBenefit:
+      'Personalised support that helps students participate more confidently and effectively in school.',
     cta: { label: 'Explore Shadow Tutor Support', href: '#book-demo' },
   },
   {
@@ -120,18 +109,14 @@ export const tutoringServices: ServiceItem[] = [
     overview:
       'Keep learning on track while travelling or relocating — flexible, curriculum-aligned tutoring that travels with your family.',
     features: [
-      'Academic continuity during travel',
-      'Flexible location-based support',
-      'Personalised study planning',
-      'Homework and assignment assistance',
-      'Examination preparation support',
-      'Curriculum-aligned teaching',
+      'Travel continuity',
+      'Flexible locations',
+      'Personalised plans',
+      'Exam preparation',
     ],
-    bestSuitedFor: [
-      'Business and travelling families',
-      'Students relocating between cities or countries',
-      'Families seeking continuity during extended travel',
-    ],
+    bestSuitedFor: ['Travelling families', 'Relocating students', 'Extended travel'],
+    keyBenefit:
+      'Students continue their academic journey even when location or daily routines change.',
     cta: { label: 'Find a Travel Tutor', href: '#book-demo' },
   },
   {
@@ -139,22 +124,18 @@ export const tutoringServices: ServiceItem[] = [
     img: 'assets/img/services/live-in-tutor.svg',
     visual: 'assets/img/services/live-In-tutors.webp',
     title: 'Live-In Tutors',
-    tagline: 'Full-Time Residential Academic Mentorship',
+    tagline: 'Full-Time Residential Mentorship',
     overview:
       'Full-time residential academic mentorship with daily study planning, homework supervision, and consistent guidance at home.',
     features: [
       'Daily study planning',
-      'Structured academic routines',
+      'Structured routines',
       'Homework supervision',
-      'Time-management guidance',
-      'Examination strategy',
-      'Continuous academic mentoring',
+      'Continuous mentoring',
     ],
-    bestSuitedFor: [
-      'Students requiring intensive academic support',
-      'Board examination preparation',
-      'Students needing structured daily study routines',
-    ],
+    bestSuitedFor: ['Intensive support', 'Board exam prep', 'Daily study routines'],
+    keyBenefit:
+      'Consistent academic guidance and structured study support throughout the daily learning routine.',
     cta: { label: 'Explore Live-In Tutor Services', href: '#book-demo' },
   },
   {
@@ -162,23 +143,19 @@ export const tutoringServices: ServiceItem[] = [
     img: 'assets/img/services/home-schooling.svg',
     visual: 'assets/img/services/home-schooling-support.webp',
     title: 'Home Schooling Support',
-    tagline: 'Structured Education Designed for Home-Based Learning',
+    tagline: 'Structured Home-Based Education',
     overview:
       'Structured home-based education with curriculum planning, subject experts, assessments, and clear academic direction for your child.',
     features: [
-      'Curriculum planning and academic structuring',
-      'Subject specialist support',
-      'Weekly lesson planning',
+      'Curriculum planning',
+      'Subject specialists',
+      'Weekly lesson plans',
       'Continuous assessments',
-      'Progress reporting',
-      'Parent academic guidance',
     ],
-    bestSuitedFor: [
-      'Families choosing home-based education',
-      'Students requiring flexible learning environments',
-      'Learners following recognised national or international curricula',
-    ],
-    coverage: ['CBSE', 'ICSE', 'State Boards', 'Cambridge', 'IB', 'International Curricula'],
+    bestSuitedFor: ['Home-based education', 'Flexible learning', 'National & int’l curricula'],
+    coverage: ['CBSE', 'ICSE', 'State Boards', 'Cambridge', 'IB', 'Int’l Curricula'],
+    keyBenefit:
+      'Create a structured, personalised learning environment while keeping academic direction and continuity.',
     cta: { label: 'Explore Home Schooling Support', href: '#book-demo' },
   },
   {
@@ -186,32 +163,28 @@ export const tutoringServices: ServiceItem[] = [
     img: 'assets/img/services/special-tutor.svg',
     visual: 'assets/img/services/special-educators.webp',
     title: 'Special Educators',
-    tagline: 'Personalised Learning Support for Diverse Learning Needs',
+    tagline: 'Support for Diverse Learning Needs',
     overview:
       'Individualised educational support for children with diverse learning and developmental needs — paced around each learner’s strengths.',
     features: [
-      'Individualised learning strategies',
-      'Personalised one-to-one support',
-      'Academic skill development',
-      'Behaviour and learning support',
-      'Structured study routines',
-      'Parent progress communication',
+      'Individualised strategies',
+      'One-to-one support',
+      'Skill development',
+      'Behaviour support',
     ],
-    bestSuitedFor: [
-      'Children with diverse learning needs',
-      'Students requiring individualised education plans',
-      'Families seeking specialised academic support',
-    ],
+    bestSuitedFor: ['Diverse learning needs', 'Individualised plans', 'Specialised support'],
     supportAreas: [
       'ADHD',
-      'Autism Spectrum Disorder',
+      'Autism',
       'Dyslexia',
       'Dysgraphia',
       'Dyscalculia',
-      'Specific Learning Disabilities',
-      'Speech and Language Delays',
-      'Behavioural and Emotional Challenges',
+      'SLD',
+      'Speech delays',
+      'Behavioural',
     ],
+    keyBenefit:
+      'Learning support designed around each student’s strengths, challenges, pace, and educational needs.',
     cta: { label: 'Find a Special Educator', href: '#book-demo' },
   },
   {
@@ -396,8 +369,8 @@ export const whoWeServeSection = {
     },
     {
       iconMdi: 'mdi:puzzle-outline',
-      title: 'Student needs Specialised Support',
-      description: 'Individualised educational assistance based on learning requirements.',
+      title: 'Children with Special Needs',
+      description: 'Individualised educational assistance based on specific learning requirements.',
     },
   ],
 }

@@ -8,7 +8,7 @@ import PartnersStrip from '~/components/home/PartnersStrip.vue'
 import PartneredWithStrip from '~/components/home/PartneredWithStrip.vue'
 import HireInstituteSection from '~/components/home/HireInstituteSection.vue'
 import LearningLibrarySection from '~/components/home/LearningLibrarySection.vue'
-import LearningStepsSection from '~/components/home/LearningStepsSection.vue'
+import EnrollmentProcessSection from '~/components/home/EnrollmentProcessSection.vue'
 import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
@@ -45,7 +45,7 @@ useSeoMeta({
       :ctas="homeCtas" />
     <WhyChooseUs />
     <PartneredWithStrip />
-    <LearningStepsSection />
+    <EnrollmentProcessSection />
     <BrowseMentorsSection />
     <SmartLearningDashboardSection />
     <PartnerProgrammeSection />

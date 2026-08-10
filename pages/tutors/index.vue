@@ -6,6 +6,7 @@ import TutorPlansSection from '~/components/tutors/TutorPlansSection.vue'
 import TutorHiringProcessSection from '~/components/tutors/TutorHiringProcessSection.vue'
 import TutorComplianceSection from '~/components/tutors/TutorComplianceSection.vue'
 import TutorOpportunitiesSection from '~/components/tutors/TutorOpportunitiesSection.vue'
+import TutorEarningsSection from '~/components/tutors/TutorEarningsSection.vue'
 import TutorErpSection from '~/components/tutors/TutorErpSection.vue'
 import TutorPolicySection from '~/components/tutors/TutorPolicySection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
@@ -36,6 +37,7 @@ useSeoMeta({
     <TutorHiringProcessSection />
     <TutorComplianceSection />
     <TutorOpportunitiesSection />
+    <TutorEarningsSection />
     <TutorErpSection />
     <TutorPolicySection />
     <UiCTASection section-id="tutor-register" surface-class="section-surface-white"

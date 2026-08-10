@@ -68,7 +68,6 @@ export const whyChooseDifferentiators = {
       ],
       benefit:
         'Students learn from trusted, carefully screened educators while parents gain confidence in tutor quality.',
-      cta: { label: 'Explore Verified Tutors', href: '/tutors' },
     },
     {
       iconMdi: 'mdi:robot-outline',
@@ -137,7 +136,6 @@ export const whyChooseDifferentiators = {
       points: ['Home & Online Tutors', 'Shadow & Live-In Tutors', 'Special Educators'],
       benefit:
         'Families pick the tutoring model that matches their educational requirements.',
-      cta: { label: 'Explore Our Tutoring Services', href: '/services' },
     },
     {
       iconMdi: 'mdi:sync',
@@ -315,7 +313,7 @@ export const whyChooseAdvantage = {
   ],
   ctas: [
     {
-      label: 'Book Demo',
+      label: 'Book Free Consultation',
       href: '#book-demo',
       variant: 'primary' as const,
       icon: 'mdi:calendar-outline',

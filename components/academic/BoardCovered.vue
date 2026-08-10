@@ -136,9 +136,9 @@ function markLogoFailed(id: string) {
 
           <!-- Background watermark logo -->
           <div class="relative z-[1] flex h-full flex-col">
-            <span class="board-card__icon board-card__icon--featured">
+            <span class="rounded-2xl w-fit bg-white p-2">
               <img v-if="!failedLogos[featuredBoard.id]" :src="usePublicAsset(featuredBoard.logo)"
-                :alt="`${featuredBoard.name} logo`" class="h-8 w-8 object-contain" loading="lazy"
+                :alt="`${featuredBoard.name} logo`" class="h-24 w-24 object-contain rounded-2xl" loading="lazy"
                 @error="markLogoFailed(featuredBoard.id)" />
               <span v-else class="font-display text-sm font-bold text-white">
                 {{ featuredBoard.fallback }}
@@ -154,11 +154,6 @@ function markLogoFailed(id: string) {
             <p class="mt-3 max-w-sm text-sm leading-relaxed text-blue-50/90">
               {{ featuredBoard.tagline }}
             </p>
-
-            <a href="#book-demo" class="board-card__cta board-card__cta--featured mt-auto pt-8 ">
-              {{ featuredBoard.ctaLabel }}
-              <Icon icon="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" />
-            </a>
           </div>
         </article>
 
@@ -168,7 +163,7 @@ function markLogoFailed(id: string) {
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 40, duration: 400 } }">
           <span class="board-card__icon" aria-hidden="true">
             <img v-if="!failedLogos[board.id]" :src="usePublicAsset(board.logo)" :alt="`${board.name} logo`"
-              class="h-7 w-7 object-contain" loading="lazy" @error="markLogoFailed(board.id)" />
+              class="h-7 w-7 object-contain mix-blend-multiply" loading="lazy" @error="markLogoFailed(board.id)" />
             <Icon v-else :icon="board.icon" class="h-5 w-5" />
           </span>
 
@@ -178,11 +173,6 @@ function markLogoFailed(id: string) {
           <p class="board-card__desc">
             {{ board.tagline }}
           </p>
-
-          <a href="#book-demo" class="board-card__cta">
-            {{ board.ctaLabel }}
-            <Icon icon="solar:arrow-right-linear" class="h-3.5 w-3.5" aria-hidden="true" />
-          </a>
         </article>
       </div>
 

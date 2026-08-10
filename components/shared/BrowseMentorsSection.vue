@@ -2,11 +2,26 @@
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import { subjectsSection } from '~/data/academic-coverage'
 import { tutoringServices } from '~/data/services'
 
 type BrowseMode = 'tutors' | 'students'
 type SessionMode = 'online' | 'home'
+
+type BrowseClassOption = {
+    id: string
+    label: string
+    subjects: string[]
+    /** Matches student.grade values like "Grade 9" */
+    legacyClassLabels: string[]
+}
+
+type BrowseGradeOption = {
+    id: string
+    label: string
+    /** Matches tutor/student grades[] bands */
+    legacyGrades: string[]
+    classes: BrowseClassOption[]
+}
 
 function subjectsOverlap(owned: string[], targets: string[]) {
     return owned.some((ownedSubject) =>
@@ -17,6 +32,92 @@ function subjectsOverlap(owned: string[], targets: string[]) {
         }),
     )
 }
+
+const primarySubjects = ['Mathematics', 'English', 'Hindi', 'EVS', 'Science']
+const middleSubjects = ['Mathematics', 'Science', 'English', 'Hindi', 'Social Studies', 'Computer Science']
+const secondarySubjects = [
+    'Mathematics',
+    'Physics',
+    'Chemistry',
+    'Biology',
+    'Science',
+    'English',
+    'Hindi',
+    'History',
+    'Geography',
+    'Computer Science',
+]
+const seniorSubjects = [
+    'Mathematics',
+    'Physics',
+    'Chemistry',
+    'Biology',
+    'English',
+    'Accountancy',
+    'Business Studies',
+    'Economics',
+    'Computer Science',
+    'Political Science',
+    'Psychology',
+]
+const competitiveSubjects = ['JEE Main', 'JEE Advanced', 'NEET', 'CUET', 'Olympiad', 'NTSE']
+
+function classOption(label: string, subjects: string[], legacyClassLabels?: string[]): BrowseClassOption {
+    return {
+        id: label.toLowerCase().replace(/\s+/g, '-'),
+        label,
+        subjects,
+        legacyClassLabels: legacyClassLabels ?? [label.replace(/^Class\s+/i, 'Grade ')],
+    }
+}
+
+const browseGradeOptions: BrowseGradeOption[] = [
+    {
+        id: 'pre-primary',
+        label: 'Pre-Primary',
+        legacyGrades: [],
+        classes: [
+            classOption('Nursery', ['English', 'Hindi', 'Phonics', 'Number readiness'], ['Nursery']),
+            classOption('LKG', ['English', 'Hindi', 'Phonics', 'Number readiness'], ['LKG']),
+            classOption('UKG', ['English', 'Hindi', 'Phonics', 'Number readiness'], ['UKG']),
+        ],
+    },
+    {
+        id: 'primary',
+        label: 'Primary',
+        legacyGrades: ['Grade 1-5'],
+        classes: [1, 2, 3, 4, 5].map((n) => classOption(`Class ${n}`, primarySubjects)),
+    },
+    {
+        id: 'middle',
+        label: 'Middle School',
+        legacyGrades: ['Grade 6-8'],
+        classes: [6, 7, 8].map((n) => classOption(`Class ${n}`, middleSubjects)),
+    },
+    {
+        id: 'secondary',
+        label: 'Secondary',
+        legacyGrades: ['Grade 9-10'],
+        classes: [9, 10].map((n) => classOption(`Class ${n}`, secondarySubjects)),
+    },
+    {
+        id: 'senior',
+        label: 'Senior Secondary',
+        legacyGrades: ['Grade 11-12'],
+        classes: [11, 12].map((n) => classOption(`Class ${n}`, seniorSubjects)),
+    },
+    {
+        id: 'competitive',
+        label: 'Competitive Exams',
+        legacyGrades: ['JEE/NEET'],
+        classes: [
+            classOption('JEE', competitiveSubjects, ['JEE', 'JEE/NEET']),
+            classOption('NEET', competitiveSubjects, ['NEET', 'JEE/NEET']),
+            classOption('Olympiad', ['Olympiad', 'NTSE', 'Mathematics', 'Science'], ['Olympiad']),
+            classOption('School Entrance', ['Navodaya', 'Sainik', 'RIMC', 'RMS'], ['School Entrance']),
+        ],
+    },
+]
 
 interface Tutor {
     id: string
@@ -56,37 +157,60 @@ interface StudentRequest {
     cities: string[]
 }
 
-const browseMode = ref<BrowseMode>('tutors')
+const props = withDefaults(
+    defineProps<{
+        mode?: 'tutors' | 'students' | 'both'
+        sectionId?: string
+        badge?: string
+        title?: string
+        description?: string
+        classes?: string
+    }>(),
+    {
+        mode: 'both',
+        sectionId: 'tutors',
+        badge: undefined,
+        title: undefined,
+        description: undefined,
+        classes: undefined,
+    },
+)
 
-const grades = ['All grades', 'Grade 1-5', 'Grade 6-8', 'Grade 9-10', 'Grade 11-12', 'JEE/NEET']
-const categoryOptions = [
-    { id: 'all', title: 'All categories' },
-    ...subjectsSection.streams.map((stream) => ({ id: stream.id, title: stream.title })),
-]
-const allSubjects = [
-    ...new Set(subjectsSection.streams.flatMap((stream) => stream.subjects.map((s) => s.name))),
-]
+const showModeTabs = computed(() => props.mode === 'both')
+const browseMode = ref<BrowseMode>(props.mode === 'students' ? 'students' : 'tutors')
+
 const serviceOptions = [
     { id: 'all', title: 'All services' },
     ...tutoringServices.map((service) => ({ id: service.id, title: service.title })),
 ]
-const filterGrade = ref('Grade 6-8')
-const filterCategory = ref('sciences')
-const filterSubject = ref('Mathematics')
-const filterCity = ref('')
-const filterMode = ref<SessionMode>('online')
 const filterService = ref('all')
+const filterGrade = ref('all')
+const filterClass = ref('all')
+const filterSubject = ref('all')
+const filterCity = ref('')
 
-const subjectOptions = computed(() => {
-    if (filterCategory.value === 'all') return ['All subjects', ...allSubjects]
-    const stream = subjectsSection.streams.find((s) => s.id === filterCategory.value)
-    return stream ? ['All subjects', ...stream.subjects.map((s) => s.name)] : ['All subjects']
+const selectedGradeOption = computed(
+    () => browseGradeOptions.find((g) => g.id === filterGrade.value) ?? null,
+)
+
+const classOptions = computed(() => selectedGradeOption.value?.classes ?? [])
+
+const selectedClassOption = computed(
+    () => classOptions.value.find((c) => c.id === filterClass.value) ?? null,
+)
+
+const subjectOptions = computed(() => selectedClassOption.value?.subjects ?? [])
+
+const isClassDisabled = computed(() => filterGrade.value === 'all')
+const isSubjectDisabled = computed(() => filterClass.value === 'all')
+
+watch(filterGrade, () => {
+    filterClass.value = 'all'
+    filterSubject.value = 'all'
 })
 
-watch(filterCategory, () => {
-    if (!subjectOptions.value.includes(filterSubject.value)) {
-        filterSubject.value = 'All subjects'
-    }
+watch(filterClass, () => {
+    filterSubject.value = 'all'
 })
 
 const tutorServiceExtras: Record<string, string[]> = {
@@ -125,11 +249,6 @@ function getTutorServices(tutor: Tutor) {
 function getStudentServices(student: StudentRequest) {
     return servicesFromModes([student.preferredMode], studentServiceExtras[student.id] ?? [])
 }
-
-watch(filterService, (serviceId) => {
-    if (serviceId === 'online-tutors') filterMode.value = 'online'
-    if (serviceId === 'home-tutors') filterMode.value = 'home'
-})
 
 const tutors: Tutor[] = [
     {
@@ -723,32 +842,30 @@ const students: StudentRequest[] = [
     },
 ]
 
-const selectedCategorySubjects = computed(() => {
-    if (filterCategory.value === 'all') return null
-    return (
-        subjectsSection.streams
-            .find((s) => s.id === filterCategory.value)
-            ?.subjects.map((s) => s.name) ?? null
-    )
-})
+function matchesGradeBand(itemGrades: string[]) {
+    const grade = selectedGradeOption.value
+    if (!grade) return true
+    if (!grade.legacyGrades.length) return true
+    return grade.legacyGrades.some((g) => itemGrades.includes(g))
+}
+
+function matchesStudentClass(student: StudentRequest) {
+    const cls = selectedClassOption.value
+    if (!cls) return true
+    const studentGrade = student.grade.toLowerCase()
+    return cls.legacyClassLabels.some((label) => studentGrade === label.toLowerCase())
+}
 
 const filteredTutors = computed<Tutor[]>(() =>
     tutors.filter((t) => {
-        if (filterGrade.value !== 'All grades' && !t.grades.includes(filterGrade.value)) return false
-        if (selectedCategorySubjects.value && !subjectsOverlap(t.subjects, selectedCategorySubjects.value)) {
-            return false
-        }
+        if (!matchesGradeBand(t.grades)) return false
         if (
-            filterSubject.value !== 'All subjects' &&
+            filterSubject.value !== 'all' &&
             !subjectsOverlap(t.subjects, [filterSubject.value])
         )
             return false
         const services = getTutorServices(t)
-        if (filterService.value !== 'all') {
-            if (!services.includes(filterService.value)) return false
-        } else if (!t.modes.includes(filterMode.value)) {
-            return false
-        }
+        if (filterService.value !== 'all' && !services.includes(filterService.value)) return false
         const city = filterCity.value.trim().toLowerCase()
         if (city && !t.cities.some((c) => c.includes(city))) return false
         return true
@@ -757,24 +874,15 @@ const filteredTutors = computed<Tutor[]>(() =>
 
 const filteredStudents = computed<StudentRequest[]>(() =>
     students.filter((s) => {
-        if (filterGrade.value !== 'All grades' && !s.grades.includes(filterGrade.value)) return false
+        if (!matchesGradeBand(s.grades)) return false
+        if (!matchesStudentClass(s)) return false
         if (
-            selectedCategorySubjects.value &&
-            !subjectsOverlap(s.subjectsNeeded, selectedCategorySubjects.value)
-        ) {
-            return false
-        }
-        if (
-            filterSubject.value !== 'All subjects' &&
+            filterSubject.value !== 'all' &&
             !subjectsOverlap(s.subjectsNeeded, [filterSubject.value])
         )
             return false
         const services = getStudentServices(s)
-        if (filterService.value !== 'all') {
-            if (!services.includes(filterService.value)) return false
-        } else if (s.preferredMode !== filterMode.value) {
-            return false
-        }
+        if (filterService.value !== 'all' && !services.includes(filterService.value)) return false
         const city = filterCity.value.trim().toLowerCase()
         if (city && !s.cities.some((c) => c.includes(city))) return false
         return true
@@ -794,25 +902,33 @@ function inrFmt(n: number) {
     return `₹${n.toLocaleString('en-IN')}`
 }
 
-const headerCopy = computed(() =>
-    browseMode.value === 'tutors'
-        ? {
-            badge: 'Discover the perfect match',
-            title:
-                "Find Your <span class='text-gradient-brand'>Perfect Learning</span> Partner",
-            description:
-                'Explore verified tutors matched to your academic needs, learning preferences, and goals',
-            classes: '!px-0 !py-0',
-        }
-        : {
-            badge: 'Discover the perfect match',
-            title:
-                "Discover   <span class='text-gradient-brand'>Students Ready</span> to Learn",
-            description:
-                'Explore verified student requirements based on subject, grade, location, and preferred mode.',
-            classes: '!px-0 !py-0',
-        },
-)
+const headerCopy = computed(() => {
+    const defaults =
+        browseMode.value === 'tutors'
+            ? {
+                badge: 'Discover the perfect match',
+                title:
+                    "Find Your <span class='text-gradient-brand'>Perfect Learning</span> Partner",
+                description:
+                    'Explore verified tutors matched to your academic needs, learning preferences, and goals',
+                classes: '!px-0 !py-0',
+            }
+            : {
+                badge: 'Discover the perfect match',
+                title:
+                    "Discover   <span class='text-gradient-brand'>Students Ready</span> to Learn",
+                description:
+                    'Explore verified student requirements based on subject, grade, location, and preferred mode.',
+                classes: '!px-0 !py-0',
+            }
+
+    return {
+        badge: props.badge ?? defaults.badge,
+        title: props.title ?? defaults.title,
+        description: props.description ?? defaults.description,
+        classes: props.classes ?? defaults.classes,
+    }
+})
 
 const tutorsTrack = ref<HTMLElement | null>(null)
 const studentsTrack = ref<HTMLElement | null>(null)
@@ -890,8 +1006,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section id="tutors" class="relative section-py" aria-labelledby="browse-mentors-heading">
-        <div id="book-demo" class="sr-only scroll-mt-28" tabindex="-1">
+    <section :id="sectionId" class="relative scroll-mt-20 section-py" aria-labelledby="browse-mentors-heading">
+        <div v-if="mode !== 'students'" id="book-demo" class="sr-only scroll-mt-28" tabindex="-1">
             Book a free demo
         </div>
         <div aria-hidden="true"
@@ -899,426 +1015,393 @@ onUnmounted(() => {
         </div>
 
         <div class="container-page relative">
-        <CardHeader heading-id="browse-mentors-heading" :badge="headerCopy.badge" :title="headerCopy.title"
-            :description="headerCopy.description" :classes="headerCopy.classes" />
-        <div class="mt-2 flex justify-center" v-motion :initial="{ opacity: 0, y: 8 }"
-            :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: 80 } }">
-            <div role="tablist" aria-label="Browse mode"
-                class="inline-flex rounded-full border border-slate-200 bg-white p-1 shadow-sm">
-                <button role="tab" :aria-selected="browseMode === 'tutors'" type="button" @click="browseMode = 'tutors'"
-                    :class="[
-                        'inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13px] font-semibold transition sm:px-5',
-                        browseMode === 'tutors'
-                            ? 'bg-blue-600 text-white shadow-[0_8px_20px_-10px_rgba(37,99,235,0.7)]'
-                            : 'text-slate-600 hover:text-slate-900',
-                    ]">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.7" />
-                        <path d="M4.5 20c1.4-3.7 4.5-5.2 7.5-5.2s6.1 1.5 7.5 5.2" stroke="currentColor"
-                            stroke-width="1.7" stroke-linecap="round" />
-                    </svg>
-                    Browse Tutors
-                </button>
-                <button role="tab" :aria-selected="browseMode === 'students'" type="button"
-                    @click="browseMode = 'students'" :class="[
-                        'inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13px] font-semibold transition sm:px-5',
-                        browseMode === 'students'
-                            ? 'bg-indigo-600 text-white shadow-[0_8px_20px_-10px_rgba(67,56,202,0.65)]'
-                            : 'text-slate-600 hover:text-slate-900',
-                    ]">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M3 10.5 12 6l9 4.5-9 4.5L3 10.5z" stroke="currentColor" stroke-width="1.7"
-                            stroke-linejoin="round" />
-                        <path d="M7.5 12.5V17c1.6 1.4 3.4 2 4.5 2s2.9-.6 4.5-2v-4.5" stroke="currentColor"
-                            stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    Browse Students
-                </button>
-            </div>
-        </div>
-        <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_8px_30px_-20px_rgba(15,23,42,0.18)] sm:p-4"
-            v-motion :initial="{ opacity: 0, y: 12 }"
-            :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150 } }">
-            <div class="flex flex-col items-stretch gap-2.5 lg:flex-row lg:items-center lg:gap-3">
-                <span aria-hidden="true"
-                    class="hidden h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600 lg:grid">
-                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7" />
-                        <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
-                    </svg>
-                </span>
-
-                <div class="grid flex-1 grid-cols-1 gap-2 sm:grid-cols-2 lg:flex lg:items-center lg:gap-2">
-                    <label class="relative">
-                        <span class="sr-only">Grade</span>
-                        <select v-model="filterGrade"
-                            class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 lg:w-auto">
-                            <option v-for="g in grades" :key="g">{{ g }}</option>
-                        </select>
-                        <svg aria-hidden="true"
-                            class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
-                            viewBox="0 0 24 24" fill="none">
-                            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </label>
-                    <label class="relative">
-                        <span class="sr-only">Category</span>
-                        <select v-model="filterCategory"
-                            class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 lg:min-w-[9.5rem] lg:w-auto">
-                            <option v-for="category in categoryOptions" :key="category.id" :value="category.id">
-                                {{ category.title }}
-                            </option>
-                        </select>
-                        <svg aria-hidden="true"
-                            class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
-                            viewBox="0 0 24 24" fill="none">
-                            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </label>
-                    <label class="relative">
-                        <span class="sr-only">Subject</span>
-                        <select v-model="filterSubject"
-                            class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 lg:w-auto">
-                            <option v-for="s in subjectOptions" :key="s">{{ s }}</option>
-                        </select>
-                        <svg aria-hidden="true"
-                            class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
-                            viewBox="0 0 24 24" fill="none">
-                            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </label>
-                    <label class="relative">
-                        <span class="sr-only">Service</span>
-                        <select v-model="filterService"
-                            class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 lg:min-w-[10.5rem] lg:w-auto">
-                            <option v-for="service in serviceOptions" :key="service.id" :value="service.id">
-                                {{ service.title }}
-                            </option>
-                        </select>
-                        <svg aria-hidden="true"
-                            class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
-                            viewBox="0 0 24 24" fill="none">
-                            <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </label>
-                    <label class="relative flex-1">
-                        <span class="sr-only">City or area</span>
-                        <input v-model="filterCity" type="text" placeholder="City, area…"
-                            class="w-full rounded-full border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-[13px] text-slate-800 placeholder:text-slate-400 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70" />
-                        <svg aria-hidden="true"
-                            class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
-                            viewBox="0 0 24 24" fill="none">
-                            <path d="M12 21s7-6.2 7-11.4A7 7 0 1 0 5 9.6C5 14.8 12 21 12 21z" stroke="currentColor"
-                                stroke-width="1.6" />
-                            <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6" />
-                        </svg>
-                    </label>
-                    <div
-                        class="inline-flex shrink-0 items-center justify-self-stretch rounded-full border border-slate-200 bg-cream-50 p-1 sm:justify-self-start">
-                        <button type="button" @click="filterMode = 'online'" :class="[
-                            'rounded-full px-3.5 py-1.5 text-[12.5px] font-semibold transition',
-                            filterMode === 'online'
-                                ? 'bg-blue-600 text-white shadow-sm'
+            <CardHeader heading-id="browse-mentors-heading" :badge="headerCopy.badge" :title="headerCopy.title"
+                :description="headerCopy.description" :classes="headerCopy.classes" />
+            <div v-if="showModeTabs" class="mt-2 flex justify-center" v-motion :initial="{ opacity: 0, y: 8 }"
+                :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: 80 } }">
+                <div role="tablist" aria-label="Browse mode"
+                    class="inline-flex rounded-full border border-slate-200 bg-white p-1 shadow-sm">
+                    <button role="tab" :aria-selected="browseMode === 'tutors'" type="button"
+                        @click="browseMode = 'tutors'" :class="[
+                            'inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13px] font-semibold transition sm:px-5',
+                            browseMode === 'tutors'
+                                ? 'bg-blue-600 text-white shadow-[0_8px_20px_-10px_rgba(37,99,235,0.7)]'
                                 : 'text-slate-600 hover:text-slate-900',
                         ]">
-                            Online
-                        </button>
-                        <button type="button" @click="filterMode = 'home'" :class="[
-                            'rounded-full px-3.5 py-1.5 text-[12.5px] font-semibold transition',
-                            filterMode === 'home'
-                                ? 'bg-blue-600 text-white shadow-sm'
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.7" />
+                            <path d="M4.5 20c1.4-3.7 4.5-5.2 7.5-5.2s6.1 1.5 7.5 5.2" stroke="currentColor"
+                                stroke-width="1.7" stroke-linecap="round" />
+                        </svg>
+                        Browse Tutors
+                    </button>
+                    <button role="tab" :aria-selected="browseMode === 'students'" type="button"
+                        @click="browseMode = 'students'" :class="[
+                            'inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13px] font-semibold transition sm:px-5',
+                            browseMode === 'students'
+                                ? 'bg-indigo-600 text-white shadow-[0_8px_20px_-10px_rgba(67,56,202,0.65)]'
                                 : 'text-slate-600 hover:text-slate-900',
                         ]">
-                            Home
-                        </button>
-                    </div>
-
-                    <button type="button"
-                        class="inline-flex items-center justify-center gap-1.5 rounded-full bg-blue-600 px-5 py-2.5 text-[13px] font-semibold text-white shadow-[0_10px_24px_-12px_rgba(37,99,235,0.7)] transition hover:bg-blue-500">
-                        Search
-                        <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" />
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M3 10.5 12 6l9 4.5-9 4.5L3 10.5z" stroke="currentColor" stroke-width="1.7"
+                                stroke-linejoin="round" />
+                            <path d="M7.5 12.5V17c1.6 1.4 3.4 2 4.5 2s2.9-.6 4.5-2v-4.5" stroke="currentColor"
+                                stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
+                        Browse Students
                     </button>
                 </div>
             </div>
-        </div>
-        <div v-show="browseMode === 'tutors'" class="relative mt-4">
-            <button type="button" @click="scrollSlider(tutorsTrack, -1)" :disabled="tutorsAtStart"
-                aria-label="Previous tutors"
-                class="absolute -left-2 top-1/2 z-20 hidden -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition hover:border-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 lg:grid">
-                <Icon icon="mdi:chevron-left" class="h-6 w-6" />
-            </button>
-            <button type="button" @click="scrollSlider(tutorsTrack, 1)" :disabled="tutorsAtEnd" aria-label="Next tutors"
-                class="absolute -right-2 top-1/2 z-20 hidden -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition hover:border-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 lg:grid">
-                <Icon icon="mdi:chevron-right" class="h-6 w-6" />
-            </button>
+            <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-3 shadow-[0_8px_30px_-20px_rgba(15,23,42,0.18)] sm:p-4"
+                v-motion :initial="{ opacity: 0, y: 12 }"
+                :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150 } }">
+                <div class="flex flex-col items-stretch gap-2.5 lg:flex-row lg:items-center lg:gap-3">
+                    <span aria-hidden="true"
+                        class="hidden h-9 w-9 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600 lg:grid">
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7" />
+                            <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                        </svg>
+                    </span>
 
-            <div ref="tutorsTrack" @scroll.passive="onTutorsScroll"
-                class="scrollbar-hide flex snap-x snap-mandatory scroll-pl-4 gap-5 overflow-x-auto px-1 pb-3 lg:scroll-pl-0">
-                <article v-for="(t, i) in filteredTutors" :key="t.id" data-slide
-                    class="group relative flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_-18px_rgba(15,23,42,0.25)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(37,99,235,0.35)] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
-                    v-motion :initial="{ opacity: 0, y: 14 }"
-                    :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150 + i * 90 } }">
-                    <div
-                        class="relative bg-gradient-to-br from-indigo-600 via-blue-600 to-blue-700 px-4 pb-3.5 pt-9 text-center">
-                        <div aria-hidden="true"
-                            class="pointer-events-none absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-white/15 to-transparent">
-                        </div>
-                        <span v-if="t.isPopular"
-                            class="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-amber-400/95 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wider text-amber-900 shadow ring-1 ring-amber-500/40">
-                            <svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path d="M12 2 14 9l7 .5-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 10 9l2-7z" />
+                    <div class="grid flex-1 grid-cols-1 gap-2 sm:grid-cols-2 lg:flex lg:items-center lg:gap-2">
+                        <label class="relative">
+                            <span class="sr-only">Service</span>
+                            <select v-model="filterService"
+                                class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 lg:min-w-[10.5rem] lg:w-auto">
+                                <option v-for="service in serviceOptions" :key="service.id" :value="service.id">
+                                    {{ service.title }}
+                                </option>
+                            </select>
+                            <svg aria-hidden="true"
+                                class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
+                                viewBox="0 0 24 24" fill="none">
+                                <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                             </svg>
-                            Popular
-                        </span>
-
-                        <div
-                            class="relative z-[1] mx-auto h-16 w-16 rounded-full ring-2 ring-white/90 sm:h-[72px] sm:w-[72px]">
-                            <img :src="t.photo" :alt="t.name" class="h-full w-full rounded-full object-cover shadow-md"
-                                loading="lazy" />
-                        </div>
-                        <h3
-                            class="mt-2 inline-flex items-center justify-center gap-1 font-display text-[14.5px] font-bold leading-tight text-white">
-                            <span>{{ t.name }}</span>
-                            <Icon icon="mdi:check-decagram"
-                                class="h-3.5 w-3.5 text-sky-300 drop-shadow-[0_1px_2px_rgba(2,6,23,0.35)]"
-                                aria-label="Verified tutor" />
-                        </h3>
-                        <p class="mt-0.5 inline-flex items-center justify-center gap-1 text-[11px] text-blue-100">
-                            <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        </label>
+                        <label class="relative">
+                            <span class="sr-only">Grade</span>
+                            <select v-model="filterGrade"
+                                class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 lg:min-w-[9.5rem] lg:w-auto">
+                                <option value="all">All grades</option>
+                                <option v-for="g in browseGradeOptions" :key="g.id" :value="g.id">{{ g.label }}</option>
+                            </select>
+                            <svg aria-hidden="true"
+                                class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
+                                viewBox="0 0 24 24" fill="none">
+                                <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </label>
+                        <label class="relative">
+                            <span class="sr-only">Class</span>
+                            <select v-model="filterClass" :disabled="isClassDisabled"
+                                class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 lg:min-w-[8.5rem] lg:w-auto">
+                                <option value="all">All classes</option>
+                                <option v-for="c in classOptions" :key="c.id" :value="c.id">{{ c.label }}</option>
+                            </select>
+                            <svg aria-hidden="true"
+                                class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
+                                viewBox="0 0 24 24" fill="none">
+                                <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </label>
+                        <label class="relative">
+                            <span class="sr-only">Subject</span>
+                            <select v-model="filterSubject" :disabled="isSubjectDisabled"
+                                class="w-full appearance-none rounded-full border border-slate-200 bg-white py-2.5 pl-4 pr-9 text-[13px] font-semibold text-slate-800 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 lg:min-w-[10rem] lg:w-auto">
+                                <option value="all">All subjects</option>
+                                <option v-for="subject in subjectOptions" :key="subject" :value="subject">
+                                    {{ subject }}
+                                </option>
+                            </select>
+                            <svg aria-hidden="true"
+                                class="pointer-events-none absolute right-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400"
+                                viewBox="0 0 24 24" fill="none">
+                                <path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </label>
+                        <label class="relative flex-1">
+                            <span class="sr-only">City or area</span>
+                            <input v-model="filterCity" type="text" placeholder="City, area…"
+                                class="w-full rounded-full border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-[13px] text-slate-800 placeholder:text-slate-400 transition hover:border-slate-300 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-200/70" />
+                            <svg aria-hidden="true"
+                                class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                                viewBox="0 0 24 24" fill="none">
                                 <path d="M12 21s7-6.2 7-11.4A7 7 0 1 0 5 9.6C5 14.8 12 21 12 21z" stroke="currentColor"
                                     stroke-width="1.6" />
                                 <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6" />
                             </svg>
-                            {{ t.location }}
-                        </p>
+                        </label>
 
-                        <div class="mt-2.5 flex flex-wrap items-center justify-center gap-1">
-                            <span v-for="s in t.subjects" :key="s"
-                                class="rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-semibold text-white ring-1 ring-white/20 backdrop-blur-sm">
-                                {{ s }}
-                            </span>
-                        </div>
-                    </div>
-                    <div
-                        class="grid grid-cols-3 divide-x divide-slate-100 border-b border-slate-100 bg-white px-2 py-2 text-center">
-                        <div>
-                            <p class="font-display text-[13.5px] font-extrabold text-slate-900">
-                                {{ formatRating(t.rating) }}
-                                <span class="text-amber-500">★</span>
-                            </p>
-                            <p class="text-[10px] text-slate-500">
-                                {{ formatReviews(t.reviews) }} reviews
-                            </p>
-                        </div>
-                        <div>
-                            <p class="font-display text-[13.5px] font-extrabold text-slate-900">
-                                {{ t.hoursTaught }}
-                                <svg aria-hidden="true" class="inline-block h-2.5 w-2.5 -translate-y-px text-blue-500"
-                                    viewBox="0 0 24 24" fill="none">
-                                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" />
-                                    <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6"
-                                        stroke-linecap="round" />
-                                </svg>
-                            </p>
-                            <p class="text-[10px] text-slate-500">hrs taught</p>
-                        </div>
-                        <div>
-                            <p class="font-display text-[13.5px] font-extrabold text-slate-900">
-                                {{ t.students }}
-                                <svg aria-hidden="true" class="inline-block h-2.5 w-2.5 -translate-y-px text-violet-500"
-                                    viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor"
-                                        stroke-width="1.6" />
-                                    <path d="M4 21c1.6-4 5-6 8-6s6.4 2 8 6" stroke="currentColor" stroke-width="1.6"
-                                        stroke-linecap="round" />
-                                </svg>
-                            </p>
-                            <p class="text-[10px] text-slate-500">students</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-1 flex-col gap-2 px-4 py-3">
-                        <p class="line-clamp-2 text-[11.5px] leading-snug text-slate-600">
-                            {{ t.description }}
-                        </p>
-                        <p class="line-clamp-1 text-[11px] text-slate-500">
-                            <template v-for="(l, idx) in t.languages" :key="l.name">
-                                <span class="font-semibold text-slate-700">{{ l.name }}</span>
-                                <span class="text-slate-400"> ({{ l.level }})</span>
-                                <span v-if="idx < t.languages.length - 1"> · </span>
-                            </template>
-                        </p>
-
-                        <div class="flex items-center justify-between">
-                            <p class="font-display text-[15px] font-extrabold text-slate-900">
-                                {{ inrFmt(t.pricePerHour) }}
-                                <span class="text-[11px] font-medium text-slate-500">/hr</span>
-                            </p>
-                            <span class="text-[11px] font-semibold text-blue-600">Free demo</span>
-                        </div>
-
-                        <div class="mt-1 grid grid-cols-2 gap-2">
-                            <button type="button"
-                                class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[12px] font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700">
-                                View Profile
-                            </button>
-                            <button type="button"
-                                class="rounded-lg bg-blue-600 px-2.5 py-1.5 text-[12px] font-semibold text-white shadow-[0_8px_18px_-10px_rgba(37,99,235,0.7)] transition hover:bg-blue-500">
-                                Book Demo
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <p v-if="!filteredTutors.length" data-slide
-                    class="w-full shrink-0 snap-start rounded-2xl border border-dashed border-slate-300 bg-white/60 p-8 text-center text-[13px] text-slate-500">
-                    No tutors match your filters yet — try widening the grade or city.
-                </p>
-            </div>
-
-            <div v-if="filteredTutors.length > 1" class="mt-4 flex justify-center gap-2" role="tablist"
-                aria-label="Tutor slider pages">
-                <button v-for="(t, idx) in filteredTutors" :key="`tutor-dot-${t.id}`" type="button" role="tab"
-                    :aria-selected="tutorsActiveIndex === idx" :aria-label="`Go to tutor ${idx + 1}`"
-                    @click="goToSlide(tutorsTrack, idx)" :class="[
-                        'h-1.5 rounded-full transition-all duration-300',
-                        tutorsActiveIndex === idx ? 'w-6 bg-blue-600' : 'w-2 bg-slate-300 hover:bg-slate-400',
-                    ]"></button>
-            </div>
-        </div>
-        <div v-show="browseMode === 'students'" class="relative mt-4">
-            <button type="button" @click="scrollSlider(studentsTrack, -1)" :disabled="studentsAtStart"
-                aria-label="Previous students"
-                class="absolute -left-2 top-1/2 z-20 hidden -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition hover:border-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 lg:grid">
-                <Icon icon="mdi:chevron-left" class="h-6 w-6" />
-            </button>
-            <button type="button" @click="scrollSlider(studentsTrack, 1)" :disabled="studentsAtEnd"
-                aria-label="Next students"
-                class="absolute -right-2 top-1/2 z-20 hidden -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition hover:border-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 lg:grid">
-                <Icon icon="mdi:chevron-right" class="h-6 w-6" />
-            </button>
-
-            <div ref="studentsTrack" @scroll.passive="onStudentsScroll"
-                class="scrollbar-hide flex snap-x snap-mandatory scroll-pl-4 gap-5 overflow-x-auto px-1 pb-3 lg:scroll-pl-0">
-                <article v-for="(s, i) in filteredStudents" :key="s.id" data-slide
-                    class="group relative flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_-18px_rgba(15,23,42,0.25)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(37,99,235,0.32)] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
-                    v-motion :initial="{ opacity: 0, y: 14 }"
-                    :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150 + i * 90 } }">
-                    <div
-                        class="relative bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700 px-4 pb-3.5 pt-9 text-center">
-                        <span v-if="s.urgent"
-                            class="absolute left-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-rose-500/95 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wider text-white shadow ring-1 ring-white/30">
-                            <span class="h-1 w-1 rounded-full bg-white"></span>
-                            Urgent
-                        </span>
-                        <span
-                            class="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wider text-white ring-1 ring-white/20 backdrop-blur-sm">
-                            {{ s.postedAgo }}
-                        </span>
-
-                        <div
-                            class="relative z-[1] mx-auto h-16 w-16 rounded-full ring-2 ring-white/90 sm:h-[72px] sm:w-[72px]">
-                            <img :src="s.photo" :alt="s.name" class="h-full w-full rounded-full object-cover shadow-md"
-                                loading="lazy" />
-                        </div>
-                        <h3 class="mt-2 font-display text-[14.5px] font-bold leading-tight text-white">
-                            {{ s.name }}
-                        </h3>
-                        <p class="mt-0.5 inline-flex items-center justify-center gap-1 text-[11px] text-blue-100">
-                            <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path d="M12 21s7-6.2 7-11.4A7 7 0 1 0 5 9.6C5 14.8 12 21 12 21z" stroke="currentColor"
-                                    stroke-width="1.6" />
-                                <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6" />
+                        <button type="button"
+                            class="inline-flex items-center justify-center gap-1.5 rounded-full bg-blue-600 px-5 py-2.5 text-[13px] font-semibold text-white shadow-[0_10px_24px_-12px_rgba(37,99,235,0.7)] transition hover:bg-blue-500">
+                            Search
+                            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            {{ s.location }}
-                        </p>
-
-                        <div class="mt-2.5 flex flex-wrap items-center justify-center gap-1">
-                            <span
-                                class="rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-semibold text-white ring-1 ring-white/20 backdrop-blur-sm">
-                                {{ s.grade }}
-                            </span>
-                            <span
-                                class="rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-semibold text-white ring-1 ring-white/20 backdrop-blur-sm">
-                                {{ s.board }}
-                            </span>
-                        </div>
+                        </button>
                     </div>
-                    <div
-                        class="grid grid-cols-3 divide-x divide-slate-100 border-b border-slate-100 bg-white px-2 py-2 text-center">
-                        <div>
-                            <p class="font-display text-[13.5px] font-extrabold text-slate-900">
-                                {{ s.subjectsNeeded.length }}
-                            </p>
-                            <p class="text-[10px] text-slate-500">subjects</p>
-                        </div>
-                        <div>
-                            <p class="font-display text-[13.5px] font-extrabold text-slate-900">
-                                {{ s.hoursPerWeek }}
-                            </p>
-                            <p class="text-[10px] text-slate-500">hrs/week</p>
-                        </div>
-                        <div>
-                            <p class="font-display text-[13.5px] font-extrabold text-slate-900 capitalize">
-                                {{ s.preferredMode }}
-                            </p>
-                            <p class="text-[10px] text-slate-500">mode</p>
-                        </div>
-                    </div>
-                    <div class="flex flex-1 flex-col gap-2 px-4 py-3">
-                        <div class="flex flex-wrap gap-1">
-                            <span v-for="sub in s.subjectsNeeded" :key="sub"
-                                class="rounded-full bg-blue-50 px-2 py-0.5 text-[10.5px] font-semibold text-blue-700 ring-1 ring-blue-100">
-                                {{ sub }}
-                            </span>
-                        </div>
-                        <p class="line-clamp-2 text-[11.5px] leading-snug text-slate-600">
-                            {{ s.description }}
-                        </p>
-
-                        <div class="flex items-center justify-between">
-                            <p class="font-display text-[13.5px] font-extrabold text-slate-900">
-                                {{ inrFmt(s.budgetMin) }}–{{ inrFmt(s.budgetMax) }}
-                                <span class="text-[11px] font-medium text-slate-500">/hr</span>
-                            </p>
-                            <span class="text-[11px] font-semibold text-blue-600">Budget</span>
-                        </div>
-
-                        <div class="mt-1 grid grid-cols-2 gap-2">
-                            <button type="button"
-                                class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[12px] font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700">
-                                View Request
-                            </button>
-                            <button type="button"
-                                class="rounded-lg bg-blue-600 px-2.5 py-1.5 text-[12px] font-semibold text-white shadow-[0_8px_18px_-10px_rgba(37,99,235,0.7)] transition hover:bg-blue-500">
-                                Send Proposal
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <p v-if="!filteredStudents.length" data-slide
-                    class="w-full shrink-0 snap-start rounded-2xl border border-dashed border-slate-300 bg-white/60 p-8 text-center text-[13px] text-slate-500">
-                    No student requests match your filters — try a different grade or subject.
-                </p>
+                </div>
             </div>
+            <div v-show="browseMode === 'tutors'" class="relative mt-4">
+                <button type="button" @click="scrollSlider(tutorsTrack, -1)" :disabled="tutorsAtStart"
+                    aria-label="Previous tutors"
+                    class="absolute -left-2 top-1/2 z-20 hidden -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition hover:border-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 lg:grid">
+                    <Icon icon="mdi:chevron-left" class="h-6 w-6" />
+                </button>
+                <button type="button" @click="scrollSlider(tutorsTrack, 1)" :disabled="tutorsAtEnd"
+                    aria-label="Next tutors"
+                    class="absolute -right-2 top-1/2 z-20 hidden -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition hover:border-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 lg:grid">
+                    <Icon icon="mdi:chevron-right" class="h-6 w-6" />
+                </button>
 
-            <div v-if="filteredStudents.length > 1" class="mt-4 flex justify-center gap-2" role="tablist"
-                aria-label="Student slider pages">
-                <button v-for="(s, idx) in filteredStudents" :key="`student-dot-${s.id}`" type="button" role="tab"
-                    :aria-selected="studentsActiveIndex === idx" :aria-label="`Go to student ${idx + 1}`"
-                    @click="goToSlide(studentsTrack, idx)" :class="[
-                        'h-1.5 rounded-full transition-all duration-300',
-                        studentsActiveIndex === idx ? 'w-6 bg-blue-600' : 'w-2 bg-slate-300 hover:bg-slate-400',
-                    ]"></button>
+                <div ref="tutorsTrack" @scroll.passive="onTutorsScroll"
+                    class="scrollbar-hide flex snap-x snap-mandatory scroll-pl-4 gap-5 overflow-x-auto px-1 pb-3 lg:scroll-pl-0">
+                    <article v-for="(t, i) in filteredTutors" :key="t.id" data-slide
+                        class="group relative flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_-18px_rgba(15,23,42,0.25)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(37,99,235,0.35)] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
+                        v-motion :initial="{ opacity: 0, y: 14 }"
+                        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150 + i * 90 } }">
+                        <div
+                            class="relative bg-gradient-to-br from-indigo-600 via-blue-600 to-blue-700 px-4 pb-3.5 pt-9 text-center">
+                            <div aria-hidden="true"
+                                class="pointer-events-none absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-white/15 to-transparent">
+                            </div>
+                            <span v-if="t.isPopular"
+                                class="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-amber-400/95 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wider text-amber-900 shadow ring-1 ring-amber-500/40">
+                                <svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 2 14 9l7 .5-5.5 4.5L17 21l-5-3.5L7 21l1.5-7L3 9.5 10 9l2-7z" />
+                                </svg>
+                                Popular
+                            </span>
+
+                            <div
+                                class="relative z-[1] mx-auto h-16 w-16 rounded-full ring-2 ring-white/90 sm:h-[72px] sm:w-[72px]">
+                                <img :src="t.photo" :alt="t.name"
+                                    class="h-full w-full rounded-full object-cover shadow-md" loading="lazy" />
+                            </div>
+                            <h3
+                                class="mt-2 inline-flex items-center justify-center gap-1 font-display text-[14.5px] font-bold leading-tight text-white">
+                                <span>{{ t.name }}</span>
+                                <Icon icon="mdi:check-decagram"
+                                    class="h-3.5 w-3.5 text-sky-300 drop-shadow-[0_1px_2px_rgba(2,6,23,0.35)]"
+                                    aria-label="Verified tutor" />
+                            </h3>
+                            <p class="mt-0.5 inline-flex items-center justify-center gap-1 text-[11px] text-blue-100">
+                                <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M12 21s7-6.2 7-11.4A7 7 0 1 0 5 9.6C5 14.8 12 21 12 21z"
+                                        stroke="currentColor" stroke-width="1.6" />
+                                    <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6" />
+                                </svg>
+                                {{ t.location }}
+                            </p>
+
+                            <div class="mt-2.5 flex flex-wrap items-center justify-center gap-1">
+                                <span v-for="s in t.subjects" :key="s"
+                                    class="rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-semibold text-white ring-1 ring-white/20 backdrop-blur-sm">
+                                    {{ s }}
+                                </span>
+                            </div>
+                        </div>
+                        <div
+                            class="grid grid-cols-3 divide-x divide-slate-100 border-b border-slate-100 bg-white px-2 py-2 text-center">
+                            <div>
+                                <p class="font-display text-[13.5px] font-extrabold text-slate-900">
+                                    {{ formatRating(t.rating) }}
+                                    <span class="text-amber-500">★</span>
+                                </p>
+                                <p class="text-[10px] text-slate-500">
+                                    {{ formatReviews(t.reviews) }} reviews
+                                </p>
+                            </div>
+                            <div>
+                                <p class="font-display text-[13.5px] font-extrabold text-slate-900">
+                                    {{ t.hoursTaught }}
+                                    <svg aria-hidden="true"
+                                        class="inline-block h-2.5 w-2.5 -translate-y-px text-blue-500"
+                                        viewBox="0 0 24 24" fill="none">
+                                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" />
+                                        <path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6"
+                                            stroke-linecap="round" />
+                                    </svg>
+                                </p>
+                                <p class="text-[10px] text-slate-500">hrs taught</p>
+                            </div>
+                            <div>
+                                <p class="font-display text-[13.5px] font-extrabold text-slate-900">
+                                    {{ t.students }}
+                                    <svg aria-hidden="true"
+                                        class="inline-block h-2.5 w-2.5 -translate-y-px text-violet-500"
+                                        viewBox="0 0 24 24" fill="none">
+                                        <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor"
+                                            stroke-width="1.6" />
+                                        <path d="M4 21c1.6-4 5-6 8-6s6.4 2 8 6" stroke="currentColor" stroke-width="1.6"
+                                            stroke-linecap="round" />
+                                    </svg>
+                                </p>
+                                <p class="text-[10px] text-slate-500">students</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-1 flex-col gap-2 px-4 py-3">
+                            <p class="line-clamp-2 text-[11.5px] leading-snug text-slate-600">
+                                {{ t.description }}
+                            </p>
+                            <p class="line-clamp-1 text-[11px] text-slate-500">
+                                <template v-for="(l, idx) in t.languages" :key="l.name">
+                                    <span class="font-semibold text-slate-700">{{ l.name }}</span>
+                                    <span class="text-slate-400"> ({{ l.level }})</span>
+                                    <span v-if="idx < t.languages.length - 1"> · </span>
+                                </template>
+                            </p>
+
+                            <div class="flex items-center justify-between">
+                                <p class="font-display text-[15px] font-extrabold text-slate-900">
+                                    {{ inrFmt(t.pricePerHour) }}
+                                    <span class="text-[11px] font-medium text-slate-500">/hr</span>
+                                </p>
+                                <span class="text-[11px] font-semibold text-blue-600">Free demo</span>
+                            </div>
+
+                            <div class="mt-1 grid grid-cols-2 gap-2">
+                                <button type="button"
+                                    class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[12px] font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700">
+                                    View Profile
+                                </button>
+                                <button type="button"
+                                    class="rounded-lg bg-blue-600 px-2.5 py-1.5 text-[12px] font-semibold text-white shadow-[0_8px_18px_-10px_rgba(37,99,235,0.7)] transition hover:bg-blue-500">
+                                    Book Demo
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <p v-if="!filteredTutors.length" data-slide
+                        class="w-full shrink-0 snap-start rounded-2xl border border-dashed border-slate-300 bg-white/60 p-8 text-center text-[13px] text-slate-500">
+                        No tutors match your filters yet — try widening the grade or city.
+                    </p>
+                </div>
             </div>
-        </div>
+            <div v-show="browseMode === 'students'" class="relative mt-4">
+                <button type="button" @click="scrollSlider(studentsTrack, -1)" :disabled="studentsAtStart"
+                    aria-label="Previous students"
+                    class="absolute -left-2 top-1/2 z-20 hidden -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition hover:border-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 lg:grid">
+                    <Icon icon="mdi:chevron-left" class="h-6 w-6" />
+                </button>
+                <button type="button" @click="scrollSlider(studentsTrack, 1)" :disabled="studentsAtEnd"
+                    aria-label="Next students"
+                    class="absolute -right-2 top-1/2 z-20 hidden -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition hover:border-blue-200 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40 lg:grid">
+                    <Icon icon="mdi:chevron-right" class="h-6 w-6" />
+                </button>
+
+                <div ref="studentsTrack" @scroll.passive="onStudentsScroll"
+                    class="scrollbar-hide flex snap-x snap-mandatory scroll-pl-4 gap-5 overflow-x-auto px-1 pb-3 lg:scroll-pl-0">
+                    <article v-for="(s, i) in filteredStudents" :key="s.id" data-slide
+                        class="group relative flex w-[85%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_10px_30px_-18px_rgba(15,23,42,0.25)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(37,99,235,0.32)] sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
+                        v-motion :initial="{ opacity: 0, y: 14 }"
+                        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 150 + i * 90 } }">
+                        <div
+                            class="relative bg-gradient-to-br from-sky-500 via-blue-600 to-indigo-700 px-4 pb-3.5 pt-9 text-center">
+                            <span v-if="s.urgent"
+                                class="absolute left-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-rose-500/95 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wider text-white shadow ring-1 ring-white/30">
+                                <span class="h-1 w-1 rounded-full bg-white"></span>
+                                Urgent
+                            </span>
+                            <span
+                                class="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-white/15 px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-wider text-white ring-1 ring-white/20 backdrop-blur-sm">
+                                {{ s.postedAgo }}
+                            </span>
+
+                            <div
+                                class="relative z-[1] mx-auto h-16 w-16 rounded-full ring-2 ring-white/90 sm:h-[72px] sm:w-[72px]">
+                                <img :src="s.photo" :alt="s.name"
+                                    class="h-full w-full rounded-full object-cover shadow-md" loading="lazy" />
+                            </div>
+                            <h3 class="mt-2 font-display text-[14.5px] font-bold leading-tight text-white">
+                                {{ s.name }}
+                            </h3>
+                            <p class="mt-0.5 inline-flex items-center justify-center gap-1 text-[11px] text-blue-100">
+                                <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M12 21s7-6.2 7-11.4A7 7 0 1 0 5 9.6C5 14.8 12 21 12 21z"
+                                        stroke="currentColor" stroke-width="1.6" />
+                                    <circle cx="12" cy="9.5" r="2.5" stroke="currentColor" stroke-width="1.6" />
+                                </svg>
+                                {{ s.location }}
+                            </p>
+
+                            <div class="mt-2.5 flex flex-wrap items-center justify-center gap-1">
+                                <span
+                                    class="rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-semibold text-white ring-1 ring-white/20 backdrop-blur-sm">
+                                    {{ s.grade }}
+                                </span>
+                                <span
+                                    class="rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-semibold text-white ring-1 ring-white/20 backdrop-blur-sm">
+                                    {{ s.board }}
+                                </span>
+                            </div>
+                        </div>
+                        <div
+                            class="grid grid-cols-3 divide-x divide-slate-100 border-b border-slate-100 bg-white px-2 py-2 text-center">
+                            <div>
+                                <p class="font-display text-[13.5px] font-extrabold text-slate-900">
+                                    {{ s.subjectsNeeded.length }}
+                                </p>
+                                <p class="text-[10px] text-slate-500">subjects</p>
+                            </div>
+                            <div>
+                                <p class="font-display text-[13.5px] font-extrabold text-slate-900">
+                                    {{ s.hoursPerWeek }}
+                                </p>
+                                <p class="text-[10px] text-slate-500">hrs/week</p>
+                            </div>
+                            <div>
+                                <p class="font-display text-[13.5px] font-extrabold text-slate-900 capitalize">
+                                    {{ s.preferredMode }}
+                                </p>
+                                <p class="text-[10px] text-slate-500">mode</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-1 flex-col gap-2 px-4 py-3">
+                            <div class="flex flex-wrap gap-1">
+                                <span v-for="sub in s.subjectsNeeded" :key="sub"
+                                    class="rounded-full bg-blue-50 px-2 py-0.5 text-[10.5px] font-semibold text-blue-700 ring-1 ring-blue-100">
+                                    {{ sub }}
+                                </span>
+                            </div>
+                            <p class="line-clamp-2 text-[11.5px] leading-snug text-slate-600">
+                                {{ s.description }}
+                            </p>
+
+                            <div class="flex items-center justify-between">
+                                <p class="font-display text-[13.5px] font-extrabold text-slate-900">
+                                    {{ inrFmt(s.budgetMin) }}–{{ inrFmt(s.budgetMax) }}
+                                    <span class="text-[11px] font-medium text-slate-500">/hr</span>
+                                </p>
+                                <span class="text-[11px] font-semibold text-blue-600">Budget</span>
+                            </div>
+
+                            <div class="mt-1 grid grid-cols-2 gap-2">
+                                <button type="button"
+                                    class="rounded-lg border border-slate-200 bg-white px-2.5 py-1.5 text-[12px] font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700">
+                                    View Request
+                                </button>
+                                <button type="button"
+                                    class="rounded-lg bg-blue-600 px-2.5 py-1.5 text-[12px] font-semibold text-white shadow-[0_8px_18px_-10px_rgba(37,99,235,0.7)] transition hover:bg-blue-500">
+                                    Send Proposal
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <p v-if="!filteredStudents.length" data-slide
+                        class="w-full shrink-0 snap-start rounded-2xl border border-dashed border-slate-300 bg-white/60 p-8 text-center text-[13px] text-slate-500">
+                        No student requests match your filters — try a different grade or subject.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 </template>

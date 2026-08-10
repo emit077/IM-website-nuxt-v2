@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick, useId } from 'vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+
 type Step = {
     no: string
     title: string
@@ -9,8 +10,6 @@ type Step = {
     accent: 'violet' | 'blue' | 'emerald' | 'orange' | 'purple'
     /** True for the highlighted "Recommended Step" card */
     highlight?: boolean
-    /** Card width modifier — first step is intentionally smaller in the reference */
-    width?: 'sm' | 'md'
 }
 
 const steps: Step[] = [
@@ -20,7 +19,6 @@ const steps: Step[] = [
         description: 'Fill out the quick enrollment form and share your details.',
         iconType: 'register',
         accent: 'violet',
-        width: 'sm',
     },
     {
         no: '02',
@@ -35,7 +33,6 @@ const steps: Step[] = [
         description: "Experience the tutor's teaching style in a free demo session.",
         iconType: 'demo',
         accent: 'emerald',
-        highlight: true,
     },
     {
         no: '04',
@@ -421,18 +418,12 @@ onUnmounted(() => {
 
 <template>
     <section id="how-it-works"
-        class="relative overflow-hidden bg-gradient-to-b from-white via-[#f6f8ff] to-[#eaeefc] section-py"
+        class="relative overflow-hidden bg-gradient-to-b from-slate-50 via-[#f4f7fc] to-[#eef3fb] section-py"
         aria-labelledby="how-it-works-heading">
-        <div aria-hidden="true"
-            class="pointer-events-none absolute -right-24 top-1/3 h-72 w-72 rounded-full bg-violet-200/40 blur-3xl">
-        </div>
-        <div aria-hidden="true"
-            class="pointer-events-none absolute -left-20 bottom-0 h-64 w-64 rounded-full bg-blue-200/40 blur-3xl">
-        </div>
 
         <div class="container-page relative">
             <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
-                <div class="relative lg:col-span-5 xl:col-span-5 justify-center align-center">
+                <div class="relative lg:col-span-4 xl:col-span-5 justify-center align-center">
                     <div aria-hidden="true"
                         class="pointer-events-none absolute -left-2 -top-4 hidden h-20 w-24 opacity-50 sm:block lg:-left-6 lg:-top-6"
                         style="background-image: radial-gradient(#a5b4fc 1px, transparent 1px); background-size: 12px 12px;">
@@ -442,10 +433,10 @@ onUnmounted(() => {
                         :description="headerContent.description" :classes="headerContent.classes" />
                     <form @submit.prevent="onSubmitSignIn" novalidate v-motion :initial="{ opacity: 0, y: 14 }"
                         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, delay: 280 } }"
-                        class="mt-2 max-w-md rounded-2xl border border-white/70 bg-white/80 p-4 shadow-[0_18px_44px_-22px_rgba(29,78,216,0.28)] ring-1 ring-slate-200/70 backdrop-blur sm:p-5"
+                        class="mt-8 max-w-md rounded-2xl border border-white/70 bg-white/80 p-4 shadow-[0_18px_44px_-22px_rgba(29,78,216,0.28)] ring-1 ring-slate-200/70 backdrop-blur sm:p-5"
                         aria-label="Quick sign-up to start learning">
                         <div class="space-y-3">
-                            <div>
+                            <div class="pt-4">
                                 <label for="signin-name" class="sr-only">Full name</label>
                                 <div :class="[
                                     'group flex items-center gap-3 rounded-xl border bg-white px-3.5 py-3 transition focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-200/70',
@@ -470,7 +461,7 @@ onUnmounted(() => {
                                     {{ formErrors.name }}
                                 </p>
                             </div>
-                            <div>
+                            <div class="pt-4">
                                 <label for="signin-mobile" class="sr-only">Mobile number</label>
                                 <div :class="[
                                     'group flex items-center gap-2 rounded-xl border bg-white pl-3.5 pr-3.5 py-3 transition focus-within:border-blue-400 focus-within:ring-2 focus-within:ring-blue-200/70',
@@ -542,153 +533,78 @@ onUnmounted(() => {
                             already learning
                         </p>
                     </SharedReviewerStrip>
+                    <p class="journey-note mt-6 flex items-center justify-center gap-2 text-center text-[18px] font-semibold text-sky-500 sm:mt-7 sm:text-[20px]"
+                        aria-hidden="true">
+                        <span>You're just a few clicks away from your goals!</span>
+                    </p>
                 </div>
-                <div class="relative lg:col-span-7 xl:col-span-7">
-                    <svg aria-hidden="true"
-                        class="pointer-events-none absolute -top-3 right-1 hidden h-5 w-5 text-pink-400/80 sm:block"
-                        viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 2 13.5 8 19 9.5 13.5 11 12 17 10.5 11 5 9.5 10.5 8 12 2zm6.5 12 .8 2.4L21.5 17l-2 .7L18.5 20l-1-2.3-2-.7 2-.6.8-2.4z" />
-                    </svg>
-                    <svg aria-hidden="true"
-                        class="pointer-events-none absolute right-2 top-[42%] hidden h-3 w-3 text-blue-300 sm:block"
-                        viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2 13.5 8 19 9.5 13.5 11 12 17 10.5 11 5 9.5 10.5 8 12 2z" />
-                    </svg>
-                    <svg aria-hidden="true"
-                        class="pointer-events-none absolute right-6 top-[64%] hidden h-3 w-3 text-orange-300 sm:block"
-                        viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2 13.5 8 19 9.5 13.5 11 12 17 10.5 11 5 9.5 10.5 8 12 2z" />
-                    </svg>
-                    <svg aria-hidden="true"
-                        class="pointer-events-none absolute -bottom-2 right-12 hidden h-4 w-4 text-pink-300 sm:block"
-                        viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2 13.5 8 19 9.5 13.5 11 12 17 10.5 11 5 9.5 10.5 8 12 2z" />
-                    </svg>
-                    <svg aria-hidden="true"
-                        class="pointer-events-none absolute left-[calc(50%-30px)] top-[110px] hidden h-12 w-12 text-violet-400/80 lg:block"
-                        viewBox="0 0 60 60" fill="none">
-                        <path d="M6 6c8 4 14 12 12 22-1.4 7-7 12-14 14" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" stroke-dasharray="3 4" />
-                        <path d="M2 38l4 6 6-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
+                <div class="relative lg:col-span-8 xl:col-span-7">
                     <div ref="timelineStoryEl" class="timeline-story relative">
-                        <svg ref="spineSvgRef"
-                            class="pointer-events-none absolute inset-0 z-[2] block h-full w-full overflow-visible"
-                            aria-hidden="true">
-                            <defs>
-                                <linearGradient :id="spineGradId" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" stop-color="#a78bfa" />
-                                    <stop offset="52%" stop-color="#6366f1" />
-                                    <stop offset="100%" stop-color="#2563eb" />
-                                </linearGradient>
-                            </defs>
-                            <path ref="spineTrackRef" fill="none" stroke="#e2e8f0" stroke-width="2.75"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                            <path ref="spineDrawRef" fill="none" :stroke="`url(#${spineGradId})`" stroke-width="3"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-
-                        <ol class="relative z-[3] space-y-7 sm:space-y-8" role="list">
-                            <li v-for="(step, i) in steps" :key="step.no" :class="[
-                                'timeline-step relative flex items-stretch gap-3 sm:gap-4',
-                                step.width === 'sm' ? 'lg:pr-[14%]' : '',
-                                i === 1 ? 'lg:pl-6' : '',
-                                i === 3 ? 'lg:pl-4' : '',
-                            ]">
-                                <div class="timeline-badge relative z-10 shrink-0 self-start pt-1.5">
-                                    <span :class="[
-                                        'grid h-9 w-9 place-items-center rounded-full text-[12px] font-extrabold text-white shadow-[0_8px_18px_-6px_rgba(15,23,42,0.25)] ring-[3px] ring-white sm:h-11 sm:w-11 sm:text-[13px]',
-                                        accentClasses[step.accent].badge,
-                                    ]">
-                                        {{ step.no }}
-                                    </span>
-                                </div>
-                                <article class="timeline-card relative z-[1] w-full">
+                        <ol class="relative z-[3] space-y-5 sm:space-y-6" role="list">
+                            <li v-for="(step, i) in steps" :key="step.no"
+                                class="timeline-step relative flex items-stretch"
+                                :class="i % 2 === 1 ? 'justify-end' : 'justify-start'">
+                                <article class="timeline-card relative z-[1] w-[88%] sm:w-[86%] lg:w-[84%]">
                                     <div :class="[
-                                        'timeline-card-surface group relative flex w-full items-start gap-4 overflow-hidden rounded-2xl border bg-white p-4 sm:gap-5 sm:p-5',
-                                        step.highlight
-                                            ? 'timeline-card-surface--highlight border-emerald-300 ring-2 ring-emerald-200/70 shadow-[0_18px_44px_-20px_rgba(16,185,129,0.55)]'
-                                            : 'border-slate-200/80 shadow-[0_8px_24px_-14px_rgba(15,23,42,0.18)]',
+                                        'timeline-card-surface group relative flex w-full items-start gap-4 overflow-hidden rounded-2xl border p-4 sm:gap-5 sm:p-5',
+                                        i === 0
+                                            ? 'timeline-card-surface--featured border-blue-500/30 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 shadow-[0_18px_40px_-18px_rgba(37,99,235,0.55)]'
+                                            : 'border-slate-200/80 bg-white shadow-[0_8px_24px_-14px_rgba(15,23,42,0.18)]',
                                     ]">
                                         <span v-if="step.highlight" aria-hidden="true"
                                             class="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-50/70 via-white to-white"></span>
                                         <span :class="[
-                                            'timeline-card-icon relative grid h-12 w-12 shrink-0 place-items-center rounded-xl sm:h-14 sm:w-14',
-                                            accentClasses[step.accent].tile,
+                                            'timeline-card-icon relative grid h-12 w-12 shrink-0 place-items-center rounded-xl font-semibold sm:h-14 sm:w-14',
+                                            i === 0
+                                                ? 'bg-white/15 text-white ring-1 ring-white/25'
+                                                : [accentClasses[step.accent].tile, accentClasses[step.accent].tile.replace('bg-', 'text-').replace('100', '700')],
                                         ]">
-                                            <svg v-if="step.iconType === 'register'"
-                                                :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
-                                                viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                                <circle cx="12" cy="8.5" r="3.5" stroke="currentColor"
-                                                    stroke-width="1.6" />
-                                                <path d="M5.5 19.5c1.3-3.4 3.9-5.5 6.5-5.5s5.2 2.1 6.5 5.5"
-                                                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                                            </svg>
-                                            <svg v-else-if="step.iconType === 'match'"
-                                                :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
-                                                viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                                <circle cx="9" cy="9" r="3.2" stroke="currentColor"
-                                                    stroke-width="1.6" />
-                                                <path
-                                                    d="M3.5 19c.6-3 3-4.5 5.5-4.5s4.9 1.5 5.5 4.5M16.5 14.5a2.6 2.6 0 1 0 0-5.2 2.6 2.6 0 0 0 0 5.2zM20.5 19c-.5-2.4-2.2-3.6-4-3.8"
-                                                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-                                            </svg>
-                                            <svg v-else-if="step.iconType === 'demo'"
-                                                :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
-                                                viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                                <rect x="4" y="5.5" width="16" height="14" rx="2" stroke="currentColor"
-                                                    stroke-width="1.6" />
-                                                <path d="M4 10h16M9 3.5v4M15 3.5v4" stroke="currentColor"
-                                                    stroke-width="1.6" stroke-linecap="round" />
-                                                <path d="m9 14.5 2 2 4-4" stroke="currentColor" stroke-width="1.7"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                            <svg v-else-if="step.iconType === 'plan'"
-                                                :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
-                                                viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                                <path
-                                                    d="M7 3.5h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-9.5A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z"
-                                                    stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-                                                <path d="M14 3.5V8h4M8.5 12.5h7M8.5 16h7M8.5 9h3" stroke="currentColor"
-                                                    stroke-width="1.6" stroke-linecap="round" />
-                                            </svg>
-                                            <svg v-else
-                                                :class="['h-6 w-6 sm:h-7 sm:w-7', accentClasses[step.accent].icon]"
-                                                viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                                <path
-                                                    d="M3.5 5.5c2.5-.5 5-.5 8.5 1.2 3.5-1.7 6-1.7 8.5-1.2v12c-2.5-.5-5-.5-8.5 1.2-3.5-1.7-6-1.7-8.5-1.2v-12z"
-                                                    stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-                                                <path d="M12 6.7v12" stroke="currentColor" stroke-width="1.6"
-                                                    stroke-linecap="round" />
-                                            </svg>
+                                            {{ step.no }}
                                         </span>
                                         <div class="relative min-w-0 flex-1">
                                             <h3 :class="[
-                                                'font-display text-[15.5px] font-bold text-slate-900 transition-colors duration-300 sm:text-[17px]',
-                                                step.highlight ? 'group-hover:text-emerald-700' : 'group-hover:text-blue-700',
+                                                'font-display text-[15.5px] font-bold transition-colors duration-300 sm:text-[17px]',
+                                                i === 0
+                                                    ? 'text-white'
+                                                    : step.highlight
+                                                        ? 'text-slate-900 group-hover:text-emerald-700'
+                                                        : 'text-slate-900 group-hover:text-blue-700',
                                             ]">
                                                 {{ step.title }}
                                             </h3>
-                                            <p class="mt-1 text-[13px] leading-relaxed text-slate-500 sm:text-[13.5px]">
+                                            <p :class="[
+                                                'mt-1 text-[13px] leading-relaxed sm:text-[13.5px]',
+                                                i === 0 ? 'text-blue-100' : 'text-slate-500',
+                                            ]">
                                                 {{ step.description }}
                                             </p>
-
-                                            <span v-if="step.highlight"
-                                                class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-200">
-                                                <svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"
-                                                    aria-hidden="true">
-                                                    <path
-                                                        d="M12 2 13.5 8 19 9.5 13.5 11 12 17 10.5 11 5 9.5 10.5 8 12 2z" />
-                                                </svg>
-                                                Recommended Step
-                                            </span>
                                         </div>
+                                    </div>
+
+                                    <!-- Hand-drawn dashed connector toward the next zigzag step -->
+                                    <div v-if="i < steps.length - 1" aria-hidden="true" :class="[
+                                        'pointer-events-none absolute -bottom-5 z-[2] text-sky-500 sm:-bottom-6',
+                                        i % 2 === 0 ? 'right-3 sm:right-6' : 'left-3 sm:left-6',
+                                    ]">
+                                        <svg v-if="i % 2 === 0" class="h-6 w-14 sm:h-7 sm:w-16" viewBox="0 0 64 28"
+                                            fill="none">
+                                            <path d="M4 4c10 2 22 8 34 14 8 4 16 7 24 8" stroke="currentColor"
+                                                stroke-width="1.7" stroke-linecap="round" stroke-dasharray="3 3.2" />
+                                            <path d="M52 18l10 8-9 1.5" stroke="currentColor" stroke-width="1.7"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <svg v-else class="h-6 w-14 sm:h-7 sm:w-16" viewBox="0 0 64 28" fill="none">
+                                            <path d="M60 4c-10 2-22 8-34 14-8 4-16 7-24 8" stroke="currentColor"
+                                                stroke-width="1.7" stroke-linecap="round" stroke-dasharray="3 3.2" />
+                                            <path d="M12 18L2 26l9 1.5" stroke="currentColor" stroke-width="1.7"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
                                     </div>
                                 </article>
                             </li>
                         </ol>
+
+
                     </div>
                 </div>
             </div>
@@ -697,6 +613,11 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.journey-note {
+    font-family: 'Caveat', 'Plus Jakarta Sans', cursive;
+    letter-spacing: 0.01em;
+}
+
 /* Always visible by default — scroll animation is GSAP-only (safe on S3 if GSAP fails) */
 .timeline-story .timeline-card,
 .timeline-story .timeline-badge {
@@ -761,6 +682,24 @@ onUnmounted(() => {
 
 .timeline-card-surface--highlight:hover::after {
     background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.55), transparent);
+}
+
+.timeline-card-surface--featured:hover {
+    border-color: rgba(147, 197, 253, 0.55);
+    box-shadow:
+        0 4px 12px -2px rgba(15, 23, 42, 0.12),
+        0 24px 48px -14px rgba(37, 99, 235, 0.5);
+}
+
+.timeline-card-surface--featured::before {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.22) 0%,
+            rgba(255, 255, 255, 0.06) 42%,
+            transparent 70%);
+}
+
+.timeline-card-surface--featured::after {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
 }
 
 .timeline-card-icon {

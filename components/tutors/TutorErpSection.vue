@@ -12,17 +12,7 @@ const frameworkSteps = ['Teach', 'Track', 'Earn', 'Grow']
     <div class="container-page">
       <CardHeader heading-id="tutor-erp-heading" :badge="erpSection.badge" :title="erpSection.title"
         :description="erpSection.description" :classes="erpSection.classes" />
-      <div class="mx-auto mt-8 flex flex-wrap items-center justify-center gap-2" v-motion
-        :initial="{ opacity: 0, y: 10 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
-        <template v-for="(step, i) in frameworkSteps" :key="step">
-          <span
-            class="rounded-full border border-slate-200/80 bg-white px-4 py-1.5 text-[13px] font-semibold text-slate-700">
-            {{ step }}
-          </span>
-          <Icon v-if="i < frameworkSteps.length - 1" icon="mdi:arrow-right" class="h-3.5 w-3.5 text-slate-400"
-            aria-hidden="true" />
-        </template>
-      </div>
+
 
       <ul class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3" role="list">
         <li v-for="(feature, i) in erpFeatures" :key="feature.title" v-motion :initial="{ opacity: 0, y: 12 }"
@@ -41,15 +31,6 @@ const frameworkSteps = ['Teach', 'Track', 'Earn', 'Grow']
           </article>
         </li>
       </ul>
-
-      <div class="mt-10 text-center" v-motion :initial="{ opacity: 0, y: 10 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: 150 } }">
-        <a href="#tutor-register"
-          class="inline-flex items-center gap-2 rounded-2xl border border-blue-200 bg-blue-50/70 px-6 py-3 text-sm font-semibold text-blue-700 transition duration-300 hover:-translate-y-0.5 hover:bg-blue-600 hover:text-white">
-          <Icon icon="mdi:view-dashboard-outline" class="h-4 w-4" aria-hidden="true" />
-          Explore Tutor Dashboard Features
-        </a>
-      </div>
     </div>
   </section>
 </template>

@@ -170,7 +170,7 @@ export const enrollmentSteps: EnrollmentStep[] = [
     accent: 'blue',
     engagement: {
       label: 'Browse tutors',
-      href: '#browse-tutors',
+      href: '#tutors',
       iconMdi: 'mdi:account-search-outline',
     },
   },
@@ -197,7 +197,7 @@ export const enrollmentSteps: EnrollmentStep[] = [
     accent: 'orange',
     engagement: {
       label: 'Compare plans',
-      href: '#plan-comparison',
+      href: '/student-parent/#plan-comparison',
       iconMdi: 'mdi:scale-balance',
     },
   },
@@ -251,7 +251,7 @@ export const resourceLinks = [
     iconMdi: 'mdi:clipboard-list-outline',
     title: 'Enrollment Process',
     description: 'See how to register, match, demo, and start learning.',
-    href: '#enrollment-process',
+    href: '/#how-it-works',
   },
   {
     id: 'browse-tutors',

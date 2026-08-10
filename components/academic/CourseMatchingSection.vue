@@ -76,9 +76,12 @@ function isLightText(tone: StepTone) {
             <span class="param-chip__icon" aria-hidden="true">
               <Icon :icon="item.iconMdi" class="h-4 w-4" />
             </span>
-            <h3 class="param-chip__label font-display">
-              {{ item.label }}
-            </h3>
+            <div class="param-chip__text min-w-0">
+              <h3 class="param-chip__label font-display">
+                {{ item.label }}
+              </h3>
+              <p class="param-chip__desc">{{ item.description }}</p>
+            </div>
           </li>
         </ul>
 
@@ -318,7 +321,7 @@ function isLightText(tone: StepTone) {
   align-items: center;
   gap: 0.65rem;
   min-height: 2.85rem;
-  padding: 0.55rem 0.8rem;
+  padding: 0.7rem 0.85rem;
   border-radius: 0.95rem;
   background: #ffffff;
   border: 1px solid rgba(15, 23, 42, 0.07);
@@ -352,6 +355,18 @@ function isLightText(tone: StepTone) {
   letter-spacing: -0.015em;
   line-height: 1.25;
   color: #1e293b;
+}
+
+.param-chip__desc {
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #64748b;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .param-chip--purple .param-chip__icon {

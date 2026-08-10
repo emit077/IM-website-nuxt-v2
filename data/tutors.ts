@@ -17,7 +17,9 @@ export type HiringStep = {
   iconMdi: string
   title: string
   description: string
+  points?: string[]
   accent: 'violet' | 'blue' | 'emerald' | 'orange' | 'indigo'
+  cta?: { label: string; href: string; iconMdi?: string }
 }
 
 export const heroContent = {
@@ -69,6 +71,12 @@ export const quickLinks = [
     iconMdi: 'mdi:account-search-outline',
     title: 'Browse Students',
     href: '#browse-students',
+  },
+  {
+    id: 'tutor-earnings',
+    iconMdi: 'mdi:cash-multiple',
+    title: 'Earnings & Payout',
+    href: '#tutor-earnings',
   },
   {
     id: 'tutor-dashboard',
@@ -162,8 +170,20 @@ export const hiringSteps: HiringStep[] = [
     no: '01',
     iconMdi: 'mdi:account-edit-outline',
     title: 'Register Online',
-    description: 'Complete your tutor profile with academic and personal details.',
+    description:
+      'Create your tutor profile in a few minutes — share academic credentials, teaching preferences, and personal details so we can match you with the right students.',
+    points: [
+      'Personal and contact information',
+      'Academic qualifications and certifications',
+      'Subjects, boards, and grade levels you teach',
+      'Preferred teaching modes and availability',
+    ],
     accent: 'violet',
+    cta: {
+      label: 'Register Now',
+      href: '#tutor-register',
+      iconMdi: 'mdi:account-plus-outline',
+    },
   },
   {
     no: '02',
@@ -195,31 +215,42 @@ export const hiringSteps: HiringStep[] = [
   },
 ]
 
+export const complianceSection = {
+  badge: 'Compliance & Screening',
+  title: 'Trust and safety, built into every profile',
+  description:
+    'To ensure trust and safety, Indian Mentors follows a strict compliance and screening framework before any tutor is matched with a student.',
+  note:
+    'Continuous monitoring helps maintain high-quality teaching standards and professional accountability — long after onboarding.',
+  classes: '!px-0 !py-0',
+  cta: { label: 'View Compliance Standards', href: '#tutor-register' },
+}
+
 export const complianceChecks = [
   {
     iconMdi: 'mdi:card-account-details-outline',
     title: 'Identity Verification',
-    description: 'Government-issued ID checks confirm every tutor is who they say they are.',
+    description: "Government ID checks confirm every tutor's identity.",
   },
   {
     iconMdi: 'mdi:certificate-outline',
     title: 'Qualification Validation',
-    description: 'Academic degrees and teaching credentials are validated before onboarding.',
+    description: 'Degrees and teaching credentials verified before onboarding.',
   },
   {
     iconMdi: 'mdi:map-marker-check-outline',
     title: 'Address Confirmation',
-    description: 'Residential address verification adds an extra layer of accountability.',
+    description: 'Residential address verified for added accountability.',
   },
   {
     iconMdi: 'mdi:account-search-outline',
-    title: 'Professional Background Review',
-    description: 'A structured review of professional history and references.',
+    title: 'Background Review',
+    description: 'Structured review of professional history and references.',
   },
   {
     iconMdi: 'mdi:briefcase-check-outline',
-    title: 'Teaching Experience Evaluation',
-    description: 'Subject expertise and classroom experience are assessed for quality.',
+    title: 'Experience Evaluation',
+    description: 'Subject expertise and classroom experience assessed.',
   },
 ]
 
@@ -301,12 +332,123 @@ export const erpSection = {
   classes: '!px-0 !py-0',
 }
 
+export const earningsSection = {
+  badge: 'Earnings & Payout',
+  title: 'Teach with purpose. <span class="text-gradient-brand">Earn with clarity.</span>',
+  description:
+    'Mentor compensation is determined by subject expertise, academic level, and teaching mode. Higher classes and specialised subjects offer enhanced earning potential.',
+  classes: '!px-0 !py-0',
+  payoutTitle: 'Payout Features',
+  cta: { label: 'Start Earning as a Tutor', href: '#tutor-register' },
+  driversLabel: 'Earnings grow with',
+  drivers: [
+    { iconMdi: 'mdi:book-open-page-variant-outline', label: 'Subject expertise' },
+    { iconMdi: 'mdi:school-outline', label: 'Academic level' },
+    { iconMdi: 'mdi:laptop', label: 'Teaching mode' },
+  ],
+  toast: {
+    title: 'Session payout credited',
+    detail: 'Class 10 · Mathematics · ₹780',
+  },
+  activity: [
+    { subject: 'Physics', grade: 'Class 12', amount: '₹900', time: '2h ago' },
+    { subject: 'English', grade: 'Class 8', amount: '₹650', time: 'Yesterday' },
+    { subject: 'Chemistry', grade: 'Class 11', amount: '₹850', time: '2d ago' },
+  ],
+  cycles: [
+    {
+      id: 'weekly' as const,
+      label: 'Weekly',
+      balanceLabel: 'This week',
+      balance: '₹6,400',
+      trend: '+12% vs last week',
+      nextPayout: 'Friday',
+      sessions: '8',
+      bars: [36, 52, 44, 68, 58, 82, 70],
+      chartNote: 'Weekly rhythm — faster cash flow for active tutors',
+    },
+    {
+      id: 'biweekly' as const,
+      label: 'Bi-Weekly',
+      balanceLabel: 'This cycle',
+      balance: '₹12,900',
+      trend: '+15% vs last cycle',
+      nextPayout: 'in 4 days',
+      sessions: '17',
+      bars: [42, 58, 48, 72, 64, 88, 76],
+      chartNote: 'Bi-weekly balance — steady payouts with session clarity',
+    },
+    {
+      id: 'monthly' as const,
+      label: 'Monthly',
+      balanceLabel: 'This month',
+      balance: '₹24,800',
+      trend: '+18% vs last month',
+      nextPayout: '1st Apr',
+      sessions: '32',
+      bars: [48, 62, 55, 78, 70, 94, 86],
+      chartNote: 'Monthly overview — clear, trackable growth week by week',
+    },
+  ],
+  preview: {
+    label: 'Live earnings preview',
+    nextPayoutLabel: 'Next payout',
+    sessionsLabel: 'Sessions logged',
+    statusLabel: 'Payout status',
+    status: 'On track',
+  },
+}
+
+export const payoutFeatures = [
+  {
+    no: '01',
+    iconMdi: 'mdi:calendar-sync-outline',
+    title: 'Flexible payout cycles',
+    highlight: 'Weekly · Bi-Weekly · Monthly',
+    description: 'Pick a settlement rhythm that matches your cash-flow — get paid on your terms.',
+    accent: 'blue' as const,
+  },
+  {
+    no: '02',
+    iconMdi: 'mdi:clipboard-text-outline',
+    title: 'Session-based tracking',
+    highlight: 'Every session counted',
+    description: 'Confirmed sessions roll into your earnings automatically — no manual follow-ups.',
+    accent: 'emerald' as const,
+  },
+  {
+    no: '03',
+    iconMdi: 'mdi:chart-timeline-variant',
+    title: 'Clear earnings visibility',
+    highlight: 'Live earnings view',
+    description: 'See pending, processed, and completed payouts in one transparent dashboard.',
+    accent: 'orange' as const,
+  },
+  {
+    no: '04',
+    iconMdi: 'mdi:shield-lock-outline',
+    title: 'Secure payout system',
+    highlight: 'Safe & transparent',
+    description: 'Settlements run through a secure system with clear records you can always trust.',
+    accent: 'indigo' as const,
+  },
+]
+
 export const hiringProcessSection = {
   badge: 'Tutor Hiring Process',
   title: 'From registration to your <span class="text-gradient-brand">first session</span>',
   description:
     'A structured onboarding process designed to maintain high academic standards — so students and parents always receive reliable, qualified mentors.',
   classes: '!px-0 !py-0',
+  image: '/assets/img/services/home-tutors.webp',
+  imageAlt: 'Professional mentor teaching a student — Indian Mentors hiring journey',
+  socialProof: 'Trusted by educators teaching across India',
+  references: [
+    { iconMdi: 'mdi:shield-check-outline', label: 'ID & credential verified' },
+    { iconMdi: 'mdi:account-school-outline', label: '5-step guided onboarding' },
+    { iconMdi: 'mdi:handshake-outline', label: 'Demo before commitment' },
+    { iconMdi: 'mdi:cash-check', label: 'Transparent payouts' },
+  ],
 }
 
 export const tutorPlansSection = {

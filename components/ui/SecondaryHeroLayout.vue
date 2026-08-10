@@ -80,14 +80,14 @@ onUnmounted(() => {
       <div class="mx-auto flex max-w-6xl flex-col items-center text-center">
         <slot name="badge">
           <p v-if="heroContent.badge"
-            class="font-display text-[11px] font-bold tracking-[0.28em] text-white/75 sm:text-xs" v-motion
+            class="font-display text-[12px] uppercase font-bold tracking-[0.28em] text-white/75 sm:text-xs" v-motion
             :initial="{ opacity: 0, y: 10 }" :enter="{ opacity: 1, y: 0, transition: { duration: 450 } }"
             v-html="heroContent.badge" />
         </slot>
 
         <slot name="title">
           <h1 v-if="heroContent.title" :id="headingId"
-            class="secondary-hero-title mt-5 text-balance font-display text-[2.6rem] font-black leading-[0.95] tracking-[-0.03em] text-white sm:text-5xl lg:text-[4.5rem] xl:text-[5rem]"
+            class="secondary-hero-title mt-5 capitalize text-balance font-display text-[2.6rem] font-black leading-[0.95] tracking-[-0.03em] text-white sm:text-5xl lg:text-[4.5rem] xl:text-[5rem]"
             v-motion :initial="{ opacity: 0, y: 16 }"
             :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 60 } }" v-html="heroContent.title" />
         </slot>
@@ -129,10 +129,7 @@ onUnmounted(() => {
     </div>
 
     <slot name="ticker">
-      <HeroTickerStrip
-        :items="heroContent.ticker"
-        :aria-label="heroContent.tickerAriaLabel || 'Highlights'"
-      />
+      <HeroTickerStrip :items="heroContent.ticker" :aria-label="heroContent.tickerAriaLabel || 'Highlights'" />
     </slot>
   </section>
 </template>
