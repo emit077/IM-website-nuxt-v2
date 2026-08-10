@@ -1,0 +1,1 @@
+import{u as c}from"./s6EfU_6_.js";import{k as r}from"./C9V2RS29.js";function i(){const e=c("secondary-hero-active-count",()=>0),o=r(()=>e.value>0);function t(){e.value+=1}function a(){e.value=Math.max(0,e.value-1)}return{isSecondaryHeroActive:o,activateSecondaryHeroTheme:t,deactivateSecondaryHeroTheme:a}}export{i as u};

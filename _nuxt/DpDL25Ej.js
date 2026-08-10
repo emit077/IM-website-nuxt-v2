@@ -1,1 +1,0 @@
-import{ae as i,ag as r}from"./DFLQToYt.js";function u(s){if(!s)return"";if(/^https?:\/\//i.test(s)||s.startsWith("data:"))return s;const{app:t}=i(),e=s.startsWith("/")?s:`/${s}`;return r(e,t.baseURL||"/")}export{u};
