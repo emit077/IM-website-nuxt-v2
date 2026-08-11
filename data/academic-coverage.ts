@@ -1,4 +1,5 @@
 import type { TrustIndicatorItem } from '~/components/ui/TrustIndicatorsLayout.vue'
+import { externalLinks } from './external-links'
 
 export const academicHero = {
   brand: 'Academic Coverage & Courses',
@@ -10,7 +11,7 @@ export const academicHero = {
   mobileBackgroundImage: 'assets/img/hero/hero-mobile-2.png',
   primaryCta: {
     label: 'Get Started',
-    href: '#book-demo',
+    href: externalLinks.studentSignup,
   },
   secondaryCta: {
     label: 'Explore Coverage',
@@ -64,7 +65,7 @@ export const gradesSection = {
   learnMoreLabel: 'Learn more',
   consultationCta: {
     label: 'Book Free Consultation',
-    href: '#book-demo',
+    href: externalLinks.studentSignup,
   },
   stages: [
     {
@@ -84,7 +85,7 @@ export const gradesSection = {
       visual: 'assets/img/academic-coverage/grade-1.webp',
       iconMdi: 'mdi:teddy-bear',
       ctaLabel: 'Start early learning',
-      ctaHref: '#book-demo',
+      ctaHref: externalLinks.studentSignup,
     },
     {
       id: 'primary',
@@ -103,7 +104,7 @@ export const gradesSection = {
       visual: 'assets/img/academic-coverage/grade-2.webp',
       iconMdi: 'mdi:school-outline',
       ctaLabel: 'Find a primary tutor',
-      ctaHref: '#book-demo',
+      ctaHref: externalLinks.studentSignup,
     },
     {
       id: 'middle',
@@ -122,7 +123,7 @@ export const gradesSection = {
       visual: 'assets/img/academic-coverage/grade-3.webp',
       iconMdi: 'mdi:brain',
       ctaLabel: 'Explore middle school',
-      ctaHref: '#book-demo',
+      ctaHref: externalLinks.studentSignup,
     },
     {
       id: 'secondary',
@@ -141,7 +142,7 @@ export const gradesSection = {
       visual: 'assets/img/academic-coverage/grade-4.webp',
       iconMdi: 'mdi:clipboard-text-outline',
       ctaLabel: 'Start board prep',
-      ctaHref: '#book-demo',
+      ctaHref: externalLinks.studentSignup,
     },
     {
       id: 'senior',
@@ -160,7 +161,7 @@ export const gradesSection = {
       visual: 'assets/img/academic-coverage/grade-5.webp',
       iconMdi: 'mdi:school',
       ctaLabel: 'Get senior mentoring',
-      ctaHref: '#book-demo',
+      ctaHref: externalLinks.studentSignup,
     },
     {
       id: 'competitive',
@@ -179,7 +180,7 @@ export const gradesSection = {
       visual: 'assets/img/academic-coverage/grade-6.webp',
       iconMdi: 'mdi:trophy-outline',
       ctaLabel: 'Prepare for exams',
-      ctaHref: '#book-demo',
+      ctaHref: externalLinks.studentSignup,
     },
     {
       id: 'undergraduate',
@@ -198,7 +199,7 @@ export const gradesSection = {
       visual: 'assets/img/academic-coverage/grade-7.webp',
       iconMdi: 'mdi:school-outline',
       ctaLabel: 'Get undergraduate support',
-      ctaHref: '#book-demo',
+      ctaHref: externalLinks.studentSignup,
     },
     {
       id: 'postgraduate',
@@ -217,7 +218,7 @@ export const gradesSection = {
       visual: 'assets/img/academic-coverage/grade-8.webp',
       iconMdi: 'mdi:university-outline',
       ctaLabel: 'Get postgraduate support',
-      ctaHref: '#book-demo',
+      ctaHref: externalLinks.studentSignup,
     },
   ],
 }
@@ -409,7 +410,7 @@ export const enrichmentSection = {
     'Enrichment programmes that build creativity, logical thinking, and future-ready skills alongside regular academics.',
   classes: '!px-0 !py-0',
   ctaLabel: 'Find tutors',
-  ctaHref: '#book-demo',
+  ctaHref: externalLinks.studentSignup,
   categories: [
     {
       id: 'technology',
@@ -450,19 +451,19 @@ export const courseMatchingSection = {
   benefit:
     'Students receive personalised academic support designed around their learning needs and educational aspirations.',
   ctaLabel: 'Find your perfect tutor',
-  ctaHref: '#book-demo',
+  ctaHref: externalLinks.studentSignup,
   secondaryCtaLabel: 'Book Free Consultation',
-  secondaryCtaHref: '#book-demo',
+  secondaryCtaHref: externalLinks.studentSignup,
   supporting: 'Free demo · Verified mentors · Matched to board & goals',
   criteria: [
-    { label: 'Grade Level', description: 'Match mentors to the student’s current class and stage.', iconMdi: 'mdi:school' },
-    { label: 'Board', description: 'Align teaching with CBSE, ICSE, IB, IGCSE, or state boards.', iconMdi: 'mdi:certificate' },
-    { label: 'Subjects', description: 'Prioritise the subjects that need focused support.', iconMdi: 'mdi:book-open-page-variant' },
-    { label: 'Objectives', description: 'Clarify whether the focus is concepts, exams, or catch-up.', iconMdi: 'mdi:bullseye-arrow' },
-    { label: 'Format', description: 'Choose home, online, or hybrid learning that fits best.', iconMdi: 'mdi:monitor-cellphone' },
-    { label: 'Schedule', description: 'Fit sessions around school hours and family routines.', iconMdi: 'mdi:calendar-clock' },
-    { label: 'Goals', description: 'Connect tutoring to short-term and long-term outcomes.', iconMdi: 'mdi:flag' },
-    { label: 'Tutor Expertise', description: 'Pair with verified mentors strong in the required subjects.', iconMdi: 'mdi:account-star' },
+    { label: 'Grade Level', description: 'Match mentors to the current class.', iconMdi: 'mdi:school' },
+    { label: 'Board', description: 'CBSE, ICSE, IB, IGCSE & state boards.', iconMdi: 'mdi:certificate' },
+    { label: 'Subjects', description: 'Focus on subjects needing support.', iconMdi: 'mdi:book-open-page-variant' },
+    { label: 'Objectives', description: 'Concepts, exams, or catch-up focus.', iconMdi: 'mdi:bullseye-arrow' },
+    { label: 'Format', description: 'Home, online, or hybrid learning.', iconMdi: 'mdi:monitor-cellphone' },
+    { label: 'Schedule', description: 'Sessions that fit school & family.', iconMdi: 'mdi:calendar-clock' },
+    { label: 'Goals', description: 'Link tutoring to clear outcomes.', iconMdi: 'mdi:flag' },
+    { label: 'Tutor Expertise', description: 'Verified mentors strong in subject.', iconMdi: 'mdi:account-star' },
   ],
   flow: [
     {
@@ -539,10 +540,10 @@ export const academicFinalCta = {
   supporting: 'No commitment required · Background-verified tutors · Free demo session',
   primaryCta: {
     label: 'Book Free Demo',
-    href: '#book-demo',
+    href: externalLinks.studentSignup,
   },
   secondaryCta: {
     label: 'Find a Personalised Tutor',
-    href: '#book-demo',
+    href: externalLinks.studentSignup,
   },
 }

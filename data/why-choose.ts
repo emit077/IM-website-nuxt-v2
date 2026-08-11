@@ -2,6 +2,8 @@
  * Why Choose Indian Mentors — page content
  */
 
+import { externalLinks } from './external-links'
+
 export const whyChooseHero = {
   badge: 'Why Choose Indian Mentors',
   title:
@@ -9,7 +11,7 @@ export const whyChooseHero = {
   description:
     'Verified educators. Personalised learning. Transparent progress — built for every student.',
   headingId: 'why-choose-hero-heading',
-  primaryCta: { label: 'Find a Tutor', href: '#book-demo' },
+  primaryCta: { label: 'Find a Tutor', href: externalLinks.studentSignup },
   secondaryCta: { label: 'Talk to a Counsellor', href: 'tel:+917389563564' },
 }
 
@@ -314,7 +316,7 @@ export const whyChooseAdvantage = {
   ctas: [
     {
       label: 'Book Free Consultation',
-      href: '#book-demo',
+      href: externalLinks.studentSignup,
       variant: 'primary' as const,
       icon: 'mdi:calendar-outline',
     },
@@ -332,7 +334,7 @@ export const whyChooseConversionStrip = {
   description:
     "Book a demo and experience a personalised tutoring approach built around your child's needs, goals and preferred learning environment.",
   ctas: [
-    { label: 'Book Free Demo', href: '/contact', variant: 'secondary' as const },
+    { label: 'Book Free Demo', href: externalLinks.studentSignup, variant: 'secondary' as const },
     { label: 'Talk to Counsellor', href: 'tel:+917389563564', variant: 'secondary' as const },
   ],
 }

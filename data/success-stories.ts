@@ -1,3 +1,4 @@
+import { externalLinks } from './external-links'
 export type StoryAccent = 'blue' | 'emerald' | 'amber' | 'violet' | 'rose'
 
 export type StudentStory = {
@@ -53,7 +54,7 @@ export const successStoriesHero = {
   tagline: 'Structured Mentorship. Measurable Results. Trusted Nationwide.',
   intro:
     'Our credibility is built on real outcomes and authentic relationships — from every corner of our academic ecosystem.',
-  primaryCta: { label: 'Book Free Demo', href: '#book-demo' },
+  primaryCta: { label: 'Book Free Demo', href: externalLinks.studentSignup },
   secondaryCta: { label: 'Talk to Counsellor', href: 'tel:+917389563564' },
 } as const
 
@@ -373,7 +374,7 @@ export const successStoriesFinalCta = {
   badge: 'Your turn',
   title: 'Ready to Become Our Next Success Story?',
   description: "Let's begin your personalised learning journey today.",
-  primaryCta: { label: 'Book Free Demo', href: '#book-demo' },
+  primaryCta: { label: 'Book Free Demo', href: externalLinks.studentSignup },
   secondaryCta: { label: 'Talk to Counsellor', href: 'tel:+917389563564' },
   closing: 'Indian Mentors – Where Academic Success Stories Are Built Every Day.',
 } as const

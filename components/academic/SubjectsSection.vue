@@ -3,6 +3,7 @@ import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { subjectsSection, type SubjectItem, type SubjectStream } from '~/data/academic-coverage'
+import { externalLinks } from '~/data/external-links'
 
 /** Desktop bento: 7-5 / 4-4-4 / 5-7 */
 const SPAN_PATTERN = [7, 5, 4, 4, 4, 5, 7] as const
@@ -175,7 +176,7 @@ function selectSubject(subject: string, categoryId: SubjectStream['id']) {
             {{ subjectsSection.footerNote }}
           </p>
         </div>
-        <a href="#book-demo" class="theme-btn-lime bento-cta__btn">
+        <a :href="externalLinks.studentSignup" class="theme-btn-lime bento-cta__btn">
           {{ subjectsSection.detailCta }}
           <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
         </a>

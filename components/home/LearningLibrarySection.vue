@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import { externalLinks } from '~/data/external-links'
 
 type GradeId =
   | '12pass'
@@ -436,7 +437,7 @@ const headerContent = {
           </div>
         </div>
         <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:grid-rows-2">
-          <a href="#book-demo"
+          <a :href="externalLinks.studentSignup"
             class="group relative flex min-h-[280px] flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 via-blue-500 to-sky-400 p-6 text-white shadow-lg shadow-blue-600/30 ring-1 ring-white/20 transition hover:brightness-[1.03] hover:shadow-xl sm:col-span-2 sm:min-h-[260px] lg:col-span-1 lg:row-span-2 lg:min-h-0"
             v-motion :initial="{ opacity: 0, y: 12 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 80 } }">
@@ -470,7 +471,7 @@ const headerContent = {
               </svg>
             </span>
           </a>
-          <a v-for="(card, i) in gridCards" :key="`${selected}-${card.id}`" href="#book-demo"
+          <a v-for="(card, i) in gridCards" :key="`${selected}-${card.id}`" :href="externalLinks.studentSignup"
             class="group flex flex-col rounded-2xl border border-slate-200/90 bg-white p-5 shadow-[0_2px_16px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md"
             v-motion :initial="{ opacity: 0, y: 10 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: 120 + i * 70 } }">

@@ -7,6 +7,7 @@
     "build:static": "nuxt generate",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "amplify:build": "bash ./scripts/amplify-build.sh",
     "deploy": "bash ./deploye.sh",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"

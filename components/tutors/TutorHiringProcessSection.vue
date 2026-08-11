@@ -4,6 +4,7 @@ import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import { hiringSteps, hiringProcessSection, type HiringStep } from '~/data/tutors'
+import { externalLinks } from '~/data/external-links'
 
 const accentClasses: Record<HiringStep['accent'], { tile: string; number: string; bar: string }> = {
   violet: { tile: 'bg-violet-100', number: 'text-violet-700', bar: 'bg-violet-600' },
@@ -143,7 +144,7 @@ function rippleHandler(e: MouseEvent) {
               <p class="mt-1.5 font-display text-lg font-bold text-white sm:text-xl">
                 From profile to first session — guided every step
               </p>
-              <a href="#tutor-register"
+              <a :href="externalLinks.tutorRegistration"
                 class="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-white px-4 py-2.5 text-[13px] font-semibold text-blue-700 transition hover:bg-blue-50">
                 Start the Hiring Process
                 <IconArrowRight class="h-4 w-4" />

@@ -363,10 +363,9 @@ function isLightText(tone: StepTone) {
   font-weight: 500;
   line-height: 1.35;
   color: #64748b;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .param-chip--purple .param-chip__icon {

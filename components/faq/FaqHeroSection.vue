@@ -2,6 +2,7 @@
 import SecondaryHeroLayout from '~/components/ui/SecondaryHeroLayout.vue'
 import type { SecondaryHeroContent } from '~/components/ui/SecondaryHeroLayout.vue'
 import { faqHero, faqCategoryLinks } from '~/data/faq'
+import { externalLinks } from '~/data/external-links'
 
 const secondaryHero: SecondaryHeroContent = {
   badge: faqHero.badge,
@@ -10,7 +11,7 @@ const secondaryHero: SecondaryHeroContent = {
   caption: faqHero.supporting,
   actionBtns: [
     { label: 'Browse Topics', href: '#faq-topics' },
-    { label: 'Book Free Demo', href: '#book-demo' },
+    { label: 'Book Free Demo', href: externalLinks.studentSignup },
   ],
   ticker: faqCategoryLinks.map((item) => item.title),
   headingId: 'faq-hero-heading',

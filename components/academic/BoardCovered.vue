@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import { externalLinks } from '~/data/external-links'
 
 type BoardTone = 'violet' | 'amber' | 'teal' | 'rose' | 'sky' | 'indigo'
 
@@ -202,7 +203,7 @@ function markLogoFailed(id: string) {
             </div>
           </div>
 
-          <a href="#book-demo" class="btn-primary ripple shrink-0 !px-6 !py-3 text-sm">
+          <a :href="externalLinks.studentSignup" class="btn-primary ripple shrink-0 !px-6 !py-3 text-sm">
             Talk to us
             <Icon icon="solar:arrow-right-linear"
               class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />

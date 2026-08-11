@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import CarouselLayout from '~/components/ui/CarouselLayout.vue'
+import { externalLinks } from '~/data/external-links'
 
 export interface BannerSlide {
   /** Public URL, e.g. `/assets/img/banner/banner-1.png` */
@@ -34,7 +35,7 @@ const props = withDefaults(
       {
         image: '/assets/img/banner/banner-1.png',
         mobileImage: '/assets/img/banner/mobile-banner-1.png',
-        link: '/#book-demo',
+        link: externalLinks.studentSignup,
         label: 'Book a free demo — verified tutors',
       },
       {

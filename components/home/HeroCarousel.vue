@@ -6,6 +6,7 @@ import HeroTickerStrip from '~/components/ui/HeroTickerStrip.vue'
 import IconBook from '~/components/icons/IconBook.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 import IconAcademic from '~/components/icons/IconAcademic.vue'
+import { externalLinks } from '~/data/external-links'
 
 const props = withDefaults(
   defineProps<{
@@ -31,7 +32,7 @@ const bookDemoBtn = {
   variant: 'primary' as const,
   label: 'Book Free Demo',
   icon: IconCalendar,
-  link: '#book-demo',
+  link: externalLinks.studentSignup,
 }
 const trustStats = [
   {
@@ -130,7 +131,7 @@ const heroScreens: HeroContent[] = [
         variant: 'primary',
         label: 'Become A Tutor',
         icon: IconAcademic,
-        link: '#book-demo',
+        link: externalLinks.tutorRegistration,
       },
       {
         variant: 'secondary',

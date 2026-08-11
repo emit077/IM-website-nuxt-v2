@@ -1,3 +1,5 @@
+import { externalLinks } from './external-links'
+
 type ServiceItem = {
   id: string
   img: string
@@ -36,7 +38,7 @@ export const tutoringServicesSection = {
     'Our tutoring services are designed to provide students with the right combination of academic expertise, personal attention, flexibility, and ongoing support.',
   consultationCta: {
     label: 'Book Free Consultation',
-    href: '#book-demo',
+    href: externalLinks.studentSignup,
   },
 }
 
@@ -59,7 +61,7 @@ export const tutoringServices: ServiceItem[] = [
     coverage: ['CBSE', 'ICSE', 'IGCSE', 'IB', 'State Boards', 'Other curricula'],
     keyBenefit:
       'Focused face-to-face attention in a personalised learning environment designed around each student’s academic needs.',
-    cta: { label: 'Find a Home Tutor', href: '#book-demo' },
+    cta: { label: 'Find a Home Tutor', href: externalLinks.studentSignup },
   },
   {
     id: 'online-tutors',
@@ -79,7 +81,7 @@ export const tutoringServices: ServiceItem[] = [
     coverage: ['School subjects', 'Board exams', 'Competitive exams', 'Int’l curricula', 'Skills'],
     keyBenefit:
       'Access personalised tutoring without geographical limits through structured, interactive digital learning.',
-    cta: { label: 'Find an Online Tutor', href: '#book-demo' },
+    cta: { label: 'Find an Online Tutor', href: externalLinks.studentSignup },
   },
   {
     id: 'shadow-tutors',
@@ -98,7 +100,7 @@ export const tutoringServices: ServiceItem[] = [
     bestSuitedFor: ['School-based support', 'Attention & organisation', 'Classroom assistance'],
     keyBenefit:
       'Personalised support that helps students participate more confidently and effectively in school.',
-    cta: { label: 'Explore Shadow Tutor Support', href: '#book-demo' },
+    cta: { label: 'Explore Shadow Tutor Support', href: externalLinks.studentSignup },
   },
   {
     id: 'travel-tutors',
@@ -117,7 +119,7 @@ export const tutoringServices: ServiceItem[] = [
     bestSuitedFor: ['Travelling families', 'Relocating students', 'Extended travel'],
     keyBenefit:
       'Students continue their academic journey even when location or daily routines change.',
-    cta: { label: 'Find a Travel Tutor', href: '#book-demo' },
+    cta: { label: 'Find a Travel Tutor', href: externalLinks.studentSignup },
   },
   {
     id: 'live-in-tutors',
@@ -136,7 +138,7 @@ export const tutoringServices: ServiceItem[] = [
     bestSuitedFor: ['Intensive support', 'Board exam prep', 'Daily study routines'],
     keyBenefit:
       'Consistent academic guidance and structured study support throughout the daily learning routine.',
-    cta: { label: 'Explore Live-In Tutor Services', href: '#book-demo' },
+    cta: { label: 'Explore Live-In Tutor Services', href: externalLinks.studentSignup },
   },
   {
     id: 'home-schooling',
@@ -156,7 +158,7 @@ export const tutoringServices: ServiceItem[] = [
     coverage: ['CBSE', 'ICSE', 'State Boards', 'Cambridge', 'IB', 'Int’l Curricula'],
     keyBenefit:
       'Create a structured, personalised learning environment while keeping academic direction and continuity.',
-    cta: { label: 'Explore Home Schooling Support', href: '#book-demo' },
+    cta: { label: 'Explore Home Schooling Support', href: externalLinks.studentSignup },
   },
   {
     id: 'special-educators',
@@ -185,7 +187,7 @@ export const tutoringServices: ServiceItem[] = [
     ],
     keyBenefit:
       'Learning support designed around each student’s strengths, challenges, pace, and educational needs.',
-    cta: { label: 'Find a Special Educator', href: '#book-demo' },
+    cta: { label: 'Find a Special Educator', href: externalLinks.studentSignup },
   },
   {
     id: 'custom-tutor',
@@ -216,7 +218,7 @@ export const tutoringServices: ServiceItem[] = [
       'Skill development',
       'International curriculum support',
     ],
-    cta: { label: 'Discuss Your Requirement', href: '#book-demo' },
+    cta: { label: 'Discuss Your Requirement', href: externalLinks.studentSignup },
   },
 ]
 
@@ -380,8 +382,8 @@ export const servicesConversionStrip = {
   description:
     'Connect with Indian Mentors to explore personalised tutoring services designed around your child\'s academic needs, learning goals, and preferred learning environment.',
   ctas: [
-    { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
-    { label: 'Find a Tutor', href: '#book-demo', iconMdi: 'mdi:account-search-outline' },
+    { label: 'Book Free Demo', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline', primary: true },
+    { label: 'Find a Tutor', href: externalLinks.studentSignup, iconMdi: 'mdi:account-search-outline' },
     { label: 'Talk to Counsellor', href: 'tel:+917389563564', iconMdi: 'mdi:phone-outline' },
   ],
 }

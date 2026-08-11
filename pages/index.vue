@@ -15,10 +15,11 @@ import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import PartnerProgrammeSection from '~/components/home/PartnerProgrammeSection.vue'
 import HeroCarousel from '~/components/home/HeroCarousel.vue'
 import WhyChooseUs from '~/components/ui/shared/WhyChooseUs.vue'
+import { externalLinks } from '~/data/external-links'
 
 const homeCtas = [
-  { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
-  { label: 'Become a Tutor', href: '#become-tutor', iconMdi: 'mdi:account-plus-outline' },
+  { label: 'Book Free Demo', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline', primary: true },
+  { label: 'Become a Tutor', href: externalLinks.tutorRegistration, iconMdi: 'mdi:account-plus-outline' },
 ] as const
 
 useSeoMeta({

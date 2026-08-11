@@ -2,6 +2,7 @@
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
+import { externalLinks } from '~/data/external-links'
 
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
@@ -52,7 +53,7 @@ Provides instant visibility of the student's academic activities and tutoring sc
 
             <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap" v-motion :initial="{ opacity: 0, y: 10 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 120 } }">
-              <a href="#book-demo" class="btn-primary ripple group w-full sm:w-auto" @mousemove="rippleHandler">
+              <a :href="externalLinks.studentSignup" class="btn-primary ripple group w-full sm:w-auto" @mousemove="rippleHandler">
                 <IconCalendar class="h-4 w-4 shrink-0 opacity-95" />
                 Book Free Demo
                 <IconArrowRight

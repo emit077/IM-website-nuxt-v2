@@ -1,3 +1,5 @@
+import { externalLinks } from './external-links'
+
 export type TutorPlan = {
   id: 'free' | 'premium'
   iconMdi: string
@@ -30,8 +32,8 @@ export const heroContent = {
     'At Indian Mentors, tutors are not just instructors — they are mentors shaping the academic journeys of students across India. We connect qualified educators with verified student opportunities, structured operational support, and transparent systems — so you can focus on teaching while we handle coordination and administration.',
   audiences: ['School Teachers', 'Subject Experts', 'Home Tutors', 'Academic Professionals'],
   contentClass: '!px-0 !py-0 mx-auto max-w-3xl text-center',
-  primaryCta: { label: 'Join as a Teaching Partner', href: '#tutor-register' },
-  secondaryCta: { label: 'Register as a Tutor', href: '#tutor-register' },
+  primaryCta: { label: 'Join as a Teaching Partner', href: externalLinks.tutorRegistration },
+  secondaryCta: { label: 'Register as a Tutor', href: externalLinks.tutorRegistration },
 }
 
 export const heroHighlights = [
@@ -100,7 +102,7 @@ export const brochureCard = {
     'Tutor earnings and payout structure',
     'Professional standards and expectations',
   ],
-  cta: { label: 'Download Tutors Brochure', href: '#tutor-register' },
+  cta: { label: 'Download Tutors Brochure', href: externalLinks.tutorRegistration },
 }
 
 export const landingCard = {
@@ -137,7 +139,7 @@ export const tutorPlans: TutorPlan[] = [
       'Limited student lead access',
       'Standard support during working hours',
     ],
-    cta: { label: 'Create Free Tutor Profile', href: '#tutor-register' },
+    cta: { label: 'Create Free Tutor Profile', href: externalLinks.tutorRegistration },
     variant: 'surface',
   },
   {
@@ -160,7 +162,7 @@ export const tutorPlans: TutorPlan[] = [
       'Dedicated tutor support',
       'Faster payouts and financial tracking',
     ],
-    cta: { label: 'View Tutor Registration Plans', href: '#tutor-register' },
+    cta: { label: 'View Tutor Registration Plans', href: externalLinks.tutorRegistration },
     variant: 'featured',
   },
 ]
@@ -181,7 +183,7 @@ export const hiringSteps: HiringStep[] = [
     accent: 'violet',
     cta: {
       label: 'Register Now',
-      href: '#tutor-register',
+      href: externalLinks.tutorRegistration,
       iconMdi: 'mdi:account-plus-outline',
     },
   },
@@ -223,7 +225,7 @@ export const complianceSection = {
   note:
     'Continuous monitoring helps maintain high-quality teaching standards and professional accountability — long after onboarding.',
   classes: '!px-0 !py-0',
-  cta: { label: 'View Compliance Standards', href: '#tutor-register' },
+  cta: { label: 'View Compliance Standards', href: externalLinks.tutorRegistration },
 }
 
 export const complianceChecks = [
@@ -339,7 +341,7 @@ export const earningsSection = {
     'Mentor compensation is determined by subject expertise, academic level, and teaching mode. Higher classes and specialised subjects offer enhanced earning potential.',
   classes: '!px-0 !py-0',
   payoutTitle: 'Payout Features',
-  cta: { label: 'Start Earning as a Tutor', href: '#tutor-register' },
+  cta: { label: 'Start Earning as a Tutor', href: externalLinks.tutorRegistration },
   driversLabel: 'Earnings grow with',
   drivers: [
     { iconMdi: 'mdi:book-open-page-variant-outline', label: 'Subject expertise' },
@@ -487,6 +489,6 @@ export const finalCta = {
   title: 'Start Your Journey as a Tutor',
   description:
     'If you are passionate about teaching and mentoring students, become part of the professional tutor community at Indian Mentors. Join thousands of educators helping students succeed through structured, personalised tutoring.',
-  primaryCta: { label: 'Register as a Tutor', href: '#tutor-register' },
-  secondaryCta: { label: 'Join as a Teaching Partner', href: '#tutor-register' },
+  primaryCta: { label: 'Register as a Tutor', href: externalLinks.tutorRegistration },
+  secondaryCta: { label: 'Join as a Teaching Partner', href: externalLinks.tutorRegistration },
 }

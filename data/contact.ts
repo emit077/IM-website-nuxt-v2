@@ -1,4 +1,5 @@
 import type { TrustIndicatorItem } from '~/components/ui/TrustIndicatorsLayout.vue'
+import { externalLinks } from './external-links'
 
 export type PhoneContact = {
   display: string
@@ -619,7 +620,7 @@ export const contactGetStarted = {
   description:
     'Experience structured mentorship designed to help students achieve confidence, clarity, and academic success.',
   ctas: [
-    { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+    { label: 'Book Free Demo', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline', primary: true },
     { label: 'Talk to Counsellor', href: `tel:${phoneSupport.number.tel}`, iconMdi: 'mdi:account-voice' },
   ],
 } as const
@@ -629,7 +630,7 @@ export const contactCTA2 = {
   description:
     'Whether you teach, partner locally, or hire educators — explore the path that fits your goals.',
   ctas: [
-    { label: 'Join as a Tutor', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+    { label: 'Join as a Tutor', href: externalLinks.tutorRegistration, iconMdi: 'mdi:calendar-check-outline', primary: true },
     { label: 'Explore Partnership', href: `tel:${phoneSupport.number.tel}`, iconMdi: 'mdi:account-voice' },
     { label: 'Hire Educators', href: `tel:${phoneSupport.number.tel}`, iconMdi: 'mdi:account-voice' },
   ],

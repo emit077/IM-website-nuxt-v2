@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { onClickOutside } from '@vueuse/core'
+import { externalLinks } from '~/data/external-links'
 
 const scrolled = ref(false)
 const mobileOpen = ref(false)
@@ -28,11 +29,9 @@ const navMenus = [
       { label: 'Why Choose Us', href: '/why-choose' },
       { label: 'Students & Parents', href: '/student-parent' },
       { label: 'Academic Coverage', href: '/academic-coverage' },
-      { label: 'How it Works', href: '/#how-it-works' },
-      { label: 'Learning Library', href: '/#learning-library' },
       { label: 'Success Stories', href: '/success-stories' },
-      { label: 'Partner Programme', href: '/#partner-programme' },
-      { label: 'Hire for Institute', href: '/#institute-hiring' },
+      { label: 'Partner Programme', href: '/channel-partner' },
+      { label: 'Hire for Institute', href: '/institutions' },
       { label: 'Careers', href: '/careers' },
       { label: 'FAQs', href: '/faq' },
     ],
@@ -106,17 +105,17 @@ onUnmounted(() => {
         </div>
 
         <div class="flex shrink-0 items-center gap-3">
-          <a href="#register" :class="[
+          <a :href="externalLinks.studentSignup" :class="[
             'font-medium transition',
             isSecondaryHeroActive ? 'hover:text-blue-700' : 'hover:text-blue-100',
           ]">Book a Tutor</a>
           <span class="h-3.5 w-px" :class="isSecondaryHeroActive ? 'bg-slate-300' : 'bg-white/30'" aria-hidden="true" />
-          <a href="/tutors" :class="[
+          <a :href="externalLinks.tutorRegistration" :class="[
             'font-medium transition',
             isSecondaryHeroActive ? 'hover:text-blue-700' : 'hover:text-blue-100',
           ]">Become a Tutor</a>
           <span class="h-3.5 w-px" :class="isSecondaryHeroActive ? 'bg-slate-300' : 'bg-white/30'" aria-hidden="true" />
-          <a href="#login" :class="[
+          <a :href="externalLinks.login" :class="[
             'font-medium transition',
             isSecondaryHeroActive ? 'hover:text-blue-700' : 'hover:text-blue-100',
           ]">Login</a>
@@ -185,7 +184,7 @@ onUnmounted(() => {
           </li>
         </ul>
         <div class="hidden shrink-0 lg:block">
-          <a href="#book-demo" :class="[
+          <a :href="externalLinks.studentSignup" :class="[
             'inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold shadow-sm transition',
             isSecondaryHeroActive
               ? 'bg-white text-[var(--theme-blue,#2a2fff)] hover:bg-white/90'
@@ -274,19 +273,19 @@ onUnmounted(() => {
 
           <div class="mt-3 flex flex-col gap-2 border-t pt-3"
             :class="isSecondaryHeroActive ? 'border-white/20' : 'border-slate-200'">
-            <a href="#login" :class="[
+            <a :href="externalLinks.login" :class="[
               '!w-full text-sm',
               isSecondaryHeroActive
                 ? 'inline-flex items-center justify-center rounded-2xl border border-white/40 bg-transparent px-7 py-3.5 font-semibold text-white transition hover:bg-white/10'
                 : 'btn-secondary',
             ]" @click="closeMenus">Login</a>
-            <a href="/tutors" :class="[
+            <a :href="externalLinks.tutorRegistration" :class="[
               '!w-full text-sm',
               isSecondaryHeroActive
                 ? 'inline-flex items-center justify-center rounded-2xl border border-white/40 bg-transparent px-7 py-3.5 font-semibold text-white transition hover:bg-white/10'
                 : 'btn-secondary',
             ]" @click="closeMenus">Become a Tutor</a>
-            <a href="#book-demo" :class="[
+            <a :href="externalLinks.studentSignup" :class="[
               '!w-full text-sm',
               isSecondaryHeroActive
                 ? 'inline-flex items-center justify-center rounded-2xl bg-white px-7 py-3.5 font-semibold text-[var(--theme-blue,#2a2fff)] shadow-sm transition hover:bg-white/90'

@@ -2,10 +2,11 @@
 import GradesHeroSection from '~/components/grades/GradesHeroSection.vue'
 import GradesProgramsSection from '~/components/grades/GradesProgramsSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import { externalLinks } from '~/data/external-links'
 
 const gradesCtas = [
-  { label: 'Find a Personalised Tutor', href: '#book-demo', iconMdi: 'mdi:account-search-outline' },
-  { label: 'Book a Free Demo Session', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+  { label: 'Find a Personalised Tutor', href: externalLinks.studentSignup, iconMdi: 'mdi:account-search-outline' },
+  { label: 'Book a Free Demo Session', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline', primary: true },
 ] as const
 
 useSeoMeta({

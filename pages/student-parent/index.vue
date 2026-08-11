@@ -8,9 +8,10 @@ import SubscriptionComparisonSection from '~/components/student-parent/Subscript
 import LearningStepsSection from '~/components/student-parent/LearningStepsSection.vue'
 import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import { externalLinks } from '~/data/external-links'
 
 const studentParentCtas = [
-  { label: 'Book Free Demo Class', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+  { label: 'Book Free Demo Class', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline', primary: true },
   { label: 'Call Us', href: 'tel:+917389563564', iconMdi: 'mdi:phone-outline' },
   { label: 'WhatsApp', href: 'https://wa.me/917389563564', iconMdi: 'mdi:whatsapp', target: '_blank' },
 ] as const

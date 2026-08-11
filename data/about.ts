@@ -2,6 +2,8 @@
  * Static seed data shaped for future CMS / API replacement.
  * Database: ABOUT_TIMELINE
  */
+import { externalLinks } from './external-links'
+
 export type TimelineEntry = {
   timeline_id: number
   year: string
@@ -640,7 +642,7 @@ export const aboutPartnersCta = {
   },
   secondaryCta: {
     label: 'Join as a Tutor',
-    href: '/tutors',
+    href: externalLinks.tutorRegistration,
   },
   tertiaryCta: {
     label: 'Hire Educators',

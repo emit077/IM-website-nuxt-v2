@@ -3,6 +3,7 @@ import { Icon } from '@iconify/vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 import { gradesPageIntro } from '~/components/academic/gradesData'
+import { externalLinks } from '~/data/external-links'
 
 function rippleHandler(e: MouseEvent) {
   const target = e.currentTarget as HTMLElement
@@ -76,7 +77,7 @@ function rippleHandler(e: MouseEvent) {
           :initial="{ opacity: 0, y: 16 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 450 } }"
         >
-          <a href="#book-demo" class="btn-primary ripple group w-full sm:w-auto" @mousemove="rippleHandler">
+          <a :href="externalLinks.studentSignup" class="btn-primary ripple group w-full sm:w-auto" @mousemove="rippleHandler">
             <IconCalendar class="h-4 w-4 shrink-0 opacity-95" />
             Book Free Demo
             <IconArrowRight class="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />

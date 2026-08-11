@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import { externalLinks } from '~/data/external-links'
 
 const phoneNumber = '+91 7389563564'
 const phoneTel = '917389563564'
@@ -57,7 +58,7 @@ const navLinks = [
   { label: 'Partner investment model', to: '/channel-partner/investment' },
   { label: 'Platform access includes', to: '/channel-partner/platform-access' },
   { label: 'Hire for institute', to: '/institutions' },
-  { label: 'Join as a tutor', to: '/tutors' },
+  { label: 'Join as a tutor', to: externalLinks.tutorRegistration },
   { label: 'Careers', to: '/careers' },
   { label: 'FAQs', to: '/faq' },
 ] as const

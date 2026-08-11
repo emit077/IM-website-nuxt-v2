@@ -2,13 +2,14 @@
 import SecondaryHeroLayout from '~/components/ui/SecondaryHeroLayout.vue'
 import type { SecondaryHeroContent } from '~/components/ui/SecondaryHeroLayout.vue'
 import { servicesHero } from '~/data/services'
+import { externalLinks } from '~/data/external-links'
 
 const secondaryHero: SecondaryHeroContent = {
   badge: 'Our Services',
   title: 'Personalised Learning Solutions for Every Student',
   description: servicesHero.description,
   actionBtns: [
-    { label: 'Book Free Consultation', href: '#book-demo', variant: 'theme-secondary' },
+    { label: 'Book Free Consultation', href: externalLinks.studentSignup, variant: 'theme-secondary' },
     { label: 'Explore Services', href: '#tutoring-services', variant: 'secondary' },
   ],
   ticker: [

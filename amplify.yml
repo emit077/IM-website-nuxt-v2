@@ -1,0 +1,19 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm use 20 || nvm use 18
+        - node -v
+        - npm ci
+    build:
+      commands:
+        - chmod +x ./scripts/amplify-build.sh
+        - ./scripts/amplify-build.sh
+  artifacts:
+    baseDirectory: .output/public
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*

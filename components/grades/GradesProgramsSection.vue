@@ -4,6 +4,7 @@ import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import IconCalendar from '~/components/icons/IconCalendar.vue'
 import { curriculumStages, stageHeaderContent } from '~/components/academic/gradesData'
+import { externalLinks } from '~/data/external-links'
 </script>
 
 <template>
@@ -152,7 +153,7 @@ import { curriculumStages, stageHeaderContent } from '~/components/academic/grad
             {{ stage.closingDescription }}
           </p>
           <div class="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="#book-demo"
+            <a :href="externalLinks.studentSignup"
               class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 sm:w-auto">
               <IconCalendar class="h-4 w-4 shrink-0" />
               Book Free Demo

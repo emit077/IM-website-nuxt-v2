@@ -11,9 +11,10 @@ import AboutComparisonSection from '~/components/about/AboutComparisonSection.vu
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import { aboutPartnersCta } from '~/data/about'
+import { externalLinks } from '~/data/external-links'
 
 const aboutCtas = [
-  { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline', primary: true },
+  { label: 'Book Free Demo', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline', primary: true },
   { label: 'Explore Academic Coverage', href: '/academic-coverage', iconMdi: 'mdi:book-open-page-variant-outline' },
 ] as const
 

@@ -1,3 +1,4 @@
+import { externalLinks } from './external-links'
 export const studentParentHero = {
   brand: 'Students & Parents',
   titleLine1: 'Personalised learning with measurable progress',
@@ -5,7 +6,7 @@ export const studentParentHero = {
     'One-to-one teaching, structured academic planning, and transparent tracking — a complete, dependable learning experience for every family.',
   primaryCta: {
     label: 'Book Free Demo',
-    href: '#book-demo',
+    href: externalLinks.studentSignup,
   },
   secondaryCta: {
     label: 'View Plans',
@@ -97,7 +98,7 @@ export const erpDashboardSection = {
 <b>Parents in the loop. Students organised.</b><br>
 No chasing tutors for updates. See what’s done, what’s next, and where to improve.`,
   classes: 'mb-0 mt-0 !px-0 !py-0',
-  ctaPrimary: { label: 'Book Free Demo', href: '#book-demo' },
+  ctaPrimary: { label: 'Book Free Demo', href: externalLinks.studentSignup },
   ctaSecondary: { label: 'Explore Plans', href: '#plan-comparison' },
   previewLabel: 'Live parent view',
   previewStudent: 'Aarav · Class 9 · CBSE',
@@ -184,7 +185,7 @@ export const enrollmentSteps: EnrollmentStep[] = [
     highlight: true,
     engagement: {
       label: 'Book free demo',
-      href: '#book-demo',
+      href: externalLinks.studentSignup,
       iconMdi: 'mdi:calendar-plus',
     },
   },
@@ -302,7 +303,7 @@ export const enrollmentPlans: EnrollmentPlan[] = [
       'Parents evaluating tutor compatibility',
       'Families considering personalised tutoring options',
     ],
-    cta: { label: 'Create Free Student Profile', href: '#book-demo' },
+    cta: { label: 'Create Free Student Profile', href: externalLinks.studentSignup },
     variant: 'surface',
   },
   {
@@ -337,7 +338,7 @@ export const enrollmentPlans: EnrollmentPlan[] = [
       'Students studying multiple subjects',
       'Families looking for a structured tutoring experience',
     ],
-    cta: { label: 'Upgrade to Premium Student Profile', href: '#book-demo' },
+    cta: { label: 'Upgrade to Premium Student Profile', href: externalLinks.studentSignup },
     variant: 'featured',
   },
 ]
@@ -524,7 +525,7 @@ export const subscriptionPlans: SubscriptionPlan[] = [
       'Ticket-based support (working hours)',
     ],
     forParents: 'Cost-effective, stress-free for primary & middle school learners. Covers homework + 1–4 subjects with monthly attendance updates.',
-    cta: { label: 'Book Demo', href: '#book-demo' },
+    cta: { label: 'Book Demo', href: externalLinks.studentSignup },
     accent: 'amber',
   },
   {
@@ -555,7 +556,7 @@ export const subscriptionPlans: SubscriptionPlan[] = [
       'Priority support (extended hours)',
     ],
     forParents: 'Balanced extended learning for middle/high school with practice, revision, and subject-specific performance reports.',
-    cta: { label: 'Book Demo', href: '#book-demo' },
+    cta: { label: 'Book Demo', href: externalLinks.studentSignup },
     accent: 'blue',
   },
   {
@@ -586,7 +587,7 @@ export const subscriptionPlans: SubscriptionPlan[] = [
       '24/7 premium support (WhatsApp, Phone, Email)',
     ],
     forParents: 'Comprehensive all-subject learning for Boards, JEE, NEET & competitive exams with weekly reports and performance analytics.',
-    cta: { label: 'Book Demo', href: '#book-demo' },
+    cta: { label: 'Book Demo', href: externalLinks.studentSignup },
     accent: 'violet',
   },
 ]

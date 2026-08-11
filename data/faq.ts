@@ -1,3 +1,4 @@
+import { externalLinks } from './external-links'
 export type FaqItem = {
   id: string
   question: string
@@ -256,7 +257,7 @@ export const faqCta = {
     'Get expert guidance on tutor matching, subject planning, and enrollment — tailored to your student\'s goals.',
   ctas: [
     { label: 'Call Support', href: 'tel:+917389563564', iconMdi: 'mdi:phone-outline' },
-    { label: 'Book Free Demo', href: '#book-demo', iconMdi: 'mdi:calendar-check-outline' },
+    { label: 'Book Free Demo', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline' },
     { label: 'Contact Us', href: '/contact', iconMdi: 'mdi:email-outline' },
   ],
 } as const
