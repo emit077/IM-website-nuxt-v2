@@ -1,8 +1,32 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import TrustIndicators from '~/components/ui/TrustIndicatorsLayout.vue'
-import { contactHero, contactHeroCollageBottom, contactHeroCollageTop, contactHeroTrustStats } from '~/data/contact'
+import { contactHero, contactHeroCollageBottom, contactHeroCollageTop, contactHeroTrustStats, phoneSupport } from '~/data/contact'
+
+const { data: primaryContact } = await useWebsitePrimaryContact()
+const { data: popularCities } = await useWebsiteCities({ isPopular: true })
+
+const primaryCtaHref = computed(
+  () => `tel:${primaryContact.value?.phone.tel ?? phoneSupport.number.tel}`,
+)
+
+const collageTop = computed(() => {
+  const fromApi = (popularCities.value ?? [])
+    .filter((city) => city.image)
+    .slice(0, 2)
+    .map((city) => ({ id: city.id, image: city.image, label: city.label }))
+  return fromApi.length === 2 ? fromApi : contactHeroCollageTop
+})
+
+const collageBottom = computed(() => {
+  const fromApi = (popularCities.value ?? [])
+    .filter((city) => city.image)
+    .slice(2, 6)
+    .map((city) => ({ id: city.id, image: city.image, label: city.label }))
+  return fromApi.length === 4 ? fromApi : contactHeroCollageBottom
+})
 
 const heroContent = {
   badge: "India's #1 Verified Tutor Platform",
@@ -27,7 +51,7 @@ const heroContent = {
           <div class="flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
             :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }">
             <ActionBtn variant="primary" :label="contactHero.primaryCta.label" icon="mdi:phone-outline"
-              :href="contactHero.primaryCta.href" />
+              :href="primaryCtaHref" />
             <ActionBtn variant="secondary" :label="contactHero.secondaryCta.label" icon="mdi:map-marker-radius-outline"
               :href="contactHero.secondaryCta.href"
               icon-wrapper-class="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white" />
@@ -42,9 +66,9 @@ const heroContent = {
             class="relative overflow-hidden rounded-[1.35rem] border border-slate-200/70 bg-slate-100/80 p-2 shadow-[0_20px_50px_-24px_rgba(37,99,235,0.22)] sm:p-2.5">
             <div class="flex flex-col gap-2 sm:gap-2.5">
               <div class="grid grid-cols-2 gap-2 sm:gap-2.5">
-                <div v-for="city in contactHeroCollageTop" :key="city.id"
+                <div v-for="city in collageTop" :key="city.id"
                   class="group relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-200">
-                  <img :src="usePublicAsset(`/assets/img/city-img/${city.image}.png`)"
+                  <img :src="city.image.startsWith('http') ? city.image : usePublicAsset(`/assets/img/city-img/${city.image}.png`)"
                     :alt="`${city.label} tutoring services`"
                     class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -58,9 +82,9 @@ const heroContent = {
               </div>
 
               <div class="grid grid-cols-4 gap-2 sm:gap-2.5">
-                <div v-for="city in contactHeroCollageBottom" :key="city.id"
+                <div v-for="city in collageBottom" :key="city.id"
                   class="group relative aspect-square overflow-hidden rounded-xl bg-slate-200">
-                  <img :src="usePublicAsset(`/assets/img/city-img/${city.image}.png`)"
+                  <img :src="city.image.startsWith('http') ? city.image : usePublicAsset(`/assets/img/city-img/${city.image}.png`)"
                     :alt="`${city.label} tutoring services`"
                     class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
                     loading="lazy" decoding="async" />

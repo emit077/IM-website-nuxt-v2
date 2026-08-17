@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import CarouselLayout from '~/components/ui/CarouselLayout.vue'
 import { externalLinks } from '~/data/external-links'
 
@@ -13,6 +13,21 @@ export interface BannerSlide {
   /** Accessible name when the slide is a link (recommended for SEO and screen readers). */
   label?: string
 }
+
+const fallbackSlides: BannerSlide[] = [
+  {
+    image: '/assets/img/banner/banner-1.png',
+    mobileImage: '/assets/img/banner/mobile-banner-1.png',
+    link: externalLinks.studentSignup,
+    label: 'Book a free demo — verified tutors',
+  },
+  {
+    image: '/assets/img/banner/banner-2.png',
+    mobileImage: '/assets/img/banner/mobile-banner-2.png',
+    link: '/services',
+    label: 'Explore tutoring services',
+  },
+]
 
 const props = withDefaults(
   defineProps<{
@@ -31,20 +46,7 @@ const props = withDefaults(
   }>(),
   {
     title: 'Programs, offers & next steps',
-    slides: () => [
-      {
-        image: '/assets/img/banner/banner-1.png',
-        mobileImage: '/assets/img/banner/mobile-banner-1.png',
-        link: externalLinks.studentSignup,
-        label: 'Book a free demo — verified tutors',
-      },
-      {
-        image: '/assets/img/banner/banner-2.png',
-        mobileImage: '/assets/img/banner/mobile-banner-2.png',
-        link: '/services',
-        label: 'Explore tutoring services',
-      },
-    ],
+    slides: undefined,
     interval: 5000,
     autoplay: true,
     showButtons: false,
@@ -54,7 +56,21 @@ const props = withDefaults(
   },
 )
 
-const list = computed(() => props.slides.filter((s) => s.image))
+const { data: apiSlides, refresh } = await useWebsiteBanners()
+
+const list = computed(() => {
+  const fromApi = (apiSlides.value ?? []).filter((s) => s.image)
+  if (fromApi.length) return fromApi
+  if (props.slides?.length) return props.slides.filter((s) => s.image)
+  return fallbackSlides
+})
+
+onMounted(() => {
+  // Recover when SSR ran before Django was up and hydrated empty/fallback data.
+  if (!(apiSlides.value ?? []).length) {
+    void refresh()
+  }
+})
 
 function isExternal(url: string) {
   return /^https?:\/\//i.test(url) || url.startsWith('mailto:') || url.startsWith('tel:')

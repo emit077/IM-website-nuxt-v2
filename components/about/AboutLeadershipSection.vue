@@ -5,8 +5,11 @@ import { aboutLeadership, aboutLeadershipQuote, aboutLeadershipSection } from '~
 
 const bannerImage = usePublicAsset('assets/img/banner/banner-1.png')
 
-const founder = computed(() => aboutLeadership.find((l) => l.id === 'founder'))
-const otherLeaders = computed(() => aboutLeadership.filter((l) => l.id !== 'founder'))
+const { data: team } = await useWebsiteTeam(aboutLeadership)
+const leaders = computed(() => (team.value?.length ? team.value : aboutLeadership))
+
+const founder = computed(() => leaders.value.find((l) => l.id === 'founder') ?? leaders.value[0])
+const otherLeaders = computed(() => leaders.value.filter((l) => l.id !== founder.value?.id))
 const leadershipCards = computed(() => otherLeaders.value.slice(0, 4))
 </script>
 

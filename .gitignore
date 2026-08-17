@@ -28,3 +28,7 @@ Thumbs.db
 # IDE
 .vscode
 .idea
+
+# Local deploy secrets (AWS keys, private deploy helpers)
+deploy-s3.sh
+deploy.sh

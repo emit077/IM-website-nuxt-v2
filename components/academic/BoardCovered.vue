@@ -139,7 +139,7 @@ function markLogoFailed(id: string) {
           <div class="relative z-[1] flex h-full flex-col">
             <span class="rounded-2xl w-fit bg-white p-2">
               <img v-if="!failedLogos[featuredBoard.id]" :src="usePublicAsset(featuredBoard.logo)"
-                :alt="`${featuredBoard.name} logo`" class="h-24 w-24 object-contain rounded-2xl" loading="lazy"
+                :alt="`${featuredBoard.name} logo`" class="h-32 w-32 object-contain rounded-2xl" loading="lazy"
                 @error="markLogoFailed(featuredBoard.id)" />
               <span v-else class="font-display text-sm font-bold text-white">
                 {{ featuredBoard.fallback }}
@@ -149,7 +149,7 @@ function markLogoFailed(id: string) {
             <p class="mt-5 text-[11px] font-bold uppercase tracking-[0.14em] text-blue-100">
               {{ featuredBoard.featuredLabel }}
             </p>
-            <h3 class="mt-2 font-display text-2xl font-bold tracking-tight text-white sm:text-[1.75rem]">
+            <h3 class="mt-2 font-display text-3xl font-bold  text-white sm:text-[2.8rem]">
               {{ featuredBoard.name }}
             </h3>
             <p class="mt-3 max-w-sm text-sm leading-relaxed text-blue-50/90">

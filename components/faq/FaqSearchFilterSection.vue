@@ -1,11 +1,24 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import { faqCategoryLinks } from '~/data/faq'
+import { faqCategories, faqCategoryLinks } from '~/data/faq'
 
 const searchQuery = defineModel<string>('searchQuery', { default: '' })
 const activeCategory = defineModel<string>('activeCategory', { default: 'all' })
 
-const categories = [{ id: 'all', title: 'All Topics', iconMdi: 'mdi:view-grid-outline' }, ...faqCategoryLinks]
+const { data: apiCategories } = await useWebsiteFaqs(faqCategories)
+
+const categories = computed(() => {
+  const links = apiCategories.value?.length
+    ? apiCategories.value.map((category) => ({
+        id: category.id,
+        title: category.title,
+        iconMdi: category.iconMdi,
+      }))
+    : [...faqCategoryLinks]
+
+  return [{ id: 'all', title: 'All Topics', iconMdi: 'mdi:view-grid-outline' }, ...links]
+})
 
 function resetFilters() {
   searchQuery.value = ''

@@ -2,6 +2,7 @@ export type RoleCategory = {
   id: string
   iconMdi: string
   title: string
+  description: string
   roles: string[]
   accent: 'blue' | 'emerald' | 'amber' | 'violet'
 }
@@ -39,20 +40,24 @@ export const opportunitiesSection = {
   classes: '!px-0 !py-0',
   description:
     'Each role is aligned with defined responsibilities, measurable KPIs, and structured reporting systems to ensure clarity and performance accountability.',
+  footerNote: "Don't see an exact match? Share your profile — we hire for potential and fit.",
+  footerCta: { label: 'Apply Now', href: '#apply' },
 } as const
 
 export const roleCategories: RoleCategory[] = [
   {
     id: 'admission-academic',
     iconMdi: 'mdi:school-outline',
-    title: 'Admission & Academic Roles',
+    title: 'Admission & Academic',
+    description: 'Guide students and families through counselling, academic planning, and admission journeys.',
     roles: ['Admission Counsellors', 'Academic Counsellors', 'Admission Coordinators'],
     accent: 'blue',
   },
   {
     id: 'recruitment',
     iconMdi: 'mdi:account-search-outline',
-    title: 'Recruitment Roles',
+    title: 'Recruitment',
+    description: 'Build and strengthen our mentor network with structured hiring and people processes.',
     roles: ['Tutor Recruiters', 'Human Resources'],
     accent: 'emerald',
   },
@@ -60,6 +65,7 @@ export const roleCategories: RoleCategory[] = [
     id: 'operations',
     iconMdi: 'mdi:office-building-outline',
     title: 'Operations & Administration',
+    description: 'Keep delivery reliable through support, finance, compliance, and day-to-day coordination.',
     roles: ['Customer Support', 'Finance & Accounts', 'Administrative & Compliance'],
     accent: 'amber',
   },
@@ -67,6 +73,7 @@ export const roleCategories: RoleCategory[] = [
     id: 'growth-tech',
     iconMdi: 'mdi:rocket-launch-outline',
     title: 'Growth & Technology',
+    description: 'Scale reach and systems through marketing, product operations, and digital infrastructure.',
     roles: ['Digital Marketing Professionals', 'ERP & Tech Operations Team'],
     accent: 'violet',
   },
@@ -84,33 +91,33 @@ export const careerBenefits: CareerBenefit[] = [
   {
     id: 'structured-environment',
     iconMdi: 'mdi:sitemap-outline',
-    title: 'Structured Working Environment',
+    title: 'Structured Working\nEnvironment',
     description:
-      'Clearly defined workflows, operational discipline, and organised communication systems.',
+      'Clearly defined workflows,\noperational discipline, and\norganised communication.',
     accent: 'blue',
   },
   {
     id: 'transparent-policies',
     iconMdi: 'mdi:file-document-check-outline',
-    title: 'Transparent Policies',
+    title: 'Transparent\nPolicies',
     description:
-      'Documented procedures, fair processes, and compliance-based governance.',
+      'Documented procedures,\nfair processes, and\ncompliance-based governance.',
     accent: 'emerald',
   },
   {
     id: 'performance-growth',
     iconMdi: 'mdi:chart-line',
-    title: 'Performance-Based Growth',
+    title: 'Performance-Based\nGrowth',
     description:
-      'Career advancement opportunities linked to measurable contribution and results.',
+      'Career advancement linked\nto measurable contribution\nand proven results.',
     accent: 'amber',
   },
   {
     id: 'professional-development',
     iconMdi: 'mdi:book-open-page-variant-outline',
-    title: 'Professional Development Opportunities',
+    title: 'Professional\nDevelopment',
     description:
-      'Continuous learning, role-based training, and system-driven improvement frameworks.',
+      'Continuous learning,\nrole-based training, and\nsystem-driven improvement.',
     accent: 'violet',
   },
 ]

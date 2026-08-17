@@ -6,6 +6,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-07',
   devtools: { enabled: true },
 
+  runtimeConfig: {
+    public: {
+      /** Django API origin, e.g. http://127.0.0.1:8000 or https://api.example.com */
+      apiBase: process.env.NUXT_PUBLIC_API_URL || 'http://127.0.0.1:8000',
+    },
+  },
+
   components: [
     {
       path: '~/components/icons',

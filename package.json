@@ -9,6 +9,7 @@
     "generate": "nuxt generate",
     "amplify:build": "bash ./scripts/amplify-build.sh",
     "deploy": "bash ./deploye.sh",
+    "deploy:s3": "bash ./deploy-s3.sh",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },

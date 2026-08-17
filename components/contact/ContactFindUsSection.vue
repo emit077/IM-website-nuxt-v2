@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { findUs, phoneSupport } from '~/data/contact'
+
+const { data: primaryContact } = await useWebsitePrimaryContact()
+const supportPhone = computed(() => primaryContact.value?.phone ?? phoneSupport.number)
 
 function mapsUrl(address: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
@@ -55,7 +59,7 @@ function mapsUrl(address: string) {
                 <Icon icon="mdi:directions" class="h-4 w-4 shrink-0" aria-hidden="true" />
                 Get Directions
               </a>
-              <a :href="`tel:${phoneSupport.number.tel}`"
+              <a :href="`tel:${supportPhone.tel}`"
                 class="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-700">
                 <Icon icon="mdi:phone-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
                 {{ office.directionsCta }}

@@ -33,7 +33,7 @@ export const heroContent = {
   audiences: ['School Teachers', 'Subject Experts', 'Home Tutors', 'Academic Professionals'],
   contentClass: '!px-0 !py-0 mx-auto max-w-3xl text-center',
   primaryCta: { label: 'Join as a Teaching Partner', href: externalLinks.tutorRegistration },
-  secondaryCta: { label: 'Register as a Tutor', href: externalLinks.tutorRegistration },
+  secondaryCta: { label: 'Download Brochure', href: '#tutor-resources' },
 }
 
 export const heroHighlights = [

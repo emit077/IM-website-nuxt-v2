@@ -91,7 +91,7 @@ const services: ServiceCard[] = [
 ]
 
 /** Cards 1, 3, 5, 8 use blue gradient fills */
-const blueGradientIndexes = new Set([0, 3, 5, 6])
+const blueGradientIndexes = new Set([0, 2, 5, 7])
 
 function isBlueCard(index: number) {
     return blueGradientIndexes.has(index)

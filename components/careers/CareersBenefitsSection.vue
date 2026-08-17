@@ -35,8 +35,7 @@ const accentClasses: Record<
 </script>
 
 <template>
-  <section id="benefits" class="relative overflow-hidden bg-white section-py"
-    aria-labelledby="benefits-heading">
+  <section id="benefits" class="relative overflow-hidden bg-white section-py" aria-labelledby="benefits-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-16 top-10 h-72 w-72 rounded-full bg-blue-100/40 blur-3xl" />
 
@@ -44,7 +43,7 @@ const accentClasses: Record<
       <CardHeader heading-id="benefits-heading" :badge="benefitsSection.kicker" :title="benefitsSection.title"
         :description="benefitsSection.description" :classes="benefitsSection.classes" />
 
-      <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:gap-6">
+      <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-4 sm:gap-5 lg:gap-6">
         <article v-for="(benefit, i) in careerBenefits" :key="benefit.id"
           class="group relative flex flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_20px_48px_-18px_rgba(15,23,42,0.18)] sm:p-7"
           v-motion :initial="{ opacity: 0, y: 14 }"
@@ -61,10 +60,10 @@ const accentClasses: Record<
             <Icon :icon="benefit.iconMdi" class="h-6 w-6" aria-hidden="true" />
           </span>
 
-          <h3 class="font-display relative mt-5 text-base font-bold text-slate-900 sm:text-lg">
+          <h3 class="font-display relative mt-5 min-h-[2.75rem] whitespace-pre-line text-base font-bold leading-snug text-slate-900 sm:min-h-[3.25rem] sm:text-lg">
             {{ benefit.title }}
           </h3>
-          <p class="relative mt-3 text-sm leading-relaxed text-slate-600">
+          <p class="relative mt-3 min-h-[4.25rem] whitespace-pre-line text-sm leading-relaxed text-slate-600">
             {{ benefit.description }}
           </p>
 

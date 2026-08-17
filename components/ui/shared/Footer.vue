@@ -1,15 +1,26 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { externalLinks } from '~/data/external-links'
+import { phoneSupport, emailSupport, workingHours as staticWorkingHours } from '~/data/contact'
 
-const phoneNumber = '+91 7389563564'
-const phoneTel = '917389563564'
-const email = 'info@indianmentors.in'
+const { data: primaryContact } = await useWebsitePrimaryContact()
+
+const phoneNumber = computed(
+  () => primaryContact.value?.phone.display ?? phoneSupport.number.display,
+)
+const phoneTel = computed(() => primaryContact.value?.phone.tel ?? phoneSupport.number.tel)
+const waNumber = computed(
+  () => primaryContact.value?.whatsapp?.wa ?? phoneSupport.number.wa ?? '917389563564',
+)
+const email = computed(() => primaryContact.value?.email ?? emailSupport.address)
 const location = 'Bhilai, Chhattisgarh'
-const workingHours = {
+const workingHours = computed(() => ({
   label: 'Working hours',
-  value: 'Monday – Saturday · 10:00 AM – 7:00 PM',
-}
+  value:
+    primaryContact.value?.workingHours
+    ?? `${staticWorkingHours.days} · ${staticWorkingHours.hours}`,
+}))
 
 /** Social profiles from https://indianmentors.in/ footer (X uses clean profile URL). */
 const socialLinks = [
@@ -98,7 +109,7 @@ const navLinks = [
             </li>
 
             <li>
-              <a :href="`https://wa.me/${phoneTel}`" target="_blank" rel="noopener noreferrer"
+              <a :href="`https://wa.me/${waNumber}`" target="_blank" rel="noopener noreferrer"
                 class="group flex items-center gap-4 transition hover:opacity-90">
                 <span
                   class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500/20">
@@ -158,6 +169,7 @@ const navLinks = [
                 <span class="block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{{
                   workingHours.label }}</span>
                 <span class="mt-0.5 block font-medium text-slate-200">{{ workingHours.value }}</span>
+
               </span>
             </li>
           </ul>

@@ -1,11 +1,27 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { brochureCard, landingCard, tutorResourcesSection } from '~/data/tutors'
 
-const cards = [brochureCard, landingCard]
+const { data: tutorBrochures } = await useWebsiteBrochures('tutor')
+
+const cards = computed(() => {
+  const brochureUrl = tutorBrochures.value?.[0]?.brochure
+  return [
+    {
+      ...brochureCard,
+      cta: {
+        ...brochureCard.cta,
+        href: brochureUrl || brochureCard.cta.href,
+        label: brochureUrl ? 'Download Tutors Brochure' : brochureCard.cta.label,
+      },
+    },
+    landingCard,
+  ]
+})
 </script>
 
 <template>
@@ -43,6 +59,8 @@ const cards = [brochureCard, landingCard]
           </ul>
 
           <a :href="card.cta.href"
+            :target="/^https?:\/\//i.test(card.cta.href) ? '_blank' : undefined"
+            :rel="/^https?:\/\//i.test(card.cta.href) ? 'noopener noreferrer' : undefined"
             class="relative mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition duration-300 hover:-translate-y-0.5 hover:border-blue-400 hover:text-blue-700">
             {{ card.cta.label }}
             <IconArrowRight class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />

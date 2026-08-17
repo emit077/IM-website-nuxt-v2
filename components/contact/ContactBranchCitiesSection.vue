@@ -9,6 +9,7 @@ import {
   popularCityImages,
   type BranchOffice,
 } from '~/data/contact'
+import type { UiCityCard } from '~/composables/useWebsiteContent'
 
 type CityCard = {
   id: string
@@ -17,6 +18,7 @@ type CityCard = {
   subtitle: string
   address: string
   hasOffice: boolean
+  directionLink?: string
 }
 
 const props = withDefaults(
@@ -35,7 +37,10 @@ const props = withDefaults(
   },
 )
 
-const cities = computed(() => (props.variant === 'icons' ? popularCities : popularCityImages))
+const { data: apiCities } = await useWebsiteCities()
+const hasApiCities = computed(() => Boolean(apiCities.value?.length))
+
+const staticCities = computed(() => (props.variant === 'icons' ? popularCities : popularCityImages))
 
 const officeLookup = computed(() => {
   const map = new Map<string, BranchOffice>()
@@ -64,7 +69,8 @@ function officeDisplayName(office: BranchOffice) {
   return office.label ?? office.city
 }
 
-function mapsUrl(address: string) {
+function mapsUrl(address: string, directionLink?: string) {
+  if (directionLink) return directionLink
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
 }
 
@@ -80,13 +86,13 @@ function cityAsset(city: (typeof popularCities)[number] | (typeof popularCityIma
 
 function cityImageForOffice(office: BranchOffice) {
   const name = officeDisplayName(office).toLowerCase()
-  const match = cities.value.find(
+  const match = staticCities.value.find(
     (city) => city.label.toLowerCase() === name || city.id.toLowerCase() === office.city.toLowerCase(),
   )
   return match ? cityAsset(match) : ''
 }
 
-function toCityCard(
+function toStaticCityCard(
   city: (typeof popularCities)[number] | (typeof popularCityImages)[number],
 ): CityCard {
   const office = getOfficeForCity(city)
@@ -113,22 +119,48 @@ function officeToCard(office: BranchOffice): CityCard {
   }
 }
 
-const popularCityNames = computed(() =>
-  new Set(cities.value.flatMap((city) => [city.label.toLowerCase(), city.id.toLowerCase()])),
-)
+function fromApiCity(city: UiCityCard): CityCard {
+  return {
+    id: city.id,
+    label: city.label,
+    image: city.image,
+    subtitle: city.subtitle,
+    address: city.address,
+    hasOffice: city.hasOffice,
+    directionLink: city.directionLink,
+  }
+}
+
+const popularCityNames = computed(() => {
+  if (hasApiCities.value) {
+    return new Set(
+      (apiCities.value ?? [])
+        .filter((city) => city.isPopular)
+        .map((city) => city.label.toLowerCase()),
+    )
+  }
+  return new Set(staticCities.value.flatMap((city) => [city.label.toLowerCase(), city.id.toLowerCase()]))
+})
 
 const branchOfficeNames = branchOffices.offices.flatMap((office) =>
   [office.city, office.label].filter(Boolean) as string[],
 )
 
-const otherCities = computed(() =>
-  [...new Set([
+const otherCities = computed(() => {
+  if (hasApiCities.value) {
+    return (apiCities.value ?? [])
+      .filter((city) => !city.isPopular)
+      .map((city) => city.label)
+      .sort((a, b) => a.localeCompare(b))
+  }
+
+  return [...new Set([
     ...alsoServing.zones.flatMap((zone) => zone.cities),
     ...branchOfficeNames.filter((name) => !popularCityNames.value.has(name.toLowerCase())),
   ])]
     .filter((city) => !popularCityNames.value.has(city.toLowerCase()))
-    .sort((a, b) => a.localeCompare(b)),
-)
+    .sort((a, b) => a.localeCompare(b))
+})
 
 const citySearch = ref('')
 const showAll = ref(false)
@@ -142,36 +174,41 @@ function matchesSearch(text: string) {
   return text.toLowerCase().includes(searchTerm.value)
 }
 
-const filteredPopularCities = computed(() =>
-  cities.value.filter((city) => {
+const displayCards = computed(() => {
+  if (hasApiCities.value) {
+    const source = (apiCities.value ?? []).filter((city) => city.isPopular)
+    const cards = (source.length ? source : (apiCities.value ?? [])).map(fromApiCity)
+    return cards.filter((card) => matchesSearch(`${card.label} ${card.address} ${card.subtitle}`))
+  }
+
+  const filteredPopularCities = staticCities.value.filter((city) => {
     const office = getOfficeForCity(city)
     const haystack = `${city.label} ${city.id} ${office?.address ?? ''}`
     return matchesSearch(haystack)
-  }),
-)
-
-const matchingOffices = computed(() => {
-  if (!searchTerm.value) return []
-  return branchOffices.offices.filter((office) => {
-    const haystack = `${office.city} ${office.label ?? ''} ${office.address}`
-    return matchesSearch(haystack)
   })
-})
 
-const additionalMatchingOffices = computed(() => {
-  if (!searchTerm.value) return []
+  const matchingOffices = searchTerm.value
+    ? branchOffices.offices.filter((office) => {
+        const haystack = `${office.city} ${office.label ?? ''} ${office.address}`
+        return matchesSearch(haystack)
+      })
+    : []
+
   const coveredAddresses = new Set(
-    filteredPopularCities.value
+    filteredPopularCities
       .map((city) => getOfficeForCity(city)?.address)
       .filter(Boolean),
   )
-  return matchingOffices.value.filter((office) => !coveredAddresses.has(office.address))
-})
 
-const displayCards = computed(() => [
-  ...filteredPopularCities.value.map(toCityCard),
-  ...additionalMatchingOffices.value.map(officeToCard),
-])
+  const additionalMatchingOffices = matchingOffices.filter(
+    (office) => !coveredAddresses.has(office.address),
+  )
+
+  return [
+    ...filteredPopularCities.map(toStaticCityCard),
+    ...additionalMatchingOffices.map(officeToCard),
+  ]
+})
 
 const useMarquee = computed(() => !isSearching.value && displayCards.value.length > 1)
 
@@ -185,6 +222,17 @@ const filteredCities = computed(() => {
 })
 const displayedCities = computed(() => {
   return filteredCities.value
+})
+
+const CITY_TABLE_COLS = 5
+
+const cityTableRows = computed(() => {
+  const cities = displayedCities.value
+  const rows: string[][] = []
+  for (let i = 0; i < cities.length; i += CITY_TABLE_COLS) {
+    rows.push(cities.slice(i, i + CITY_TABLE_COLS))
+  }
+  return rows
 })
 
 const canExpand = computed(() => !isSearching.value && otherCities.value.length > alsoServing.previewLimit)
@@ -263,7 +311,7 @@ function clearSearch() {
                   </address>
 
                   <div class="mt-auto border-t border-slate-100 pt-4">
-                    <a v-if="card.hasOffice" :href="mapsUrl(card.address)" target="_blank" rel="noopener noreferrer"
+                    <a v-if="card.hasOffice" :href="mapsUrl(card.address, card.directionLink)" target="_blank" rel="noopener noreferrer"
                       class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:gap-2.5 hover:text-blue-800">
                       <Icon icon="mdi:directions" class="h-4 w-4 shrink-0" aria-hidden="true" />
                       Get Directions
@@ -283,20 +331,36 @@ function clearSearch() {
     </div>
     <div class="container-page">
       <div v-if="showOtherCities" :id="otherCitiesId" class="mt-10 sm:mt-10">
-        <div v-if="displayedCities.length" class=" overflow-hidden  ">
-          <div class="flex flex-wrap gap-2.5 text-center justify-center" role="list" aria-label="Other cities"
-            v-if="showAll || isSearching">
-            <span v-for="city in displayedCities" :key="city" role="listitem"
-              class="inline-flex items-center gap-1.5 border border-slate-200/90 rounded-full px-3.5 py-2 text-[13px] font-semibold text-slate-500   hover:text-blue-500  sm:text-sm">
-              <Icon icon="mdi:map-marker-radius-outline"
-                class="h-3.5 w-3.5 shrink-0 text-slate-400 transition group-hover:text-current" aria-hidden="true" />
-              {{ city }}
-            </span>
+        <div v-if="displayedCities.length" class="overflow-hidden">
+          <div v-if="showAll || isSearching"
+            class="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-soft">
+            <div class="overflow-x-auto">
+              <table class="w-full min-w-[640px] border-collapse text-left text-sm" aria-label="Other cities">
+                <tbody>
+                  <tr v-for="(row, rowIndex) in cityTableRows" :key="rowIndex"
+                    class="border-b border-slate-100 last:border-0">
+                    <td v-for="city in row" :key="city"
+                      class="w-1/5 border-r border-slate-100 px-3.5 py-2.5 last:border-r-0 sm:px-4 sm:py-3"
+                      :class="rowIndex % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'">
+                      <span
+                        class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-slate-600 transition hover:text-blue-600 sm:text-sm">
+                        <Icon icon="mdi:map-marker-radius-outline"
+                          class="h-3.5 w-3.5 shrink-0 text-slate-400" aria-hidden="true" />
+                        {{ city }}
+                      </span>
+                    </td>
+                    <td v-for="pad in CITY_TABLE_COLS - row.length" :key="`pad-${rowIndex}-${pad}`"
+                      class="w-1/5 border-r border-slate-100 px-3.5 py-2.5 last:border-r-0 sm:px-4 sm:py-3"
+                      :class="rowIndex % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'" />
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          <div v-if="canExpand" class=" text-center">
+          <div v-if="canExpand" class="mt-4 text-center">
             <button type="button"
-              class="inline-flex items-center gap-2  px-5 py-2.5 text-sm font-semibold text-blue-700  transition "
+              class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-blue-700 transition"
               @click="showAll = !showAll">
               {{ showAll ? "Hide Cities" : 'View All Cities' }}
             </button>
@@ -304,7 +368,7 @@ function clearSearch() {
         </div>
         <div v-else-if="isSearching"
           class="mx-auto mt-8 max-w-md rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-10 text-center">
-          <p class=" text-sm text-slate-500">{{ alsoServing.emptyState }}</p>
+          <p class="text-sm text-slate-500">{{ alsoServing.emptyState }}</p>
         </div>
       </div>
     </div>

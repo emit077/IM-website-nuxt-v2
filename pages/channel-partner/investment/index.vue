@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import InvestmentHeroSection from '~/components/channel-partner/investment/InvestmentHeroSection.vue'
 import InvestmentStructureSection from '~/components/channel-partner/investment/InvestmentStructureSection.vue'
 import TerritoryInvestmentTableSection from '~/components/channel-partner/investment/TerritoryInvestmentTableSection.vue'
@@ -12,10 +13,19 @@ import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import { investmentFinalCta } from '~/data/channel-partner-investment'
 import InvestmentDigitalPlatformLicensing from '~/components/channel-partner/investment/InvestmentDigitalPlatformLicensing.vue'
 
-const investmentCtas = [
-  { ...investmentFinalCta.primaryCta, iconMdi: 'mdi:account-plus-outline', primary: true },
-  { ...investmentFinalCta.tertiaryCta, iconMdi: 'mdi:file-download-outline' },
-] as const
+const { data: partnerBrochures } = await useWebsiteBrochures('Channel Partner')
+
+const investmentCtas = computed(() => {
+  const brochureUrl = partnerBrochures.value?.[0]?.brochure
+  return [
+    { ...investmentFinalCta.primaryCta, iconMdi: 'mdi:account-plus-outline', primary: true },
+    {
+      ...investmentFinalCta.tertiaryCta,
+      href: brochureUrl || investmentFinalCta.tertiaryCta.href,
+      iconMdi: 'mdi:file-download-outline',
+    },
+  ]
+})
 
 useSeoMeta({
   title: 'Investment & Revenue-Sharing Model — Channel Partner | Indian Mentors',

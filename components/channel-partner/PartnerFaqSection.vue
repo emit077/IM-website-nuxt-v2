@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { faqSection, partnerFaqs } from '~/data/channel-partner'
+
+const { data: apiFaqs } = await useWebsiteFaqs([], 'channel partner')
+const faqs = computed(() => {
+  const fromApi = apiFaqs.value?.flatMap((category) => category.items) ?? []
+  return fromApi.length ? fromApi : partnerFaqs
+})
 </script>
 
 <template>
@@ -12,7 +19,7 @@ import { faqSection, partnerFaqs } from '~/data/channel-partner'
         :description="faqSection.description" :classes="faqSection.classes" />
 
       <div class="mx-auto mt-10 max-w-3xl space-y-3">
-        <details v-for="(item, i) in partnerFaqs" :key="item.id"
+        <details v-for="(item, i) in faqs" :key="item.id"
           class="group overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition duration-300 open:border-blue-200 open:shadow-[0_16px_44px_-20px_rgba(37,99,235,0.2)] open:ring-1 open:ring-blue-100"
           v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 50, duration: 400 } }">

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import InstitutionsHeroSection from '~/components/institutions/InstitutionsHeroSection.vue'
 import InstitutionsNavSection from '~/components/institutions/InstitutionsNavSection.vue'
 import InstitutionsSectorsSection from '~/components/institutions/InstitutionsSectorsSection.vue'
@@ -9,11 +10,25 @@ import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import { institutionsFinalCta } from '~/data/institutions'
 
-const institutionsCtas = [
-  { ...institutionsFinalCta.primaryCta, iconMdi: 'mdi:account-tie-outline', primary: true },
-  { ...institutionsFinalCta.secondaryCta, iconMdi: 'mdi:phone-outline' },
-  { ...institutionsFinalCta.tertiaryCta, iconMdi: 'mdi:whatsapp', target: '_blank' },
-] as const
+const { data: institutionBrochures } = await useWebsiteBrochures('Institutions')
+
+const institutionsCtas = computed(() => {
+  const brochureUrl = institutionBrochures.value?.[0]?.brochure
+  const ctas = [
+    { ...institutionsFinalCta.primaryCta, iconMdi: 'mdi:account-tie-outline', primary: true },
+    { ...institutionsFinalCta.secondaryCta, iconMdi: 'mdi:phone-outline' },
+    { ...institutionsFinalCta.tertiaryCta, iconMdi: 'mdi:whatsapp', target: '_blank' as const },
+  ]
+  if (brochureUrl) {
+    ctas.splice(1, 0, {
+      label: 'Download Brochure',
+      href: brochureUrl,
+      iconMdi: 'mdi:file-download-outline',
+      target: '_blank' as const,
+    })
+  }
+  return ctas
+})
 
 useSeoMeta({
   title: 'Teacher Recruitment Services — Indian Mentors',

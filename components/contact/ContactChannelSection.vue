@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import {
@@ -13,7 +13,19 @@ import {
 } from '~/data/contact'
 
 const toast = useToast()
-const primaryWa = whatsappSupport.numbers[0]
+
+const { data: primaryContact } = await useWebsitePrimaryContact()
+const { data: authorisedLines } = await useWebsiteAuthorisedContacts([...authorisedPhoneNumbers])
+
+const phone = computed(() => primaryContact.value?.phone ?? phoneSupport.number)
+const email = computed(() => primaryContact.value?.email ?? emailSupport.address)
+const primaryWa = computed(
+  () => primaryContact.value?.whatsapp ?? whatsappSupport.numbers[0]!,
+)
+const hoursLabel = computed(() => {
+  if (primaryContact.value?.workingHours) return primaryContact.value.workingHours
+  return `${workingHours.days} | ${workingHours.hours}`
+})
 
 const form = reactive({
   name: '',
@@ -70,31 +82,30 @@ function onSubmit() {
   }, 500)
 }
 
-const directContacts = [
-
+const directContacts = computed(() => [
   {
     id: 'call-us-phone',
     icon: 'mdi:phone-outline',
     label: 'Phone number',
-    value: phoneSupport.number.display,
-    href: `tel:${phoneSupport.number.tel}`,
+    value: phone.value.display,
+    href: `tel:${phone.value.tel}`,
   },
   {
     id: 'whatsapp',
     icon: 'mdi:whatsapp',
     label: 'WhatsApp',
-    value: primaryWa.display,
-    href: primaryWa.wa ? `https://wa.me/${primaryWa.wa}` : undefined,
+    value: primaryWa.value.display,
+    href: primaryWa.value.wa ? `https://wa.me/${primaryWa.value.wa}` : undefined,
     external: true,
   },
   {
     id: 'email',
     icon: 'mdi:email-outline',
     label: 'E-mail',
-    value: emailSupport.address,
-    href: `mailto:${emailSupport.address}`,
-  }
-] as const
+    value: email.value,
+    href: `mailto:${email.value}`,
+  },
+])
 
 </script>
 
@@ -140,7 +151,7 @@ const directContacts = [
                   <span class="block text-xs font-semibold uppercase tracking-[0.12em] text-blue-700">Working
                     Hours</span>
                   <span class="mt-1 block text-sm font-semibold text-slate-900 sm:text-base">
-                    {{ workingHours.days }} | {{ workingHours.hours }}
+                    {{ hoursLabel }}
                   </span>
                 </div>
               </div>
@@ -225,7 +236,7 @@ const directContacts = [
 
         <ul class="mx-auto  grid max-w-5xl grid-cols-1 gap-3  sm:grid-cols-2 lg:grid-cols-4"
           aria-label="Authorised phone numbers">
-          <li v-for="line in authorisedPhoneNumbers" :key="line.tel">
+          <li v-for="line in authorisedLines" :key="line.tel">
             <a :href="`tel:${line.tel}`"
               class="group flex items-center gap-3 rounded-2xl border border-slate-200/90 bg-white px-4 py-3.5 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md">
               <span

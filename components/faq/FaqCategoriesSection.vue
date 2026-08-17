@@ -18,6 +18,11 @@ const emit = defineEmits<{
   'reset-filters': []
 }>()
 
+const { data: apiCategories } = await useWebsiteFaqs(faqCategories)
+const categories = computed(() =>
+  apiCategories.value?.length ? apiCategories.value : faqCategories,
+)
+
 const query = computed(() => props.searchQuery.trim().toLowerCase())
 
 function itemMatchesSearch(item: FaqItem) {
@@ -29,7 +34,7 @@ function itemMatchesSearch(item: FaqItem) {
 }
 
 const filteredCategories = computed(() =>
-  faqCategories
+  categories.value
     .filter((category) => props.activeCategory === 'all' || category.id === props.activeCategory)
     .map((category) => ({
       ...category,

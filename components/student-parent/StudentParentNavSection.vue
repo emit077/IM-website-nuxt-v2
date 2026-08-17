@@ -1,6 +1,18 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { resourceLinks } from '~/data/student-parent'
+
+const { data: studentBrochures } = await useWebsiteBrochures('student')
+
+const links = computed(() => {
+  const brochureUrl = studentBrochures.value?.[0]?.brochure
+  return resourceLinks.map((link) =>
+    link.id === 'student-brochure' && brochureUrl
+      ? { ...link, href: brochureUrl }
+      : link,
+  )
+})
 </script>
 
 <template>
@@ -13,8 +25,8 @@ import { resourceLinks } from '~/data/student-parent'
       </p>
 
       <ul class="mt-6 grid grid-cols-2 gap-3 sm:gap-3.5 lg:grid-cols-5" role="list">
-        <li v-for="(link, i) in resourceLinks" :key="link.id"
-          :class="i === resourceLinks.length - 1 ? 'col-span-2 sm:col-span-1' : ''" v-motion
+        <li v-for="(link, i) in links" :key="link.id"
+          :class="i === links.length - 1 ? 'col-span-2 sm:col-span-1' : ''" v-motion
           :initial="{ opacity: 0, y: 10 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 40, duration: 400 } }">
           <a :href="link.href"

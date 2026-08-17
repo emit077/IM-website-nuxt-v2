@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import { externalLinks } from '~/data/external-links'
+import { emailSupport, phoneSupport } from '~/data/contact'
 
 const scrolled = ref(false)
 const mobileOpen = ref(false)
@@ -10,8 +11,9 @@ const mobileOpenMenuId = ref<string | null>(null)
 const navRef = ref<HTMLElement | null>(null)
 const { isSecondaryHeroActive } = useSecondaryHeroTheme()
 
-const phone = { display: '+91 73895 63564', tel: '+917389563564' }
-const email = 'info@indianmentors.in'
+const { data: primaryContact } = await useWebsitePrimaryContact()
+const phone = computed(() => primaryContact.value?.phone ?? phoneSupport.number)
+const email = computed(() => primaryContact.value?.email ?? emailSupport.address)
 
 const primaryLinks = [
   { label: 'Home', href: '/' },
