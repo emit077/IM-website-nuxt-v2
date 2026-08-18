@@ -15,6 +15,7 @@ const secondaryHero: SecondaryHeroContent = {
   ticker: [
     'Home Tutors',
     'Online Tutors',
+    'Hybrid Tutors',
     'Shadow Tutors',
     'Travel Tutors',
     'Live-In Tutors',

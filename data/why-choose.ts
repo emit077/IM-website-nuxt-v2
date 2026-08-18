@@ -135,7 +135,7 @@ export const whyChooseDifferentiators = {
       description:
         'Choose the tutoring format that best suits your child’s learning needs and environment.',
       pointsLabel: 'Available Formats',
-      points: ['Home & Online Tutors', 'Shadow & Live-In Tutors', 'Special Educators'],
+      points: ['Home, Online & Hybrid Tutors', 'Shadow & Live-In Tutors', 'Special Educators'],
       benefit:
         'Families pick the tutoring model that matches their educational requirements.',
     },
@@ -326,6 +326,23 @@ export const whyChooseAdvantage = {
       variant: 'secondary' as const,
     },
 
+  ],
+}
+
+export const whyChooseDifference = {
+  badge: 'The Indian Mentors Difference',
+  title: 'More Than Finding a <span class="text-gradient-brand">Tutor</span>',
+  description:
+    'Indian Mentors is designed as a personalised tutoring ecosystem, not simply a tutor listing platform. We bring together:',
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  steps: [
+    { id: 'find', label: 'Find', title: 'Discover', description: 'Discover tutors based on academic requirements.', iconMdi: 'mdi:magnify' },
+    { id: 'match', label: 'Match', title: 'Match', description: 'Identify suitable tutors according to student needs.', iconMdi: 'mdi:account-switch-outline' },
+    { id: 'experience', label: 'Experience', title: 'Demo', description: 'Book and attend a demo session.', iconMdi: 'mdi:play-circle-outline' },
+    { id: 'learn', label: 'Learn', title: 'Learn', description: 'Begin personalised one-to-one tutoring.', iconMdi: 'mdi:book-open-page-variant-outline' },
+    { id: 'monitor', label: 'Monitor', title: 'Monitor', description: 'Track sessions, attendance, and available academic progress.', iconMdi: 'mdi:chart-box-outline' },
+    { id: 'improve', label: 'Improve', title: 'Improve', description: 'Use feedback and monitoring to refine the learning journey.', iconMdi: 'mdi:trending-up' },
+    { id: 'grow', label: 'Grow', title: 'Grow', description: 'Continue with structured academic support.', iconMdi: 'mdi:sprout-outline' },
   ],
 }
 

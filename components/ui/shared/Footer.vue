@@ -55,6 +55,8 @@ const socialLinks = [
 const navLinks = [
   { label: 'Home', to: '/' },
   { label: 'Students & parents', to: '/student-parent' },
+  { label: 'Subscription plans', to: '/student-parent/subscription' },
+  { label: 'Enrollment', to: '/student-parent/enrollment' },
   { label: 'Academic coverage', to: '/academic-coverage' },
   { label: 'About us', to: '/about' },
   { label: 'Why choose us', to: '/why-choose' },

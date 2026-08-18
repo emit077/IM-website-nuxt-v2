@@ -2,6 +2,7 @@
 import WhyChooseHeroSection from '~/components/why-choose/WhyChooseHeroSection.vue'
 import WhyChooseTrustStrip from '~/components/why-choose/WhyChooseTrustStrip.vue'
 import WhyChooseDifferentiatorsSection from '~/components/why-choose/WhyChooseDifferentiatorsSection.vue'
+import WhyChooseDifferenceSection from '~/components/why-choose/WhyChooseDifferenceSection.vue'
 import WhyChooseEcosystemSection from '~/components/why-choose/WhyChooseEcosystemSection.vue'
 import WhyChooseCommitmentsSection from '~/components/why-choose/WhyChooseCommitmentsSection.vue'
 import WhyChooseConversionStrip from '~/components/why-choose/WhyChooseConversionStrip.vue'
@@ -23,6 +24,7 @@ useSeoMeta({
     <WhyChooseHeroSection />
     <!-- <WhyChooseTrustStrip /> -->
     <WhyChooseDifferentiatorsSection />
+    <WhyChooseDifferenceSection />
     <QuickServiceCategoriesSection />
     <WhyChooseEcosystemSection />
     <WhyChooseCommitmentsSection />

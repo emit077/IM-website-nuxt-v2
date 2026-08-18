@@ -9,7 +9,7 @@ import WhyChooseDifferentiatorsSection from '~/components/why-choose/WhyChooseDi
 useSeoMeta({
   title: 'Our Tutoring Services — Indian Mentors',
   description:
-    'Explore personalised tutoring solutions from Indian Mentors — Home Tutors, Online Tutors, Shadow Tutors, Travel Tutors, Live-In Tutors, Home Schooling Support, Special Educators, and Custom Tutor Services across India.',
+    'Explore personalised tutoring solutions from Indian Mentors — Home Tutors, Online Tutors, Hybrid Tutors, Shadow Tutors, Travel Tutors, Live-In Tutors, Home Schooling Support, Special Educators, and Custom Tutor Services across India.',
   ogTitle: 'Our Tutoring Services — Indian Mentors',
   ogDescription:
     'Find the right learning format for your child. Verified tutors, flexible schedules, and personalised academic support across CBSE, ICSE, IB, IGCSE, and more.',

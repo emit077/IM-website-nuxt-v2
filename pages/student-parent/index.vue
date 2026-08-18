@@ -1,28 +1,30 @@
 <script setup lang="ts">
 import StudentParentHeroSection from '~/components/student-parent/StudentParentHeroSection.vue'
-import StudentParentNavSection from '~/components/student-parent/StudentParentNavSection.vue'
-import EnrollmentPlansSection from '~/components/student-parent/EnrollmentPlansSection.vue'
-import StudentParentErpSection from '~/components/student-parent/StudentParentErpSection.vue'
-import SubscriptionPlansSection from '~/components/student-parent/SubscriptionPlansSection.vue'
-import SubscriptionComparisonSection from '~/components/student-parent/SubscriptionComparisonSection.vue'
-import LearningStepsSection from '~/components/student-parent/LearningStepsSection.vue'
-import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
+import StudentParentAudiencesSection from '~/components/student-parent/StudentParentAudiencesSection.vue'
+import StudentParentNeedsSection from '~/components/student-parent/StudentParentNeedsSection.vue'
+import StudentParentExpectSection from '~/components/student-parent/StudentParentExpectSection.vue'
+import StudentParentMatchingSection from '~/components/student-parent/StudentParentMatchingSection.vue'
+import StudentParentModesSection from '~/components/student-parent/StudentParentModesSection.vue'
+import StudentParentCoverageSection from '~/components/student-parent/StudentParentCoverageSection.vue'
+import StudentParentEnrollmentPreviewSection from '~/components/student-parent/StudentParentEnrollmentPreviewSection.vue'
+import StudentParentPlansPreviewSection from '~/components/student-parent/StudentParentPlansPreviewSection.vue'
+import StudentParentMonitoringSection from '~/components/student-parent/StudentParentMonitoringSection.vue'
+import StudentParentCollaborationSection from '~/components/student-parent/StudentParentCollaborationSection.vue'
+import StudentParentWhySection from '~/components/student-parent/StudentParentWhySection.vue'
+import StudentParentTrustSection from '~/components/student-parent/StudentParentTrustSection.vue'
+import StudentParentFaqSection from '~/components/student-parent/StudentParentFaqSection.vue'
+import StudentParentSupportSection from '~/components/student-parent/StudentParentSupportSection.vue'
+import StudentParentClosingSection from '~/components/student-parent/StudentParentClosingSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
-import { externalLinks } from '~/data/external-links'
-
-const studentParentCtas = [
-  { label: 'Book Free Demo Class', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline', primary: true },
-  { label: 'Call Us', href: 'tel:+917389563564', iconMdi: 'mdi:phone-outline' },
-  { label: 'WhatsApp', href: 'https://wa.me/917389563564', iconMdi: 'mdi:whatsapp', target: '_blank' },
-] as const
+import { spFinalCta } from '~/data/student-parent'
 
 useSeoMeta({
-  title: 'Students & Parents — Indian Mentors',
+  title: 'Parents & Students — Indian Mentors',
   description:
-    'Personalised learning, measurable progress, and trusted support. Explore free and premium student profiles, subscription plans, and the Parents & Student Learning Dashboard.',
-  ogTitle: 'Students & Parents — Indian Mentors',
+    'Personalised learning, measurable progress, and trusted support. One-to-one tutoring with structured matching, free demos, academic monitoring, and dedicated counselling for families.',
+  ogTitle: 'Parents & Students — Indian Mentors',
   ogDescription:
-    'Flexible enrollment and subscription plans with ERP-powered transparency for families across India.',
+    'A better way to learn. A smarter way to support your child — personalised tutoring, transparent progress, and a complete learning journey.',
   ogType: 'website',
 })
 </script>
@@ -30,17 +32,23 @@ useSeoMeta({
 <template>
   <div class="student-parent">
     <StudentParentHeroSection />
-    <!-- <StudentParentNavSection /> -->
-    <EnrollmentPlansSection />
-    <LearningStepsSection />
-    <section id="browse-tutors" class="scroll-mt-20">
-      <BrowseMentorsSection mode="tutors" />
-    </section>
-    <StudentParentErpSection />
-    <!-- <SubscriptionPlansSection /> -->
-    <SubscriptionComparisonSection />
-    <UiCTASection surface-class="section-surface-white" title="Give your child the right academic support"
-      description="Start with a free demo class — experience personalised tutoring backed by transparent tracking and professional mentoring."
-      supporting="Compare plans anytime in the plan comparison above." :ctas="studentParentCtas" />
+    <StudentParentAudiencesSection />
+    <StudentParentNeedsSection />
+    <StudentParentExpectSection />
+    <StudentParentMatchingSection />
+    <StudentParentModesSection />
+    <!-- <StudentParentCoverageSection /> -->
+    <StudentParentEnrollmentPreviewSection />
+    <StudentParentPlansPreviewSection />
+    <StudentParentMonitoringSection />
+    <StudentParentCollaborationSection />
+    <StudentParentWhySection />
+    <StudentParentTrustSection />
+    <StudentParentFaqSection />
+    <UiCTASection heading-id="sp-final-cta-heading" layout="split" compact surface-class="section-surface-muted"
+      :title="spFinalCta.title" :description="spFinalCta.description" :supporting="spFinalCta.supporting"
+      :ctas="spFinalCta.ctas" />
+    <StudentParentSupportSection />
+    <StudentParentClosingSection />
   </div>
 </template>

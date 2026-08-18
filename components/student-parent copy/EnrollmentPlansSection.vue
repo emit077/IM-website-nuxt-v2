@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import IconCheck from '~/components/icons/IconCheck.vue'
 import {
   enrollmentPlans,
   enrollmentPlansSection,
@@ -9,18 +8,10 @@ import {
 
 const freePlan = enrollmentPlans.find((p) => p.id === 'free')!
 const premiumPlan = enrollmentPlans.find((p) => p.id === 'premium')!
-
-function isIncluded(value: string) {
-  return value === '✓'
-}
-
-function isEmpty(value: string) {
-  return value === '—'
-}
 </script>
 
 <template>
-  <section id="enrollment-comparison" class="relative scroll-mt-28 bg-white section-py" aria-labelledby="enrollment-plans-heading">
+  <section id="enrollment-plans" class="relative bg-white section-py" aria-labelledby="enrollment-plans-heading">
     <div class="container-page">
       <CardHeader heading-id="enrollment-plans-heading" :badge="enrollmentPlansSection.badge"
         :title="enrollmentPlansSection.title" :description="enrollmentPlansSection.description"
@@ -29,6 +20,7 @@ function isEmpty(value: string) {
       <div class="mx-auto mt-12" v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
 
+        <!-- Desktop -->
         <div class="hidden sm:block">
           <table
             class="w-full table-fixed border-separate border-spacing-x-3 border-spacing-y-0 bg-transparent text-sm">
@@ -43,12 +35,17 @@ function isEmpty(value: string) {
 
                 <th scope="col" class="w-[36%] rounded-t-2xl border border-b-0 border-slate-200 bg-white p-5 text-left">
                   <div class="text-center">
-                    <p class="font-display text-xl font-bold leading-snug text-slate-900 sm:text-2xl">
+                    <p class="font-display text-2xl font-bold leading-snug text-slate-900">
                       {{ freePlan.name }}
                     </p>
                     <p class="mt-0.5 text-sm text-slate-500">{{ freePlan.tagline }}</p>
                     <p class="mt-4 font-display text-2xl font-extrabold text-slate-900">
-                      {{ freePlan.price }}
+                      <span class="relative inline-block text-slate-500">
+                        {{ premiumPlan.price }}
+                        <span
+                          class="pointer-events-none absolute -left-3 -right-3 top-1/2 h-0.5 -translate-y-1/2 bg-red-400"
+                          aria-hidden="true" />
+                      </span>
                     </p>
                   </div>
                 </th>
@@ -57,10 +54,10 @@ function isEmpty(value: string) {
                   class="relative w-[36%] rounded-t-2xl border border-b-0 border-[var(--theme-blue,#2a2fff)] bg-[var(--theme-blue,#2a2fff)] p-5 text-left">
                   <span
                     class="theme-badge-recommended absolute left-1/2 top-0 z-[1] -translate-x-1/2 -translate-y-1/2 bg-yellow-400">
-                    {{ premiumPlan.badge }}
+                    Recommended
                   </span>
                   <div class="text-center">
-                    <p class="font-display text-xl font-bold leading-snug text-white sm:text-2xl">
+                    <p class="font-display text-2xl font-bold leading-snug text-white">
                       {{ premiumPlan.name }}
                     </p>
                     <p class="mt-0.5 text-sm text-white/80">{{ premiumPlan.tagline }}</p>
@@ -75,23 +72,16 @@ function isEmpty(value: string) {
               </tr>
             </thead>
             <tbody>
-              <tr v-for="row in planComparisonRows" :key="row.feature">
-                <td class="border-x border-slate-200 bg-white px-5 py-3.5 text-left font-medium text-slate-700">
+              <tr v-for="(row, i) in planComparisonRows" :key="row.feature">
+                <td class="border-x border-slate-200 bg-white px-5 py-3.5 text-left text-slate-700">
                   {{ row.feature }}
                 </td>
                 <td class="border-x border-slate-200 bg-white px-4 py-3.5 text-center text-slate-500">
-                  <span v-if="isIncluded(row.free)" class="inline-flex justify-center text-emerald-600">
-                    <IconCheck class="h-4 w-4" />
-                  </span>
-                  <span v-else-if="isEmpty(row.free)" class="text-slate-300">—</span>
-                  <span v-else>{{ row.free }}</span>
+                  {{ row.free }}
                 </td>
                 <td
                   class="border-x border-[var(--theme-blue,#2a2fff)] bg-[var(--theme-blue,#2a2fff)] px-4 py-3.5 text-center font-medium text-white">
-                  <span v-if="isIncluded(row.premium)" class="inline-flex justify-center">
-                    <IconCheck class="h-4 w-4" />
-                  </span>
-                  <span v-else>{{ row.premium }}</span>
+                  {{ row.premium }}
                 </td>
               </tr>
               <tr>
@@ -114,6 +104,7 @@ function isEmpty(value: string) {
           </table>
         </div>
 
+        <!-- Mobile -->
         <div class="sm:hidden">
           <ul class="overflow-hidden rounded-t-2xl border border-b-0 border-slate-200 bg-white" role="list">
             <li v-for="row in planComparisonRows" :key="row.feature" class="border-b border-slate-100 px-4 py-3.5">
@@ -142,10 +133,6 @@ function isEmpty(value: string) {
           </div>
         </div>
       </div>
-
-      <p class="mx-auto mt-6 max-w-3xl text-center text-[12px] leading-relaxed text-slate-500">
-        {{ enrollmentPlansSection.footnote }}
-      </p>
     </div>
   </section>
 </template>

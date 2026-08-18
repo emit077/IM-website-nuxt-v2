@@ -30,6 +30,8 @@ const navMenus = [
     items: [
       { label: 'Why Choose Us', href: '/why-choose' },
       { label: 'Students & Parents', href: '/student-parent' },
+      { label: 'Subscription Plans', href: '/student-parent/subscription' },
+      { label: 'Enrollment', href: '/student-parent/enrollment' },
       { label: 'Academic Coverage', href: '/academic-coverage' },
       { label: 'Success Stories', href: '/success-stories' },
       { label: 'Partner Programme', href: '/channel-partner' },

@@ -163,7 +163,7 @@ export const faqCategories: FaqCategory[] = [
         id: 'subscription-plans',
         question: 'Do you offer subscription plans for students?',
         answer:
-          'Yes. Indian Mentors offers structured subscription plans (Gold, Diamond, and Platinum) with varying levels of mentoring support, reporting, and parent engagement. See the Students & Parents page for plan comparisons.',
+          'Yes. Indian Mentors offers structured subscription plans (Gold, Diamond, and Platinum) with varying levels of mentoring support, reporting, and parent engagement. See the Subscription Plans page for a full comparison.',
       },
       {
         id: 'payment-methods',

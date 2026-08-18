@@ -7,11 +7,9 @@ const heroContent: SecondaryHeroContent = {
   badge: studentParentHero.brand,
   title: studentParentHero.titleLine1,
   description: studentParentHero.description,
-  caption: studentParentHero.caption,
   actionBtns: [
     studentParentHero.primaryCta,
     studentParentHero.secondaryCta,
-    studentParentHero.tertiaryCta,
   ],
   ticker: studentParentHero.ticker,
   headingId: 'sp-hero-heading',

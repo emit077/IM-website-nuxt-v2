@@ -4,40 +4,45 @@ import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import { quickServiceCategories } from '~/data/services'
 
+const props = withDefaults(
+  defineProps<{
+    showHeader?: boolean
+    badge?: string
+    title?: string
+    description?: string
+    headingId?: string
+    headerClasses?: string
+  }>(),
+  {
+    showHeader: true,
+    badge: quickServiceCategories.kicker,
+    title: quickServiceCategories.title,
+    description: quickServiceCategories.description,
+    headingId: 'quick-service-categories-heading',
+    headerClasses: 'mx-auto max-w-2xl !px-0 !py-0',
+  },
+)
+
 const iconTones = ['blue', 'mint', 'blue', 'mint', 'blue'] as const
 </script>
 
 <template>
-  <section
-    class="relative overflow-hidden section-surface-muted section-py"
-    aria-labelledby="quick-service-categories-heading"
-  >
+  <section class="relative overflow-hidden section-surface-muted section-py"
+    :aria-labelledby="props.showHeader ? props.headingId : undefined"
+    :aria-label="props.showHeader ? undefined : 'Service categories'">
     <div class="container-page relative">
-      <CardHeader
-        heading-id="quick-service-categories-heading"
-        :badge="quickServiceCategories.kicker"
-        :title="quickServiceCategories.title"
-        :description="quickServiceCategories.description"
-        classes="mx-auto max-w-2xl !px-0 !py-0"
-      />
+      <CardHeader v-if="props.showHeader" :heading-id="props.headingId" :badge="props.badge" :title="props.title"
+        :description="props.description" :classes="props.headerClasses" />
 
-      <ul
-        class="mt-8 grid grid-cols-1 gap-3.5 sm:mt-9 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 xl:gap-4"
-        role="list"
-      >
-        <li
-          v-for="(item, i) in quickServiceCategories.items"
-          :key="item.id"
-          class="h-full"
-          v-motion
+      <ul :class="[
+        'grid grid-cols-1 gap-3.5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 xl:gap-4',
+        props.showHeader ? 'mt-8 sm:mt-9' : '',
+      ]" role="list">
+        <li v-for="(item, i) in quickServiceCategories.items" :key="item.id" class="h-full" v-motion
           :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 40, duration: 400 } }"
-        >
-          <NuxtLink
-            :to="item.href"
-            class="service-card group"
-            :class="`service-card--${iconTones[i % iconTones.length]}`"
-          >
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 40, duration: 400 } }">
+          <NuxtLink :to="item.href" class="service-card group"
+            :class="`service-card--${iconTones[i % iconTones.length]}`">
             <span class="service-card__icon" aria-hidden="true">
               <Icon :icon="item.iconMdi" class="h-6 w-6" />
             </span>
@@ -52,19 +57,11 @@ const iconTones = ['blue', 'mint', 'blue', 'mint', 'blue'] as const
         </li>
       </ul>
 
-      <div
-        class="mt-8 flex flex-col items-center gap-2 sm:mt-10"
-        v-motion
-        :initial="{ opacity: 0, y: 10 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 160, duration: 400 } }"
-      >
-        <ActionBtn
-          class="!min-w-[16rem] sm:!min-w-[18rem] !px-10"
-          variant="primary"
-          :href="quickServiceCategories.cta.href"
-          :label="quickServiceCategories.cta.label"
-          icon="mdi:view-grid-outline"
-        />
+      <div class="mt-8 flex flex-col items-center gap-2 sm:mt-10" v-motion :initial="{ opacity: 0, y: 10 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 160, duration: 400 } }">
+        <ActionBtn class="!min-w-[16rem] sm:!min-w-[18rem] !px-10" variant="primary"
+          :href="quickServiceCategories.cta.href" :label="quickServiceCategories.cta.label"
+          icon="mdi:view-grid-outline" />
       </div>
     </div>
   </section>

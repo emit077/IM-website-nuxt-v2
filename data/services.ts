@@ -84,6 +84,26 @@ export const tutoringServices: ServiceItem[] = [
     cta: { label: 'Find an Online Tutor', href: externalLinks.studentSignup },
   },
   {
+    id: 'hybrid-tutors',
+    img: 'assets/img/services/hybrid-tutor.svg',
+    visual: 'assets/img/services/hybrid-tutor.webp',
+    title: 'Hybrid Tutors',
+    tagline: 'Home and Online, Combined',
+    overview:
+      'Blend in-person sessions at home with live online classes — one personalised plan that mixes both formats around your week.',
+    features: [
+      'Home + online mix',
+      'Flexible weekly split',
+      'Same tutor continuity',
+      'Schedule that adapts',
+    ],
+    bestSuitedFor: ['Busy family schedules', 'Mixed subjects', 'Travel + home weeks'],
+    coverage: ['School subjects', 'Board exams', 'Home sessions', 'Live online classes'],
+    keyBenefit:
+      'Keep one learning plan while mixing face-to-face and online sessions around your family’s week.',
+    cta: { label: 'Find a Hybrid Tutor', href: externalLinks.studentSignup },
+  },
+  {
     id: 'shadow-tutors',
     img: 'assets/img/services/shadow-tutor.svg',
     visual: 'assets/img/services/shadow-tutors.webp',
@@ -392,7 +412,7 @@ export const quickServiceCategories = {
   kicker: 'Service Categories',
   title: 'Choose the format. <span class="text-gradient-brand">Match your schedule.</span>',
   description:
-    'Five structured tutoring formats — select the option that best matches your child\'s academic needs and schedule.',
+    'Structured tutoring formats — select the option that best matches your child\'s academic needs and schedule.',
   itemCtaLabel: 'View details',
   cta: {
     label: 'Explore All Services',

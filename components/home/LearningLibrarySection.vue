@@ -12,7 +12,11 @@ type GradeId =
   | '8'
   | '7'
   | '6'
-  | '1-5'
+  | '5'
+  | '4'
+  | '3'
+  | '2'
+  | '1'
   | 'lkg'
 
 type GridCard = {
@@ -42,7 +46,11 @@ const grades: { id: GradeId; label: string; isNew?: boolean }[] = [
   { id: '8', label: 'Class 8' },
   { id: '7', label: 'Class 7' },
   { id: '6', label: 'Class 6' },
-  { id: '1-5', label: 'Class 1 – 5' },
+  { id: '5', label: 'Class 5' },
+  { id: '4', label: 'Class 4' },
+  { id: '3', label: 'Class 3' },
+  { id: '2', label: 'Class 2' },
+  { id: '1', label: 'Class 1' },
   { id: 'lkg', label: 'LKG – UKG', isNew: true },
 ]
 
@@ -82,36 +90,172 @@ const libraryByGrade: Record<GradeId, GradeLibrary> = {
       },
     ],
   },
-  '1-5': {
+  '1': {
     subjects: ['Hindi', 'English', 'Mathematics', 'Environmental Studies (EVS)', 'Computer basics'],
     featured: {
-      tag: 'PRIMARY (CLASSES 1–5)',
-      title: 'Hindi, English & Maths foundations',
-      description: 'NCERT-aligned reading, writing, and arithmetic with EVS projects — one place for primary homework help.',
+      tag: 'CLASS 1',
+      title: 'First steps in structured learning',
+      description: 'Phonics, number sense, and gentle EVS — activity-based notes for the first school year.',
     },
     cards: [
       {
         id: 'hindi',
         title: 'Hindi',
-        description: 'Grammar, comprehension, unseen passages, and creative writing for junior classes.',
+        description: 'Letter practice, picture vocabulary, and simple sentences for beginning readers.',
         iconTone: 'bg-violet-100 text-violet-600 ring-violet-200/80',
       },
       {
         id: 'english',
         title: 'English',
-        description: 'Phonics to paragraphs: literature extracts, grammar drills, and speaking prompts.',
+        description: 'Phonics, sight words, and speaking prompts that make the first English class feel easy.',
         iconTone: 'bg-amber-100 text-amber-600 ring-amber-200/80',
       },
       {
         id: 'math',
         title: 'Mathematics',
-        description: 'Number operations, fractions intro, geometry basics, and mental-maths routines.',
+        description: 'Numbers, counting, and simple addition — play-linked worksheets for Class 1.',
         iconTone: 'bg-teal-100 text-teal-600 ring-teal-200/80',
       },
       {
         id: 'evs',
         title: 'EVS & computers',
-        description: 'Environmental studies themes plus safe computer literacy and logical puzzles.',
+        description: 'Myself, family, and neighbourhood themes plus safe first computer literacy.',
+        iconTone: 'bg-pink-100 text-pink-600 ring-pink-200/80',
+      },
+    ],
+  },
+  '2': {
+    subjects: ['Hindi', 'English', 'Mathematics', 'Environmental Studies (EVS)', 'Computer basics'],
+    featured: {
+      tag: 'CLASS 2',
+      title: 'Reading, writing & number sense',
+      description: 'Fluency in Hindi and English, addition and subtraction practice, and EVS stories that stick.',
+    },
+    cards: [
+      {
+        id: 'hindi',
+        title: 'Hindi',
+        description: 'Reading fluency, short paragraphs, and grammar basics for Class 2 writing.',
+        iconTone: 'bg-violet-100 text-violet-600 ring-violet-200/80',
+      },
+      {
+        id: 'english',
+        title: 'English',
+        description: 'Comprehension passages, sentence building, and speaking practice beyond phonics.',
+        iconTone: 'bg-amber-100 text-amber-600 ring-amber-200/80',
+      },
+      {
+        id: 'math',
+        title: 'Mathematics',
+        description: 'Addition, subtraction, place value, and number operations with revision sheets.',
+        iconTone: 'bg-teal-100 text-teal-600 ring-teal-200/80',
+      },
+      {
+        id: 'evs',
+        title: 'EVS & computers',
+        description: 'Plants, animals, and food themes plus introductory computer and puzzle practice.',
+        iconTone: 'bg-pink-100 text-pink-600 ring-pink-200/80',
+      },
+    ],
+  },
+  '3': {
+    subjects: ['Hindi', 'English', 'Mathematics', 'Environmental Studies (EVS)', 'Computer basics'],
+    featured: {
+      tag: 'CLASS 3',
+      title: 'Concept-first primary pack',
+      description: 'Reading comprehension, written expression, and Maths that moves beyond rote — NCERT-aligned EVS.',
+    },
+    cards: [
+      {
+        id: 'hindi',
+        title: 'Hindi',
+        description: 'Comprehension, unseen passages, and creative writing with Class 3 grammar drills.',
+        iconTone: 'bg-violet-100 text-violet-600 ring-violet-200/80',
+      },
+      {
+        id: 'english',
+        title: 'English',
+        description: 'Literature extracts, grammar, and writing that builds independent expression.',
+        iconTone: 'bg-amber-100 text-amber-600 ring-amber-200/80',
+      },
+      {
+        id: 'math',
+        title: 'Mathematics',
+        description: 'Multiplication, division, fractions intro, and application-based word problems.',
+        iconTone: 'bg-teal-100 text-teal-600 ring-teal-200/80',
+      },
+      {
+        id: 'evs',
+        title: 'EVS & computers',
+        description: 'Environment and community themes plus logical puzzles and computer basics.',
+        iconTone: 'bg-pink-100 text-pink-600 ring-pink-200/80',
+      },
+    ],
+  },
+  '4': {
+    subjects: ['Hindi', 'English', 'Mathematics', 'Environmental Studies (EVS)', 'Computer basics'],
+    featured: {
+      tag: 'CLASS 4',
+      title: 'Skill depth in every subject',
+      description: 'Grammar fluency, multi-step Maths, and EVS projects — worksheets that build accuracy before Class 5.',
+    },
+    cards: [
+      {
+        id: 'hindi',
+        title: 'Hindi',
+        description: 'Grammar, comprehension, and writing formats with subject-wise practice sets.',
+        iconTone: 'bg-violet-100 text-violet-600 ring-violet-200/80',
+      },
+      {
+        id: 'english',
+        title: 'English',
+        description: 'Language fluency, grammar exceptions, and structured paragraph writing.',
+        iconTone: 'bg-amber-100 text-amber-600 ring-amber-200/80',
+      },
+      {
+        id: 'math',
+        title: 'Mathematics',
+        description: 'Problem-solving techniques, geometry basics, and assessment-style worksheets.',
+        iconTone: 'bg-teal-100 text-teal-600 ring-teal-200/80',
+      },
+      {
+        id: 'evs',
+        title: 'EVS & computers',
+        description: 'Deeper EVS themes plus computer literacy and logical-thinking puzzles.',
+        iconTone: 'bg-pink-100 text-pink-600 ring-pink-200/80',
+      },
+    ],
+  },
+  '5': {
+    subjects: ['Hindi', 'English', 'Mathematics', 'Environmental Studies (EVS)', 'Computer basics'],
+    featured: {
+      tag: 'CLASS 5',
+      title: 'Ready for middle school',
+      description: 'Hindi, English, Maths, and EVS with stronger reasoning — the last primary year before Class 6 Science and SST.',
+    },
+    cards: [
+      {
+        id: 'hindi',
+        title: 'Hindi',
+        description: 'Independent reading, grammar, and writing that prepares for middle-school Hindi.',
+        iconTone: 'bg-violet-100 text-violet-600 ring-violet-200/80',
+      },
+      {
+        id: 'english',
+        title: 'English',
+        description: 'Comprehension, composition, and speaking prompts for a confident Class 6 start.',
+        iconTone: 'bg-amber-100 text-amber-600 ring-amber-200/80',
+      },
+      {
+        id: 'math',
+        title: 'Mathematics',
+        description: 'Fractions, decimals, geometry, and mental-maths routines for middle-school readiness.',
+        iconTone: 'bg-teal-100 text-teal-600 ring-teal-200/80',
+      },
+      {
+        id: 'evs',
+        title: 'EVS & computers',
+        description: 'Revision of primary EVS plus computer literacy and analytical puzzles.',
         iconTone: 'bg-pink-100 text-pink-600 ring-pink-200/80',
       },
     ],
@@ -400,7 +544,7 @@ const gridCards = computed(() => current.value.cards)
 
 const headerContent = {
   badge: 'Learning library',
-  title: 'Resources built for your grade',
+  title: 'Resources built for <span class="text-blue-600">your grade</span>',
   description: 'At Indian Mentors, we provide comprehensive academic mentoring designed to support students across every stage of their educational journey. Our tutoring programs combine experienced mentors, curriculum-aligned teaching methods, and personalised learning strategies to help students build strong academic foundations and achieve their educational goals.',
   classes: '!px-0 !py-0',
 }
@@ -415,9 +559,8 @@ const headerContent = {
         class="rounded-[1.75rem] border border-slate-200/70 bg-white p-6 shadow-soft sm:p-8 lg:p-10 lg:shadow-[0_8px_40px_-12px_rgba(15,23,42,0.08)]"
         v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550, ease: 'easeOut' } }">
-        <CardHeader heading-id="learning-library-heading" :badge="headerContent.badge"
-          :title="headerContent.title" :description="headerContent.description"
-          :classes="headerContent.classes" />
+        <CardHeader heading-id="learning-library-heading" :badge="headerContent.badge" :title="headerContent.title"
+          :description="headerContent.description" :classes="headerContent.classes" />
         <div class="mt-8 -mx-1 overflow-x-auto pb-1 [scrollbar-width:thin]" role="tablist" aria-label="Select class">
           <div class="flex min-w-min gap-2 px-1">
             <button v-for="g in grades" :key="g.id" type="button" role="tab" :aria-selected="selected === g.id"

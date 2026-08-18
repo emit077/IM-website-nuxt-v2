@@ -2,489 +2,177 @@
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 
-/** Brand-aligned tones: primary blue, secondary emerald, accent amber + depth variants */
-type CardTone = 'blue' | 'indigo' | 'sky' | 'theme' | 'emerald' | 'teal' | 'amber' | 'navy'
+type CardSize = 'hero' | 'compact' | 'cta'
 
 type ServiceCard = {
     title: string
-    description: string
-    img: string
-    features: string[]
+    hook: string
+    chip: string
+    visual: string
     href: string
-    tone: CardTone
+    size: CardSize
+    popular?: boolean
+    icon?: string
 }
 
 const sectionConfig = {
-    badge: 'What We Offer',
-    title: 'Modern Learning Solutions for Academic Excellence',
+    badge: 'Pick your learning style',
+    title: 'How does your child learn best?',
     description:
-        'Personalised tutoring formats built around how your child learns — at home, online, or wherever you need support.',
+        'Home, online, in school, or on the move — choose a format first. We’ll match a verified mentor around it.',
     classes: 'mx-auto max-w-3xl !px-0 !py-0',
 }
 
 const services: ServiceCard[] = [
     {
         title: 'Home Tutors',
-        description: 'One-on-one personalised learning in the comfort of your home.',
-        img: 'assets/img/services/home-tutor.svg',
-        features: ['Personalised learning plans', 'Flexible scheduling', 'All subjects & boards'],
+        hook: 'One-to-one at the dining table — not a crowded classroom.',
+        chip: '1-on-1 at home',
+        visual: 'assets/img/services/home-tutors.webp',
         href: '/services#home-tutors',
-        tone: 'blue',
+        size: 'hero',
+        popular: true,
     },
     {
         title: 'Online Tutors',
-        description: 'Live interactive classes from anywhere, anytime.',
-        img: 'assets/img/services/online-tutor.svg',
-        features: ['Live video sessions', 'Digital whiteboard', 'Recorded revisions'],
+        hook: 'Live class from the couch, a café, or another city.',
+        chip: 'Learn from anywhere',
+        visual: 'assets/img/services/online-tutor.webp',
         href: '/services#online-tutors',
-        tone: 'indigo',
+        size: 'hero',
+    },
+    {
+        title: 'Hybrid Tutors',
+        hook: 'Home some days, online the rest — one plan, both formats.',
+        chip: 'Home + online',
+        visual: 'assets/img/services/hybrid-tutor.webp',
+        href: '/services#hybrid-tutors',
+        size: 'hero',
     },
     {
         title: 'Shadow Tutors',
-        description: 'Extra focus and depth beyond regular school curriculum.',
-        img: 'assets/img/services/shadow-tutor.svg',
-        features: ['Concept reinforcement', 'Homework guidance', 'Exam preparation'],
+        hook: 'A mentor beside them in school, through the whole day.',
+        chip: 'In-school support',
+        visual: 'assets/img/services/shadow-tutors.webp',
         href: '/services#shadow-tutors',
-        tone: 'sky',
+        size: 'compact',
     },
     {
         title: 'Travel Tutors',
-        description: 'Verified mentors available at your location while you travel.',
-        img: 'assets/img/services/travel-tutor.svg',
-        features: ['On-demand support', 'Location flexibility', 'Continuity in learning'],
+        hook: 'School doesn’t pause when your family is on the move.',
+        chip: 'Learn on the road',
+        visual: 'assets/img/services/travel-tutor.webp',
         href: '/services#travel-tutors',
-        tone: 'theme',
+        size: 'compact',
     },
     {
         title: 'Live-In Tutors',
-        description: 'Full-time residential academic mentorship for consistent learning and holistic development.',
-        img: 'assets/img/services/live-in-tutor.svg',
-        features: ['Structured daily routine', 'Academic discipline', 'Result-oriented approach'],
+        hook: 'A mentor at home, every day — routine, homework, results.',
+        chip: 'Full-time mentor',
+        visual: 'assets/img/services/live-In-tutors.webp',
         href: '/services#live-in-tutors',
-        tone: 'emerald',
+        size: 'compact',
     },
     {
-        title: 'Home Schooling Support',
-        description: 'Home-based learning with board-aligned curriculum and guidance.',
-        img: 'assets/img/services/home-schooling.svg',
-        features: ['Board-aligned curriculum', 'Dedicated mentor', 'Progress & assessments'],
+        title: 'HomeSchooling Support',
+        hook: 'A full curriculum at home, with board-aligned guidance.',
+        chip: 'Board-aligned',
+        visual: 'assets/img/services/home-schooling-support.webp',
         href: '/services#home-schooling',
-        tone: 'teal',
+        size: 'compact',
     },
     {
-        title: 'Special Educator',
-        description: 'Individualised support for children with diverse learning and developmental needs.',
-        img: 'assets/img/services/special-tutor.svg',
-        features: ['ADHD & ASD support', 'SLD & dyslexia support', 'Behavioural challenges'],
+        title: 'Special Educators',
+        hook: 'Teaching that fits how they learn — not the other way around.',
+        chip: 'Diverse needs',
+        visual: 'assets/img/services/special-educators.webp',
         href: '/services#special-educators',
-        tone: 'amber',
+        size: 'compact',
     },
     {
-        title: 'Need Something More Specific?',
-        description:
-            'Tell us your goals, schedule, and learning style — we match you with a mentor and plan built around you.',
-        img: 'assets/img/services/custome.svg',
-        features: ['Flexible goals & timelines', 'Mixed subjects or boards', 'Dedicated coordinator'],
+        title: 'Something more specific?',
+        hook: 'Tell us the goal, the schedule, the style. We’ll build the match.',
+        chip: 'Made for you',
+        visual: 'assets/img/hero/hero-1.png',
+        icon: 'assets/img/services/custome.svg',
         href: '/services#custom-tutor',
-        tone: 'navy',
+        size: 'cta',
     },
 ]
-
-/** Cards 1, 3, 5, 8 use blue gradient fills */
-const blueGradientIndexes = new Set([0, 2, 5, 7])
-
-function isBlueCard(index: number) {
-    return blueGradientIndexes.has(index)
-}
 </script>
 
 <template>
-    <section id="services" class="relative overflow-hidden section-surface-white section-py"
-        aria-labelledby="services-heading">
-        <!-- Abstract atmosphere -->
+    <section id="services-v2" class="relative overflow-hidden section-surface-muted section-py"
+        aria-labelledby="services-v2-heading">
+        <div aria-hidden="true"
+            class="pointer-events-none absolute -left-28 top-8 h-80 w-80 rounded-full bg-blue-200/35 blur-3xl" />
+        <div aria-hidden="true"
+            class="pointer-events-none absolute -right-20 bottom-4 h-72 w-72 rounded-full bg-amber-200/30 blur-3xl" />
+
         <div class="container-page relative z-[1]">
-            <CardHeader heading-id="services-heading" :badge="sectionConfig.badge" :title="sectionConfig.title"
+            <CardHeader heading-id="services-v2-heading" :badge="sectionConfig.badge" :title="sectionConfig.title"
                 :description="sectionConfig.description" :classes="sectionConfig.classes" />
 
-            <ul class="offer-grid mt-10 sm:mt-12" role="list">
-                <li v-for="(service, i) in services" :key="service.title" v-motion :initial="{ opacity: 0, y: 16 }"
-                    :visibleOnce="{
+            <ul class="mt-10 grid grid-cols-1 gap-3.5 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-[1.1rem]"
+                role="list">
+                <li v-for="(service, i) in services" :key="service.title" class="flex h-full min-w-0" v-motion
+                    :initial="{ opacity: 0, y: 18 }" :visibleOnce="{
                         opacity: 1,
                         y: 0,
-                        transition: { delay: 80 + i * 60, duration: 480, ease: 'easeOut' },
+                        transition: { delay: 60 + i * 50, duration: 480, ease: 'easeOut' },
                     }">
-                    <a :href="service.href" class="offer-card-wrap" :aria-label="`Learn more about ${service.title}`">
-                        <article class="offer-card" :class="[
-                            `offer-card--${service.tone}`,
-                            isBlueCard(i) ? 'offer-card--gradient' : 'offer-card--plain',
-                        ]">
-                            <span class="offer-card__deco" aria-hidden="true">
-                                <span class="offer-card__deco-orb" />
-                                <span class="offer-card__deco-dots" />
-                            </span>
-
-                            <div class="offer-card__body">
-                                <span class="offer-card__icon" aria-hidden="true">
-                                    <img :src="usePublicAsset(service.img)" :alt="`${service.title} icon`" width="28"
-                                        height="28" class="offer-card__icon-img" loading="lazy" />
-                                </span>
-
-                                <h3 class="offer-card__title font-display">
-                                    {{ service.title }}
-                                </h3>
-
-                                <p class="offer-card__desc">
-                                    {{ service.description }}
-                                </p>
-
-                                <ul class="offer-card__features" role="list">
-                                    <li v-for="feat in service.features" :key="feat">
-                                        <Icon icon="fa6-solid:arrow-right-long" class="offer-card__check"
-                                            aria-hidden="true" />
-                                        <span>{{ feat }}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </article>
-
-                        <span class="offer-card__action_wrap" aria-hidden="true">
-                            <span class="offer-card__action" aria-hidden="true">
-                                <Icon icon="solar:arrow-right-up-linear" class="h-4 w-4" />
-                            </span>
+                    <NuxtLink :to="service.href" :aria-label="`Explore ${service.title}`"
+                        class="group relative isolate flex h-full min-h-[18rem] w-full flex-col justify-end overflow-hidden rounded-[1.6rem] bg-slate-900 no-underline shadow-[0_16px_36px_-22px_rgba(15,23,42,0.45)] transition duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_24px_44px_-18px_rgba(29,78,216,0.38)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-700 sm:min-h-[20rem] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                        :class="service.size === 'cta'
+                            ? 'bg-gradient-to-br from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] shadow-[0_18px_36px_-18px_rgba(29,78,216,0.55)] hover:shadow-[0_24px_44px_-16px_rgba(29,78,216,0.62)]'
+                            : ''
+                            ">
+                        <span class="absolute inset-0 z-0" aria-hidden="true">
+                            <img v-if="service.size !== 'cta'" :src="usePublicAsset(service.visual)"
+                                :alt="`${service.title} — Indian Mentors`"
+                                class="h-full w-full scale-[1.02] object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-[1.02]"
+                                :loading="i < 2 ? 'eager' : 'lazy'" decoding="async" />
+                            <span class="absolute inset-0" :class="service.size === 'cta'
+                                ? 'bg-[radial-gradient(circle_at_88%_12%,rgba(255,255,255,0.28)_0%,transparent_42%),radial-gradient(circle_at_8%_92%,rgba(30,64,175,0.45)_0%,transparent_48%)]'
+                                : 'bg-[linear-gradient(180deg,rgba(15,23,42,0.06)_8%,rgba(15,23,42,0.42)_42%,rgba(15,23,42,0.92)_74%,rgba(15,23,42,0.98)_100%)]'
+                                " />
                         </span>
-                    </a>
+
+                        <span v-if="service.popular"
+                            class="absolute left-4 top-4 z-[2] inline-flex items-center rounded-full bg-amber-500 px-2.5 py-1 text-[0.65rem] font-extrabold uppercase tracking-[0.08em] text-gray-900 shadow-[0_8px_18px_-8px_rgba(245,158,11,0.7)]">
+                            Most chosen
+                        </span>
+
+                        <span v-if="service.icon"
+                            class="absolute left-4 top-4 z-[2] grid h-12 w-12 place-items-center rounded-2xl bg-white/15 ring-1 ring-inset ring-white/25 backdrop-blur-sm">
+                            <img :src="usePublicAsset(service.icon)" alt="" class="h-6 w-6" width="24" height="24" />
+                        </span>
+
+                        <div class="relative z-[1] flex flex-col items-start px-5 pb-5 pt-5">
+                            <span
+                                class="inline-flex items-center rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.04em] text-white backdrop-blur-md">
+                                {{ service.chip }}
+                            </span>
+                            <h3
+                                class="mt-2.5 font-display uppercase text-[1rem] font-extrabold leading-snug tracking-tight text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]">
+                                {{ service.title }}
+                            </h3>
+                            <p class="mt-1.5 text-[0.8rem] leading-relaxed text-white/90">
+                                {{ service.hook }}
+                            </p>
+                            <span
+                                class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2.5 text-[0.8rem] font-bold tracking-tight text-indigo-700 shadow-[0_10px_22px_-10px_rgba(15,23,42,0.55)] transition group-hover:-translate-y-px group-hover:gap-2.5 motion-reduce:transition-none"
+                                :class="service.size === 'cta'
+                                    ? 'group-hover:bg-indigo-50 group-hover:text-indigo-800'
+                                    : 'group-hover:bg-indigo-700 group-hover:text-white'
+                                    ">
+                                {{ service.size === 'cta' ? 'Tell us what you need' : 'Find a tutor' }}
+                                <Icon icon="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" />
+                            </span>
+                        </div>
+                    </NuxtLink>
                 </li>
             </ul>
         </div>
     </section>
 </template>
-
-<style scoped>
-.offer-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.9rem;
-    align-items: stretch;
-}
-
-.offer-grid>li {
-    display: flex;
-    min-width: 0;
-    height: 100%;
-}
-
-@media (min-width: 640px) {
-    .offer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .offer-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 1.1rem;
-    }
-}
-
-.offer-card-wrap {
-    --btn: 2.55rem;
-    --inset: 0px;
-    --cut: calc(var(--btn) + var(--inset) + var(--gap));
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    isolation: isolate;
-    transform: translate3d(0, 0, 0);
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: transform;
-}
-
-.offer-card-wrap:hover {
-    transform: translate3d(0, -5px, 0);
-}
-
-.offer-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    height: 100%;
-    padding: 1.35rem 1.25rem calc(var(--btn) + 1rem) 1.25rem;
-    border-radius: 1.5rem;
-    overflow: hidden;
-    transition:
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
-    -webkit-mask-image: radial-gradient(circle at 100% 100%,
-            transparent var(--cut),
-            #000 calc(var(--cut) + 1px));
-    mask-image: radial-gradient(circle at 100% 100%,
-            transparent var(--cut),
-            #000 calc(var(--cut) + 1px));
-}
-
-.offer-card--plain {
-    background: #ffffff;
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: 0 8px 24px -16px rgba(15, 23, 42, 0.22);
-}
-
-.offer-card--gradient {
-    background: linear-gradient(145deg, #3b82f6 0%, #1d4ed8 52%, #1e40af 100%);
-    border: 1px solid transparent;
-    box-shadow: 0 14px 32px -18px rgba(29, 78, 216, 0.55);
-}
-
-.offer-card-wrap:hover .offer-card--plain {
-    border-color: rgba(37, 99, 235, 0.18);
-    box-shadow: 0 16px 32px -18px rgba(15, 23, 42, 0.28);
-}
-
-.offer-card-wrap:hover .offer-card--gradient {
-    box-shadow: 0 20px 40px -18px rgba(29, 78, 216, 0.65);
-}
-
-/* —— Abstract décor inside cards —— */
-.offer-card__deco {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.offer-card__deco-orb {
-    position: absolute;
-    top: -30%;
-    right: -25%;
-    width: 70%;
-    height: 70%;
-    border-radius: 9999px;
-    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.offer-card--plain .offer-card__deco-orb {
-    background: radial-gradient(circle, rgba(29, 78, 216, 0.07) 0%, transparent 68%);
-}
-
-.offer-card--gradient .offer-card__deco-orb {
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, transparent 68%);
-}
-
-.offer-card__deco-dots {
-    position: absolute;
-    top: 1.1rem;
-    right: 1.1rem;
-    width: 4.5rem;
-    height: 4.5rem;
-    background-size: 9px 9px;
-    mask-image: radial-gradient(circle at center, #000 20%, transparent 70%);
-}
-
-.offer-card--plain .offer-card__deco-dots {
-    opacity: 0.35;
-    background-image: radial-gradient(rgba(29, 78, 216, 0.28) 1px, transparent 1px);
-}
-
-.offer-card--gradient .offer-card__deco-dots {
-    opacity: 0.3;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.9) 1px, transparent 1px);
-}
-
-.offer-card-wrap:hover .offer-card__deco-orb {
-    transform: scale(1.08);
-}
-
-/* Icon accent tones (white cards) */
-.offer-card--plain.offer-card--blue .offer-card__icon,
-.offer-card--plain.offer-card--indigo .offer-card__icon,
-.offer-card--plain.offer-card--sky .offer-card__icon,
-.offer-card--plain.offer-card--theme .offer-card__icon,
-.offer-card--plain.offer-card--navy .offer-card__icon {
-    background: #e8f1ff;
-}
-
-.offer-card--plain.offer-card--emerald .offer-card__icon,
-.offer-card--plain.offer-card--teal .offer-card__icon {
-    background: #e7f8f2;
-}
-
-.offer-card--plain.offer-card--amber .offer-card__icon {
-    background: #fff7e8;
-}
-
-.offer-card--gradient .offer-card__icon {
-    background: rgba(255, 255, 255, 0.16);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
-}
-
-.offer-card__body {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding-right: 0.35rem;
-}
-
-.offer-card__icon {
-    display: grid;
-    height: 2.55rem;
-    width: 2.55rem;
-    place-items: center;
-    border-radius: 0.85rem;
-    transition:
-        transform 0.3s ease,
-        background-color 0.3s ease,
-        color 0.3s ease;
-}
-
-.offer-card-wrap:hover .offer-card__icon {
-    transform: scale(1.05);
-}
-
-.offer-card__icon-img {
-    height: 1.35rem;
-    width: 1.35rem;
-    object-fit: contain;
-}
-
-.offer-card--plain .offer-card__icon-img {
-    filter: brightness(0) saturate(100%);
-    opacity: 0.85;
-}
-
-.offer-card--gradient .offer-card__icon-img {
-    filter: brightness(0) invert(1);
-    opacity: 1;
-}
-
-.offer-card__title {
-    margin-top: 1rem;
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    line-height: 1.25;
-}
-
-.offer-card--plain .offer-card__title {
-    color: #0f172a;
-}
-
-.offer-card--gradient .offer-card__title {
-    color: #ffffff;
-}
-
-.offer-card__desc {
-    margin-top: 0.5rem;
-    font-size: 0.8rem;
-    line-height: 1.5;
-}
-
-.offer-card--plain .offer-card__desc {
-    color: #64748b;
-}
-
-.offer-card--gradient .offer-card__desc {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.offer-card__features {
-    margin-top: 0.9rem;
-    display: grid;
-    gap: 0.4rem;
-}
-
-.offer-card__features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.4rem;
-    font-size: 0.72rem;
-    line-height: 1.35;
-    font-weight: 500;
-}
-
-.offer-card--plain .offer-card__features li {
-    color: #334155;
-}
-
-.offer-card--gradient .offer-card__features li {
-    color: rgba(255, 255, 255, 0.95);
-}
-
-.offer-card__check {
-    margin-top: 0.1rem;
-    height: 0.7rem;
-    width: 0.7rem;
-    flex-shrink: 0;
-    opacity: 0.9;
-}
-
-.offer-card--plain .offer-card__check {
-    color: #1d4ed8;
-}
-
-.offer-card--gradient .offer-card__check {
-    color: #ffffff;
-}
-
-.offer-card__action_wrap {
-    position: absolute;
-    right: -10px;
-    bottom: -10px;
-    z-index: 2;
-    display: grid;
-    height: calc(var(--btn) + 8px);
-    width: calc(var(--btn) + 8px);
-    place-items: center;
-    border-radius: 50%;
-    background: #ffffff;
-    transform: translate3d(0, 0, 0);
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.offer-card__action {
-    z-index: 2;
-    display: grid;
-    height: var(--btn);
-    width: var(--btn);
-    place-items: center;
-    border-radius: 9999px;
-    background: #0f172a;
-    border: 1.5px solid #0f172a;
-    color: #ffffff;
-    box-shadow: 0 2px 8px -4px rgba(15, 23, 42, 0.28);
-    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-    transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-        background-color 0.4s ease,
-        color 0.4s ease,
-        border-color 0.4s ease,
-        box-shadow 0.4s ease;
-}
-
-.offer-card-wrap:hover .offer-card__action {
-    transform: translate3d(0, 0, 0) scale(1.06) rotate(12deg);
-    background: #1d4ed8;
-    color: #ffffff;
-    border-color: #1d4ed8;
-    box-shadow: 0 6px 16px -6px rgba(29, 78, 216, 0.45);
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    .offer-card-wrap,
-    .offer-card-wrap:hover,
-    .offer-card__action_wrap,
-    .offer-card__action,
-    .offer-card-wrap:hover .offer-card__action,
-    .offer-card__deco-orb,
-    .offer-card-wrap:hover .offer-card__deco-orb {
-        transition: none;
-        transform: none;
-        will-change: auto;
-    }
-}
-</style>
