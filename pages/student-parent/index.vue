@@ -4,6 +4,7 @@ import StudentParentAudiencesSection from '~/components/student-parent/StudentPa
 import StudentParentNeedsSection from '~/components/student-parent/StudentParentNeedsSection.vue'
 import StudentParentExpectSection from '~/components/student-parent/StudentParentExpectSection.vue'
 import StudentParentMatchingSection from '~/components/student-parent/StudentParentMatchingSection.vue'
+import StudentParentDemoSection from '~/components/student-parent/StudentParentDemoSection.vue'
 import StudentParentModesSection from '~/components/student-parent/StudentParentModesSection.vue'
 import StudentParentCoverageSection from '~/components/student-parent/StudentParentCoverageSection.vue'
 import StudentParentEnrollmentPreviewSection from '~/components/student-parent/StudentParentEnrollmentPreviewSection.vue'
@@ -13,10 +14,11 @@ import StudentParentCollaborationSection from '~/components/student-parent/Stude
 import StudentParentWhySection from '~/components/student-parent/StudentParentWhySection.vue'
 import StudentParentTrustSection from '~/components/student-parent/StudentParentTrustSection.vue'
 import StudentParentFaqSection from '~/components/student-parent/StudentParentFaqSection.vue'
-import StudentParentSupportSection from '~/components/student-parent/StudentParentSupportSection.vue'
 import StudentParentClosingSection from '~/components/student-parent/StudentParentClosingSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
-import { spFinalCta } from '~/data/student-parent'
+import WhyChooseUs from '~/components/ui/shared/WhyChooseUs.vue'
+import StudentParentSupportSection from '~/components/ui/shared/StudentParentSupportSection.vue'
+import { spFinalCta, spWhyFamilies } from '~/data/student-parent'
 
 useSeoMeta({
   title: 'Parents & Students — Indian Mentors',
@@ -34,21 +36,24 @@ useSeoMeta({
     <StudentParentHeroSection />
     <StudentParentAudiencesSection />
     <StudentParentNeedsSection />
-    <StudentParentExpectSection />
+    <!-- <StudentParentExpectSection /> -->
     <StudentParentMatchingSection />
+    <StudentParentDemoSection />
     <StudentParentModesSection />
     <!-- <StudentParentCoverageSection /> -->
     <StudentParentEnrollmentPreviewSection />
     <StudentParentPlansPreviewSection />
     <StudentParentMonitoringSection />
-    <StudentParentCollaborationSection />
-    <StudentParentWhySection />
+    <!-- <StudentParentCollaborationSection /> -->
+    <!-- <StudentParentWhySection /> -->
+    <WhyChooseUs />
+    <WhyChooseUs layout="grid" :show-ctas="false" section-id="why-families" heading-id="why-families-heading"
+      surface-class="section-surface-white" :badge="spWhyFamilies.badge" :title="spWhyFamilies.title"
+      :description="spWhyFamilies.description" :classes="spWhyFamilies.classes" :items="spWhyFamilies.items" />
     <StudentParentTrustSection />
-    <StudentParentFaqSection />
-    <UiCTASection heading-id="sp-final-cta-heading" layout="split" compact surface-class="section-surface-muted"
-      :title="spFinalCta.title" :description="spFinalCta.description" :supporting="spFinalCta.supporting"
-      :ctas="spFinalCta.ctas" />
+    <UiCTASection heading-id="sp-final-cta-heading" layout="split" surface-class="section-surface-muted"
+      :title="spFinalCta.title" :description="spFinalCta.description" :ctas="spFinalCta.ctas" />
     <StudentParentSupportSection />
-    <StudentParentClosingSection />
+    <!-- <StudentParentClosingSection /> -->
   </div>
 </template>

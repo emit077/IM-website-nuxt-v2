@@ -207,7 +207,7 @@ export const faqCategories: FaqCategory[] = [
         id: 'parent-dashboard',
         question: 'Do parents get access to a dashboard or ERP system?',
         answer:
-          'Yes. Indian Mentors provides a structured parent dashboard for tracking sessions, academic updates, and communication — giving families visibility into the learning journey.',
+          'Yes. Indian Mentors provides a shared family dashboard for parents and students to track sessions, academic updates, and communication — giving families visibility into the learning journey.',
       },
     ],
   },

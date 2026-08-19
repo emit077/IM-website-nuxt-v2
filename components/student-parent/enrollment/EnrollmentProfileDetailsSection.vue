@@ -33,23 +33,11 @@ import { enrollmentFreeDetail, enrollmentPremiumDetail } from '~/data/student-pa
         </li>
       </ul>
 
-      <div class="mt-8 rounded-[1.5rem] border border-slate-200/80 bg-white px-5 py-5 text-center shadow-soft sm:px-8"
-        v-motion :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 420 } }">
-        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
-          {{ enrollmentFreeDetail.idealLabel }}
-        </p>
-        <p class="mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 text-sm font-semibold text-slate-800">
-          <template v-for="(label, i) in enrollmentFreeDetail.idealFor" :key="label">
-            <span>{{ label }}</span>
-            <Icon v-if="i < enrollmentFreeDetail.idealFor.length - 1" icon="mdi:arrow-right"
-              class="h-4 w-4 text-blue-500" aria-hidden="true" />
-          </template>
-        </p>
-      </div>
+
 
       <div class="mt-8 flex justify-center">
-        <ActionBtn variant="theme-secondary" :label="enrollmentFreeDetail.cta.label"
-          :href="enrollmentFreeDetail.cta.href" icon="mdi:account-plus-outline" />
+        <ActionBtn variant="primary" :label="enrollmentFreeDetail.cta.label" :href="enrollmentFreeDetail.cta.href"
+          icon="mdi:account-plus-outline" />
       </div>
     </div>
   </section>

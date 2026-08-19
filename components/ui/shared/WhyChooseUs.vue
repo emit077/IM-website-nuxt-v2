@@ -4,20 +4,110 @@ import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import { whyChooseAdvantage } from '~/data/why-choose'
 
+type WhyChooseItem = {
+  title: string
+  meaning?: string
+  description?: string
+  iconMdi: string
+  badge?: string
+}
+
+const props = withDefaults(
+  defineProps<{
+    showHeader?: boolean
+    showCtas?: boolean
+    badge?: string
+    title?: string
+    description?: string
+    headingId?: string
+    sectionId?: string
+    headerClasses?: string
+    classes?: string
+    layout?: 'split' | 'grid'
+    items?: WhyChooseItem[]
+    surfaceClass?: string
+  }>(),
+  {
+    showHeader: true,
+    showCtas: true,
+    badge: whyChooseAdvantage.kicker,
+    title: whyChooseAdvantage.title,
+    description: whyChooseAdvantage.description,
+    headingId: 'advantage-heading',
+    sectionId: 'advantage',
+    headerClasses: whyChooseAdvantage.classes,
+    layout: 'split',
+    items: () => [],
+    surfaceClass: 'section-surface-muted',
+  },
+)
+
+const headerClass = computed(() => props.classes ?? props.headerClasses)
+const isGrid = computed(() => props.layout === 'grid')
+const isWhiteSurface = computed(() => props.surfaceClass.includes('white'))
+const cardSurfaceClass = computed(() =>
+  isWhiteSurface.value
+    ? 'bg-cream-50/70 hover:bg-white'
+    : 'bg-white',
+)
+
+const advantageItems = computed(() => {
+  const source: WhyChooseItem[] = props.items.length ? props.items : whyChooseAdvantage.advantages
+  return source.map((item) => ({
+    title: item.title,
+    meaning: item.meaning ?? item.description ?? '',
+    iconMdi: item.iconMdi,
+    badge: item.badge,
+  }))
+})
+
 const advantageImage = usePublicAsset(whyChooseAdvantage.image)
 </script>
 
 <template>
-  <section id="advantage" class="relative scroll-mt-28 overflow-hidden section-surface-muted section-py"
-    aria-labelledby="advantage-heading">
+  <section :id="props.sectionId" :class="['relative scroll-mt-28 overflow-hidden section-py', props.surfaceClass]"
+    :aria-labelledby="props.showHeader ? props.headingId : undefined"
+    :aria-label="props.showHeader ? undefined : 'Why choose Indian Mentors'">
     <div aria-hidden="true"
       class="pointer-events-none absolute -left-24 top-24 h-80 w-80 rounded-full bg-blue-200/30 blur-3xl" />
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-indigo-200/25 blur-3xl" />
 
     <div class="container-page relative">
-      <div class="grid items-start gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16">
-        <!-- Visual -->
+      <div v-if="isGrid">
+        <CardHeader v-if="props.showHeader" :heading-id="props.headingId" :badge="props.badge" :title="props.title"
+          :description="props.description" :classes="headerClass" />
+
+        <ul class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5" role="list">
+          <li v-for="(adv, i) in advantageItems" :key="adv.title" v-motion :initial="{ opacity: 0, y: 14 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 40, duration: 400 } }">
+            <article
+              :class="['group flex h-full flex-col rounded-[1.5rem] border border-slate-200/80 p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card sm:p-6', cardSurfaceClass]">
+              <span
+                class="grid h-11 w-11 place-items-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white"
+                aria-hidden="true">
+                <Icon :icon="adv.iconMdi" class="h-5 w-5" />
+              </span>
+              <!-- <span
+                v-if="adv.badge"
+                class="mt-4 inline-flex w-fit items-center rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-blue-700 ring-1 ring-blue-100">
+                {{ adv.badge }}
+              </span> -->
+              <h3 class="font-display text-base font-bold text-slate-900" :class="adv.badge ? 'mt-2' : 'mt-4'">
+                <span class="text-gradient-brand">{{ adv.title.charAt(0) }}</span>{{ adv.title.slice(1) }}
+              </h3>
+              <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600">{{ adv.meaning }}</p>
+            </article>
+          </li>
+        </ul>
+
+        <div v-if="props.showCtas" class="mt-8 flex flex-wrap justify-center gap-3">
+          <ActionBtn v-for="cta in whyChooseAdvantage.ctas" :key="cta.label" :variant="cta.variant" :href="cta.href"
+            :label="cta.label" :icon="cta.icon" />
+        </div>
+      </div>
+
+      <div v-else class="grid items-start gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16">
         <div class="lg:col-span-5" v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
           <div class="group relative mx-auto max-w-lg lg:mx-0 lg:max-w-none">
@@ -39,19 +129,16 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
           </div>
         </div>
 
-        <!-- Content -->
         <div class="lg:col-span-7" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 70, duration: 520 } }">
-          <CardHeader heading-id="advantage-heading" align="left" :badge="whyChooseAdvantage.kicker"
-            :title="whyChooseAdvantage.title" :description="whyChooseAdvantage.description"
-            :classes="whyChooseAdvantage.classes" />
+          <CardHeader v-if="props.showHeader" :heading-id="props.headingId" align="left" :badge="props.badge"
+            :title="props.title" :description="props.description" :classes="headerClass" />
 
           <ul class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4" role="list">
-            <li v-for="(adv, i) in whyChooseAdvantage.advantages" :key="adv.title" v-motion
-              :initial="{ opacity: 0, y: 12 }"
+            <li v-for="(adv, i) in advantageItems" :key="adv.title" v-motion :initial="{ opacity: 0, y: 12 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 45, duration: 400 } }">
               <article
-                class="group flex h-full items-start gap-3.5 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-card sm:p-5">
+                :class="['group flex h-full items-start gap-3.5 rounded-2xl border border-slate-200/80 p-4 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-card sm:p-5', cardSurfaceClass]">
                 <span
                   class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white group-hover:ring-blue-600"
                   aria-hidden="true">

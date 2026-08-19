@@ -127,13 +127,12 @@ function onCtaMousemove(e: MouseEvent, isPrimary?: boolean) {
                 ? '!px-0 !py-0 [&_h1]:text-[1.35rem] sm:[&_h1]:text-2xl [&_p]:mt-2'
                 : '!px-0 !py-0'" />
 
-            <p v-if="props.supporting"
-              :class="[
-                'text-[13px] font-medium leading-relaxed sm:text-sm',
-                isCompact ? 'mt-2.5' : 'mt-6',
-                isSplit ? 'max-w-lg' : 'mx-auto max-w-xl',
-                styles.supporting,
-              ]" v-html="props.supporting" />
+            <p v-if="props.supporting" :class="[
+              'text-[13px] font-medium leading-relaxed sm:text-sm',
+              isCompact ? 'mt-2.5' : 'mt-6',
+              isSplit ? 'max-w-lg' : 'mx-auto max-w-xl',
+              styles.supporting,
+            ]" v-html="props.supporting" />
           </div>
 
           <div v-if="props.ctas.length > 0" :class="isSplit

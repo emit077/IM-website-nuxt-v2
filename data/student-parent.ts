@@ -27,7 +27,7 @@ export const studentParentHero = {
     'Trusted Support',
     'Free Demo Class',
     'Verified Tutors',
-    'Parent Dashboard',
+    'Family Dashboard',
     'One-to-One Tutoring',
     'Academic Counselling',
   ],
@@ -48,6 +48,33 @@ export type EnrollmentPlan = {
   cta: { label: string; href: string }
   variant: 'surface' | 'featured'
   badge?: string
+}
+
+export type SpProfileFeature = {
+  title: string
+  description?: string
+  iconMdi?: string
+  points?: string[]
+  href?: string
+}
+
+export type SpProfile = {
+  id: 'free' | 'premium'
+  name: string
+  price: string
+  priceNote?: string
+  equivalent?: string
+  tagline: string
+  description: string
+  includedLabel: string
+  included: SpProfileFeature[]
+  idealLabel?: string
+  idealFor?: string[]
+  exclusiveLabel?: string
+  exclusiveIntro?: string
+  exclusiveItems?: string[]
+  cta: { label: string; href: string }
+  featured: boolean
 }
 
 export type ComparisonRow = {
@@ -344,7 +371,7 @@ export const planComparisonRows: ComparisonRow[] = [
   { feature: 'Key Account Manager', free: '—', premium: '✓ Dedicated' },
   { feature: 'Academic Reports', free: 'Basic Demo Feedback', premium: 'Detailed Progress Reports' },
   { feature: 'Attendance Tracking', free: 'Basic Demo Attendance', premium: 'Detailed Attendance Tracking' },
-  { feature: 'Parent/Student Dashboard', free: '—', premium: '✓' },
+  { feature: 'Family Dashboard', free: '—', premium: '✓' },
   { feature: 'AI Tutor Recommendation', free: '—', premium: '✓' },
   { feature: 'Priority Support', free: '—', premium: '✓' },
   { feature: 'Discounts & Offers', free: '—', premium: '✓ Eligible Benefits' },
@@ -625,45 +652,37 @@ export const spAudiences = {
     id: 'for-students',
     label: 'For Students',
     iconMdi: 'mdi:school-outline',
-    title: 'Learn at Your Pace. Build Confidence. Achieve Your Goals.',
+    title: 'Learn at Your Pace. Build Confidence.',
     description:
-      'Students receive personalised academic support designed around their current learning level, strengths, challenges, and goals.',
+      'Personalised academic support designed around each student’s level, strengths, and goals.',
     benefitsLabel: 'Explore Student Benefits',
     benefits: [
       'One-to-one personalised tutoring',
       'Concept-based learning',
       'Doubt resolution',
       'Homework assistance',
-      'Revision and practice',
       'Exam preparation',
-      'Study planning',
-      'Time-management guidance',
-      'Academic mentoring',
       'Performance tracking',
     ],
-    cta: { label: 'Explore Student Support', href: '#student-expect' },
+    cta: { label: 'Explore Student Support', href: '#what-to-expect' },
   },
   parents: {
     id: 'for-parents',
     label: 'For Parents',
     iconMdi: 'mdi:account-group-outline',
-    title: 'Stay Informed. Stay Involved. Stay Confident.',
+    title: 'Stay Informed. Stay Involved.',
     description:
-      "Parents receive greater visibility into their child's tutoring journey through structured communication, academic monitoring, attendance tracking, and coordinated support.",
+      'Greater visibility into your child’s tutoring journey — with structured updates, monitoring, and coordinated support.',
     benefitsLabel: 'Explore Parent Benefits',
     benefits: [
       'Verified tutor profiles',
-      'Structured tutor selection',
       'Transparent fee information',
-      'Attendance monitoring',
       'Academic progress updates',
+      'Attendance monitoring',
       'Parent communication',
-      'Tutor coordination',
-      'Support for tutor replacement',
-      'Dashboard-based information',
       'Dedicated academic assistance',
     ],
-    cta: { label: 'Explore Parent Support', href: '#parent-expect' },
+    cta: { label: 'Explore Parent Support', href: '#what-to-expect' },
   },
 }
 
@@ -703,50 +722,28 @@ export const spRoadmap = {
 
 export const spExpect = {
   id: 'what-to-expect',
-  badge: 'What Students & Parents Can Expect',
-  title: 'Clarity for Learners. <span class="text-gradient-brand">Visibility for Families.</span>',
+  badge: 'What You Can Expect',
+  title: 'A Clear Learning Journey for <span class="text-gradient-brand">Every Family</span>',
   description:
-    'Students receive a personalised learning experience. Parents stay informed throughout the tutoring journey.',
+    'Personalised teaching, measurable progress, and coordinated support — so students learn with confidence and families stay informed.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
-  students: {
-    id: 'student-expect',
-    label: 'For Students',
-    iconMdi: 'mdi:school-outline',
-    title: 'A Learning Experience Built Around You',
-    items: [
-      { title: 'Personalised Teaching', description: "Learning sessions are structured around the student's academic requirements rather than a one-size-fits-all approach.", iconMdi: 'mdi:account-star-outline' },
-      { title: 'Concept Clarity', description: 'Tutors focus on understanding concepts rather than simply completing chapters.', iconMdi: 'mdi:lightbulb-on-outline' },
-      { title: 'Doubt Resolution', description: 'Students receive opportunities to ask questions and clarify difficult topics.', iconMdi: 'mdi:help-circle-outline' },
-      { title: 'Practice & Revision', description: 'Regular practice and revision help reinforce classroom learning.', iconMdi: 'mdi:book-open-variant-outline' },
-      { title: 'Homework Support', description: 'Tutors can assist students with understanding and completing academic work.', iconMdi: 'mdi:notebook-edit-outline' },
-      { title: 'Study Skills', description: 'Students can receive guidance related to study planning, time management, and revision routines.', iconMdi: 'mdi:brain' },
-      { title: 'Exam Preparation', description: 'Support can be structured around school examinations, board examinations, and applicable competitive examinations.', iconMdi: 'mdi:school-outline' },
-      { title: 'Confidence Building', description: 'A supportive one-to-one environment can help students participate more comfortably and develop greater confidence in their learning.', iconMdi: 'mdi:sprout-outline' },
-    ],
-  },
-  parents: {
-    id: 'parent-expect',
-    label: 'For Parents',
-    iconMdi: 'mdi:account-group-outline',
-    title: 'Academic Support With Greater Transparency',
-    description: "Parents should not have to wonder what is happening during their child's tutoring journey.",
-    items: [
-      { title: 'Tutor Visibility', description: 'Access relevant tutor information and understand the basis of tutor selection.', iconMdi: 'mdi:human-male-board' },
-      { title: 'Session Visibility', description: 'Track scheduled and completed tutoring sessions through applicable systems.', iconMdi: 'mdi:calendar-month-outline' },
-      { title: 'Academic Monitoring', description: 'Receive available attendance, feedback, and progress information.', iconMdi: 'mdi:chart-bar' },
-      { title: 'Structured Communication', description: 'Maintain communication with tutors and the Indian Mentors support team.', iconMdi: 'mdi:message-text-outline' },
-      { title: 'Transparent Payments', description: 'Understand applicable tutoring fees, subscription plans, and payment schedules.', iconMdi: 'mdi:credit-card-outline' },
-      { title: 'Coordination Support', description: 'Receive assistance with tutoring coordination and applicable tutor replacement requirements.', iconMdi: 'mdi:swap-horizontal' },
-      { title: 'Digital Access', description: 'Access applicable student and parent dashboard features through the Indian Mentors platform.', iconMdi: 'mdi:monitor-dashboard' },
-    ],
-  },
+  items: [
+    { title: 'Personalised Teaching', description: 'Sessions are structured around academic requirements rather than a one-size-fits-all approach.', iconMdi: 'mdi:account-star-outline' },
+    { title: 'Concept Clarity', description: 'Tutors focus on understanding concepts rather than simply completing chapters.', iconMdi: 'mdi:lightbulb-on-outline' },
+    { title: 'Doubt Resolution', description: 'There is space to ask questions and clarify difficult topics as learning progresses.', iconMdi: 'mdi:help-circle-outline' },
+    { title: 'Practice & Revision', description: 'Regular practice, homework support, and revision help reinforce classroom learning.', iconMdi: 'mdi:book-open-variant-outline' },
+    { title: 'Exam Preparation', description: 'Support can be structured around school, board, and applicable competitive examinations.', iconMdi: 'mdi:school-outline' },
+    { title: 'Progress Visibility', description: 'Attendance, session updates, and academic progress remain visible throughout the tutoring journey.', iconMdi: 'mdi:chart-bar' },
+    { title: 'Structured Communication', description: 'Stay connected with tutors and the Indian Mentors support team whenever guidance is needed.', iconMdi: 'mdi:message-text-outline' },
+    { title: 'Transparent Coordination', description: 'Fees, schedules, tutor coordination, and dashboard access stay clear and easy to follow.', iconMdi: 'mdi:monitor-dashboard' },
+  ],
 }
 
 export const spMatching = {
   badge: 'How Indian Mentors Matches Students With Tutors',
   title: 'Finding a Tutor Is Easy. Finding the <span class="text-gradient-brand">Right Tutor</span> Matters More.',
   description: 'Tutor selection can consider multiple student requirements.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto max-w-5xl',
   considerations: [
     { title: 'Subject Expertise', description: 'Relevant academic subject knowledge.', iconMdi: 'mdi:book-education-outline' },
     { title: 'Class / Grade', description: "Compatibility with the student's academic level.", iconMdi: 'mdi:account-school-outline' },
@@ -767,14 +764,32 @@ export const spMatching = {
 export const spDemo = {
   badge: 'Experience Before You Commit',
   title: 'Start With a <span class="text-gradient-brand">Free Demo</span>',
-  description: "Choosing a tutor is an important decision. The demo session allows students and parents to experience the tutor's:",
+  description:
+    'Experience the tutor’s teaching style firsthand before you commit.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
-  checks: ['Communication', 'Teaching style', 'Subject explanation', 'Interaction', 'Learning approach', 'Student comfort'],
+  image: 'assets/img/services/home-tutors.webp',
+  imageAlt: 'Student attending a one-to-one demo tutoring session',
+  imageCaption: 'Try the tutor. Then decide.',
+  imageNote: 'No commitment required',
+  checksLabel: 'What you experience in the demo:',
+  checks: [
+    { title: 'Communication', iconMdi: 'mdi:message-text-outline' },
+    { title: 'Teaching style', iconMdi: 'mdi:easel-outline' },
+    { title: 'Subject explanation', iconMdi: 'mdi:book-open-page-variant-outline' },
+    { title: 'Interaction', iconMdi: 'mdi:heart-pulse' },
+    { title: 'Learning approach', iconMdi: 'mdi:lightbulb-on-outline' },
+    { title: 'Student comfort', iconMdi: 'mdi:emoticon-happy-outline' },
+  ],
+  afterLabel: 'After the Demo',
   after: [
     { title: 'Like the Tutor?', description: 'Continue with the selected tutoring arrangement.', iconMdi: 'mdi:thumb-up-outline' },
-    { title: 'Need a Change?', description: 'Discuss alternative tutor options, subject to availability and applicable policy.', iconMdi: 'mdi:swap-horizontal' },
-    { title: 'Need Guidance?', description: 'Speak with an Indian Mentors academic counsellor.', iconMdi: 'mdi:account-voice' },
+    { title: 'Need a Change?', description: 'Discuss alternative tutor options, subject to availability.', iconMdi: 'mdi:refresh' },
+    { title: 'Need Guidance?', description: 'Speak with an Indian Mentors academic counsellor.', iconMdi: 'mdi:headphones' },
   ],
+  banner: {
+    title: 'Book Your Free Demo',
+    description: 'Experience personalised tutoring before you commit. No cost, no obligation.',
+  },
   cta: { label: 'Book Your Free Demo', href: externalLinks.studentSignup },
 }
 
@@ -899,6 +914,23 @@ export const spJourney = {
   flow: ['Register', 'Counsel', 'Match', 'Demo', 'Select', 'Learn', 'Monitor', 'Improve'],
 }
 
+export type FamilyPlan = {
+  id: 'gold' | 'diamond' | 'platinum'
+  name: string
+  subtitle: string
+  duration: string
+  description: string
+  iconMdi: string
+  audience: string
+  subjects: string
+  focus: string
+  features: string[]
+  idealFor: string
+  cta: { label: string; href: string }
+  popular: boolean
+  accent: 'gold' | 'diamond' | 'platinum'
+}
+
 export const spFamilyPlans = {
   badge: 'Find Your Learning Intensity',
   title: 'Three Learning Plans. Three Levels of <span class="text-gradient-brand">Academic Support.</span>',
@@ -910,23 +942,19 @@ export const spFamilyPlans = {
       id: 'gold',
       name: 'Gold',
       subtitle: 'Smart Start',
-      duration: '1 Hour / Day',
-      grades: 'Nursery – Class 8',
+      duration: '1 hour / day',
+      description: 'Affordable Academic Support for Consistent Learning.',
+      iconMdi: 'mdi:crown-outline',
+      audience: 'Primary & Middle School',
       subjects: '1–4 Subjects',
-      focus: 'Homework • Concept Clarity • Practice',
-      journey: 'Understand → Practise → Improve → Stay Consistent',
-      progress: 'Monthly',
-      support: 'Standard',
-      description: 'Focused academic support for students who need regular assistance with homework, concepts and classroom learning.',
+      focus: 'Homework + Concept Clarity',
       features: [
-        'Personalised one-to-one tutoring',
-        'Homework support & concept clarity',
-        'Attendance tracking',
-        'Monthly parent updates',
-        'Standard support',
+        'Homework support',
+        'Concept clarity',
+        'Regular academic support',
       ],
-      code: 'IM · GOLD',
-      cta: { label: 'Explore Gold', href: '/student-parent/subscription?plan=gold#plan-builder' },
+      idealFor: 'Balanced learning without academic overload',
+      cta: { label: 'Get Started', href: '/student-parent/subscription?plan=gold#plan-builder' },
       popular: false,
       accent: 'gold' as const,
     },
@@ -934,23 +962,19 @@ export const spFamilyPlans = {
       id: 'diamond',
       name: 'Diamond',
       subtitle: 'Performance Plan',
-      duration: '1.5 Hours / Day',
-      grades: 'Class 6 – 12',
+      duration: '1.5 hours / day',
+      description: 'Our Most Popular Plan for Consistent Academic Improvement.',
+      iconMdi: 'mdi:diamond-stone',
+      audience: 'Middle & High School',
       subjects: '2–5 Subjects',
-      focus: 'Concepts • Practice • Revision • Problem Solving',
-      journey: 'Understand → Practise → Revise → Perform',
-      progress: 'Bi-Weekly',
-      support: 'Priority',
-      description: 'A balanced plan for students who need deeper understanding, regular practice, revision and problem-solving.',
+      focus: 'Practice + Revision + Problem Solving',
       features: [
-        'Personalised tutoring',
-        'Expanded / priority tutor discovery',
-        'Structured practice and revision',
-        'Bi-weekly subject feedback',
-        'Priority support',
+        'Deeper learning',
+        'Practice & revision',
+        'Problem solving focus',
       ],
-      code: 'IM · DIAMOND',
-      cta: { label: 'Explore Diamond', href: '/student-parent/subscription?plan=diamond#plan-builder' },
+      idealFor: 'Board preparation and consistent academic improvement',
+      cta: { label: 'Get Started', href: '/student-parent/subscription?plan=diamond#plan-builder' },
       popular: true,
       accent: 'diamond' as const,
     },
@@ -958,27 +982,23 @@ export const spFamilyPlans = {
       id: 'platinum',
       name: 'Platinum',
       subtitle: 'Premium Excellence',
-      duration: '2 Hours / Day',
-      grades: 'Class 9 – 12',
-      subjects: 'Multiple / All Subjects',
-      focus: 'Full Coverage • Advanced Practice • Exam Preparation',
-      journey: 'Learn → Practise → Master → Prepare',
-      progress: 'Weekly Detailed',
-      support: 'Premium',
-      description: 'Comprehensive tutoring support for students requiring extended learning time, syllabus coverage and examination-focused preparation.',
+      duration: '2 hours / day',
+      description: 'Comprehensive Academic Support for High-Performance Learners.',
+      iconMdi: 'mdi:rhombus-outline',
+      audience: 'High School & Exam Preparation',
+      subjects: 'All Subjects',
+      focus: 'Full Coverage + Exam Preparation',
       features: [
-        'Personalised tutoring',
-        'Smart tutor recommendations',
-        'Weekly progress reporting',
-        'Parent review & academic coordination',
-        'Premium support',
+        'Intensive support',
+        'Board exam preparation',
+        'Competitive exam coaching',
       ],
-      code: 'IM · PLATINUM',
-      cta: { label: 'Explore Platinum', href: '/student-parent/subscription?plan=platinum#plan-builder' },
+      idealFor: 'Board Exams • JEE • NEET • Competitive Exams',
+      cta: { label: 'Get Started', href: '/student-parent/subscription?plan=platinum#plan-builder' },
       popular: false,
       accent: 'platinum' as const,
     },
-  ],
+  ] satisfies FamilyPlan[],
   cta: { label: 'Compare Learning Plans', href: '#plan-comparison' },
 }
 
@@ -1018,8 +1038,8 @@ export const enrollmentHero = {
   title: 'Choose the Right Student Plan<br class="hidden sm:inline" /> For Your Learning Journey',
   subtitle: 'Start Free. Explore More. Learn Better.',
   description:
-    'At Indian Mentors, students and parents can start with a Free Student Profile to explore personalised tutoring, discover suitable tutors, and experience a demo session before moving to a more structured learning experience.<br><br>For students who want greater access, academic monitoring, priority support, and personalised tutor recommendations, the Premium Student Profile provides an enhanced platform experience.',
-  caption: "Explore First. Upgrade When You're Ready.",
+    'At Indian Mentors, students and parents can start with a Free Student Profile to explore personalised tutoring, discover suitable tutors, and experience a demo session before moving to a more structured learning experience.',
+  caption: "",
   primaryCta: {
     label: 'Create Free Student Profile',
     href: externalLinks.studentSignup,
@@ -1037,30 +1057,39 @@ export const enrollmentHero = {
     'Free Demo',
     'Academic Monitoring',
     'Priority Support',
-    'Parent Dashboard',
+    'Family Dashboard',
     'Flexible Enrollment',
   ],
 }
 
 export const spPlansPreview = {
   badge: 'Subscription Plans',
-  title: 'Gold, Diamond, or Platinum — <span class="text-gradient-brand">Pick the Intensity</span>',
+  title: 'Choose the Right Plan for <span class="text-gradient-brand">Your Child</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   description:
-    'Structured tutoring packages with different daily hours, reporting, and parent engagement. Explore the full comparison on the subscription page.',
+    'Transparent pricing aligned with academic needs and intensity of support.',
   cta: { label: 'Compare Subscription Plans', href: '/student-parent/subscription' },
 }
 
 export const spEnrollmentPreview = {
-  badge: 'Enrollment',
-  title: 'A Simple Path From Enquiry to <span class="text-gradient-brand">Regular Learning</span>',
+  badge: 'Enrollment Options',
+  title: 'Start Free or Go <span class="text-gradient-brand">Premium</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   description:
-    'Register, match a tutor, attend a free demo, then start with a Free or Premium student profile. See the full journey and plan details on the enrollment page.',
+    'Create a student profile, explore tutors, and book a free demo — then upgrade when you want more access and support.',
+  image: 'assets/img/hero/hero-2.png',
+  imageAlt: 'Student giving a thumbs-up while starting a personalised learning plan',
+  imageCaption: 'Start free. Upgrade when you’re ready.',
+  imageNote: 'Explore first. Commit when it fits.',
   cta: { label: 'See Enrollment Process', href: '/student-parent/enrollment' },
 }
 
-export const spProfiles = {
+export const spProfiles: {
+  badge: string
+  title: string
+  classes: string
+  items: SpProfile[]
+} = {
   badge: 'Enrollment Options',
   title: 'Start Free or Go Premium',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
@@ -1069,13 +1098,22 @@ export const spProfiles = {
       id: 'free',
       name: 'Free Student Profile',
       price: '₹0',
-      description: 'Create a basic student profile, explore tutors and services, and get started with your learning journey.',
-      features: [
-        'Basic student profile',
-        'Browse available tutors',
-        'Explore services',
-        'Book a free demo',
+      tagline: 'Free Profile',
+      description:
+        'Create a basic student profile, explore tutors and services, and get started with your learning journey.',
+      includedLabel: "What's Included",
+      included: [
+        { title: 'Student Profile', description: 'Create a profile with student name, grade, subjects, and location.', iconMdi: 'mdi:account-outline' },
+        { title: 'Tutor Discovery', description: 'Browse approximately 3–5 available tutor profiles.', iconMdi: 'mdi:magnify' },
+        { title: 'Free Online Demo', description: 'Book 1 free online demo session.', iconMdi: 'mdi:video-outline' },
+        { title: 'Plan Visibility', description: 'View applicable tutoring fee structures and subscription options.', iconMdi: 'mdi:currency-inr' },
+        { title: 'Notifications', description: 'Receive updates related to tutor assignments and demo sessions.', iconMdi: 'mdi:bell-outline' },
+        { title: 'Basic Support', description: 'Access support chat during applicable service hours.', iconMdi: 'mdi:chat-outline' },
+        { title: 'Demo Feedback', description: 'Receive basic feedback after the demo session.', iconMdi: 'mdi:comment-quote-outline' },
+        { title: 'Demo Attendance', description: 'View basic attendance information for demo sessions.', iconMdi: 'mdi:clipboard-check-outline' },
       ],
+      idealLabel: 'Free Profile Is Ideal For',
+      idealFor: ['Explore', 'Compare', 'Experience', 'Decide'],
       cta: { label: 'Create Free Profile', href: externalLinks.studentSignup },
       featured: false,
     },
@@ -1084,12 +1122,20 @@ export const spProfiles = {
       name: 'Premium Student Profile',
       price: '₹1,200',
       priceNote: '/ Year',
-      description: 'Enhanced profile with priority tutor matching, detailed academic assessment, and dedicated counsellor support.',
-      features: [
-        'Priority tutor matching',
-        'Detailed academic assessment',
-        'Dedicated counsellor support',
-        'Advanced dashboard access',
+      equivalent: 'Approximately ₹100 / Month',
+      tagline: 'Go Beyond Tutor Discovery',
+      description:
+        'Enhanced profile with priority tutor matching, detailed academic assessment, and dedicated counsellor support.',
+      includedLabel: 'Includes Everything in Free, Plus:',
+      included: [
+        { title: 'Everything in the Free plan' },
+        { title: 'Unlimited Tutor Discovery' },
+        { title: 'Priority Demo Scheduling' },
+        { title: 'Up to 3 Free Offline Demo Sessions' },
+        { title: 'Family Dashboard' },
+        { title: 'AI-Powered Tutor Recommendations' },
+        { title: 'Dedicated Key Account Manager' },
+        { title: 'And many more — explore for more details', href: '/student-parent/enrollment' },
       ],
       cta: { label: 'Explore Premium Profile', href: externalLinks.studentSignup },
       featured: true,
@@ -1114,39 +1160,26 @@ export const spMonitoring = {
   promise: 'No Guesswork. Greater Visibility. Better Communication.',
 }
 
-export const spParentDashboard = {
-  badge: 'Parent Dashboard',
-  title: 'Everything Parents Need in <span class="text-gradient-brand">One Place</span>',
+export const spFamilyDashboard = {
+  badge: 'Academic  Dashboard',
+  title: 'Everything You Need in <span class="text-gradient-brand">One Place</span>',
+  description:
+    'Parents and students share one dashboard to stay organised, track learning, and stay connected throughout the tutoring journey.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   modules: [
     { title: 'Student Profile', description: 'View student information and academic requirements.', iconMdi: 'mdi:account-outline' },
-    { title: 'Tutor Details', description: 'Access relevant tutor information.', iconMdi: 'mdi:human-male-board' },
-    { title: 'Session Calendar', description: 'View scheduled tutoring sessions.', iconMdi: 'mdi:calendar-month-outline' },
-    { title: 'Attendance', description: 'Monitor session attendance.', iconMdi: 'mdi:clipboard-check-outline' },
-    { title: 'Academic Progress', description: 'Review available progress information.', iconMdi: 'mdi:chart-bar' },
+    { title: 'Tutors & Subjects', description: 'Access tutor details and the subjects they teach.', iconMdi: 'mdi:book-education-outline' },
+    { title: 'Session Calendar', description: 'View scheduled and upcoming tutoring sessions.', iconMdi: 'mdi:calendar-month-outline' },
+    { title: 'Attendance', description: 'Monitor session attendance and participation.', iconMdi: 'mdi:clipboard-check-outline' },
+    { title: 'Academic Progress', description: 'Review available progress indicators and learning insights.', iconMdi: 'mdi:chart-bar' },
     { title: 'Homework & Notes', description: 'Access applicable academic notes and homework records.', iconMdi: 'mdi:notebook-edit-outline' },
     { title: 'Payments', description: 'Review applicable subscription and payment history.', iconMdi: 'mdi:credit-card-outline' },
+    // { title: 'Messages', description: 'Stay in touch with tutors and the support team.', iconMdi: 'mdi:message-text-outline' },
+    { title: 'Feedback', description: 'Share and review session feedback and learning notes.', iconMdi: 'mdi:star-outline' },
+    { title: 'Notifications', description: 'Receive class reminders, homework alerts, and important academic updates.', iconMdi: 'mdi:bell-outline' },
     { title: 'Support', description: 'Raise and track service-related requests.', iconMdi: 'mdi:lifebuoy' },
   ],
   flow: ['Dashboard', 'Sessions', 'Attendance', 'Progress', 'Payments', 'Support'],
-}
-
-export const spStudentDashboard = {
-  badge: 'Student Dashboard',
-  title: 'Give Students More Control Over <span class="text-gradient-brand">Their Learning</span>',
-  description: 'Students can use their applicable dashboard features to stay organised and engaged.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
-  tools: [
-    { title: 'Upcoming Sessions', iconMdi: 'mdi:calendar-clock-outline' },
-    { title: 'Subjects & Tutors', iconMdi: 'mdi:book-education-outline' },
-    { title: 'Homework & Notes', iconMdi: 'mdi:notebook-edit-outline' },
-    { title: 'Learning Progress', iconMdi: 'mdi:chart-line' },
-    { title: 'Messages', iconMdi: 'mdi:message-text-outline' },
-    { title: 'Feedback', iconMdi: 'mdi:star-outline' },
-    { title: 'Subscription Information', iconMdi: 'mdi:credit-card-outline' },
-    { title: 'Support', iconMdi: 'mdi:lifebuoy' },
-  ],
-  goal: 'Know What to Learn → Attend → Practise → Review → Improve',
 }
 
 export const spCollaboration = {
@@ -1155,61 +1188,20 @@ export const spCollaboration = {
   description: 'Academic progress is strongest when student, parent, tutor, and academic support team work together.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   roles: [
-    { title: 'Student', description: 'Learn + Practise + Participate', iconMdi: 'mdi:school-outline' },
-    { title: 'Tutor', description: 'Teach + Guide + Evaluate', iconMdi: 'mdi:human-male-board' },
-    { title: 'Parent', description: 'Support + Monitor + Communicate', iconMdi: 'mdi:account-group-outline' },
-    { title: 'Indian Mentors', description: 'Coordinate + Monitor + Support', iconMdi: 'mdi:handshake-outline' },
+    { title: 'Student', actions: ['Learn', 'Practise', 'Participate'], iconMdi: 'mdi:school-outline' },
+    { title: 'Tutor', actions: ['Teach', 'Guide', 'Evaluate'], iconMdi: 'mdi:human-male-board' },
+    { title: 'Parent', actions: ['Support', 'Monitor', 'Communicate'], iconMdi: 'mdi:account-group-outline' },
+    { title: 'Indian Mentors', actions: ['Coordinate', 'Monitor', 'Support'], iconMdi: 'mdi:handshake-outline' },
   ],
+  objectiveLabel: 'Shared Objective',
   objective: 'Consistent Academic Growth',
 }
 
 export const spWhyFamilies = {
-  badge: 'Why Families Choose Indian Mentors',
-  title: 'What Sets Our Tutoring Experience <span class="text-gradient-brand">Apart</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
-  items: [
-    { title: 'Verified Tutors', description: 'Tutor profiles are supported by applicable screening and verification processes.', iconMdi: 'mdi:shield-check-outline' },
-    { title: 'Personalised Learning', description: "Tutoring is structured around the individual student's requirements.", iconMdi: 'mdi:account-star-outline' },
-    { title: 'Transparent Systems', description: 'Clear processes for enrollment, tutoring, payments, and academic coordination.', iconMdi: 'mdi:eye-check-outline' },
-    { title: 'Flexible Learning', description: 'Multiple tutoring formats and subscription options.', iconMdi: 'mdi:tune-variant' },
-    { title: 'Academic Monitoring', description: 'Structured attendance, session, and progress tracking.', iconMdi: 'mdi:chart-box-outline' },
-    { title: 'Technology-Enabled Platform', description: 'Digital dashboards and ERP-based systems support the tutoring journey.', iconMdi: 'mdi:monitor-dashboard' },
-    { title: 'Tutor Replacement Support', description: 'Assistance with tutor replacement according to applicable policies.', iconMdi: 'mdi:swap-horizontal' },
-    { title: 'Dedicated Coordination', description: 'Academic and service support for parents and students.', iconMdi: 'mdi:headset' },
-  ],
-}
-
-export const spGoals = {
-  badge: 'Learning Goals',
-  title: "What Is Your Child <span class=\"text-gradient-brand\">Working Toward?</span>",
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
-  items: [
-    { title: 'Foundation', description: 'Build stronger academic fundamentals.', goal: 'Concept Clarity', iconMdi: 'mdi:sprout-outline' },
-    { title: 'School Performance', description: 'Improve classroom learning and regular academic performance.', goal: 'Consistency', iconMdi: 'mdi:book-open-page-variant-outline' },
-    { title: 'Board Preparation', description: 'Prepare systematically for board examinations.', goal: 'Exam Readiness', iconMdi: 'mdi:target' },
-    { title: 'Competitive Preparation', description: 'Build subject knowledge and problem-solving ability for applicable competitive examinations.', goal: 'Competitive Readiness', iconMdi: 'mdi:rocket-launch-outline' },
-    { title: 'Skill Development', description: 'Develop stronger study habits, time management, and academic confidence.', goal: 'Long-Term Learning Skills', iconMdi: 'mdi:brain' },
-  ],
-}
-
-export const spFamilyNeeds = {
-  badge: 'Flexible for Different Family Requirements',
-  title: 'One Platform. Different <span class="text-gradient-brand">Learning Needs.</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
-  items: [
-    { title: 'For Busy Parents', description: 'Flexible tutoring schedules and structured monitoring.', iconMdi: 'mdi:briefcase-clock-outline' },
-    { title: 'For Students Needing Extra Support', description: 'One-to-one attention and targeted academic assistance.', iconMdi: 'mdi:hand-heart-outline' },
-    { title: 'For Multi-Subject Learners', description: 'Multiple-subject tutoring options under applicable plans.', iconMdi: 'mdi:bookshelf' },
-    { title: 'For Exam-Focused Students', description: 'Structured preparation and regular practice.', iconMdi: 'mdi:file-document-edit-outline' },
-    { title: 'For Students Away From Home', description: 'Online tutoring access across locations.', iconMdi: 'mdi:map-marker-distance' },
-    { title: 'For Families Seeking Home Support', description: 'Personalised home tutoring options.', iconMdi: 'mdi:home-heart' },
-  ],
-}
-
-export const spTrust = {
-  badge: 'Trust & Transparency',
-  title: "Your Child's Education Deserves Clarity",
-  description: 'Indian Mentors aims to maintain transparency throughout the tutoring journey.',
+  badge: '5C Framework',
+  title: "Your Child's Education Deserves <span class=\"text-gradient-brand\">Clarity</span>",
+  description:
+    'Indian Mentors aims to maintain transparency throughout the tutoring journey.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   items: [
     {
@@ -1242,6 +1234,33 @@ export const spTrust = {
       description: 'Get assistance when questions or service issues arise.',
       iconMdi: 'mdi:lifebuoy',
     },
+  ],
+}
+
+export const spGoals = {
+  badge: 'Learning Goals',
+  title: "What Is Your Child <span class=\"text-gradient-brand\">Working Toward?</span>",
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  items: [
+    { title: 'Foundation', description: 'Build stronger academic fundamentals.', goal: 'Concept Clarity', iconMdi: 'mdi:sprout-outline' },
+    { title: 'School Performance', description: 'Improve classroom learning and regular academic performance.', goal: 'Consistency', iconMdi: 'mdi:book-open-page-variant-outline' },
+    { title: 'Board Preparation', description: 'Prepare systematically for board examinations.', goal: 'Exam Readiness', iconMdi: 'mdi:target' },
+    { title: 'Competitive Preparation', description: 'Build subject knowledge and problem-solving ability for applicable competitive examinations.', goal: 'Competitive Readiness', iconMdi: 'mdi:rocket-launch-outline' },
+    { title: 'Skill Development', description: 'Develop stronger study habits, time management, and academic confidence.', goal: 'Long-Term Learning Skills', iconMdi: 'mdi:brain' },
+  ],
+}
+
+export const spFamilyNeeds = {
+  badge: 'Flexible for Different Family Requirements',
+  title: 'One Platform. Different <span class="text-gradient-brand">Learning Needs.</span>',
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  items: [
+    { title: 'For Busy Parents', description: 'Flexible tutoring schedules and structured monitoring.', iconMdi: 'mdi:briefcase-clock-outline' },
+    { title: 'For Students Needing Extra Support', description: 'One-to-one attention and targeted academic assistance.', iconMdi: 'mdi:hand-heart-outline' },
+    { title: 'For Multi-Subject Learners', description: 'Multiple-subject tutoring options under applicable plans.', iconMdi: 'mdi:bookshelf' },
+    { title: 'For Exam-Focused Students', description: 'Structured preparation and regular practice.', iconMdi: 'mdi:file-document-edit-outline' },
+    { title: 'For Students Away From Home', description: 'Online tutoring access across locations.', iconMdi: 'mdi:map-marker-distance' },
+    { title: 'For Families Seeking Home Support', description: 'Personalised home tutoring options.', iconMdi: 'mdi:home-heart' },
   ],
 }
 
@@ -1295,7 +1314,7 @@ export const spFaqs = {
       id: 'monitor-progress',
       question: 'Can parents monitor attendance and progress?',
       answer:
-        'Yes. Applicable parent/student dashboard features provide visibility into sessions, attendance, academic information, and other available records.',
+        'Yes. The shared family dashboard provides visibility into sessions, attendance, academic information, and other available records.',
     },
     {
       id: 'competitive',
@@ -1322,11 +1341,9 @@ export const spFinalCta = {
   title: 'Ready to Build a Better Learning Journey?',
   description:
     "Whether your child needs help with homework, stronger concepts, examination preparation, or long-term academic mentoring, Indian Mentors can help you explore a tutoring arrangement designed around their needs.",
-  supporting: 'Start With the Right Step',
   ctas: [
-    { label: 'Book a Free Demo', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline', primary: true },
-    { label: 'Find a Tutor', href: externalLinks.studentSignup, iconMdi: 'mdi:account-search-outline' },
-    { label: 'Talk to an Academic Counsellor', href: '/contact', iconMdi: 'mdi:account-voice' },
+    { label: 'Book a Free Demo', href: externalLinks.studentSignup, primary: true },
+    { label: 'Talk to an Academic Counsellor', href: '/contact' },
   ],
 }
 
@@ -1427,8 +1444,8 @@ export const enrollmentPremiumDetail = {
       points: ['Attendance', 'Performance', 'Learning Progress', 'Academic Insights'],
     },
     {
-      title: 'Parent & Student Dashboard',
-      description: 'Access structured information including session tracking, tutor details, academic performance, and payment history.',
+      title: 'Academic Dashboard',
+      description: 'Parents and students share one dashboard for session tracking, tutor details, academic performance, and payment history.',
       iconMdi: 'mdi:monitor-dashboard',
       points: ['Session Tracking', 'Tutor Details', 'Academic Performance', 'Payment History'],
     },
@@ -1462,13 +1479,46 @@ export const enrollmentWhyPremium = {
   title: 'More Access. More Visibility. <span class="text-gradient-brand">More Academic Support.</span>',
   description: 'The Premium Student Profile is designed for families who want more than basic tutor discovery.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  closing:
+    'Upgrade when you want more tutor access, academic visibility, and dedicated support throughout the learning journey.',
+  cta: { label: 'Upgrade to Premium', href: externalLinks.studentSignup },
   items: [
-    { label: 'Find', title: 'Find', description: 'Access a wider range of tutor profiles and personalised recommendations.', iconMdi: 'mdi:magnify' },
-    { label: 'Connect', title: 'Connect', description: 'Get priority access to demo scheduling and tutor coordination.', iconMdi: 'mdi:lightning-bolt-outline' },
-    { label: 'Track', title: 'Track', description: 'Monitor attendance, sessions, performance, and learning progress.', iconMdi: 'mdi:chart-box-outline' },
-    { label: 'Engage', title: 'Engage', description: "Give parents greater visibility into the student's tutoring journey.", iconMdi: 'mdi:account-group-outline' },
-    { label: 'Support', title: 'Support', description: 'Receive dedicated assistance and priority service support.', iconMdi: 'mdi:handshake-outline' },
-    { label: 'Grow', title: 'Grow', description: 'Build a more structured tutoring experience across multiple subjects.', iconMdi: 'mdi:book-open-page-variant-outline' },
+    {
+      label: 'Find',
+      iconMdi: 'mdi:magnify',
+      free: 'Limited tutor browsing (3–5 profiles)',
+      premium: 'Wider tutor access with personalised recommendations',
+    },
+    {
+      label: 'Connect',
+      iconMdi: 'mdi:lightning-bolt-outline',
+      free: 'Standard demo scheduling',
+      premium: 'Priority demo scheduling and tutor coordination',
+    },
+    {
+      label: 'Track',
+      iconMdi: 'mdi:chart-box-outline',
+      free: 'Basic demo feedback and attendance',
+      premium: 'Attendance, sessions, performance, and progress tracking',
+    },
+    {
+      label: 'Engage',
+      iconMdi: 'mdi:account-group-outline',
+      free: '—',
+      premium: 'Parent visibility into the student’s tutoring journey',
+    },
+    {
+      label: 'Support',
+      iconMdi: 'mdi:handshake-outline',
+      free: 'Standard support during service hours',
+      premium: 'Dedicated assistance and priority service support',
+    },
+    {
+      label: 'Grow',
+      iconMdi: 'mdi:book-open-page-variant-outline',
+      free: '—',
+      premium: 'Structured tutoring across multiple subjects',
+    },
   ],
 }
 
@@ -1702,7 +1752,7 @@ export const enrollmentFaqs = {
       id: 'parent-monitor',
       question: 'Can parents monitor academic progress?',
       answer:
-        'Yes. Premium includes access to a Parent & Student Dashboard with applicable session, attendance, tutor, payment, and academic information.',
+        'Yes. Premium includes access to a shared Family Dashboard with applicable session, attendance, tutor, payment, and academic information.',
     },
     {
       id: 'premium-compulsory',

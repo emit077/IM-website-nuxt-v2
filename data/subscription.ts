@@ -333,7 +333,7 @@ export const subSupports = {
     { title: 'Academic Progress', description: 'Applicable progress monitoring and reporting.', iconMdi: 'mdi:chart-box-outline' },
     { title: 'Parent Communication', description: 'Updates according to the selected plan.', iconMdi: 'mdi:account-voice' },
     { title: 'Tutor Coordination', description: 'Tutor-related assistance according to applicable policy.', iconMdi: 'mdi:swap-horizontal' },
-    { title: 'Digital Tracking', description: 'Applicable parent/student dashboard functionality.', iconMdi: 'mdi:monitor-dashboard' },
+    { title: 'Digital Tracking', description: 'Applicable family dashboard functionality.', iconMdi: 'mdi:monitor-dashboard' },
   ],
   flexibility: {
     badge: "Flexible as Your Child's Needs Change",

@@ -74,14 +74,6 @@ const services: ServiceCard[] = [
         size: 'compact',
     },
     {
-        title: 'HomeSchooling Support',
-        hook: 'A full curriculum at home, with board-aligned guidance.',
-        chip: 'Board-aligned',
-        visual: 'assets/img/services/home-schooling-support.webp',
-        href: '/services#home-schooling',
-        size: 'compact',
-    },
-    {
         title: 'Special Educators',
         hook: 'Teaching that fits how they learn — not the other way around.',
         chip: 'Diverse needs',
@@ -89,6 +81,15 @@ const services: ServiceCard[] = [
         href: '/services#special-educators',
         size: 'compact',
     },
+    {
+        title: 'HomeSchooling Support',
+        hook: 'A full curriculum at home, with board-aligned guidance.',
+        chip: 'Board-aligned',
+        visual: 'assets/img/services/home-schooling-support.webp',
+        href: '/services#home-schooling',
+        size: 'compact',
+    },
+
     {
         title: 'Something more specific?',
         hook: 'Tell us the goal, the schedule, the style. We’ll build the match.',
@@ -115,17 +116,18 @@ const services: ServiceCard[] = [
 
             <ul class="mt-10 grid grid-cols-1 gap-3.5 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-[1.1rem]"
                 role="list">
-                <li v-for="(service, i) in services" :key="service.title" class="flex h-full min-w-0" v-motion
+                <li v-for="(service, i) in services" :key="service.title" class="flex h-full min-w-0"
+                    :class="service.size === 'cta' ? 'sm:col-span-2 lg:col-span-4' : ''" v-motion
                     :initial="{ opacity: 0, y: 18 }" :visibleOnce="{
                         opacity: 1,
                         y: 0,
                         transition: { delay: 60 + i * 50, duration: 480, ease: 'easeOut' },
                     }">
                     <NuxtLink :to="service.href" :aria-label="`Explore ${service.title}`"
-                        class="group relative isolate flex h-full min-h-[18rem] w-full flex-col justify-end overflow-hidden rounded-[1.6rem] bg-slate-900 no-underline shadow-[0_16px_36px_-22px_rgba(15,23,42,0.45)] transition duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_24px_44px_-18px_rgba(29,78,216,0.38)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-700 sm:min-h-[20rem] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                        class="group relative isolate flex h-full w-full flex-col overflow-hidden rounded-[1.6rem] bg-slate-900 no-underline shadow-[0_16px_36px_-22px_rgba(15,23,42,0.45)] transition duration-500 ease-out hover:-translate-y-1.5 hover:shadow-[0_24px_44px_-18px_rgba(29,78,216,0.38)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-700 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                         :class="service.size === 'cta'
-                            ? 'bg-gradient-to-br from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] shadow-[0_18px_36px_-18px_rgba(29,78,216,0.55)] hover:shadow-[0_24px_44px_-16px_rgba(29,78,216,0.62)]'
-                            : ''
+                            ? 'min-h-[16rem] justify-end bg-gradient-to-br from-[#1e3a8a] via-[#1d4ed8] to-[#3b82f6] shadow-[0_18px_36px_-18px_rgba(29,78,216,0.55)] hover:shadow-[0_24px_44px_-16px_rgba(29,78,216,0.62)] sm:min-h-[11.5rem] sm:justify-center'
+                            : 'min-h-[18rem] justify-end sm:min-h-[20rem]'
                             ">
                         <span class="absolute inset-0 z-0" aria-hidden="true">
                             <img v-if="service.size !== 'cta'" :src="usePublicAsset(service.visual)"
@@ -144,26 +146,30 @@ const services: ServiceCard[] = [
                         </span>
 
                         <span v-if="service.icon"
-                            class="absolute left-4 top-4 z-[2] grid h-12 w-12 place-items-center rounded-2xl bg-white/15 ring-1 ring-inset ring-white/25 backdrop-blur-sm">
+                            class="absolute left-4 top-4 z-[2] grid h-12 w-12 place-items-center rounded-2xl bg-white/15 ring-1 ring-inset ring-white/25 backdrop-blur-sm sm:left-6 sm:top-1/2 sm:-translate-y-1/2">
                             <img :src="usePublicAsset(service.icon)" alt="" class="h-6 w-6" width="24" height="24" />
                         </span>
 
-                        <div class="relative z-[1] flex flex-col items-start px-5 pb-5 pt-5">
-                            <span
-                                class="inline-flex items-center rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.04em] text-white backdrop-blur-md">
-                                {{ service.chip }}
-                            </span>
-                            <h3
-                                class="mt-2.5 font-display uppercase text-[1rem] font-extrabold leading-snug tracking-tight text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]">
-                                {{ service.title }}
-                            </h3>
-                            <p class="mt-1.5 text-[0.8rem] leading-relaxed text-white/90">
-                                {{ service.hook }}
-                            </p>
+                        <div class="relative z-[1] flex flex-col items-start px-5 pb-5 pt-5"
+                            :class="service.size === 'cta' ? 'sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:py-7 sm:pl-24 sm:pr-8' : ''">
+                            <div class="flex min-w-0 flex-col items-start">
+                                <span
+                                    class="inline-flex items-center rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.04em] text-white backdrop-blur-md">
+                                    {{ service.chip }}
+                                </span>
+                                <h3 class="mt-2.5 font-display uppercase text-[1rem] font-extrabold leading-snug tracking-tight text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
+                                    :class="service.size === 'cta' ? 'sm:text-[1.35rem]' : ''">
+                                    {{ service.title }}
+                                </h3>
+                                <p class="mt-1.5 text-[0.8rem] leading-relaxed text-white/90"
+                                    :class="service.size === 'cta' ? 'sm:max-w-xl sm:text-[0.9rem]' : ''">
+                                    {{ service.hook }}
+                                </p>
+                            </div>
                             <span
                                 class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2.5 text-[0.8rem] font-bold tracking-tight text-indigo-700 shadow-[0_10px_22px_-10px_rgba(15,23,42,0.55)] transition group-hover:-translate-y-px group-hover:gap-2.5 motion-reduce:transition-none"
                                 :class="service.size === 'cta'
-                                    ? 'group-hover:bg-indigo-50 group-hover:text-indigo-800'
+                                    ? 'group-hover:bg-indigo-50 group-hover:text-indigo-800 sm:mt-0 sm:shrink-0 sm:px-5 sm:py-3'
                                     : 'group-hover:bg-indigo-700 group-hover:text-white'
                                     ">
                                 {{ service.size === 'cta' ? 'Tell us what you need' : 'Find a tutor' }}

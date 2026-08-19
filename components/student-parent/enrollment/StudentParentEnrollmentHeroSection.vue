@@ -6,7 +6,6 @@ import { enrollmentHero } from '~/data/student-parent'
 const heroContent: SecondaryHeroContent = {
   badge: enrollmentHero.badge,
   title: enrollmentHero.title,
-  subtitle: enrollmentHero.subtitle,
   description: enrollmentHero.description,
   caption: enrollmentHero.caption,
   actionBtns: [enrollmentHero.primaryCta, enrollmentHero.secondaryCta],

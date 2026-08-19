@@ -161,26 +161,6 @@ export const tutoringServices: ServiceItem[] = [
     cta: { label: 'Explore Live-In Tutor Services', href: externalLinks.studentSignup },
   },
   {
-    id: 'home-schooling',
-    img: 'assets/img/services/home-schooling.svg',
-    visual: 'assets/img/services/home-schooling-support.webp',
-    title: 'Home Schooling Support',
-    tagline: 'Structured Home-Based Education',
-    overview:
-      'Structured home-based education with curriculum planning, subject experts, assessments, and clear academic direction for your child.',
-    features: [
-      'Curriculum planning',
-      'Subject specialists',
-      'Weekly lesson plans',
-      'Continuous assessments',
-    ],
-    bestSuitedFor: ['Home-based education', 'Flexible learning', 'National & int’l curricula'],
-    coverage: ['CBSE', 'ICSE', 'State Boards', 'Cambridge', 'IB', 'Int’l Curricula'],
-    keyBenefit:
-      'Create a structured, personalised learning environment while keeping academic direction and continuity.',
-    cta: { label: 'Explore Home Schooling Support', href: externalLinks.studentSignup },
-  },
-  {
     id: 'special-educators',
     img: 'assets/img/services/special-tutor.svg',
     visual: 'assets/img/services/special-educators.webp',
@@ -209,6 +189,27 @@ export const tutoringServices: ServiceItem[] = [
       'Learning support designed around each student’s strengths, challenges, pace, and educational needs.',
     cta: { label: 'Find a Special Educator', href: externalLinks.studentSignup },
   },
+  {
+    id: 'home-schooling',
+    img: 'assets/img/services/home-schooling.svg',
+    visual: 'assets/img/services/home-schooling-support.webp',
+    title: 'Home Schooling Support',
+    tagline: 'Structured Home-Based Education',
+    overview:
+      'Structured home-based education with curriculum planning, subject experts, assessments, and clear academic direction for your child.',
+    features: [
+      'Curriculum planning',
+      'Subject specialists',
+      'Weekly lesson plans',
+      'Continuous assessments',
+    ],
+    bestSuitedFor: ['Home-based education', 'Flexible learning', 'National & int’l curricula'],
+    coverage: ['CBSE', 'ICSE', 'State Boards', 'Cambridge', 'IB', 'Int’l Curricula'],
+    keyBenefit:
+      'Create a structured, personalised learning environment while keeping academic direction and continuity.',
+    cta: { label: 'Explore Home Schooling Support', href: externalLinks.studentSignup },
+  },
+
   {
     id: 'custom-tutor',
     img: 'assets/img/services/custome.svg',
