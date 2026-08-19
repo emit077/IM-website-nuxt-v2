@@ -31,22 +31,20 @@ useSeoMeta({
 <template>
   <div class="student-parent-subscription pb-20 sm:pb-0">
     <StudentParentSubscriptionHeroSection />
-    <SubscriptionPageNav />
     <SubscriptionBuildConceptSection />
     <StudentParentPlansSection />
     <SubscriptionComparisonSection />
     <SubscriptionTenureSection />
     <SubscriptionTrialSection />
-    <SubscriptionSavingsSection />
-    <SubscriptionBuilderSection />
-    <SubscriptionMonitoringSection />
+    <!-- <SubscriptionSavingsSection /> -->
+    <!-- <SubscriptionBuilderSection /> -->
+    <!-- <SubscriptionMonitoringSection /> -->
     <SubscriptionSupportsSection />
     <SubscriptionRecommendSection />
-    <SubscriptionFaqSection />
     <SubscriptionTermsSection />
     <UiCTASection heading-id="sp-subscription-cta-heading" surface-class="section-surface-muted"
       :title="subscriptionFinalCta.title" :description="subscriptionFinalCta.description"
       :supporting="subscriptionFinalCta.supporting" :ctas="subscriptionFinalCta.ctas" />
-    <SubscriptionClosingSection />
+    <!-- <SubscriptionClosingSection /> -->
   </div>
 </template>

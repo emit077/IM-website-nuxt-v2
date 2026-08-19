@@ -13,11 +13,14 @@ export const subNav = {
 }
 
 export const subConcept = {
-  badge: 'Two Ways to Build Your Subscription',
-  title: 'Choose Your Learning Plan + Choose Your Tenure',
+  badge: 'How it works',
+  title: `Build Your Subscription in <span class="text-gradient-brand">3 Simple Steps</span>`,
   description:
-    'Keep the journey simple by separating learning intensity from subscription duration. This structure prevents confusing a learning plan with a subscription tenure.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+    'Pick a learning plan, choose how long you need it, then decide how to pay — clear, flexible, and fully in your control.',
+  classes: '',
+  tagline: "You're just a few clicks away from the right plan!",
+  socialProof: '50,000+ students',
+  formNote: 'By continuing, you agree to receive a call from our counsellor about your learning plan.',
   steps: [
     {
       no: '01',
@@ -26,6 +29,7 @@ export const subConcept = {
       description: 'Determines the daily learning duration, academic intensity and level of support.',
       options: ['Gold', 'Diamond', 'Platinum'],
       iconMdi: 'mdi:school-outline',
+      accent: 'blue' as const,
     },
     {
       no: '02',
@@ -34,6 +38,7 @@ export const subConcept = {
       description: 'Determines how long the tutoring subscription continues.',
       options: ['Monthly', 'Quarterly', 'Half-Yearly', 'Annual'],
       iconMdi: 'mdi:calendar-month-outline',
+      accent: 'sky' as const,
     },
     {
       no: '03',
@@ -42,6 +47,7 @@ export const subConcept = {
       description: 'Determines how the applicable subscription fee is paid.',
       options: ['Upfront', 'Installment', 'Eligible EMI'],
       iconMdi: 'mdi:credit-card-outline',
+      accent: 'emerald' as const,
     },
   ],
   layers: [
@@ -68,7 +74,7 @@ export const subTenures = {
       availability: 'According to applicable plan terms',
       discount: '—',
       description:
-        'Best for first-time families who want to experience the tutoring service before making a longer commitment.',
+        'Best for first-time families who want to try tutoring before a longer commitment.',
       suited: 'Want to experience the service?',
       cta: { label: 'Start Trial', href: '/student-parent/subscription?tenure=monthly#plan-builder' },
       accent: 'emerald' as const,
@@ -83,7 +89,8 @@ export const subTenures = {
       payment: 'Upfront',
       availability: 'Limited / Case-to-Case',
       discount: '—',
-      description: 'Suitable for selected short-term academic requirements.',
+      description:
+        'Ideal for short-term academic needs with structured support before a longer plan.',
       suited: 'Need short-term support?',
       cta: { label: 'Explore Quarterly', href: '/student-parent/subscription?tenure=quarterly#plan-builder' },
       accent: 'blue' as const,
@@ -99,7 +106,7 @@ export const subTenures = {
       availability: 'Standard',
       discount: 'No standard discount',
       description:
-        'Particularly suitable for board preparation or defined academic milestones requiring approximately six months of tutoring.',
+        'Best for board prep and defined milestones that need about six months of tutoring.',
       suited: 'Preparing for a defined milestone?',
       cta: { label: 'Explore Half-Yearly', href: '/student-parent/subscription?tenure=half-yearly#plan-builder' },
       accent: 'violet' as const,
@@ -111,10 +118,11 @@ export const subTenures = {
       subtitle: '12-Month Plan',
       headline: 'Complete Academic-Year Continuity',
       duration: '12 Months',
-      payment: 'Upfront / Eligible Installments / Eligible EMI',
+      payment: 'Upfront / Installments',
       availability: 'Recommended',
       discount: 'Up to 15%',
-      description: 'Recommended for students seeking consistent academic support throughout the year.',
+      description:
+        'Ideal for students who want consistent academic support throughout the school year.',
       suited: 'Want year-long continuity?',
       cta: { label: 'Choose Annual', href: '/student-parent/subscription?tenure=annual#plan-builder' },
       accent: 'amber' as const,
@@ -144,22 +152,37 @@ export const subTenures = {
 
 export const subTrial = {
   badge: 'One-Month Paid Trial',
-  title: 'Not Ready for a Long-Term Commitment?',
+  title: `Not Ready to Commit? <span class="text-gradient-brand">Start With One Month</span>`,
   subtitle: 'Experience Personalised Tutoring First.',
   description:
-    'Experience personalised tutoring first. The One-Month Trial gives families an opportunity to understand whether the selected tutoring arrangement is suitable before choosing a longer-term subscription.',
+    'A paid trial to test the tutor, teaching style, and schedule before choosing a longer tenure.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  hook: {
+    duration: '1 Month',
+    label: 'Paid Trial',
+    points: [
+      'Experience the tutor before a longer plan',
+      'Evaluate teaching style and schedule fit',
+      'Continue, modify, or stop after the month',
+    ],
+  },
+  evaluateLabel: 'What you will evaluate',
   evaluate: [
-    { title: 'Tutor Compatibility', description: 'Does your child feel comfortable with the tutor?', iconMdi: 'mdi:account-heart-outline' },
-    { title: 'Teaching Method', description: "Does the teaching approach suit the student's learning style?", iconMdi: 'mdi:human-male-board' },
-    { title: 'Student Engagement', description: 'Is the student participating and responding positively?', iconMdi: 'mdi:lightbulb-on-outline' },
-    { title: 'Schedule Compatibility', description: 'Does the tutoring schedule fit your family routine?', iconMdi: 'mdi:clock-outline' },
-    { title: 'Academic Support', description: "Is the tutoring addressing the student's requirements?", iconMdi: 'mdi:chart-line' },
+    { title: 'Tutor Compatibility', description: 'Does your child feel comfortable with the tutor?', iconMdi: 'mdi:account-heart-outline', accent: 'violet' as const },
+    { title: 'Teaching Method', description: "Does the teaching approach suit the student's learning style?", iconMdi: 'mdi:human-male-board', accent: 'blue' as const },
+    { title: 'Student Engagement', description: 'Is the student participating and responding positively?', iconMdi: 'mdi:lightbulb-on-outline', accent: 'emerald' as const },
+    { title: 'Schedule Compatibility', description: 'Does the tutoring schedule fit your family routine?', iconMdi: 'mdi:clock-outline', accent: 'orange' as const },
+    { title: 'Academic Support', description: "Is the tutoring addressing the student's requirements?", iconMdi: 'mdi:chart-line', accent: 'fuchsia' as const },
+    { title: 'Parent Communication', description: 'Are you receiving clear updates on progress and next steps?', iconMdi: 'mdi:message-text-outline', accent: 'sky' as const },
   ],
   after: {
     label: 'After the Trial',
-    options: ['Continue', 'Modify', 'Discontinue'],
-    note: 'according to applicable subscription and trial terms.',
+    note: 'According to applicable subscription and trial terms.',
+    options: [
+      { label: 'Continue', description: 'Move to a longer tenure.', iconMdi: 'mdi:check-circle-outline' },
+      { label: 'Modify', description: 'Adjust tutor, plan, or timing.', iconMdi: 'mdi:tune-variant' },
+      { label: 'Discontinue', description: 'End if it is not the right fit.', iconMdi: 'mdi:close-circle-outline' },
+    ],
   },
   important:
     'The Monthly Plan is a paid one-month trial, not a free trial. Pricing, eligibility, included services, tutor availability and conversion conditions depend on the applicable offer and plan terms.',
@@ -346,22 +369,24 @@ export const subSupports = {
 
 export const subRecommend = {
   badge: 'Plan Recommendation',
-  title: 'Not Sure Which Plan Fits <span class="text-gradient-brand">Your Child?</span>',
+  title: 'Not Sure Which Plan Fits Your Child?',
   description:
     'Our academic counselling team can help identify an appropriate combination of Learning Plan + Tenure + Payment Option.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  tellUsLabel: 'Tell us about',
+  supporting:
+    'Share class, board, subjects, academic goal, schedule, and exam timeline — we will recommend the right combination.',
   tellUs: [
-    'Class / Grade',
-    'Board',
-    'Subjects',
-    'Academic Goal',
-    'Number of Days Required',
-    'Preferred Learning Mode',
-    'Preferred Schedule',
-    'Examination Timeline',
+    { label: 'Class / Grade', iconMdi: 'mdi:school-outline' },
+    { label: 'Board', iconMdi: 'mdi:bookshelf' },
+    { label: 'Subjects', iconMdi: 'mdi:book-open-page-variant-outline' },
+    { label: 'Academic Goal', iconMdi: 'mdi:flag-outline' },
+    { label: 'Days Required', iconMdi: 'mdi:calendar-week-outline' },
+    { label: 'Learning Mode', iconMdi: 'mdi:laptop' },
+    { label: 'Preferred Schedule', iconMdi: 'mdi:clock-outline' },
+    { label: 'Exam Timeline', iconMdi: 'mdi:calendar-clock' },
   ],
-  cta: { label: 'Find My Recommended Plan', href: '/contact', iconMdi: 'mdi:clipboard-check-outline' },
-  secondary: { label: 'Talk to an Academic Counsellor', href: '/contact', iconMdi: 'mdi:account-voice' },
+  cta: { label: 'Talk to an  Counsellor', href: '/contact', iconMdi: 'mdi:account-voice' },
 }
 
 export const subFaqs = {

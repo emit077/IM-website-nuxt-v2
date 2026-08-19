@@ -35,7 +35,8 @@ import { enrollmentChoose, enrollmentNeeds, enrollmentValue } from '~/data/stude
               {{ item.name }}
             </p>
             <h3 class="mt-2 font-display text-xl font-bold">{{ item.plan }}</h3>
-            <p :class="['mt-3 flex-1 text-[13.5px] leading-relaxed', item.featured ? 'text-blue-50' : 'text-slate-600']">
+            <p
+              :class="['mt-3 flex-1 text-[13.5px] leading-relaxed', item.featured ? 'text-blue-50' : 'text-slate-600']">
               {{ item.description }}
             </p>
             <p :class="[
@@ -53,35 +54,48 @@ import { enrollmentChoose, enrollmentNeeds, enrollmentValue } from '~/data/stude
   <section id="premium-value" class="relative scroll-mt-28 overflow-hidden bg-white section-py"
     aria-labelledby="value-heading">
     <div class="container-page relative">
-      <CardHeader heading-id="value-heading" :badge="enrollmentValue.badge" :title="enrollmentValue.title"
+      <CardHeader heading-id="value-heading" align="left" :badge="enrollmentValue.badge" :title="enrollmentValue.title"
         :description="enrollmentValue.description" :classes="enrollmentValue.classes" />
 
-      <div class="mx-auto mt-10 max-w-3xl rounded-[1.75rem] bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 px-6 py-10 text-center text-white shadow-[0_24px_60px_-24px_rgba(29,78,216,0.5)] sm:px-10"
-        v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
-        <p class="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">{{ enrollmentValue.price }}</p>
-        <p class="mt-2 text-sm font-medium text-blue-100">{{ enrollmentValue.priceNote }}</p>
-        <p class="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-blue-50">{{ enrollmentValue.card }}</p>
-      </div>
-
-      <p class="mt-10 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
-        {{ enrollmentValue.highlightsLabel }}
-      </p>
-      <ul class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
-        <li v-for="(item, i) in enrollmentValue.highlights" :key="item" v-motion :initial="{ opacity: 0, y: 10 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 20 + i * 30, duration: 360 } }">
-          <div class="flex h-full items-center gap-2.5 rounded-2xl border border-slate-200/80 bg-cream-50/70 px-4 py-3.5">
-            <span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-600"
-              aria-hidden="true">
-              <IconCheck class="h-3.5 w-3.5" />
-            </span>
-            <span class="text-[13.5px] font-semibold text-slate-800">{{ item }}</span>
+      <div class="mt-12 grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
+        <aside class="lg:sticky lg:top-32 lg:col-span-4" v-motion :initial="{ opacity: 0, y: 16 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
+          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">
+            {{ enrollmentValue.planLabel }}
+          </p>
+          <p class="mt-3 font-display text-6xl font-extrabold tracking-tight text-slate-900 sm:text-7xl">
+            {{ enrollmentValue.hookPrice }}
+          </p>
+          <p class="mt-1 text-lg font-semibold text-slate-500">{{ enrollmentValue.hookPeriod }}</p>
+          <p class="mt-2 text-sm font-medium text-slate-400">{{ enrollmentValue.billingNote }}</p>
+          <p class="mt-6 max-w-sm text-[15px] leading-relaxed text-slate-600">{{ enrollmentValue.card }}</p>
+          <div class="mt-8">
+            <ActionBtn variant="primary" :label="enrollmentValue.cta.label" :href="enrollmentValue.cta.href"
+              icon="mdi:star-four-points-outline" />
           </div>
-        </li>
-      </ul>
+        </aside>
 
-      <div class="mt-10 flex justify-center">
-        <ActionBtn variant="theme-secondary" :label="enrollmentValue.cta.label" :href="enrollmentValue.cta.href"
-          icon="mdi:star-four-points-outline" />
+        <ol class="grid grid-cols-1 gap-3 sm:grid-cols-3 lg:col-span-8" role="list">
+          <li v-for="(item, i) in enrollmentValue.highlights" :key="item.title" v-motion
+            :initial="{ opacity: 0, y: 14 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 40, duration: 400 } }">
+            <article
+              class="group relative flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-slate-200/80 bg-cream-50/50 p-5 sm:p-4">
+              <span
+                class="pointer-events-none absolute -right-1 -top-3 font-display text-6xl font-extrabold leading-none text-blue-600/[0.08]"
+                aria-hidden="true">
+                {{ String(i + 1).padStart(2, '0') }}
+              </span>
+              <span
+                class="relative grid h-11 w-11 place-items-center rounded-2xl bg-white text-blue-600 ring-1 ring-blue-100"
+                aria-hidden="true">
+                <Icon :icon="item.iconMdi" class="h-5 w-5" />
+              </span>
+              <h3 class="relative mt-4 font-display text-base font-bold text-slate-900">{{ item.title }}</h3>
+              <p class="relative mt-2 text-[13.5px] leading-relaxed text-slate-600">{{ item.description }}</p>
+            </article>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
@@ -93,8 +107,7 @@ import { enrollmentChoose, enrollmentNeeds, enrollmentValue } from '~/data/stude
         :classes="enrollmentChoose.classes" />
 
       <div class="mt-10 grid gap-5 lg:grid-cols-2 lg:gap-6">
-        <article
-          class="flex flex-col rounded-[1.75rem] border border-slate-200/80 bg-white p-8 shadow-soft sm:p-10"
+        <article class="flex flex-col rounded-[1.75rem] border border-slate-200/80 bg-white p-8 shadow-soft sm:p-10"
           v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
           <h3 class="font-display text-2xl font-extrabold text-slate-900">{{ enrollmentChoose.free.title }}</h3>
           <ul class="mt-6 flex-1 space-y-3" role="list">

@@ -161,6 +161,8 @@ export const planComparisonSection = {
   title: 'Which Learning Plan Fits <span class="text-gradient-brand">Your Child?</span>',
   description: 'Side-by-side details for daily duration, subjects, monitoring, and support.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  footnote:
+    '*Subject to applicable policy, tutor availability, and service conditions.',
 }
 
 export type EnrollmentStep = {
@@ -717,6 +719,7 @@ export const spRoadmap = {
     { no: '05', title: 'Assess', description: 'Review learning response and academic performance.' },
     { no: '06', title: 'Improve', description: 'Identify areas requiring additional attention.' },
     { no: '07', title: 'Progress', description: 'Continue with an evolving academic support plan.' },
+    { no: '08', title: 'Achieve', description: 'Build stronger concepts, confidence, and academic goals.' },
   ],
 }
 
@@ -1114,7 +1117,7 @@ export const spProfiles: {
       ],
       idealLabel: 'Free Profile Is Ideal For',
       idealFor: ['Explore', 'Compare', 'Experience', 'Decide'],
-      cta: { label: 'Create Free Profile', href: externalLinks.studentSignup },
+      cta: { label: 'Create  Profile', href: externalLinks.studentSignup },
       featured: false,
     },
     {
@@ -1137,7 +1140,7 @@ export const spProfiles: {
         { title: 'Dedicated Key Account Manager' },
         { title: 'And many more — explore for more details', href: '/student-parent/enrollment' },
       ],
-      cta: { label: 'Explore Premium Profile', href: externalLinks.studentSignup },
+      cta: { label: 'know more', href: "/student-parent/enrollment" },
       featured: true,
     },
   ],
@@ -1353,9 +1356,7 @@ export const subscriptionFinalCta = {
     "Whether you want to experience personalised tutoring for one month, prepare for an important examination, or build a complete academic-year learning journey, Indian Mentors provides structured options designed around your child's needs.",
   supporting: 'Choose the Plan. Select the Tenure. Start Learning.',
   ctas: [
-    { label: 'Choose Your Subscription', href: '#plan-builder', iconMdi: 'mdi:clipboard-check-outline', primary: true },
-    { label: 'Start 1-Month Trial', href: '#trial', iconMdi: 'mdi:calendar-today' },
-    { label: 'Book a Demo', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline' },
+    { label: 'Start 1-Month Trial', primary: true, href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-today' },
     { label: 'Talk to an Academic Counsellor', href: '/contact', iconMdi: 'mdi:account-voice' },
   ],
 }
@@ -1649,19 +1650,48 @@ export const enrollmentNeeds = {
 export const enrollmentValue = {
   badge: 'Premium Value',
   title: 'One Small Annual Investment. A More <span class="text-gradient-brand">Connected Learning Experience.</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
-  price: '₹1,200 / Year',
+  classes: '!px-0 !py-0 max-w-5xl',
+  planLabel: 'Annual membership',
+  price: '₹1,200',
+  pricePeriod: '/ Year',
   priceNote: '≈ ₹100 / Month',
+  hookPrice: '₹100',
+  hookPeriod: 'per month',
+  billingNote: 'Billed annually at ₹1,200',
   description:
     'Premium provides additional platform-level benefits designed to make tutor discovery, academic monitoring, and ongoing support more convenient.',
-  highlightsLabel: 'Premium Value Highlights',
+  highlightsLabel: 'What you unlock',
   highlights: [
-    'Unlimited Tutor Discovery',
-    'Personalised Tutor Recommendations',
-    'Priority Demo Scheduling',
-    'Detailed Progress Tracking',
-    'Dedicated Support',
-    'Multi-Subject Management',
+    {
+      title: 'Unlimited Tutor Discovery',
+      description: 'Browse and connect with a wider pool of tutors matched to your requirements.',
+      iconMdi: 'mdi:rocket-launch-outline',
+    },
+    {
+      title: 'Tutor Suggestions',
+      description: 'Receive AI-guided tutor suggestions based on subject, grade, and learning style.',
+      iconMdi: 'mdi:robot-outline',
+    },
+    {
+      title: 'Priority Demo Scheduling',
+      description: 'Get faster access to available demo slots with priority coordination.',
+      iconMdi: 'mdi:lightning-bolt-outline',
+    },
+    {
+      title: 'Detailed Progress Tracking',
+      description: 'Monitor attendance, sessions, performance, and academic insights in one place.',
+      iconMdi: 'mdi:chart-box-outline',
+    },
+    {
+      title: 'Dedicated Support',
+      description: 'Priority assistance through applicable WhatsApp and phone support channels.',
+      iconMdi: 'mdi:headset',
+    },
+    {
+      title: 'Multi-Subject Management',
+      description: 'Manage multiple subjects under one student account without extra profiles.',
+      iconMdi: 'mdi:bookshelf',
+    },
   ],
   card: 'For approximately ₹100 per month, unlock a more structured way to discover, manage, and monitor personalised tutoring.',
   cta: { label: 'Unlock Premium Benefits', href: externalLinks.studentSignup },

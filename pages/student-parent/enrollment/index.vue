@@ -11,6 +11,7 @@ import EnrollmentTrustFaqSection from '~/components/student-parent/enrollment/En
 import EnrollmentClosingSection from '~/components/student-parent/enrollment/EnrollmentClosingSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { enrollmentFinalCta } from '~/data/student-parent'
+import LearningStepsSection from '~/components/student-parent/enrollment/LearningStepsSection.vue'
 
 useSeoMeta({
   title: 'Student Enrollment Plans — Students & Parents | Indian Mentors',
@@ -26,17 +27,19 @@ useSeoMeta({
 <template>
   <div class="student-parent-enrollment">
     <StudentParentEnrollmentHeroSection />
+    <div class="mt-12">
+      <LearningStepsSection />
+    </div>
     <StudentParentProfilesSection />
     <!-- <EnrollmentProfileDetailsSection /> -->
     <EnrollmentPlansSection />
-    <EnrollmentWhyPremiumSection />
-    <StudentParentJourneySection />
-    <EnrollmentExperienceSection />
+    <!-- <EnrollmentWhyPremiumSection /> -->
+    <!-- <StudentParentJourneySection /> -->
+    <!-- <EnrollmentExperienceSection /> -->
     <EnrollmentDecideSection />
     <!-- <EnrollmentTrustFaqSection /> -->
     <UiCTASection heading-id="sp-enrollment-cta-heading" surface-class="section-surface-muted"
       :title="enrollmentFinalCta.title" :description="enrollmentFinalCta.description"
       :supporting="enrollmentFinalCta.supporting" :ctas="enrollmentFinalCta.ctas" />
-    <EnrollmentClosingSection />
   </div>
 </template>

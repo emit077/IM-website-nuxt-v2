@@ -135,7 +135,7 @@ function onCtaMousemove(e: MouseEvent, isPrimary?: boolean) {
             ]" v-html="props.supporting" />
           </div>
 
-          <div v-if="props.ctas.length > 0" :class="isSplit
+          <div v-if="props.ctas.length > 0 || $slots.ctas" :class="isSplit
             ? 'flex w-full shrink-0 flex-col gap-2.5 sm:flex-row sm:flex-wrap lg:max-w-xs lg:w-80 lg:flex-col'
             : 'mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center'">
             <slot name="ctas">

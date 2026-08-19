@@ -30,7 +30,8 @@ const accentStyles = {
       <CardHeader heading-id="sub-tenure-heading" :badge="subTenures.badge" :title="subTenures.title"
         :description="subTenures.description" :classes="subTenures.classes" />
 
-      <div class="-mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 lg:mx-0 lg:grid lg:grid-cols-4 lg:overflow-visible lg:px-0 lg:pb-0">
+      <div
+        class="-mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 lg:mx-0 lg:grid lg:grid-cols-4 lg:overflow-visible lg:px-0 lg:pb-0">
         <article v-for="(item, i) in subTenures.items" :key="item.id" :class="[
           'relative flex w-[min(19rem,82vw)] shrink-0 snap-center flex-col overflow-hidden rounded-[1.5rem] border bg-white shadow-soft lg:w-auto',
           item.recommended ? 'border-amber-300 ring-1 ring-amber-200' : 'border-slate-200/80',
@@ -51,7 +52,9 @@ const accentStyles = {
             <p class="mt-4 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">{{ item.subtitle }}</p>
             <h3 class="mt-1 font-display text-xl font-bold text-slate-900">{{ item.name }}</h3>
             <p class="mt-1 text-[13px] font-semibold text-slate-700">{{ item.headline }}</p>
-            <p class="mt-3 text-[13.5px] leading-relaxed text-slate-600">{{ item.description }}</p>
+            <p class="mt-3 min-h-[4.125rem] text-[13.5px] leading-relaxed text-slate-600">
+              {{ item.description }}
+            </p>
 
             <dl class="mt-4 space-y-2 text-[13px]">
               <div class="flex justify-between gap-3">
@@ -64,7 +67,7 @@ const accentStyles = {
               </div>
               <div class="flex justify-between gap-3">
                 <dt class="text-slate-500">Discount</dt>
-                <dd class="font-semibold text-slate-800">{{ item.discount }}</dd>
+                <dd class="font-semibold text-green-800">{{ item.discount }}</dd>
               </div>
             </dl>
 
@@ -79,27 +82,11 @@ const accentStyles = {
           </div>
         </article>
       </div>
-
-      <div class="mt-12">
-        <CardHeader heading-id="tenure-guide-heading" :badge="subTenures.guide.badge" :title="subTenures.guide.title"
-          :classes="subTenures.classes" />
-        <ul class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2" role="list">
-          <li v-for="item in subTenures.items" :key="`guide-${item.id}`">
-            <article class="flex h-full flex-col rounded-[1.35rem] border border-slate-200/80 bg-white p-5 shadow-soft">
-              <p class="text-[12px] font-bold uppercase tracking-[0.08em] text-blue-600">{{ item.suited }}</p>
-              <h3 class="mt-2 font-display text-base font-bold text-slate-900">{{ item.subtitle }}</h3>
-              <p class="mt-2 flex-1 text-[13px] leading-relaxed text-slate-600">{{ item.description }}</p>
-              <a :href="item.cta.href" class="mt-4 text-[13px] font-semibold text-blue-700 hover:underline">
-                {{ item.cta.label }}
-              </a>
-            </article>
-          </li>
-        </ul>
-      </div>
-
+      <!-- 
       <div class="mt-12 overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white shadow-soft">
         <div class="border-b border-slate-100 px-5 py-4 sm:px-6">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">{{ subTenures.comparison.badge }}</p>
+          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">{{ subTenures.comparison.badge }}
+          </p>
           <h3 class="mt-1 font-display text-lg font-bold text-slate-900">{{ subTenures.comparison.title }}</h3>
         </div>
         <div class="overflow-x-auto">
@@ -125,7 +112,7 @@ const accentStyles = {
             </tbody>
           </table>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>

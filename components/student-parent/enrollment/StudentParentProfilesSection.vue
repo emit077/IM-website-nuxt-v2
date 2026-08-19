@@ -36,14 +36,9 @@ import { enrollmentPlans, enrollmentStart } from '~/data/student-parent'
               {{ plan.price }}
               <span v-if="plan.priceNote" class="text-lg font-semibold opacity-80">{{ plan.priceNote }}</span>
             </p>
-            <p v-if="plan.equivalent" :class="[
-              'mt-1 text-sm font-medium',
-              plan.variant === 'featured' ? 'text-blue-100' : 'text-slate-500',
-            ]">
-              {{ plan.equivalent }}
-            </p>
             <p class="mt-4 font-display text-lg font-bold">{{ plan.tagline }}</p>
-            <p :class="['mt-3 text-sm leading-relaxed', plan.variant === 'featured' ? 'text-blue-50' : 'text-slate-600']">
+            <p
+              :class="['mt-3 text-sm leading-relaxed', plan.variant === 'featured' ? 'text-blue-50' : 'text-slate-600']">
               {{ plan.description }}
             </p>
 
