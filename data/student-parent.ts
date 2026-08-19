@@ -1080,7 +1080,7 @@ export const spEnrollmentPreview = {
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   description:
     'Create a student profile, explore tutors, and book a free demo — then upgrade when you want more access and support.',
-  image: 'assets/img/hero/hero-2.png',
+  image: 'assets/img/student-parent/enrollment.png',
   imageAlt: 'Student giving a thumbs-up while starting a personalised learning plan',
   imageCaption: 'Start free. Upgrade when you’re ready.',
   imageNote: 'Explore first. Commit when it fits.',

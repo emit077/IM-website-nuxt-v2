@@ -61,23 +61,22 @@ import { spEnrollmentPreview, spProfiles } from '~/data/student-parent'
         </ul>
         <div class="relative min-h-[18rem] sm:min-h-[22rem] lg:col-span-5 lg:min-h-0" v-motion
           :initial="{ opacity: 0, x: -18 }" :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 520 } }">
-          <figure
-            class="relative flex h-full items-end justify-center overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-blue-50 via-white to-sky-50">
+          <figure class="relative flex h-full items-end justify-center overflow-hidden">
             <img :src="usePublicAsset(spEnrollmentPreview.image)" :alt="spEnrollmentPreview.imageAlt"
               class="h-full w-full object-contain object-bottom" loading="lazy" decoding="async" />
-            <figcaption
+            <!-- <figcaption
               class="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/95 px-4 py-3 shadow-soft backdrop-blur-sm sm:right-auto sm:max-w-[90%]">
               <p class="font-display text-[15px] font-extrabold leading-snug text-slate-900">
                 {{ spEnrollmentPreview.imageCaption }}
               </p>
               <p class="mt-0.5 text-[13px] font-medium text-slate-500">{{ spEnrollmentPreview.imageNote }}</p>
-            </figcaption>
+            </figcaption> -->
           </figure>
-          <span
+          <!-- <span
             class="absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.12em] text-blue-700 shadow-sm ring-1 ring-blue-100 sm:left-5 sm:top-5">
             <Icon icon="mdi:account-plus-outline" class="h-4 w-4" aria-hidden="true" />
             Start Free
-          </span>
+          </span> -->
         </div>
       </div>
     </div>
