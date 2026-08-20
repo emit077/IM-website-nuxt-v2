@@ -70,7 +70,7 @@ import { spCoverage, spServices } from '~/data/student-parent'
 
     </div>
   </section>
-
+  <!-- 
   <section id="tutoring-services" class="relative scroll-mt-28 overflow-hidden section-surface-muted section-py"
     aria-labelledby="sp-services-heading">
     <div class="container-page relative">
@@ -103,7 +103,7 @@ import { spCoverage, spServices } from '~/data/student-parent'
           icon="mdi:view-grid-outline" />
       </div>
     </div>
-  </section>
+  </section> -->
 </template>
 
 <style scoped>

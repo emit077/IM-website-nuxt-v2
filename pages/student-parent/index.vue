@@ -18,6 +18,7 @@ import StudentParentClosingSection from '~/components/student-parent/StudentPare
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import WhyChooseUs from '~/components/ui/shared/WhyChooseUs.vue'
 import StudentParentSupportSection from '~/components/ui/shared/StudentParentSupportSection.vue'
+import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
 import { spFinalCta, spWhyFamilies } from '~/data/student-parent'
 
 useSeoMeta({
@@ -40,9 +41,10 @@ useSeoMeta({
     <StudentParentMatchingSection />
     <StudentParentDemoSection />
     <StudentParentModesSection />
-    <!-- <StudentParentCoverageSection /> -->
+    <StudentParentCoverageSection />
     <StudentParentEnrollmentPreviewSection />
     <StudentParentPlansPreviewSection />
+    <BrowseMentorsSection />
     <StudentParentMonitoringSection />
     <!-- <StudentParentCollaborationSection /> -->
     <!-- <StudentParentWhySection /> -->

@@ -834,7 +834,7 @@ export const spCoverage = {
     label: 'Early & School Education',
     stages: [
       {
-        title: 'Pre-Primary / Nursery',
+        title: 'Pre-Primary',
         description: 'Foundation learning and early academic development.',
         image: 'assets/img/academic-coverage/grade-1.webp',
       },
@@ -1839,11 +1839,12 @@ export const spSupport = {
   description: 'Need help selecting a tutor, understanding a subscription, or resolving a service-related question?',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   options: [
-    { title: 'Live Chat', description: 'For general assistance and platform queries.', iconMdi: 'mdi:chat-outline', href: '/contact' },
-    { title: 'WhatsApp Assistance', description: 'For applicable service coordination.', iconMdi: 'mdi:cellphone', href: 'https://wa.me/917389563564' },
-    { title: 'Helpdesk Ticketing', description: 'Submit and track support requests.', iconMdi: 'mdi:ticket-confirmation-outline', href: '/contact' },
-    { title: 'Email Support', description: 'For detailed enquiries and documentation.', iconMdi: 'mdi:email-outline', href: 'mailto:info@indianmentors.in' },
     { title: 'Phone Support', description: 'For applicable counselling and service assistance.', iconMdi: 'mdi:phone-outline', href: 'tel:+917389563564' },
+    { title: 'WhatsApp Assistance', description: 'For applicable service coordination.', iconMdi: 'mdi:cellphone', href: 'https://wa.me/917389563564' },
+    { title: 'Email Support', description: 'For detailed enquiries and documentation.', iconMdi: 'mdi:email-outline', href: 'mailto:info@indianmentors.in' },
+    { title: 'Live Chat', description: 'For general assistance and platform queries.', iconMdi: 'mdi:chat-outline', href: '/contact' },
+    { title: 'Helpdesk Ticketing', description: 'Submit and track support requests.', iconMdi: 'mdi:ticket-confirmation-outline', href: '/contact' },
+
   ],
   ctaCard: {
     title: 'Need help now?',

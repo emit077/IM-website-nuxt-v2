@@ -26,7 +26,7 @@ const sectionConfig = {
 const services: ServiceCard[] = [
     {
         title: 'Home &nbsp; Tutors',
-        hook: 'One-to-one at the dining table — not a crowded classroom.',
+        hook: 'Personalised learning at home.',
         chip: '1-on-1 at home',
         visual: 'assets/img/services/home-tutors.webp',
         href: '/services#home-tutors',
@@ -35,7 +35,7 @@ const services: ServiceCard[] = [
     },
     {
         title: 'Online &nbsp;Tutors',
-        hook: 'Live class from the couch, a café, or another city.',
+        hook: 'Live learning, wherever you are.',
         chip: 'Learn from anywhere',
         visual: 'assets/img/services/online-tutor.webp',
         href: '/services#online-tutors',
@@ -43,7 +43,7 @@ const services: ServiceCard[] = [
     },
     {
         title: 'Hybrid &nbsp;Tutors',
-        hook: 'Home some days, online the rest — one plan, both formats.',
+        hook: 'The flexibility of both formats.',
         chip: 'Home + online',
         visual: 'assets/img/services/hybrid-tutor.webp',
         href: '/services#hybrid-tutors',
@@ -51,7 +51,7 @@ const services: ServiceCard[] = [
     },
     {
         title: 'Shadow &nbsp;Tutors',
-        hook: 'A mentor beside them in school, through the whole day.',
+        hook: 'A dedicated mentor by their side.',
         chip: 'In-school support',
         visual: 'assets/img/services/shadow-tutors.webp',
         href: '/services#shadow-tutors',
@@ -59,7 +59,7 @@ const services: ServiceCard[] = [
     },
     {
         title: 'Travel &nbsp;Tutors',
-        hook: 'School doesn’t pause when your family is on the move.',
+        hook: 'Education that travels with you.',
         chip: 'Learn on the road',
         visual: 'assets/img/services/travel-tutor.webp',
         href: '/services#travel-tutors',
@@ -67,7 +67,7 @@ const services: ServiceCard[] = [
     },
     {
         title: 'Live-In &nbsp;Tutors',
-        hook: 'A mentor at home, every day — routine, homework, results.',
+        hook: 'A mentor available every day.',
         chip: 'Full-time mentor',
         visual: 'assets/img/services/live-In-tutors.webp',
         href: '/services#live-in-tutors',
@@ -75,7 +75,7 @@ const services: ServiceCard[] = [
     },
     {
         title: 'Special &nbsp;Educators',
-        hook: 'Teaching that fits how they learn — not the other way around.',
+        hook: 'Learning designed around the child.',
         chip: 'Diverse needs',
         visual: 'assets/img/services/special-educators.webp',
         href: '/services#special-educators',
@@ -83,7 +83,7 @@ const services: ServiceCard[] = [
     },
     {
         title: 'Home &nbsp;Schooling &nbsp;Support',
-        hook: 'A full curriculum at home, with board-aligned guidance.',
+        hook: 'Structured education at home.',
         chip: 'Board-aligned',
         visual: 'assets/img/services/home-schooling-support.webp',
         href: '/services#home-schooling',
@@ -92,7 +92,7 @@ const services: ServiceCard[] = [
 
     {
         title: 'Something more specific?',
-        hook: 'Tell us the goal, the schedule, the style. We’ll build the match.',
+        hook: 'Tell us the subject, schedule, location, and learning needs—we’ll create the right tutor match.',
         chip: 'Made for you',
         visual: 'assets/img/hero/hero-1.png',
         icon: 'assets/img/services/custome.svg',
@@ -161,10 +161,10 @@ const services: ServiceCard[] = [
                                     class="inline-flex items-center rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.04em] text-white backdrop-blur-md">
                                     {{ service.chip }}
                                 </span> -->
-                                <h3 class="mt-2.5 font-display uppercase text-[1rem] font-semibold leading-snug  text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
+                                <h3 class="mt-2.5 font-display uppercase text-[1rem] font-bold leading-snug  text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
                                     :class="service.size === 'cta' ? 'sm:text-[1.35rem]' : ''" v-html="service.title">
                                 </h3>
-                                <p class="mt-1.5 text-sm leading-relaxed text-white/90"
+                                <p class="mt-1.5 text-sm font-semibold leading-relaxed text-white/80"
                                     :class="service.size === 'cta' ? 'sm:max-w-xl sm:text-sm' : ''">
                                     {{ service.hook }}
                                 </p>
