@@ -33,12 +33,13 @@ useSeoMeta({
     <TutorsHeroSection />
     <!-- <TutorsNavSection /> -->
     <!-- <TutorsResourcesSection /> -->
-    <TutorPlansSection />
+    <TutorOpportunitiesSection />
+
     <TutorHiringProcessSection />
     <TutorComplianceSection />
-    <TutorOpportunitiesSection />
     <TutorEarningsSection />
     <TutorErpSection />
+    <TutorPlansSection />
     <TutorPolicySection />
     <UiCTASection section-id="tutor-register" surface-class="section-surface-white"
       badge-icon-mdi="mdi:rocket-launch-outline" :title="tutorsFinalCta.title" :description="tutorsFinalCta.description"

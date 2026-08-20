@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import { quickServiceCategories } from '~/data/services'
+import ActionBtn from '../btns/ActionBtn.vue'
 
 const props = withDefaults(
   defineProps<{
@@ -35,7 +35,7 @@ const iconTones = ['blue', 'mint', 'blue', 'mint', 'blue'] as const
         :description="props.description" :classes="props.headerClasses" />
 
       <ul :class="[
-        'grid grid-cols-1 gap-3.5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 xl:gap-4',
+        'grid grid-cols-1 gap-3.5 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 xl:gap-4',
         props.showHeader ? 'mt-8 sm:mt-9' : '',
       ]" role="list">
         <li v-for="(item, i) in quickServiceCategories.items" :key="item.id" class="h-full" v-motion
@@ -53,16 +53,31 @@ const iconTones = ['blue', 'mint', 'blue', 'mint', 'blue'] as const
             <p class="service-card__desc">
               {{ item.description }}
             </p>
+
+
+          </NuxtLink>
+        </li>
+
+        <li class="h-full" v-motion :initial="{ opacity: 0, y: 14 }" :visibleOnce="{
+          opacity: 1,
+          y: 0,
+          transition: { delay: 40 + quickServiceCategories.items.length * 40, duration: 400 },
+        }">
+          <NuxtLink :to="quickServiceCategories.cta.href" class="service-card service-card--cta group"
+            :aria-label="quickServiceCategories.cta.label">
+            <span class="service-card__icon" aria-hidden="true">
+              <Icon icon="mdi:view-grid-outline" class="h-6 w-6" />
+            </span>
+
+            <h3 class="service-card__title font-display">
+              {{ quickServiceCategories.cta.label }}
+            </h3>
+            <p class="service-card__desc">
+              {{ quickServiceCategories.cta.supporting }}
+            </p>
           </NuxtLink>
         </li>
       </ul>
-
-      <div class="mt-8 flex flex-col items-center gap-2 sm:mt-10" v-motion :initial="{ opacity: 0, y: 10 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 160, duration: 400 } }">
-        <ActionBtn class="!min-w-[16rem] sm:!min-w-[18rem] !px-10" variant="primary"
-          :href="quickServiceCategories.cta.href" :label="quickServiceCategories.cta.label"
-          icon="mdi:view-grid-outline" />
-      </div>
     </div>
   </section>
 </template>
@@ -125,6 +140,36 @@ const iconTones = ['blue', 'mint', 'blue', 'mint', 'blue'] as const
 .service-card--mint:hover .service-card__icon {
   background: #0d9488;
   color: #ffffff;
+}
+
+.service-card--cta {
+  background: linear-gradient(165deg, #2563eb 0%, #1d4ed8 100%);
+  border-color: transparent;
+  box-shadow: 0 12px 28px -14px rgba(37, 99, 235, 0.55);
+}
+
+.service-card--cta:hover {
+  border-color: transparent;
+  box-shadow: 0 18px 36px -16px rgba(37, 99, 235, 0.65);
+}
+
+.service-card--cta .service-card__icon {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.service-card--cta:hover .service-card__icon {
+  background: #ffffff;
+  color: #2563eb;
+}
+
+.service-card--cta .service-card__title,
+.service-card--cta:hover .service-card__title {
+  color: #ffffff;
+}
+
+.service-card--cta .service-card__desc {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .service-card__title {

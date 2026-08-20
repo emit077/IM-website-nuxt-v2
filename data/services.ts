@@ -416,9 +416,9 @@ export const quickServiceCategories = {
     'Structured tutoring formats — select the option that best matches your child\'s academic needs and schedule.',
   itemCtaLabel: 'View details',
   cta: {
-    label: 'Explore All Services',
+    label: 'Explore  Services',
     href: '/services',
-    supporting: 'Compare formats, subject coverage, and support levels in one place.',
+    supporting: 'See every tutoring format in one place.',
   },
   items: [
     {
@@ -432,7 +432,7 @@ export const quickServiceCategories = {
     {
       id: 'online-tutors',
       title: 'Online Tutors',
-      description: 'Live interactive classes from anywhere.',
+      description: 'Live interactive classes anywhere.',
       iconMdi: 'solar:laptop-minimalistic-linear',
       img: 'assets/img/services/online-tutor.svg',
       href: '/services#online-tutors',

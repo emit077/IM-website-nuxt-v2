@@ -25,7 +25,7 @@ const sectionConfig = {
 
 const services: ServiceCard[] = [
     {
-        title: 'Home Tutors',
+        title: 'Home &nbsp; Tutors',
         hook: 'One-to-one at the dining table — not a crowded classroom.',
         chip: '1-on-1 at home',
         visual: 'assets/img/services/home-tutors.webp',
@@ -34,7 +34,7 @@ const services: ServiceCard[] = [
         popular: true,
     },
     {
-        title: 'Online Tutors',
+        title: 'Online &nbsp;Tutors',
         hook: 'Live class from the couch, a café, or another city.',
         chip: 'Learn from anywhere',
         visual: 'assets/img/services/online-tutor.webp',
@@ -42,7 +42,7 @@ const services: ServiceCard[] = [
         size: 'hero',
     },
     {
-        title: 'Hybrid Tutors',
+        title: 'Hybrid &nbsp;Tutors',
         hook: 'Home some days, online the rest — one plan, both formats.',
         chip: 'Home + online',
         visual: 'assets/img/services/hybrid-tutor.webp',
@@ -50,7 +50,7 @@ const services: ServiceCard[] = [
         size: 'hero',
     },
     {
-        title: 'Shadow Tutors',
+        title: 'Shadow &nbsp;Tutors',
         hook: 'A mentor beside them in school, through the whole day.',
         chip: 'In-school support',
         visual: 'assets/img/services/shadow-tutors.webp',
@@ -58,7 +58,7 @@ const services: ServiceCard[] = [
         size: 'compact',
     },
     {
-        title: 'Travel Tutors',
+        title: 'Travel &nbsp;Tutors',
         hook: 'School doesn’t pause when your family is on the move.',
         chip: 'Learn on the road',
         visual: 'assets/img/services/travel-tutor.webp',
@@ -66,7 +66,7 @@ const services: ServiceCard[] = [
         size: 'compact',
     },
     {
-        title: 'Live-In Tutors',
+        title: 'Live-In &nbsp;Tutors',
         hook: 'A mentor at home, every day — routine, homework, results.',
         chip: 'Full-time mentor',
         visual: 'assets/img/services/live-In-tutors.webp',
@@ -74,7 +74,7 @@ const services: ServiceCard[] = [
         size: 'compact',
     },
     {
-        title: 'Special Educators',
+        title: 'Special &nbsp;Educators',
         hook: 'Teaching that fits how they learn — not the other way around.',
         chip: 'Diverse needs',
         visual: 'assets/img/services/special-educators.webp',
@@ -82,7 +82,7 @@ const services: ServiceCard[] = [
         size: 'compact',
     },
     {
-        title: 'HomeSchooling Support',
+        title: 'Home &nbsp;Schooling &nbsp;Support',
         hook: 'A full curriculum at home, with board-aligned guidance.',
         chip: 'Board-aligned',
         visual: 'assets/img/services/home-schooling-support.webp',
@@ -140,9 +140,13 @@ const services: ServiceCard[] = [
                                 " />
                         </span>
 
-                        <span v-if="service.popular"
+                        <!-- <span v-if="service.popular"
                             class="absolute left-4 top-4 z-[2] inline-flex items-center rounded-full bg-amber-500 px-2.5 py-1 text-[0.65rem] font-extrabold uppercase tracking-[0.08em] text-gray-900 shadow-[0_8px_18px_-8px_rgba(245,158,11,0.7)]">
                             Most chosen
+                        </span> -->
+                        <span
+                            class=" absolute left-4 top-4 inline-flex items-center rounded-full border border-black/20 bg-black/50 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.04em] text-white backdrop-blur-md">
+                            {{ service.chip }}
                         </span>
 
                         <span v-if="service.icon"
@@ -153,27 +157,26 @@ const services: ServiceCard[] = [
                         <div class="relative z-[1] flex flex-col items-start px-5 pb-5 pt-5"
                             :class="service.size === 'cta' ? 'sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:py-7 sm:pl-24 sm:pr-8' : ''">
                             <div class="flex min-w-0 flex-col items-start">
-                                <span
+                                <!-- <span
                                     class="inline-flex items-center rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.04em] text-white backdrop-blur-md">
                                     {{ service.chip }}
-                                </span>
-                                <h3 class="mt-2.5 font-display uppercase text-[1rem] font-extrabold leading-snug tracking-tight text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
-                                    :class="service.size === 'cta' ? 'sm:text-[1.35rem]' : ''">
-                                    {{ service.title }}
+                                </span> -->
+                                <h3 class="mt-2.5 font-display uppercase text-[1rem] font-semibold leading-snug  text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
+                                    :class="service.size === 'cta' ? 'sm:text-[1.35rem]' : ''" v-html="service.title">
                                 </h3>
-                                <p class="mt-1.5 text-[0.8rem] leading-relaxed text-white/90"
-                                    :class="service.size === 'cta' ? 'sm:max-w-xl sm:text-[0.9rem]' : ''">
+                                <p class="mt-1.5 text-sm leading-relaxed text-white/90"
+                                    :class="service.size === 'cta' ? 'sm:max-w-xl sm:text-sm' : ''">
                                     {{ service.hook }}
                                 </p>
                             </div>
                             <span
-                                class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2.5 text-[0.8rem] font-bold tracking-tight text-indigo-700 shadow-[0_10px_22px_-10px_rgba(15,23,42,0.55)] transition group-hover:-translate-y-px group-hover:gap-2.5 motion-reduce:transition-none"
+                                class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-[0.8rem] font-bold tracking-tight text-indigo-700 shadow-[0_10px_22px_-10px_rgba(15,23,42,0.55)] transition group-hover:-translate-y-px group-hover:gap-2.5 motion-reduce:transition-none"
                                 :class="service.size === 'cta'
                                     ? 'group-hover:bg-indigo-50 group-hover:text-indigo-800 sm:mt-0 sm:shrink-0 sm:px-5 sm:py-3'
-                                    : 'group-hover:bg-indigo-700 group-hover:text-white'
+                                    : 'group-hover:bg-indigo-700 group-hover:text-white  w-full text-right justify-center'
                                     ">
-                                {{ service.size === 'cta' ? 'Tell us what you need' : 'Find a tutor' }}
-                                <Icon icon="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" />
+                                {{ service.size === 'cta' ? 'Tell us what you need' : 'Know more' }}
+                                <!-- <Icon icon="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" /> -->
                             </span>
                         </div>
                     </NuxtLink>

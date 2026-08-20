@@ -701,6 +701,7 @@ export const spNeeds = {
     { title: 'Subject Requirements', question: 'Which subjects require one-to-one support?', iconMdi: 'mdi:book-education-outline' },
     { title: 'Schedule', question: 'What days and timings work best for the student and family?', iconMdi: 'mdi:calendar-clock-outline' },
     { title: 'Learning Mode', question: 'Is home tutoring, online tutoring, or hybrid learning more suitable?', iconMdi: 'mdi:laptop' },
+    { title: 'Learning Environment', question: 'Understand which learning environment helps the student remain comfortable, focused, engaged, and consistent.', iconMdi: 'mdi:laptop' },
   ],
   outcome: "A more informed tutoring recommendation based on the student's actual requirements.",
 }
