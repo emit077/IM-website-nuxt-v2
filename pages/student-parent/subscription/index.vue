@@ -32,7 +32,7 @@ useSeoMeta({
   <div class="student-parent-subscription pb-20 sm:pb-0">
     <StudentParentSubscriptionHeroSection />
     <SubscriptionBuildConceptSection />
-    <StudentParentPlansSection />
+    <StudentParentPlansSection :mini="false" />
     <SubscriptionComparisonSection />
     <SubscriptionTenureSection />
     <SubscriptionTrialSection />

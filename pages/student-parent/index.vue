@@ -15,6 +15,7 @@ import StudentParentWhySection from '~/components/student-parent/StudentParentWh
 import StudentParentTrustSection from '~/components/student-parent/StudentParentTrustSection.vue'
 import StudentParentFaqSection from '~/components/student-parent/StudentParentFaqSection.vue'
 import StudentParentClosingSection from '~/components/student-parent/StudentParentClosingSection.vue'
+import StudentParentPlansSection from '~/components/student-parent/subscription/StudentParentPlansSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import WhyChooseUs from '~/components/ui/shared/WhyChooseUs.vue'
 import StudentParentSupportSection from '~/components/ui/shared/StudentParentSupportSection.vue'
@@ -43,7 +44,7 @@ useSeoMeta({
     <StudentParentModesSection />
     <StudentParentCoverageSection />
     <StudentParentEnrollmentPreviewSection />
-    <StudentParentPlansPreviewSection />
+    <StudentParentPlansSection :mini="true" />
     <BrowseMentorsSection mode="students" />
     <StudentParentMonitoringSection />
     <!-- <StudentParentCollaborationSection /> -->

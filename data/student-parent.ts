@@ -940,7 +940,7 @@ export const spFamilyPlans = {
   title: 'Three Learning Plans. Three Levels of <span class="text-gradient-brand">Academic Support.</span>',
   description:
     "Choose the level of tutoring intensity according to your child's academic requirements.",
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto max-w-5xl',
   items: [
     {
       id: 'gold',
@@ -1004,6 +1004,90 @@ export const spFamilyPlans = {
     },
   ] satisfies FamilyPlan[],
   cta: { label: 'Compare Learning Plans', href: '#plan-comparison' },
+}
+
+export type SubscriptionPricingPlan = {
+  id: 'gold' | 'diamond' | 'platinum'
+  name: string
+  tagline: string
+  metric: string
+  metricUnit: string
+  audience: string
+  core: string[]
+  additional: string[]
+  ctaLabel: string
+  featured: boolean
+  badge?: string
+}
+
+export const spSubscriptionPricing = {
+  badge: 'Find Your Learning Intensity',
+  title: 'Three Learning Plans. Three Levels of <span class="text-gradient-brand">Academic Support.</span>',
+  description:
+    "Choose the level of tutoring intensity according to your child's academic requirements.",
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  tenures: [
+    { id: 'monthly' as const, label: 'Monthly' },
+    { id: 'annual' as const, label: 'Annual', discount: '15% Discount' },
+  ],
+  footnote:
+    'Start with a 1-month paid trial. No long-term commitment until you are ready.',
+  footnoteAnnual:
+    'Eligible annual payment arrangements can save you up to 15%. Subject to applicable plan terms.',
+  cta: {
+    monthly: { label: 'Start 1-Month Trial', href: '#trial' },
+    annual: { label: 'Choose Annual Plan', href: '#tenures' },
+  },
+  items: [
+    {
+      id: 'gold',
+      name: 'Gold',
+      tagline: 'Affordable academic support for consistent learning.',
+      metric: '1 hour',
+      metricUnit: 'per day',
+      audience: 'Primary & Middle School',
+      core: ['Homework support', 'Concept clarity', 'Regular academic support'],
+      additional: ['1–4 subjects', 'Monthly progress updates', 'Standard support'],
+      ctaLabel: 'Choose Gold',
+      featured: false,
+    },
+    {
+      id: 'diamond',
+      name: 'Diamond',
+      tagline: 'Our most popular plan for consistent academic improvement.',
+      metric: '1.5 hours',
+      metricUnit: 'per day',
+      audience: 'Middle & High School',
+      core: ['Deeper learning', 'Practice & revision', 'Problem solving focus'],
+      additional: [
+        'Everything in Gold +',
+        '2–5 subjects',
+        'Bi-weekly reports',
+        'Parent dashboard',
+        'Priority support',
+      ],
+      ctaLabel: 'Choose Diamond',
+      featured: true,
+      badge: 'Best Value',
+    },
+    {
+      id: 'platinum',
+      name: 'Platinum',
+      tagline: 'Comprehensive support for high-performance learners.',
+      metric: '2 hours',
+      metricUnit: 'per day',
+      audience: 'High School & Exam Preparation',
+      core: ['Intensive support', 'Board exam preparation', 'Competitive exam coaching'],
+      additional: [
+        'Everything in Diamond +',
+        'Weekly detailed reporting',
+        'Smart tutor recommendation',
+        'Exam-focused preparation',
+      ],
+      ctaLabel: 'Choose Platinum',
+      featured: false,
+    },
+  ] satisfies SubscriptionPricingPlan[],
 }
 
 export const subscriptionHero = {
