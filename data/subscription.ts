@@ -18,6 +18,7 @@ export const subConcept = {
   description:
     'Pick a learning plan, choose how long you need it, then decide how to pay — clear, flexible, and fully in your control.',
   classes: '',
+  cta: { label: 'Choose Your Plan', href: '#learning-plans' },
   tagline: "You're just a few clicks away from the right plan!",
   socialProof: '50,000+ students',
   formNote: 'By continuing, you agree to receive a call from our counsellor about your learning plan.',
@@ -471,27 +472,27 @@ export const subTerms = {
     },
     {
       title: 'Pricing',
-      description: 'Applicable fees, discounts and payment schedule.',
+      description: 'See applicable fees, discounts, and the full payment schedule.',
       iconMdi: 'mdi:currency-inr',
     },
     {
       title: 'Tutor Arrangement',
-      description: 'Tutor selection, demo and applicable replacement conditions.',
+      description: 'Tutor selection, demo, and applicable replacement conditions.',
       iconMdi: 'mdi:account-search-outline',
     },
     {
       title: 'Monitoring',
-      description: 'Attendance, feedback, reports and parent engagement.',
+      description: 'Attendance, session feedback, reports, and parent engagement.',
       iconMdi: 'mdi:chart-box-outline',
     },
     {
       title: 'Cancellation & Refund',
-      description: 'Applicable cancellation, refund, rescheduling and unused-session provisions.',
+      description: 'Cancellation, refund, rescheduling, and unused-session terms.',
       iconMdi: 'mdi:file-document-edit-outline',
     },
     {
       title: 'Support',
-      description: 'Available communication and service support channels.',
+      description: 'Available communication channels and service support options.',
       iconMdi: 'mdi:lifebuoy',
     },
   ],

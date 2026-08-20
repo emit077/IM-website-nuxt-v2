@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
+import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { externalLinks } from '~/data/external-links'
 
@@ -17,7 +18,10 @@ type GradeId =
   | '3'
   | '2'
   | '1'
+  | 'ukg'
   | 'lkg'
+  | 'nursery'
+
 
 type GridCard = {
   id: string
@@ -51,11 +55,48 @@ const grades: { id: GradeId; label: string; isNew?: boolean }[] = [
   { id: '3', label: 'Class 3' },
   { id: '2', label: 'Class 2' },
   { id: '1', label: 'Class 1' },
-  { id: 'lkg', label: 'LKG – UKG', isNew: true },
+  { id: 'ukg', label: 'UKG' },
+  { id: 'lkg', label: 'LKG' },
+  { id: 'nursery', label: 'Nursery' },
 ]
 
 /** Per-grade subjects and resource blurbs (Indian boards: CBSE-style science split where relevant). */
 const libraryByGrade: Record<GradeId, GradeLibrary> = {
+  nursery: {
+    subjects: ['Letter & sound play', 'Numbers & shapes', 'Rhymes & stories', 'Fine motor activities', 'Social skills'],
+    featured: {
+      tag: 'NURSERY',
+      title: 'First steps into joyful learning',
+      description:
+        'Play-led letter and number recognition, rhymes, and motor-skill activities that make the first classroom feel safe, warm, and fun.',
+    },
+    cards: [
+      {
+        id: 'letters',
+        title: 'Letters & sounds',
+        description: 'Picture-led alphabet play, phonics games, and listening activities that build first sound awareness.',
+        iconTone: 'bg-violet-100 text-violet-600 ring-violet-200/80',
+      },
+      {
+        id: 'numbers',
+        title: 'Numbers & shapes',
+        description: 'Counting 1–10, colour sorting, and shape matching through toys, songs, and short activity sheets.',
+        iconTone: 'bg-amber-100 text-amber-600 ring-amber-200/80',
+      },
+      {
+        id: 'stories',
+        title: 'Rhymes & stories',
+        description: 'Action rhymes, picture stories, and repeat-after-me songs that grow vocabulary and listening focus.',
+        iconTone: 'bg-teal-100 text-teal-600 ring-teal-200/80',
+      },
+      {
+        id: 'motor',
+        title: 'Motor & social skills',
+        description: 'Scribbling, bead play, sharing, and circle-time routines that build confidence before LKG.',
+        iconTone: 'bg-pink-100 text-pink-600 ring-pink-200/80',
+      },
+    ],
+  },
   lkg: {
     subjects: ['English (listening & speaking)', 'Hindi (rhymes & sounds)', 'Early Mathematics', 'EVS themes', 'Story & rhyme bank'],
     featured: {
@@ -86,6 +127,41 @@ const libraryByGrade: Record<GradeId, GradeLibrary> = {
         id: 'stories',
         title: 'Rhymes & stories',
         description: 'Audio–visual rhymes, moral tales, and motor-skill linked follow-up sheets.',
+        iconTone: 'bg-pink-100 text-pink-600 ring-pink-200/80',
+      },
+    ],
+  },
+  ukg: {
+    subjects: ['English (reading readiness)', 'Hindi (letters & words)', 'Early Mathematics', 'EVS themes', 'Logical thinking'],
+    featured: {
+      tag: 'UKG',
+      title: 'School-ready literacy & numeracy',
+      description:
+        'Reading readiness, writing practice, and first addition–subtraction — so Class 1 feels familiar, not frightening.',
+    },
+    cards: [
+      {
+        id: 'english',
+        title: 'English readiness',
+        description: 'Phonics blending, sight words, and short picture-readers that prepare children to read in Class 1.',
+        iconTone: 'bg-violet-100 text-violet-600 ring-violet-200/80',
+      },
+      {
+        id: 'hindi',
+        title: 'Hindi & vocabulary',
+        description: 'Swar–vyanjan practice, two-letter words, and speaking prompts for clearer classroom Hindi.',
+        iconTone: 'bg-amber-100 text-amber-600 ring-amber-200/80',
+      },
+      {
+        id: 'math',
+        title: 'Early Mathematics',
+        description: 'Numbers 1–50, addition and subtraction within 10, and pattern work with visual worksheets.',
+        iconTone: 'bg-teal-100 text-teal-600 ring-teal-200/80',
+      },
+      {
+        id: 'thinking',
+        title: 'EVS & thinking skills',
+        description: 'Myself, family, plants, and animals — plus puzzles that build attention and problem-solving.',
         iconTone: 'bg-pink-100 text-pink-600 ring-pink-200/80',
       },
     ],
@@ -542,11 +618,47 @@ const featured = computed(() => current.value.featured)
 
 const gridCards = computed(() => current.value.cards)
 
+const gradeScroller = ref<HTMLElement | null>(null)
+const canScrollPrev = ref(false)
+const canScrollNext = ref(true)
+
+function updateGradeScrollState() {
+  const el = gradeScroller.value
+  if (!el) return
+  canScrollPrev.value = el.scrollLeft > 4
+  canScrollNext.value = el.scrollLeft + el.clientWidth < el.scrollWidth - 4
+}
+
+function scrollGrades(direction: 1 | -1) {
+  const el = gradeScroller.value
+  if (!el) return
+  const amount = Math.max(el.clientWidth * 0.55, 180)
+  el.scrollBy({ left: amount * direction, behavior: 'smooth' })
+}
+
+function selectGrade(id: GradeId) {
+  selected.value = id
+  nextTick(() => {
+    const btn = gradeScroller.value?.querySelector<HTMLElement>(`[data-grade="${id}"]`)
+    btn?.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' })
+  })
+}
+
+onMounted(() => {
+  nextTick(updateGradeScrollState)
+  window.addEventListener('resize', updateGradeScrollState)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateGradeScrollState)
+})
+
 const headerContent = {
   badge: 'Learning library',
   title: 'Resources built for <span class="text-blue-600">your grade</span>',
-  description: 'At Indian Mentors, we provide comprehensive academic mentoring designed to support students across every stage of their educational journey. Our tutoring programs combine experienced mentors, curriculum-aligned teaching methods, and personalised learning strategies to help students build strong academic foundations and achieve their educational goals.',
-  classes: '!px-0 !py-0',
+  description:
+    'Curriculum-aligned notes, worksheets, and practice packs for every stage — from Nursery to Class 12.',
+  classes: '!px-0 !py-0 mx-auto max-w-2xl',
 }
 </script>
 
@@ -561,23 +673,39 @@ const headerContent = {
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550, ease: 'easeOut' } }">
         <CardHeader heading-id="learning-library-heading" :badge="headerContent.badge" :title="headerContent.title"
           :description="headerContent.description" :classes="headerContent.classes" />
-        <div class="mt-8 -mx-1 overflow-x-auto pb-1 [scrollbar-width:thin]" role="tablist" aria-label="Select class">
-          <div class="flex min-w-min gap-2 px-1">
-            <button v-for="g in grades" :key="g.id" type="button" role="tab" :aria-selected="selected === g.id"
-              class="shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-              :class="selected === g.id
-                ? 'border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-600/25'
-                : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-cream-50'"
-              @click="selected = g.id">
-              <span class="inline-flex items-center gap-1.5">
-                {{ g.label }}
-                <span v-if="g.isNew"
-                  class="rounded-md bg-emerald-500 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
-                  New
+        <div class="mt-8 flex items-center gap-2 sm:gap-3">
+          <button type="button" aria-label="Scroll to earlier classes" :disabled="!canScrollPrev"
+            class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-blue-300 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-slate-200 disabled:hover:text-slate-700 sm:h-11 sm:w-11"
+            @click="scrollGrades(-1)">
+            <Icon icon="mdi:chevron-left" class="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
+          </button>
+
+          <div ref="gradeScroller" class="min-w-0 flex-1 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            role="tablist" aria-label="Select class" @scroll.passive="updateGradeScrollState">
+            <div class="flex min-w-min gap-2 px-1">
+              <button v-for="g in grades" :key="g.id" type="button" role="tab" :data-grade="g.id"
+                :aria-selected="selected === g.id"
+                class="shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                :class="selected === g.id
+                  ? 'border-blue-600 bg-blue-600 text-white shadow-md shadow-blue-600/25'
+                  : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-cream-50'"
+                @click="selectGrade(g.id)">
+                <span class="inline-flex items-center gap-1.5">
+                  {{ g.label }}
+                  <span v-if="g.isNew"
+                    class="rounded-md bg-emerald-500 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                    New
+                  </span>
                 </span>
-              </span>
-            </button>
+              </button>
+            </div>
           </div>
+
+          <button type="button" aria-label="Scroll to later classes" :disabled="!canScrollNext"
+            class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-blue-300 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-35 disabled:hover:border-slate-200 disabled:hover:text-slate-700 sm:h-11 sm:w-11"
+            @click="scrollGrades(1)">
+            <Icon icon="mdi:chevron-right" class="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
+          </button>
         </div>
         <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:grid-rows-2">
           <a :href="externalLinks.studentSignup"

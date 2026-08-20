@@ -65,7 +65,8 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
 </script>
 
 <template>
-  <section :id="props.sectionId" :class="['relative scroll-mt-28 overflow-hidden section-py', props.surfaceClass]"
+  <section :id="props.sectionId"
+    :class="['relative scroll-mt-28 overflow-hidden section-py-compact', props.surfaceClass]"
     :aria-labelledby="props.showHeader ? props.headingId : undefined"
     :aria-label="props.showHeader ? undefined : 'Why choose Indian Mentors'">
     <div aria-hidden="true"
@@ -78,11 +79,11 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
         <CardHeader v-if="props.showHeader" :heading-id="props.headingId" :badge="props.badge" :title="props.title"
           :description="props.description" :classes="headerClass" />
 
-        <ul class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5" role="list">
+        <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3.5 lg:grid-cols-5" role="list">
           <li v-for="(adv, i) in advantageItems" :key="adv.title" v-motion :initial="{ opacity: 0, y: 14 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 40, duration: 400 } }">
             <article
-              :class="['group flex h-full flex-col rounded-[1.5rem] border border-slate-200/80 p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card sm:p-6', cardSurfaceClass]">
+              :class="['group flex h-full flex-col rounded-[1.25rem] border border-slate-200/80 p-4 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card sm:p-5', cardSurfaceClass]">
               <span
                 class="grid h-11 w-11 place-items-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white"
                 aria-hidden="true">
@@ -101,60 +102,59 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
           </li>
         </ul>
 
-        <div v-if="props.showCtas" class="mt-8 flex flex-wrap justify-center gap-3">
+        <div v-if="props.showCtas" class="mt-6 flex flex-wrap justify-center gap-3">
           <ActionBtn v-for="cta in whyChooseAdvantage.ctas" :key="cta.label" :variant="cta.variant" :href="cta.href"
             :label="cta.label" :icon="cta.icon" />
         </div>
       </div>
 
-      <div v-else class="grid items-start gap-10 lg:grid-cols-12 lg:gap-14 xl:gap-16">
-        <div class="lg:col-span-5" v-motion :initial="{ opacity: 0, y: 18 }"
+      <div v-else class="grid gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10">
+        <div class="lg:col-span-4 lg:h-full" v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
-          <div class="group relative mx-auto max-w-lg lg:mx-0 lg:max-w-none">
+          <div class="group relative mx-auto max-w-md overflow-hidden lg:mx-0 lg:h-full lg:max-w-none rounded-4xl ">
             <img :src="advantageImage" :alt="whyChooseAdvantage.imageAlt"
-              class="  object-cover object-center transition duration-700 group-hover:scale-[1.03] lg:min-h-[34rem]"
+              class="w-full object-cover object-center object-top transition duration-700 group-hover:scale-[1.03] lg:absolute lg:inset-0 lg:h-full lg:w-full"
               loading="lazy" decoding="async" />
-
             <span
-              class="absolute bottom-5 left-5 right-5 inline-flex items-center gap-3 rounded-2xl bg-white/95 px-3.5 py-3 shadow-soft backdrop-blur-sm sm:right-auto sm:max-w-[85%]">
+              class="absolute bottom-4 left-4 right-4 inline-flex items-center gap-2.5 rounded-xl bg-white/95 px-3 py-2.5 shadow-soft backdrop-blur-sm sm:right-auto sm:max-w-[85%]">
               <span
-                class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-lg shadow-blue-600/30"
+                class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-lg shadow-blue-600/30"
                 aria-hidden="true">
-                <Icon icon="mdi:shield-star-outline" class="h-5 w-5" />
+                <Icon icon="mdi:shield-star-outline" class="h-4 w-4" />
               </span>
-              <span class="pr-1 font-display text-sm font-bold leading-snug text-slate-900">
+              <span class="pr-1 font-display text-[13px] font-bold leading-snug text-slate-900">
                 {{ whyChooseAdvantage.imageBadge }}
               </span>
             </span>
           </div>
         </div>
 
-        <div class="lg:col-span-7" v-motion :initial="{ opacity: 0, y: 16 }"
+        <div class="lg:col-span-8" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 70, duration: 520 } }">
           <CardHeader v-if="props.showHeader" :heading-id="props.headingId" align="left" :badge="props.badge"
             :title="props.title" :description="props.description" :classes="headerClass" />
 
-          <ul class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4" role="list">
+          <ul class="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3" role="list">
             <li v-for="(adv, i) in advantageItems" :key="adv.title" v-motion :initial="{ opacity: 0, y: 12 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 45, duration: 400 } }">
               <article
-                :class="['group flex h-full items-start gap-3.5 rounded-2xl border border-slate-200/80 p-4 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-card sm:p-5', cardSurfaceClass]">
+                :class="['group flex h-full items-start gap-3 rounded-xl border border-slate-200/80 p-3 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-card sm:p-3.5', cardSurfaceClass]">
                 <span
-                  class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white group-hover:ring-blue-600"
+                  class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white group-hover:ring-blue-600"
                   aria-hidden="true">
-                  <Icon :icon="adv.iconMdi" class="h-5 w-5" />
+                  <Icon :icon="adv.iconMdi" class="h-4 w-4" />
                 </span>
                 <div class="min-w-0">
-                  <h3 class="font-display text-[15px] font-bold text-slate-900">
+                  <h3 class="font-display text-sm font-bold text-slate-900">
                     {{ adv.title }}
                   </h3>
-                  <p class="mt-1 text-[13px] leading-relaxed text-slate-500">{{ adv.meaning }}</p>
+                  <p class="mt-0.5 text-[12.5px] leading-snug text-slate-500">{{ adv.meaning }}</p>
                 </div>
               </article>
             </li>
           </ul>
 
-          <div class="mt-8 grid grid-cols-2 gap-3 text-left">
+          <div class="mt-5 grid grid-cols-2 gap-2.5 text-left">
             <ActionBtn v-for="cta in whyChooseAdvantage.ctas" :key="cta.label" class="!w-full !justify-start sm:!w-full"
               :variant="cta.variant" :href="cta.href" :label="cta.label" :icon="cta.icon" />
           </div>

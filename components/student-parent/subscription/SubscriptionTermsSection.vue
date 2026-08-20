@@ -22,7 +22,7 @@ import { subTerms } from '~/data/subscription'
               <Icon :icon="topic.iconMdi" class="h-5 w-5" />
             </span>
             <h3 class="mt-3 font-display text-[15px] font-bold text-slate-900">{{ topic.title }}</h3>
-            <p class="mt-2 text-[13px] leading-relaxed text-slate-600">{{ topic.description }}</p>
+            <p class="mt-2 line-clamp-2 min-h-[2.7em] text-[13px] leading-relaxed text-slate-600">{{ topic.description }}</p>
           </article>
         </li>
       </ul>

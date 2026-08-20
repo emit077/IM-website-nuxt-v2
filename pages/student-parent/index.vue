@@ -44,7 +44,7 @@ useSeoMeta({
     <StudentParentCoverageSection />
     <StudentParentEnrollmentPreviewSection />
     <StudentParentPlansPreviewSection />
-    <BrowseMentorsSection />
+    <BrowseMentorsSection mode="students" />
     <StudentParentMonitoringSection />
     <!-- <StudentParentCollaborationSection /> -->
     <!-- <StudentParentWhySection /> -->

@@ -39,7 +39,6 @@ useSeoMeta({
     <EnrollmentDecideSection />
     <!-- <EnrollmentTrustFaqSection /> -->
     <UiCTASection heading-id="sp-enrollment-cta-heading" surface-class="section-surface-muted"
-      :title="enrollmentFinalCta.title" :description="enrollmentFinalCta.description"
-      :supporting="enrollmentFinalCta.supporting" :ctas="enrollmentFinalCta.ctas" />
+      :title="enrollmentFinalCta.title" :description="enrollmentFinalCta.description" :ctas="enrollmentFinalCta.ctas" />
   </div>
 </template>

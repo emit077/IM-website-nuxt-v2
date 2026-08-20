@@ -56,8 +56,9 @@ const dynamicClass = computed(() => {
       </div>
     </slot>
     <slot name="title">
-      <h1 v-if="title" :id="headingId || undefined" class=" font-display text-2xl font-bold tracking-tight sm:text-3xl"
-        :class="dynamicClass.title" v-html="title" />
+      <h1 v-if="title" :id="headingId || undefined"
+        class=" font-display text-2xl capitalize font-bold tracking-tight sm:text-3xl" :class="dynamicClass.title"
+        v-html="title" />
     </slot>
     <slot name="description">
       <p v-if="description" class="mt-5 text-sm font-medium leading-relaxed  sm:text-base"

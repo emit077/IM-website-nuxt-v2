@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import SharedReviewerStrip from '~/components/shared/ReviewerStrip.vue'
 import { subConcept } from '~/data/subscription'
 
@@ -133,6 +134,10 @@ async function onSubmitSignIn() {
           <CardHeader align="left" heading-id="sub-concept-heading" :badge="subConcept.badge" :title="subConcept.title"
             :description="subConcept.description" :classes="subConcept.classes" />
 
+          <div class="mt-6" v-motion :initial="{ opacity: 0, y: 12 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 280 } }">
+            <ActionBtn variant="primary" :label="subConcept.cta.label" :href="subConcept.cta.href" />
+          </div>
 
           <SharedReviewerStrip class="mt-6" variant="avatars" size="md" layout="row" audience="student" v-motion
             :initial="{ opacity: 0, y: 12 }"

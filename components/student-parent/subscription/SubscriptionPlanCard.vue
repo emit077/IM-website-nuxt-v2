@@ -24,7 +24,7 @@ defineProps<{
       'grid h-11 w-11 place-items-center rounded-xl',
       plan.popular ? 'bg-blue-600 text-white' : 'bg-blue-50 text-blue-600',
     ]" aria-hidden="true">
-      <Icon :icon="plan.iconMdi" class="h-5 w-5" />
+      <Icon :icon="plan.iconMdi" class="h-6 w-6" />
     </span>
 
     <p class="mt-5 text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">{{ plan.name }}</p>

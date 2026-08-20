@@ -92,7 +92,7 @@ import { enrollmentChoose, enrollmentNeeds, enrollmentValue } from '~/data/stude
                 <Icon :icon="item.iconMdi" class="h-5 w-5" />
               </span>
               <h3 class="relative mt-4 font-display text-base font-bold text-slate-900">{{ item.title }}</h3>
-              <p class="relative mt-2 text-[13.5px] leading-relaxed text-slate-600">{{ item.description }}</p>
+              <p class="relative mt-2 line-clamp-2 min-h-[2.75em] text-[13.5px] leading-relaxed text-slate-600">{{ item.description }}</p>
             </article>
           </li>
         </ol>

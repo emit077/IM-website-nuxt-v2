@@ -17,10 +17,10 @@ type ServiceCard = {
 
 const sectionConfig = {
     badge: 'Pick your learning style',
-    title: 'How does your child learn best?',
+    title: 'Our Personalised <span class="text-blue-500">Tutoring Services</span> ',
     description:
         'Home, online, in school, or on the move — choose a format first. We’ll match a verified mentor around it.',
-    classes: 'mx-auto max-w-3xl !px-0 !py-0',
+    classes: 'mx-auto max-w-4xl !px-0 !py-0',
 }
 
 const services: ServiceCard[] = [
@@ -82,7 +82,7 @@ const services: ServiceCard[] = [
         size: 'compact',
     },
     {
-        title: 'Home &nbsp;Schooling &nbsp;Support',
+        title: 'Homeschooling &nbsp;Support',
         hook: 'Structured education at home.',
         chip: 'Board-aligned',
         visual: 'assets/img/services/home-schooling-support.webp',
@@ -175,7 +175,7 @@ const services: ServiceCard[] = [
                                     ? 'group-hover:bg-indigo-50 group-hover:text-indigo-800 sm:mt-0 sm:shrink-0 sm:px-5 sm:py-3'
                                     : 'group-hover:bg-indigo-700 group-hover:text-white  w-full text-right justify-center'
                                     ">
-                                {{ service.size === 'cta' ? 'Tell us what you need' : 'Know more' }}
+                                {{ service.size === 'cta' ? 'Tell us what you need' : 'Know More' }}
                                 <!-- <Icon icon="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" /> -->
                             </span>
                         </div>
