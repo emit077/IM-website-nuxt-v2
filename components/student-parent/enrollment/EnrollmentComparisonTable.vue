@@ -24,9 +24,8 @@ function checkSuffix(value: string) {
 </script>
 
 <template>
-  <div
-    class="relative overflow-hidden rounded-[20px] border border-slate-200/90 bg-white shadow-soft"
-    v-motion :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
+  <div class="relative overflow-hidden rounded-[20px] border border-slate-200/90 bg-white shadow-soft" v-motion
+    :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
     <div class="overflow-x-auto">
       <table class="w-full min-w-[640px] text-left text-sm">
         <thead>
@@ -36,7 +35,6 @@ function checkSuffix(value: string) {
             </th>
             <th scope="col" class="w-[36%] px-4 py-4 text-[13px] font-semibold tracking-wide text-white">
               <span class="block">{{ freePlan.name }}</span>
-              <span class="mt-0.5 block text-[11px] font-medium text-blue-100">{{ freePlan.price }}</span>
             </th>
             <th scope="col" class="w-[36%] px-4 py-4 pr-5 text-[13px] font-semibold tracking-wide text-white">
               <span class="flex flex-wrap items-center gap-2">
@@ -45,9 +43,6 @@ function checkSuffix(value: string) {
                   class="inline-flex items-center rounded-md bg-blue-500 px-1.5 py-0 text-[10px] font-bold tracking-wide text-white">
                   {{ premiumPlan.badge }}
                 </span>
-              </span>
-              <span class="mt-0.5 block text-[11px] font-medium text-blue-100">
-                {{ premiumPlan.price }}{{ premiumPlan.priceNote }}
               </span>
             </th>
           </tr>

@@ -6,7 +6,6 @@ import ExamPreparationSection from '~/components/academic/ExamPreparationSection
 import EnrichmentSection from '~/components/academic/EnrichmentSection.vue'
 import CourseMatchingSection from '~/components/academic/CourseMatchingSection.vue'
 import WhyChooseAcademicSection from '~/components/academic/WhyChooseAcademicSection.vue'
-import LearningJourneySection from '~/components/academic/LearningJourneySection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { academicFinalCta } from '~/data/academic-coverage'
 import BoardCovered from '~/components/academic/BoardCovered.vue'
@@ -39,7 +38,6 @@ useSeoMeta({
     <EnrichmentSection />
     <CourseMatchingSection />
     <WhyChooseAcademicSection />
-    <!-- <LearningJourneySection /> -->
     <UiCTASection heading-id="academic-cta-heading" :title="academicFinalCta.title"
       :description="academicFinalCta.description" :supporting="academicFinalCta.supporting" :ctas="academicCtas" />
   </div>

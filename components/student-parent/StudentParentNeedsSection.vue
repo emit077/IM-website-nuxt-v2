@@ -23,7 +23,7 @@ import { spNeeds, spRoadmap } from '~/data/student-parent'
               aria-hidden="true">
               <Icon :icon="item.iconMdi" class="h-5 w-5" />
             </span>
-            <h3 class="mt-4 font-display text-base font-bold text-slate-900">{{ item.title }}</h3>
+            <h3 class="mt-4 font-display text-base font-bold text-slate-900" v-html="item.title"></h3>
             <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600">{{ item.question }}</p>
           </article>
         </li>

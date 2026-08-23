@@ -9,7 +9,6 @@ const heroContent: SecondaryHeroContent = {
   description: subscriptionHero.description,
   caption: subscriptionHero.caption,
   actionBtns: [
-    subscriptionHero.primaryCta,
     subscriptionHero.secondaryCta,
     { ...subscriptionHero.tertiaryCta, variant: 'secondary', showArrow: false },
   ],

@@ -33,7 +33,7 @@ export const heroContent = {
   audiences: ['School Teachers', 'Subject Experts', 'Home Tutors', 'Academic Professionals'],
   contentClass: '!px-0 !py-0 mx-auto max-w-3xl text-center',
   primaryCta: { label: 'Join as a Teaching Partner', href: externalLinks.tutorRegistration },
-  secondaryCta: { label: 'Download Brochure', href: '#tutor-resources' },
+  secondaryCta: { label: 'View Registration Plans', href: '#tutor-plans' },
 }
 
 export const heroHighlights = [
@@ -42,84 +42,6 @@ export const heroHighlights = [
   { iconMdi: 'mdi:map-marker-radius-outline', label: 'Pan-India Network' },
   { iconMdi: 'mdi:headset', label: 'Dedicated Tutor Support' },
 ]
-
-export const quickLinks = [
-  {
-    id: 'tutors-brochure',
-    iconMdi: 'mdi:file-document-outline',
-    title: 'Tutors Brochure',
-    href: '#tutor-resources',
-  },
-  {
-    id: 'registration-plans',
-    iconMdi: 'mdi:credit-card-outline',
-    title: 'Registration Plans',
-    href: '#tutor-plans',
-  },
-  {
-    id: 'hiring-process',
-    iconMdi: 'mdi:clipboard-check-outline',
-    title: 'Hiring Process',
-    href: '#hiring-process',
-  },
-  {
-    id: 'compliance',
-    iconMdi: 'mdi:shield-check-outline',
-    title: 'Compliance & Screening',
-    href: '#compliance',
-  },
-  {
-    id: 'browse-students',
-    iconMdi: 'mdi:account-search-outline',
-    title: 'Browse Students',
-    href: '#browse-students',
-  },
-  {
-    id: 'tutor-earnings',
-    iconMdi: 'mdi:cash-multiple',
-    title: 'Earnings & Payout',
-    href: '#tutor-earnings',
-  },
-  {
-    id: 'tutor-dashboard',
-    iconMdi: 'mdi:view-dashboard-outline',
-    title: 'Tutor Dashboard',
-    href: '#tutor-erp',
-  },
-]
-
-export const brochureCard = {
-  iconMdi: 'mdi:book-open-page-variant-outline',
-  badge: 'Tutors Brochure',
-  title: 'Everything about partnering with us, in one guide',
-  description:
-    'Explore the official tutor information brochure from Indian Mentors — a comprehensive overview of our tutor partnership model.',
-  points: [
-    'Our tutoring ecosystem',
-    'Academic coverage and subjects',
-    'Teaching modes — home, online, hybrid',
-    'Benefits for educators',
-    'Tutor earnings and payout structure',
-    'Professional standards and expectations',
-  ],
-  cta: { label: 'Download Tutors Brochure', href: externalLinks.tutorRegistration },
-}
-
-export const landingCard = {
-  iconMdi: 'mdi:web',
-  badge: 'Tutor Opportunities',
-  title: 'See how educators collaborate with Indian Mentors',
-  description:
-    'Detailed information about how educators across India work with us as teaching partners — and where your registration journey begins.',
-  points: [
-    'Opportunities for tutors across India',
-    'The teaching partnership model',
-    'Academic levels and subjects supported',
-    'Flexible teaching formats',
-    'Benefits of joining the tutor network',
-  ],
-  cta: { label: 'Explore Tutor Opportunities', href: '#browse-students' },
-}
 
 export const tutorPlans: TutorPlan[] = [
   {
@@ -253,34 +175,6 @@ export const complianceChecks = [
     iconMdi: 'mdi:briefcase-check-outline',
     title: 'Experience Evaluation',
     description: 'Subject expertise and classroom experience assessed.',
-  },
-]
-
-export const browseFilters = [
-  {
-    iconMdi: 'mdi:book-open-page-variant-outline',
-    title: 'Subject Requirements',
-    description: 'Find students who need exactly what you teach best.',
-  },
-  {
-    iconMdi: 'mdi:school-outline',
-    title: 'Student Grade Level',
-    description: 'Filter opportunities from primary classes to senior secondary.',
-  },
-  {
-    iconMdi: 'mdi:map-marker-outline',
-    title: 'Location or City',
-    description: 'Teach near home or expand to new areas across India.',
-  },
-  {
-    iconMdi: 'mdi:laptop',
-    title: 'Teaching Mode',
-    description: 'Choose online, offline home tuition, or hybrid engagements.',
-  },
-  {
-    iconMdi: 'mdi:clock-outline',
-    title: 'Schedule Availability',
-    description: 'Pick sessions that fit around your existing commitments.',
   },
 ]
 
@@ -458,14 +352,6 @@ export const tutorPlansSection = {
   title: 'Flexible plans for <span class="text-gradient-brand">every stage</span> of your career',
   description:
     'Start with a free profile and verification, or go Premium for priority leads, featured visibility, and faster payouts.',
-  classes: '!px-0 !py-0',
-}
-
-export const tutorResourcesSection = {
-  badge: 'Know Before You Join',
-  title: 'Understand the <span class="text-gradient-brand">partnership model</span> first',
-  description:
-    'Explore the official tutors brochure and opportunities overview — everything an educator needs to know about collaborating with Indian Mentors.',
   classes: '!px-0 !py-0',
 }
 

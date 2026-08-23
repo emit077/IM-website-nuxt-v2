@@ -1,19 +1,13 @@
 <script setup lang="ts">
 import StudentParentSubscriptionHeroSection from '~/components/student-parent/subscription/StudentParentSubscriptionHeroSection.vue'
-import SubscriptionPageNav from '~/components/student-parent/subscription/SubscriptionPageNav.vue'
 import SubscriptionBuildConceptSection from '~/components/student-parent/subscription/SubscriptionBuildConceptSection.vue'
 import StudentParentPlansSection from '~/components/student-parent/subscription/StudentParentPlansSection.vue'
 import SubscriptionComparisonSection from '~/components/student-parent/subscription/SubscriptionComparisonSection.vue'
 import SubscriptionTenureSection from '~/components/student-parent/subscription/SubscriptionTenureSection.vue'
 import SubscriptionTrialSection from '~/components/student-parent/subscription/SubscriptionTrialSection.vue'
-import SubscriptionSavingsSection from '~/components/student-parent/subscription/SubscriptionSavingsSection.vue'
-import SubscriptionBuilderSection from '~/components/student-parent/subscription/SubscriptionBuilderSection.vue'
-import SubscriptionMonitoringSection from '~/components/student-parent/subscription/SubscriptionMonitoringSection.vue'
 import SubscriptionSupportsSection from '~/components/student-parent/subscription/SubscriptionSupportsSection.vue'
 import SubscriptionRecommendSection from '~/components/student-parent/subscription/SubscriptionRecommendSection.vue'
-import SubscriptionFaqSection from '~/components/student-parent/subscription/SubscriptionFaqSection.vue'
 import SubscriptionTermsSection from '~/components/student-parent/subscription/SubscriptionTermsSection.vue'
-import SubscriptionClosingSection from '~/components/student-parent/subscription/SubscriptionClosingSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { subscriptionFinalCta } from '~/data/student-parent'
 
@@ -36,15 +30,11 @@ useSeoMeta({
     <SubscriptionComparisonSection />
     <SubscriptionTenureSection />
     <SubscriptionTrialSection />
-    <!-- <SubscriptionSavingsSection /> -->
-    <!-- <SubscriptionBuilderSection /> -->
-    <!-- <SubscriptionMonitoringSection /> -->
     <SubscriptionSupportsSection />
     <SubscriptionRecommendSection />
     <SubscriptionTermsSection />
     <UiCTASection heading-id="sp-subscription-cta-heading" surface-class="section-surface-muted"
       :title="subscriptionFinalCta.title" :description="subscriptionFinalCta.description"
       :supporting="subscriptionFinalCta.supporting" :ctas="subscriptionFinalCta.ctas" />
-    <!-- <SubscriptionClosingSection /> -->
   </div>
 </template>

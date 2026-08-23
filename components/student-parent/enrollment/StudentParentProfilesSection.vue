@@ -35,6 +35,7 @@ import { enrollmentPlans, enrollmentStart } from '~/data/student-parent'
             <p class="mt-4 font-display text-4xl font-extrabold tracking-tight">
               {{ plan.price }}
               <span v-if="plan.priceNote" class="text-lg font-semibold opacity-80">{{ plan.priceNote }}</span>
+              <span v-else class="text-lg font-bold opacity-80 line-through">&nbsp;&nbsp;₹ 1200 / Year&nbsp;</span>
             </p>
             <p class="mt-4 font-display text-lg font-bold">{{ plan.tagline }}</p>
             <p

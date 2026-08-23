@@ -15,40 +15,6 @@ export const whyChooseHero = {
   secondaryCta: { label: 'Talk to a Counsellor', href: 'tel:+917389563564' },
 }
 
-export const whyChooseTrustStrip = {
-  kicker: 'Built on Trust',
-  title: 'Why Families Choose <span class="text-gradient-brand">Indian Mentors</span>',
-  classes: '!px-0 !py-0',
-  description:
-    'Our tutoring ecosystem is built around the essential elements that make personalised education effective, reliable, and transparent.',
-  items: [
-    {
-      iconMdi: 'mdi:shield-check-outline',
-      title: 'Verified Educators',
-      description:
-        'Carefully screened tutors selected for academic credibility and teaching capability.',
-    },
-    {
-      iconMdi: 'mdi:target',
-      title: 'Personalised Learning',
-      description:
-        "Individual learning strategies designed around each student's unique needs.",
-    },
-    {
-      iconMdi: 'mdi:chart-timeline-variant',
-      title: 'Transparent Monitoring',
-      description:
-        'Structured tracking of attendance, academic performance, and learning progress.',
-    },
-    {
-      iconMdi: 'mdi:handshake-outline',
-      title: 'Dedicated Support',
-      description:
-        'Continuous coordination between students, parents, tutors, and academic support teams.',
-    },
-  ],
-}
-
 export const whyChooseDifferentiators = {
   kicker: 'Our Standards of Excellence',
   title:
@@ -327,6 +293,89 @@ export const whyChooseAdvantage = {
     },
 
   ],
+  familyAdvantages: [
+    {
+      title: 'Verified Tutors',
+      meaning: 'Every tutor is screened for credibility, qualifications, and teaching quality.',
+      iconMdi: 'mdi:shield-check-outline',
+    },
+    {
+      title: 'Personalised Learning',
+      meaning: "Plans are built around the student's pace, gaps, and academic goals.",
+      iconMdi: 'mdi:target',
+    },
+    {
+      title: 'Board-Aligned Teaching',
+      meaning: 'Sessions follow CBSE, ICSE, IB, IGCSE, and recognised state-board curricula.',
+      iconMdi: 'mdi:book-education-outline',
+    },
+    {
+      title: 'Transparent Monitoring',
+      meaning: 'Parents stay informed through attendance, feedback, and progress updates.',
+      iconMdi: 'mdi:chart-box-outline',
+    },
+    {
+      title: 'Flexible Formats',
+      meaning: 'Choose home, online, hybrid, or specialised tutoring to fit family schedules.',
+      iconMdi: 'mdi:home-variant-outline',
+    },
+    {
+      title: 'Dedicated Support',
+      meaning: 'Counsellors guide families from first enquiry through ongoing learning.',
+      iconMdi: 'mdi:headset',
+    },
+  ],
+}
+
+export const whyChooseJourney = {
+  badge: 'Our Tutoring Service Journey',
+  title:
+    'From Requirement to Personalised <span class="text-gradient-brand">Learning</span>',
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  steps: [
+    {
+      no: '01',
+      title: 'Share Your Requirement',
+      description:
+        "Tell us the student's class, board, subjects, location, schedule, and academic goals.",
+      accent: 'blue' as const,
+    },
+    {
+      no: '02',
+      title: 'Academic Counselling',
+      description:
+        'We review the requirement and help identify a suitable tutoring format.',
+      accent: 'sky' as const,
+    },
+    {
+      no: '03',
+      title: 'Tutor Identification',
+      description:
+        'Tutors are shortlisted by subject expertise, location, availability, and experience.',
+      accent: 'emerald' as const,
+    },
+    {
+      no: '04',
+      title: 'Tutor Selection & Demo',
+      description:
+        'Families evaluate the proposed tutor, including a demo session where offered.',
+      accent: 'blue' as const,
+    },
+    {
+      no: '05',
+      title: 'Learning Begins',
+      description:
+        'The selected tutor starts personalised sessions as per the agreed plan and schedule.',
+      accent: 'sky' as const,
+    },
+    {
+      no: '06',
+      title: 'Progress Monitoring',
+      description:
+        'Attendance, feedback, and academic progress are tracked through structured monitoring.',
+      accent: 'emerald' as const,
+    },
+  ],
 }
 
 export const whyChooseDifference = {
@@ -340,56 +389,56 @@ export const whyChooseDifference = {
       id: 'discover',
       label: 'Discover',
       title: 'Find the Right Tutors',
-      description: 'Explore tutors based on subject, grade, board, location, and learning needs.',
+      description: 'Explore tutors by subject, grade, board, location and need.',
       iconMdi: 'mdi:magnify',
     },
     {
       id: 'match',
       label: 'Match',
       title: 'Find the Right Fit',
-      description: "Connect with tutors suited to the student's academic requirements and preferences.",
+      description: 'Connect with tutors matched to academic needs and preferences.',
       iconMdi: 'mdi:account-switch-outline',
     },
     {
       id: 'demo',
       label: 'Demo',
       title: 'Experience the Tutor',
-      description: 'Attend a demo session to evaluate teaching style and student–tutor compatibility.',
+      description: 'Attend a demo to assess teaching style and compatibility.',
       iconMdi: 'mdi:play-circle-outline',
     },
     {
       id: 'learn',
       label: 'Learn',
       title: 'Start Personalised Learning',
-      description: "Begin structured one-to-one tutoring aligned with the student's goals and learning pace.",
+      description: 'Start one-to-one tutoring aligned with goals and pace.',
       iconMdi: 'mdi:book-open-page-variant-outline',
     },
     {
       id: 'monitor',
       label: 'Monitor',
       title: 'Track Academic Progress',
-      description: 'Monitor sessions, attendance, feedback, and available academic progress.',
+      description: 'Track sessions, attendance, feedback and academic progress.',
       iconMdi: 'mdi:chart-box-outline',
     },
     {
       id: 'improve',
       label: 'Improve',
       title: 'Strengthen Learning',
-      description: 'Use feedback and performance insights to address learning gaps and improve outcomes.',
+      description: 'Use feedback and insights to close gaps and improve.',
       iconMdi: 'mdi:trending-up',
     },
     {
       id: 'support',
       label: 'Support',
       title: 'Receive Ongoing Guidance',
-      description: 'Get continued academic coordination and support throughout the tutoring journey.',
+      description: 'Get ongoing academic coordination throughout the journey.',
       iconMdi: 'mdi:headset',
     },
     {
       id: 'grow',
       label: 'Grow',
       title: 'Achieve Academic Goals',
-      description: 'Build stronger concepts, confidence, learning habits, and long-term academic progress.',
+      description: 'Build stronger concepts, confidence and lasting progress.',
       iconMdi: 'mdi:sprout-outline',
     },
   ],

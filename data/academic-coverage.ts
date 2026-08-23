@@ -1,4 +1,3 @@
-import type { TrustIndicatorItem } from '~/components/ui/TrustIndicatorsLayout.vue'
 import { externalLinks } from './external-links'
 
 export const academicHero = {
@@ -30,29 +29,6 @@ export const academicHero = {
     'Verified Mentors',
   ],
 }
-
-export const academicHeroStats: TrustIndicatorItem[] = [
-  {
-    value: '50K+',
-    label: 'Active students learning every month',
-    icon: 'solar:users-group-rounded-bold-duotone',
-  },
-  {
-    value: '5+ lakh',
-    label: 'Verified tutors across every subject',
-    icon: 'solar:square-academic-cap-bold-duotone',
-  },
-  {
-    value: '50+ lakh',
-    label: 'Sessions delivered to date',
-    icon: 'solar:videocamera-record-bold-duotone',
-  },
-  {
-    value: '98%',
-    label: 'Satisfaction rate from verified reviews',
-    icon: 'solar:star-bold-duotone',
-  },
-]
 
 export const gradesSection = {
   kicker: 'Grades covered',
@@ -512,24 +488,6 @@ export const whyChooseAcademicSection = {
     { title: 'Safe Learning Environment', iconMdi: 'mdi:shield-check-outline' },
     { title: 'Flexible Learning Options', iconMdi: 'mdi:sync' },
     { title: 'Quality-Focused Teaching', iconMdi: 'mdi:star-outline' },
-  ],
-}
-
-export const learningJourneySection = {
-  kicker: 'Learning journey',
-  title: 'A clear path. <span class="text-gradient-brand">Steady academic growth.</span>',
-  description:
-    'A clear path from requirement to continuous improvement — with counselling, the right tutor, and measurable progress.',
-  classes: '!px-0 !py-0',
-  steps: [
-    { title: 'Student Requirement', iconMdi: 'mdi:account-question-outline' },
-    { title: 'Academic Counselling', iconMdi: 'mdi:chat-processing-outline' },
-    { title: 'Tutor Selection', iconMdi: 'mdi:account-search-outline' },
-    { title: 'Personalised Learning Plan', iconMdi: 'mdi:clipboard-text-outline' },
-    { title: 'Regular Tutoring Sessions', iconMdi: 'mdi:calendar-check-outline' },
-    { title: 'Progress Monitoring', iconMdi: 'mdi:chart-line' },
-    { title: 'Assessment & Feedback', iconMdi: 'mdi:file-document-check-outline' },
-    { title: 'Continuous Academic Improvement', iconMdi: 'mdi:trending-up' },
   ],
 }
 

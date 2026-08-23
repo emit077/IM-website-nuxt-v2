@@ -63,10 +63,11 @@ const iconTones = ['blue', 'mint', 'blue', 'mint', 'blue'] as const
           y: 0,
           transition: { delay: 40 + quickServiceCategories.items.length * 40, duration: 400 },
         }">
-          <NuxtLink :to="quickServiceCategories.cta.href" class="service-card service-card--cta group"
+          <NuxtLink :to="quickServiceCategories.cta.href"
+            class="service-card service-card--cta no-underline hover:no-underline"
             :aria-label="quickServiceCategories.cta.label">
             <span class="service-card__icon" aria-hidden="true">
-              <Icon icon="mdi:view-grid-outline" class="h-6 w-6" />
+              <Icon icon="solar:compass-linear" class="h-6 w-6" />
             </span>
 
             <h3 class="service-card__title font-display">
@@ -166,6 +167,8 @@ const iconTones = ['blue', 'mint', 'blue', 'mint', 'blue'] as const
 .service-card--cta .service-card__title,
 .service-card--cta:hover .service-card__title {
   color: #ffffff;
+  text-decoration: none;
+  transition: none;
 }
 
 .service-card--cta .service-card__desc {
@@ -182,7 +185,7 @@ const iconTones = ['blue', 'mint', 'blue', 'mint', 'blue'] as const
   transition: color 0.25s ease;
 }
 
-.service-card:hover .service-card__title {
+.service-card:not(.service-card--cta):hover .service-card__title {
   color: #0f172a;
 }
 

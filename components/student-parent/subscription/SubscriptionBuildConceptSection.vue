@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import SharedReviewerStrip from '~/components/shared/ReviewerStrip.vue'
@@ -12,111 +10,6 @@ const accentClasses: Record<Accent, { tile: string; text: string }> = {
   blue: { tile: 'bg-blue-100', text: 'text-blue-700' },
   sky: { tile: 'bg-sky-100', text: 'text-sky-700' },
   emerald: { tile: 'bg-emerald-100', text: 'text-emerald-700' },
-}
-
-const form = ref({ name: '', mobile: '' })
-const formErrors = ref<{ name?: string; mobile?: string }>({})
-const formSubmitting = ref(false)
-const formSuccess = ref(false)
-
-const NAME_RE = /^[A-Za-z][A-Za-z .'-]{1,49}$/
-const MOBILE_RE = /^[6-9]\d{9}$/
-
-function validateName(value: string | null | undefined): string | undefined {
-  const v = (value ?? '').trim()
-  if (v.length === 0) return 'Name is required.'
-  if (v.length < 2) return 'Name must be at least 2 characters.'
-  if (!NAME_RE.test(v)) return "Use letters, spaces and . ' - only."
-  return undefined
-}
-
-function validateMobile(value: string | null | undefined): string | undefined {
-  const v = (value ?? '').trim()
-  if (v.length === 0) return 'Mobile number is required.'
-  if (!/^\d+$/.test(v)) return 'Mobile number must contain digits only.'
-  if (v.length !== 10) return 'Mobile number must be exactly 10 digits.'
-  if (!MOBILE_RE.test(v)) return 'Enter a valid Indian mobile (starts with 6–9).'
-  return undefined
-}
-
-function validateForm(): boolean {
-  const errs: { name?: string; mobile?: string } = {}
-  const nameErr = validateName(form.value.name)
-  const mobileErr = validateMobile(form.value.mobile)
-  if (nameErr) errs.name = nameErr
-  if (mobileErr) errs.mobile = mobileErr
-  formErrors.value = errs
-  return Object.keys(errs).length === 0
-}
-
-function onNameInput() {
-  if (formErrors.value.name) {
-    formErrors.value = { ...formErrors.value, name: validateName(form.value.name) }
-  }
-}
-
-function onMobileKeydown(e: KeyboardEvent) {
-  const allowed = [
-    'Backspace',
-    'Delete',
-    'Tab',
-    'Escape',
-    'Enter',
-    'Home',
-    'End',
-    'ArrowLeft',
-    'ArrowRight',
-    'ArrowUp',
-    'ArrowDown',
-  ]
-  if (allowed.includes(e.key)) return
-  if ((e.ctrlKey || e.metaKey) && ['a', 'c', 'v', 'x', 'z', 'y'].includes(e.key.toLowerCase())) return
-  if (!/^\d$/.test(e.key)) e.preventDefault()
-}
-
-function onMobileInput(e: Event) {
-  const target = e.target as HTMLInputElement
-  const cleaned = target.value.replace(/\D/g, '').slice(0, 10)
-  if (target.value !== cleaned) target.value = cleaned
-  form.value.mobile = cleaned
-  if (formErrors.value.mobile) {
-    formErrors.value = { ...formErrors.value, mobile: validateMobile(cleaned) }
-  }
-}
-
-function onMobilePaste(e: ClipboardEvent) {
-  const txt = e.clipboardData?.getData('text') ?? ''
-  if (/\D/.test(txt)) {
-    e.preventDefault()
-    const cleaned = (form.value.mobile + txt.replace(/\D/g, '')).slice(0, 10)
-    form.value.mobile = cleaned
-    if (formErrors.value.mobile) {
-      formErrors.value = { ...formErrors.value, mobile: validateMobile(cleaned) }
-    }
-  }
-}
-
-function onMobileDrop(e: DragEvent) {
-  const txt = e.dataTransfer?.getData('text') ?? ''
-  if (/\D/.test(txt)) e.preventDefault()
-}
-
-async function onSubmitSignIn() {
-  if (formSubmitting.value) return
-  if (!validateForm()) return
-  formSubmitting.value = true
-  formSuccess.value = false
-
-  await new Promise((r) => setTimeout(r, 650))
-
-  formSubmitting.value = false
-  formSuccess.value = true
-  form.value = { name: '', mobile: '' }
-  formErrors.value = {}
-
-  setTimeout(() => {
-    formSuccess.value = false
-  }, 4000)
 }
 </script>
 

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
-import { spCoverage, spServices } from '~/data/student-parent'
+import { spCoverage } from '~/data/student-parent'
 </script>
 
 <template>
@@ -39,7 +38,7 @@ import { spCoverage, spServices } from '~/data/student-parent'
         </li>
       </ol>
 
-      <div :to="spCoverage.exploreHref"
+      <NuxtLink :to="spCoverage.exploreHref"
         class="group relative mt-8 block overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 text-white no-underline shadow-[0_20px_50px_-24px_rgba(29,78,216,0.5)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_56px_-22px_rgba(29,78,216,0.58)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-700"
         :aria-label="`${spCoverage.beyond.title}. ${spCoverage.beyond.ctaLabel}`" v-motion
         :initial="{ opacity: 0, y: 14 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
@@ -65,45 +64,9 @@ import { spCoverage, spServices } from '~/data/student-parent'
             <Icon icon="mdi:arrow-right" class="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden="true" />
           </span>
         </div>
-      </div>
-
-
+      </NuxtLink>
     </div>
   </section>
-  <!-- 
-  <section id="tutoring-services" class="relative scroll-mt-28 overflow-hidden section-surface-muted section-py"
-    aria-labelledby="sp-services-heading">
-    <div class="container-page relative">
-      <CardHeader heading-id="sp-services-heading" :badge="spServices.badge" :title="spServices.title"
-        :classes="spServices.classes" />
-
-      <ul class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" role="list">
-        <li v-for="(item, i) in spServices.items" :key="item.title"
-          :class="i === spServices.items.length - 1 ? 'xl:col-span-1' : ''" v-motion :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 40, duration: 400 } }">
-          <NuxtLink :to="item.href"
-            class="group flex h-full flex-col rounded-[1.5rem] border border-slate-200/80 bg-white p-6 no-underline shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card">
-            <span
-              class="grid h-11 w-11 place-items-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white"
-              aria-hidden="true">
-              <Icon :icon="item.iconMdi" class="h-5 w-5" />
-            </span>
-            <h3 class="mt-4 font-display text-base font-bold text-slate-900">{{ item.title }}</h3>
-            <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600">{{ item.description }}</p>
-            <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600">
-              Learn more
-              <Icon icon="mdi:arrow-right" class="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden="true" />
-            </span>
-          </NuxtLink>
-        </li>
-      </ul>
-
-      <div class="mt-10 flex justify-center">
-        <ActionBtn variant="theme-secondary" :label="spServices.cta.label" :href="spServices.cta.href"
-          icon="mdi:view-grid-outline" />
-      </div>
-    </div>
-  </section> -->
 </template>
 
 <style scoped>

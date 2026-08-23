@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { subRecommend } from '~/data/subscription'

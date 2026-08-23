@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
-import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { spModes } from '~/data/student-parent'
 import QuickServiceCategoriesSection from '~/components/ui/shared/QuickServiceCategoriesSection.vue'
 </script>

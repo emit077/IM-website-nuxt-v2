@@ -10,7 +10,6 @@ const heroContent: SecondaryHeroContent = {
   caption: studentParentHero.caption,
   actionBtns: [
     studentParentHero.primaryCta,
-    studentParentHero.secondaryCta,
     studentParentHero.tertiaryCta,
   ],
   ticker: studentParentHero.ticker,

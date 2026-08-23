@@ -82,37 +82,6 @@ const accentStyles = {
           </div>
         </article>
       </div>
-      <!-- 
-      <div class="mt-12 overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white shadow-soft">
-        <div class="border-b border-slate-100 px-5 py-4 sm:px-6">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">{{ subTenures.comparison.badge }}
-          </p>
-          <h3 class="mt-1 font-display text-lg font-bold text-slate-900">{{ subTenures.comparison.title }}</h3>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="min-w-full text-left text-sm">
-            <thead class="bg-cream-50 text-[11px] font-bold uppercase tracking-[0.08em] text-slate-500">
-              <tr>
-                <th class="px-5 py-3 sm:px-6">Tenure</th>
-                <th class="px-4 py-3">Duration</th>
-                <th class="px-4 py-3">Payment</th>
-                <th class="px-4 py-3">Discount</th>
-                <th class="px-5 py-3 sm:px-6">Best Suited For</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="row in subTenures.comparison.rows" :key="row.tenure"
-                class="border-t border-slate-100 text-[13px]">
-                <td class="px-5 py-3 font-semibold text-slate-800 sm:px-6">{{ row.tenure }}</td>
-                <td class="px-4 py-3 text-slate-600">{{ row.duration }}</td>
-                <td class="px-4 py-3 text-slate-600">{{ row.payment }}</td>
-                <td class="px-4 py-3 font-medium text-slate-800">{{ row.discount }}</td>
-                <td class="px-5 py-3 text-slate-600 sm:px-6">{{ row.suited }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div> -->
     </div>
   </section>
 </template>

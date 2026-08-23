@@ -853,43 +853,6 @@ export const revenueCalculatorSection = {
   note: "Estimates assume the standard partner share: 90% of subscription revenue. Actual earnings may vary by territory and plan mix.",
 };
 
-export const revenueStreamsSection = {
-  kicker: "Revenue Streams",
-  title:
-    'Channel Partner <span class="text-gradient-brand">Revenue Streams</span>',
-  classes: "!px-0 !py-0",
-  description:
-    "Partners can generate revenue through multiple sources. This multi-layered revenue structure ensures long-term business growth within the education sector.",
-  streams: [
-    {
-      iconMdi: "mdi:calendar-month-outline",
-      title: "Monthly Subscription Plans",
-    },
-    { iconMdi: "mdi:domain", title: "Institutional Partnerships" },
-  ],
-  chartTitle: "Partner Earnings Advantage",
-  chartDescription:
-    "Subscription revenue stays with the local partner — the platform only takes a small fee.",
-  chartAriaLabel: "Partner subscription revenue share versus platform fee",
-  dataset: {
-    theme: "light" as const,
-    data: [
-      {
-        label: "Channel Partner",
-        data: 90,
-        bgColor: "bg-blue-500",
-        detail: "Subscription revenue",
-      },
-      {
-        label: "Indian Mentors",
-        data: 10,
-        bgColor: "bg-slate-400",
-        detail: "Platform fee",
-      },
-    ],
-  },
-};
-
 export const whyModelWorksSection = {
   kicker: "Why This Model Works",
   title: 'A Win-Win <span class="text-gradient-brand">Ecosystem</span>',

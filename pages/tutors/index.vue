@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import TutorsHeroSection from '~/components/tutors/TutorsHeroSection.vue'
-import TutorsNavSection from '~/components/tutors/TutorsNavSection.vue'
-import TutorsResourcesSection from '~/components/tutors/TutorsResourcesSection.vue'
 import TutorPlansSection from '~/components/tutors/TutorPlansSection.vue'
 import TutorHiringProcessSection from '~/components/tutors/TutorHiringProcessSection.vue'
 import TutorComplianceSection from '~/components/tutors/TutorComplianceSection.vue'
@@ -31,8 +29,6 @@ useSeoMeta({
 <template>
   <div>
     <TutorsHeroSection />
-    <!-- <TutorsNavSection /> -->
-    <!-- <TutorsResourcesSection /> -->
     <TutorOpportunitiesSection />
 
     <TutorHiringProcessSection />

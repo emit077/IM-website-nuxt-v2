@@ -23,7 +23,7 @@ const props = withDefaults(
     sectionId?: string
     headerClasses?: string
     classes?: string
-    layout?: 'split' | 'grid'
+    layout?: 'split' | 'grid' | 'minimal'
     items?: WhyChooseItem[]
     surfaceClass?: string
   }>(),
@@ -44,6 +44,7 @@ const props = withDefaults(
 
 const headerClass = computed(() => props.classes ?? props.headerClasses)
 const isGrid = computed(() => props.layout === 'grid')
+const isMinimal = computed(() => props.layout === 'minimal')
 const isWhiteSurface = computed(() => props.surfaceClass.includes('white'))
 const cardSurfaceClass = computed(() =>
   isWhiteSurface.value
@@ -52,7 +53,10 @@ const cardSurfaceClass = computed(() =>
 )
 
 const advantageItems = computed(() => {
-  const source: WhyChooseItem[] = props.items.length ? props.items : whyChooseAdvantage.advantages
+  const fallback = isMinimal.value
+    ? whyChooseAdvantage.familyAdvantages
+    : whyChooseAdvantage.advantages
+  const source: WhyChooseItem[] = props.items.length ? props.items : fallback
   return source.map((item) => ({
     title: item.title,
     meaning: item.meaning ?? item.description ?? '',
@@ -95,7 +99,7 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
                 {{ adv.badge }}
               </span> -->
               <h3 class="font-display text-base font-bold text-slate-900" :class="adv.badge ? 'mt-2' : 'mt-4'">
-                <span class="text-gradient-brand">{{ adv.title.charAt(0) }}</span>{{ adv.title.slice(1) }}
+                <span v-html="adv.title"></span>
               </h3>
               <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600">{{ adv.meaning }}</p>
             </article>
@@ -105,6 +109,47 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
         <div v-if="props.showCtas" class="mt-6 flex flex-wrap justify-center gap-3">
           <ActionBtn v-for="cta in whyChooseAdvantage.ctas" :key="cta.label" :variant="cta.variant" :href="cta.href"
             :label="cta.label" :icon="cta.icon" />
+        </div>
+      </div>
+
+      <div v-else-if="isMinimal" class="mx-auto max-w-4xl">
+        <CardHeader v-if="props.showHeader" :heading-id="props.headingId" :badge="props.badge" :title="props.title"
+          :description="props.description" :classes="`${headerClass} mx-auto max-w-3xl`" />
+
+        <div class="relative mt-8 sm:mt-10">
+          <ol class="grid max-h-[27rem] grid-cols-1 overflow-hidden sm:max-h-[22.5rem] sm:grid-cols-2" role="list">
+            <li v-for="(adv, i) in advantageItems" :key="adv.title"
+              class="border-b border-slate-200/80 last:border-b-0 sm:[&:nth-child(odd)]:border-r sm:[&:nth-last-child(-n+2)]:border-b-0">
+              <article class="group flex h-full items-start gap-4 py-5 sm:px-6 sm:py-6 lg:px-8">
+                <span
+                  class="mt-0.5 w-8 shrink-0 font-display text-[13px] font-extrabold tabular-nums tracking-wide text-blue-600"
+                  aria-hidden="true">
+                  {{ String(i + 1).padStart(2, '0') }}
+                </span>
+                <div class="min-w-0">
+                  <h3 class="font-display text-[15px] font-bold text-slate-900 sm:text-base" v-html="adv.title" />
+                  <p class="mt-1.5 line-clamp-2 text-[13px] leading-relaxed text-slate-500 sm:text-[13.5px]">
+                    {{ adv.meaning }}
+                  </p>
+                </div>
+              </article>
+            </li>
+          </ol>
+
+          <div v-if="props.showCtas" class="pointer-events-none absolute inset-x-0 bottom-0 h-24 sm:h-[6.5rem]">
+            <div :class="[
+              'absolute inset-0 bg-gradient-to-t from-25% via-80% to-transparent',
+              isWhiteSurface ? 'from-white via-white/85' : 'from-cream-50 via-cream-50/85',
+            ]" />
+            <div
+              class="absolute inset-x-0 bottom-0 h-16 backdrop-blur-[1.5px] [mask-image:linear-gradient(to_top,black,transparent)]" />
+            <div class="relative z-10 flex h-full items-end justify-center pb-1">
+              <div class="pointer-events-auto flex flex-wrap justify-center gap-3">
+                <ActionBtn v-for="cta in whyChooseAdvantage.ctas" :key="cta.label" :variant="cta.variant"
+                  :href="cta.href" :label="cta.label" :icon="cta.icon" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

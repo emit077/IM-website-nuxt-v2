@@ -27,7 +27,7 @@ const premiumProfile = spProfiles.items.find((profile) => profile.featured) ?? s
           <p class="mt-3 font-display text-3xl font-extrabold tracking-tight text-slate-900">
             {{ freeProfile.price }}
             <span class="line-through opacity-50 text-xl">
-              &nbsp; 1200 &nbsp;
+              &nbsp; ₹ 1200 &nbsp;
             </span>
           </p>
           <p class="mt-3 text-sm leading-relaxed text-slate-600">
@@ -92,6 +92,12 @@ const premiumProfile = spProfiles.items.find((profile) => profile.featured) ?? s
               class="h-full w-full object-contain object-bottom" loading="lazy" decoding="async" />
           </figure>
         </article>
+      </div>
+      <div class="mt-6 text-center">
+        <a :href="spEnrollmentPreview.cta.href"
+          class="mt-2 inline-flex min-w-[16rem] items-center justify-center rounded-xl bg-blue-700 px-10 py-2 text-base font-semibold text-white shadow-[0_18px_40px_-18px_rgba(29,78,216,0.65)] transition duration-300 hover:-translate-y-0.5 hover:bg-blue-800">
+          {{ spEnrollmentPreview.cta.label }}
+        </a>
       </div>
     </div>
   </section>
