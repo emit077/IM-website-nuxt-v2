@@ -34,7 +34,7 @@ function planHref(planId: string) {
           {{ spSubscriptionPricing.footnote }}
         </p>
         <a :href="spSubscriptionPricing.cta.href"
-          class="mt-2 inline-flex min-w-[16rem] items-center justify-center rounded-xl bg-blue-700 px-10 py-2 text-base font-semibold text-white shadow-[0_18px_40px_-18px_rgba(29,78,216,0.65)] transition duration-300 hover:-translate-y-0.5 hover:bg-blue-800">
+          class="mt-2 inline-flex min-w-[16rem] items-center justify-center rounded-xl bg-blue-700 px-10 py-3 text-base font-semibold text-white shadow-[0_18px_40px_-18px_rgba(29,78,216,0.65)] transition duration-300 hover:-translate-y-0.5 hover:bg-blue-800">
           {{ spSubscriptionPricing.cta.label }}
         </a>
       </div>

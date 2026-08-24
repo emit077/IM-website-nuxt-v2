@@ -6,6 +6,7 @@ import EnrollmentDecideSection from '~/components/student-parent/enrollment/Enro
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { enrollmentFinalCta } from '~/data/student-parent'
 import LearningStepsSection from '~/components/student-parent/enrollment/LearningStepsSection.vue'
+import StudentParentTrustSection from '~/components/student-parent/StudentParentTrustSection.vue'
 
 useSeoMeta({
   title: 'Student Enrollment Plans — Students & Parents | Indian Mentors',
@@ -24,6 +25,7 @@ useSeoMeta({
     <div class="mt-12">
       <LearningStepsSection />
     </div>
+    <StudentParentTrustSection />
     <StudentParentProfilesSection />
     <EnrollmentPlansSection />
     <EnrollmentDecideSection />

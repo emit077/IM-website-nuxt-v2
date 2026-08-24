@@ -6,7 +6,7 @@ export const subConcept = {
   description:
     'Pick a learning plan, choose how long you need it, then decide how to pay — clear, flexible, and fully in your control.',
   classes: '',
-  cta: { label: 'Choose Your Plan', href: '#learning-plans' },
+  cta: { label: 'Choose  Subscription Plan', href: '#learning-plans' },
   tagline: "You're just a few clicks away from the right plan!",
   socialProof: '50,000+ students',
   steps: [

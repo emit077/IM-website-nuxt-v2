@@ -2,6 +2,7 @@
 import StudentParentHeroSection from '~/components/student-parent/StudentParentHeroSection.vue'
 import StudentParentAudiencesSection from '~/components/student-parent/StudentParentAudiencesSection.vue'
 import StudentParentNeedsSection from '~/components/student-parent/StudentParentNeedsSection.vue'
+import StudentParentLearningGoalsSection from '~/components/student-parent/StudentParentLearningGoalsSection.vue'
 import StudentParentMatchingSection from '~/components/student-parent/StudentParentMatchingSection.vue'
 import StudentParentDemoSection from '~/components/student-parent/StudentParentDemoSection.vue'
 import StudentParentModesSection from '~/components/student-parent/StudentParentModesSection.vue'
@@ -12,6 +13,7 @@ import StudentParentTrustSection from '~/components/student-parent/StudentParent
 import StudentParentPlansSection from '~/components/student-parent/subscription/StudentParentPlansSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import WhyChooseUs from '~/components/ui/shared/WhyChooseUs.vue'
+import StudentParentFamilyRequirementsSection from '~/components/student-parent/StudentParentFamilyRequirementsSection.vue'
 import StudentParentSupportSection from '~/components/ui/shared/StudentParentSupportSection.vue'
 import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
 import { spFinalCta, spWhyFamilies } from '~/data/student-parent'
@@ -32,19 +34,22 @@ useSeoMeta({
     <StudentParentHeroSection />
     <StudentParentAudiencesSection />
     <StudentParentNeedsSection />
+    <StudentParentLearningGoalsSection />
     <StudentParentMatchingSection />
-    <StudentParentDemoSection />
     <StudentParentModesSection />
+    <StudentParentDemoSection />
     <StudentParentCoverageSection />
     <StudentParentEnrollmentPreviewSection />
     <StudentParentPlansSection :mini="true" />
-    <BrowseMentorsSection mode="students" />
     <StudentParentMonitoringSection />
-    <WhyChooseUs layout="minimal" section-id="why-choose-families" heading-id="why-choose-families-heading" />
+    <WhyChooseUs layout="minimal" reverse-items section-id="why-choose-families"
+      heading-id="why-choose-families-heading" />
     <WhyChooseUs layout="grid" :show-ctas="false" section-id="why-families" heading-id="why-families-heading"
       surface-class="section-surface-white" :badge="spWhyFamilies.badge" :title="spWhyFamilies.title"
       :description="spWhyFamilies.description" :classes="spWhyFamilies.classes" :items="spWhyFamilies.items" />
-    <StudentParentTrustSection />
+    <StudentParentFamilyRequirementsSection />
+    <BrowseMentorsSection mode="students" />
+
     <UiCTASection heading-id="sp-final-cta-heading" layout="split" surface-class="section-surface-muted"
       :title="spFinalCta.title" :description="spFinalCta.description" :ctas="spFinalCta.ctas" />
     <StudentParentSupportSection />

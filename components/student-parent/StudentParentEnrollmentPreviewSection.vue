@@ -95,7 +95,7 @@ const premiumProfile = spProfiles.items.find((profile) => profile.featured) ?? s
       </div>
       <div class="mt-6 text-center">
         <a :href="spEnrollmentPreview.cta.href"
-          class="mt-2 inline-flex min-w-[16rem] items-center justify-center rounded-xl bg-blue-700 px-10 py-2 text-base font-semibold text-white shadow-[0_18px_40px_-18px_rgba(29,78,216,0.65)] transition duration-300 hover:-translate-y-0.5 hover:bg-blue-800">
+          class="mt-2 inline-flex min-w-[16rem] items-center justify-center rounded-xl bg-blue-700 px-10 py-3 text-base font-semibold text-white shadow-[0_18px_40px_-18px_rgba(29,78,216,0.65)] transition duration-300 hover:-translate-y-0.5 hover:bg-blue-800">
           {{ spEnrollmentPreview.cta.label }}
         </a>
       </div>

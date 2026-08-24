@@ -301,7 +301,7 @@ export const planComparisonRows: ComparisonRow[] = [
 export const subscriptionPlans: SubscriptionPlan[] = [
   {
     id: 'gold',
-    iconMdi: 'mdi:medal-outline',
+    iconMdi: 'mdi:trophy-outline',
     name: 'Gold',
     duration: '1 Hour / Day',
     subtitle: 'Smart Start',
@@ -462,6 +462,51 @@ export const spNeeds = {
   outcome: "A more informed tutoring recommendation based on the student's actual requirements.",
 }
 
+export const spLearningGoals = {
+  badge: 'Learning Goals',
+  title: 'What Is Your Child <span class="text-gradient-brand">Working Toward?</span>',
+  description:
+    'Tutoring is structured around a clear academic goal — from stronger fundamentals to exam and competitive readiness.',
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  items: [
+    {
+      id: 'foundation',
+      title: 'Foundation',
+      description: 'Build stronger academic fundamentals so core concepts stay clear.',
+      goal: 'Concept Clarity',
+      iconMdi: 'mdi:sprout',
+    },
+    {
+      id: 'school-performance',
+      title: 'School Performance',
+      description: 'Improve classroom learning, homework, and regular academic performance.',
+      goal: 'Consistency',
+      iconMdi: 'mdi:book-open-page-variant-outline',
+    },
+    {
+      id: 'board-preparation',
+      title: 'Board Preparation',
+      description: 'Prepare systematically for board examinations with structured revision.',
+      goal: 'Exam Readiness',
+      iconMdi: 'mdi:target',
+    },
+    {
+      id: 'competitive-preparation',
+      title: 'Competitive Preparation',
+      description: 'Build subject knowledge and problem-solving for competitive examinations.',
+      goal: 'Competitive Readiness',
+      iconMdi: 'mdi:rocket-launch-outline',
+    },
+    {
+      id: 'skill-development',
+      title: 'Skill Development',
+      description: 'Develop stronger study habits, time management, and academic confidence.',
+      goal: 'Long-Term Learning Skills',
+      iconMdi: 'mdi:brain',
+    },
+  ],
+}
+
 export const spRoadmap = {
   badge: 'Personalised Student Learning Roadmap',
   title: 'From Academic Requirements to a <span class="text-gradient-brand">Structured Learning Plan</span>',
@@ -473,7 +518,7 @@ export const spRoadmap = {
     { no: '02', title: 'Plan', description: 'Establish subject priorities and learning objectives.' },
     { no: '03', title: 'Teach', description: 'Deliver personalised one-to-one tutoring.' },
     { no: '04', title: 'Practise', description: 'Reinforce concepts through questions, homework, and revision.' },
-    { no: '05', title: 'Assess', description: 'Review learning response and academic performance.' },
+    { no: '05', title: 'Measure', description: 'Review learning response and academic performance.' },
     { no: '06', title: 'Improve', description: 'Identify areas requiring additional attention.' },
     { no: '07', title: 'Progress', description: 'Continue with an evolving academic support plan.' },
     { no: '08', title: 'Achieve', description: 'Build stronger concepts, confidence, and academic goals.' },
@@ -644,12 +689,12 @@ export const spSubscriptionPricing = {
   classes: '!px-0 !py-0 mx-auto max-w-5xl',
   footnote:
     'Start with a 1-month paid trial. No long-term commitment until you are ready.',
-  cta: { label: 'Explore Learning Plans', href: '/student-parent/subscription' },
+  cta: { label: 'Explore Subscription Plans', href: '/student-parent/subscription' },
   items: [
     {
       id: 'gold',
       name: 'Gold',
-      iconMdi: 'mdi:medal-outline',
+      iconMdi: 'mdi:trophy-outline',
       tagline: 'Affordable academic support for consistent learning.',
       metric: '1 hour',
       metricUnit: 'per day',
@@ -770,7 +815,7 @@ export const spEnrollmentPreview = {
   imageAlt: 'Student giving a thumbs-up while starting a personalised learning plan',
   imageCaption: 'Start free. Upgrade when you’re ready.',
   imageNote: 'Explore first. Commit when it fits.',
-  cta: { label: 'See Enrollment Process', href: '/student-parent/enrollment' },
+  cta: { label: 'Explore Enrollment Plans', href: '/student-parent/enrollment' },
 }
 
 export const spProfiles: {
@@ -910,19 +955,57 @@ export const spWhyFamilies = {
   ],
 }
 
+export const spFamilyRequirements = {
+  badge: 'Flexible for Different Family Requirements',
+  title: 'One Platform. <span class="text-gradient-brand">Different Learning Needs.</span>',
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  items: [
+    {
+      title: 'For Busy Parents',
+      description: 'Flexible tutoring schedules with structured monitoring for busy families.',
+      iconMdi: 'mdi:calendar-clock-outline',
+    },
+    {
+      title: 'For Students Needing Extra Support',
+      description: 'One-to-one attention with targeted academic support for students.',
+      iconMdi: 'mdi:account-heart-outline',
+    },
+    {
+      title: 'For Multi-Subject Learners',
+      description: 'Multiple-subject tutoring options available under applicable learning plans.',
+      iconMdi: 'mdi:book-multiple-outline',
+    },
+    {
+      title: 'For Exam-Focused Students',
+      description: 'Structured examination preparation with regular practice and focused revision.',
+      iconMdi: 'mdi:clipboard-text-outline',
+    },
+    {
+      title: 'For Students Away From Home',
+      description: 'Online tutoring access that stays available across locations, wherever students are.',
+      iconMdi: 'mdi:laptop',
+    },
+    {
+      title: 'For Families Seeking Home Support',
+      description: 'Personalised home tutoring options for families seeking in-person support.',
+      iconMdi: 'mdi:home-account',
+    },
+  ],
+}
+
 export const spCycle = {
   badge: 'Parent & Student Success Cycle',
   title: 'A Continuous <span class="text-gradient-brand">Learning Journey</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   steps: [
-    { title: 'Assess', description: "Understand the student's current academic requirements." },
-    { title: 'Plan', description: "Create a suitable academic direction for the student." },
-    { title: 'Teach', description: 'Deliver personalised one-to-one tutoring sessions.' },
-    { title: 'Practise', description: 'Reinforce concepts with exercises and revision.' },
-    { title: 'Monitor', description: 'Track attendance, participation, and learning progress.' },
-    { title: 'Review', description: 'Identify strengths and areas that need improvement.' },
-    { title: 'Adjust', description: 'Modify the learning approach wherever it is needed.' },
-    { title: 'Grow', description: 'Build academic capability and confidence over time.' },
+    { title: 'Identify', description: 'Understand academic requirements, student strengths, and learning gaps.' },
+    { title: 'Strategise', description: 'Create a structured learning strategy aligned with student goals.' },
+    { title: 'Learn', description: 'Build strong understanding through personalised one-to-one instruction.' },
+    { title: 'Reinforce', description: 'Strengthen concepts through practice, revision, and practical application.' },
+    { title: 'Monitor', description: 'Track sessions, participation, performance, and learning progress.' },
+    { title: 'Evaluate', description: 'Review academic development, performance, and learning outcomes.' },
+    { title: 'Optimise', description: 'Refine teaching methods and learning plans based on progress.' },
+    { title: 'Succeed', description: 'Build confidence, academic capability, and stronger learning outcomes.' },
   ],
   tagline: 'Learning Is Not a One-Time Event. It Is a Continuous Journey.',
 }

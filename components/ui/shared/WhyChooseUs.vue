@@ -26,6 +26,7 @@ const props = withDefaults(
     layout?: 'split' | 'grid' | 'minimal'
     items?: WhyChooseItem[]
     surfaceClass?: string
+    reverseItems?: boolean
   }>(),
   {
     showHeader: true,
@@ -39,6 +40,7 @@ const props = withDefaults(
     layout: 'split',
     items: () => [],
     surfaceClass: 'section-surface-muted',
+    reverseItems: false,
   },
 )
 
@@ -57,12 +59,13 @@ const advantageItems = computed(() => {
     ? whyChooseAdvantage.familyAdvantages
     : whyChooseAdvantage.advantages
   const source: WhyChooseItem[] = props.items.length ? props.items : fallback
-  return source.map((item) => ({
+  const mapped = source.map((item) => ({
     title: item.title,
     meaning: item.meaning ?? item.description ?? '',
     iconMdi: item.iconMdi,
     badge: item.badge,
   }))
+  return props.reverseItems ? [...mapped].reverse() : mapped
 })
 
 const advantageImage = usePublicAsset(whyChooseAdvantage.image)
