@@ -22,7 +22,8 @@ import { subTerms } from '~/data/subscription'
               <Icon :icon="topic.iconMdi" class="h-5 w-5" />
             </span>
             <h3 class="mt-3 font-display text-[15px] font-bold text-slate-900">{{ topic.title }}</h3>
-            <p class="mt-2 line-clamp-2 min-h-[2.7em] text-[13px] leading-relaxed text-slate-600">{{ topic.description }}</p>
+            <p class="mt-2 line-clamp-2 min-h-[2.7em] text-[13px] leading-relaxed text-slate-600">{{ topic.description
+            }}</p>
           </article>
         </li>
       </ul>
@@ -43,7 +44,8 @@ import { subTerms } from '~/data/subscription'
             <div
               class="absolute inset-x-0 bottom-0 h-14 backdrop-blur-[1.5px] [mask-image:linear-gradient(to_top,black,transparent)]" />
             <div class="relative z-10  flex justify-center align-middle items-end flex h-full">
-              <ActionBtn :label="subTerms.cta.label" :href="subTerms.cta.href" icon="mdi:file-document-outline" />
+              <ActionBtn variant="primary" :label="subTerms.cta.label" :href="subTerms.cta.href"
+                icon="mdi:file-document-outline" />
             </div>
           </div>
         </div>

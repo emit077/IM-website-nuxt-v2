@@ -305,6 +305,11 @@ export const whyChooseAdvantage = {
       iconMdi: 'mdi:target',
     },
     {
+      title: 'Dedicated Support',
+      meaning: 'Counsellors guide families from first enquiry through ongoing learning.',
+      iconMdi: 'mdi:headset',
+    },
+    {
       title: 'Board-Aligned Teaching',
       meaning: 'Sessions follow CBSE, ICSE, IB, IGCSE, and recognised state-board curricula.',
       iconMdi: 'mdi:book-education-outline',
@@ -319,11 +324,7 @@ export const whyChooseAdvantage = {
       meaning: 'Choose home, online, hybrid, or specialised tutoring to fit family schedules.',
       iconMdi: 'mdi:home-variant-outline',
     },
-    {
-      title: 'Dedicated Support',
-      meaning: 'Counsellors guide families from first enquiry through ongoing learning.',
-      iconMdi: 'mdi:headset',
-    },
+
   ],
 }
 

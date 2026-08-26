@@ -146,7 +146,7 @@ function rippleHandler(e: MouseEvent) {
               </p>
               <a :href="externalLinks.tutorRegistration"
                 class="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-white px-4 py-2.5 text-[13px] font-semibold text-blue-700 transition hover:bg-blue-50">
-                Learn About the Hiring Process
+                Start the Hiring Process
                 <IconArrowRight class="h-4 w-4" />
               </a>
             </div>

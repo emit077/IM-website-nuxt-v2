@@ -5,9 +5,8 @@ import { complianceChecks, complianceSection } from '~/data/tutors'
 </script>
 
 <template>
-  <section
+  <section id="compliance"
     class="relative scroll-mt-20 overflow-hidden bg-gradient-to-br from-blue-600 via-blue-800 to-indigo-900 section-py"
-    id="tutor-verification"
     aria-labelledby="compliance-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
@@ -24,11 +23,6 @@ import { complianceChecks, complianceSection } from '~/data/tutors'
             <p class="mt-3 text-sm font-medium leading-relaxed text-white/70 sm:text-base">
               {{ complianceSection.note }}
             </p>
-            <a :href="complianceSection.cta.href"
-              class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-[13px] font-semibold text-blue-700 transition hover:bg-blue-50">
-              {{ complianceSection.cta.label }}
-              <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
-            </a>
           </CardHeader>
         </div>
         <div class="lg:col-span-7">

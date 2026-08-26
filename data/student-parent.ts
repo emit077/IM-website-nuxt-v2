@@ -112,7 +112,7 @@ export const enrollmentPlansSection = {
   badge: 'Free vs Premium',
   title: 'Compare Your Student <span class="text-gradient-brand">Enrollment Options</span>',
   description: '',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   footnote:
     '*Subject to applicable policy, tutor availability, and service conditions.',
 }
@@ -121,7 +121,7 @@ export const planComparisonSection = {
   badge: 'Compare Learning Plans',
   title: 'Which Learning Plan Fits <span class="text-gradient-brand">Your Child?</span>',
   description: 'Side-by-side details for daily duration, subjects, monitoring, and support.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   footnote:
     '*Subject to applicable policy, tutor availability, and service conditions.',
 }
@@ -398,14 +398,14 @@ export const subscriptionComparisonRows: SubscriptionComparisonRow[] = [
   { feature: 'Parent Engagement', gold: 'Monthly', diamond: 'Fortnightly', platinum: 'Weekly' },
   { feature: 'Tutor Discovery', gold: 'Focused Selection', diamond: 'Expanded / Priority', platinum: 'Expanded + Smart Recommendation' },
   { feature: 'Demo Access', gold: 'As Applicable', diamond: 'Priority', platinum: 'Priority' },
+  { feature: 'Tutor Replacement', gold: 'Standard', diamond: 'Priority', platinum: 'Premium' },
   { feature: 'Support', gold: 'Standard', diamond: 'Priority', platinum: 'Premium' },
-  { feature: 'Tutor Support', gold: 'As per Policy', diamond: 'As per Policy', platinum: 'As per Policy' },
 ]
 
 export const spAudiences = {
   badge: 'Two Audiences. One Learning Journey.',
   title: 'Built for Students. Designed With <span class="text-gradient-brand">Parents in Mind.</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   students: {
     id: 'for-students',
     label: 'For Students',
@@ -445,10 +445,10 @@ export const spAudiences = {
 }
 
 export const spNeeds = {
-  badge: "Understand Your Child's 8 Learning Needs",
+  badge: "Child’s 8 Key Learning Needs",
   title: 'Every Student Starts From a <span class="text-gradient-brand">Different Place</span>',
   description: "Before recommending a tutoring arrangement, we focus on understanding the student's requirements.",
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto max-w-5xl',
   items: [
     { title: 'Learning <span class="text-gradient-brand">Gaps</span>', question: 'Which concepts or subjects need extra attention?', iconMdi: 'mdi:puzzle-outline' },
     { title: 'Learning <span class="text-gradient-brand">Level</span>', question: 'Where is the student academically today?', iconMdi: 'mdi:stairs' },
@@ -457,7 +457,7 @@ export const spNeeds = {
     { title: 'Learning <span class="text-gradient-brand">Pace</span>', question: 'Does the student need extra time to understand and practise?', iconMdi: 'mdi:timer-sand' },
     { title: 'Learning <span class="text-gradient-brand">Schedule</span>', question: 'What days and timings work best for the family?', iconMdi: 'mdi:calendar-clock-outline' },
     { title: 'Learning <span class="text-gradient-brand">Mode</span>', question: 'Is home, online, or hybrid tutoring more suitable?', iconMdi: 'mdi:laptop' },
-    { title: 'Learning <span class="text-gradient-brand">Environment</span>', question: 'Which setting helps the student stay focused and consistent?', iconMdi: 'mdi:laptop' },
+    { title: 'Learning <span class="text-gradient-brand">Environment</span>', question: 'Which setting helps the student stay focused and consistent?', iconMdi: 'mdi:globe' },
   ],
   outcome: "A more informed tutoring recommendation based on the student's actual requirements.",
 }
@@ -467,7 +467,7 @@ export const spLearningGoals = {
   title: 'What Is Your Child <span class="text-gradient-brand">Working Toward?</span>',
   description:
     'Tutoring is structured around a clear academic goal — from stronger fundamentals to exam and competitive readiness.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   items: [
     {
       id: 'foundation',
@@ -508,10 +508,10 @@ export const spLearningGoals = {
 }
 
 export const spRoadmap = {
-  badge: 'Personalised Student Learning Roadmap',
+  badge: 'Personalised  Learning Roadmap',
   title: 'From Academic Requirements to a <span class="text-gradient-brand">Structured Learning Plan</span>',
   description: "A personalised tutoring journey can be structured around the student's:",
-  classes: '!px-0 !py-0 mx-auto max-w-4xl',
+  classes: '!px-0 !py-0 mx-auto ',
   chain: ['Current Level', 'Learning Gaps', 'Academic Goals', 'Study Plan', 'Tutoring Sessions', 'Practice', 'Review', 'Progress'],
   steps: [
     { no: '01', title: 'Understand', description: 'Identify academic requirements and learning challenges.' },
@@ -526,7 +526,7 @@ export const spRoadmap = {
 }
 
 export const spMatching = {
-  badge: 'How Indian Mentors Matches Students With Tutors',
+  badge: 'Our Matching Process',
   title: 'Finding a Tutor Is Easy. Finding the <span class="text-gradient-brand">Right Tutor</span> Matters More.',
   description: 'Tutor selection can consider multiple student requirements.',
   classes: '!px-0 !py-0 mx-auto max-w-5xl',
@@ -552,7 +552,7 @@ export const spDemo = {
   title: 'Start With a <span class="text-gradient-brand">Free Demo</span>',
   description:
     'Experience the tutor’s teaching style firsthand before you commit.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   image: 'assets/img/services/home-tutors.webp',
   imageAlt: 'Student attending a one-to-one demo tutoring session',
   imageCaption: 'Try the tutor. Then decide.',
@@ -582,7 +582,7 @@ export const spDemo = {
 export const spModes = {
   badge: 'Flexible Learning Modes',
   title: 'Learn Where You <span class="text-gradient-brand">Learn Best</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   items: [
     {
       title: 'Home Tutoring',
@@ -611,7 +611,7 @@ export const spModes = {
 export const spCoverage = {
   badge: 'Academic Coverage',
   title: 'Support Across <span class="text-gradient-brand">Academic Stages</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   school: {
     label: 'Early & School Education',
     stages: [
@@ -687,8 +687,6 @@ export const spSubscriptionPricing = {
   description:
     "Choose the level of tutoring intensity according to your child's academic requirements.",
   classes: '!px-0 !py-0 mx-auto max-w-5xl',
-  footnote:
-    'Start with a 1-month paid trial. No long-term commitment until you are ready.',
   cta: { label: 'Explore Subscription Plans', href: '/student-parent/subscription' },
   items: [
     {
@@ -696,8 +694,8 @@ export const spSubscriptionPricing = {
       name: 'Gold',
       iconMdi: 'mdi:trophy-outline',
       tagline: 'Affordable academic support for consistent learning.',
-      metric: '1 hour',
-      metricUnit: 'per day',
+      metric: '1 Hour',
+      metricUnit: 'Per Session',
       audience: 'Primary & Middle School',
       core: ['Homework support', 'Concept clarity', 'Regular academic support'],
       additional: ['1–4 subjects', 'Monthly progress updates', 'Standard support'],
@@ -709,8 +707,8 @@ export const spSubscriptionPricing = {
       name: 'Diamond',
       iconMdi: 'mdi:diamond-stone',
       tagline: 'Our most popular plan for consistent academic improvement.',
-      metric: '1.5 hours',
-      metricUnit: 'per day',
+      metric: '1.5 Hours',
+      metricUnit: 'Per Session',
       audience: 'Middle & High School',
       core: ['Deeper learning', 'Practice & revision', 'Problem solving focus'],
       additional: [
@@ -729,8 +727,8 @@ export const spSubscriptionPricing = {
       name: 'Platinum',
       iconMdi: 'mdi:crown',
       tagline: 'Comprehensive support for high-performance learners.',
-      metric: '2 hours',
-      metricUnit: 'per day',
+      metric: '2 Hours',
+      metricUnit: 'Per Session',
       audience: 'High School & Exam Preparation',
       core: ['Intensive support', 'Board exam preparation', 'Competitive exam coaching'],
       additional: [
@@ -808,7 +806,7 @@ export const enrollmentHero = {
 export const spEnrollmentPreview = {
   badge: 'Enrollment Options',
   title: 'Start Free or Go <span class="text-gradient-brand">Premium</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   description:
     'Create a student profile, explore tutors, and book a free demo — then upgrade when you want more access and support.',
   image: 'assets/img/student-parent/enrollment.webp',
@@ -826,7 +824,7 @@ export const spProfiles: {
 } = {
   badge: 'Enrollment Options',
   title: 'Start Free or Go Premium',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   items: [
     {
       id: 'free',
@@ -869,9 +867,9 @@ export const spProfiles: {
         { title: 'Family Dashboard' },
         { title: 'AI-Powered Tutor Recommendations' },
         { title: 'Dedicated Key Account Manager' },
-        { title: 'And many more — explore for more details', href: '/student-parent/enrollment' },
+        { title: 'And many more — explore for more details', },
       ],
-      cta: { label: 'know More', href: "/student-parent/enrollment" },
+      cta: { label: 'Know More', href: "/student-parent/enrollment" },
       featured: true,
     },
   ],
@@ -882,7 +880,7 @@ export const spMonitoring = {
   title: 'Keep Learning <span class="text-gradient-brand">Visible</span>',
   description:
     'Indian Mentors combines tutoring with structured monitoring to help parents and students maintain greater visibility throughout the learning journey.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   items: [
     { title: 'Attendance', description: 'Monitor scheduled and completed sessions.', iconMdi: 'mdi:calendar-check-outline' },
     { title: 'Session Records', description: 'Maintain relevant tutoring and session information.', iconMdi: 'mdi:notebook-outline' },
@@ -899,7 +897,7 @@ export const spFamilyDashboard = {
   title: 'Everything You Need in <span class="text-gradient-brand">One Place</span>',
   description:
     'Parents and students share one dashboard to stay organised, track learning, and stay connected throughout the tutoring journey.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   modules: [
     { title: 'Student Profile', description: 'View student details and academic requirements.', iconMdi: 'mdi:account-outline' },
     { title: 'Tutors & Subjects', description: 'See tutor details and the subjects they teach.', iconMdi: 'mdi:book-education-outline' },
@@ -920,7 +918,7 @@ export const spWhyFamilies = {
   title: "Your Child's Education Deserves <span class=\"text-gradient-brand\">Clarity</span>",
   description:
     'Indian Mentors aims to maintain transparency throughout the tutoring journey.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   items: [
     {
       badge: 'C1 · Fees',
@@ -956,37 +954,37 @@ export const spWhyFamilies = {
 }
 
 export const spFamilyRequirements = {
-  badge: 'Flexible for Different Family Requirements',
+  badge: 'Flexible Learning Options',
   title: 'One Platform. <span class="text-gradient-brand">Different Learning Needs.</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   items: [
     {
-      title: 'For Busy Parents',
+      title: 'Busy Parents',
       description: 'Flexible tutoring schedules with structured monitoring for busy families.',
       iconMdi: 'mdi:calendar-clock-outline',
     },
     {
-      title: 'For Students Needing Extra Support',
+      title: 'Students Needing Extra Support',
       description: 'One-to-one attention with targeted academic support for students.',
       iconMdi: 'mdi:account-heart-outline',
     },
     {
-      title: 'For Multi-Subject Learners',
+      title: 'Multi-Subject Learners',
       description: 'Multiple-subject tutoring options available under applicable learning plans.',
       iconMdi: 'mdi:book-multiple-outline',
     },
     {
-      title: 'For Exam-Focused Students',
+      title: 'Exam-Focused Students',
       description: 'Structured examination preparation with regular practice and focused revision.',
       iconMdi: 'mdi:clipboard-text-outline',
     },
     {
-      title: 'For Students Away From Home',
+      title: 'Students Away From Home',
       description: 'Online tutoring access that stays available across locations, wherever students are.',
       iconMdi: 'mdi:laptop',
     },
     {
-      title: 'For Families Seeking Home Support',
+      title: 'Families Seeking Home Support',
       description: 'Personalised home tutoring options for families seeking in-person support.',
       iconMdi: 'mdi:home-account',
     },
@@ -996,7 +994,7 @@ export const spFamilyRequirements = {
 export const spCycle = {
   badge: 'Parent & Student Success Cycle',
   title: 'A Continuous <span class="text-gradient-brand">Learning Journey</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   steps: [
     { title: 'Identify', description: 'Understand academic requirements, student strengths, and learning gaps.' },
     { title: 'Strategise', description: 'Create a structured learning strategy aligned with student goals.' },
@@ -1036,13 +1034,13 @@ export const enrollmentStart = {
   title: 'Choose the Level of Support <span class="text-gradient-brand">You Need</span>',
   description:
     'Whether you are exploring tutoring for the first time or looking for a more structured academic experience, Indian Mentors gives you the flexibility to choose.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
 }
 
 export const enrollmentNeeds = {
   badge: 'Designed for Different Student Needs',
   title: 'Which Student Profile Is <span class="text-gradient-brand">Right for You?</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   items: [
     {
       id: 'explorer',
@@ -1127,7 +1125,7 @@ export const enrollmentValue = {
 export const enrollmentChoose = {
   badge: 'Free or Premium?',
   title: 'Start Where You Are <span class="text-gradient-brand">Comfortable</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   free: {
     title: 'Choose FREE if:',
     items: [
@@ -1136,7 +1134,7 @@ export const enrollmentChoose = {
       'You want to experience one online demo',
       'You are still evaluating your options',
     ],
-    cta: { label: 'Start Free', href: externalLinks.studentSignup },
+    cta: { label: 'Create Free Profile', href: externalLinks.studentSignup },
   },
   premium: {
     title: 'Choose PREMIUM if:',
@@ -1148,7 +1146,7 @@ export const enrollmentChoose = {
       'You want priority support',
       'You want a more structured tutoring experience',
     ],
-    cta: { label: 'Go Premium', href: externalLinks.studentSignup },
+    cta: { label: 'Get Premium Access', href: externalLinks.studentSignup },
   },
 }
 
@@ -1167,10 +1165,10 @@ export const spSupport = {
   badge: 'Support Center',
   title: "We're Here When You Need Us",
   description: 'Need help selecting a tutor, understanding a subscription, or resolving a service-related question?',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   options: [
     { title: 'Phone Support', description: 'For applicable counselling and service assistance.', iconMdi: 'mdi:phone-outline', href: 'tel:+917389563564' },
-    { title: 'WhatsApp Assistance', description: 'For applicable service coordination.', iconMdi: 'mdi:cellphone', href: 'https://wa.me/917389563564' },
+    { title: 'WhatsApp Assistance', description: 'For applicable service coordination.', iconMdi: 'mdi:whatsapp', href: 'https://wa.me/917389563564' },
     { title: 'Email Support', description: 'For detailed enquiries and documentation.', iconMdi: 'mdi:email-outline', href: 'mailto:info@indianmentors.in' },
     { title: 'Live Chat', description: 'For general assistance and platform queries.', iconMdi: 'mdi:chat-outline', href: '/contact' },
     { title: 'Helpdesk Ticketing', description: 'Submit and track support requests.', iconMdi: 'mdi:ticket-confirmation-outline', href: '/contact' },

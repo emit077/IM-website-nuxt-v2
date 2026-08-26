@@ -17,7 +17,7 @@ import { spCycle } from '~/data/student-parent'
             <span class="font-display text-2xl font-black tabular-nums text-blue-500/20">
               {{ String(i + 1).padStart(2, '0') }}
             </span>
-            <h3 class="mt-2 font-display text-base font-bold uppercase tracking-wide text-slate-900">{{ step.title }}
+            <h3 class="mt-2 font-display text-base font-bold  tracking-wide text-slate-900">{{ step.title }}
             </h3>
             <p class="mt-2 min-h-[2.75em] text-[13.5px] leading-relaxed text-slate-600">{{ step.description }}</p>
           </article>

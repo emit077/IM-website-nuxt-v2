@@ -5,7 +5,7 @@ import { policyPoints, tutorPolicySection } from '~/data/tutors'
 </script>
 
 <template>
-  <section id="tutor-standards" class="relative scroll-mt-20 bg-white section-py"
+  <section id="tutor-policy" class="relative scroll-mt-20 bg-white section-py"
     aria-labelledby="tutor-policy-heading">
     <div class="container-page">
       <div
@@ -15,9 +15,11 @@ import { policyPoints, tutorPolicySection } from '~/data/tutors'
           <CardHeader align="left" heading-id="tutor-policy-heading" :badge="tutorPolicySection.badge"
             :title="tutorPolicySection.title" :description="tutorPolicySection.description"
             :classes="tutorPolicySection.classes" />
-          <p class="mt-6 text-sm font-semibold leading-relaxed text-slate-700">
-            {{ tutorPolicySection.principle }}
-          </p>
+          <a href="#tutor-register"
+            class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 underline-offset-4 transition hover:underline">
+            Read Tutor Registration Policy
+            <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+          </a>
         </div>
         <ul class="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:col-span-7" role="list">
           <li v-for="(point, i) in policyPoints" :key="point.title" v-motion :initial="{ opacity: 0, y: 10 }"

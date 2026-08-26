@@ -5,9 +5,8 @@ import { heroContent, heroHighlights } from '~/data/tutors'
 
 const secondaryHero: SecondaryHeroContent = {
   badge: heroContent.badge,
-  title: heroContent.title,
+  title: "Join India's growing network of professional mentors",
   description: heroContent.description,
-  caption: heroContent.caption,
   actionBtns: [heroContent.primaryCta, heroContent.secondaryCta],
   ticker: [
     ...heroHighlights.map((item) => item.label),

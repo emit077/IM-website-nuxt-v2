@@ -35,6 +35,6 @@ useSeoMeta({
     <SubscriptionTermsSection />
     <UiCTASection heading-id="sp-subscription-cta-heading" surface-class="section-surface-muted"
       :title="subscriptionFinalCta.title" :description="subscriptionFinalCta.description"
-      :supporting="subscriptionFinalCta.supporting" :ctas="subscriptionFinalCta.ctas" />
+      :ctas="subscriptionFinalCta.ctas" />
   </div>
 </template>

@@ -19,7 +19,7 @@ const props = withDefaults(
     title: quickServiceCategories.title,
     description: quickServiceCategories.description,
     headingId: 'quick-service-categories-heading',
-    headerClasses: 'mx-auto max-w-2xl !px-0 !py-0',
+    headerClasses: 'mx-auto !px-0 !py-0',
   },
 )
 

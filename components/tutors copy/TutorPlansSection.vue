@@ -24,7 +24,7 @@ import { tutorPlans, tutorPlansSection } from '~/data/tutors'
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 100, duration: 500 } }">
             <span v-if="plan.variant === 'featured'"
               class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
-              Premium
+              For Active Tutors
             </span>
 
             <div class="flex items-center gap-3">
@@ -71,9 +71,6 @@ import { tutorPlans, tutorPlansSection } from '~/data/tutors'
           </div>
         </article>
       </div>
-      <p class="mx-auto mt-6 max-w-2xl text-center text-[12.5px] leading-relaxed text-slate-500">
-        {{ tutorPlansSection.footnote }}
-      </p>
     </div>
   </section>
 </template>

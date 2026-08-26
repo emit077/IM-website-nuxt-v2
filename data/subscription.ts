@@ -152,8 +152,8 @@ export const subSupports = {
     { title: 'Digital Tracking', description: 'Applicable family dashboard functionality.', iconMdi: 'mdi:monitor-dashboard' },
   ],
   flexibility: {
-    badge: "Flexible as Your Child's Needs Change",
-    title: 'Academic Requirements Can Evolve',
+    badge: "Flexible as Your Needs Change",
+    title: 'Academic Priorities Can Shift',
     description:
       'Depending on applicable terms, families may discuss adjustments to the areas below. Any modification remains subject to tutor availability, plan eligibility, pricing differences and applicable subscription policies.',
     items: ['Subjects', 'Session Duration', 'Learning Frequency', 'Learning Mode', 'Tutor', 'Learning Plan'],
