@@ -38,7 +38,7 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       failOnError: false,
-      routes: ['/about', '/academic-coverage', '/grades', '/student-parent', '/student-parent/subscription', '/student-parent/enrollment', '/institutions', '/faq'],
+      routes: ['/about', '/academic-coverage', '/grades', '/student-parent', '/student-parent/subscription', '/student-parent/enrollment', '/tutors', '/tutors/registration-plans', '/institutions', '/faq'],
     },
   },
 

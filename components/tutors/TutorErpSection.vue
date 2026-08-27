@@ -73,15 +73,15 @@ import { erpFeatures, erpSection } from '~/data/tutors'
           </div>
         </div>
       </div>
-
+      <!-- 
       <div class="mt-12 text-center">
         <h3 class="font-display text-lg font-bold text-slate-900 sm:text-xl">{{ erpSection.featuresTitle }}</h3>
         <p class="mx-auto mt-2 max-w-xl text-[13.5px] leading-relaxed text-slate-500">
           {{ erpSection.featuresSubtitle }}
         </p>
-      </div>
+      </div> -->
 
-      <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4" role="list">
+      <!-- <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4" role="list">
         <li v-for="(feature, i) in erpFeatures" :key="feature.title" v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + (i % 4) * 60, duration: 400 } }">
           <article
@@ -95,7 +95,7 @@ import { erpFeatures, erpSection } from '~/data/tutors'
             <p class="mt-1.5 text-[13px] leading-relaxed text-slate-500">{{ feature.description }}</p>
           </article>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </section>
 </template>

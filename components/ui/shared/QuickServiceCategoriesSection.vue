@@ -30,7 +30,7 @@ const iconTones = ['blue', 'mint', 'blue', 'mint', 'blue'] as const
   <section class="relative overflow-hidden section-surface-muted section-py"
     :aria-labelledby="props.showHeader ? props.headingId : undefined"
     :aria-label="props.showHeader ? undefined : 'Service categories'">
-    <div class="container-page relative">
+    <div class=" relative">
       <CardHeader v-if="props.showHeader" :heading-id="props.headingId" :badge="props.badge" :title="props.title"
         :description="props.description" :classes="props.headerClasses" />
 

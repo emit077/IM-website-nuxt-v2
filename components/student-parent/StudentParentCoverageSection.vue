@@ -17,8 +17,9 @@ import { spCoverage } from '~/data/student-parent'
       <ol class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5" role="list">
         <li v-for="(stage, i) in spCoverage.school.stages" :key="stage.title" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 40, duration: 400 } }">
-          <article
-            class="group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-cream-50/60 shadow-soft">
+          <NuxtLink :to="stage.href"
+            class="group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-cream-50/60 no-underline shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:bg-white hover:shadow-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-600"
+            :aria-label="`${stage.title} — view academic coverage`">
             <div class="relative aspect-[5/4] overflow-hidden">
               <img :src="usePublicAsset(stage.image)" :alt="`${stage.title} — Indian Mentors`"
                 class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" loading="lazy"
@@ -31,10 +32,18 @@ import { spCoverage } from '~/data/student-parent'
               </span>
             </div>
             <div class="flex flex-1 flex-col p-5">
-              <h3 class="font-display text-[15px] font-bold leading-snug text-slate-900">{{ stage.title }}</h3>
-              <p class="mt-2 text-[13px] leading-relaxed text-slate-600">{{ stage.description }}</p>
+              <h3
+                class="font-display text-[15px] font-bold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-blue-700">
+                {{ stage.title }}
+              </h3>
+              <p class="mt-2 flex-1 text-[13px] leading-relaxed text-slate-600">{{ stage.description }}</p>
+              <span class="mt-4 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-blue-700">
+                Explore
+                <Icon icon="mdi:arrow-right"
+                  class="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+              </span>
             </div>
-          </article>
+          </NuxtLink>
         </li>
       </ol>
 

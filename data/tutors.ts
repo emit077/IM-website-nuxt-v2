@@ -122,50 +122,63 @@ export const tutorWhoCanJoin = {
   description:
     'Indian Mentors welcomes individuals with relevant academic knowledge, teaching capability, and a commitment to responsible mentoring.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
-  cta: { label: 'Check Tutor Eligibility', href: '#tutor-verification' },
+  cta: { label: 'Sign Up as a Tutor', href: externalLinks.tutorRegistration },
+  highlights: [
+    {
+      iconMdi: 'mdi:book-education-outline',
+      label: 'Subject knowledge',
+      hint: 'Strong command of the subjects you teach.',
+    },
+    {
+      iconMdi: 'mdi:human-male-board',
+      label: 'Teaching capability',
+      hint: 'Ability to explain and guide students clearly.',
+    },
+  ],
+  note: {
+    title: 'Eligibility is about capability',
+    description:
+      'Join if you have relevant academic knowledge, teaching ability, and a commitment to student-focused mentoring.',
+  },
   items: [
     {
       title: 'Subject Matter Experts',
-      description: 'Professionals with strong expertise in specific academic subjects or specialised domains.',
+      description: 'Experts in academic subjects or specialised teaching domains.',
       iconMdi: 'mdi:human-male-board',
     },
     {
       title: 'Local Tuition Teachers',
-      description: 'Educators experienced in providing personalised academic support within their local communities.',
+      description: 'Personalised academic support within local communities.',
       iconMdi: 'mdi:home-account',
     },
     {
       title: 'Private Home & Online Tutors',
-      description:
-        'Experienced tutors looking to expand their teaching opportunities through home, online, or hybrid formats.',
+      description: 'Teach through home, online, or hybrid formats.',
       iconMdi: 'mdi:laptop',
     },
     {
       title: 'School Teachers',
-      description: 'Teachers from Nursery through Class XII seeking additional tutoring engagements where permitted.',
+      description: 'Nursery to Class XII teachers seeking extra tutoring.',
       iconMdi: 'mdi:school-outline',
     },
     {
       title: 'Working Professionals',
-      description:
-        'Professionals with relevant subject knowledge and teaching experience who wish to mentor students.',
+      description: 'Subject experts with teaching experience who mentor.',
       iconMdi: 'mdi:briefcase-outline',
     },
     {
       title: 'Coaching Faculty',
-      description:
-        'Experienced faculty members seeking individual tutoring opportunities alongside their professional engagements.',
+      description: 'Individual tutoring alongside professional teaching work.',
       iconMdi: 'mdi:book-open-page-variant-outline',
     },
     {
       title: 'College & University Educators',
-      description: 'Undergraduate and postgraduate educators supporting higher-level academic subjects.',
+      description: 'Educators supporting higher-level academic subjects.',
       iconMdi: 'mdi:school',
     },
     {
       title: 'College Students',
-      description:
-        'Undergraduate and postgraduate students with strong subject expertise who meet applicable eligibility requirements.',
+      description: 'Strong subject expertise that meets eligibility to join.',
       iconMdi: 'mdi:account-school-outline',
     },
   ],
@@ -181,61 +194,61 @@ export const tutorOpportunities = {
   items: [
     {
       title: 'Home Tuition',
-      description: "Face-to-face personalised tutoring at the student's location.",
+      description: "Personalised tutoring at the student's location.",
       iconMdi: 'mdi:home-outline',
       href: '/services#home-tutors',
     },
     {
       title: 'Online Tuition',
-      description: 'Live interactive academic support from anywhere.',
+      description: 'Live academic support from anywhere.',
       iconMdi: 'mdi:laptop',
       href: '/services#online-tutors',
     },
     {
       title: 'Hybrid Tuition',
-      description: 'A coordinated combination of home and online sessions.',
+      description: 'Combined home and online tutoring sessions.',
       iconMdi: 'mdi:sync',
       href: '/services#hybrid-tutors',
     },
     {
       title: 'Shadow Tutoring',
-      description: 'Individualised academic and classroom support within the school environment.',
+      description: 'Academic support within the school environment.',
       iconMdi: 'mdi:account-group-outline',
       href: '/services#shadow-tutors',
     },
     {
       title: 'Travel Tutoring',
-      description: 'Academic continuity for students travelling or relocating.',
+      description: 'Continuity for students travelling or relocating.',
       iconMdi: 'mdi:airplane',
       href: '/services#travel-tutors',
     },
     {
       title: 'Live-In Tutoring',
-      description: 'Structured residential academic mentoring under mutually agreed arrangements.',
-      iconMdi: 'mdi:home-heart-outline',
+      description: 'Residential mentoring under agreed arrangements.',
+      iconMdi: 'mdi:home-heart',
       href: '/services#live-in-tutors',
     },
     {
       title: 'Specialised Education',
-      description: 'Educational support for diverse learning requirements based on relevant qualifications.',
+      description: 'Support for diverse learning requirements.',
       iconMdi: 'mdi:puzzle-outline',
       href: '/services#special-educators',
     },
     {
       title: 'Home Schooling Support',
-      description: 'Subject and curriculum support for students following home-based education.',
+      description: 'Curriculum support for home-based education.',
       iconMdi: 'mdi:book-education-outline',
       href: '/academic-coverage',
     },
     {
       title: 'Institute Teaching',
-      description: 'Teaching opportunities with educational institutions or coaching organisations where applicable.',
+      description: 'Teaching roles with institutions where applicable.',
       iconMdi: 'mdi:domain',
       href: '/institutions',
     },
     {
       title: 'Custom Tutoring',
-      description: 'Requirement-based tutoring arrangements designed around specific student needs.',
+      description: 'Arrangements designed around specific student needs.',
       iconMdi: 'mdi:target',
       href: '/services',
     },
@@ -249,41 +262,52 @@ export const tutorSubjects = {
     'Indian Mentors supports tutoring requirements across school education, higher education, international curricula, competitive examinations, and selected specialised learning areas.',
   classes: '!px-0 !py-0 mx-auto',
   cta: { label: 'Explore Teaching Requirements', href: '/academic-coverage' },
+  ctaTile: {
+    title: 'Not sure where you fit?',
+    description: 'See the full academic coverage and find the requirements that match your expertise.',
+  },
   items: [
     {
       title: 'Science & Mathematics',
       subjects: 'Physics • Chemistry • Biology • Mathematics • Environmental Science',
       iconMdi: 'mdi:atom',
+      image: '/assets/img/tutor-subjects/science-maths.webp',
     },
     {
       title: 'Languages',
       subjects: 'English • Hindi • Regional Languages • Foreign Languages',
       iconMdi: 'mdi:translate',
+      image: '/assets/img/tutor-subjects/languages.webp',
     },
     {
       title: 'Social Sciences & Humanities',
       subjects: 'History • Geography • Political Science • Sociology • Psychology',
       iconMdi: 'mdi:earth',
+      image: '/assets/img/tutor-subjects/social-humanities.webp',
     },
     {
       title: 'Commerce & Business',
       subjects: 'Accountancy • Economics • Business Studies • Finance • Entrepreneurship',
       iconMdi: 'mdi:chart-line',
+      image: '/assets/img/tutor-subjects/commerce-business.webp',
     },
     {
       title: 'Technology & Computer Studies',
       subjects: 'Computer Science • Programming • Information Technology • Digital Skills',
       iconMdi: 'mdi:code-tags',
+      image: '/assets/img/tutor-subjects/technology.webp',
     },
     {
       title: 'Competitive & Entrance Preparation',
       subjects: 'JEE • NEET • CUET • CA Foundation • Selected Entrance Examinations',
       iconMdi: 'mdi:trophy-outline',
+      image: '/assets/img/tutor-subjects/competitive-exams.webp',
     },
     {
       title: 'International Curricula',
       subjects: 'IB • IGCSE • Cambridge • Other Recognised International Curricula',
       iconMdi: 'mdi:web',
+      image: '/assets/img/tutor-subjects/international-curricula.webp',
     },
   ],
 }
@@ -446,6 +470,7 @@ export const tutorPlansSection = {
   classes: '!px-0 !py-0',
   footnote:
     'Registration plans, features, eligibility, and applicable charges are subject to the current platform terms.',
+  cta: { label: 'Compare Free vs Premium in detail', href: '/tutors/registration-plans' },
 }
 
 export const hiringSteps: HiringStep[] = [
@@ -633,14 +658,46 @@ export const erpSection = {
 }
 
 export const policyPoints = [
-  { iconMdi: 'mdi:account-tie-outline', title: 'Maintain professional conduct' },
-  { iconMdi: 'mdi:shield-lock-outline', title: 'Respect student and family privacy' },
-  { iconMdi: 'mdi:calendar-check-outline', title: 'Follow agreed schedules' },
-  { iconMdi: 'mdi:message-outline', title: 'Communicate professionally' },
-  { iconMdi: 'mdi:school-outline', title: 'Conduct sessions responsibly' },
-  { iconMdi: 'mdi:clipboard-check-outline', title: 'Maintain accurate attendance' },
-  { iconMdi: 'mdi:emoticon-happy-outline', title: 'Support a positive learning environment' },
-  { iconMdi: 'mdi:file-document-outline', title: 'Follow applicable policies and agreements' },
+  {
+    iconMdi: 'mdi:account-tie-outline',
+    title: 'Maintain professional conduct',
+    description: 'Ethical, respectful behaviour in every tutoring engagement.',
+  },
+  {
+    iconMdi: 'mdi:shield-lock-outline',
+    title: 'Respect student and family privacy',
+    description: 'Confidential handling of student and family data.',
+  },
+  {
+    iconMdi: 'mdi:calendar-check-outline',
+    title: 'Follow agreed schedules',
+    description: 'Sessions conducted as per the agreed teaching schedule.',
+  },
+  {
+    iconMdi: 'mdi:message-outline',
+    title: 'Communicate professionally',
+    description: 'Clear, courteous communication with families.',
+  },
+  {
+    iconMdi: 'mdi:school-outline',
+    title: 'Conduct sessions responsibly',
+    description: 'Structured, student-focused teaching in every session.',
+  },
+  {
+    iconMdi: 'mdi:clipboard-check-outline',
+    title: 'Maintain accurate attendance',
+    description: 'Reliable session and attendance records as required.',
+  },
+  {
+    iconMdi: 'mdi:emoticon-happy-outline',
+    title: 'Support a positive learning environment',
+    description: 'Safe, encouraging, and constructive mentoring.',
+  },
+  {
+    iconMdi: 'mdi:file-document-outline',
+    title: 'Follow applicable policies and agreements',
+    description: 'Compliance with current tutor terms and platform policies.',
+  },
 ]
 
 export const tutorPolicySection = {
@@ -648,8 +705,13 @@ export const tutorPolicySection = {
   title: 'Be the Mentor Students Can <span class="text-gradient-brand">Trust</span>',
   description:
     'Every tutor associated with Indian Mentors is expected to maintain professional, ethical, respectful, and student-focused standards.',
-  classes: '!px-0 !py-0',
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
   principle: 'Professional Teaching • Responsible Mentoring • Student-First Approach',
+  principles: [
+    { iconMdi: 'mdi:human-male-board', label: 'Professional Teaching' },
+    { iconMdi: 'mdi:handshake-outline', label: 'Responsible Mentoring' },
+    { iconMdi: 'mdi:heart-outline', label: 'Student-First Approach' },
+  ],
 }
 
 export const earningsSection = {

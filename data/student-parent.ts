@@ -448,16 +448,30 @@ export const spNeeds = {
   badge: "Child’s 8 Key Learning Needs",
   title: 'Every Student Starts From a <span class="text-gradient-brand">Different Place</span>',
   description: "Before recommending a tutoring arrangement, we focus on understanding the student's requirements.",
-  classes: '!px-0 !py-0 mx-auto max-w-5xl',
-  items: [
-    { title: 'Learning <span class="text-gradient-brand">Gaps</span>', question: 'Which concepts or subjects need extra attention?', iconMdi: 'mdi:puzzle-outline' },
-    { title: 'Learning <span class="text-gradient-brand">Level</span>', question: 'Where is the student academically today?', iconMdi: 'mdi:stairs' },
-    { title: 'Learning <span class="text-gradient-brand">Goals</span>', question: 'Improvement, exam prep, concept building, or advanced learning?', iconMdi: 'mdi:target' },
-    { title: 'Learning <span class="text-gradient-brand">Requirements</span>', question: 'Which subjects require one-to-one support?', iconMdi: 'mdi:book-education-outline' },
-    { title: 'Learning <span class="text-gradient-brand">Pace</span>', question: 'Does the student need extra time to understand and practise?', iconMdi: 'mdi:timer-sand' },
-    { title: 'Learning <span class="text-gradient-brand">Schedule</span>', question: 'What days and timings work best for the family?', iconMdi: 'mdi:calendar-clock-outline' },
-    { title: 'Learning <span class="text-gradient-brand">Mode</span>', question: 'Is home, online, or hybrid tutoring more suitable?', iconMdi: 'mdi:laptop' },
-    { title: 'Learning <span class="text-gradient-brand">Environment</span>', question: 'Which setting helps the student stay focused and consistent?', iconMdi: 'mdi:globe' },
+  classes: '!px-0 !py-0 mx-auto',
+  groups: [
+    {
+      id: 'academic',
+      label: 'Academic picture',
+      description: 'Where the student stands — and what needs attention.',
+      items: [
+        { title: 'Learning <span class="text-gradient-brand">Gaps</span>', question: 'Which concepts or subjects need extra attention?', iconMdi: 'mdi:puzzle-outline' },
+        { title: 'Learning <span class="text-gradient-brand">Level</span>', question: 'Where is the student academically today?', iconMdi: 'mdi:stairs' },
+        { title: 'Learning <span class="text-gradient-brand">Goals</span>', question: 'Improvement, exam prep, concept building, or advanced learning?', iconMdi: 'mdi:target' },
+        { title: 'Learning <span class="text-gradient-brand">Requirements</span>', question: 'Which subjects require one-to-one support?', iconMdi: 'mdi:book-education-outline' },
+      ],
+    },
+    {
+      id: 'arrangement',
+      label: 'Learning arrangement',
+      description: 'How tutoring should fit pace, time, and setting.',
+      items: [
+        { title: 'Learning <span class="text-gradient-brand">Pace</span>', question: 'Does the student need extra time to understand and practise?', iconMdi: 'mdi:timer-sand' },
+        { title: 'Learning <span class="text-gradient-brand">Schedule</span>', question: 'What days and timings work best for the family?', iconMdi: 'mdi:calendar-clock-outline' },
+        { title: 'Learning <span class="text-gradient-brand">Mode</span>', question: 'Is home, online, or hybrid tutoring more suitable?', iconMdi: 'mdi:laptop' },
+        { title: 'Learning <span class="text-gradient-brand">Environment</span>', question: 'Which setting helps the student stay focused and consistent?', iconMdi: 'mdi:globe' },
+      ],
+    },
   ],
   outcome: "A more informed tutoring recommendation based on the student's actual requirements.",
 }
@@ -468,6 +482,10 @@ export const spLearningGoals = {
   description:
     'Tutoring is structured around a clear academic goal — from stronger fundamentals to exam and competitive readiness.',
   classes: '!px-0 !py-0 mx-auto ',
+  image: 'assets/img/hero/hero-2.png',
+  imageAlt: 'Student confident about a clear academic goal',
+  imageCaption: 'One clear goal. One structured plan.',
+  imageNote: 'Every plan starts with the goal that matters most.',
   items: [
     {
       id: 'foundation',
@@ -619,26 +637,31 @@ export const spCoverage = {
         title: 'Pre-Primary',
         description: 'Foundation learning and early academic development.',
         image: 'assets/img/academic-coverage/grade-1.webp',
+        href: '/academic-coverage#pre-primary',
       },
       {
         title: 'Primary School',
         description: 'Concept building, homework support, and core skills.',
         image: 'assets/img/academic-coverage/grade-2.webp',
+        href: '/academic-coverage#primary',
       },
       {
         title: 'Middle School',
         description: 'Subject strengthening, practice, and consistency.',
         image: 'assets/img/academic-coverage/grade-3.webp',
+        href: '/academic-coverage#middle',
       },
       {
         title: 'Secondary School',
         description: 'Concept mastery, exam prep, and structured revision.',
         image: 'assets/img/academic-coverage/grade-4.webp',
+        href: '/academic-coverage#secondary',
       },
       {
         title: 'Senior Secondary',
         description: 'Board exam prep, advanced subjects learning.',
         image: 'assets/img/academic-coverage/grade-5.webp',
+        href: '/academic-coverage#senior',
       },
     ],
   },

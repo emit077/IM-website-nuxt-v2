@@ -71,6 +71,15 @@ import { tutorPlans, tutorPlansSection } from '~/data/tutors'
           </div>
         </article>
       </div>
+      <div class="mt-8 flex justify-center">
+        <NuxtLink :to="tutorPlansSection.cta.href"
+          class="group inline-flex items-center gap-2 text-[13.5px] font-semibold text-blue-700 transition hover:text-blue-800">
+          {{ tutorPlansSection.cta.label }}
+          <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            aria-hidden="true" />
+        </NuxtLink>
+      </div>
+
       <p class="mx-auto mt-6 max-w-2xl text-center text-[12.5px] leading-relaxed text-slate-500">
         {{ tutorPlansSection.footnote }}
       </p>
