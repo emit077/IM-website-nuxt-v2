@@ -1,36 +1,52 @@
 <script setup lang="ts">
 import CareersHeroSection from '~/components/careers/CareersHeroSection.vue'
-import CareersOpportunitiesSection from '~/components/careers/CareersOpportunitiesSection.vue'
-import CareersBenefitsSection from '~/components/careers/CareersBenefitsSection.vue'
-import CareersPurposeSection from '~/components/careers/CareersPurposeSection.vue'
+import CareersWhySection from '~/components/careers/CareersWhySection.vue'
+import CareersDepartmentsSection from '~/components/careers/CareersDepartmentsSection.vue'
+import CareersHowWeWorkSection from '~/components/careers/CareersHowWeWorkSection.vue'
+import CareersCultureSection from '~/components/careers/CareersCultureSection.vue'
+import CareersGrowthSection from '~/components/careers/CareersGrowthSection.vue'
+import CareersStandardsSection from '~/components/careers/CareersStandardsSection.vue'
+import CareersHiringProcessSection from '~/components/careers/CareersHiringProcessSection.vue'
+import CareersWhoCanApplySection from '~/components/careers/CareersWhoCanApplySection.vue'
+import CareersJobsSection from '~/components/careers/CareersJobsSection.vue'
+import CareersTalentNetworkSection from '~/components/careers/CareersTalentNetworkSection.vue'
+import CareersFaqSection from '~/components/careers/CareersFaqSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { careersFinalCta } from '~/data/careers'
 
 const careersCtas = [
-  { ...careersFinalCta.primaryCta, iconMdi: 'mdi:send-outline', primary: true },
-  { ...careersFinalCta.secondaryCta, iconMdi: 'mdi:file-upload-outline' },
-  { ...careersFinalCta.tertiaryCta, iconMdi: 'mdi:phone-outline' },
+  { ...careersFinalCta.primaryCta },
+  { ...careersFinalCta.secondaryCta },
+  { ...careersFinalCta.tertiaryCta },
 ] as const
 
 useSeoMeta({
   title: 'Careers — Indian Mentors',
   description:
-    'Build your career in a structured academic ecosystem. Join Indian Mentors for roles in admissions, recruitment, operations, and technology — with defined KPIs, transparent policies, and performance-based growth.',
-  ogTitle: 'Careers at Indian Mentors — Build Your Future with Structure and Integrity',
+    'Build your career in a structured academic ecosystem. Join Indian Mentors for roles in admissions, academics, operations, HR, finance, marketing, and technology.',
+  ogTitle: 'Careers at Indian Mentors — Build Your Career in Education & EdTech',
   ogDescription:
-    'Explore career opportunities at Indian Mentors. We welcome educators, administrators, strategists, and technology professionals committed to responsible academic mentorship.',
+    'Explore career opportunities at Indian Mentors. Apply for admission counselling, academic operations, HR, finance, marketing, and technology roles.',
   ogType: 'website',
 })
 </script>
 
 <template>
-  <div class="min-h-screen section-surface-muted">
+  <div class="min-h-screen">
     <CareersHeroSection />
-    <CareersOpportunitiesSection />
-    <CareersBenefitsSection />
-    <CareersPurposeSection />
-    <UiCTASection section-id="apply" :badge="careersFinalCta.badge" badge-icon-mdi="mdi:briefcase-check-outline"
-      :title="careersFinalCta.title" :description="careersFinalCta.description"
-      :supporting="careersFinalCta.closing" :ctas="careersCtas" />
+    <CareersWhySection />
+    <!-- <CareersDepartmentsSection /> -->
+    <CareersHowWeWorkSection />
+    <CareersCultureSection />
+    <CareersGrowthSection />
+    <CareersStandardsSection />
+    <CareersHiringProcessSection />
+    <!-- <CareersWhoCanApplySection /> -->
+    <CareersJobsSection />
+    <CareersTalentNetworkSection />
+    <!-- <CareersFaqSection /> -->
+    <UiCTASection section-id="join-indian-mentors" heading-id="careers-final-cta-heading"
+      badge-icon-mdi="mdi:briefcase-check-outline" :badge="careersFinalCta.badge" :title="careersFinalCta.title"
+      :description="careersFinalCta.description" :supporting="careersFinalCta.closing" :ctas="careersCtas" />
   </div>
 </template>

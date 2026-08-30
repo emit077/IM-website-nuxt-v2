@@ -22,12 +22,12 @@ export type ComparisonRow = {
 
 export const registrationHero = {
   badge: 'Tutor Registration Plans',
-  title: 'Choose the Right Path to Start &amp; Grow Your Teaching Journey',
-  subtitle: 'Flexible Tutor Plans for Educators at Every Stage',
+  title: 'Choose the Right Path to Start',
+  subtitle: '',
   description:
     'At Indian Mentors, tutors can choose a registration option based on their teaching goals, experience, and level of platform engagement. Whether you are exploring tutoring opportunities for the first time or looking to build a stronger professional presence, our plans are designed to provide a structured pathway into personalised tutoring.',
   caption:
-    'Start with a Free Tutor Profile or choose the Premium Tutor Profile for enhanced visibility, priority opportunities, advanced tools, and additional support.',
+    '',
   promise: 'Create Your Profile → Get Verified → Find Opportunities → Teach → Earn → Grow',
   primaryCta: {
     label: 'Create Free Tutor Profile',
@@ -50,7 +50,7 @@ export const registrationHero = {
 }
 
 export const planDiscoverySection = {
-  badge: '01 — Plan Discovery',
+  badge: 'Plan Discovery',
   title: 'Start Free. Upgrade When <span class="text-gradient-brand">You\'re Ready</span>',
   description: 'Choose the registration option that fits your current teaching journey.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
@@ -86,7 +86,7 @@ export const registrationPlanCards: RegistrationPlanCard[] = [
 ]
 
 export const freePlanSection = {
-  badge: '02 — Free Tutor Profile',
+  badge: 'Free Tutor Profile',
   title: 'Start Your Tutoring Journey at <span class="text-gradient-brand">No Upfront Cost</span>',
   subtitle: 'Build Your Professional Tutor Presence',
   description:
@@ -116,7 +116,7 @@ export const freePlanSection = {
 }
 
 export const premiumPlanSection = {
-  badge: '03 — Premium Tutor Profile',
+  badge: 'Premium Tutor Profile',
   title: 'Build a Stronger Presence. Access <span class="text-amber-300">More Opportunities</span>',
   description:
     'The Premium Tutor Profile is designed for tutors who want enhanced platform visibility and additional tools to support their tutoring journey.',
@@ -183,7 +183,7 @@ export const premiumPlanSection = {
 }
 
 export const comparisonSection = {
-  badge: '04 — Free vs Premium',
+  badge: 'Free vs Premium',
   title: 'Compare Your <span class="text-gradient-brand">Tutor Plan</span>',
   description:
     'Two views of the same plans — a quick overview of platform access, and a detailed breakdown of what changes when you go Premium.',
@@ -232,7 +232,7 @@ export const planDetailedRows: ComparisonRow[] = [
 ]
 
 export const whyPremiumSection = {
-  badge: '05 — Why Choose Premium?',
+  badge: 'Why Choose Premium?',
   title: 'More Tools for Tutors Who <span class="text-gradient-brand">Want to Grow</span>',
   description:
     'Premium is designed for educators who want to take a more active approach to building their tutoring profile and exploring opportunities through Indian Mentors.',
@@ -264,7 +264,7 @@ export const whyPremiumSection = {
 }
 
 export const premiumValueSection = {
-  badge: '06 — Premium Value',
+  badge: 'Premium Value',
   title: 'A Small Annual Investment in <span class="text-gradient-brand">Your Teaching Journey</span>',
   description:
     'For eligible tutors, the Premium plan can provide access to enhanced visibility, priority opportunities, additional tools, and expanded support.',
@@ -287,7 +287,7 @@ export const premiumValueSection = {
 }
 
 export const whoChoosesSection = {
-  badge: '07 — Who Should Choose Which Plan?',
+  badge: 'Who Should Choose Which Plan?',
   title: 'Find the Plan That Fits <span class="text-gradient-brand">Your Teaching Goals</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   free: {
@@ -319,7 +319,7 @@ export const whoChoosesSection = {
 }
 
 export const journeySection = {
-  badge: '08 — Your Tutor Journey',
+  badge: 'Your Tutor Journey',
   title: 'From Registration to <span class="text-gradient-brand">Regular Teaching</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   summary: 'Register → Verify → Activate → Discover → Demo → Teach → Earn → Grow',
@@ -376,7 +376,7 @@ export const journeySection = {
 }
 
 export const matchingSection = {
-  badge: '09 — How Student Matching Works',
+  badge: 'How Student Matching Works',
   title: 'Opportunities Aligned With <span class="text-gradient-brand">Your Tutor Profile</span>',
   description:
     "Indian Mentors can identify suitable tutoring opportunities by considering relevant information from your tutor profile and the student's requirements.",
@@ -418,7 +418,7 @@ export const matchingSection = {
 }
 
 export const requirementsSection = {
-  badge: '10 — What You Need to Register',
+  badge: 'What You Need to Register',
   title: 'Prepare Your <span class="text-gradient-brand">Tutor Profile</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   proTip:
@@ -453,7 +453,7 @@ export const requirementsSection = {
 }
 
 export const verificationSection = {
-  badge: '11 — Verification & Quality Screening',
+  badge: 'Verification & Quality Screening',
   title: 'Building a <span class="text-gradient-brand">Trusted Tutor Network</span>',
   description:
     'Indian Mentors follows applicable tutor verification and screening procedures to support a professional and trustworthy learning environment.',
@@ -473,7 +473,7 @@ export const verificationSection = {
 }
 
 export const resourcesSection = {
-  badge: '12 — Tutor Support & Resources',
+  badge: 'Tutor Support & Resources',
   title: 'Everything You Need to <span class="text-gradient-brand">Get Started</span>',
   description:
     'Tutors can access applicable resources designed to help them understand the platform, prepare for tutoring engagements, and maintain professional teaching standards.',
@@ -514,7 +514,7 @@ export const resourcesSection = {
 }
 
 export const dashboardSection = {
-  badge: '13 — Tutor Dashboard',
+  badge: 'Tutor Dashboard',
   title: 'Manage Your Teaching Journey in <span class="text-gradient-brand">One Place</span>',
   description:
     'Once activated, tutors can use the applicable dashboard features to manage their tutoring activities.',
@@ -564,7 +564,7 @@ export const dashboardSection = {
 }
 
 export const earningsSection = {
-  badge: '14 — Earnings & Payouts',
+  badge: 'Earnings & Payouts',
   title: 'Track Your Teaching Earnings <span class="text-gradient-brand">Transparently</span>',
   description:
     'Indian Mentors provides structured processes for recording eligible tutoring sessions and managing applicable tutor earnings.',
@@ -590,7 +590,7 @@ export const earningsSection = {
 }
 
 export const profileStrengthSection = {
-  badge: '15 — Build Your Tutor Profile',
+  badge: 'Build Your Tutor Profile',
   title: 'Your Profile Is Your <span class="text-gradient-brand">Professional Identity</span>',
   description:
     'A complete and professional tutor profile helps present your expertise clearly and supports more relevant opportunity matching.',
@@ -611,7 +611,7 @@ export const profileStrengthSection = {
 }
 
 export const upgradePathSection = {
-  badge: '16 — Upgrade When You\'re Ready',
+  badge: 'Upgrade When You\'re Ready',
   title: 'Start Free. Grow With <span class="text-gradient-brand">Premium</span>',
   description:
     'You do not need to commit to a premium plan immediately. Begin with the Free Tutor Profile and consider upgrading when you are ready for enhanced platform access.',
@@ -629,7 +629,7 @@ export const upgradePathSection = {
 }
 
 export const registrationFaqSection = {
-  badge: '17 — Frequently Asked Questions',
+  badge: 'Frequently Asked Questions',
   title: 'Questions About <span class="text-gradient-brand">Tutor Plans</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
 }
@@ -685,7 +685,7 @@ export const registrationFaqs = [
 ]
 
 export const planTermsSection = {
-  badge: '18 — Important Plan Terms',
+  badge: 'Important Plan Terms',
   title: 'Transparent Plans. <span class="text-gradient-brand">Clear Expectations.</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   noteLabel: 'Please Note',
@@ -702,7 +702,7 @@ export const planTermsSection = {
 }
 
 export const registrationFinalCta = {
-  badge: '19 — Ready to Start?',
+  badge: 'Ready to Start?',
   title: 'Your Teaching Journey Begins With One Profile',
   description:
     'Whether you are an experienced teacher, subject specialist, home tutor, online educator, or academic professional, Indian Mentors gives you a structured way to present your expertise and explore personalised tutoring opportunities.',

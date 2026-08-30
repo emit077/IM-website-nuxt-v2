@@ -5,17 +5,27 @@ import { careersHero, careersHeroHighlights } from '~/data/careers'
 
 const secondaryHero: SecondaryHeroContent = {
   badge: careersHero.badge,
-  title: `${careersHero.title} ${careersHero.titleHighlight}`,
+  title: careersHero.title,
+  subtitle: careersHero.subtitle,
   description: careersHero.description,
-  caption: careersHero.supporting,
+  caption: careersHero.caption,
   actionBtns: [careersHero.primaryCta, careersHero.secondaryCta],
   ticker: careersHeroHighlights.map((item) => item.label),
   headingId: 'careers-hero-heading',
-  tickerAriaLabel: 'Careers highlights',
+  tickerAriaLabel: 'Career values at Indian Mentors',
   patternId: 'careers-hero-waves',
 }
 </script>
 
 <template>
-  <SecondaryHeroLayout :hero-content="secondaryHero" />
+  <SecondaryHeroLayout :hero-content="secondaryHero">
+    <p
+      class="mt-8 max-w-3xl text-center font-display text-base font-bold text-white sm:text-lg"
+      v-motion
+      :initial="{ opacity: 0, y: 10 }"
+      :enter="{ opacity: 1, y: 0, transition: { duration: 450, delay: 340 } }"
+    >
+      {{ careersHero.promise }}
+    </p>
+  </SecondaryHeroLayout>
 </template>

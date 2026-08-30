@@ -32,24 +32,24 @@ useSeoMeta({
   <div class="tutor-registration-plans">
     <RegistrationHeroSection />
     <RegistrationPlanDiscoverySection />
-    <RegistrationFreePlanSection />
-    <RegistrationPremiumPlanSection />
     <RegistrationComparisonSection />
-    <RegistrationWhyPremiumSection />
+    <!-- <RegistrationFreePlanSection /> -->
+    <RegistrationPremiumPlanSection />
+    <!-- <RegistrationWhyPremiumSection /> -->
     <RegistrationWhoChoosesSection />
-    <RegistrationJourneySection />
-    <RegistrationMatchingSection />
+    <!-- <RegistrationJourneySection /> -->
+    <!-- <RegistrationMatchingSection /> -->
     <RegistrationRequirementsSection />
-    <RegistrationResourcesSection />
-    <RegistrationEarningsSection />
-    <RegistrationProfileSection />
+    <!-- <RegistrationResourcesSection />
+    <RegistrationEarningsSection /> -->
+    <!-- <RegistrationProfileSection /> -->
     <RegistrationFaqSection />
 
-    <UiCTASection section-id="start-registration" heading-id="registration-final-cta-heading" variant="light"
+    <!-- <UiCTASection section-id="start-registration" heading-id="registration-final-cta-heading" variant="light"
       surface-class="section-surface-muted" badge-icon-mdi="mdi:rocket-launch-outline"
       :badge="registrationFinalCta.badge" :title="registrationFinalCta.title"
       :description="registrationFinalCta.description" :supporting="registrationFinalCta.supporting"
-      :ctas="registrationFinalCta.ctas" />
+      :ctas="registrationFinalCta.ctas" /> -->
 
     <UiCTASection section-id="registration-banner" heading-id="registration-banner-heading" surface-class="bg-white"
       badge-icon-mdi="mdi:human-male-board" :title="registrationBannerCta.title"

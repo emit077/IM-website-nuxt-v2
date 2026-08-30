@@ -64,15 +64,6 @@ import { whoChoosesSection } from '~/data/tutor-registration-plans'
           </a>
         </article>
       </div>
-
-      <ul class="mx-auto mt-8 grid max-w-3xl gap-3 sm:grid-cols-2" role="list">
-        <li v-for="item in whoChoosesSection.recommendation" :key="item.question"
-          class="flex items-center justify-center gap-2 rounded-2xl border border-slate-200/80 bg-white px-5 py-4 text-center">
-          <span class="text-[13.5px] font-medium text-slate-600">{{ item.question }}</span>
-          <span class="text-slate-300" aria-hidden="true">→</span>
-          <span class="font-display text-[14px] font-bold text-blue-700">{{ item.answer }}</span>
-        </li>
-      </ul>
     </div>
   </section>
 </template>

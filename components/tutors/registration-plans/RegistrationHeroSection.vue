@@ -23,7 +23,7 @@ const promiseSteps = registrationHero.promise.split('→').map((step) => step.tr
   <SecondaryHeroLayout :hero-content="secondaryHero">
     <div class="mt-10 w-full" v-motion :initial="{ opacity: 0, y: 14 }"
       :enter="{ opacity: 1, y: 0, transition: { duration: 500, delay: 340 } }">
-      <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-white/60">Core Promise</p>
+      <!-- <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-white/60">Core Promise</p>
       <ol class="mt-4 flex flex-wrap items-center justify-center gap-x-2 gap-y-2.5" role="list">
         <li v-for="(step, i) in promiseSteps" :key="step" class="flex items-center gap-2">
           <span
@@ -32,7 +32,7 @@ const promiseSteps = registrationHero.promise.split('→').map((step) => step.tr
           </span>
           <span v-if="i < promiseSteps.length - 1" class="text-white/40" aria-hidden="true">→</span>
         </li>
-      </ol>
+      </ol> -->
     </div>
   </SecondaryHeroLayout>
 </template>

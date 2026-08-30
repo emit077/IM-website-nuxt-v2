@@ -64,7 +64,7 @@ export const tutorBenefits = {
   title: 'A Professional Ecosystem Built Around <span class="text-gradient-brand">Educators</span>',
   description:
     'Indian Mentors provides a structured environment where tutors can discover suitable opportunities, manage their teaching engagements, track academic sessions, and build their professional tutoring journey.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto',
   items: [
     {
       title: 'Relevant Opportunities',
@@ -189,7 +189,7 @@ export const tutorOpportunities = {
   title: 'Find Students Who Match <span class="text-gradient-brand">Your Expertise</span>',
   description:
     'Explore tutoring opportunities based on relevant factors such as subject expertise, academic level, curriculum, location, teaching mode, availability, and experience.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto max-w-4xl',
   cta: { label: 'Browse Student Opportunities', href: '#browse-students' },
   items: [
     {
@@ -260,7 +260,7 @@ export const tutorSubjects = {
   title: 'Teach What You <span class="text-gradient-brand">Know Best</span>',
   description:
     'Indian Mentors supports tutoring requirements across school education, higher education, international curricula, competitive examinations, and selected specialised learning areas.',
-  classes: '!px-0 !py-0 mx-auto',
+  classes: '!px-0 !py-0 mx-auto max-w-4xl',
   cta: { label: 'Explore Teaching Requirements', href: '/academic-coverage' },
   ctaTile: {
     title: 'Not sure where you fit?',
@@ -639,9 +639,41 @@ export const erpSection = {
   classes: '!px-0 !py-0',
   cta: { label: 'Explore Tutor Dashboard', href: externalLinks.login },
   image: '/assets/img/tutors/tutor-dashboard.webp',
-  imageAlt: 'Indian Mentors tutor dashboard showing batches, sessions, earnings, and payout records',
+  imageAlt: 'Sample Indian Mentors tutor dashboard on mobile, showing sessions, wallet, and teaching activity',
   previewUrl: 'tutor.indianmentors.com',
   showcaseTitle: 'One workspace for your entire teaching day',
+  mobilePreview: {
+    greeting: 'Welcome back',
+    tutorName: 'Amit Kumar',
+    tutorRole: 'Tutor',
+    dateLabel: 'Apr 2024',
+    walletLabel: 'Wallet',
+    walletValue: '₹42,800',
+    walletNote: 'Available balance',
+    stats: [
+      { label: 'Batches', value: '12' },
+      { label: 'Sessions', value: '86' },
+      { label: 'Rating', value: '4.8' },
+    ],
+    sessionsTitle: 'Upcoming sessions',
+    sessions: [
+      { student: 'Rahul Sharma', initials: 'RS', subject: 'Mathematics', time: 'Today, 4:00 PM', status: 'Confirmed' },
+      { student: 'Priya Mehta', initials: 'PM', subject: 'Science', time: 'Today, 6:30 PM', status: 'Confirmed' },
+      { student: 'Arjun Patel', initials: 'AP', subject: 'English', time: 'Tomorrow, 5:00 PM', status: 'Pending' },
+    ],
+    modules: [
+      { label: 'Batches', iconMdi: 'mdi:google-classroom' },
+      { label: 'Demos', iconMdi: 'mdi:presentation-play' },
+      { label: 'Students', iconMdi: 'mdi:account-search-outline' },
+      { label: 'Messages', iconMdi: 'mdi:message-text-outline' },
+    ],
+    nav: [
+      { label: 'Home', iconMdi: 'mdi:view-dashboard-outline', active: true },
+      { label: 'Sessions', iconMdi: 'mdi:calendar-clock-outline', active: false },
+      { label: 'Earnings', iconMdi: 'mdi:wallet-outline', active: false },
+      { label: 'Profile', iconMdi: 'mdi:account-outline', active: false },
+    ],
+  },
   highlights: [
     'Track batches, schedules, and upcoming sessions at a glance',
     'Attendance and session records maintained in one place',

@@ -43,42 +43,4 @@ import { requirementsSection, verificationSection } from '~/data/tutor-registrat
       </p>
     </div>
   </section>
-
-  <section id="verification-screening" class="relative scroll-mt-28 overflow-hidden section-surface-muted section-py"
-    aria-labelledby="verification-screening-heading">
-    <div class="container-page relative">
-      <CardHeader heading-id="verification-screening-heading" :badge="verificationSection.badge"
-        :title="verificationSection.title" :description="verificationSection.description"
-        :classes="verificationSection.classes" />
-
-      <p class="mt-10 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
-        {{ verificationSection.checksLabel }}
-      </p>
-
-      <ul class="mt-5 flex flex-wrap justify-center gap-3" role="list">
-        <li v-for="(check, i) in verificationSection.checks" :key="check" v-motion :initial="{ opacity: 0, y: 12 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 40, duration: 380 } }">
-          <span
-            class="inline-flex items-center gap-2 rounded-2xl border border-slate-200/80 bg-white px-4 py-2.5 text-[13.5px] font-semibold text-slate-800 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-700">
-            <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-600"
-              aria-hidden="true">
-              <IconCheck class="h-3 w-3" />
-            </span>
-            {{ check }}
-          </span>
-        </li>
-      </ul>
-
-      <p
-        class="mx-auto mt-9 max-w-3xl rounded-2xl border border-blue-100 bg-white px-5 py-4 text-center text-[14px] font-semibold leading-relaxed text-blue-900">
-        {{ verificationSection.keyMessage }}
-      </p>
-
-      <div class="mt-8 flex justify-center" v-motion :initial="{ opacity: 0, y: 12 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 460 } }">
-        <ActionBtn variant="secondary" :label="verificationSection.cta.label" :href="verificationSection.cta.href"
-          icon="mdi:shield-check-outline" />
-      </div>
-    </div>
-  </section>
 </template>
