@@ -17,7 +17,6 @@ import { careersFinalCta } from '~/data/careers'
 const careersCtas = [
   { ...careersFinalCta.primaryCta },
   { ...careersFinalCta.secondaryCta },
-  { ...careersFinalCta.tertiaryCta },
 ] as const
 
 useSeoMeta({

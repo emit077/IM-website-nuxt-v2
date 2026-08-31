@@ -14,7 +14,7 @@ import { howWeWorkSection, howWeWorkSteps } from '~/data/careers'
         :classes="howWeWorkSection.classes"
       />
 
-      <ol class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 sm:gap-4" role="list">
+      <ol class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 sm:gap-4" role="list">
         <li
           v-for="(step, i) in howWeWorkSteps"
           :key="step.no"
@@ -27,7 +27,7 @@ import { howWeWorkSection, howWeWorkSteps } from '~/data/careers'
           >
             <span class="font-display text-3xl font-black tabular-nums leading-none text-blue-500/20">{{ step.no }}</span>
             <h3 class="mt-3 font-display text-lg font-bold text-slate-900">{{ step.title }}</h3>
-            <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600">{{ step.description }}</p>
+            <p class="mt-2 min-h-[4.05rem] text-[13.5px] leading-relaxed text-slate-600">{{ step.description }}</p>
           </article>
         </li>
       </ol>

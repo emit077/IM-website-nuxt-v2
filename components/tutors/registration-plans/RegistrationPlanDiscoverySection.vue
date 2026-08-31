@@ -27,16 +27,16 @@ import { planDiscoverySection, registrationPlanCards } from '~/data/tutor-regist
               : 'border border-slate-200/80 bg-cream-50/60 shadow-soft',
           ]">
             <span v-if="plan.badge"
-              class="absolute -top-3 right-6 rounded-full bg-amber-400 px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-slate-900">
+              class="absolute top-3 right-6 rounded-full bg-amber-400 px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-slate-900">
               {{ plan.badge }}
             </span>
-
+            <!-- 
             <span :class="[
               'grid h-12 w-12 place-items-center rounded-2xl',
               plan.variant === 'featured' ? 'bg-white/15 text-white' : 'bg-white text-blue-600 ring-1 ring-blue-100',
             ]" aria-hidden="true">
               <Icon :icon="plan.iconMdi" class="h-6 w-6" />
-            </span>
+            </span> -->
 
             <h3 class="mt-5 font-display text-xl font-extrabold">{{ plan.name }}</h3>
 
@@ -46,6 +46,7 @@ import { planDiscoverySection, registrationPlanCards } from '~/data/tutor-regist
                 :class="['ml-1 text-base font-semibold', plan.variant === 'featured' ? 'text-blue-100' : 'text-slate-500']">
                 {{ plan.priceNote }}
               </span>
+              <span v-else class="text-lg font-bold opacity-80 line-through">&nbsp;&nbsp;₹ 1000 / Year&nbsp;</span>
             </p>
 
             <p

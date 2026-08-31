@@ -13,29 +13,20 @@ import { tutorPlans, tutorPlansSection } from '~/data/tutors'
         :description="tutorPlansSection.description" :classes="tutorPlansSection.classes" />
 
       <div class="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-5 lg:grid-cols-2">
-        <article v-for="(plan, i) in tutorPlans" :key="plan.id">
+        <article v-for="(plan, i) in tutorPlans" :key="plan.id" class="h-full">
 
           <div :class="[
-            'relative flex flex-col rounded-3xl border bg-white p-6 sm:p-7',
+            'relative flex h-full flex-col rounded-3xl border bg-white p-6 sm:p-7',
             plan.variant === 'featured'
               ? 'border-blue-600 shadow-[0_20px_50px_-20px_rgba(37,99,235,0.35)]'
               : 'border-slate-200/80 shadow-soft',
           ]" v-motion :initial="{ opacity: 0, y: 20 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 100, duration: 500 } }">
-            <span v-if="plan.variant === 'featured'"
+            <!-- <span v-if="plan.variant === 'featured'"
               class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
               Premium
-            </span>
-
+            </span> -->
             <div class="flex items-center gap-3">
-              <span :class="[
-                'grid h-11 w-11 shrink-0 place-items-center rounded-xl ring-1',
-                plan.variant === 'featured'
-                  ? 'bg-blue-600 text-white ring-blue-500/30'
-                  : 'bg-slate-100 text-slate-600 ring-slate-200',
-              ]">
-                <Icon :icon="plan.iconMdi" class="h-5 w-5" aria-hidden="true" />
-              </span>
               <div>
                 <h3 class="font-display text-lg font-bold text-slate-900">{{ plan.name }}</h3>
                 <p class="text-[13px] text-slate-500">{{ plan.tagline }}</p>
@@ -45,6 +36,7 @@ import { tutorPlans, tutorPlansSection } from '~/data/tutors'
             <p class="mt-5 font-display text-3xl font-extrabold text-slate-900">
               {{ plan.price }}
               <span v-if="plan.priceNote" class="ml-1 text-sm font-medium text-slate-500">{{ plan.priceNote }}</span>
+              <span v-else class="text-lg font-bold opacity-80 line-through">&nbsp;&nbsp;₹ 1000 / Year&nbsp;</span>
             </p>
 
             <p class="mt-3 text-sm leading-relaxed text-slate-600">{{ plan.description }}</p>

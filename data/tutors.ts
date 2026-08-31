@@ -864,7 +864,7 @@ export const tutorSupport = {
     },
     {
       title: 'Student Information',
-      description: 'Access relevant student and assignment information.',
+      description: 'Access relevant student details, assignments, and academic information.',
       iconMdi: 'mdi:account-school-outline',
     },
     {

@@ -122,77 +122,108 @@ export const howWeWorkSteps = [
   {
     no: '01',
     title: 'Understand',
-    description: 'Understand the requirement, responsibility, and expected outcome.',
+    description: 'Clarify the requirement, responsibility, and the expected outcome.',
   },
   {
     no: '02',
     title: 'Plan',
-    description: 'Create a structured approach based on organisational processes and priorities.',
+    description: 'Create a structured plan from organisational processes and priorities.',
   },
   {
     no: '03',
     title: 'Execute',
-    description: 'Complete responsibilities with discipline, accuracy, and professional ownership.',
+    description: 'Complete work with discipline, accuracy, and professional ownership.',
   },
   {
     no: '04',
     title: 'Monitor',
-    description: 'Track performance, timelines, quality, and key performance indicators.',
+    description: 'Track performance, timelines, quality, and progress on key indicators.',
   },
   {
     no: '05',
     title: 'Improve',
-    description: 'Identify gaps, learn from outcomes, and continuously improve the process.',
+    description: 'Identify gaps, learn from results, and continuously improve the process.',
   },
 ] as const
 
 export const cultureSection = {
-  kicker: 'Our Work Culture',
-  title: 'Structure with flexibility',
+  kicker: 'Life at Indian Mentors',
+  title: 'Life at Indian Mentors',
   classes: '!px-0 !py-0',
-  description: 'We believe professionals perform better when expectations are clear.',
-  expectTitle: 'What you can expect',
-  benefitsTitle: 'Workplace benefits',
-  expect: [
+  subtitle: 'Meet our team building better learning experiences.',
+  storyTitle: "We're building a structured academic ecosystem",
+  storyBody:
+    'Our Bhilai team works across admissions, academics, operations, and technology — with clear roles, professional discipline, and a shared focus on students, parents, and tutors.',
+  highlights: [
     {
-      iconMdi: 'mdi:account-tie-outline',
-      title: 'Clear Roles',
-      description: 'Defined responsibilities and reporting structures.',
+      iconMdi: 'mdi:account-group-outline',
+      text: 'Collaborative team based in Bhilai, Chhattisgarh',
     },
     {
-      iconMdi: 'mdi:file-document-outline',
-      title: 'Process Discipline',
-      description: 'Standardised workflows and documented procedures.',
+      iconMdi: 'mdi:sitemap-outline',
+      text: 'Clear roles, defined processes, and accountability',
     },
     {
-      iconMdi: 'mdi:shield-check-outline',
-      title: 'Accountability',
-      description: 'Ownership of responsibilities, targets, and outcomes.',
+      iconMdi: 'mdi:lightbulb-on-outline',
+      text: 'Continuous learning and career growth',
     },
     {
-      iconMdi: 'mdi:message-text-outline',
-      title: 'Communication',
-      description: 'Professional and transparent internal communication.',
-    },
-    {
-      iconMdi: 'mdi:refresh',
-      title: 'Continuous Improvement',
-      description: 'Regular review of processes, performance, and professional development.',
+      iconMdi: 'mdi:school-outline',
+      text: 'Direct impact on students and families',
     },
   ],
-  benefits: [
-    'Competitive salary structure',
-    'Performance-based incentives where applicable',
-    'Structured training and onboarding support',
-    'Professional and organised work environment',
-    'Opportunities for career advancement',
-    'Recognition for high-performing team members',
+  featured: {
+    src: '/assets/img/contact/im-building.png',
+    alt: 'Indian Mentors office building in Bhilai',
+    caption: 'Our Bhilai office',
+  },
+  galleryTitle: 'Culture & workplace',
+  galleryDescription: 'A look at where our teams work, collaborate, and grow together.',
+  gallery: [
+    {
+      src: '/assets/img/contact/suyamall.png',
+      alt: 'Indian Mentors corporate campus',
+      caption: 'Corporate campus',
+      description: 'A professional environment for academic operations.',
+    },
+    {
+      src: '/assets/img/careers/professional-growth.webp',
+      alt: 'Team members in a professional training session',
+      caption: 'Team collaboration',
+      description: 'Learning together through structured training and support.',
+    },
+    {
+      src: '/assets/img/why-choose/academic-ecosystem.webp',
+      alt: 'Academic operations supporting personalised tutoring',
+      caption: 'Academic operations',
+      description: 'Every process supports a better learning experience.',
+    },
+  ],
+  values: [
+    {
+      iconMdi: 'mdi:account-group-outline',
+      title: 'Collaborative spirit',
+      description: 'We work across departments and celebrate progress as one team.',
+      accent: 'blue' as const,
+    },
+    {
+      iconMdi: 'mdi:lightbulb-on-outline',
+      title: 'Learning mindset',
+      description: 'Stay open to feedback, training, and continuous improvement.',
+      accent: 'violet' as const,
+    },
+    {
+      iconMdi: 'mdi:school-outline',
+      title: 'Student-first impact',
+      description: 'Every operational decision ultimately supports a better educational experience.',
+      accent: 'emerald' as const,
+    },
   ],
 } as const
 
 export const growthSection = {
   kicker: 'Professional Growth',
-  title: 'Learn. Perform. Grow.',
+  title: 'Learn. <span class="text-gradient-brand">Perform</span>. Grow.',
   classes: '!px-0 !py-0',
   description:
     'We aim to provide professionals with opportunities to develop through structured training, practical learning, and performance-based progression.',
@@ -268,22 +299,23 @@ export const growthSection = {
 
 export const standardsSection = {
   kicker: 'Our Professional Standards',
-  title: 'What we value in every role',
+  title: 'What we value in  <span class="text-gradient-brand">every role</span>',
   classes: '!px-0 !py-0',
   items: [
     { iconMdi: 'mdi:scale-balance', title: 'Integrity', description: 'Do the right thing, even when nobody is watching.' },
-    { iconMdi: 'mdi:checkbox-marked-circle-outline', title: 'Accountability', description: 'Take ownership of responsibilities and outcomes.' },
+    { iconMdi: 'mdi:checkbox-marked-circle-outline', title: 'Accountability', description: 'Own your work and its outcomes.' },
     { iconMdi: 'mdi:account-tie-outline', title: 'Professionalism', description: 'Communicate respectfully and work with discipline.' },
-    { iconMdi: 'mdi:clock-check-outline', title: 'Reliability', description: 'Be dependable in commitments, timelines, and execution.' },
-    { iconMdi: 'mdi:head-lightbulb-outline', title: 'Learning Mindset', description: 'Stay open to feedback, training, and continuous improvement.' },
-    { iconMdi: 'mdi:school-outline', title: 'Student-First Thinking', description: 'Understand that every operational decision ultimately supports a better educational experience.' },
-    { iconMdi: 'mdi:account-group-outline', title: 'Teamwork', description: 'Collaborate across departments to achieve common goals.' },
+    { iconMdi: 'mdi:clock-check-outline', title: 'Reliability', description: 'Keep promises and meet every deadline.' },
+    { iconMdi: 'mdi:head-lightbulb-outline', title: 'Learning Mindset', description: 'Stay open to feedback, training, and growth.' },
+    { iconMdi: 'mdi:school-outline', title: 'Student-First Thinking', description: 'Put students first in every decision we make.' },
+    { iconMdi: 'mdi:account-group-outline', title: 'Teamwork', description: 'Work across teams to achieve shared goals.' },
+    { iconMdi: 'mdi:shield-lock-outline', title: 'Confidentiality', description: 'Protect student, parent, and company information.' },
   ],
 } as const
 
 export const hiringProcessSection = {
   kicker: 'Our Hiring Process',
-  title: 'How our hiring process works',
+  title: 'How our hiring  <span class="text-gradient-brand">process works</span>',
   classes: '!px-0 !py-0',
   description:
     'A clear, structured path from application to onboarding — designed to assess fit, communication, and professional readiness.',
@@ -369,14 +401,14 @@ export const whoCanApplySection = {
 } as const
 
 export const jobsSection = {
-  kicker: 'Open Roles',
-  title: 'Open Roles',
+  kicker: "We're Hiring",
+  title: 'Find your next <span class="text-gradient-brand">role</span>',
   classes: '!px-0 !py-0',
-  locationLine: 'Join our team in Bhilai, Chhattisgarh.',
-  applyLine: 'To apply, send your resume to',
+  description: `Openings across admissions, academics, operations, HR, finance, marketing, and technology — including Bhilai-based roles and field positions across India. Apply from a listing below, or send your resume to <a href="${careerResumeMailto()}" class="font-semibold text-blue-700 underline decoration-blue-200 underline-offset-2 hover:text-blue-800">${CAREERS_EMAIL}</a>.`,
   searchPlaceholder: 'Search jobs by role, department, or keyword…',
   emptyTitle: 'No matching positions right now',
   emptyDescription: 'Try another filter, or send us your resume so our recruitment team can consider you for future openings.',
+  applyLabel: 'Apply Now',
 } as const
 
 export const jobFilterOptions = {
@@ -493,11 +525,7 @@ export const careersFinalCta = {
     href: careerResumeMailto(),
     iconMdi: 'mdi:file-upload-outline',
   },
-  tertiaryCta: {
-    label: 'Contact Recruitment Team',
-    href: `tel:${CAREERS_PHONE_TEL}`,
-    iconMdi: 'mdi:phone-outline',
-  },
+
   closing: 'Indian Mentors — Personalised Education. Trusted Tutors. Professional Opportunities.',
 } as const
 

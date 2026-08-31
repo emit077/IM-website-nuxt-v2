@@ -22,7 +22,7 @@ export type ComparisonRow = {
 
 export const registrationHero = {
   badge: 'Tutor Registration Plans',
-  title: 'Choose the Right Path to Start',
+  title: 'Choose the Right Path<br/>to Start',
   subtitle: '',
   description:
     'At Indian Mentors, tutors can choose a registration option based on their teaching goals, experience, and level of platform engagement. Whether you are exploring tutoring opportunities for the first time or looking to build a stronger professional presence, our plans are designed to provide a structured pathway into personalised tutoring.',
@@ -730,7 +730,7 @@ export const registrationBannerCta = {
   supporting: 'Personalised Education • Trusted Tutors • Professional Opportunities',
   ctas: [
     {
-      label: 'Register → Verify → Teach → Earn → Grow',
+      label: 'Join as a Tutor',
       href: externalLinks.tutorRegistration,
       iconMdi: 'mdi:rocket-launch-outline',
       primary: true,

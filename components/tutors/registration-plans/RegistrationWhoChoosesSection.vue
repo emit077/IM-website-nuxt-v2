@@ -15,10 +15,6 @@ import { whoChoosesSection } from '~/data/tutor-registration-plans'
       <div class="mt-10 grid gap-5 lg:grid-cols-2 lg:gap-6">
         <article class="flex flex-col rounded-[1.75rem] border border-slate-200/80 bg-white p-8 shadow-soft sm:p-10"
           v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
-          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100"
-            aria-hidden="true">
-            <Icon :icon="whoChoosesSection.free.iconMdi" class="h-6 w-6" />
-          </span>
           <h3 class="mt-5 font-display text-2xl font-extrabold text-slate-900">{{ whoChoosesSection.free.title }}</h3>
           <ul class="mt-6 flex-1 space-y-3" role="list">
             <li v-for="item in whoChoosesSection.free.items" :key="item"
@@ -37,14 +33,10 @@ import { whoChoosesSection } from '~/data/tutor-registration-plans'
               aria-hidden="true" />
           </a>
         </article>
-
         <article
           class="flex flex-col rounded-[1.75rem] bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 p-8 text-white shadow-[0_24px_60px_-24px_rgba(29,78,216,0.5)] sm:p-10"
           v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80, duration: 450 } }">
-          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white/15 text-white" aria-hidden="true">
-            <Icon :icon="whoChoosesSection.premium.iconMdi" class="h-6 w-6" />
-          </span>
           <h3 class="mt-5 font-display text-2xl font-extrabold">{{ whoChoosesSection.premium.title }}</h3>
           <ul class="mt-6 flex-1 space-y-3" role="list">
             <li v-for="item in whoChoosesSection.premium.items" :key="item"

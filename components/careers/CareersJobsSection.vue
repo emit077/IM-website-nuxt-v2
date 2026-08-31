@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import { CAREERS_EMAIL, careerResumeMailto, jobsSection, jobFilterOptions } from '~/data/careers'
-import { careerJobs, jobPath, type CareerJob } from '~/data/career-jobs'
+import { jobsSection, jobFilterOptions } from '~/data/careers'
+import { careerJobs, jobApplyHref, jobPath, type CareerJob } from '~/data/career-jobs'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 
 const searchQuery = ref('')
 const department = ref('all')
@@ -57,36 +58,23 @@ const selectClass =
 </script>
 
 <template>
-  <section id="open-positions" class="relative scroll-mt-24 overflow-hidden bg-white section-py" aria-labelledby="open-positions-heading">
+  <section id="open-positions" class="relative scroll-mt-24 overflow-hidden bg-white section-py"
+    aria-labelledby="open-positions-heading">
     <div class="container-page relative">
-      <div class="max-w-3xl">
-        <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-blue-800">{{ jobsSection.kicker }}</p>
-        <h2 id="open-positions-heading" class="font-display mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-          {{ jobsSection.title }}
-        </h2>
-        <p class="mt-4 text-[15px] leading-relaxed text-slate-600">
-          {{ jobsSection.locationLine }}
-          {{ jobsSection.applyLine }}
-          <a :href="careerResumeMailto()" class="font-semibold text-blue-700 underline decoration-blue-200 underline-offset-2 hover:text-blue-800">
-            {{ CAREERS_EMAIL }}
-          </a>
-        </p>
+      <div class="max-w-6xl">
+        <CardHeader heading-id="open-positions-heading" :badge="jobsSection.kicker" :title="jobsSection.title"
+          :description="jobsSection.description" :classes="jobsSection.classes" align="left" />
+
       </div>
 
       <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
         <div class="relative sm:col-span-2 lg:col-span-1">
-          <Icon
-            icon="mdi:magnify"
+          <Icon icon="mdi:magnify"
             class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
-            aria-hidden="true"
-          />
-          <input
-            v-model="searchQuery"
-            type="search"
-            :placeholder="jobsSection.searchPlaceholder"
+            aria-hidden="true" />
+          <input v-model="searchQuery" type="search" :placeholder="jobsSection.searchPlaceholder"
             class="w-full rounded-lg border border-slate-200 bg-white py-2 pl-9 pr-3 text-[13px] text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
-            aria-label="Search open positions"
-          />
+            aria-label="Search open positions" />
         </div>
         <select v-model="department" :class="selectClass" aria-label="Filter by department">
           <option v-for="option in jobFilterOptions.departments" :key="option.value" :value="option.value">
@@ -110,30 +98,23 @@ const selectClass =
         </select>
       </div>
 
-      <button
-        v-if="hasActiveFilters"
-        type="button"
+      <button v-if="hasActiveFilters" type="button"
         class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 transition hover:text-blue-800"
-        @click="resetFilters"
-      >
+        @click="resetFilters">
         <Icon icon="mdi:filter-off-outline" class="h-4 w-4" aria-hidden="true" />
         Clear search &amp; filters
       </button>
 
       <ul v-if="filteredJobs.length" class="mt-8 space-y-4" role="list">
-        <li
-          v-for="(job, i) in filteredJobs"
-          :key="job.slug"
-          v-motion
-          :initial="{ opacity: 0, y: 12 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 20 + i * 40, duration: 360 } }"
-        >
-          <NuxtLink
-            :to="jobPath(job.slug)"
-            class="group block rounded-2xl border border-slate-200 bg-white p-5 no-underline transition duration-300 hover:border-blue-200 hover:shadow-[0_12px_32px_-18px_rgba(15,23,42,0.2)] sm:p-6"
-          >
+        <li v-for="(job, i) in filteredJobs" :key="job.slug" v-motion :initial="{ opacity: 0, y: 12 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 20 + i * 40, duration: 360 } }">
+          <article
+            class="group relative rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:border-blue-200 hover:shadow-[0_12px_32px_-18px_rgba(15,23,42,0.2)] sm:p-6">
+            <NuxtLink :to="jobPath(job.slug)" class="absolute inset-0 z-[1] rounded-2xl"
+              :aria-label="`View ${job.title} details`" />
             <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <h3 class="font-display text-lg font-bold leading-snug text-slate-900 group-hover:text-blue-800 sm:text-xl">
+              <h3
+                class="font-display text-lg font-bold leading-snug text-slate-900 group-hover:text-blue-800 sm:text-xl">
                 {{ job.title }}
               </h3>
               <div class="flex flex-wrap items-center gap-2 sm:justify-end sm:pt-0.5">
@@ -161,16 +142,21 @@ const selectClass =
               </span>
             </div>
 
-            <ul v-if="job.tags.length" class="mt-4 flex flex-wrap gap-2" role="list">
-              <li
-                v-for="tag in job.tags"
-                :key="tag"
-                class="rounded-full bg-lime-300 px-3 py-1 text-[12px] font-semibold text-slate-900"
-              >
-                {{ tag }}
-              </li>
-            </ul>
-          </NuxtLink>
+            <div class="mt-4 flex flex-wrap items-end justify-between gap-3">
+              <ul v-if="job.tags.length" class="flex flex-wrap gap-2" role="list">
+                <li v-for="tag in job.tags" :key="tag"
+                  class="rounded-full bg-lime-300 px-3 py-1 text-[12px] font-semibold text-slate-900">
+                  {{ tag }}
+                </li>
+              </ul>
+              <a :href="jobApplyHref(job)"
+                class="relative z-10 ml-auto inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-blue-700 px-4 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-800"
+                :aria-label="`Apply for ${job.title}`" @click.stop>
+                {{ jobsSection.applyLabel }}
+                <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+          </article>
         </li>
       </ul>
 

@@ -9,7 +9,7 @@ import { standardsSection } from '~/data/careers'
     <div class="container-page relative">
       <CardHeader heading-id="standards-heading" :badge="standardsSection.kicker" :title="standardsSection.title" :classes="standardsSection.classes" />
 
-      <ul class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
+      <ul class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4" role="list">
         <li
           v-for="(item, i) in standardsSection.items"
           :key="item.title"

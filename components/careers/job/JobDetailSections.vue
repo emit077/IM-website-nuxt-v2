@@ -184,7 +184,7 @@ defineProps<{ job: CareerJob }>()
       </div>
     </section>
 
-    <section id="eligibility" class="section-surface-muted section-py" aria-labelledby="job-eligibility-heading">
+    <!-- <section id="eligibility" class="section-surface-muted section-py" aria-labelledby="job-eligibility-heading">
       <div class="container-page">
         <div class="mx-auto max-w-4xl">
           <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Eligibility &amp; Required Skills
@@ -210,7 +210,7 @@ defineProps<{ job: CareerJob }>()
           </ul>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section id="benefits" class="bg-white section-py" aria-labelledby="job-benefits-heading">
       <div class="container-page">

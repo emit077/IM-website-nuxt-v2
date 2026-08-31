@@ -30,9 +30,8 @@ function checkSuffix(value: string) {
   <section id="plan-comparison" class="relative scroll-mt-28 bg-white section-py"
     aria-labelledby="plan-comparison-heading">
     <div class="container-page">
-      <CardHeader heading-id="plan-comparison-heading" :badge="comparisonSection.badge"
-        :title="comparisonSection.title" :description="comparisonSection.description"
-        :classes="comparisonSection.classes" />
+      <CardHeader heading-id="plan-comparison-heading" :badge="comparisonSection.badge" :title="comparisonSection.title"
+        :description="comparisonSection.description" :classes="comparisonSection.classes" />
 
       <div class="mt-8 flex justify-center" role="tablist" aria-label="Plan comparison views">
         <div class="inline-flex rounded-2xl border border-slate-200/80 bg-cream-50/80 p-1">
@@ -48,8 +47,8 @@ function checkSuffix(value: string) {
         </div>
       </div>
 
-      <div class="relative mt-8 overflow-hidden rounded-[20px] border border-slate-200/90 bg-white shadow-soft"
-        v-motion :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
+      <div class="relative mt-8 overflow-hidden rounded-[20px] border border-slate-200/90 bg-white shadow-soft" v-motion
+        :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
         <div class="overflow-x-auto">
           <table class="w-full min-w-[640px] text-left text-sm">
             <thead>
@@ -109,19 +108,16 @@ function checkSuffix(value: string) {
 
         <div class="relative border-t border-slate-100 bg-slate-50/80 px-5 py-4 sm:px-6">
           <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <p class="flex items-start gap-2.5 text-[13px] leading-relaxed text-slate-600 sm:text-sm">
-              <Icon icon="mdi:information-outline" class="mt-0.5 h-4 w-4 shrink-0 text-blue-600" aria-hidden="true" />
-              {{ comparisonSection.footnote }}
-            </p>
-            <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
-              <a :href="comparisonSection.freeCta.href"
-                class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-[13px] font-semibold text-slate-800 transition hover:-translate-y-0.5 hover:border-blue-400 hover:text-blue-700">
-                {{ comparisonSection.freeCta.label }}
-              </a>
-              <a :href="comparisonSection.premiumCta.href"
-                class="inline-flex items-center justify-center rounded-xl bg-blue-700 px-4 py-2.5 text-[13px] font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-800">
-                {{ comparisonSection.premiumCta.label }}
-              </a>
+
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-start">
+              <div>
+                <Icon icon="mdi:information-outline" class="mt-0.5 h-6 w-6 shrink-0 text-blue-600" aria-hidden="true" />
+              </div>
+              <div>
+                <p class="flex items-start gap-2.5 text-[13px] leading-relaxed text-slate-600 sm:text-sm">
+                  {{ comparisonSection.footnote }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
