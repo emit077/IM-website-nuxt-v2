@@ -3,6 +3,7 @@ import type { Component } from 'vue'
 import type { TrustIndicatorItem } from '~/components/ui/TrustIndicatorsLayout.vue'
 import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
+import TrustIndicatorsLayout from '~/components/ui/TrustIndicatorsLayout.vue'
 
 export interface HeroContent {
     badge?: string
@@ -70,4 +71,7 @@ defineProps<{
                 class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-cream-50" />
         </div>
     </section>
+    <div class=" container-page">
+        <TrustIndicatorsLayout :items="heroContent.trustStats" />
+    </div>
 </template>

@@ -140,46 +140,80 @@ export const tutorWhoCanJoin = {
     description:
       'Join if you have relevant academic knowledge, teaching ability, and a commitment to student-focused mentoring.',
   },
+  groups: [
+    {
+      id: 'independent',
+      label: 'Independent tutors',
+      hint: 'Teach through local, home, online, or hybrid formats.',
+      accent: 'blue' as const,
+    },
+    {
+      id: 'faculty',
+      label: 'School & college faculty',
+      hint: 'Add individual tutoring alongside your teaching work.',
+      accent: 'indigo' as const,
+    },
+    {
+      id: 'professionals',
+      label: 'Professionals & students',
+      hint: 'Share subject expertise while you work or study.',
+      accent: 'amber' as const,
+    },
+  ],
   items: [
     {
       title: 'Subject Matter Experts',
       description: 'Experts in academic subjects or specialised teaching domains.',
       iconMdi: 'mdi:human-male-board',
+      group: 'independent',
     },
     {
       title: 'Local Tuition Teachers',
       description: 'Personalised academic support within local communities.',
       iconMdi: 'mdi:home-account',
+      group: 'independent',
     },
     {
       title: 'Private Home & Online Tutors',
       description: 'Teach through home, online, or hybrid formats.',
       iconMdi: 'mdi:laptop',
+      group: 'independent',
     },
     {
       title: 'School Teachers',
       description: 'Nursery to Class XII teachers seeking extra tutoring.',
       iconMdi: 'mdi:school-outline',
-    },
-    {
-      title: 'Working Professionals',
-      description: 'Subject experts with teaching experience who mentor.',
-      iconMdi: 'mdi:briefcase-outline',
+      group: 'faculty',
     },
     {
       title: 'Coaching Faculty',
       description: 'Individual tutoring alongside professional teaching work.',
       iconMdi: 'mdi:book-open-page-variant-outline',
+      group: 'faculty',
     },
     {
       title: 'College & University Educators',
       description: 'Educators supporting higher-level academic subjects.',
       iconMdi: 'mdi:school',
+      group: 'faculty',
+    },
+    {
+      title: 'Working Professionals',
+      description: 'Subject experts with teaching experience who mentor.',
+      iconMdi: 'mdi:briefcase-outline',
+      group: 'professionals',
     },
     {
       title: 'College Students',
       description: 'Strong subject expertise that meets eligibility to join.',
       iconMdi: 'mdi:account-school-outline',
+      group: 'professionals',
+    },
+    {
+      title: 'Retired Teachers',
+      description: 'Experienced educators who continue mentoring after their teaching career.',
+      iconMdi: 'mdi:account-tie-outline',
+      group: 'professionals',
     },
   ],
 }
@@ -190,7 +224,7 @@ export const tutorOpportunities = {
   description:
     'Explore tutoring opportunities based on relevant factors such as subject expertise, academic level, curriculum, location, teaching mode, availability, and experience.',
   classes: '!px-0 !py-0 mx-auto max-w-4xl',
-  cta: { label: 'Browse Student Opportunities', href: '#browse-students' },
+  cta: { label: 'Discover Teaching Opportunities', href: '/services' },
   items: [
     {
       title: 'Home Tuition',
@@ -261,10 +295,34 @@ export const tutorSubjects = {
   description:
     'Indian Mentors supports tutoring requirements across school education, higher education, international curricula, competitive examinations, and selected specialised learning areas.',
   classes: '!px-0 !py-0 mx-auto max-w-4xl',
-  cta: { label: 'Explore Teaching Requirements', href: '/academic-coverage' },
-  ctaTile: {
-    title: 'Not sure where you fit?',
-    description: 'See the full academic coverage and find the requirements that match your expertise.',
+  cta: { label: 'Explore Academic Coverage', href: '/academic-coverage' },
+  coverageTile: {
+    badge: 'Boards & Courses',
+    title: 'Boards, curricula & courses',
+    description: 'National boards, international programmes, and selected entrance courses.',
+    boardsLabel: 'Boards',
+    boardsHref: '/academic-coverage#boards-covered',
+    coursesLabel: 'Courses',
+    coursesHref: '/academic-coverage#exam-preparation',
+    boards: [
+      { id: 'cbse', name: 'CBSE', logo: '/assets/img/boards/cbse.png' },
+      { id: 'icse', name: 'ICSE', logo: '/assets/img/boards/icse.png' },
+      { id: 'ib', name: 'IB', logo: '/assets/img/boards/Ib.png' },
+      { id: 'cambridge', name: 'Cambridge', logo: '/assets/img/boards/cambridge.png' },
+      { id: 'nios', name: 'NIOS', logo: '/assets/img/boards/nios.png' },
+      { id: 'state', name: 'State Boards', logo: '/assets/img/boards/state-boards.png' },
+      { id: 'jee-neet', name: 'JEE / NEET', logo: '/assets/img/boards/NTC.png' },
+    ],
+    courses: [
+      { label: 'JEE', href: '/academic-coverage#competitive' },
+      { label: 'NEET', href: '/academic-coverage#competitive' },
+      { label: 'CUET', href: '/academic-coverage#exam-preparation' },
+      { label: 'CA Foundation', href: '/academic-coverage#exam-preparation' },
+      { label: 'IB / IGCSE', href: '/academic-coverage#boards-covered' },
+      { label: 'Cambridge', href: '/academic-coverage#boards-covered' },
+      { label: 'Undergraduate', href: '/academic-coverage#undergraduate' },
+      { label: 'Postgraduate', href: '/academic-coverage#postgraduate' },
+    ],
   },
   items: [
     {
@@ -296,18 +354,6 @@ export const tutorSubjects = {
       subjects: 'Computer Science • Programming • Information Technology • Digital Skills',
       iconMdi: 'mdi:code-tags',
       image: '/assets/img/tutor-subjects/technology.webp',
-    },
-    {
-      title: 'Competitive & Entrance Preparation',
-      subjects: 'JEE • NEET • CUET • CA Foundation • Selected Entrance Examinations',
-      iconMdi: 'mdi:trophy-outline',
-      image: '/assets/img/tutor-subjects/competitive-exams.webp',
-    },
-    {
-      title: 'International Curricula',
-      subjects: 'IB • IGCSE • Cambridge • Other Recognised International Curricula',
-      iconMdi: 'mdi:web',
-      image: '/assets/img/tutor-subjects/international-curricula.webp',
     },
   ],
 }
@@ -470,7 +516,7 @@ export const tutorPlansSection = {
   classes: '!px-0 !py-0',
   footnote:
     'Registration plans, features, eligibility, and applicable charges are subject to the current platform terms.',
-  cta: { label: 'Compare Free vs Premium in detail', href: '/tutors/registration-plans' },
+  cta: { label: 'Compare Free vs Premium', href: '/tutors/registration-plans' },
 }
 
 export const hiringSteps: HiringStep[] = [
@@ -638,10 +684,11 @@ export const erpSection = {
     'The Indian Mentors tutor dashboard is designed to bring key teaching and engagement activities into one organised workspace.',
   classes: '!px-0 !py-0',
   cta: { label: 'Explore Tutor Dashboard', href: externalLinks.login },
+  secondaryCta: { label: 'Find a Student Near Your Location', href: '#browse-students' },
   image: '/assets/img/tutors/tutor-dashboard.webp',
   imageAlt: 'Sample Indian Mentors tutor dashboard on mobile, showing sessions, wallet, and teaching activity',
   previewUrl: 'tutor.indianmentors.com',
-  showcaseTitle: 'One workspace for your entire teaching day',
+  showcaseTitle: 'One Workspace for Your Teaching Journey',
   mobilePreview: {
     greeting: 'Welcome back',
     tutorName: 'Amit Kumar',
@@ -737,7 +784,7 @@ export const tutorPolicySection = {
   title: 'Be the Mentor Students Can <span class="text-gradient-brand">Trust</span>',
   description:
     'Every tutor associated with Indian Mentors is expected to maintain professional, ethical, respectful, and student-focused standards.',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  classes: '!px-0 !py-0 mx-auto ',
   principle: 'Professional Teaching • Responsible Mentoring • Student-First Approach',
   principles: [
     { iconMdi: 'mdi:human-male-board', label: 'Professional Teaching' },
@@ -793,13 +840,28 @@ export const earningsSection = {
     },
   ],
   dashboardItems: [
-    'Session-Based Earnings Tracking',
+    'Tutor Dashboard Provides',
+    'Session Earnings',
     'Wallet Balance',
     'Earnings History',
-    'Payout Records',
-    'Session Records',
-    'Applicable Withdrawal Information',
+    'Payout History',
+    'Session History',
+    'Withdrawal Details',
   ],
+  snapshot: {
+    badge: 'Live tracking',
+    title: 'Session to payout, in one view',
+    description: 'Approved attendance credits your wallet. Withdrawals follow the applicable payout policy.',
+    stages: [
+      { iconMdi: 'mdi:clipboard-check-outline', label: 'Session' },
+      { iconMdi: 'mdi:wallet-plus-outline', label: 'Wallet' },
+      { iconMdi: 'mdi:bank-transfer', label: 'Account' },
+    ],
+    points: [
+      { iconMdi: 'mdi:calendar-sync-outline', label: 'Flexible payout cycles' },
+      { iconMdi: 'mdi:shield-lock-outline', label: 'Secure payout records' },
+    ],
+  },
 }
 
 export const payoutFeatures = [

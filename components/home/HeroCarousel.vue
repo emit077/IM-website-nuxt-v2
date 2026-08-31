@@ -153,9 +153,10 @@ const heroScreens: HeroContent[] = [
       </template>
     </CarouselLayout>
 
-    <div class="hero-carousel-ticker mb-10 mt-[-20px]">
+
+    <!-- <div class="hero-carousel-ticker mb-10 mt-[-20px]">
       <HeroTickerStrip :items="heroTickerItems" aria-label="Platform highlights" />
-    </div>
+    </div> -->
   </div>
 </template>
 

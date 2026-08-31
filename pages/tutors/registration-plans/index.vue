@@ -35,7 +35,7 @@ useSeoMeta({
     <RegistrationComparisonSection />
     <!-- <RegistrationFreePlanSection /> -->
     <RegistrationPremiumPlanSection />
-    <!-- <RegistrationWhyPremiumSection /> -->
+    <RegistrationWhyPremiumSection />
     <RegistrationWhoChoosesSection />
     <!-- <RegistrationJourneySection /> -->
     <!-- <RegistrationMatchingSection /> -->

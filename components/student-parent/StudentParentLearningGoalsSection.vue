@@ -60,7 +60,7 @@ import { spLearningGoals } from '~/data/student-parent'
                   </h3>
                   <p
                     class="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-[0.08em] leading-none text-blue-800 ring-1 ring-blue-100">
-                    Goal: {{ item.goal }}
+                    {{ item.goal }}
                   </p>
                 </div>
                 <p class="mt-2 text-[13.5px] leading-relaxed text-slate-600">

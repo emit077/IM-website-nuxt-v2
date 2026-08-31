@@ -21,8 +21,8 @@ const accentClasses: Record<Accent, { tile: string; text: string }> = {
     class="relative scroll-mt-20 overflow-hidden bg-gradient-to-b from-slate-50 via-[#f4f7fc] to-[#eef3fb] section-py"
     aria-labelledby="tutor-earnings-heading">
     <div class="container-page relative">
-      <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
-        <div class="relative lg:col-span-5">
+      <div class="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16">
+        <div class="relative flex flex-col lg:col-span-5">
           <div aria-hidden="true"
             class="pointer-events-none absolute -left-2 -top-4 hidden h-20 w-24 opacity-50 sm:block lg:-left-6 lg:-top-6"
             style="background-image: radial-gradient(#a5b4fc 1px, transparent 1px); background-size: 12px 12px;" />
@@ -32,7 +32,7 @@ const accentClasses: Record<Accent, { tile: string; text: string }> = {
             :classes="earningsSection.classes" />
 
           <div class="mt-6">
-            <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
+            <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400 my-5">
               {{ earningsSection.payoutTitle }}
             </p>
             <ul class="mt-3 space-y-2" role="list">
@@ -51,10 +51,10 @@ const accentClasses: Record<Accent, { tile: string; text: string }> = {
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 280 } }">
             <ActionBtn variant="primary" :label="earningsSection.cta.label" :href="earningsSection.cta.href" />
           </div>
-
           <p class="mt-4 max-w-md text-[12.5px] leading-relaxed text-slate-500">
             {{ earningsSection.footnote }}
           </p>
+
         </div>
 
         <div class="relative lg:col-span-7">
@@ -64,11 +64,11 @@ const accentClasses: Record<Accent, { tile: string; text: string }> = {
           <ol class="grid grid-cols-1 gap-3.5 sm:grid-cols-2 sm:gap-4" role="list"
             :aria-label="earningsSection.flowTitle">
             <li v-for="(step, i) in earningsSection.flow" :key="step.no"
-              :class="i === earningsSection.flow.length - 1 ? 'sm:col-span-2' : ''" v-motion
+              :class="i === earningsSection.flow.length - 1 ? 'sm:col-span-2' : 'sm:col-span-2'" v-motion
               :initial="{ opacity: 0, y: 18 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 60 + i * 70, duration: 420 } }">
               <article :class="[
-                'timeline-card-surface group relative flex h-full items-start gap-3 overflow-hidden rounded-2xl border p-4 sm:gap-4 sm:p-5',
+                'timeline-card-surface group relative flex h-full items-start gap-3 overflow-hidden rounded-2xl border p-4 sm:gap-4 sm:p-4',
                 i === 0
                   ? 'timeline-card-surface--featured border-blue-500/30 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-700 shadow-[0_18px_40px_-18px_rgba(37,99,235,0.55)]'
                   : 'border-slate-200/80 bg-white shadow-[0_8px_24px_-14px_rgba(15,23,42,0.18)]',
@@ -185,19 +185,56 @@ const accentClasses: Record<Accent, { tile: string; text: string }> = {
   transform: scale(1.08);
 }
 
+.snapshot-card {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.snapshot-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 4px 12px -2px rgba(15, 23, 42, 0.08),
+    0 22px 48px -16px rgba(37, 99, 235, 0.28);
+}
+
+.earnings-pulse {
+  animation: earnings-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes earnings-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.45;
+    transform: scale(0.72);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
   .timeline-card-surface,
-  .timeline-card-icon {
+  .timeline-card-icon,
+  .snapshot-card {
     transition: none;
   }
 
-  .timeline-card-surface:hover {
+  .timeline-card-surface:hover,
+  .snapshot-card:hover {
     transform: none;
   }
 
   .timeline-card-surface:hover .timeline-card-icon {
     transform: none;
+  }
+
+  .earnings-pulse {
+    animation: none;
   }
 }
 </style>

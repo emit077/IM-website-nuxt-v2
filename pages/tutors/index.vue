@@ -61,13 +61,13 @@ useSeoMeta({
     <TutorPlansSection />
     <TutorEarningsSection />
     <TutorErpSection />
-    <TutorSupportSection />
-    <TutorComplianceSection />
+    <!-- <TutorSupportSection /> -->
     <TutorPolicySection />
+    <TutorComplianceSection />
     <TutorTrainingSection />
     <TutorReferralSection />
     <!-- <TutorSuccessJourneySection /> -->
-    <TutorWhyChooseSection />
+    <!-- <TutorWhyChooseSection /> -->
     <TutorResourcesSection />
     <UiCTASection heading-id="tutor-banner-heading" surface-class="section-surface-muted"
       badge-icon-mdi="mdi:human-male-board" :title="tutorsBannerCta.title" :description="tutorsBannerCta.description"

@@ -2,78 +2,82 @@
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
-import { institutionalSupport, whyChooseAdvantages, whyInstitutionsSection } from '~/data/institutions'
+import { whyChooseReasons, whyCommitment, whyInstitutionsSection } from '~/data/institutions'
+
+const accentClasses: Record<
+  (typeof whyChooseReasons)[number]['accent'],
+  { tile: string; bar: string }
+> = {
+  blue: { tile: 'bg-blue-50 text-blue-600 ring-blue-100', bar: 'bg-gradient-to-r from-blue-500 to-indigo-500' },
+  emerald: { tile: 'bg-emerald-50 text-emerald-600 ring-emerald-100', bar: 'bg-gradient-to-r from-emerald-500 to-teal-500' },
+  amber: { tile: 'bg-amber-50 text-amber-600 ring-amber-100', bar: 'bg-gradient-to-r from-amber-500 to-orange-500' },
+  violet: { tile: 'bg-violet-50 text-violet-600 ring-violet-100', bar: 'bg-gradient-to-r from-violet-500 to-purple-500' },
+  indigo: { tile: 'bg-indigo-50 text-indigo-600 ring-indigo-100', bar: 'bg-gradient-to-r from-indigo-500 to-violet-500' },
+}
 </script>
 
 <template>
-  <section id="why-institutions" class="relative section-surface-muted section-py"
+  <section id="why-institutions" class="relative scroll-mt-24 overflow-hidden section-surface-muted section-py"
     aria-labelledby="why-institutions-heading">
-    <div class="container-page">
+    <div class="container-page relative">
       <CardHeader heading-id="why-institutions-heading" :badge="whyInstitutionsSection.badge"
         :title="whyInstitutionsSection.title" :description="whyInstitutionsSection.description"
         :classes="whyInstitutionsSection.classes" />
 
-      <ul class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3" role="list">
-        <li v-for="(adv, i) in whyChooseAdvantages" :key="adv.label" v-motion :initial="{ opacity: 0, y: 12 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + (i % 6) * 40, duration: 400 } }">
-          <div
-            class="group flex h-full items-center gap-3.5 rounded-2xl border border-slate-200/70 bg-white p-4 transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-soft sm:p-5">
+      <ul class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 sm:gap-5" role="list">
+        <li
+          v-for="(item, i) in whyChooseReasons"
+          :key="item.id"
+          :class="i === whyChooseReasons.length - 1 ? 'sm:col-span-2 lg:col-span-1' : ''"
+          v-motion
+          :initial="{ opacity: 0, y: 14 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 420, delay: i * 60 } }"
+        >
+          <article
+            class="group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-slate-300 hover:shadow-card sm:p-7"
+          >
             <span
-              class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white"
-              aria-hidden="true">
-              <Icon :icon="adv.iconMdi" class="h-5 w-5" />
+              :class="[
+                'relative inline-flex h-12 w-12 items-center justify-center rounded-2xl ring-1 transition duration-300 group-hover:scale-105',
+                accentClasses[item.accent].tile,
+              ]"
+            >
+              <Icon :icon="item.iconMdi" class="h-6 w-6" aria-hidden="true" />
             </span>
-            <p class="text-[13px] font-semibold leading-snug text-slate-800 sm:text-sm">
-              {{ adv.label }}
-            </p>
-          </div>
+            <h3 class="font-display relative mt-5 text-base font-bold leading-snug text-slate-900 sm:text-lg">
+              {{ item.title }}
+            </h3>
+            <p class="relative mt-2.5 text-sm leading-relaxed text-slate-600">{{ item.description }}</p>
+            <ul class="relative mt-4 flex-1 space-y-2" role="list">
+              <li v-for="point in item.points" :key="point" class="flex items-start gap-2.5 text-[13px] text-slate-700">
+                <IconCheck class="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
+                {{ point }}
+              </li>
+            </ul>
+            <div
+              aria-hidden="true"
+              :class="['relative mt-6 h-1 w-10 rounded-full transition-all duration-500 group-hover:w-full', accentClasses[item.accent].bar]"
+            />
+          </article>
         </li>
       </ul>
 
-      <p class="mx-auto mt-8 max-w-2xl text-center text-[13px] leading-relaxed text-slate-500 sm:text-sm" v-motion
-        :initial="{ opacity: 0 }" :visibleOnce="{ opacity: 1, transition: { duration: 500 } }">
-        Whether your institution is expanding, replacing faculty, or building a new academic team,
-        Indian Mentors provides professional recruitment support with clarity and reliability.
-      </p>
-      <div id="institutional-support"
-        class="mt-12 scroll-mt-24 overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-soft"
-        v-motion :initial="{ opacity: 0, y: 16 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-        <div class="grid grid-cols-1 lg:grid-cols-5">
-          <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 p-7 text-white sm:p-8 lg:col-span-2">
-            <span
-              class="grid h-11 w-11 place-items-center rounded-xl bg-white/15 ring-1 ring-white/25"
+      <div
+        class="mt-10 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 p-6 text-white shadow-[0_24px_60px_-24px_rgba(29,78,216,0.5)] sm:p-8"
+        v-motion
+        :initial="{ opacity: 0, y: 16 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }"
+      >
+        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-amber-200">{{ whyCommitment.title }}</p>
+        <ul class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5" role="list">
+          <li v-for="item in whyCommitment.items" :key="item" class="flex items-start gap-2.5 text-[13.5px] font-medium">
+            <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white/15 text-amber-300"
               aria-hidden="true">
-              <Icon icon="mdi:school-outline" class="h-5 w-5" />
+              <IconCheck class="h-3 w-3" />
             </span>
-            <h3 class="font-display mt-4 text-xl font-bold leading-snug sm:text-2xl">
-              {{ institutionalSupport.title }}
-            </h3>
-            <p class="mt-3 text-sm leading-relaxed text-blue-100/90">
-              {{ institutionalSupport.description }}
-            </p>
-          </div>
-
-          <div class="p-7 sm:p-8 lg:col-span-3">
-            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-500">
-              Institutional support includes
-            </p>
-            <ul class="mt-4 space-y-3" role="list">
-              <li v-for="item in institutionalSupport.items" :key="item.label"
-                class="flex items-start gap-3 text-sm text-slate-700">
-                <span
-                  class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-emerald-50 ring-1 ring-emerald-100"
-                  aria-hidden="true">
-                  <IconCheck class="h-4 w-4 text-emerald-600" />
-                </span>
-                <span class="pt-1">{{ item.label }}</span>
-              </li>
-            </ul>
-            <p class="mt-5 border-t border-slate-100 pt-4 text-[13px] italic leading-relaxed text-slate-500">
-              {{ institutionalSupport.closing }}
-            </p>
-          </div>
-        </div>
+            {{ item }}
+          </li>
+        </ul>
       </div>
     </div>
   </section>

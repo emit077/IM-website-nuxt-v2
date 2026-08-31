@@ -287,7 +287,7 @@ export const premiumValueSection = {
 }
 
 export const whoChoosesSection = {
-  badge: 'Who Should Choose Which Plan?',
+  badge: 'Which Plan Is Right for You?',
   title: 'Find the Plan That Fits <span class="text-gradient-brand">Your Teaching Goals</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   free: {
@@ -299,7 +299,7 @@ export const whoChoosesSection = {
       'Teaching part-time',
       'Testing the platform before upgrading',
     ],
-    cta: { label: 'Start Free', href: externalLinks.tutorRegistration },
+    cta: { label: 'Create Free Profile', href: externalLinks.tutorRegistration },
   },
   premium: {
     title: 'Choose Premium If You Are',
@@ -310,7 +310,7 @@ export const whoChoosesSection = {
       'Looking for regular tutoring engagements',
       'Building a long-term tutor profile',
     ],
-    cta: { label: 'Go Premium', href: externalLinks.tutorRegistration },
+    cta: { label: 'Get  Premium Access', href: externalLinks.tutorRegistration },
   },
   recommendation: [
     { question: 'Just exploring?', answer: 'Start Free.' },
@@ -432,10 +432,8 @@ export const requirementsSection = {
         'Current location',
         'Academic qualifications',
         'Teaching experience',
-        'Subjects you teach',
-        'Classes or grades supported',
-        'Preferred teaching mode',
-        'Availability',
+        'Subjects and grades you teach',
+        'Teaching mode and availability',
       ],
     },
     {
@@ -445,8 +443,9 @@ export const requirementsSection = {
         'Identity documents',
         'Qualification documents',
         'Address information',
-        'Relevant professional information',
-        'Other documents required under applicable verification procedures',
+        'Experience documents',
+        'Professional information',
+        'Other supporting documents',
       ],
     },
   ],

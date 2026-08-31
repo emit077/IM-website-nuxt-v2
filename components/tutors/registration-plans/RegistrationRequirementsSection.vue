@@ -25,12 +25,12 @@ import { requirementsSection, verificationSection } from '~/data/tutor-registrat
           <h3 class="mt-5 font-display text-xl font-bold text-slate-900">{{ group.title }}</h3>
           <ul class="mt-5 grid flex-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2" role="list">
             <li v-for="item in group.items" :key="item"
-              class="flex items-start gap-2.5 text-[13.5px] font-medium text-slate-700">
-              <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-600"
+              class="flex items-center gap-2.5 text-[13.5px] font-medium text-slate-700">
+              <span class="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-600"
                 aria-hidden="true">
                 <IconCheck class="h-3 w-3" />
               </span>
-              {{ item }}
+              <span class="whitespace-nowrap">{{ item }}</span>
             </li>
           </ul>
         </article>

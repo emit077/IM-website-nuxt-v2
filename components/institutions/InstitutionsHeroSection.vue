@@ -5,14 +5,14 @@ import { institutionsHero, institutionsHeroHighlights } from '~/data/institution
 
 const secondaryHero: SecondaryHeroContent = {
   badge: institutionsHero.badge,
-  title: `${institutionsHero.title} ${institutionsHero.titleHighlight}`,
-  subtitle: institutionsHero.tagline,
+  title: institutionsHero.title,
+  subtitle: institutionsHero.subtitle,
   description: institutionsHero.description,
-  caption: institutionsHero.goal,
+  caption: institutionsHero.caption,
   actionBtns: [institutionsHero.primaryCta, institutionsHero.secondaryCta],
   ticker: institutionsHeroHighlights.map((item) => item.label),
   headingId: 'institutions-hero-heading',
-  tickerAriaLabel: 'Institutional hiring highlights',
+  tickerAriaLabel: 'Teacher recruitment highlights',
   patternId: 'institutions-hero-waves',
 }
 </script>

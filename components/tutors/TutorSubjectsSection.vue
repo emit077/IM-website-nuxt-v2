@@ -1,12 +1,20 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import { tutorSubjects } from '~/data/tutors'
 
 const items = tutorSubjects.items
+const coverage = tutorSubjects.coverageTile
+const failedLogos = ref<Record<string, boolean>>({})
 
 function subjectList(subjects: string) {
   return subjects.split(' • ').map((s) => s.trim()).filter(Boolean)
+}
+
+function markLogoFailed(id: string) {
+  failedLogos.value[id] = true
 }
 </script>
 
@@ -55,31 +63,64 @@ function subjectList(subjects: string) {
           </article>
         </li>
 
-        <li v-motion :initial="{ opacity: 0, y: 14 }"
+        <li class="sm:col-span-2 lg:col-span-3" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 220, duration: 420 } }">
-          <NuxtLink :to="tutorSubjects.cta.href"
-            class="cta-tile group relative flex h-full flex-col justify-between overflow-hidden rounded-[1.25rem] bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-600 p-5 text-white">
-            <span aria-hidden="true"
-              class="pointer-events-none absolute -right-10 -top-12 h-36 w-36 rounded-full bg-white/10 blur-2xl" />
-            <span class="relative">
-              <span class="grid h-10 w-10 place-items-center rounded-xl bg-white/15 ring-1 ring-white/25"
-                aria-hidden="true">
-                <Icon icon="mdi:compass-outline" class="h-5 w-5" />
-              </span>
-              <span class="mt-4 block font-display text-[15px] font-bold leading-snug">
-                {{ tutorSubjects.ctaTile.title }}
-              </span>
-              <span class="mt-2 block text-[12.5px] leading-relaxed text-blue-50/90">
-                {{ tutorSubjects.ctaTile.description }}
-              </span>
-            </span>
-            <span class="relative mt-5 inline-flex items-center gap-2 text-[13px] font-semibold">
-              {{ tutorSubjects.cta.label }}
-              <Icon icon="mdi:arrow-right"
-                class="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
-                aria-hidden="true" />
-            </span>
-          </NuxtLink>
+          <article
+            class="coverage-card flex h-full flex-col rounded-[1.25rem] border border-slate-200/80 bg-white p-5 sm:p-6">
+            <div class="min-w-0">
+              <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">
+                {{ coverage.badge }}
+              </p>
+              <h3 class="font-display mt-1.5 text-[15px] font-bold leading-snug text-slate-900 sm:text-base">
+                {{ coverage.title }}
+              </h3>
+              <p class="mt-1.5 max-w-md text-[12.5px] leading-relaxed text-slate-500">
+                {{ coverage.description }}
+              </p>
+            </div>
+
+            <div class="mt-5 border-t border-slate-100 pt-5">
+              <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                {{ coverage.boardsLabel }}
+              </p>
+              <ul class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-3" role="list">
+                <li v-for="board in coverage.boards" :key="board.id">
+                  <NuxtLink :to="coverage.boardsHref" class="group/board flex items-center gap-2 no-underline"
+                    :aria-label="`${board.name} — view boards covered`">
+                    <span class="grid h-8 w-8 place-items-center sm:h-9 sm:w-9">
+                      <img v-if="!failedLogos[board.id]" :src="usePublicAsset(board.logo)" alt=""
+                        class="h-full w-full object-contain" loading="lazy" decoding="async"
+                        @error="markLogoFailed(board.id)" />
+                      <span v-else class="text-[10px] font-bold tracking-wide text-slate-500">
+                        {{ board.name.slice(0, 2) }}
+                      </span>
+                    </span>
+                    <span class="text-[12.5px] font-semibold text-slate-700 transition group-hover/board:text-blue-700">
+                      {{ board.name }}
+                    </span>
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-5">
+              <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                {{ coverage.coursesLabel }}
+              </p>
+              <ul class="mt-3 flex flex-wrap gap-2" role="list">
+                <li v-for="course in coverage.courses" :key="course.label">
+                  <NuxtLink :to="course.href"
+                    class="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-[12px] font-medium text-slate-600 no-underline transition hover:border-blue-300 hover:text-blue-700">
+                    {{ course.label }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-5">
+              <ActionBtn variant="primary" :label="tutorSubjects.cta.label" :href="tutorSubjects.cta.href" />
+            </div>
+          </article>
         </li>
       </ul>
     </div>
@@ -88,7 +129,7 @@ function subjectList(subjects: string) {
 
 <style scoped>
 .subject-card,
-.cta-tile {
+.coverage-card {
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.4s ease,
@@ -96,19 +137,11 @@ function subjectList(subjects: string) {
   box-shadow: 0 6px 18px -14px rgba(15, 23, 42, 0.2);
 }
 
-.subject-card:hover {
+.subject-card:hover,
+.coverage-card:hover {
   transform: translateY(-5px);
   border-color: rgb(191 219 254);
   box-shadow: 0 22px 44px -22px rgba(37, 99, 235, 0.4);
-}
-
-.cta-tile {
-  box-shadow: 0 14px 34px -18px rgba(37, 99, 235, 0.65);
-}
-
-.cta-tile:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 24px 48px -20px rgba(37, 99, 235, 0.7);
 }
 
 .subject-card-img {
@@ -122,13 +155,13 @@ function subjectList(subjects: string) {
 @media (prefers-reduced-motion: reduce) {
 
   .subject-card,
-  .cta-tile,
+  .coverage-card,
   .subject-card-img {
     transition: none;
   }
 
   .subject-card:hover,
-  .cta-tile:hover,
+  .coverage-card:hover,
   .subject-card:hover .subject-card-img {
     transform: none;
   }

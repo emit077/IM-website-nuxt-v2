@@ -26,16 +26,17 @@ import { tutorReferral } from '~/data/tutors'
               {{ tutorReferral.description }}
             </p>
             <p class="mt-3 max-w-2xl text-[13px] leading-relaxed text-blue-100/85">{{ tutorReferral.note }}</p>
-            <a :href="tutorReferral.cta.href"
-              class="mt-6 inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-blue-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-cream-50">
-              {{ tutorReferral.cta.label }}
-              <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
-            </a>
+
           </div>
           <div class="lg:col-span-4">
             <div class="rounded-[1.5rem]   px-6 py-8 text-center backdrop-blur-sm">
               <p class="font-display text-5xl font-black tracking-tight sm:text-6xl">{{ tutorReferral.reward }}</p>
               <p class="mt-3 text-sm font-semibold text-blue-50">{{ tutorReferral.rewardLabel }}</p>
+              <a :href="tutorReferral.cta.href"
+                class="mt-6 inline-flex items-center gap-2 rounded-2xl bg-white px-12 py-3 text-sm font-semibold text-blue-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-cream-50">
+                {{ tutorReferral.cta.label }}
+                <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+              </a>
             </div>
           </div>
         </div>
