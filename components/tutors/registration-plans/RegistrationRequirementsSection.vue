@@ -22,7 +22,7 @@ import { requirementsSection, verificationSection } from '~/data/tutor-registrat
             aria-hidden="true">
             <Icon :icon="group.iconMdi" class="h-5 w-5" />
           </span>
-          <h3 class="mt-5 font-display text-xl font-bold text-slate-900">{{ group.title }}</h3>
+          <h3 class="mt-5 font-display text-xl font-bold ">{{ group.title }}</h3>
           <ul class="mt-5 grid flex-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2" role="list">
             <li v-for="item in group.items" :key="item"
               class="flex items-center gap-2.5 text-[13.5px] font-medium text-slate-700">
@@ -37,7 +37,7 @@ import { requirementsSection, verificationSection } from '~/data/tutor-registrat
       </div>
 
       <p
-        class="mx-auto mt-8 flex max-w-3xl items-start gap-3 rounded-2xl border border-amber-100 bg-amber-50/70 px-5 py-4 text-[13.5px] leading-relaxed text-amber-900">
+        class="mx-auto mt-8 flex max-w-4xl items-start gap-3 rounded-2xl border border-amber-100 bg-amber-50/70 px-5 py-4 text-[13.5px] leading-relaxed text-amber-900">
         <Icon icon="mdi:lightbulb-on-outline" class="mt-0.5 h-5 w-5 shrink-0 text-amber-600" aria-hidden="true" />
         <span><span class="font-bold">Pro Tip:</span> {{ requirementsSection.proTip }}</span>
       </p>

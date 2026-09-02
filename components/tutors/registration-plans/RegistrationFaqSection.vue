@@ -18,7 +18,7 @@ import {
 
       <div class="mx-auto mt-10 rounded-2xl border border-slate-200/80 bg-cream-50/60 p-6 shadow-soft sm:p-8" v-motion
         :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
-        <p class="flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-amber-700">
+        <p class="flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">
           <Icon icon="mdi:alert-circle-outline" class="h-4 w-4" aria-hidden="true" />
           {{ planTermsSection.noteLabel }}
         </p>

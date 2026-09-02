@@ -39,7 +39,7 @@ const accentClasses: Record<(typeof growthSection.path)[number]['accent'], { til
             ]">
               <span :class="[
                 'relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-xl font-display text-[12px] font-extrabold sm:h-11 sm:w-11',
-                i === growthSection.path.length - 1
+                i % 2 === growthSection.path.length - 1
                   ? 'bg-white/15 text-white ring-1 ring-white/25'
                   : [accentClasses[step.accent].tile, accentClasses[step.accent].number],
               ]" aria-hidden="true">

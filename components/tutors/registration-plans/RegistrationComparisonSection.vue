@@ -11,18 +11,11 @@ import {
 
 const activeTab = ref<'overview' | 'detailed'>('overview')
 
-const rows = computed(() => (activeTab.value === 'overview' ? planOverviewRows : planDetailedRows))
+const isOverview = computed(() => activeTab.value === 'overview')
+const rows = computed(() => (isOverview.value ? planOverviewRows : planDetailedRows))
 
 function isIncluded(value: string) {
   return value === '✓'
-}
-
-function isEmpty(value: string) {
-  return value === '—'
-}
-
-function checkSuffix(value: string) {
-  return value.startsWith('✓ ') ? value.slice(2) : null
 }
 </script>
 
@@ -79,27 +72,30 @@ function checkSuffix(value: string) {
                   {{ row.feature }}
                 </td>
                 <td class="px-4 py-3.5 text-slate-600">
-                  <span v-if="isIncluded(row.free)" class="inline-flex text-emerald-600">
-                    <IconCheck class="h-4 w-4" />
-                    <span class="sr-only">Included</span>
+                  <span v-if="isOverview" class="inline-flex">
+                    <span v-if="isIncluded(row.free)" class="inline-flex text-emerald-600">
+                      <IconCheck class="h-4 w-4" />
+                      <span class="sr-only">Included</span>
+                    </span>
+                    <span v-else class="inline-flex text-rose-400">
+                      <Icon icon="mdi:close" class="h-4 w-4" />
+                      <span class="sr-only">Not included</span>
+                    </span>
                   </span>
-                  <span v-else-if="isEmpty(row.free)" class="text-slate-300">
-                    —
-                    <span class="sr-only">Not included</span>
-                  </span>
-                  <span v-else>{{ row.free }}</span>
+                  <span v-else class="text-[13px] leading-snug text-slate-600">{{ row.free }}</span>
                 </td>
                 <td class="px-4 py-3.5 pr-5">
-                  <span v-if="isIncluded(row.premium)" class="inline-flex text-blue-700">
-                    <IconCheck class="h-4 w-4" />
-                    <span class="sr-only">Included</span>
+                  <span v-if="isOverview" class="inline-flex">
+                    <span v-if="isIncluded(row.premium)" class="inline-flex text-blue-700">
+                      <IconCheck class="h-4 w-4" />
+                      <span class="sr-only">Included</span>
+                    </span>
+                    <span v-else class="inline-flex text-rose-400">
+                      <Icon icon="mdi:close" class="h-4 w-4" />
+                      <span class="sr-only">Not included</span>
+                    </span>
                   </span>
-                  <span v-else-if="checkSuffix(row.premium)"
-                    class="inline-flex items-center gap-1.5 font-medium text-blue-700">
-                    <IconCheck class="h-4 w-4 shrink-0" />
-                    {{ checkSuffix(row.premium) }}
-                  </span>
-                  <span v-else class="font-medium text-blue-700">{{ row.premium }}</span>
+                  <span v-else class="text-[13px] leading-snug font-medium text-blue-700">{{ row.premium }}</span>
                 </td>
               </tr>
             </tbody>

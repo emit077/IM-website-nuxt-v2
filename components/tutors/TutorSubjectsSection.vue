@@ -65,62 +65,69 @@ function markLogoFailed(id: string) {
 
         <li class="sm:col-span-2 lg:col-span-3" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 220, duration: 420 } }">
-          <article
-            class="coverage-card flex h-full flex-col rounded-[1.25rem] border border-slate-200/80 bg-white p-5 sm:p-6">
-            <div class="min-w-0">
-              <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">
-                {{ coverage.badge }}
-              </p>
-              <h3 class="font-display mt-1.5 text-[15px] font-bold leading-snug text-slate-900 sm:text-base">
-                {{ coverage.title }}
-              </h3>
-              <p class="mt-1.5 max-w-md text-[12.5px] leading-relaxed text-slate-500">
-                {{ coverage.description }}
-              </p>
-            </div>
+          <NuxtLink :to="tutorSubjects.cta.href"
+            class="coverage-cta group relative flex h-full overflow-hidden rounded-[1.25rem] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-700"
+            :aria-label="`${coverage.title}. ${tutorSubjects.cta.label}`">
+            <span class="coverage-visual pointer-events-none absolute inset-y-0 right-0 w-[62%] sm:w-[55%] lg:w-[48%]"
+              aria-hidden="true">
+              <img :src="usePublicAsset(coverage.image)" alt=""
+                class="h-full w-full object-cover object-[68%_center] transition duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                loading="lazy" decoding="async" />
+            </span>
+            <span class="coverage-overlay pointer-events-none absolute inset-0" aria-hidden="true" />
 
-            <div class="mt-5 border-t border-slate-100 pt-5">
-              <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
-                {{ coverage.boardsLabel }}
-              </p>
-              <ul class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-3" role="list">
-                <li v-for="board in coverage.boards" :key="board.id">
-                  <NuxtLink :to="coverage.boardsHref" class="group/board flex items-center gap-2 no-underline"
-                    :aria-label="`${board.name} — view boards covered`">
-                    <span class="grid h-8 w-8 place-items-center sm:h-9 sm:w-9">
+            <div
+              class="relative z-[1]  min-h-[16rem] w-full flex-col justify-between gap-6 p-5 sm:min-h-[17rem] sm:p-6 lg:flex-row lg:items-end lg:gap-8 lg:p-7">
+              <div>
+
+                <h3 class="font-display mt-2 text-xl font-extrabold leading-snug text-white sm:text-[1.45rem]">
+                  {{ coverage.title }}
+                </h3>
+                <p class="mt-2.5 max-w-md text-[13.5px] leading-relaxed text-blue-50/95">
+                  {{ coverage.description }}
+                </p>
+
+                <p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-blue-100/70 mt-5">
+                  {{ coverage.boardsLabel }}
+                </p>
+                <ul class="mt-2.5 flex flex-wrap items-center" role="list">
+                  <li v-for="(board, i) in coverage.boards" :key="board.id"
+                    :style="{ zIndex: coverage.boards.length - i }" class="relative -ml-1.5 first:ml-0">
+                    <span
+                      class="grid h-9 w-9 place-items-center rounded-full bg-white shadow-sm ring-2 ring-white sm:h-10 sm:w-10"
+                      :title="board.name">
                       <img v-if="!failedLogos[board.id]" :src="usePublicAsset(board.logo)" alt=""
-                        class="h-full w-full object-contain" loading="lazy" decoding="async"
+                        class="h-[70%] w-[70%] object-contain" loading="lazy" decoding="async"
                         @error="markLogoFailed(board.id)" />
-                      <span v-else class="text-[10px] font-bold tracking-wide text-slate-500">
+                      <span v-else class="text-[9px] font-bold tracking-wide text-slate-500">
                         {{ board.name.slice(0, 2) }}
                       </span>
                     </span>
-                    <span class="text-[12.5px] font-semibold text-slate-700 transition group-hover/board:text-blue-700">
-                      {{ board.name }}
+                  </li>
+                </ul>
+
+                <ul class="mt-3 flex flex-wrap gap-1.5" role="list" :aria-label="coverage.coursesLabel">
+                  <li v-for="(course, i) in coverage.courses" :key="course.label"
+                    :class="i >= 5 ? 'hidden sm:list-item' : ''">
+                    <span
+                      class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-50 backdrop-blur-[2px]">
+                      {{ course.label }}
                     </span>
-                  </NuxtLink>
-                </li>
-              </ul>
-            </div>
+                  </li>
+                </ul>
+              </div>
 
-            <div class="mt-5">
-              <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
-                {{ coverage.coursesLabel }}
-              </p>
-              <ul class="mt-3 flex flex-wrap gap-2" role="list">
-                <li v-for="course in coverage.courses" :key="course.label">
-                  <NuxtLink :to="course.href"
-                    class="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-[12px] font-medium text-slate-600 no-underline transition hover:border-blue-300 hover:text-blue-700">
-                    {{ course.label }}
-                  </NuxtLink>
-                </li>
-              </ul>
+              <div class="text-right mt-5">
+                <ActionBtn :label="tutorSubjects.cta.label" :href="tutorSubjects.cta.href" variant="secondary" />
+                <!-- <span
+                  class="mt-5 inline-flex w-fit items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 group-hover:gap-2.5 group-hover:bg-cream-50">
+                  {{ tutorSubjects.cta.label }}
+                  <Icon icon="mdi:arrow-right" class="h-4 w-4 transition group-hover:translate-x-0.5"
+                    aria-hidden="true" />
+                </span> -->
+              </div>
             </div>
-
-            <div class="mt-5">
-              <ActionBtn variant="primary" :label="tutorSubjects.cta.label" :href="tutorSubjects.cta.href" />
-            </div>
-          </article>
+          </NuxtLink>
         </li>
       </ul>
     </div>
@@ -129,19 +136,68 @@ function markLogoFailed(id: string) {
 
 <style scoped>
 .subject-card,
-.coverage-card {
+.coverage-cta {
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.4s ease,
     border-color 0.35s ease;
+}
+
+.subject-card {
   box-shadow: 0 6px 18px -14px rgba(15, 23, 42, 0.2);
 }
 
-.subject-card:hover,
-.coverage-card:hover {
+.coverage-cta {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 42%, #4338ca 100%);
+  box-shadow: 0 20px 50px -24px rgba(29, 78, 216, 0.5);
+}
+
+.subject-card:hover {
   transform: translateY(-5px);
   border-color: rgb(191 219 254);
   box-shadow: 0 22px 44px -22px rgba(37, 99, 235, 0.4);
+}
+
+.coverage-cta:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 56px -22px rgba(29, 78, 216, 0.58);
+}
+
+.coverage-visual {
+  overflow: hidden;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.4) 16%,
+      #000 36%,
+      #000 100%);
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.4) 16%,
+      #000 36%,
+      #000 100%);
+}
+
+.coverage-overlay {
+  background: linear-gradient(90deg,
+      #1d4ed8 0%,
+      #1d4ed8 46%,
+      rgba(37, 99, 235, 0.55) 68%,
+      rgba(37, 99, 235, 0.16) 84%,
+      transparent 100%);
+}
+
+@media (max-width: 639px) {
+  .coverage-overlay {
+    background: linear-gradient(180deg,
+        #1d4ed8 0%,
+        rgba(29, 78, 216, 0.94) 52%,
+        rgba(37, 99, 235, 0.62) 78%,
+        rgba(37, 99, 235, 0.28) 100%);
+  }
 }
 
 .subject-card-img {
@@ -155,13 +211,13 @@ function markLogoFailed(id: string) {
 @media (prefers-reduced-motion: reduce) {
 
   .subject-card,
-  .coverage-card,
+  .coverage-cta,
   .subject-card-img {
     transition: none;
   }
 
   .subject-card:hover,
-  .coverage-card:hover,
+  .coverage-cta:hover,
   .subject-card:hover .subject-card-img {
     transform: none;
   }

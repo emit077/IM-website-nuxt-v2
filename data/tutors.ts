@@ -297,12 +297,14 @@ export const tutorSubjects = {
   classes: '!px-0 !py-0 mx-auto max-w-4xl',
   cta: { label: 'Explore Academic Coverage', href: '/academic-coverage' },
   coverageTile: {
-    badge: 'Boards & Courses',
-    title: 'Boards, curricula & courses',
-    description: 'National boards, international programmes, and selected entrance courses.',
-    boardsLabel: 'Boards',
+    badge: 'Academic Coverage',
+    title: 'See every board, curriculum & course you can teach',
+    description:
+      'National boards, international programmes, and selected entrance courses — match your expertise to where students need mentors.',
+    image: '/assets/img/shared/academic.png',
+    boardsLabel: 'Boards we cover',
     boardsHref: '/academic-coverage#boards-covered',
-    coursesLabel: 'Courses',
+    coursesLabel: 'Courses & programmes',
     coursesHref: '/academic-coverage#exam-preparation',
     boards: [
       { id: 'cbse', name: 'CBSE', logo: '/assets/img/boards/cbse.png' },
@@ -684,7 +686,7 @@ export const erpSection = {
     'The Indian Mentors tutor dashboard is designed to bring key teaching and engagement activities into one organised workspace.',
   classes: '!px-0 !py-0',
   cta: { label: 'Explore Tutor Dashboard', href: externalLinks.login },
-  secondaryCta: { label: 'Find a Student Near Your Location', href: '#browse-students' },
+  secondaryCta: { label: 'Find Students Near You', href: '#browse-students' },
   image: '/assets/img/tutors/tutor-dashboard.webp',
   imageAlt: 'Sample Indian Mentors tutor dashboard on mobile, showing sessions, wallet, and teaching activity',
   previewUrl: 'tutor.indianmentors.com',
