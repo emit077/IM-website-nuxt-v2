@@ -210,6 +210,7 @@ export type SubjectStream = {
   tagline: string
   subjects: SubjectItem[]
   iconMdi: string
+  image: string
   accent: 'blue' | 'teal' | 'amber' | 'sky' | 'indigo' | 'rose' | 'slate'
 }
 
@@ -224,8 +225,9 @@ export const subjectsSection = {
   detailCta: 'Match me with a tutor',
   selectedCtaPrefix: 'Find a tutor for',
   footerNote: 'Mentors matched to your board, grade, and learning goals.',
+  ctaImage: 'assets/img/shared/academic.png',
   metricLabel: 'Categories',
-  metricValue: '7',
+  metricValue: '8',
   streams: [
     {
       id: 'sciences',
@@ -242,6 +244,7 @@ export const subjectsSection = {
         { name: 'Statistics', iconMdi: 'mdi:chart-bell-curve-cumulative' },
       ],
       iconMdi: 'mdi:flask-outline',
+      image: '/assets/img/tutor-subjects/science-maths.webp',
       accent: 'teal',
     },
     {
@@ -259,6 +262,7 @@ export const subjectsSection = {
         { name: 'Tamil', iconMdi: 'mdi:syllabary-tamil' },
       ],
       iconMdi: 'mdi:translate',
+      image: '/assets/img/tutor-subjects/languages.webp',
       accent: 'blue',
     },
     {
@@ -275,6 +279,7 @@ export const subjectsSection = {
         { name: 'Psychology', iconMdi: 'mdi:brain' },
       ],
       iconMdi: 'mdi:earth',
+      image: '/assets/img/tutor-subjects/social-humanities.webp',
       accent: 'amber',
     },
     {
@@ -290,6 +295,7 @@ export const subjectsSection = {
         { name: 'Cost Accounting', iconMdi: 'mdi:calculator' },
       ],
       iconMdi: 'mdi:chart-bar',
+      image: '/assets/img/tutor-subjects/commerce-business.webp',
       accent: 'sky',
     },
     {
@@ -305,6 +311,7 @@ export const subjectsSection = {
         { name: 'Other school entrance', iconMdi: 'mdi:door-open' },
       ],
       iconMdi: 'mdi:school-outline',
+      image: '/assets/img/tutor-subjects/international-curricula.webp',
       accent: 'indigo',
     },
     {
@@ -321,6 +328,7 @@ export const subjectsSection = {
         { name: 'CMA', iconMdi: 'mdi:clipboard-text-outline' },
       ],
       iconMdi: 'mdi:medal-outline',
+      image: '/assets/img/tutor-subjects/competitive-exams.webp',
       accent: 'rose',
     },
     {
@@ -337,6 +345,25 @@ export const subjectsSection = {
         { name: 'Robotics', iconMdi: 'mdi:robot-outline' },
       ],
       iconMdi: 'mdi:rocket-launch-outline',
+      image: '/assets/img/tutor-subjects/technology.webp',
+      accent: 'slate',
+    },
+    {
+      id: 'other',
+      title: 'Other Subjects',
+      tagline: 'Arts, skills, and subjects not listed above',
+      subjects: [
+        { name: 'Fine Arts', iconMdi: 'mdi:palette-outline' },
+        { name: 'Music', iconMdi: 'mdi:music-note-outline' },
+        { name: 'Dance', iconMdi: 'mdi:human-female-dance' },
+        { name: 'Physical Education', iconMdi: 'mdi:soccer' },
+        { name: 'Home Science', iconMdi: 'mdi:stove' },
+        { name: 'Special Education', iconMdi: 'mdi:account-heart-outline' },
+        { name: 'Vocational skills', iconMdi: 'mdi:hammer-wrench' },
+        { name: 'Something else', iconMdi: 'mdi:dots-horizontal' },
+      ],
+      iconMdi: 'mdi:plus-box-outline',
+      image: '/assets/img/tutor-subjects/other-subjects.webp',
       accent: 'slate',
     },
   ] satisfies SubjectStream[],

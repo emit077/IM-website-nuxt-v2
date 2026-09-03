@@ -147,8 +147,8 @@ export const howWeWorkSteps = [
 ] as const
 
 export const cultureSection = {
-  kicker: 'Life at Indian Mentors',
-  title: 'Life at Indian Mentors',
+  kicker: 'Culture & Workplace',
+  title: 'Life at <span class="text-gradient-brand">Indian Mentors</span>',
   classes: '!px-0 !py-0',
   subtitle: 'Meet our team building better learning experiences.',
   storyTitle: "We're building a structured academic ecosystem",
@@ -223,14 +223,15 @@ export const cultureSection = {
 
 export const growthSection = {
   kicker: 'Professional Growth',
-  title: 'Learn. <span class="text-gradient-brand">Perform</span>. Grow.',
+  title: 'Learn. <span class="text-amber-300">Perform</span>. Grow.',
   classes: '!px-0 !py-0',
   description:
     'We aim to provide professionals with opportunities to develop through structured training, practical learning, and performance-based progression.',
-  image: '/assets/img/careers/professional-growth.webp',
-  imageAlt: 'A mentor guiding a colleague through structured training at Indian Mentors',
-  overlayKicker: 'Career development',
-  overlayTitle: 'Structured training from day one — growth through performance',
+  image: '/assets/img/careers/career-growth-path.png',
+  imageAlt:
+    'Recommended standard career path at Indian Mentors: Intern, Trainee, Executive, Senior Executive, Assistant Manager, Manager, Senior Manager, Department Head, Business Head, Senior Leadership',
+  overlayKicker: 'Professional growth',
+  overlayTitle: 'Recommended Standard Path',
   path: [
     {
       no: '01',

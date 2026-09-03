@@ -2,13 +2,8 @@
 import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import { subjectsSection, type SubjectItem, type SubjectStream } from '~/data/academic-coverage'
+import { subjectsSection, type SubjectStream } from '~/data/academic-coverage'
 import { externalLinks } from '~/data/external-links'
-
-/** Desktop bento: 7-5 / 4-4-4 / 5-7 */
-const SPAN_PATTERN = [7, 5, 4, 4, 4, 5, 7] as const
-
-const PREVIEW_COUNT = 4
 
 const streams = subjectsSection.streams
 const selectedCategoryId = ref<SubjectStream['id'] | null>(streams[0]?.id ?? null)
@@ -28,18 +23,12 @@ const ctaLabel = computed(() => {
   return subjectsSection.selectHint
 })
 
-function spanClass(index: number) {
-  const span = SPAN_PATTERN[index % SPAN_PATTERN.length] ?? 4
-  return `bento-card--span-${span}`
-}
+const ctaChips = computed(
+  () => selectedCategory.value?.subjects.slice(0, 5).map((s) => s.name) ?? [],
+)
 
-function isFeatured(index: number) {
-  return SPAN_PATTERN[index % SPAN_PATTERN.length]! >= 5
-}
-
-function previewSubjects(subjects: SubjectItem[], expanded: boolean) {
-  if (expanded) return subjects
-  return subjects.slice(0, PREVIEW_COUNT)
+function subjectPreview(stream: SubjectStream) {
+  return stream.subjects.map((s) => s.name).join(' · ')
 }
 
 function selectCategory(id: SubjectStream['id']) {
@@ -48,123 +37,69 @@ function selectCategory(id: SubjectStream['id']) {
   selectedSubject.value = null
 }
 
-function selectSubject(subject: string, categoryId: SubjectStream['id']) {
-  selectedCategoryId.value = categoryId
+function selectSubject(subject: string) {
   selectedSubject.value = selectedSubject.value === subject ? null : subject
 }
 </script>
 
 <template>
-  <section
-    id="subjects-offered"
-    class="relative scroll-mt-20 overflow-hidden section-surface-muted section-py"
-    aria-labelledby="subjects-heading"
-  >
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute -left-24 top-12 h-72 w-72 rounded-full bg-blue-200/25 blur-3xl"
-    />
-    <div
-      aria-hidden="true"
-      class="pointer-events-none absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-sky-200/20 blur-3xl"
-    />
+  <section id="subjects-offered" class="relative scroll-mt-20 overflow-hidden section-surface-muted section-py"
+    aria-labelledby="subjects-heading">
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -left-24 top-12 h-72 w-72 rounded-full bg-blue-200/25 blur-3xl" />
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -right-20 bottom-0 h-64 w-64 rounded-full bg-sky-200/20 blur-3xl" />
 
     <div class="container-page relative z-[1]">
       <div class="mx-auto max-w-3xl text-center">
-        <CardHeader
-          heading-id="subjects-heading"
-          :badge="subjectsSection.kicker"
-          :title="subjectsSection.title"
-          :description="subjectsSection.description"
-          :classes="subjectsSection.classes"
-        />
+        <CardHeader heading-id="subjects-heading" :badge="subjectsSection.kicker" :title="subjectsSection.title"
+          :description="subjectsSection.description" :classes="subjectsSection.classes" />
       </div>
 
-      <ul class="bento-grid mt-10 sm:mt-12" role="list" aria-label="Subject categories">
-        <li
-          v-for="(stream, i) in streams"
-          :key="stream.id"
-          :class="['bento-grid__cell', spanClass(i)]"
-          v-motion
-          :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 45, duration: 420 } }"
-        >
+      <ul class="mt-9 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4" role="list"
+        aria-label="Subject categories">
+        <li v-for="(stream, i) in streams" :key="stream.id" v-motion :initial="{ opacity: 0, y: 14 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + (i % 4) * 60, duration: 420 } }">
           <article
-            class="bento-card group"
-            :class="[
-              `bento-card--${stream.accent}`,
-              selectedCategoryId === stream.id && 'is-active',
-              isFeatured(i) && 'bento-card--featured',
-            ]"
-          >
-            <button
-              type="button"
-              class="bento-card__hit"
-              :aria-pressed="selectedCategoryId === stream.id"
-              :aria-expanded="selectedCategoryId === stream.id"
-              @click="selectCategory(stream.id)"
-            >
-              <span class="bento-card__deco" aria-hidden="true">
-                <span class="bento-card__orb" />
-                <Icon :icon="stream.iconMdi" class="bento-card__watermark" />
-              </span>
-
-              <div class="bento-card__top">
-                <span class="bento-card__icon" aria-hidden="true">
-                  <Icon :icon="stream.iconMdi" class="h-5 w-5 sm:h-[1.35rem] sm:w-[1.35rem]" />
+            class="subject-card group flex h-full flex-row overflow-hidden rounded-[1.25rem] border border-slate-200/80 bg-white sm:flex-col"
+            :class="{ 'is-active': selectedCategoryId === stream.id }">
+            <button type="button" class="flex h-full w-full flex-row text-left sm:flex-col"
+              :aria-pressed="selectedCategoryId === stream.id" :aria-controls="`stream-subjects-${stream.id}`"
+              @click="selectCategory(stream.id)">
+              <div class="relative w-[38%] shrink-0 overflow-hidden bg-[#eef4ff] sm:w-full">
+                <img :src="usePublicAsset(stream.image)" :alt="`${stream.title} subjects`" width="800" height="533"
+                  loading="lazy" decoding="async"
+                  class="subject-card-img absolute inset-0 h-full w-full object-contain p-1 sm:static sm:aspect-[4/3] sm:h-auto sm:object-cover sm:p-0" />
+                <span
+                  class="absolute bottom-3 left-3 hidden h-9 w-9 place-items-center rounded-xl bg-white/90 text-blue-600 shadow-sm ring-1 ring-blue-100 backdrop-blur transition duration-300 group-hover:bg-blue-600 group-hover:text-white group-hover:ring-blue-600 sm:grid"
+                  :class="selectedCategoryId === stream.id && '!bg-blue-600 !text-white !ring-blue-600'"
+                  aria-hidden="true">
+                  <Icon :icon="stream.iconMdi" class="h-[18px] w-[18px]" />
                 </span>
-                <span class="bento-card__count">
+                <span
+                  class="absolute bottom-3 right-3 hidden rounded-full bg-white/90 px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.1em] text-slate-500 shadow-sm ring-1 ring-slate-200/80 backdrop-blur sm:block">
                   {{ stream.subjects.length }} subjects
                 </span>
               </div>
 
-              <h3 class="bento-card__title font-display">
-                {{ stream.title }}
-              </h3>
-              <p class="bento-card__tagline">
-                {{ stream.tagline }}
-              </p>
+              <div class="flex flex-1 flex-col p-4 sm:p-5">
+                <h3
+                  class="font-display text-[15px] font-bold leading-snug text-slate-900 transition group-hover:text-blue-700"
+                  :class="selectedCategoryId === stream.id && 'text-blue-700'">
+                  {{ stream.title }}
+                </h3>
+                <p class="mt-2 text-[12.5px] leading-relaxed text-slate-500">
+                  {{ subjectPreview(stream) }}
+                </p>
+              </div>
             </button>
-
-            <ul class="bento-card__subjects" role="list">
-              <li
-                v-for="subject in previewSubjects(stream.subjects, selectedCategoryId === stream.id)"
-                :key="subject.name"
-              >
-                <button
-                  type="button"
-                  class="subject-pill"
-                  :class="{ 'is-selected': selectedCategoryId === stream.id && selectedSubject === subject.name }"
-                  :aria-pressed="selectedCategoryId === stream.id && selectedSubject === subject.name"
-                  @click="selectSubject(subject.name, stream.id)"
-                >
-                  <Icon :icon="subject.iconMdi" class="subject-pill__icon" aria-hidden="true" />
-                  <span>{{ subject.name }}</span>
-                </button>
-              </li>
-              <li
-                v-if="selectedCategoryId !== stream.id && stream.subjects.length > PREVIEW_COUNT"
-              >
-                <button
-                  type="button"
-                  class="subject-pill subject-pill--more"
-                  @click="selectCategory(stream.id)"
-                >
-                  +{{ stream.subjects.length - PREVIEW_COUNT }} more
-                </button>
-              </li>
-            </ul>
           </article>
         </li>
       </ul>
 
-      <!-- Sticky-feel CTA under the grid -->
-      <div
-        class="bento-cta mt-8 sm:mt-10"
-        v-motion
-        :initial="{ opacity: 0, y: 12 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 440 } }"
-      >
+      <!-- <a :href="externalLinks.studentSignup" class="bento-cta group mt-8 sm:mt-10"
+        :aria-label="`${ctaLabel}. ${subjectsSection.detailCta}`" v-motion :initial="{ opacity: 0, y: 12 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 440 } }">
         <div class="bento-cta__copy">
           <p class="bento-cta__kicker">
             {{ selectedCategory?.title ?? 'Ready to match' }}
@@ -175,238 +110,82 @@ function selectSubject(subject: string, categoryId: SubjectStream['id']) {
           <p class="bento-cta__note">
             {{ subjectsSection.footerNote }}
           </p>
+          <ul v-if="ctaChips.length" class="bento-cta__chips" role="list">
+            <li v-for="chip in ctaChips" :key="chip">
+              <span class="bento-cta__chip">{{ chip }}</span>
+            </li>
+          </ul>
+          <span class="theme-btn-lime bento-cta__btn">
+            {{ subjectsSection.detailCta }}
+            <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+              aria-hidden="true" />
+          </span>
         </div>
-        <a :href="externalLinks.studentSignup" class="theme-btn-lime bento-cta__btn">
-          {{ subjectsSection.detailCta }}
-          <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
-        </a>
-      </div>
+
+        <div class="bento-cta__media" aria-hidden="true">
+          <img :src="usePublicAsset(subjectsSection.ctaImage)" alt="" class="bento-cta__img" loading="lazy"
+            decoding="async" />
+        </div>
+      </a> -->
     </div>
   </section>
 </template>
 
 <style scoped>
-/* ── Grid: mobile-first ── */
-.bento-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.85rem;
-}
-
-@media (min-width: 640px) {
-  .bento-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .bento-grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 1.1rem;
-  }
-
-  .bento-card--span-4 {
-    grid-column: span 4;
-  }
-
-  .bento-card--span-5 {
-    grid-column: span 5;
-  }
-
-  .bento-card--span-7 {
-    grid-column: span 7;
-  }
-}
-
-.bento-grid__cell {
-  display: flex;
-  min-width: 0;
-}
-
-/* ── Card ── */
-.bento-card {
-  position: relative;
-  display: flex;
-  width: 100%;
-  min-height: 100%;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: 1.35rem;
-  padding: 1.1rem 1.1rem 1.15rem;
-  background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.07);
-  box-shadow: 0 10px 28px -20px rgba(15, 23, 42, 0.28);
+.subject-card {
+  box-shadow: 0 6px 18px -14px rgba(15, 23, 42, 0.2);
   transition:
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.35s ease;
 }
 
-@media (min-width: 640px) {
-  .bento-card {
-    border-radius: 1.5rem;
-    padding: 1.25rem 1.3rem 1.3rem;
-  }
+.subject-card:hover {
+  transform: translateY(-5px);
+  border-color: rgb(191 219 254);
+  box-shadow: 0 22px 44px -22px rgba(37, 99, 235, 0.4);
 }
 
-.bento-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 36px -22px rgba(15, 23, 42, 0.35);
-}
-
-.bento-card.is-active {
-  border-color: rgba(37, 99, 235, 0.28);
+.subject-card.is-active {
+  border-color: rgb(147 197 253);
   box-shadow:
-    0 0 0 3px rgba(37, 99, 235, 0.1),
-    0 18px 36px -20px rgba(37, 99, 235, 0.35);
+    0 0 0 3px rgba(37, 99, 235, 0.12),
+    0 22px 44px -22px rgba(37, 99, 235, 0.42);
 }
 
-.bento-card__hit {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  text-align: left;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
+.subject-card-img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.bento-card__deco {
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.bento-card__orb {
-  position: absolute;
-  right: -18%;
-  top: -28%;
-  height: 9rem;
-  width: 9rem;
-  border-radius: 9999px;
-  opacity: 0.55;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.bento-card:hover .bento-card__orb {
-  transform: scale(1.1) translate(-2%, 4%);
-}
-
-.bento-card__watermark {
-  position: absolute;
-  right: -0.35rem;
-  bottom: -0.55rem;
-  height: 5.5rem;
-  width: 5.5rem;
-  opacity: 0.07;
-  transition: opacity 0.3s ease, transform 0.45s ease;
-}
-
-.bento-card:hover .bento-card__watermark,
-.bento-card.is-active .bento-card__watermark {
-  opacity: 0.11;
-  transform: scale(1.04);
-}
-
-.bento-card__top {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.65rem;
-}
-
-.bento-card__icon {
-  display: grid;
-  height: 2.5rem;
-  width: 2.5rem;
-  place-items: center;
-  border-radius: 0.85rem;
-  transition:
-    transform 0.28s ease,
-    background-color 0.28s ease,
-    color 0.28s ease;
-}
-
-.bento-card:hover .bento-card__icon,
-.bento-card.is-active .bento-card__icon {
+.subject-card:hover .subject-card-img,
+.subject-card.is-active .subject-card-img {
   transform: scale(1.05);
 }
 
-.bento-card__count {
-  border-radius: 9999px;
-  padding: 0.28rem 0.65rem;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: rgba(15, 23, 42, 0.04);
-  color: #64748b;
-  white-space: nowrap;
-}
-
-.bento-card.is-active .bento-card__count {
-  background: #eff6ff;
-  color: #2563eb;
-}
-
-.bento-card__title {
-  position: relative;
-  z-index: 1;
-  margin-top: 0.95rem;
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  color: #0f172a;
+.stream-panel {
+  border-radius: 1.25rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+  padding: 1.15rem 1.2rem 1.25rem;
+  box-shadow: 0 10px 28px -20px rgba(15, 23, 42, 0.28);
 }
 
 @media (min-width: 640px) {
-  .bento-card--featured .bento-card__title {
-    font-size: 1.4rem;
+  .stream-panel {
+    padding: 1.35rem 1.5rem 1.45rem;
   }
-}
-
-.bento-card__tagline {
-  position: relative;
-  z-index: 1;
-  margin-top: 0.35rem;
-  font-size: 0.84rem;
-  line-height: 1.45;
-  color: #64748b;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.bento-card__subjects {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 1rem;
-  padding-top: 0.95rem;
-  border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .subject-pill {
   display: inline-flex;
   max-width: 100%;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
   border-radius: 0.7rem;
   border: 1px solid rgba(15, 23, 42, 0.08);
   background: #f8fafc;
-  padding: 0.4rem 0.7rem 0.4rem 0.55rem;
-  font-size: 0.75rem;
+  padding: 0.42rem 0.75rem 0.42rem 0.6rem;
+  font-size: 0.8rem;
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -418,37 +197,11 @@ function selectSubject(subject: string, categoryId: SubjectStream['id']) {
     transform 0.2s ease;
 }
 
-@media (min-width: 640px) {
-  .subject-pill {
-    gap: 0.4rem;
-    font-size: 0.8rem;
-    padding: 0.42rem 0.75rem 0.42rem 0.6rem;
-  }
-}
-
-.subject-pill__icon {
-  height: 0.95rem;
-  width: 0.95rem;
-  flex-shrink: 0;
-  opacity: 0.85;
-}
-
-@media (min-width: 640px) {
-  .subject-pill__icon {
-    height: 1rem;
-    width: 1rem;
-  }
-}
-
 .subject-pill:hover {
   transform: translateY(-1px);
   border-color: rgba(37, 99, 235, 0.22);
   background: #eff6ff;
   color: #1d4ed8;
-}
-
-.subject-pill:hover .subject-pill__icon {
-  opacity: 1;
 }
 
 .subject-pill.is-selected {
@@ -457,148 +210,54 @@ function selectSubject(subject: string, categoryId: SubjectStream['id']) {
   color: #ffffff;
 }
 
-.subject-pill.is-selected .subject-pill__icon {
-  opacity: 1;
-}
-
-.subject-pill--more {
-  background: transparent;
-  border-style: dashed;
-  color: #64748b;
-  padding-left: 0.7rem;
-}
-
-.subject-pill--more:hover {
-  background: #ffffff;
-}
-
-/* Accent themes */
-.bento-card--teal .bento-card__icon {
-  background: #e6f7f3;
-  color: #0d9488;
-}
-.bento-card--teal .bento-card__orb {
-  background: radial-gradient(circle, rgba(13, 148, 136, 0.18) 0%, transparent 70%);
-}
-.bento-card--teal .bento-card__watermark {
-  color: #0d9488;
-}
-.bento-card--teal.is-active .bento-card__icon {
-  background: #0d9488;
-  color: #ffffff;
-}
-
-.bento-card--blue .bento-card__icon {
-  background: #e8f1ff;
-  color: #2563eb;
-}
-.bento-card--blue .bento-card__orb {
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, transparent 70%);
-}
-.bento-card--blue .bento-card__watermark {
-  color: #2563eb;
-}
-.bento-card--blue.is-active .bento-card__icon {
-  background: #2563eb;
-  color: #ffffff;
-}
-
-.bento-card--amber .bento-card__icon {
-  background: #fff7e8;
-  color: #d97706;
-}
-.bento-card--amber .bento-card__orb {
-  background: radial-gradient(circle, rgba(217, 119, 6, 0.16) 0%, transparent 70%);
-}
-.bento-card--amber .bento-card__watermark {
-  color: #d97706;
-}
-.bento-card--amber.is-active .bento-card__icon {
-  background: #d97706;
-  color: #ffffff;
-}
-
-.bento-card--sky .bento-card__icon {
-  background: #e0f2fe;
-  color: #0284c7;
-}
-.bento-card--sky .bento-card__orb {
-  background: radial-gradient(circle, rgba(2, 132, 199, 0.16) 0%, transparent 70%);
-}
-.bento-card--sky .bento-card__watermark {
-  color: #0284c7;
-}
-.bento-card--sky.is-active .bento-card__icon {
-  background: #0284c7;
-  color: #ffffff;
-}
-
-.bento-card--indigo .bento-card__icon {
-  background: #eef2ff;
-  color: #4f46e5;
-}
-.bento-card--indigo .bento-card__orb {
-  background: radial-gradient(circle, rgba(79, 70, 229, 0.14) 0%, transparent 70%);
-}
-.bento-card--indigo .bento-card__watermark {
-  color: #4f46e5;
-}
-.bento-card--indigo.is-active .bento-card__icon {
-  background: #4f46e5;
-  color: #ffffff;
-}
-
-.bento-card--rose .bento-card__icon {
-  background: #ffe4e6;
-  color: #e11d48;
-}
-.bento-card--rose .bento-card__orb {
-  background: radial-gradient(circle, rgba(225, 29, 72, 0.12) 0%, transparent 70%);
-}
-.bento-card--rose .bento-card__watermark {
-  color: #e11d48;
-}
-.bento-card--rose.is-active .bento-card__icon {
-  background: #e11d48;
-  color: #ffffff;
-}
-
-.bento-card--slate .bento-card__icon {
-  background: #f1f5f9;
-  color: #475569;
-}
-.bento-card--slate .bento-card__orb {
-  background: radial-gradient(circle, rgba(71, 85, 105, 0.14) 0%, transparent 70%);
-}
-.bento-card--slate .bento-card__watermark {
-  color: #475569;
-}
-.bento-card--slate.is-active .bento-card__icon {
-  background: #475569;
-  color: #ffffff;
-}
-
-/* ── CTA strip ── */
 .bento-cta {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
   overflow: hidden;
   border-radius: 1.35rem;
-  border: 1px solid rgba(191, 219, 254, 0.55);
-  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 48%, #0ea5e9 100%);
-  padding: 1.2rem 1.2rem 1.25rem;
-  box-shadow: 0 18px 40px -24px rgba(37, 99, 235, 0.55);
+  text-decoration: none;
+  background: linear-gradient(160deg, #1d4ed8 0%, #2563eb 55%, #1e40af 100%);
+  box-shadow: 0 20px 50px -24px rgba(29, 78, 216, 0.5);
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+.bento-cta:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 56px -22px rgba(29, 78, 216, 0.58);
+}
+
+.bento-cta:focus-visible {
+  outline: 2px solid #4338ca;
+  outline-offset: 4px;
 }
 
 @media (min-width: 640px) {
   .bento-cta {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    grid-template-columns: minmax(0, 1.05fr) minmax(16rem, 0.95fr);
     border-radius: 1.5rem;
-    padding: 1.35rem 1.6rem;
-    gap: 1.25rem;
+    min-height: 17.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-cta {
+    grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr);
+    min-height: 18.5rem;
+  }
+}
+
+.bento-cta__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.35rem 1.25rem 1.45rem;
+}
+
+@media (min-width: 640px) {
+  .bento-cta__copy {
+    padding: 1.7rem 1.85rem 1.8rem 1.9rem;
   }
 }
 
@@ -611,46 +270,110 @@ function selectSubject(subject: string, categoryId: SubjectStream['id']) {
 }
 
 .bento-cta__title {
-  margin-top: 0.25rem;
-  font-size: 1.15rem;
+  margin-top: 0.4rem;
+  font-size: 1.28rem;
   font-weight: 800;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   line-height: 1.25;
   color: #ffffff;
 }
 
 @media (min-width: 640px) {
   .bento-cta__title {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 }
 
 .bento-cta__note {
-  margin-top: 0.3rem;
-  font-size: 0.8rem;
-  line-height: 1.4;
-  color: rgba(219, 234, 254, 0.88);
+  margin-top: 0.5rem;
+  max-width: 28rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: rgba(239, 246, 255, 0.92);
+}
+
+.bento-cta__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.95rem;
+}
+
+.bento-cta__chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.22rem 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #eff6ff;
 }
 
 .bento-cta__btn {
-  width: 100%;
-  justify-content: center;
+  width: fit-content;
+  margin-top: 1.15rem;
+}
+
+.bento-cta__media {
+  position: relative;
+  order: -1;
+  min-height: 12rem;
+  overflow: hidden;
 }
 
 @media (min-width: 640px) {
-  .bento-cta__btn {
-    width: auto;
-    flex-shrink: 0;
+  .bento-cta__media {
+    order: 0;
+    min-height: 100%;
+  }
+}
+
+.bento-cta__media::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(29, 78, 216, 0.28), transparent 42%);
+}
+
+@media (min-width: 640px) {
+  .bento-cta__media::after {
+    background: linear-gradient(to right, #1d4ed8 0%, rgba(29, 78, 216, 0.35) 18%, transparent 42%);
+  }
+}
+
+.bento-cta__img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: 62% center;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bento-cta:hover .bento-cta__img {
+  transform: scale(1.04);
+}
+
+@media (min-width: 640px) {
+  .bento-cta__img {
+    position: absolute;
+    inset: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bento-card,
-  .bento-card:hover,
-  .bento-card__orb,
-  .bento-card__icon,
+
+  .subject-card,
+  .subject-card:hover,
+  .subject-card-img,
   .subject-pill,
-  .subject-pill:hover {
+  .subject-pill:hover,
+  .bento-cta,
+  .bento-cta:hover,
+  .bento-cta__img,
+  .bento-cta:hover .bento-cta__img {
     transition: none;
     transform: none;
   }

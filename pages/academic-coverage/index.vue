@@ -31,7 +31,9 @@ useSeoMeta({
   <div class="academic-coverage">
     <AcademicHeroSection />
     <GradesSection />
-    <QuickServiceCategoriesSection />
+    <div class="container-page">
+      <QuickServiceCategoriesSection />
+    </div>
     <BoardCovered />
     <SubjectsSection />
     <ExamPreparationSection />
