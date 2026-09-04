@@ -1,147 +1,68 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import IconCheck from '~/components/icons/IconCheck.vue'
-import { recruitmentServices, servicesSection, valueAddedSupport } from '~/data/institutions'
-
-const accentClasses: Record<string, { chip: string; check: string }> = {
-  blue: { chip: 'bg-blue-50 text-blue-600 ring-blue-100', check: 'text-blue-600' },
-  indigo: { chip: 'bg-indigo-50 text-indigo-600 ring-indigo-100', check: 'text-indigo-600' },
-  amber: { chip: 'bg-amber-50 text-amber-600 ring-amber-100', check: 'text-amber-600' },
-  emerald: { chip: 'bg-emerald-50 text-emerald-600 ring-emerald-100', check: 'text-emerald-600' },
-  violet: { chip: 'bg-violet-50 text-violet-600 ring-violet-100', check: 'text-violet-600' },
-}
+import { staffingModels, staffingModelsSection } from '~/data/institutions'
 </script>
 
 <template>
-  <section id="recruitment-services" class="relative scroll-mt-24 overflow-hidden section-surface-muted section-py"
-    aria-labelledby="services-heading">
+  <section id="staffing-models" class="relative scroll-mt-24 overflow-hidden section-surface-muted section-py"
+    aria-labelledby="staffing-heading">
     <div class="container-page relative">
-      <CardHeader heading-id="services-heading" :badge="servicesSection.badge" :title="servicesSection.title"
-        :description="servicesSection.description" :classes="servicesSection.classes" />
+      <CardHeader heading-id="staffing-heading" :badge="staffingModelsSection.badge"
+        :title="staffingModelsSection.title" :description="staffingModelsSection.description"
+        :classes="staffingModelsSection.classes" />
 
-      <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
-        <article
-          v-for="(service, i) in recruitmentServices"
-          :key="service.id"
-          :id="service.id"
-          :class="service.featured ? 'lg:col-span-2' : ''"
-          v-motion
-          :initial="{ opacity: 0, y: 16 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + (i % 2) * 60, duration: 450 } }"
-        >
-          <div
-            :class="[
-              'group relative flex h-full flex-col overflow-hidden rounded-3xl p-6 sm:p-7',
-              service.featured
-                ? 'bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 text-white shadow-[0_24px_60px_-24px_rgba(29,78,216,0.5)]'
-                : 'border border-slate-200/80 bg-white shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-card',
-            ]"
-          >
-            <span
-              v-if="service.featured"
-              class="absolute right-5 top-5 rounded-full bg-amber-400 px-3 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-slate-900"
-            >
-              Premium
-            </span>
-
-            <div class="flex items-start gap-4">
-              <span
-                :class="[
-                  'grid h-12 w-12 shrink-0 place-items-center rounded-2xl ring-1',
-                  service.featured ? 'bg-white/15 text-white ring-white/25' : accentClasses[service.accent].chip,
-                ]"
-                aria-hidden="true"
-              >
-                <Icon :icon="service.iconMdi" class="h-6 w-6" />
+      <div class="mt-10 overflow-hidden rounded-[1.6rem] border border-slate-200 bg-slate-200 shadow-soft lg:mt-12">
+        <div class="grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3">
+          <article v-for="(model, i) in staffingModels" :id="model.id" :key="model.id"
+            class="staffing-cell group bg-white p-6 sm:p-7">
+            <div class="flex items-start justify-between gap-4">
+              <span class="font-display text-[13px] font-bold tracking-[0.14em] text-blue-600" aria-hidden="true">
+                {{ String(i + 1).padStart(2, '0') }}
               </span>
-              <div class="min-w-0">
-                <p
-                  :class="[
-                    'text-[11px] font-bold uppercase tracking-[0.16em]',
-                    service.featured ? 'text-amber-200' : 'text-slate-500',
-                  ]"
-                >
-                  {{ service.no }} · {{ service.subtitle }}
-                </p>
-                <h3 class="font-display mt-1 text-lg font-bold sm:text-xl">{{ service.title }}</h3>
-              </div>
+              <Icon :icon="model.iconMdi"
+                class="h-5 w-5 text-slate-400 transition-colors duration-300 group-hover:text-blue-600"
+                aria-hidden="true" />
             </div>
-
-            <p
-              :class="[
-                'mt-4 text-[13.5px] leading-relaxed sm:text-sm',
-                service.featured ? 'text-blue-50' : 'text-slate-600',
-              ]"
-            >
-              {{ service.description }}
+            <h3 class="font-display mt-5 text-lg font-bold leading-snug text-slate-900">
+              {{ model.title }}
+            </h3>
+            <p class="mt-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-400">
+              {{ model.fit }}
             </p>
-
-            <p
-              :class="[
-                'mt-5 text-[11px] font-bold uppercase tracking-[0.14em]',
-                service.featured ? 'text-amber-200' : 'text-slate-500',
-              ]"
-            >
-              Key features
-            </p>
-            <ul
-              class="mt-2.5 grid flex-1 gap-2"
-              :class="service.featured ? 'sm:grid-cols-2 lg:grid-cols-3' : ''"
-              role="list"
-            >
-              <li
-                v-for="feature in service.features"
-                :key="feature"
-                :class="[
-                  'flex items-start gap-2.5 text-[13px] sm:text-[13.5px]',
-                  service.featured ? 'text-white' : 'text-slate-700',
-                ]"
-              >
-                <IconCheck
-                  :class="[
-                    'mt-0.5 h-4 w-4 shrink-0',
-                    service.featured ? 'text-amber-300' : accentClasses[service.accent].check,
-                  ]"
-                />
-                {{ feature }}
-              </li>
-            </ul>
-
-            <p
-              :class="[
-                'mt-5 border-t pt-4 text-[13px] italic leading-relaxed',
-                service.featured ? 'border-white/15 text-blue-100' : 'border-slate-100 text-slate-500',
-              ]"
-            >
-              {{ service.note }}
-            </p>
-          </div>
-        </article>
+            <p class="mt-3 line-clamp-2 min-h-[2.6em] text-sm leading-snug text-slate-600">{{ model.description }}</p>
+          </article>
+        </div>
       </div>
 
       <div
-        class="mt-8 overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft sm:p-8"
-        v-motion
-        :initial="{ opacity: 0, y: 14 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }"
-      >
-        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">{{ valueAddedSupport.badge }}</p>
-        <h3 class="font-display mt-2 text-lg font-bold text-slate-900 sm:text-xl">{{ valueAddedSupport.title }}</h3>
-        <ul class="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3" role="list">
-          <li
-            v-for="item in valueAddedSupport.items"
-            :key="item"
-            class="flex items-start gap-2.5 text-[13.5px] font-medium text-slate-700"
-          >
-            <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-600"
-              aria-hidden="true">
-              <IconCheck class="h-3 w-3" />
-            </span>
-            {{ item }}
-          </li>
-        </ul>
+        class="mt-8 flex flex-col items-start justify-between gap-4 border-t border-slate-200 pt-6 sm:flex-row sm:items-center">
+        <p class="max-w-xl text-sm leading-relaxed text-slate-600">
+          {{ staffingModelsSection.panelNote }}
+        </p>
+        <a :href="staffingModelsSection.cta.href"
+          class="group inline-flex items-center gap-2 text-sm font-semibold text-blue-700">
+          {{ staffingModelsSection.cta.label }}
+          <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            aria-hidden="true" />
+        </a>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.staffing-cell {
+  transition: background-color 0.3s ease;
+}
+
+.staffing-cell:hover {
+  background-color: #f8fafc;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .staffing-cell {
+    transition: none;
+  }
+}
+</style>

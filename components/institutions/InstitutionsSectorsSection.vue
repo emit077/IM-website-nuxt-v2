@@ -1,87 +1,79 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import IconCheck from '~/components/icons/IconCheck.vue'
 import { hiringSectors, sectorsSection } from '~/data/institutions'
-
-const accentClasses: Record<string, { chip: string; check: string }> = {
-  blue: { chip: 'bg-blue-50 text-blue-600 ring-blue-100', check: 'text-blue-600' },
-  emerald: { chip: 'bg-emerald-50 text-emerald-600 ring-emerald-100', check: 'text-emerald-600' },
-  amber: { chip: 'bg-amber-50 text-amber-600 ring-amber-100', check: 'text-amber-600' },
-  violet: { chip: 'bg-violet-50 text-violet-600 ring-violet-100', check: 'text-violet-600' },
-}
 </script>
 
 <template>
-  <section id="hire-teachers-for" class="relative scroll-mt-24 bg-white section-py" aria-labelledby="sectors-heading">
-    <div class="container-page">
+  <section id="who-we-help" class="relative scroll-mt-24 overflow-hidden bg-white section-py"
+    aria-labelledby="sectors-heading">
+    <div aria-hidden="true"
+      class="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-blue-200/25 blur-3xl" />
+
+    <div class="container-page relative">
       <CardHeader heading-id="sectors-heading" :badge="sectorsSection.badge" :title="sectorsSection.title"
         :description="sectorsSection.description" :classes="sectorsSection.classes" />
 
-      <div class="mt-10 grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-2">
-        <article
-          v-for="(sector, i) in hiringSectors"
-          :key="sector.id"
-          v-motion
+      <div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+        <article v-for="(sector, i) in hiringSectors" :key="sector.id" :id="sector.id" v-motion
           :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + (i % 2) * 60, duration: 450 } }"
-        >
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + (i % 4) * 60, duration: 420 } }">
           <div
-            class="group flex h-full flex-col rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-card sm:p-7"
-          >
-            <div class="flex items-start gap-4">
-              <span
-                :class="[
-                  'grid h-12 w-12 shrink-0 place-items-center rounded-2xl ring-1',
-                  accentClasses[sector.accent].chip,
-                ]"
-                aria-hidden="true"
-              >
-                <Icon :icon="sector.iconMdi" class="h-6 w-6" />
-              </span>
-              <div>
-                <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">{{ sector.subtitle }}</p>
-                <h3 class="font-display mt-1 text-lg font-bold text-slate-900">{{ sector.title }}</h3>
-                <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:text-sm">{{ sector.description }}</p>
+            class="sector-card group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white shadow-soft">
+            <div class="relative aspect-[16/10] overflow-hidden bg-[#eef4ff]">
+              <img :src="usePublicAsset(sector.image)" :alt="`${sector.title} faculty recruitment`"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" loading="lazy"
+                decoding="async" />
+              <div
+                class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/45 to-transparent px-3.5 pb-3 pt-12">
+                <h3 class="font-display text-lg font-bold leading-snug text-white sm:text-xl">
+                  {{ sector.title }}
+                </h3>
               </div>
             </div>
 
-            <div class="mt-5 grid flex-1 gap-5" :class="sector.extras ? 'sm:grid-cols-2' : ''">
-              <div>
-                <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">{{ sector.rolesLabel }}</p>
-                <ul class="mt-2.5 space-y-2" role="list">
-                  <li
-                    v-for="role in sector.roles"
-                    :key="role"
-                    class="flex items-start gap-2.5 text-[13px] text-slate-700 sm:text-sm"
-                  >
-                    <IconCheck :class="['mt-0.5 h-4 w-4 shrink-0', accentClasses[sector.accent].check]" />
-                    {{ role }}
-                  </li>
-                </ul>
-              </div>
+            <div class="flex flex-1 flex-col p-5">
+              <p class="mt-0.5 line-clamp-2 min-h-[2.6em] text-[13px] leading-snug text-slate-600">{{ sector.description }}</p>
+              <p class="mt-4 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">{{ sector.extraLabel }}
+              </p>
+              <p class="mt-2 line-clamp-2 text-[11px] font-semibold leading-relaxed text-slate-600">
+                {{ sector.extras.join(' / ') }}
+              </p>
 
-              <div v-if="sector.extras">
-                <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">{{ sector.extraLabel }}</p>
-                <ul class="mt-2.5 space-y-2" role="list">
-                  <li
-                    v-for="item in sector.extras"
-                    :key="item"
-                    class="flex items-start gap-2.5 text-[13px] text-slate-700 sm:text-sm"
-                  >
-                    <IconCheck :class="['mt-0.5 h-4 w-4 shrink-0', accentClasses[sector.accent].check]" />
-                    {{ item }}
-                  </li>
-                </ul>
-              </div>
+              <!-- <a :href="sector.cta.href"
+                class="group/cta mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 transition hover:text-blue-800">
+                {{ sector.cta.label }}
+                <Icon icon="mdi:arrow-right"
+                  class="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" aria-hidden="true" />
+              </a> -->
             </div>
-
-            <p class="mt-5 border-t border-slate-100 pt-4 text-[13px] italic leading-relaxed text-slate-500">
-              {{ sector.note }}
-            </p>
           </div>
         </article>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+.sector-card {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease,
+    border-color 0.35s ease;
+}
+
+.sector-card:hover {
+  transform: translateY(-4px);
+  border-color: rgb(191 219 254);
+  box-shadow: 0 22px 44px -22px rgba(37, 99, 235, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sector-card {
+    transition: none;
+  }
+
+  .sector-card:hover {
+    transform: none;
+  }
+}
+</style>

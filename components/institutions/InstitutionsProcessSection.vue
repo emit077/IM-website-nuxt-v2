@@ -1,136 +1,217 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import IconCheck from '~/components/icons/IconCheck.vue'
 import { hiringProcessOutcome, hiringSteps, institutionsProcessSection } from '~/data/institutions'
 
-const accentClasses: Record<(typeof hiringSteps)[number]['accent'], { tile: string; number: string }> = {
-  blue: { tile: 'bg-blue-100', number: 'text-blue-700' },
-  indigo: { tile: 'bg-indigo-100', number: 'text-indigo-700' },
-  violet: { tile: 'bg-violet-100', number: 'text-violet-700' },
-  emerald: { tile: 'bg-emerald-100', number: 'text-emerald-700' },
-  amber: { tile: 'bg-amber-100', number: 'text-amber-700' },
+const accentClasses: Record<string, string> = {
+  blue: 'bg-blue-100 text-blue-700',
+  indigo: 'bg-sky-100 text-sky-700',
+  violet: 'bg-emerald-100 text-emerald-700',
+  emerald: 'bg-orange-100 text-orange-700',
+  amber: 'bg-violet-100 text-violet-700',
+  teal: 'bg-teal-100 text-teal-700',
 }
 </script>
 
 <template>
-  <section id="hiring-process" class="relative scroll-mt-24 overflow-hidden bg-white section-py"
-    aria-labelledby="process-heading">
-    <div aria-hidden="true"
-      class="pointer-events-none absolute -left-20 top-16 h-72 w-72 rounded-full bg-blue-100/50 blur-3xl" />
-    <div aria-hidden="true"
-      class="pointer-events-none absolute -right-16 bottom-10 h-64 w-64 rounded-full bg-indigo-100/40 blur-3xl" />
+  <section
+    id="hiring-process"
+    class="relative scroll-mt-24 overflow-hidden bg-slate-50 section-py"
+    aria-labelledby="process-heading"
+  >
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -left-20 top-16 h-72 w-72 rounded-full bg-blue-100/50 blur-3xl"
+    />
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute -right-16 bottom-10 h-64 w-64 rounded-full bg-indigo-100/40 blur-3xl"
+    />
 
     <div class="container-page relative">
-      <CardHeader heading-id="process-heading" :badge="institutionsProcessSection.badge"
-        :title="institutionsProcessSection.title" :description="institutionsProcessSection.description"
-        :classes="institutionsProcessSection.classes" />
+      <CardHeader
+        heading-id="process-heading"
+        :badge="institutionsProcessSection.badge"
+        :title="institutionsProcessSection.title"
+        :description="institutionsProcessSection.description"
+        :classes="institutionsProcessSection.classes"
+      />
 
-      <ol class="mt-10 hidden gap-3 xl:grid xl:grid-cols-5" role="list">
-        <li
-          v-for="(step, i) in hiringSteps"
-          :key="step.no"
-          class="relative"
-          v-motion
-          :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 25 + i * 50, duration: 380 } }"
-        >
-          <article
-            class="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card"
+      <div class="mt-10 grid items-stretch gap-6 lg:mt-12 lg:grid-cols-12 lg:gap-8">
+        <ol class="relative space-y-6 sm:space-y-7 lg:col-span-7" role="list">
+          <li
+            v-for="(step, i) in hiringSteps"
+            :key="step.no"
+            class="relative flex items-stretch"
+            :class="i % 2 === 1 ? 'justify-end' : 'justify-start'"
+            v-motion
+            :initial="{ opacity: 0, y: 18 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 70, duration: 420 } }"
           >
-            <span
-              :class="[
-                'grid h-11 w-11 place-items-center rounded-xl font-display text-sm font-extrabold',
-                accentClasses[step.accent].tile,
-                accentClasses[step.accent].number,
-              ]"
-              aria-hidden="true"
-            >
-              {{ step.no }}
-            </span>
-            <span
-              class="mt-4 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-50 text-slate-500"
-              aria-hidden="true"
-            >
-              <Icon :icon="step.iconMdi" class="h-5 w-5" />
-            </span>
-            <h3 class="mt-3 font-display text-[15px] font-bold leading-snug text-slate-900">{{ step.title }}</h3>
-            <p class="mt-1.5 flex-1 text-[12.5px] leading-relaxed text-slate-500">{{ step.description }}</p>
-          </article>
-          <Icon
-            v-if="i < hiringSteps.length - 1"
-            icon="mdi:chevron-right"
-            class="pointer-events-none absolute -right-2.5 top-8 z-10 hidden h-5 w-5 text-blue-300 xl:block"
-            aria-hidden="true"
-          />
-        </li>
-      </ol>
+            <article class="relative z-[1] w-[92%] sm:w-[88%]">
+              <div
+                :class="[
+                  'process-card group relative flex w-full items-center gap-3 overflow-hidden rounded-[1.05rem] px-3.5 py-3 sm:gap-4 sm:rounded-[1.15rem] sm:px-4 sm:py-3.5',
+                  i === 0
+                    ? 'process-card--featured bg-[#2555D8] shadow-[0_18px_40px_-18px_rgba(37,85,216,0.55)]'
+                    : 'border border-slate-200/80 bg-white shadow-[0_10px_28px_-16px_rgba(15,23,42,0.22)]',
+                ]"
+              >
+                <span
+                  :class="[
+                    'relative grid h-11 w-11 shrink-0 place-items-center rounded-lg font-display text-[13px] font-extrabold sm:h-12 sm:w-12 sm:text-sm',
+                    i === 0 ? 'bg-white/20 text-white' : accentClasses[step.accent],
+                  ]"
+                  aria-hidden="true"
+                >
+                  {{ step.no }}
+                </span>
+                <div class="relative min-w-0 flex-1">
+                  <h3
+                    :class="[
+                      'font-display truncate text-[15px] font-bold leading-snug sm:text-[16px]',
+                      i === 0 ? 'text-white' : 'text-slate-900',
+                    ]"
+                  >
+                    {{ step.subtitle }}
+                  </h3>
+                  <p
+                    :class="[
+                      'mt-0.5 line-clamp-2 min-h-[2.5em] text-[12.5px] leading-snug sm:text-[13px]',
+                      i === 0 ? 'text-blue-100' : 'text-slate-500',
+                    ]"
+                  >
+                    {{ step.description }}
+                  </p>
+                </div>
+              </div>
 
-      <ol class="relative mx-auto mt-10 max-w-3xl space-y-0 xl:hidden" role="list">
-        <li
-          v-for="(step, i) in hiringSteps"
-          :key="`mobile-${step.no}`"
-          class="relative flex gap-5 sm:gap-6"
+              <div
+                v-if="i < hiringSteps.length - 1"
+                aria-hidden="true"
+                class="pointer-events-none absolute -bottom-7 z-[2] text-sky-400 sm:-bottom-8"
+                :class="i % 2 === 0 ? 'right-2 sm:right-5' : 'left-2 sm:left-5'"
+              >
+                <svg
+                  v-if="i % 2 === 0"
+                  class="h-7 w-16 sm:h-8 sm:w-20"
+                  viewBox="0 0 96 40"
+                  fill="none"
+                >
+                  <path
+                    d="M6 6c16 4 34 12 52 22 12 6 24 10 36 11"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-dasharray="3.4 3.6"
+                  />
+                  <path
+                    d="M80 28l14 10-13 1.8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <svg
+                  v-else
+                  class="h-7 w-16 sm:h-8 sm:w-20"
+                  viewBox="0 0 96 40"
+                  fill="none"
+                >
+                  <path
+                    d="M90 6c-16 4-34 12-52 22-12 6-24 10-36 11"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-dasharray="3.4 3.6"
+                  />
+                  <path
+                    d="M16 28L2 38l13 1.8"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </article>
+          </li>
+        </ol>
+
+        <div
+          class="relative flex lg:col-span-5"
           v-motion
           :initial="{ opacity: 0, y: 16 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 60 + i * 80, duration: 450 } }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520, delay: 100 } }"
         >
-          <div class="flex flex-col items-center">
-            <span
-              class="z-10 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-blue-600 text-white shadow-cta ring-4 ring-blue-100"
-            >
-              <Icon :icon="step.iconMdi" class="h-5 w-5" aria-hidden="true" />
-            </span>
-            <span
-              v-if="i < hiringSteps.length - 1"
-              aria-hidden="true"
-              class="-mt-1 w-px flex-1 bg-gradient-to-b from-blue-200 to-blue-100"
+          <figure
+            class="relative min-h-[280px] w-full flex-1 overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-slate-100 shadow-[0_22px_48px_-26px_rgba(15,23,42,0.28)] sm:min-h-[320px] lg:min-h-0"
+          >
+            <img
+              :src="usePublicAsset(institutionsProcessSection.image)"
+              :alt="institutionsProcessSection.imageAlt"
+              class="absolute inset-0 h-full w-full object-cover object-center"
+              loading="lazy"
+              decoding="async"
             />
-          </div>
-
-          <div :class="['flex-1', i < hiringSteps.length - 1 ? 'pb-8 sm:pb-10' : '']">
             <div
-              class="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-card sm:p-6"
-            >
-              <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">
-                Step {{ step.no }} · {{ step.subtitle }}
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/15 to-transparent"
+            />
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+              <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-200">
+                {{ institutionsProcessSection.imageCaption }}
               </p>
-              <h3 class="font-display mt-1.5 text-base font-bold text-slate-900 sm:text-lg">{{ step.title }}</h3>
-              <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:text-sm">{{ step.description }}</p>
-              <ul class="mt-3.5 space-y-2" role="list">
-                <li v-for="item in step.items" :key="item" class="flex items-start gap-2.5 text-[13px] text-slate-700">
-                  <IconCheck class="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
-                  {{ item }}
-                </li>
-              </ul>
-            </div>
-          </div>
-        </li>
-      </ol>
-
-      <div class="mt-10 hidden xl:grid xl:grid-cols-5 xl:gap-3">
-        <article
-          v-for="(step, i) in hiringSteps"
-          :key="`detail-${step.no}`"
-          class="rounded-2xl border border-slate-100 bg-cream-50/60 p-4"
-          v-motion
-          :initial="{ opacity: 0, y: 10 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 40, duration: 360 } }"
-        >
-          <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">{{ step.subtitle }}</p>
-          <ul class="mt-3 space-y-2" role="list">
-            <li v-for="item in step.items" :key="item" class="flex items-start gap-2 text-[12.5px] leading-snug text-slate-600">
-              <IconCheck class="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600" />
-              {{ item }}
-            </li>
-          </ul>
-        </article>
+              <p class="mt-1.5 font-display text-lg font-bold text-white sm:text-xl">
+                {{ institutionsProcessSection.imageNote }}
+              </p>
+            </figcaption>
+          </figure>
+        </div>
       </div>
 
-      <p class="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-slate-600 sm:text-base" v-motion
-        :initial="{ opacity: 0 }" :visibleOnce="{ opacity: 1, transition: { duration: 500 } }">
+      <p
+        class="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-slate-600 sm:text-base"
+        v-motion
+        :initial="{ opacity: 0 }"
+        :visibleOnce="{ opacity: 1, transition: { duration: 500 } }"
+      >
         {{ hiringProcessOutcome }}
       </p>
     </div>
   </section>
 </template>
+
+<style scoped>
+.process-card {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-4px);
+}
+
+.process-card:not(.process-card--featured):hover {
+  border-color: rgb(191 219 254);
+  box-shadow:
+    0 4px 12px -2px rgba(15, 23, 42, 0.08),
+    0 22px 48px -16px rgba(37, 99, 235, 0.28);
+}
+
+.process-card--featured:hover {
+  box-shadow: 0 24px 48px -14px rgba(37, 85, 216, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-card {
+    transition: none;
+  }
+
+  .process-card:hover {
+    transform: none;
+  }
+}
+</style>
