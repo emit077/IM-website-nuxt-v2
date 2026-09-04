@@ -106,6 +106,19 @@ function markLogoFailed(id: string) {
                   </li>
                 </ul>
 
+                <p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-blue-100/70 mt-4">
+                  {{ coverage.gradesLabel }}
+                </p>
+                <ul class="mt-2 flex flex-wrap gap-1.5" role="list" :aria-label="coverage.gradesLabel">
+                  <li v-for="(grade, i) in coverage.grades" :key="grade.label"
+                    :class="i >= 5 ? 'hidden sm:list-item' : ''">
+                    <span
+                      class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-50 backdrop-blur-[2px]">
+                      {{ grade.label }}
+                    </span>
+                  </li>
+                </ul>
+
                 <ul class="mt-3 flex flex-wrap gap-1.5" role="list" :aria-label="coverage.coursesLabel">
                   <li v-for="(course, i) in coverage.courses" :key="course.label"
                     :class="i >= 5 ? 'hidden sm:list-item' : ''">

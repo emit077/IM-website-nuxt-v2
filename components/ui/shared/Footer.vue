@@ -66,6 +66,7 @@ const navLinks = [
   { label: 'Find tutors', to: '/#tutors' },
   { label: 'How it works', to: '/#how-it-works' },
   { label: 'Success stories', to: '/success-stories' },
+  { label: 'Insights Hub', to: '/insights' },
   { label: 'Partner programme', to: '/#partner-programme' },
   { label: 'Channel partner program', to: '/channel-partner' },
   { label: 'Partner investment model', to: '/channel-partner/investment' },

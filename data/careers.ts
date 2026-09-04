@@ -19,12 +19,11 @@ export function careerResumeMailto(role?: string) {
 
 export const careersHero = {
   badge: 'Careers at Indian Mentors',
-  title: 'Build Your Career in a Structured Academic Ecosystem',
+  title: 'Build Your Career in a<br class="hidden sm:inline" /> Structured Academic Ecosystem',
   subtitle: 'Purpose, discipline, continuous learning, and measurable contribution.',
   description:
     'As a personalised tutoring services organisation, we are building a professionally managed ecosystem that connects students, parents, tutors, educators, institutions, and academic professionals through structured processes and technology-enabled operations.',
-  caption:
-    'Whether you are an academic counsellor, tutor recruiter, administrator, HR professional, finance executive, customer support professional, marketer, or technology specialist, your work contributes to a larger purpose — helping create better learning experiences and stronger academic outcomes.',
+  caption: '',
   promise: 'Build with purpose. Grow with structure. Contribute to education.',
   primaryCta: { label: 'View Open Positions', href: '#open-positions' },
   secondaryCta: { label: 'Submit Your Resume', href: careerResumeMailto() },
@@ -320,8 +319,8 @@ export const hiringProcessSection = {
   classes: '!px-0 !py-0',
   description:
     'A clear, structured path from application to onboarding — designed to assess fit, communication, and professional readiness.',
-  image: '/assets/img/contact/im-building.png',
-  imageAlt: 'Indian Mentors office in Bhilai — a structured workplace for academic professionals',
+  image: '/assets/img/careers/hiring-process.webp',
+  imageAlt: 'A hiring manager and candidate in a guided interview conversation at Indian Mentors',
   overlayKicker: 'Careers at Indian Mentors',
   overlayTitle: 'From application to onboarding — guided at every step',
   cta: { label: 'View Open Positions', href: '#open-positions' },

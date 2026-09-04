@@ -304,6 +304,8 @@ export const tutorSubjects = {
     image: '/assets/img/shared/academic.png',
     boardsLabel: 'Boards we cover',
     boardsHref: '/academic-coverage#boards-covered',
+    gradesLabel: 'Grades we cover',
+    gradesHref: '/academic-coverage#grades-covered',
     coursesLabel: 'Courses & programmes',
     coursesHref: '/academic-coverage#exam-preparation',
     boards: [
@@ -314,6 +316,16 @@ export const tutorSubjects = {
       { id: 'nios', name: 'NIOS', logo: '/assets/img/boards/nios.png' },
       { id: 'state', name: 'State Boards', logo: '/assets/img/boards/state-boards.png' },
       { id: 'jee-neet', name: 'JEE / NEET', logo: '/assets/img/boards/NTC.png' },
+    ],
+    grades: [
+      { label: 'Pre-Primary', href: '/academic-coverage#pre-primary' },
+      { label: 'Nursery', href: '/academic-coverage#pre-primary' },
+      { label: 'LKG', href: '/academic-coverage#pre-primary' },
+      { label: 'UKG', href: '/academic-coverage#pre-primary' },
+      { label: 'Primary', href: '/academic-coverage#primary' },
+      { label: 'Middle School', href: '/academic-coverage#middle' },
+      { label: 'Secondary', href: '/academic-coverage#secondary' },
+      { label: 'Senior Secondary', href: '/academic-coverage#senior' },
     ],
     courses: [
       { label: 'JEE', href: '/academic-coverage#competitive' },

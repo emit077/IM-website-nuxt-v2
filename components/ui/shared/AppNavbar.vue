@@ -35,6 +35,7 @@ const navMenus = [
       { label: 'Enrollment', href: '/student-parent/enrollment' },
       { label: 'Academic Coverage', href: '/academic-coverage' },
       { label: 'Success Stories', href: '/success-stories' },
+      { label: 'Insights Hub', href: '/insights' },
       { label: 'Partner Programme', href: '/channel-partner' },
       { label: 'Hire for Institute', href: '/institutions' },
       { label: 'Careers', href: '/careers' },

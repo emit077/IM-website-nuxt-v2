@@ -19,6 +19,16 @@ const secondaryHero: SecondaryHeroContent = {
 
 <template>
   <SecondaryHeroLayout :hero-content="secondaryHero">
+    <template #title>
+      <h1
+        id="careers-hero-heading"
+        class="mt-5 capitalize font-display text-[2.4rem] font-black leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.75rem] xl:text-[4.25rem]"
+        v-motion
+        :initial="{ opacity: 0, y: 16 }"
+        :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 60 } }"
+        v-html="careersHero.title"
+      />
+    </template>
     <p
       class="mt-8 max-w-3xl text-center font-display text-base font-bold text-white sm:text-lg"
       v-motion

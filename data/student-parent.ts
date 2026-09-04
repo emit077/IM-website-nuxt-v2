@@ -1041,6 +1041,14 @@ export const spFinalCta = {
   ],
 }
 
+export const spStickyCta = {
+  freeLabel: 'Register Free',
+  freeHref: externalLinks.studentSignup,
+  premiumLabel: 'Go Premium',
+  premiumHref: '/student-parent/enrollment',
+  note: 'Free ₹0 · Premium ₹1,200 / year',
+}
+
 export const subscriptionFinalCta = {
   title: "Give Your Child the Right Time, Support & Learning Structure",
   description:

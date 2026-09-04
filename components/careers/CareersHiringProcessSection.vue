@@ -4,7 +4,7 @@ import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconArrowRight from '~/components/icons/IconArrowRight.vue'
 import { hiringProcessSection, hiringSteps } from '~/data/careers'
 
-const officeImage = usePublicAsset(hiringProcessSection.image)
+const hiringImage = usePublicAsset(hiringProcessSection.image)
 
 const accentClasses: Record<(typeof hiringSteps)[number]['accent'], { tile: string; number: string }> = {
   blue: { tile: 'bg-blue-100', number: 'text-blue-700' },
@@ -44,7 +44,7 @@ const accentClasses: Record<(typeof hiringSteps)[number]['accent'], { tile: stri
             class="relative min-h-[280px] w-full flex-1 overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-slate-100 shadow-[0_22px_48px_-26px_rgba(15,23,42,0.28)] sm:min-h-[360px] lg:min-h-0"
           >
             <img
-              :src="officeImage"
+              :src="hiringImage"
               :alt="hiringProcessSection.imageAlt"
               class="absolute inset-0 h-full w-full object-cover object-center"
               loading="lazy"

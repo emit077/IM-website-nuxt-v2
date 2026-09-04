@@ -16,6 +16,7 @@ import WhyChooseUs from '~/components/ui/shared/WhyChooseUs.vue'
 import StudentParentFamilyRequirementsSection from '~/components/student-parent/StudentParentFamilyRequirementsSection.vue'
 import StudentParentSupportSection from '~/components/ui/shared/StudentParentSupportSection.vue'
 import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
+import StudentParentStickyCta from '~/components/student-parent/StudentParentStickyCta.vue'
 import { spFinalCta, spWhyFamilies } from '~/data/student-parent'
 
 useSeoMeta({
@@ -53,5 +54,6 @@ useSeoMeta({
     <UiCTASection heading-id="sp-final-cta-heading" layout="split" surface-class="section-surface-muted"
       :title="spFinalCta.title" :description="spFinalCta.description" :ctas="spFinalCta.ctas" />
     <StudentParentSupportSection />
+    <StudentParentStickyCta />
   </div>
 </template>

@@ -1,15 +1,28 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 
-const headerContent = {
-  badge: '',
-  title: "Subscribe to Our <span class='text-gradient-brand'>Newsletter</span>",
-  description:
-    'Get study tips, tutor insights, success stories, and platform updates in one concise monthly email.',
+const props = withDefaults(
+  defineProps<{
+    badge?: string
+    title?: string
+    description?: string
+  }>(),
+  {
+    badge: '',
+    title: "Subscribe to Our <span class='text-gradient-brand'>Newsletter</span>",
+    description:
+      'Get study tips, tutor insights, success stories, and platform updates in one concise monthly email.',
+  },
+)
+
+const headerContent = computed(() => ({
+  badge: props.badge,
+  title: props.title,
+  description: props.description,
   classes: '!px-0 !py-0',
-}
+}))
 
 const email = ref('')
 const status = ref<'idle' | 'invalid' | 'success'>('idle')

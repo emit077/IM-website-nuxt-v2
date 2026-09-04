@@ -49,6 +49,7 @@ export default defineNuxtConfig({
         '/tutors/registration-plans',
         '/institutions',
         '/faq',
+        '/insights',
         '/careers',
         '/careers/admission-counsellor',
         '/careers/admission-coordinator',

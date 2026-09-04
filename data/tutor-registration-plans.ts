@@ -797,6 +797,11 @@ export const registrationBannerCta = {
       iconMdi: 'mdi:rocket-launch-outline',
       primary: true,
     },
+    {
+      label: 'Talk to Tutor Support',
+      href: '/contact',
+      iconMdi: 'mdi:phone-outline',
+    },
   ],
 }
 
