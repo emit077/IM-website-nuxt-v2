@@ -92,7 +92,6 @@ import { premiumValueSection, whyPremiumSection } from '~/data/tutor-registratio
               {{ premiumValueSection.valueChainLabel }}
             </p>
             <ol class="relative mt-4 space-y-3" role="list">
-              <span aria-hidden="true" class="pointer-events-none absolute left-6 top-6 bottom-6 w-px bg-white/20" />
               <li v-for="(step, i) in premiumValueSection.valueChain" :key="step.label" v-motion
                 :initial="{ opacity: 0, x: 12 }"
                 :visibleOnce="{ opacity: 1, x: 0, transition: { delay: 80 + i * 70, duration: 400 } }">

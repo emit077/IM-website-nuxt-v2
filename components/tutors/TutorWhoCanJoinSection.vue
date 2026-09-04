@@ -14,14 +14,14 @@ const accentClasses: Record<Accent, { tile: string; bar: string; label: string }
     label: 'text-blue-600',
   },
   indigo: {
-    tile: 'bg-indigo-50 text-indigo-600 ring-indigo-100 group-hover/row:bg-indigo-600 group-hover/row:text-white group-hover/row:ring-indigo-600',
-    bar: 'bg-gradient-to-r from-indigo-500 to-violet-500',
-    label: 'text-indigo-600',
+    tile: 'bg-blue-50 text-blue-600 ring-blue-100 group-hover/row:bg-blue-600 group-hover/row:text-white group-hover/row:ring-blue-600',
+    bar: 'bg-gradient-to-r from-blue-500 to-indigo-500',
+    label: 'text-blue-600',
   },
   amber: {
-    tile: 'bg-amber-50 text-amber-700 ring-amber-100 group-hover/row:bg-amber-500 group-hover/row:text-white group-hover/row:ring-amber-500',
-    bar: 'bg-gradient-to-r from-amber-500 to-orange-500',
-    label: 'text-amber-700',
+    tile: 'bg-blue-50 text-blue-600 ring-blue-100 group-hover/row:bg-blue-600 group-hover/row:text-white group-hover/row:ring-blue-600',
+    bar: 'bg-gradient-to-r from-blue-500 to-indigo-500',
+    label: 'text-blue-600',
   },
 }
 

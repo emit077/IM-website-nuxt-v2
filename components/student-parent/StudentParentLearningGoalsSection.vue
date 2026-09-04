@@ -31,8 +31,8 @@ import { spLearningGoals } from '~/data/student-parent'
             </div>
 
             <figcaption
-              class="relative m-4 rounded-2xl border border-blue-100 bg-white/85 p-4 backdrop-blur sm:m-5 sm:p-5">
-              <p class="font-display text-[15px] font-bold text-slate-900">
+              class="relative m-4 rounded-2xl text-center border border-blue-100 bg-white/85 p-4 backdrop-blur sm:m-5 sm:p-5">
+              <p class="font-display text-[18px] font-bold text-slate-900">
                 {{ spLearningGoals.imageCaption }}
               </p>
               <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600">

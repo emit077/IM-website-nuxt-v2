@@ -319,7 +319,7 @@ export const hiringProcessSection = {
   classes: '!px-0 !py-0',
   description:
     'A clear, structured path from application to onboarding — designed to assess fit, communication, and professional readiness.',
-  image: '/assets/img/careers/hiring-process.webp',
+  image: '/assets/img/careers/hiring-process.png',
   imageAlt: 'A hiring manager and candidate in a guided interview conversation at Indian Mentors',
   overlayKicker: 'Careers at Indian Mentors',
   overlayTitle: 'From application to onboarding — guided at every step',

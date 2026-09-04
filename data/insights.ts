@@ -212,8 +212,8 @@ export const insightsApproach = {
   classes: '!px-0 !py-0',
   description:
     'While our insights help you learn better, personalised tutoring ensures consistent academic improvement. At Indian Mentors, we combine expert knowledge with customised teaching strategies to support every student’s unique learning journey.',
-  image: 'assets/img/why-choose/academic-ecosystem.webp',
-  imageAlt: 'Students and mentors collaborating through personalised learning',
+  image: 'assets/img/insights/personalised-learning.png',
+  imageAlt: 'A mentor and student in a one-to-one tutoring session',
   points: [
     { title: 'Insights', description: 'Learn proven strategies, exam habits, and academic frameworks.', iconMdi: 'mdi:book-open-variant-outline' },
     { title: 'Guidance', description: 'Work one-to-one with a matched mentor and structured plan.', iconMdi: 'mdi:account-school-outline' },

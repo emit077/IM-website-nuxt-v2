@@ -28,8 +28,8 @@ const afterTones = [
             <span class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent"
               aria-hidden="true" />
             <figcaption class="absolute inset-x-0 bottom-0 p-4">
-              <p class="font-display text-base font-extrabold text-white">{{ spDemo.imageCaption }}</p>
-              <p class="mt-0.5 text-[13px] font-medium text-white/80">{{ spDemo.imageNote }}</p>
+              <p class="font-display text-base font-extrabold text-white uppercase">{{ spDemo.imageCaption }}</p>
+              <!-- <p class="mt-0.5 text-[13px] font-medium text-white/80">{{ spDemo.imageNote }}</p> -->
             </figcaption>
           </figure>
           <span
@@ -70,8 +70,7 @@ const afterTones = [
                 <h3 class="font-display text-lg font-extrabold tracking-tight text-white">
                   {{ spDemo.banner.title }}
                 </h3>
-                <p class="mt-1 text-[13px] leading-snug text-blue-50">
-                  {{ spDemo.banner.description }}
+                <p class="mt-1 text-[13px] leading-snug text-blue-50" v-html="spDemo.banner.description">
                 </p>
               </div>
               <a :href="spDemo.cta.href"
@@ -79,6 +78,7 @@ const afterTones = [
                 <span class="grid h-6 w-6 place-items-center rounded-full bg-blue-600 text-white" aria-hidden="true">
                   <Icon icon="mdi:play" class="h-3.5 w-3.5 translate-x-px" />
                 </span>
+
                 {{ spDemo.cta.label }}
                 <IconArrowRight class="h-4 w-4 shrink-0" />
               </a>

@@ -335,7 +335,6 @@ export const premiumValueSection = {
   dailyHookLabel: 'per day',
   dailyHookNote: 'One annual plan, billed at ₹1,000',
   breakdown: [
-    { value: '₹1,000', label: 'Per year', iconMdi: 'mdi:calendar-blank-outline', featured: false },
     { value: '₹83', label: 'Per month', iconMdi: 'mdi:calendar-month-outline', featured: false },
     { value: '< ₹3', label: 'Per day', iconMdi: 'mdi:white-balance-sunny', featured: true },
   ],

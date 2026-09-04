@@ -41,7 +41,7 @@ const trustStats = [
     icon: 'solar:users-group-two-rounded-linear',
   },
   {
-    value: '1,00,000+',
+    value: '5,00,000+',
     label: 'Verified Tutors',
     icon: 'solar:square-academic-cap-linear',
   },

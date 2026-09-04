@@ -484,7 +484,7 @@ export const spLearningGoals = {
   classes: '!px-0 !py-0 mx-auto ',
   image: 'assets/img/hero/hero-2.png',
   imageAlt: 'Student confident about a clear academic goal',
-  imageCaption: 'One clear goal. One structured plan.',
+  imageCaption: 'One Clear Goal. One Structured Plan',
   imageNote: 'Every plan starts with the goal that matters most.',
   items: [
     {
@@ -592,7 +592,7 @@ export const spDemo = {
   ],
   banner: {
     title: 'Book Your Free Demo',
-    description: 'Experience personalised tutoring before you commit. No cost, no obligation.',
+    description: 'Experience personalised tutoring before you commit.<br/> No cost, no obligation.',
   },
   cta: { label: 'Enroll Now', href: externalLinks.studentSignup },
 }

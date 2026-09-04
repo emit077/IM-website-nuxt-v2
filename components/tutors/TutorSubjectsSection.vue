@@ -63,7 +63,7 @@ function markLogoFailed(id: string) {
           </article>
         </li>
 
-        <li class="sm:col-span-2 lg:col-span-3" v-motion :initial="{ opacity: 0, y: 14 }"
+        <li class="sm:col-span-2 lg:col-span-4" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 220, duration: 420 } }">
           <NuxtLink :to="tutorSubjects.cta.href"
             class="coverage-cta group relative flex h-full overflow-hidden rounded-[1.25rem] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-700"
@@ -87,24 +87,7 @@ function markLogoFailed(id: string) {
                   {{ coverage.description }}
                 </p>
 
-                <p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-blue-100/70 mt-5">
-                  {{ coverage.boardsLabel }}
-                </p>
-                <ul class="mt-2.5 flex flex-wrap items-center" role="list">
-                  <li v-for="(board, i) in coverage.boards" :key="board.id"
-                    :style="{ zIndex: coverage.boards.length - i }" class="relative -ml-1.5 first:ml-0">
-                    <span
-                      class="grid h-9 w-9 place-items-center rounded-full bg-white shadow-sm ring-2 ring-white sm:h-10 sm:w-10"
-                      :title="board.name">
-                      <img v-if="!failedLogos[board.id]" :src="usePublicAsset(board.logo)" alt=""
-                        class="h-[70%] w-[70%] object-contain" loading="lazy" decoding="async"
-                        @error="markLogoFailed(board.id)" />
-                      <span v-else class="text-[9px] font-bold tracking-wide text-slate-500">
-                        {{ board.name.slice(0, 2) }}
-                      </span>
-                    </span>
-                  </li>
-                </ul>
+
 
                 <p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-blue-100/70 mt-4">
                   {{ coverage.gradesLabel }}
@@ -128,10 +111,29 @@ function markLogoFailed(id: string) {
                     </span>
                   </li>
                 </ul>
+
+                <!-- <p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-blue-100/70 mt-5">
+                  {{ coverage.boardsLabel }}
+                </p> -->
+                <ul class="mt-4 flex flex-wrap items-center" role="list">
+                  <li v-for="(board, i) in coverage.boards" :key="board.id"
+                    :style="{ zIndex: coverage.boards.length - i }" class="relative -ml-1.5 first:ml-0">
+                    <span
+                      class="grid h-9 w-9 place-items-center rounded-full bg-white shadow-sm ring-2 ring-white sm:h-10 sm:w-10"
+                      :title="board.name">
+                      <img v-if="!failedLogos[board.id]" :src="usePublicAsset(board.logo)" alt=""
+                        class="h-[70%] w-[70%] object-contain" loading="lazy" decoding="async"
+                        @error="markLogoFailed(board.id)" />
+                      <span v-else class="text-[9px] font-bold tracking-wide text-slate-500">
+                        {{ board.name.slice(0, 2) }}
+                      </span>
+                    </span>
+                  </li>
+                </ul>
               </div>
 
-              <div class="text-right mt-5">
-                <ActionBtn :label="tutorSubjects.cta.label" :href="tutorSubjects.cta.href" variant="secondary" />
+              <div class="text-right mt-3">
+                <ActionBtn :label="tutorSubjects.cta.label" :href="tutorSubjects.cta.href" variant="primary" />
                 <!-- <span
                   class="mt-5 inline-flex w-fit items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 group-hover:gap-2.5 group-hover:bg-cream-50">
                   {{ tutorSubjects.cta.label }}

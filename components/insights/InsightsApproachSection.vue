@@ -52,10 +52,11 @@ const approachImage = usePublicAsset(insightsApproach.image)
 
         <div class="relative lg:col-span-6" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
-          <figure class="relative overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/10 shadow-[0_24px_60px_-24px_rgba(15,23,42,0.55)]">
+          <figure class="relative h-full min-h-[18rem] overflow-hidden rounded-[1.75rem] shadow-[0_24px_60px_-24px_rgba(15,23,42,0.55)] sm:min-h-[22rem] lg:min-h-[28rem]">
             <img :src="approachImage" :alt="insightsApproach.imageAlt"
-              class="h-full min-h-[18rem] w-full object-cover object-center sm:min-h-[22rem] lg:min-h-[26rem]"
-              loading="lazy" decoding="async" />
+              class="absolute inset-0 h-full w-full object-cover object-[center_20%]" loading="lazy"
+              decoding="async" />
+            <span aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/55 to-transparent" />
             <figcaption
               class="absolute inset-x-4 bottom-4 rounded-xl bg-white/95 px-4 py-3 font-display text-sm font-bold text-slate-900 shadow-soft backdrop-blur sm:inset-x-5 sm:bottom-5">
               Insights inform. Personalised guidance delivers results.

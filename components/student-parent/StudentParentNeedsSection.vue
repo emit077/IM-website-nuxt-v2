@@ -47,7 +47,7 @@ const needNumber = (groupIndex: number, itemIndex: number) =>
         </article>
       </div>
 
-      <p class="mx-auto mt-8 flex max-w-2xl items-start justify-center gap-2.5 rounded-2xl border border-blue-100 bg-blue-50/80 px-5 py-4 text-center text-sm font-medium leading-relaxed text-blue-800 sm:items-center sm:text-[15px]"
+      <p class="mx-auto mt-8 flex  items-start justify-center gap-2.5 rounded-2xl border border-blue-100 bg-blue-50/80 px-5 py-4 text-center text-sm font-medium leading-relaxed text-blue-800 sm:items-center sm:text-[15px]"
         v-motion :initial="{ opacity: 0, y: 10 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 420 } }">
         <Icon icon="mdi:check-decagram-outline" class="mt-0.5 h-5 w-5 shrink-0 text-blue-600 sm:mt-0"
           aria-hidden="true" />

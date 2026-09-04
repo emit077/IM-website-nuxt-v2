@@ -363,12 +363,12 @@ export const tutorSubjects = {
       iconMdi: 'mdi:chart-line',
       image: '/assets/img/tutor-subjects/commerce-business.webp',
     },
-    {
-      title: 'Technology & Computer Studies',
-      subjects: 'Computer Science • Programming • Information Technology • Digital Skills',
-      iconMdi: 'mdi:code-tags',
-      image: '/assets/img/tutor-subjects/technology.webp',
-    },
+    // {
+    //   title: 'Technology & Computer Studies',
+    //   subjects: 'Computer Science • Programming • Information Technology • Digital Skills',
+    //   iconMdi: 'mdi:code-tags',
+    //   image: '/assets/img/tutor-subjects/technology.webp',
+    // },
   ],
 }
 
@@ -854,7 +854,7 @@ export const earningsSection = {
     },
   ],
   dashboardItems: [
-    'Tutor Dashboard Provides',
+    'Demo Tracking',
     'Session Earnings',
     'Wallet Balance',
     'Earnings History',
