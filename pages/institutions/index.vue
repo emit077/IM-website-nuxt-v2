@@ -63,12 +63,11 @@ useSeoMeta({
     <!-- <InstitutionsRequirementsSection /> -->
     <InstitutionsWhySection />
     <InstitutionsProcessSection />
-    <InstitutionsBulkHiringSection />
+    <!-- <InstitutionsBulkHiringSection /> -->
     <InstitutionsServicesSection />
     <InstitutionsStaffingSupportSection />
     <InstitutionsQualitySection />
     <InstitutionsErpSection />
-    <InstitutionsFaqSection />
     <UiCTASection section-id="hire-teachers" heading-id="institutions-cta-heading"
       :extra-anchor-ids="['talk-to-recruiter', 'book-demo']" :badge="institutionsFinalCta.badge"
       badge-icon-mdi="mdi:account-tie-outline" :title="institutionsFinalCta.title"

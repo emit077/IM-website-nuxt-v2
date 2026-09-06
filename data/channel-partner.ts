@@ -201,7 +201,7 @@ export const revenueSplitSection = {
 
 export const whyPartnerSection = {
   kicker: 'Why Partner with Indian Mentors?',
-  title: ' Join the Indian Mentors <span class="text-gradient-brand">Channel Partner Network</span>',
+  title: 'Join the Indian Mentors <span class="text-gradient-brand">Channel Partner Network</span>',
   classes: '!px-0 !py-0',
   description:
     'Join a platform built for long-term partner success — with demand, structure, and scale already in place.',
@@ -221,7 +221,7 @@ export const whyPartnerReasons = [
     iconMdi: 'mdi:sitemap-outline',
     title: 'Established Service Model',
     description:
-      'Indian Mentors provides a structured tutoring service model with clear processes for student admissions, tutor allocation, and academic coordination.',
+      'Indian Mentors provides a structured tutoring service model with clear processes for student admissions and academic coordination.',
     accent: 'blue',
     graphic: 'model',
     stat: 'Clear operational processes',

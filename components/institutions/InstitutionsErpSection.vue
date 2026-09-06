@@ -1,7 +1,28 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import { ecosystemSection, matchingSection, techFeatures, techSection } from '~/data/institutions'
+import { ecosystemSection, techFeatures, techSection } from '~/data/institutions'
+
+const accentClasses: Record<string, { tile: string; num: string; panel: string; label: string }> = {
+  blue: {
+    tile: 'bg-blue-50 text-blue-600 ring-blue-100',
+    num: 'text-blue-500/15',
+    panel: 'border-blue-100 bg-blue-50/70',
+    label: 'text-blue-600',
+  },
+  violet: {
+    tile: 'bg-blue-50 text-blue-600 ring-blue-100',
+    num: 'text-blue-500/15',
+    panel: 'border-blue-100 bg-blue-50/70',
+    label: 'text-blue-600',
+  },
+  emerald: {
+    tile: 'bg-blue-50 text-blue-600 ring-blue-100',
+    num: 'text-blue-500/15',
+    panel: 'border-blue-100 bg-blue-50/70',
+    label: 'text-blue-600',
+  },
+}
 </script>
 
 <template>
@@ -23,12 +44,14 @@ import { ecosystemSection, matchingSection, techFeatures, techSection } from '~/
               <Icon :icon="feature.iconMdi" class="h-5 w-5" />
             </span>
             <h3 class="mt-4 font-display text-[15px] font-bold text-slate-900">{{ feature.title }}</h3>
-            <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600">{{ feature.description }}</p>
+            <p class="mt-1.5 line-clamp-2 min-h-[2.6em] flex-1 text-[13px] leading-relaxed text-slate-600">
+              {{ feature.description }}
+            </p>
           </article>
         </li>
       </ul>
 
-      <div class="mt-10 rounded-[1.75rem] border border-slate-200/80 bg-white p-6 shadow-soft sm:p-8" v-motion
+      <!-- <div class="mt-10 rounded-[1.75rem] border border-slate-200/80 bg-white p-6 shadow-soft sm:p-8" v-motion
         :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
         <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">{{ matchingSection.badge }}</p>
         <h3 class="font-display mt-2 text-xl font-bold text-slate-900 sm:text-2xl" v-html="matchingSection.title" />
@@ -41,27 +64,40 @@ import { ecosystemSection, matchingSection, techFeatures, techSection } from '~/
             <p class="mt-1 text-[12.5px] leading-relaxed text-slate-600">{{ step.detail }}</p>
           </li>
         </ol>
-      </div>
+      </div> -->
 
-      <div class="mt-6" v-motion :initial="{ opacity: 0, y: 14 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
-        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">{{ ecosystemSection.badge }}</p>
-        <h3 class="font-display mt-2 text-xl font-bold text-slate-900 sm:text-2xl" v-html="ecosystemSection.title" />
-        <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">{{ ecosystemSection.description }}</p>
-        <ul class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3" role="list">
-          <li v-for="party in ecosystemSection.parties" :key="party.title"
-            class="rounded-[1.5rem] border border-slate-200/80 bg-white p-5 shadow-soft">
-            <span class="grid h-11 w-11 place-items-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100"
-              aria-hidden="true">
-              <Icon :icon="party.iconMdi" class="h-5 w-5" />
-            </span>
-            <h4 class="mt-4 font-display text-base font-bold text-slate-900">{{ party.title }}</h4>
-            <p class="mt-2 text-[13px] text-slate-600"><span class="font-semibold text-slate-800">Need:</span> {{
-              party.need }}</p>
-            <p class="mt-1 text-[13px] text-slate-600"><span class="font-semibold text-slate-800">We provide:</span> {{
-              party.provide }}</p>
+      <div id="ecosystem" class="mt-16 scroll-mt-24 sm:mt-20">
+        <CardHeader heading-id="ecosystem-heading" :badge="ecosystemSection.badge" :title="ecosystemSection.title"
+          :description="ecosystemSection.description" :classes="ecosystemSection.classes" />
+        <ol class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+          <li v-for="(party, i) in ecosystemSection.parties" :key="party.title" class="relative" v-motion
+            :initial="{ opacity: 0, y: 16 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 80, duration: 450 } }">
+            <article
+              class="group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-slate-200/80 bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card sm:p-6">
+              <span :class="[
+                'relative grid h-12 w-12 place-items-center rounded-2xl ring-1 transition duration-300 group-hover:scale-105',
+                accentClasses[party.accent].tile,
+              ]" aria-hidden="true">
+                <Icon :icon="party.iconMdi" class="h-6 w-6" />
+              </span>
+              <h4 class="relative mt-4 font-display text-lg font-bold text-slate-900">{{ party.title }}</h4>
+
+              <div class="relative mt-5 flex flex-1 flex-col gap-3">
+                <div class="rounded-2xl border border-slate-100 bg-slate-50/80 px-3.5 py-3">
+                  <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">Need</p>
+                  <p class="mt-1.5 min-h-[2.6em] text-[13px] leading-snug text-slate-700">{{ party.need }}</p>
+                </div>
+                <div :class="['rounded-2xl border px-3.5 py-3', accentClasses[party.accent].panel]">
+                  <p :class="['text-[11px] font-bold uppercase tracking-[0.14em]', accentClasses[party.accent].label]">
+                    We provide
+                  </p>
+                  <p class="mt-1.5 min-h-[2.6em] text-[13px] leading-snug text-slate-700">{{ party.provide }}</p>
+                </div>
+              </div>
+            </article>
           </li>
-        </ul>
+        </ol>
       </div>
     </div>
   </section>

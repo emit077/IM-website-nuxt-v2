@@ -339,7 +339,8 @@ export const whyChooseReasons = [
     id: 'verified',
     iconMdi: 'mdi:shield-check-outline',
     title: 'Verified Educator Network',
-    description: 'Access a growing network of teachers and academic professionals across India.',
+    description:
+      'Access a growing network of verified teachers and academic professionals across subjects, boards, and regions in India.',
     accent: 'blue' as const,
   },
   {
@@ -347,7 +348,7 @@ export const whyChooseReasons = [
     iconMdi: 'mdi:target-account',
     title: 'Requirement-Based Matching',
     description:
-      'Candidates are shortlisted according to subject, qualification, experience, curriculum, location, teaching format, and institutional requirements.',
+      'Candidates are shortlisted by subject, qualification, experience, curriculum, location, teaching format, and institutional needs.',
     accent: 'indigo' as const,
   },
   {
@@ -355,21 +356,23 @@ export const whyChooseReasons = [
     iconMdi: 'mdi:clipboard-check-outline',
     title: 'Structured Screening',
     description:
-      'Candidates can be evaluated through qualification checks, experience review, communication assessment, and teaching demonstrations.',
+      'Candidates are evaluated through qualification checks, experience review, communication, and teaching demonstrations.',
     accent: 'emerald' as const,
   },
   {
     id: 'faster',
     iconMdi: 'mdi:clock-fast',
     title: 'Faster Recruitment',
-    description: 'Our recruitment team helps institutions reduce the time required to identify and shortlist suitable candidates.',
+    description:
+      'Our recruitment team helps institutions reduce the time needed to identify, evaluate, and shortlist suitable academic candidates.',
     accent: 'amber' as const,
   },
   {
     id: 'scalable',
     iconMdi: 'mdi:chart-timeline-variant',
     title: 'Scalable Hiring',
-    description: 'From one vacancy to multiple departments, our recruitment framework can scale with institutional requirements.',
+    description:
+      'From a single vacancy to multiple departments, our recruitment framework scales with growing institutional hiring needs.',
     accent: 'violet' as const,
   },
   {
@@ -561,6 +564,10 @@ export const qualitySection = {
   title: 'A structured approach to <span class="text-gradient-brand">educator verification</span>',
   description: 'Academic recruitment requires trust. Our screening framework may include the following checks, depending on the role and hiring model.',
   classes: '!px-0 !py-0',
+  image: '/assets/img/insights/personalised-learning.png',
+  imageAlt: 'Educator reviewing academic material with a learner during a verification-aligned teaching session',
+  imageCaption: 'Screened for the classroom',
+  imageNote: 'Identity, credentials, subject fit, and teaching ability — checked before shortlist.',
   disclaimer:
     'Verification and screening requirements may vary according to the role, institution, subject, and hiring model.',
 } as const
@@ -628,43 +635,47 @@ export const techSection = {
 } as const
 
 export const techFeatures = [
-  { iconMdi: 'mdi:clipboard-list-outline', title: 'Requirement Tracking', description: 'Track open faculty requirements and recruitment status.' },
+  { iconMdi: 'mdi:clipboard-list-outline', title: 'Requirement Tracking', description: 'Track open faculty requirements and current recruitment status.' },
   { iconMdi: 'mdi:database-outline', title: 'Candidate Database', description: 'Maintain organised educator profiles and recruitment information.' },
-  { iconMdi: 'mdi:account-filter-outline', title: 'Shortlisting', description: 'Identify candidates according to defined requirements.' },
-  { iconMdi: 'mdi:calendar-account-outline', title: 'Interview Coordination', description: 'Manage communication and interview schedules.' },
-  { iconMdi: 'mdi:progress-check', title: 'Status Tracking', description: 'Monitor candidates from sourcing to selection.' },
-  { iconMdi: 'mdi:file-document-outline', title: 'Documentation Support', description: 'Coordinate required information during onboarding.' },
+  { iconMdi: 'mdi:account-filter-outline', title: 'Shortlisting', description: 'Identify and shortlist candidates against defined role requirements.' },
+  { iconMdi: 'mdi:calendar-account-outline', title: 'Interview Coordination', description: 'Manage communication, interview schedules, and candidate availability.' },
+  { iconMdi: 'mdi:progress-check', title: 'Status Tracking', description: 'Monitor candidates from sourcing and shortlist through to selection.' },
+  { iconMdi: 'mdi:file-document-outline', title: 'Documentation Support', description: 'Coordinate documents and required information during onboarding.' },
 ] as const
 
 export const ecosystemSection = {
   badge: 'A Connected Academic Recruitment Ecosystem',
   title: 'For institutions. For recruiters. <span class="text-gradient-brand">For educators.</span>',
   description: 'Indian Mentors brings together three important participants in the recruitment process.',
+  classes: '!px-0 !py-0',
   parties: [
     {
       iconMdi: 'mdi:school-outline',
       title: 'Institutions',
-      need: 'Qualified educators',
-      provide: 'Recruitment & staffing support',
-    },
-    {
-      iconMdi: 'mdi:account-tie-outline',
-      title: 'Educators',
-      need: 'Relevant teaching opportunities',
-      provide: 'Access to suitable institutional opportunities',
+      need: 'Qualified, curriculum-aligned educators for academic roles',
+      provide: 'Structured recruitment and ongoing staffing support',
+      accent: 'blue' as const,
     },
     {
       iconMdi: 'mdi:handshake-outline',
       title: 'Recruitment Team',
       need: 'Connect the right educator with the right requirement',
       provide: 'Efficient and structured recruitment coordination',
+      accent: 'violet' as const,
+    },
+    {
+      iconMdi: 'mdi:account-tie-outline',
+      title: 'Educators',
+      need: 'Relevant teaching opportunities matched to their expertise',
+      provide: 'Access to suitable institutional teaching opportunities',
+      accent: 'emerald' as const,
     },
   ],
 } as const
 
 export const commitmentSection = {
   badge: 'Our Commitment',
-  title: 'Quality first. Recruitment with <span class="text-gradient-brand">responsibility.</span>',
+  title: 'Quality first. Recruitment with responsibility.',
   description:
     'Indian Mentors believes that teacher recruitment should not be treated as a simple vacancy-filling exercise. The educator selected for a role can directly influence student learning, classroom culture, academic outcomes, and institutional reputation.',
   focus: ['Relevance', 'Verification', 'Communication', 'Institutional fit'],
