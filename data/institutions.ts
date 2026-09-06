@@ -18,11 +18,11 @@ export type InstitutionAccent = 'blue' | 'emerald' | 'amber' | 'violet' | 'indig
 
 export const institutionsHero = {
   badge: 'Our Teacher Recruitment Services',
-  title: 'Build Strong Academic Teams. <span class="text-gradient-brand">Hire With Confidence.</span>',
+  title: 'Build Strong Teams.<br><span class="text-gradient-brand">Hire With Confidence.</span>',
   subtitle:
     '<span class="text-gradient-brand">Indian Mentors</span> — Institutional Teacher Recruitment & Academic Staffing',
   description:
-    'The Institutional Hiring Division helps schools, coaching institutes, colleges, universities, EdTech companies, and other learning organisations recruit qualified, verified, and curriculum-aligned teaching professionals across India. From one critical faculty requirement to large-scale academic staffing, we support the complete hiring journey.',
+    'We help schools, coaching institutes, colleges, and EdTech hire qualified, verified teachers across India.',
   caption: 'Qualified Educators. Structured Recruitment. Reliable Academic Staffing.',
   backgroundImage: 'assets/img/hero/hero-2.png',
   contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',

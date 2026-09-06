@@ -12,8 +12,8 @@ const heroContent: HeroContent = {
   subtitle: institutionsHero.subtitle,
   description: institutionsHero.description,
   contentClass: institutionsHero.contentClass,
-  backgroundImage: `url('${usePublicAsset(institutionsHero.backgroundImage)}')`,
-  mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-2.png')}`,
+  backgroundImage: `url('${usePublicAsset('assets/img/institutions/institutions-hero.png')}')`,
+  mobileBackgroundImage: `${usePublicAsset('assets/img/institutions/institutions-hero-mobile.png')}`,
   caption: institutionsHero.caption,
   headingId: 'institutions-hero-heading',
   actionBtns: [
