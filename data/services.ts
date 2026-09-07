@@ -270,7 +270,7 @@ export const specialisedSupportCategories: SpecialSupportCategory[] = [
   {
     id: 'autism',
     iconMdi: 'mdi:rainbow',
-    title: 'Autism Spectrum Support',
+    title: 'Autism Spectrum Disorder (ASD) Support',
     description: 'Creating structured learning experiences adapted to individual communication and learning needs.',
     supportMayInclude: [
       'Individual learning strategies',
