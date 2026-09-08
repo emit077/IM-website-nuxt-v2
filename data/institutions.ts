@@ -646,31 +646,50 @@ export const techFeatures = [
 export const ecosystemSection = {
   badge: 'A Connected Academic Recruitment Ecosystem',
   title: 'For institutions. For recruiters. <span class="text-gradient-brand">For educators.</span>',
-  description: 'Indian Mentors brings together three important participants in the recruitment process.',
+  description:
+    'The recruitment team sits at the centre of a two-way relationship — receiving faculty needs from institutions and profiles from educators, then matching them back in both directions.',
   classes: '!px-0 !py-0',
-  parties: [
-    {
-      iconMdi: 'mdi:school-outline',
-      title: 'Institutions',
-      need: 'Qualified, curriculum-aligned educators for academic roles',
-      provide: 'Structured recruitment and ongoing staffing support',
-      accent: 'blue' as const,
+  closing:
+    'Requirements flow in. Opportunities flow out. The recruitment team coordinates both directions.',
+  institutions: {
+    iconMdi: 'mdi:school-outline',
+    title: 'Institutions',
+    need: 'Qualified, curriculum-aligned educators for academic roles',
+    provide: 'Structured recruitment and ongoing staffing support',
+  },
+  hub: {
+    iconMdi: 'mdi:handshake-outline',
+    title: 'Recruitment Team',
+    role: 'Coordinating hub',
+    need: 'Connect the right educator with the right requirement',
+    provide: 'Efficient and structured recruitment coordination',
+  },
+  educators: {
+    iconMdi: 'mdi:account-tie-outline',
+    title: 'Educators',
+    need: 'Relevant teaching opportunities matched to their expertise',
+    provide: 'Access to suitable institutional teaching opportunities',
+  },
+  leftFlow: {
+    forward: {
+      label: 'Faculty requirements',
+      detail: 'Institutions share role needs with the recruitment team',
     },
-    {
-      iconMdi: 'mdi:handshake-outline',
-      title: 'Recruitment Team',
-      need: 'Connect the right educator with the right requirement',
-      provide: 'Efficient and structured recruitment coordination',
-      accent: 'violet' as const,
+    backward: {
+      label: 'Shortlisted educators',
+      detail: 'Verified candidates are matched back to institutions',
     },
-    {
-      iconMdi: 'mdi:account-tie-outline',
-      title: 'Educators',
-      need: 'Relevant teaching opportunities matched to their expertise',
-      provide: 'Access to suitable institutional teaching opportunities',
-      accent: 'emerald' as const,
+  },
+  rightFlow: {
+    forward: {
+      label: 'Matched opportunities',
+      detail: 'Suitable teaching roles are shared with educators',
     },
-  ],
+    backward: {
+      label: 'Educator profiles',
+      detail: 'Credentials and availability flow into the recruitment team',
+    },
+  },
 } as const
 
 export const commitmentSection = {

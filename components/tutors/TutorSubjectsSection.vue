@@ -77,49 +77,43 @@ function markLogoFailed(id: string) {
             <span class="coverage-overlay pointer-events-none absolute inset-0" aria-hidden="true" />
 
             <div
-              class="relative z-[1]  min-h-[16rem] w-full flex-col justify-between gap-6 p-5 sm:min-h-[17rem] sm:p-6 lg:flex-row lg:items-end lg:gap-8 lg:p-7">
+              class="relative z-[1] flex w-full flex-col justify-between gap-3 p-4 sm:p-5 lg:flex-row lg:items-end lg:gap-6">
               <div>
-
-                <h3 class="font-display mt-2 text-xl font-extrabold leading-snug text-white sm:text-[1.45rem]">
+                <h3 class="font-display text-lg font-extrabold leading-snug text-white sm:text-xl">
                   {{ coverage.title }}
                 </h3>
-                <p class="mt-2.5 max-w-md text-[13.5px] leading-relaxed text-blue-50/95">
+                <p class="mt-1.5 max-w-md text-[13px] leading-relaxed text-blue-50/95">
                   {{ coverage.description }}
                 </p>
 
-
-
-                <p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-blue-100/70 mt-4">
+                <p class="mt-3 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-100/70">
                   {{ coverage.gradesLabel }}
                 </p>
-                <ul class="mt-2 flex flex-wrap gap-1.5" role="list" :aria-label="coverage.gradesLabel">
+                <ul class="mt-1.5 flex flex-wrap gap-1" role="list" :aria-label="coverage.gradesLabel">
                   <li v-for="(grade, i) in coverage.grades" :key="grade.label"
                     :class="i >= 5 ? 'hidden sm:list-item' : ''">
                     <span
-                      class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-50 backdrop-blur-[2px]">
+                      class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2 py-px text-[10.5px] font-medium text-blue-50 backdrop-blur-[2px]">
                       {{ grade.label }}
                     </span>
                   </li>
                 </ul>
 
-                <ul class="mt-3 flex flex-wrap gap-1.5" role="list" :aria-label="coverage.coursesLabel">
+                <ul class="mt-1.5 flex flex-wrap gap-1" role="list" :aria-label="coverage.coursesLabel">
                   <li v-for="(course, i) in coverage.courses" :key="course.label"
                     :class="i >= 5 ? 'hidden sm:list-item' : ''">
                     <span
-                      class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[11px] font-medium text-blue-50 backdrop-blur-[2px]">
+                      class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2 py-px text-[10.5px] font-medium text-blue-50 backdrop-blur-[2px]">
                       {{ course.label }}
                     </span>
                   </li>
                 </ul>
 
-                <!-- <p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-blue-100/70 mt-5">
-                  {{ coverage.boardsLabel }}
-                </p> -->
-                <ul class="mt-4 flex flex-wrap items-center" role="list">
+                <ul class="mt-2.5 flex flex-wrap items-center" role="list">
                   <li v-for="(board, i) in coverage.boards" :key="board.id"
                     :style="{ zIndex: coverage.boards.length - i }" class="relative -ml-1.5 first:ml-0">
                     <span
-                      class="grid h-9 w-9 place-items-center rounded-full bg-white shadow-sm ring-2 ring-white sm:h-10 sm:w-10"
+                      class="grid h-8 w-8 place-items-center rounded-full bg-white shadow-sm ring-2 ring-white sm:h-9 sm:w-9"
                       :title="board.name">
                       <img v-if="!failedLogos[board.id]" :src="usePublicAsset(board.logo)" alt=""
                         class="h-[70%] w-[70%] object-contain" loading="lazy" decoding="async"
@@ -132,7 +126,7 @@ function markLogoFailed(id: string) {
                 </ul>
               </div>
 
-              <div class="text-right mt-3">
+              <div class="mt-1 text-right lg:mt-0">
                 <ActionBtn :label="tutorSubjects.cta.label" :href="tutorSubjects.cta.href" variant="primary" />
                 <!-- <span
                   class="mt-5 inline-flex w-fit items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 group-hover:gap-2.5 group-hover:bg-cream-50">

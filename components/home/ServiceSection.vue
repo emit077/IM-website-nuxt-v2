@@ -78,7 +78,7 @@ const services: ServiceCard[] = [
         hook: 'Learning designed around the child.',
         chip: 'Diverse needs',
         visual: 'assets/img/services/special-educators.webp',
-        href: '/services#special-educators',
+        href: '/services/special-educators',
         size: 'compact',
     },
     {

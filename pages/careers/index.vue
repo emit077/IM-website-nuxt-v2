@@ -7,7 +7,7 @@ import CareersCultureSection from '~/components/careers/CareersCultureSection.vu
 import CareersGrowthSection from '~/components/careers/CareersGrowthSection.vue'
 import CareersStandardsSection from '~/components/careers/CareersStandardsSection.vue'
 import CareersHiringProcessSection from '~/components/careers/CareersHiringProcessSection.vue'
-import CareersWhoCanApplySection from '~/components/careers/CareersWhoCanApplySection.vue'
+import CareersInternshipsSection from '~/components/careers/CareersInternshipsSection.vue'
 import CareersJobsSection from '~/components/careers/CareersJobsSection.vue'
 import CareersTalentNetworkSection from '~/components/careers/CareersTalentNetworkSection.vue'
 import CareersFaqSection from '~/components/careers/CareersFaqSection.vue'
@@ -40,6 +40,7 @@ useSeoMeta({
     <CareersGrowthSection />
     <CareersStandardsSection />
     <CareersHiringProcessSection />
+    <CareersInternshipsSection />
     <!-- <CareersWhoCanApplySection /> -->
     <CareersJobsSection />
     <CareersTalentNetworkSection />

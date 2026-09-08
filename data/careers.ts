@@ -366,6 +366,34 @@ export const hiringSteps = [
   },
 ] as const
 
+export const internshipsSection = {
+  kicker: 'Internship Opportunities',
+  title: 'Learn. Contribute. Build Your Career <span class="text-gradient-brand">with Indian Mentors</span>',
+  classes: '!px-0 !py-0',
+  paragraphs: [
+    'Indian Mentors offers structured internship opportunities for college students, final-year students, recent graduates, and passed-out candidates who want to gain practical industry exposure while contributing to a growing education and technology-driven organisation.',
+    'Our internships are designed to bridge the gap between academic learning and professional experience through real projects, guided mentorship, team collaboration, and exposure to day-to-day business operations.',
+    'Whether you are looking to complete an academic internship, gain your first professional experience, explore a career field, or build a stronger resume, Indian Mentors provides an environment where you can learn by doing and grow through meaningful work.',
+  ],
+  whoCanApply: {
+    kicker: 'Who Can Apply?',
+    title: 'Our internship opportunities are open to',
+    items: [
+      { iconMdi: 'mdi:school-outline', title: 'College & University Students' },
+      { iconMdi: 'mdi:account-graduation', title: 'Final-Year Students' },
+      { iconMdi: 'mdi:book-education-outline', title: 'Undergraduate Students' },
+      { iconMdi: 'mdi:certificate-outline', title: 'Postgraduate Students' },
+      { iconMdi: 'mdi:account-school-outline', title: 'Recent Graduates' },
+      { iconMdi: 'mdi:briefcase-account-outline', title: 'Passed-Out Students Seeking Industry Experience' },
+      { iconMdi: 'mdi:calendar-check-outline', title: 'Students Completing Academic / Summer Internships' },
+      { iconMdi: 'mdi:handshake-outline', title: 'Candidates Looking for Pre-Placement Experience' },
+      { iconMdi: 'mdi:compass-outline', title: 'Career Explorers Seeking Practical Exposure' },
+    ],
+    note: 'Internships may be available for both freshers and candidates with limited prior experience, depending on the requirements of the role.',
+  },
+  cta: { label: 'Apply for an Internship', href: careerApplyMailto('Internship') },
+} as const
+
 export const whoCanApplySection = {
   kicker: 'Who Can Apply?',
   title: 'Professionals at different stages of their careers',

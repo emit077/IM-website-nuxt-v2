@@ -266,7 +266,7 @@ export const tutorOpportunities = {
       title: 'Specialised Education',
       description: 'Support for diverse learning requirements.',
       iconMdi: 'mdi:puzzle-outline',
-      href: '/services#special-educators',
+      href: '/services/special-educators',
     },
     {
       title: 'Home Schooling Support',
@@ -319,9 +319,6 @@ export const tutorSubjects = {
     ],
     grades: [
       { label: 'Pre-Primary', href: '/academic-coverage#pre-primary' },
-      { label: 'Nursery', href: '/academic-coverage#pre-primary' },
-      { label: 'LKG', href: '/academic-coverage#pre-primary' },
-      { label: 'UKG', href: '/academic-coverage#pre-primary' },
       { label: 'Primary', href: '/academic-coverage#primary' },
       { label: 'Middle School', href: '/academic-coverage#middle' },
       { label: 'Secondary', href: '/academic-coverage#secondary' },

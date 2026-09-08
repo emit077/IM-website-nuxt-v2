@@ -136,6 +136,15 @@ function clippedMetaTags(items?: string[]) {
                 </div>
               </div>
             </div>
+
+            <NuxtLink
+              v-if="service.pageHref"
+              :to="service.pageHref"
+              class="mt-5 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-blue-600 transition hover:text-blue-700"
+            >
+              {{ service.pageCtaLabel || 'Learn more' }}
+              <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+            </NuxtLink>
           </div>
         </div>
       </div>

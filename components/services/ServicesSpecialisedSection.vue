@@ -57,6 +57,16 @@ import { specialisedSupportCategories, specialisedSupportSection } from '~/data/
         class="mx-auto mt-8 max-w-3xl rounded-2xl border border-amber-200/80 bg-amber-50/80 px-5 py-4 text-center text-[13px] leading-relaxed text-amber-900 sm:text-sm">
         {{ specialisedSupportSection.note }}
       </p>
+
+      <p class="mt-6 text-center">
+        <NuxtLink
+          to="/services/special-educators"
+          class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-blue-600 transition hover:text-blue-700"
+        >
+          Explore the full Special Educators programme
+          <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+        </NuxtLink>
+      </p>
     </div>
   </section>
 </template>

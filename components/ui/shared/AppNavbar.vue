@@ -29,6 +29,7 @@ const navMenus = [
     label: 'More',
     items: [
       { label: 'Why Choose Us', href: '/why-choose' },
+      { label: 'Special Educators', href: '/services/special-educators' },
       { label: 'Tutor Registration Plans', href: '/tutors/registration-plans' },
       { label: 'Students & Parents', href: '/student-parent' },
       { label: 'Subscription Plans', href: '/student-parent/subscription' },

@@ -13,6 +13,8 @@ type ServiceItem = {
   coverage?: string[]
   supportAreas?: string[]
   mayInclude?: string[]
+  pageHref?: string
+  pageCtaLabel?: string
   cta: { label: string; href: string }
 }
 
@@ -187,6 +189,8 @@ export const tutoringServices: ServiceItem[] = [
     ],
     keyBenefit:
       'Learning support designed around each student’s strengths, challenges, pace, and educational needs.',
+    pageHref: '/services/special-educators',
+    pageCtaLabel: 'Explore Special Education',
     cta: { label: 'Find a Special Educator', href: externalLinks.studentSignup },
   },
   {
@@ -459,7 +463,7 @@ export const quickServiceCategories = {
       description: 'Individualised support for unique needs.',
       iconMdi: 'solar:widget-2-linear',
       img: 'assets/img/services/special-tutor.svg',
-      href: '/services#special-educators',
+      href: '/services/special-educators',
     },
   ],
 }
