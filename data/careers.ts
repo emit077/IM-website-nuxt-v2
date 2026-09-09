@@ -369,15 +369,11 @@ export const hiringSteps = [
 export const internshipsSection = {
   kicker: 'Internship Opportunities',
   title: 'Learn. Contribute. Build Your Career <span class="text-gradient-brand">with Indian Mentors</span>',
-  classes: '!px-0 !py-0',
-  paragraphs: [
-    'Indian Mentors offers structured internship opportunities for college students, final-year students, recent graduates, and passed-out candidates who want to gain practical industry exposure while contributing to a growing education and technology-driven organisation.',
-    'Our internships are designed to bridge the gap between academic learning and professional experience through real projects, guided mentorship, team collaboration, and exposure to day-to-day business operations.',
-    'Whether you are looking to complete an academic internship, gain your first professional experience, explore a career field, or build a stronger resume, Indian Mentors provides an environment where you can learn by doing and grow through meaningful work.',
-  ],
+  classes: '!px-0 !py-0 mx-auto',
+  description:
+    'Structured internships for college students, final-year students, recent graduates, and passed-out candidates — bridging academic learning and professional experience through real projects, guided mentorship, and day-to-day operations.',
   whoCanApply: {
     kicker: 'Who Can Apply?',
-    title: 'Our internship opportunities are open to',
     items: [
       { iconMdi: 'mdi:school-outline', title: 'College & University Students' },
       { iconMdi: 'mdi:account-graduation', title: 'Final-Year Students' },

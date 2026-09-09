@@ -37,6 +37,6 @@ useSeoMeta({
     <SpecialEducatorsAudienceSection />
     <UiCTASection section-id="special-educators-cta" heading-id="special-educators-cta-heading"
       :badge="seFinalCta.badge" badge-icon-mdi="mdi:account-heart-outline" :title="seFinalCta.title"
-      :description="seFinalCta.description" :supporting="seFinalCta.supporting" :ctas="seFinalCta.ctas" />
+      :description="seFinalCta.description" :ctas="seFinalCta.ctas" />
   </div>
 </template>

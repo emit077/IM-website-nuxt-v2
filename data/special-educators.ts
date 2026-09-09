@@ -38,11 +38,12 @@ export const seIntro = {
 }
 
 export const seApproach = {
-  badge: 'Our Approach',
-  title: 'Education Adapted to the <span class="text-gradient-brand">Learner</span>',
-  classes: '!px-0 !py-0 mx-auto ',
+  badge: 'How do we do it?',
+  title: 'Our Approach to <span class="text-gradient-brand">Special Education</span>',
+  classes: '!px-0 !py-0 mx-auto max-w-4xl',
   description:
     'At Indian Mentors, we believe that every child deserves an inclusive learning environment where education is adapted to the learner—not the other way around.',
+  focusLead: 'Our Special Educators focus on:',
   closing:
     'Every learning plan is personalised according to the child’s educational needs, developmental stage, and long-term learning goals.',
   items: [
@@ -287,20 +288,18 @@ export const seServices = {
         'Teaching strategies',
         'Progress indicators',
         'Parent recommendations',
-        'Review schedules',
       ],
     },
     {
       id: 'one-to-one',
       iconMdi: 'mdi:account-school-outline',
       title: 'One-to-One Special Education',
-      description: 'Personalised sessions focusing on:',
+      description: 'Personalised one-to-one sessions tailored to each learner, focusing on:',
       points: [
         'Literacy',
         'Numeracy',
         'Communication',
         'Cognitive Skills',
-        'Daily Learning Skills',
         'Academic Readiness',
       ],
     },
@@ -313,7 +312,6 @@ export const seServices = {
         'Routine Development',
         'Classroom Behaviour',
         'Listening Skills',
-        'Instruction Following',
         'Social Interaction',
         'Early Academic Skills',
       ],
@@ -322,13 +320,12 @@ export const seServices = {
       id: 'academic-intervention',
       iconMdi: 'mdi:book-open-variant',
       title: 'Academic Intervention',
-      description: 'Support for:',
+      description: 'Targeted support to strengthen core academic skills and classroom learning:',
       points: [
         'Reading',
         'Writing',
         'Mathematics',
         'Language Development',
-        'Memory Strategies',
         'Study Skills',
       ],
     },
@@ -336,27 +333,26 @@ export const seServices = {
       id: 'parent-guidance',
       iconMdi: 'mdi:account-heart-outline',
       title: 'Parent Guidance & Family Support',
-      description: 'We believe parents play a vital role in a child’s educational progress. Support includes:',
+      description: 'Parents play a vital role in educational progress. Support includes:',
       points: [
         'Home learning strategies',
         'Educational counselling',
         'Progress discussions',
         'Goal setting',
         'Learning recommendations',
-        'School coordination guidance',
       ],
     },
     {
       id: 'school-collaboration',
       iconMdi: 'mdi:domain',
       title: 'School Collaboration',
-      description: 'Where appropriate and with family consent, our educators collaborate with schools to:',
+      description: 'Where appropriate and with family consent, our educators work with schools to:',
       points: [
         'Support inclusive education',
         'Share educational observations',
         'Align learning goals',
         'Recommend classroom accommodations',
-        'Encourage consistent educational approaches',
+        'Encourage consistent approaches',
       ],
     },
   ],
@@ -368,16 +364,57 @@ export const seMethodology = {
   classes: '!px-0 !py-0 mx-auto ',
   description: 'Every educational programme is tailored using evidence-informed, learner-centred practices.',
   items: [
-    { title: 'Multisensory Teaching', iconMdi: 'mdi:hand-heart-outline' },
-    { title: 'Activity-Based Learning', iconMdi: 'mdi:puzzle-star-outline' },
-    { title: 'Visual Supports', iconMdi: 'mdi:image-outline' },
-    { title: 'Positive Reinforcement', iconMdi: 'mdi:thumb-up-outline' },
-    { title: 'Structured Learning Routines', iconMdi: 'mdi:calendar-clock-outline' },
-    { title: 'Play-Based Learning (where age-appropriate)', iconMdi: 'mdi:teddy-bear' },
-    { title: 'Task Analysis', iconMdi: 'mdi:format-list-checks' },
-    { title: 'Incremental Skill Building', iconMdi: 'mdi:stairs' },
-    { title: 'Adaptive Teaching Strategies', iconMdi: 'mdi:tune-variant' },
-    { title: 'Continuous Assessment', iconMdi: 'mdi:chart-line' },
+    {
+      title: 'Multisensory Teaching',
+      description: 'Engage sight, sound, touch, and movement together.',
+      iconMdi: 'mdi:hand-heart-outline',
+    },
+    {
+      title: 'Activity-Based Learning',
+      description: 'Build skills through hands-on, meaningful practice.',
+      iconMdi: 'mdi:puzzle-star-outline',
+    },
+    {
+      title: 'Visual Supports',
+      description: 'Make instructions and routines easy to follow.',
+      iconMdi: 'mdi:image-outline',
+    },
+    {
+      title: 'Positive Reinforcement',
+      description: 'Grow confidence through encouragement and success.',
+      iconMdi: 'mdi:thumb-up-outline',
+    },
+    {
+      title: 'Structured Learning',
+      description: 'Create predictable steps that reduce learning anxiety.',
+      iconMdi: 'mdi:calendar-clock-outline',
+    },
+    {
+      title: 'Play-Based Learning',
+      note: 'where age-appropriate',
+      description: 'Turn curiosity and play into lasting skills.',
+      iconMdi: 'mdi:teddy-bear',
+    },
+    {
+      title: 'Task Analysis',
+      description: 'Break complex skills into clear, doable steps.',
+      iconMdi: 'mdi:format-list-checks',
+    },
+    {
+      title: 'Incremental Skill Building',
+      description: 'Stack small wins into steady, lasting progress.',
+      iconMdi: 'mdi:stairs',
+    },
+    {
+      title: 'Adaptive Teaching ',
+      description: 'Adjust methods to match each learner’s pace.',
+      iconMdi: 'mdi:tune-variant',
+    },
+    {
+      title: 'Continuous Assessment',
+      description: 'Review progress often and refine the plan.',
+      iconMdi: 'mdi:chart-line',
+    },
   ],
 }
 
@@ -391,7 +428,7 @@ export const seFeatures = {
     {
       title: 'Individualised Learning Plans',
       description:
-        'Every child receives a customised educational programme based on their learning strengths, challenges, and developmental goals.',
+        'Each child gets a customised programme based on their strengths, challenges, and goals.',
       iconMdi: 'mdi:clipboard-account-outline',
     },
     {
@@ -401,21 +438,21 @@ export const seFeatures = {
       iconMdi: 'mdi:account-tie-outline',
     },
     {
-      title: 'Evidence-Informed Educational Practices',
+      title: 'Evidence-Informed Practices',
       description:
-        'Teaching approaches are based on established educational principles and adapted to each learner’s needs.',
+        'Teaching methods follow established educational principles, adapted to each learner.',
       iconMdi: 'mdi:flask-outline',
     },
     {
       title: 'Parent Partnership',
       description:
-        'Regular communication and collaborative planning empower families to support learning beyond sessions.',
+        'Regular communication and planning help families support learning beyond sessions.',
       iconMdi: 'mdi:account-supervisor-outline',
     },
     {
       title: 'Inclusive Learning Environment',
       description:
-        'A supportive, respectful, and encouraging atmosphere where every child feels valued and capable of learning.',
+        'A supportive atmosphere where every child feels valued and capable of learning.',
       iconMdi: 'mdi:home-heart',
     },
     {
@@ -423,9 +460,7 @@ export const seFeatures = {
       description:
         'Regular assessments help measure growth, refine learning plans, and celebrate milestones.',
       iconMdi: 'mdi:chart-box-outline',
-    }
-
-
+    },
   ],
 }
 
@@ -438,44 +473,48 @@ export const seProcess = {
     {
       no: '01',
       title: 'Educational Consultation',
+      description: 'We discuss learning concerns, school history, and family goals together.',
+      iconMdi: 'mdi:account-voice',
       accent: 'blue' as const,
-      points: [
-        'Learning concerns',
-        'Academic history',
-        'School information',
-        'Existing assessments (if available)',
-        'Parent goals',
-        'Student strengths',
-      ],
     },
     {
       no: '02',
       title: 'Learning Assessment',
+      description: 'We identify the learning profile, abilities, and areas needing support.',
+      iconMdi: 'mdi:clipboard-text-search-outline',
       accent: 'indigo' as const,
-      points: [
-        'Learning profile',
-        'Academic abilities',
-        'Areas requiring support',
-        'Learning preferences',
-      ],
     },
     {
       no: '03',
       title: 'Individual Learning Plan',
+      description: 'A personalised programme is built with measurable educational objectives.',
+      iconMdi: 'mdi:file-document-edit-outline',
       accent: 'violet' as const,
-      points: ['A personalised programme is developed with measurable educational objectives.'],
     },
     {
       no: '04',
       title: 'Personalised Intervention',
+      description: 'One-to-one sessions use adaptive teaching and structured activities.',
+      iconMdi: 'mdi:account-school-outline',
       accent: 'emerald' as const,
-      points: ['Regular one-to-one sessions using adaptive teaching methods and structured learning activities.'],
     },
     {
       no: '05',
       title: 'Review & Progress Monitoring',
+      description: 'Ongoing reviews and parent consultations keep progress on track.',
+      iconMdi: 'mdi:chart-line',
       accent: 'amber' as const,
-      points: ['Ongoing evaluations and parent consultations help ensure continuous educational improvement.'],
+    },
+    {
+      no: '06',
+      title: 'Enroll for Special Education',
+      description: 'Book a consultation and begin a personalised special education plan for your child.',
+      iconMdi: 'mdi:clipboard-check-outline',
+      accent: 'rose' as const,
+      cta: {
+        label: 'Enroll Now',
+        href: externalLinks.studentSignup,
+      },
     },
   ],
 }
@@ -483,8 +522,9 @@ export const seProcess = {
 export const seAudience = {
   badge: 'Who Can Benefit?',
   title: 'Special Education Services Suitable for <span class="text-gradient-brand">Many Learners</span>',
-  classes: '!px-0 !py-0 mx-auto ',
-  description: 'Our Special Education Services are suitable for:',
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  description:
+    'From preschool through Class XII — and for families learning at home — support is adapted to the child’s stage, strengths, and educational goals.',
   items: [
     { title: 'Preschool Children', iconMdi: 'mdi:baby-face-outline' },
     { title: 'School Students (Nursery to Class XII)', iconMdi: 'mdi:school-outline' },
@@ -492,7 +532,7 @@ export const seAudience = {
     { title: 'Children with Learning Differences', iconMdi: 'mdi:puzzle-outline' },
     { title: 'Children Requiring Academic Intervention', iconMdi: 'mdi:book-education-outline' },
     { title: 'Students Transitioning into Mainstream Education', iconMdi: 'mdi:transit-connection-variant' },
-    { title: 'Homeschooled Students Requiring Additional Educational Support', iconMdi: 'mdi:home-outline' },
+    { title: 'Homeschooled Students Requiring Additional Support', iconMdi: 'mdi:home-outline' },
     { title: 'Families Seeking Structured Individualised Learning', iconMdi: 'mdi:human-male-female-child' },
   ],
 }
@@ -511,6 +551,5 @@ export const seFinalCta = {
       primary: true,
     },
     { label: 'Talk to a Counsellor', href: '/contact', iconMdi: 'mdi:account-voice' },
-    { label: 'View All Services', href: '/services', iconMdi: 'mdi:view-grid-outline' },
   ],
 }
