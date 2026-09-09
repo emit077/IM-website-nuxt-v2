@@ -12,6 +12,7 @@ import InstitutionsStaffingSupportSection from '~/components/institutions/Instit
 import InstitutionsQualitySection from '~/components/institutions/InstitutionsQualitySection.vue'
 import InstitutionsRequirementsSection from '~/components/institutions/InstitutionsRequirementsSection.vue'
 import InstitutionsErpSection from '~/components/institutions/InstitutionsErpSection.vue'
+import InstitutionsPricingSection from '~/components/institutions/InstitutionsPricingSection.vue'
 import InstitutionsFaqSection from '~/components/institutions/InstitutionsFaqSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
@@ -68,6 +69,7 @@ useSeoMeta({
     <InstitutionsStaffingSupportSection />
     <InstitutionsQualitySection />
     <InstitutionsErpSection />
+    <InstitutionsPricingSection />
     <UiCTASection section-id="hire-teachers" heading-id="institutions-cta-heading"
       :extra-anchor-ids="['talk-to-recruiter', 'book-demo']" :badge="institutionsFinalCta.badge"
       badge-icon-mdi="mdi:account-tie-outline" :title="institutionsFinalCta.title"

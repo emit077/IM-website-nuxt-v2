@@ -48,6 +48,7 @@ export default defineNuxtConfig({
         '/tutors',
         '/tutors/registration-plans',
         '/institutions',
+        '/institutions/pricing',
         '/faq',
         '/insights',
         '/careers',

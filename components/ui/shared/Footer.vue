@@ -73,6 +73,7 @@ const navLinks = [
   { label: 'Partner investment model', to: '/channel-partner/investment' },
   { label: 'Platform access includes', to: '/channel-partner/platform-access' },
   { label: 'Hire for institute', to: '/institutions' },
+  { label: 'Institutional pricing', to: '/institutions/pricing' },
   { label: 'Join as a tutor', to: externalLinks.tutorRegistration },
   { label: 'Tutor registration plans', to: '/tutors/registration-plans' },
   { label: 'Careers', to: '/careers' },

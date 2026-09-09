@@ -39,6 +39,7 @@ const navMenus = [
       { label: 'Insights Hub', href: '/insights' },
       { label: 'Partner Programme', href: '/channel-partner' },
       { label: 'Hire for Institute', href: '/institutions' },
+      { label: 'Institutional Pricing', href: '/institutions/pricing' },
       { label: 'Careers', href: '/careers' },
       { label: 'FAQs', href: '/faq' },
     ],
