@@ -29,8 +29,14 @@ if [ -z "${NUXT_APP_BASE_URL:-}" ]; then
 fi
 
 export NODE_ENV=production
+if [ -f "$ROOT/.env.production" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  . "$ROOT/.env.production"
+  set +a
+fi
 # Django API origin for /api/website/* (override in env for production builds)
-export NUXT_PUBLIC_API_URL="${NUXT_PUBLIC_API_URL:-http://127.0.0.1:8000}"
+export NUXT_PUBLIC_API_URL="${NUXT_PUBLIC_API_URL:-http://13.234.192.144}"
 
 OUT="$ROOT/.output/public"
 

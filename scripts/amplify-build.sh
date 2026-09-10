@@ -12,8 +12,14 @@ export NODE_ENV=production
 export NUXT_TELEMETRY_DISABLED=1
 # Amplify Hosting at domain root
 export NUXT_APP_BASE_URL="${NUXT_APP_BASE_URL:-/}"
-# Django API origin for /api/website/* (set in Amplify env vars for production)
-export NUXT_PUBLIC_API_URL="${NUXT_PUBLIC_API_URL:-http://127.0.0.1:8000}"
+if [ -f "$ROOT/.env.production" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  . "$ROOT/.env.production"
+  set +a
+fi
+# Django API origin for /api/website/* (override in Amplify env vars if needed)
+export NUXT_PUBLIC_API_URL="${NUXT_PUBLIC_API_URL:-http://13.234.192.144}"
 
 rm -rf "$ROOT/.output"
 
