@@ -31,6 +31,7 @@ const jobFilters = computed(() => ({
 
 const { data: cities } = await useCareerCities()
 const { data: jobsResult, pending, refresh } = await useCareerJobs(jobFilters)
+console.log("jobsResult::", jobsResult.value?.items)
 const jobs = computed(() => jobsResult.value?.items ?? [])
 const jobsFailed = computed(() => Boolean(jobsResult.value?.failed))
 
@@ -159,14 +160,13 @@ const selectClass =
         <p class="sr-only">Loading open positions</p>
       </div>
 
-      <div v-else-if="jobsFailed" class="mt-8 rounded-2xl border border-dashed border-rose-200 bg-rose-50/60 px-6 py-12 text-center">
+      <div v-else-if="jobsFailed"
+        class="mt-8 rounded-2xl border border-dashed border-rose-200 bg-rose-50/60 px-6 py-12 text-center">
         <p class="font-display text-lg font-bold text-slate-900">Unable to load openings</p>
         <p class="mx-auto mt-2 max-w-md text-sm text-slate-600">Please try again in a moment.</p>
-        <button
-          type="button"
+        <button type="button"
           class="mt-5 inline-flex items-center justify-center rounded-xl bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800"
-          @click="refresh()"
-        >
+          @click="refresh()">
           Retry
         </button>
       </div>
@@ -187,13 +187,7 @@ const selectClass =
       </div>
     </div>
 
-    <JobApplyModal
-      v-if="applyJob"
-      v-model="applyOpen"
-      :slug="applyJob.slug"
-      :position="applyJob.position"
-      :application-type="applicationType"
-      :is-open="applyJob.is_open"
-    />
+    <JobApplyModal v-if="applyJob" v-model="applyOpen" :slug="applyJob.slug" :position="applyJob.position"
+      :application-type="applicationType" :is-open="applyJob.is_open" />
   </section>
 </template>
