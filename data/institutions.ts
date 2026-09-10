@@ -102,7 +102,7 @@ export const sectorsSection = {
   badge: 'Who We Help',
   title: 'Recruitment solutions for every <span class="text-gradient-brand">learning environment</span>',
   description:
-    'Whether you are running a school, coaching centre, college, EdTech platform, or specialised learning program, Indian Mentors can help you build the right teaching team.',
+    'Whether you are running a school, coaching centre, college, EdTech platform, or teacher training program, Indian Mentors can help you build the right teaching team.',
   classes: '!px-0 !py-0',
 } as const
 
@@ -168,15 +168,15 @@ export const hiringSectors = [
     accent: 'indigo' as const,
   },
   {
-    id: 'other-needs',
-    iconMdi: 'mdi:puzzle-outline',
-    title: 'Other Academic Needs',
-    subtitle: 'Specialised & enrichment roles',
-    description: 'Specialised educators for enrichment, languages, and student support roles.',
-    extraLabel: 'Roles',
-    extras: ['Special Educators', 'Languages', 'Activity Teachers', 'Vocational'],
-    image: '/assets/img/institutions/institutions-other-needs.png',
-    cta: { label: 'Share Other Requirements', href: '#hire-teachers' },
+    id: 'teacher-training',
+    iconMdi: 'mdi:human-male-board',
+    title: 'Teacher Training Programs',
+    subtitle: 'Faculty development & capacity building',
+    description: 'Master trainers and facilitators for in-service teacher development and institutional capacity building.',
+    extraLabel: 'Programmes',
+    extras: ['Pedagogy', 'Classroom Practice', 'Curriculum', 'Mentoring'],
+    image: '/assets/img/institutions/institutions-teacher-training-workshop.png',
+    cta: { label: 'Hire Training Faculty', href: '#hire-teachers' },
     accent: 'rose' as const,
   },
 ] as const
@@ -711,7 +711,7 @@ export const institutionsFaqs = [
     id: 'who',
     question: 'What types of institutions can hire through Indian Mentors?',
     answer:
-      'We support recruitment requirements for schools, coaching institutes, colleges, universities, EdTech companies, training organisations, and other educational institutions.',
+      'We support recruitment requirements for schools, coaching institutes, colleges, universities, EdTech companies, and teacher training programmes.',
   },
   {
     id: 'bulk',

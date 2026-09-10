@@ -1,79 +1,207 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
-import IconCheck from '~/components/icons/IconCheck.vue'
-import { hiringSteps } from '~/data/careers'
-import type { CareerJob } from '~/data/career-jobs'
+import { jobPageCtas } from '~/data/careers'
+import { formatCareerLocation, splitCareerParagraphs } from '~/composables/useCareerContent'
+import type { CareerApplicationType, CareerJobDetail } from '~/types/career-api'
 
-defineProps<{ job: CareerJob }>()
+const props = defineProps<{ job: CareerJobDetail }>()
+const emit = defineEmits<{
+  apply: [type: CareerApplicationType]
+}>()
+
+const toast = useToast()
+const copied = ref(false)
+let copiedTimer: ReturnType<typeof setTimeout> | undefined
+
+const overviewImage = usePublicAsset('/assets/img/institutions/institutions-teacher-training-workshop.png')
+
+const overviewHeading = computed(() => props.job.position || props.job.headline)
+const overviewTagline = computed(() => {
+  const headline = props.job.headline?.trim() || ''
+  if (!headline || headline === overviewHeading.value) return ''
+  return headline
+})
+const overviewParagraphs = computed(() => {
+  const intro = props.job.intro?.trim() || ''
+  const overview = splitCareerParagraphs(props.job.role_overview)
+  if (!intro) return overview
+  if (!overview.length || overview[0] === intro) return overview.length ? overview : [intro]
+  return [intro, ...overview]
+})
+
+const responsibilities = computed(() =>
+  [...(props.job.responsibilities ?? [])].sort((a, b) => a.sequence_number - b.sequence_number),
+)
+
+const requirements = computed(() =>
+  [...(props.job.requirements ?? [])].sort((a, b) => a.display_order - b.display_order),
+)
+
+const benefits = computed(() =>
+  [...(props.job.benefits ?? [])].sort((a, b) => a.display_order - b.display_order),
+)
+
+const location = computed(() => formatCareerLocation(props.job.city))
+
+function formatFactValue(value?: string | null) {
+  const text = String(value || '').trim()
+  if (!text) return ''
+  return text.charAt(0).toUpperCase() + text.slice(1)
+}
+
+const jobFacts = computed(() =>
+  [
+    // { label: 'Role', value: props.job.position, icon: 'mdi:briefcase-outline' },
+    { label: 'Industry Type', value: props.job.industry, icon: 'mdi:domain' },
+    { label: 'Department', value: props.job.department, icon: 'mdi:sitemap-outline' },
+    { label: 'Employment Type', value: props.job.primary_employment_type, icon: 'mdi:clock-outline' },
+    { label: 'Work Model', value: props.job.work_model, icon: 'mdi:office-building-outline' },
+    { label: 'Experience', value: formatFactValue(props.job.experience), icon: 'mdi:account-star-outline' },
+    { label: 'Location', value: location.value, icon: 'mdi:map-marker-outline' },
+  ].filter((row) => Boolean(row.value)),
+)
+
+function markCopied() {
+  copied.value = true
+  if (copiedTimer) window.clearTimeout(copiedTimer)
+  copiedTimer = window.setTimeout(() => {
+    copied.value = false
+  }, 2500)
+}
+
+async function shareJob() {
+  const title = overviewHeading.value
+  const text = overviewTagline.value || `Join Indian Mentors as ${title}`
+  const url = import.meta.client ? window.location.href : ''
+  const isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+
+  try {
+    await copyJobLink(url)
+    markCopied()
+    toast.success('Job link copied to clipboard', { title: 'Copied' })
+
+    if (isPhone && typeof navigator.share === 'function') {
+      await navigator.share({ title, text, url })
+    }
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') return
+    toast.error('Unable to share this job right now')
+  }
+}
+
+async function copyJobLink(url: string) {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(url)
+      return
+    } catch {
+      // Fall through to the input-based copy for unfocused or restricted documents.
+    }
+  }
+
+  const input = document.createElement('input')
+  input.value = url
+  input.setAttribute('readonly', '')
+  input.style.position = 'fixed'
+  input.style.opacity = '0'
+  document.body.appendChild(input)
+  input.select()
+  const copied = document.execCommand('copy')
+  input.remove()
+  if (!copied) throw new Error('Copy failed')
+}
 </script>
 
 <template>
   <div class="space-y-0">
-    <!-- <section id="about" class="bg-white section-py" aria-labelledby="job-about-heading">
+    <section id="role-overview" class="section-surface-muted section-py-compact" aria-labelledby="job-overview-heading">
       <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">About Indian Mentors</p>
-          <h2 id="job-about-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            A structured EdTech organisation built around personalised tutoring
-          </h2>
-          <p v-for="paragraph in job.about.paragraphs" :key="paragraph" class="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-            {{ paragraph }}
-          </p>
-          <ul v-if="job.about.bullets?.length" class="mt-5 space-y-2.5" role="list">
-            <li v-for="item in job.about.bullets" :key="item" class="flex items-start gap-2.5 text-sm text-slate-700">
-              <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-600" aria-hidden="true">
-                <IconCheck class="h-3 w-3" />
-              </span>
-              {{ item }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section> -->
-
-    <section id="role-overview" class="section-surface-muted section-py" aria-labelledby="job-overview-heading">
-      <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Role Overview</p>
-          <h2 id="job-overview-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            What this role contributes
-          </h2>
-          <p v-for="paragraph in job.overview" :key="paragraph"
-            class="mt-4 text-sm leading-relaxed text-slate-600 sm:text-base">
-            {{ paragraph }}
-          </p>
+        <div class="">
+          <figure
+            class="relative overflow-hidden rounded-xl  border-blue-900/10 bg-blue-950 shadow-[0_22px_48px_-26px_rgba(15,23,42,0.28)]"
+            v-motion :initial="{ opacity: 0, y: 12 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
+            <img :src="overviewImage" alt="Indian Mentors team collaborating in a professional training session"
+              class="h-56 w-full object-cover object-center sm:h-80 lg:h-[16rem]" width="1600" height="600" />
+            <div aria-hidden="true"
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-950/100 via-blue-800/85 to-blue-700/80" />
+            <figcaption
+              class="absolute inset-x-0 bottom-0 flex flex-col gap-4 p-5 sm:flex-row sm:items-end sm:justify-between sm:gap-6 sm:p-7 lg:p-8">
+              <div class="min-w-0">
+                <h2 id="job-overview-heading" class="font-display mt-2 text-2xl font-bold text-white sm:text-4xl">
+                  {{ overviewHeading }}
+                </h2>
+                <p v-if="overviewTagline" class="mt-1.5 text-base font-medium text-blue-100 sm:text-md">
+                  {{ overviewTagline }}
+                </p>
+              </div>
+              <div class="flex shrink-0 items-center gap-2.5">
+                <button type="button"
+                  class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-4 py-2.5 text-[13px] font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
+                  @click="shareJob">
+                  {{ copied ? 'Copied' : jobPageCtas.shareLabel }}
+                  <Icon :icon="copied ? 'mdi:check' : 'mdi:share-variant-outline'" class="h-4 w-4" aria-hidden="true" />
+                </button>
+                <button v-if="job.is_open" type="button"
+                  class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-4 py-2.5 text-[13px] font-semibold text-blue-800 shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-50"
+                  @click="emit('apply', 'Apply Now')">
+                  {{ jobPageCtas.applyLabel }}
+                  <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+                </button>
+                <span v-else
+                  class="inline-flex items-center justify-center rounded-xl bg-white/15 px-4 py-2.5 text-[13px] font-semibold text-white/80">
+                  Applications closed
+                </span>
+              </div>
+            </figcaption>
+          </figure>
+          <div class="mt-10">
+            <dl class="mt-5 grid grid-cols-1 gap-x-10 gap-y-2.5 sm:grid-cols-2">
+              <div v-for="item in jobFacts" :key="item.label"
+                class="flex items-center gap-2.5 text-[14.5px] leading-relaxed">
+                <span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-700"
+                  aria-hidden="true">
+                  <Icon :icon="item.icon" class="h-4 w-4" />
+                </span>
+                <div class="min-w-0">
+                  <dt class="inline font-bold text-slate-800">{{ item.label }}:</dt>
+                  <dd class="ml-1 inline text-slate-600">{{ item.value }}</dd>
+                </div>
+              </div>
+            </dl>
+          </div>
+          <div class="mt-10">
+            <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">Role Overview</p>
+            <p v-for="paragraph in overviewParagraphs" :key="paragraph"
+              class="mt-4  leading-relaxed text-slate-600 first:mt-6 text-sm sm:text-base">
+              {{ paragraph }}
+            </p>
+          </div>
         </div>
       </div>
     </section>
-
-    <section id="responsibilities" class="bg-white section-py-compact" aria-labelledby="job-responsibilities-heading">
+    <section v-if="responsibilities.length" id="responsibilities" class="bg-white section-py-compact"
+      aria-labelledby="job-responsibilities-heading">
       <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Key Responsibilities</p>
-          <h2 id="job-responsibilities-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            How you will contribute
-          </h2>
-          <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-1 " role="list">
-            <li v-for="(group, i) in job.responsibilities" :key="group.heading" v-motion :initial="{ opacity: 0, y: 8 }"
+        <div class="mx-auto ">
+          <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">
+            Key Responsibilities
+          </p>
+          <ul class="mt-4 grid grid-cols-1 gap-3" role="list">
+            <li v-for="(item, i) in responsibilities" :key="item.id" v-motion :initial="{ opacity: 0, y: 8 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 16 + i * 24, duration: 300 } }">
               <article class="flex h-full items-start gap-3 py-2">
                 <span
-                  class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-blue-50 font-display text-[11px] font-extrabold tabular-nums text-blue-700"
+                  class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg font-display text-[11px] font-extrabold tabular-nums text-blue-700"
                   aria-hidden="true">
-                  <Icon icon="mdi:check" class="h-4 w-4" />
+                  <Icon icon="mdi:arrow-right" class="h-4 w-4" />
                 </span>
                 <div class="min-w-0">
-                  <h3 class="font-display text-[14.5px] font-bold leading-snug text-slate-900">{{ group.heading }}</h3>
-                  <p v-if="group.items.length === 1" class="mt-1 text-[13px] leading-relaxed text-slate-600">
-                    {{ group.items[0] }}
-                  </p>
-                  <ul v-else class="mt-1.5 space-y-1" role="list">
-                    <li v-for="item in group.items" :key="item"
-                      class="flex items-start gap-2 text-[13px] leading-relaxed text-slate-600">
-                      <span class="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-blue-500" aria-hidden="true" />
-                      {{ item }}
-                    </li>
-                  </ul>
+                  <h3 class="font-display text-sm font-bold leading-snug text-slate-600" v-if="item.title"
+                    v-html="item.title"></h3>
+                  <p v-if="item.description" class="mt-1 text-sm sm:text-base leading-relaxed text-slate-600"
+                    v-html="item.description"></p>
                 </div>
               </article>
             </li>
@@ -81,242 +209,53 @@ defineProps<{ job: CareerJob }>()
         </div>
       </div>
     </section>
-
-    <section v-if="job.kpis" id="kpis" class="section-surface-muted section-py-compact"
-      aria-labelledby="job-kpis-heading">
+    <section v-if="requirements.length" id="requirements" class="section-surface-muted section-py-compact"
+      aria-labelledby="job-requirements-heading">
       <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Key Performance Indicators</p>
-          <h2 id="job-kpis-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            How success is measured
-          </h2>
-          <p v-if="job.kpis.intro" class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">{{ job.kpis.intro }}
+        <div class="mx-auto ">
+          <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">
+            Requirements
           </p>
-          <ol class="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3" role="list">
-            <li v-for="(item, i) in job.kpis.items" :key="item" v-motion :initial="{ opacity: 0, y: 8 }"
+          <ul class="mt-4 grid grid-cols-1 gap-3" role="list">
+            <li v-for="(item, i) in requirements" :key="item.id" v-motion :initial="{ opacity: 0, y: 8 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 16 + i * 24, duration: 300 } }">
-              <article class="flex h-full items-start gap-3 rounded-xl border border-slate-200/80 bg-white px-4 py-3.5">
+              <article class="flex h-full items-start gap-3 py-2">
                 <span
-                  class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-blue-50 font-display text-[11px] font-extrabold tabular-nums text-blue-700"
+                  class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg font-display text-[11px] font-extrabold tabular-nums text-blue-700"
                   aria-hidden="true">
-                  {{ String(i + 1).padStart(2, '0') }}
+                  <Icon icon="mdi:arrow-right" class="h-4 w-4" />
                 </span>
-                <p class="pt-0.5 text-[13.5px] font-medium leading-snug text-slate-800">{{ item }}</p>
+                <div class="min-w-0">
+                  <h3 class="font-display text-sm font-bold leading-snug text-slate-600" v-if="item.category"
+                    v-html="item.category"></h3>
+                  <p v-if="item.description" class="mt-1 text-sm sm:text-base leading-relaxed text-slate-600"
+                    v-html="item.description"></p>
+                </div>
               </article>
             </li>
-          </ol>
+          </ul>
         </div>
       </div>
     </section>
-
-    <section v-if="job.compensation" id="compensation" class="bg-white section-py"
-      aria-labelledby="job-compensation-heading">
+    <section v-if="benefits.length" id="benefits" class="bg-white section-py-compact"
+      aria-labelledby="job-benefits-heading">
       <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Compensation &amp; Incentives</p>
-          <h2 id="job-compensation-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            Salary and performance rewards
-          </h2>
-          <p class="mt-4 text-sm leading-relaxed text-slate-600">{{ job.compensation.intro }}</p>
-          <div class="mt-6 grid gap-4 sm:grid-cols-2">
-            <article v-for="block in job.compensation.blocks" :key="block.heading"
-              class="rounded-2xl border border-slate-200/80 bg-cream-50/60 p-5">
-              <h3 class="font-display text-[15px] font-bold text-slate-900">{{ block.heading }}</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ block.body }}</p>
+        <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-700">
+          Employee Benefits
+        </p>
+        <ul class="mt-4 grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-x-10" role="list">
+          <li v-for="(item, i) in benefits" :key="item.id" v-motion :initial="{ opacity: 0, y: 8 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 16 + i * 24, duration: 300 } }">
+            <article class="flex items-start gap-3 py-1.5">
+              <span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center text-blue-700" aria-hidden="true">
+                <Icon icon="mdi:arrow-right" class="h-4 w-4" />
+              </span>
+              <p class="pt-1 text-sm font-medium leading-snug text-slate-700">
+                {{ item.title }}
+              </p>
             </article>
-          </div>
-          <div v-if="job.compensation.slabs?.length"
-            class="mt-6 overflow-hidden rounded-2xl border border-slate-200/80">
-            <table class="min-w-full text-left text-sm">
-              <thead class="bg-slate-50 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">
-                <tr>
-                  <th class="px-4 py-3">Target achievement</th>
-                  <th class="px-4 py-3">Incentive</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(slab, i) in job.compensation.slabs" :key="slab.range"
-                  :class="i % 2 === 0 ? 'bg-white' : 'bg-cream-50/50'">
-                  <td class="px-4 py-3 font-medium text-slate-800">{{ slab.range }}</td>
-                  <td class="px-4 py-3 text-slate-600">{{ slab.reward }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p v-if="job.compensation.note" class="mt-4 text-[13px] leading-relaxed text-slate-500">{{
-            job.compensation.note }}</p>
-        </div>
-      </div>
-    </section>
-
-    <section v-if="job.payoutTable" id="payout" class="bg-white section-py" aria-labelledby="job-payout-heading">
-      <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Payout &amp; Allowance Structure
-          </p>
-          <h2 id="job-payout-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            Meeting-based payouts
-          </h2>
-          <p class="mt-4 text-sm leading-relaxed text-slate-600">{{ job.payoutTable.intro }}</p>
-          <div class="mt-6 overflow-x-auto rounded-2xl border border-slate-200/80">
-            <table class="min-w-full text-left text-sm">
-              <thead class="bg-slate-50 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">
-                <tr>
-                  <th v-for="column in job.payoutTable.columns" :key="column" class="whitespace-nowrap px-4 py-3">{{
-                    column }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(row, i) in job.payoutTable.rows" :key="row[0]"
-                  :class="i % 2 === 0 ? 'bg-white' : 'bg-cream-50/50'">
-                  <td v-for="(cell, ci) in row" :key="`${row[0]}-${ci}`"
-                    :class="['whitespace-nowrap px-4 py-3', ci === 0 ? 'font-medium text-slate-800' : 'text-slate-600']">
-                    {{ cell }}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <ul class="mt-4 space-y-1.5" role="list">
-            <li v-for="note in job.payoutTable.notes" :key="note" class="text-[13px] text-slate-500">{{ note }}</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section id="eligibility" class="section-surface-muted section-py" aria-labelledby="job-eligibility-heading">
-      <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Eligibility &amp; Required Skills
-          </p>
-          <h2 id="job-eligibility-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            Who this role is for
-          </h2>
-          <ul class="mt-6 space-y-4" role="list">
-            <li v-for="group in job.eligibility" :key="group.heading"
-              class="rounded-2xl border border-slate-200/80 bg-white p-5">
-              <h3 class="font-display text-[15px] font-bold text-slate-900">{{ group.heading }}</h3>
-              <p class="mt-1.5 text-sm leading-relaxed text-slate-600">{{ group.body }}</p>
-            </li>
-          </ul>
-          <ul v-if="job.skills?.length" class="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2" role="list">
-            <li v-for="skill in job.skills" :key="skill" class="flex items-start gap-2.5 text-sm text-slate-700">
-              <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"
-                aria-hidden="true">
-                <IconCheck class="h-3 w-3" />
-              </span>
-              {{ skill }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section> -->
-
-    <section id="benefits" class="bg-white section-py" aria-labelledby="job-benefits-heading">
-      <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Employee Benefits</p>
-          <h2 id="job-benefits-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            A supportive professional environment
-          </h2>
-          <p v-if="job.benefits.intro" class="mt-4 text-sm leading-relaxed text-slate-600">{{ job.benefits.intro }}</p>
-          <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2" role="list">
-            <li v-for="item in job.benefits.items" :key="item"
-              class="flex items-start gap-2.5 rounded-xl border border-slate-200/80 bg-cream-50/60 px-4 py-3 text-sm text-slate-700">
-              <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-emerald-50 text-emerald-600"
-                aria-hidden="true">
-                <IconCheck class="h-3 w-3" />
-              </span>
-              {{ item }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section id="growth" class="section-surface-muted section-py" aria-labelledby="job-growth-heading">
-      <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Career Growth Opportunities</p>
-          <h2 id="job-growth-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            Where this role can lead
-          </h2>
-          <p class="mt-4 text-sm leading-relaxed text-slate-600">{{ job.growth.intro }}</p>
-          <ol class="mt-6 space-y-3" role="list">
-            <li v-for="(path, i) in job.growth.paths" :key="path"
-              class="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3.5">
-              <span
-                class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-blue-50 font-display text-xs font-extrabold text-blue-700">
-                {{ String(i + 1).padStart(2, '0') }}
-              </span>
-              <p class="pt-1 text-sm font-medium text-slate-800">{{ path }}</p>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section> -->
-    <!-- 
-    <section id="job-hiring" class="bg-white section-py" aria-labelledby="job-hiring-heading">
-      <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Our Hiring Process</p>
-          <h2 id="job-hiring-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            How our hiring process works
-          </h2>
-          <ol class="mt-8 space-y-3" role="list">
-            <li v-for="step in hiringSteps" :key="step.no"
-              class="flex items-start gap-4 rounded-2xl border border-slate-200/80 bg-cream-50/50 p-5">
-              <span
-                class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-blue-100 font-display text-sm font-extrabold text-blue-700">
-                {{ step.no }}
-              </span>
-              <div>
-                <h3 class="font-display text-[15px] font-bold text-slate-900">{{ step.title }}</h3>
-                <p class="mt-1 text-sm leading-relaxed text-slate-600">{{ step.description }}</p>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </div>
-    </section> -->
-
-    <section v-if="job.ethics" id="expectations" class="section-surface-muted section-py"
-      aria-labelledby="job-ethics-heading">
-      <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Professional Expectations</p>
-          <h2 id="job-ethics-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            Work ethics we expect
-          </h2>
-          <p class="mt-4 text-sm leading-relaxed text-slate-600">{{ job.ethics.intro }}</p>
-          <ul class="mt-5 space-y-2.5" role="list">
-            <li v-for="item in job.ethics.items" :key="item" class="flex items-start gap-2.5 text-sm text-slate-700">
-              <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"
-                aria-hidden="true">
-                <IconCheck class="h-3 w-3" />
-              </span>
-              {{ item }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section v-if="job.whyJoin" id="why-join" class="bg-white section-py" aria-labelledby="job-why-heading">
-      <div class="container-page">
-        <div class="mx-auto max-w-4xl">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Why Join Indian Mentors?</p>
-          <h2 id="job-why-heading" class="font-display mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-            Meaningful work in a growing EdTech organisation
-          </h2>
-          <p class="mt-4 text-sm leading-relaxed text-slate-600">{{ job.whyJoin.intro }}</p>
-          <ul class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2" role="list">
-            <li v-for="item in job.whyJoin.items" :key="item"
-              class="rounded-xl border border-slate-200/80 bg-cream-50/60 px-4 py-3 text-sm font-medium text-slate-800">
-              {{ item }}
-            </li>
-          </ul>
-        </div>
+          </li>
+        </ul>
       </div>
     </section>
   </div>

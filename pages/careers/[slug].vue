@@ -1,119 +1,102 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import JobHeroSection from '~/components/careers/job/JobHeroSection.vue'
+import { computed, ref } from 'vue'
 import JobDetailSections from '~/components/careers/job/JobDetailSections.vue'
 import JobStickyCta from '~/components/careers/job/JobStickyCta.vue'
-import UiCTASection from '~/components/ui/CTASectionLayout.vue'
-import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
+import JobApplyModal from '~/components/careers/job/JobApplyModal.vue'
 import { jobPageCtas } from '~/data/careers'
-import {
-  careerJobSlugs,
-  getCareerJobBySlug,
-  getRelatedJobs,
-  jobApplyHref,
-  jobPath,
-  jobResumeHref,
-} from '~/data/career-jobs'
+import { useCareerJob } from '~/composables/useCareerContent'
+import type { CareerApplicationType } from '~/types/career-api'
 
 const route = useRoute()
 const slug = computed(() => String(route.params.slug || ''))
-const job = computed(() => getCareerJobBySlug(slug.value))
+const { data: jobData, pending, refresh } = await useCareerJob(slug)
+const job = computed(() => jobData.value?.item ?? null)
+const jobFailed = computed(() => Boolean(jobData.value?.failed))
+
+const applyOpen = ref(false)
+const applicationType = ref<CareerApplicationType>('Apply Now')
+const toast = useToast()
 
 useSeoMeta({
-  title: () => (job.value ? `${job.value.title} — Careers | Indian Mentors` : 'Careers — Indian Mentors'),
-  description: () => job.value?.hero.subheadline,
-  ogTitle: () => (job.value ? `${job.value.title} — Indian Mentors` : 'Careers — Indian Mentors'),
-  ogDescription: () => job.value?.hero.subheadline,
+  title: () => (job.value ? `${job.value.position} — Careers | Indian Mentors` : 'Careers — Indian Mentors'),
+  description: () => job.value?.intro || job.value?.headline,
+  ogTitle: () => (job.value ? `${job.value.position} — Indian Mentors` : 'Careers — Indian Mentors'),
+  ogDescription: () => job.value?.intro || job.value?.headline,
   ogType: 'website',
 })
 
-prerenderRoutes(careerJobSlugs.map((jobSlug) => `/careers/${jobSlug}`))
-
-if (!job.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Position not found' })
+function openApply(type: CareerApplicationType) {
+  if (!job.value?.is_open) {
+    toast.error('This job opening is no longer accepting applications', { title: 'Applications closed' })
+    return
+  }
+  applicationType.value = type
+  applyOpen.value = true
 }
-
-const relatedJobs = computed(() => (job.value ? getRelatedJobs(job.value) : []))
-
-const applyCtas = computed(() => {
-  if (!job.value) return []
-  return [
-    { label: jobPageCtas.applyLabel, href: jobApplyHref(job.value), iconMdi: 'mdi:send-outline', primary: true },
-    { label: jobPageCtas.resumeLabel, href: jobResumeHref(job.value), iconMdi: 'mdi:file-upload-outline' },
-    { label: jobPageCtas.contactLabel, href: jobPageCtas.contactHref, iconMdi: 'mdi:phone-outline' },
-  ]
-})
 </script>
 
 <template>
-  <div v-if="job" class="min-h-screen">
-    <!-- <JobHeroSection :job="job" /> -->
-    <JobDetailSections :job="job" />
-
-    <!-- <section id="apply" class="section-surface-muted section-py-compact" aria-labelledby="job-apply-heading">
-      <div class="container-page">
-        <div class="rounded-[1.5rem] border border-slate-200/80 bg-white p-6 text-center shadow-soft sm:p-8">
-          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">Apply for this role</p>
-          <h2 id="job-apply-heading" class="font-display mt-2 text-xl font-bold text-slate-900 sm:text-2xl">
-            {{ job.title }}
-          </h2>
-          <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">{{ job.applyIntro }}</p>
-          <dl class="mx-auto mt-5 grid max-w-xl grid-cols-1 gap-2 text-sm sm:grid-cols-3">
-            <div>
-              <dt class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">Position</dt>
-              <dd class="mt-0.5 font-medium text-slate-800">{{ job.title }}</dd>
-            </div>
-            <div>
-              <dt class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">Location</dt>
-              <dd class="mt-0.5 font-medium text-slate-800">{{ job.locationShort }}</dd>
-            </div>
-            <div>
-              <dt class="text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">Organisation</dt>
-              <dd class="mt-0.5 font-medium text-slate-800">Indian Mentors</dd>
-            </div>
-          </dl>
+  <div class="min-h-screen">
+    <div v-if="pending" class="container-page section-py" aria-live="polite">
+      <div class="mx-auto max-w-4xl space-y-4">
+        <div class="h-10 w-2/3 animate-pulse rounded-lg bg-slate-100" />
+        <div class="h-24 animate-pulse rounded-2xl bg-slate-100" />
+        <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <div v-for="n in 3" :key="n" class="h-20 animate-pulse rounded-2xl bg-slate-100" />
         </div>
       </div>
-    </section> -->
-
-    <!-- <UiCTASection section-id="job-apply-cta" heading-id="job-final-cta-heading"
-      badge-icon-mdi="mdi:briefcase-check-outline" badge="Join Indian Mentors" :title="`Apply for ${job.title}`"
-      :description="job.applyIntro"
-      supporting="Indian Mentors — Personalised Education. Trusted Tutors. Professional Opportunities."
-      :ctas="applyCtas" /> -->
-
-    <!-- <section v-if="relatedJobs.length" id="related-roles" class="bg-white section-py"
-      aria-labelledby="related-roles-heading">
-      <div class="container-page">
-        <div class="flex items-end justify-between gap-4">
-          <div>
-            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-700">More opportunities</p>
-            <h2 id="related-roles-heading" class="font-display mt-2 text-2xl font-bold text-slate-900">Other open roles
-            </h2>
-          </div>
-          <NuxtLink to="/careers#open-positions"
-            class="hidden text-sm font-semibold text-blue-700 no-underline hover:text-blue-800 sm:inline">
-            View all positions
-          </NuxtLink>
-        </div>
-        <ul class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3" role="list">
-          <li v-for="related in relatedJobs" :key="related.slug">
-            <NuxtLink :to="jobPath(related.slug)"
-              class="flex h-full flex-col rounded-2xl border border-slate-200/80 bg-cream-50/50 p-5 no-underline transition hover:border-blue-200 hover:bg-white hover:shadow-card">
-              <span class="text-[11px] font-bold uppercase tracking-wide text-blue-700">{{ related.departmentLabel
-                }}</span>
-              <span class="mt-2 font-display text-[15px] font-bold text-slate-900">{{ related.title }}</span>
-              <span class="mt-1 text-[13px] text-slate-500">{{ related.locationShort }} · {{ related.employmentType
-                }}</span>
-            </NuxtLink>
-          </li>
-        </ul>
-      </div>
-    </section> -->
-
-    <div class="flex justify-center py-10">
-      <ActionBtn :label="jobPageCtas.applyLabel" :href="jobApplyHref(job)" variant="primary" class="px-20" />
+      <p class="sr-only">Loading this role</p>
     </div>
-    <JobStickyCta :job="job" />
+
+    <div v-else-if="jobFailed" class="container-page section-py">
+      <div
+        class="mx-auto max-w-xl rounded-2xl border border-dashed border-rose-200 bg-rose-50/60 px-6 py-12 text-center">
+        <p class="font-display text-2xl font-bold text-slate-900">Unable to load this role</p>
+        <p class="mt-2 text-sm text-slate-600">Please try again in a moment.</p>
+        <button type="button"
+          class="mt-6 inline-flex items-center justify-center rounded-xl bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800"
+          @click="refresh()">
+          Retry
+        </button>
+      </div>
+    </div>
+
+    <div v-else-if="!job" class="container-page section-py">
+      <div
+        class="mx-auto max-w-xl rounded-2xl border border-dashed border-slate-300 bg-cream-50/60 px-6 py-12 text-center">
+        <p class="font-display text-2xl font-bold text-slate-900">Job not found</p>
+        <p class="mt-2 text-sm text-slate-600">
+          This position is no longer listed, or the link may be incorrect.
+        </p>
+        <NuxtLink to="/careers#open-positions"
+          class="mt-6 inline-flex items-center justify-center rounded-xl bg-blue-700 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-800">
+          View open positions
+        </NuxtLink>
+      </div>
+    </div>
+
+    <template v-else>
+      <JobDetailSections :job="job" @apply="openApply" />
+
+      <div class="container-page py-10">
+        <div class="mx-auto max-w-5xl text-center">
+          <p v-if="job.apply_intro" class="mx-auto mb-6  text-sm leading-relaxed text-slate-600 sm:text-base">
+            {{ job.apply_intro }}
+          </p>
+          <button v-if="job.is_open" type="button" class="btn-primary ripple group px-20"
+            @click="openApply('Apply Now')">
+            {{ jobPageCtas.applyLabel }}
+          </button>
+          <p v-else class="rounded-xl bg-slate-100 px-5 py-2.5 text-sm font-semibold text-slate-500">
+            This job opening is no longer accepting applications
+          </p>
+        </div>
+      </div>
+
+      <JobStickyCta :job="job" @apply="openApply" />
+
+      <JobApplyModal v-model="applyOpen" :slug="job.slug" :position="job.position" :application-type="applicationType"
+        :is-open="job.is_open" />
+    </template>
   </div>
 </template>

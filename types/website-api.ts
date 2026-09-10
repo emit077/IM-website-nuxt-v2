@@ -6,6 +6,12 @@ export type ApiEnvelope<T> = {
   timestamp: string
 }
 
+export type ApiErrorEnvelope = {
+  success: false
+  message: string
+  errors?: Record<string, unknown>
+}
+
 export type WebsiteBanner = {
   id: number
   web_banner: string | null

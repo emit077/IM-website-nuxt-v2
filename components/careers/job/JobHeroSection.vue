@@ -34,11 +34,8 @@ const highlights = computed(() => [
 <template>
   <SecondaryHeroLayout :hero-content="secondaryHero">
     <ul class="mt-8 grid w-full max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4" role="list">
-      <li
-        v-for="item in highlights"
-        :key="item.label"
-        class="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-left backdrop-blur-sm"
-      >
+      <li v-for="item in highlights" :key="item.label"
+        class="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-left backdrop-blur-sm">
         <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-blue-100">{{ item.label }}</p>
         <p class="mt-1 text-[13px] font-semibold leading-snug text-white">{{ item.value }}</p>
       </li>

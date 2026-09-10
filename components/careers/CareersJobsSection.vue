@@ -1,27 +1,77 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import { jobsSection, jobFilterOptions } from '~/data/careers'
-import { careerJobs, jobApplyHref, jobPath, type CareerJob } from '~/data/career-jobs'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import JobApplyModal from '~/components/careers/job/JobApplyModal.vue'
+import JobSummaryCard from '~/components/careers/job/JobSummaryCard.vue'
+import {
+  formatCareerLocation,
+  useCareerCities,
+  useCareerJobs,
+} from '~/composables/useCareerContent'
+import type { CareerApplicationType, CareerJobListItem } from '~/types/career-api'
 
 const searchQuery = ref('')
 const department = ref('all')
-const experience = ref('all')
+const city = ref('all')
 const employment = ref('all')
 const workMode = ref('all')
 
+const applyOpen = ref(false)
+const applyJob = ref<CareerJobListItem | null>(null)
+const applicationType = ref<CareerApplicationType>('Apply Now')
+
+const jobFilters = computed(() => ({
+  department: department.value === 'all' ? undefined : department.value,
+  city: city.value === 'all' ? undefined : city.value,
+  employment_type: employment.value === 'all' ? undefined : employment.value,
+  work_model: workMode.value === 'all' ? undefined : workMode.value,
+}))
+
+const { data: cities } = await useCareerCities()
+const { data: jobsResult, pending, refresh } = await useCareerJobs(jobFilters)
+const jobs = computed(() => jobsResult.value?.items ?? [])
+const jobsFailed = computed(() => Boolean(jobsResult.value?.failed))
+
+const knownDepartments = ref<string[]>([])
+
+watch(
+  jobs,
+  (list) => {
+    const next = new Set([
+      ...knownDepartments.value,
+      ...(list ?? []).map((job) => job.department).filter(Boolean),
+    ])
+    knownDepartments.value = [...next]
+  },
+  { immediate: true },
+)
+
+const departmentOptions = computed(() => {
+  const extras = knownDepartments.value
+    .filter((name) => !jobFilterOptions.departments.some((option) => option.value === name))
+    .map((name) => ({ value: name, label: name }))
+  return [...jobFilterOptions.departments, ...extras]
+})
+
 const filteredJobs = computed(() => {
   const query = searchQuery.value.trim().toLowerCase()
+  const list = jobs.value ?? []
+  if (!query) return list
 
-  return careerJobs.filter((job) => {
-    if (department.value !== 'all' && job.departmentId !== department.value) return false
-    if (experience.value !== 'all' && !job.experienceFilters.includes(experience.value as CareerJob['experienceFilters'][number])) return false
-    if (employment.value !== 'all' && job.employmentFilter !== employment.value) return false
-    if (workMode.value !== 'all' && job.workModeFilter !== workMode.value) return false
-    if (!query) return true
-
-    const haystack = [job.title, job.departmentLabel, job.location, job.employmentType, job.workMode, job.hero.subheadline, ...job.tags]
+  return list.filter((job) => {
+    const haystack = [
+      job.position,
+      job.department,
+      job.headline,
+      job.intro,
+      job.industry,
+      job.experience,
+      job.primary_employment_type,
+      job.work_model,
+      formatCareerLocation(job.city),
+    ]
       .join(' ')
       .toLowerCase()
     return haystack.includes(query)
@@ -32,7 +82,7 @@ const hasActiveFilters = computed(
   () =>
     searchQuery.value.trim() !== '' ||
     department.value !== 'all' ||
-    experience.value !== 'all' ||
+    city.value !== 'all' ||
     employment.value !== 'all' ||
     workMode.value !== 'all',
 )
@@ -40,17 +90,16 @@ const hasActiveFilters = computed(
 function resetFilters() {
   searchQuery.value = ''
   department.value = 'all'
-  experience.value = 'all'
+  city.value = 'all'
   employment.value = 'all'
   workMode.value = 'all'
 }
 
-function jobLocation(job: CareerJob) {
-  return job.workModeFilter === 'field' ? 'Field-based, Across India' : 'Bhilai, Chhattisgarh'
-}
-
-function jobExperience(job: CareerJob) {
-  return job.experienceLabel.replace(' preferred', '').replace('Years', 'years')
+function openApply(job: CareerJobListItem, type: CareerApplicationType = 'Apply Now') {
+  if (!job.is_open) return
+  applyJob.value = job
+  applicationType.value = type
+  applyOpen.value = true
 }
 
 const selectClass =
@@ -64,7 +113,6 @@ const selectClass =
       <div class="max-w-6xl">
         <CardHeader heading-id="open-positions-heading" :badge="jobsSection.kicker" :title="jobsSection.title"
           :description="jobsSection.description" :classes="jobsSection.classes" align="left" />
-
       </div>
 
       <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -77,13 +125,14 @@ const selectClass =
             aria-label="Search open positions" />
         </div>
         <select v-model="department" :class="selectClass" aria-label="Filter by department">
-          <option v-for="option in jobFilterOptions.departments" :key="option.value" :value="option.value">
+          <option v-for="option in departmentOptions" :key="option.value" :value="option.value">
             {{ option.label }}
           </option>
         </select>
-        <select v-model="experience" :class="selectClass" aria-label="Filter by experience level">
-          <option v-for="option in jobFilterOptions.experience" :key="option.value" :value="option.value">
-            {{ option.label }}
+        <select v-model="city" :class="selectClass" aria-label="Filter by location">
+          <option value="all">All Locations</option>
+          <option v-for="option in cities" :key="option.id" :value="String(option.id)">
+            {{ formatCareerLocation(option) }}
           </option>
         </select>
         <select v-model="employment" :class="selectClass" aria-label="Filter by employment type">
@@ -105,58 +154,27 @@ const selectClass =
         Clear search &amp; filters
       </button>
 
-      <ul v-if="filteredJobs.length" class="mt-8 space-y-4" role="list">
+      <div v-if="pending" class="mt-8 space-y-4" aria-live="polite">
+        <div v-for="n in 3" :key="n" class="h-40 animate-pulse rounded-2xl border border-slate-200 bg-slate-50" />
+        <p class="sr-only">Loading open positions</p>
+      </div>
+
+      <div v-else-if="jobsFailed" class="mt-8 rounded-2xl border border-dashed border-rose-200 bg-rose-50/60 px-6 py-12 text-center">
+        <p class="font-display text-lg font-bold text-slate-900">Unable to load openings</p>
+        <p class="mx-auto mt-2 max-w-md text-sm text-slate-600">Please try again in a moment.</p>
+        <button
+          type="button"
+          class="mt-5 inline-flex items-center justify-center rounded-xl bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800"
+          @click="refresh()"
+        >
+          Retry
+        </button>
+      </div>
+
+      <ul v-else-if="filteredJobs.length" class="mt-8 space-y-4" role="list">
         <li v-for="(job, i) in filteredJobs" :key="job.slug" v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 20 + i * 40, duration: 360 } }">
-          <article
-            class="group relative rounded-2xl border border-slate-200 bg-white p-5 transition duration-300 hover:border-blue-200 hover:shadow-[0_12px_32px_-18px_rgba(15,23,42,0.2)] sm:p-6">
-            <NuxtLink :to="jobPath(job.slug)" class="absolute inset-0 z-[1] rounded-2xl"
-              :aria-label="`View ${job.title} details`" />
-            <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <h3
-                class="font-display text-lg font-bold leading-snug text-slate-900 group-hover:text-blue-800 sm:text-xl">
-                {{ job.title }}
-              </h3>
-              <div class="flex flex-wrap items-center gap-2 sm:justify-end sm:pt-0.5">
-                <span class="rounded-full bg-blue-50 px-3 py-1 text-[12px] font-semibold text-blue-800">
-                  {{ job.departmentLabel }}
-                </span>
-                <span class="rounded-full bg-slate-100 px-3 py-1 text-[12px] font-semibold text-slate-600">
-                  {{ job.employmentType }}
-                </span>
-              </div>
-            </div>
-
-            <p class="mt-3 max-w-3xl text-[14px] leading-relaxed text-slate-600">
-              {{ job.hero.subheadline }}
-            </p>
-
-            <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-slate-500">
-              <span class="inline-flex items-center gap-1.5">
-                <Icon icon="mdi:map-marker-outline" class="h-4 w-4 text-slate-400" aria-hidden="true" />
-                {{ jobLocation(job) }}
-              </span>
-              <span class="inline-flex items-center gap-1.5">
-                <Icon icon="mdi:clock-outline" class="h-4 w-4 text-slate-400" aria-hidden="true" />
-                {{ jobExperience(job) }}
-              </span>
-            </div>
-
-            <div class="mt-4 flex flex-wrap items-end justify-between gap-3">
-              <ul v-if="job.tags.length" class="flex flex-wrap gap-2" role="list">
-                <li v-for="tag in job.tags" :key="tag"
-                  class="rounded-full bg-lime-300 px-3 py-1 text-[12px] font-semibold text-slate-900">
-                  {{ tag }}
-                </li>
-              </ul>
-              <a :href="jobApplyHref(job)"
-                class="relative z-10 ml-auto inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-blue-700 px-4 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-800"
-                :aria-label="`Apply for ${job.title}`" @click.stop>
-                {{ jobsSection.applyLabel }}
-                <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
-              </a>
-            </div>
-          </article>
+          <JobSummaryCard :job="job" linked @apply="openApply(job)" />
         </li>
       </ul>
 
@@ -168,5 +186,14 @@ const selectClass =
         </a>
       </div>
     </div>
+
+    <JobApplyModal
+      v-if="applyJob"
+      v-model="applyOpen"
+      :slug="applyJob.slug"
+      :position="applyJob.position"
+      :application-type="applicationType"
+      :is-open="applyJob.is_open"
+    />
   </section>
 </template>
