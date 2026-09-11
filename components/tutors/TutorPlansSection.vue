@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { tutorPlans, tutorPlansSection } from '~/data/tutors'
@@ -21,12 +20,8 @@ import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
             plan.variant === 'featured'
               ? 'border-blue-600 shadow-[0_20px_50px_-20px_rgba(37,99,235,0.35)]'
               : 'border-slate-200/80 shadow-soft',
-          ]" v-motion :initial="{ opacity: 0, y: 20 }"
+            ]" v-motion :initial="{ opacity: 0, y: 20 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 100, duration: 500 } }">
-            <!-- <span v-if="plan.variant === 'featured'"
-              class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
-              Premium
-            </span> -->
             <div class="flex items-center gap-3">
               <div>
                 <h3 class="font-display text-lg font-bold text-slate-900">{{ plan.name }}</h3>
@@ -68,12 +63,6 @@ import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 
 
         <ActionBtn :href="tutorPlansSection.cta.href" :label="tutorPlansSection.cta.label" variant="primary" />
-        <!-- <NuxtLink :to="tutorPlansSection.cta.href"
-          class="group inline-flex items-center gap-2 text-[13.5px] font-semibold text-blue-700 transition hover:text-blue-800">
-          {{ tutorPlansSection.cta.label }}
-          <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-            aria-hidden="true" />
-        </NuxtLink> -->
       </div>
 
       <p class="mx-auto mt-6 max-w-2xl text-center text-[12.5px] leading-relaxed text-slate-500">

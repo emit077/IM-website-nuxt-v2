@@ -26,17 +26,6 @@ export const seHero = {
   ],
 }
 
-export const seIntro = {
-  badge: 'Special Education Services',
-  title: 'Personalised Educational Support for Children with <span class="text-gradient-brand">Diverse Learning Needs</span>',
-  classes: '!px-0 !py-0 mx-auto ',
-  paragraphs: [
-    'At Indian Mentors, our Special Education Services are designed to help children with diverse learning needs develop academic skills, communication, confidence, independence, and lifelong learning abilities through personalised educational interventions.',
-    'Our qualified Special Educators collaborate with parents, schools, psychologists, therapists, and other healthcare professionals to create structured, evidence-informed learning plans that respect each child’s strengths, challenges, and pace of development. Through compassionate teaching, adaptive instructional methods, and continuous progress monitoring, we aim to make learning meaningful, engaging, and accessible for every child.',
-  ],
-  note: 'Our services focus on educational support and skill development. They complement, but do not replace, medical diagnosis, therapy, or clinical treatment.',
-}
-
 export const seApproach = {
   badge: 'How do we do it?',
   title: 'Our Approach to <span class="text-gradient-brand">Special Education</span>',
@@ -65,13 +54,6 @@ export const seNeeds = {
   classes: '!px-0 !py-0 mx-auto ',
   description:
     'Our Special Educators design structured, student-centred support around each child’s learning profile.',
-  note: 'The exact approach may vary depending on educational needs and the assigned educator.',
-  grid: {
-    badge: 'At a glance',
-    title: 'Eight Learning Profiles We <span class="text-gradient-brand">Support</span>',
-    description:
-      'A quick view of the conditions we work with. Open any card to read the full educational approach below.',
-  },
   items: [
     {
       id: 'adhd',
@@ -81,18 +63,6 @@ export const seNeeds = {
       title: 'Attention Deficit Hyperactivity Disorder ',
       description:
         'Students with ADHD benefit from structured strategies that support attention, organisation, self-regulation, and classroom participation.',
-      support: [
-        'Improving Attention Span',
-        'Behaviour Management Strategies',
-        'Classroom Readiness Skills',
-        'Executive Function Development',
-        'Homework Support',
-        'Study Planning',
-        'Emotional Regulation Techniques',
-        'Task Completion Strategies',
-        'Organisational Skills',
-        'Positive Reinforcement',
-      ],
       goals: [
         'Improve class participation',
         'Increase focus and engagement',
@@ -108,18 +78,6 @@ export const seNeeds = {
       title: 'Autism Spectrum Disorder (ASD)',
       description:
         'Structured, predictable learning environments support communication, academic participation, and social interaction.',
-      support: [
-        'Individual Learning Plans (ILP)',
-        'Communication Skill Development',
-        'Social Skills Training',
-        'Academic Adaptation',
-        'Behavioural Learning Strategies',
-        'Visual Learning Supports',
-        'Sensory-Friendly Educational Methods',
-        'Structured Classroom Preparation',
-        'Daily Routine Development',
-        'Functional Learning Activities',
-      ],
       goals: [
         'Enhance communication',
         'Encourage participation',
@@ -135,17 +93,6 @@ export const seNeeds = {
       title: 'Dyslexia',
       description:
         'Students receive systematic, multisensory support to strengthen literacy skills, reading accuracy, and independent learning confidence.',
-      support: [
-        'Reading Intervention',
-        'Phonics-Based Instruction',
-        'Writing Improvement',
-        'Spelling Strategies',
-        'Reading Fluency Development',
-        'Reading Comprehension',
-        'Vocabulary Building',
-        'Multisensory Learning Activities',
-        'Confidence Building',
-      ],
       goals: [
         'Improve literacy skills',
         'Strengthen reading accuracy',
@@ -161,15 +108,6 @@ export const seNeeds = {
       title: 'Dysgraphia',
       description:
         'Structured writing instruction helps children develop handwriting, organisation of ideas, and confident written communication.',
-      support: [
-        'Handwriting Development',
-        'Fine Motor Coordination Activities',
-        'Writing Organisation',
-        'Written Expression Skills',
-        'Pencil Grip Guidance',
-        'Letter Formation Practice',
-        'Writing Planning Techniques',
-      ],
       goals: [
         'Improve handwriting',
         'Strengthen writing skills',
@@ -185,15 +123,6 @@ export const seNeeds = {
       title: 'Dyscalculia',
       description:
         'Practical, visual teaching methods help children understand numbers, mathematical reasoning, and problem-solving with less anxiety.',
-      support: [
-        'Number Sense Development',
-        'Mathematical Concept Building',
-        'Logical Thinking Activities',
-        'Practical Learning Exercises',
-        'Visual Mathematics Strategies',
-        'Problem-Solving Skills',
-        'Mathematical Confidence Building',
-      ],
       goals: [
         'Build foundational numeracy',
         'Improve maths reasoning',
@@ -209,16 +138,6 @@ export const seNeeds = {
       title: 'Specific Learning Disabilities (SLD)',
       description:
         'Each learner gets an individualised approach that builds on strengths and addresses specific academic challenges in the classroom.',
-      support: [
-        'Individualised Education Plans (IEP)',
-        'Academic Skill Development',
-        'Classroom Adaptation Strategies',
-        'Cognitive Learning Techniques',
-        'Study Skills Training',
-        'Memory Strategies',
-        'Learning Accommodations',
-        'Examination Preparation Support',
-      ],
       goals: [
         'Improve academic results',
         'Increase class participation',
@@ -234,21 +153,12 @@ export const seNeeds = {
       title: 'Speech & Language Delays',
       description:
         'Educators support language development in academic settings by reinforcing communication, vocabulary, and classroom learning.',
-      support: [
-        'Language Development Activities',
-        'Communication Practice',
-        'Vocabulary Building',
-        'Academic Language Support',
-        'Reading & Listening Activities',
-        'Classroom Communication Skills',
-      ],
       goals: [
         'Improve class communication',
         'Strengthen comprehension',
         'Expand academic vocabulary',
         'Build speaking confidence',
       ],
-      note: 'Where required, we recommend coordination with qualified Speech-Language Pathologists for clinical assessment or therapy.',
     },
     {
       id: 'behavioural',
@@ -258,14 +168,6 @@ export const seNeeds = {
       title: 'Behavioural & Emotional Challenges',
       description:
         'Positive educational strategies help students build self-management, emotional awareness, and productive classroom behaviours.',
-      support: [
-        'Positive Behaviour Strategies',
-        'Emotional Regulation Activities',
-        'Confidence Building',
-        'Self-Management Skills',
-        'Social-Emotional Learning',
-        'Parent Guidance & Educational Counselling',
-      ],
       goals: [
         'Encourage positive behaviour',
         'Improve emotional resilience',
@@ -397,7 +299,6 @@ export const seMethodology = {
     },
     {
       title: 'Play-Based Learning',
-      note: 'where age-appropriate',
       description: 'Turn curiosity and play into lasting skills.',
       iconMdi: 'mdi:teddy-bear',
     },
@@ -535,7 +436,7 @@ export const seAudience = {
   description:
     'From preschool through Class XII — and for families learning at home — support is adapted to the child’s stage, strengths, and educational goals.',
   items: [
-    { title: 'Preschool\nChildren', iconMdi: 'mdi:baby-face-outline' },
+    { title: 'Preschool Children \n (Playgroup)', iconMdi: 'mdi:baby-face-outline' },
     { title: 'School Students\n(Nursery to Class XII)', iconMdi: 'mdi:school-outline' },
     { title: 'Inclusive Education\nLearners', iconMdi: 'mdi:account-group-outline' },
     { title: 'Children with\nLearning Differences', iconMdi: 'mdi:puzzle-outline' },

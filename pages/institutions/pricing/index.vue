@@ -2,11 +2,8 @@
 import { computed } from 'vue'
 import InstitutionsPricingHeroSection from '~/components/institutions/pricing/InstitutionsPricingHeroSection.vue'
 import InstitutionsPricingPackagesSection from '~/components/institutions/pricing/InstitutionsPricingPackagesSection.vue'
-import InstitutionsPricingModelsSection from '~/components/institutions/pricing/InstitutionsPricingModelsSection.vue'
-import InstitutionsPricingPaymentSection from '~/components/institutions/pricing/InstitutionsPricingPaymentSection.vue'
 import InstitutionsPricingGuaranteeSection from '~/components/institutions/pricing/InstitutionsPricingGuaranteeSection.vue'
 import InstitutionsPricingPartnershipSection from '~/components/institutions/pricing/InstitutionsPricingPartnershipSection.vue'
-import InstitutionsPricingFaqSection from '~/components/institutions/pricing/InstitutionsPricingFaqSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import { institutionsPricingFinalCta } from '~/data/institutions-pricing'
@@ -52,11 +49,8 @@ useSeoMeta({
   <div class="min-h-screen">
     <InstitutionsPricingHeroSection />
     <InstitutionsPricingPackagesSection />
-    <!-- <InstitutionsPricingModelsSection /> -->
-    <!-- <InstitutionsPricingPaymentSection /> -->
     <InstitutionsPricingGuaranteeSection />
     <InstitutionsPricingPartnershipSection />
-    <!-- <InstitutionsPricingFaqSection /> -->
     <UiCTASection section-id="pricing-hire-teachers" heading-id="institutions-pricing-cta-heading"
       :badge="institutionsPricingFinalCta.badge" badge-icon-mdi="mdi:currency-inr"
       :title="institutionsPricingFinalCta.title" :description="institutionsPricingFinalCta.description"

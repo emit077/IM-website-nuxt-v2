@@ -80,24 +80,6 @@ export const institutionsMissionGoals = [
   },
 ] as const
 
-export const glanceSection = {
-  badge: 'A Smarter Way to Build Your Faculty',
-  title: 'Your academic team starts with the <span class="text-gradient-brand">right people</span>',
-  description:
-    'Finding the right teacher is more than filling a vacancy. Institutions need educators who combine subject expertise, teaching ability, experience, communication, and reliability. Indian Mentors brings these requirements together through a structured recruitment and academic staffing framework.',
-  classes: '!px-0 !py-0',
-  closing: 'Subject Expertise + Teaching Ability + Experience + Communication + Reliability',
-} as const
-
-export const glanceItems = [
-  { no: '01', iconMdi: 'mdi:earth', title: 'Nationwide Educator Network' },
-  { no: '02', iconMdi: 'mdi:filter-check-outline', title: 'Structured Candidate Screening' },
-  { no: '03', iconMdi: 'mdi:book-open-variant-outline', title: 'Subject & Curriculum Matching' },
-  { no: '04', iconMdi: 'mdi:presentation', title: 'Interview & Demo Coordination' },
-  { no: '05', iconMdi: 'mdi:tune-variant', title: 'Flexible Staffing Models' },
-  { no: '06', iconMdi: 'mdi:account-sync-outline', title: 'Joining & Replacement Support' },
-] as const
-
 export const sectorsSection = {
   badge: 'Who We Help',
   title: 'Recruitment solutions for every <span class="text-gradient-brand">learning environment</span>',
@@ -181,63 +163,6 @@ export const hiringSectors = [
   },
 ] as const
 
-export const hireCategoriesSection = {
-  badge: 'What Can We Help You Hire?',
-  title: 'From one teacher to an <span class="text-gradient-brand">entire faculty team</span>',
-  description: 'Our recruitment network can support institutions across multiple academic categories.',
-  classes: '!px-0 !py-0',
-  cta: { label: 'Submit Faculty Requirement', href: '#hire-teachers' },
-} as const
-
-export const hireCategories = [
-  {
-    id: 'school-faculty',
-    iconMdi: 'mdi:school-outline',
-    title: 'School Faculty',
-    roles: [
-      'Primary Teachers',
-      'Trained Graduate Teachers',
-      'Post Graduate Teachers',
-      'Subject Specialists',
-      'Academic Coordinators',
-      'Special Educators',
-      'Activity & Enrichment Teachers',
-    ],
-  },
-  {
-    id: 'competitive',
-    iconMdi: 'mdi:trophy-outline',
-    title: 'Competitive Examination Faculty',
-    roles: ['JEE Faculty', 'NEET Faculty', 'CUET Faculty', 'Foundation Faculty', 'Olympiad Trainers', 'Board Examination Experts'],
-  },
-  {
-    id: 'higher-ed',
-    iconMdi: 'mdi:town-hall',
-    title: 'Higher Education',
-    roles: [
-      'Assistant Professors',
-      'Lecturers',
-      'Visiting Faculty',
-      'Department Faculty',
-      'Academic Coordinators',
-      'Subject Experts',
-    ],
-  },
-  {
-    id: 'digital',
-    iconMdi: 'mdi:monitor-account',
-    title: 'Digital Education',
-    roles: [
-      'Online Instructors',
-      'Doubt-Solving Mentors',
-      'Subject Experts',
-      'Digital Classroom Teachers',
-      'Curriculum Contributors',
-      'Content Educators',
-    ],
-  },
-] as const
-
 export const staffingModelsSection = {
   badge: 'Flexible Academic Staffing Solutions',
   title: 'One recruitment partner. <span class="text-gradient-brand">Multiple staffing needs.</span>',
@@ -250,24 +175,6 @@ export const staffingModelsSection = {
   spectrum: ['Permanent', 'Flexible', 'Scale'],
   cta: { label: 'Share your staffing need', href: '#hire-teachers' },
 } as const
-
-export const staffingModelGroups = [
-  {
-    id: 'core',
-    kicker: 'Core faculty',
-    title: 'Permanent teams',
-  },
-  {
-    id: 'specialist',
-    kicker: 'Specialist support',
-    title: 'Flexible hours',
-  },
-  {
-    id: 'coverage',
-    kicker: 'Coverage & scale',
-    title: 'Fill gaps. Expand.',
-  },
-] as const
 
 export const staffingModels = [
   {
@@ -385,24 +292,6 @@ export const whyChooseReasons = [
   },
 ] as const
 
-export const differenceSection = {
-  badge: 'The Indian Mentors Difference',
-  title: 'More than <span class="text-gradient-brand">candidate sourcing</span>',
-  description: 'Traditional recruitment often focuses on simply filling vacancies. Indian Mentors takes a more academic-first approach.',
-  objective: 'Better alignment between the institution, the educator, and the academic requirement.',
-  flow: [
-    'Institution Requirement',
-    'Academic Role Definition',
-    'Candidate Sourcing',
-    'Qualification Screening',
-    'Subject & Experience Matching',
-    'Demo / Interview',
-    'Institutional Selection',
-    'Joining',
-    'Academic Staffing Support',
-  ],
-} as const
-
 export const institutionsProcessSection = {
   badge: 'Our Recruitment Framework',
   title: 'From requirement to <span class="text-gradient-brand">classroom</span>',
@@ -480,36 +369,6 @@ export const hiringSteps = [
 export const hiringProcessOutcome =
   'The institution retains the final hiring decision. We coordinate every step from requirement to classroom.'
 
-export const bulkHiringSection = {
-  badge: 'Bulk Faculty Recruitment',
-  title: 'Building a new campus or expanding your <span class="text-gradient-brand">academic team?</span>',
-  description:
-    'Large-scale recruitment requires a different approach. Indian Mentors can support institutions with coordinated faculty hiring campaigns.',
-  classes: '!px-0 !py-0',
-  cases: [
-    'New school launches',
-    'New coaching branches',
-    'New academic sessions',
-    'Campus expansions',
-    'New subject departments',
-    'Competitive-exam batches',
-    'Multi-location staffing',
-    'Faculty replacement drives',
-  ],
-  workflowLabel: 'Bulk hiring workflow',
-  workflow: [
-    'Requirement Collection',
-    'Hiring Plan',
-    'Candidate Sourcing',
-    'Screening',
-    'Shortlisting',
-    'Interview Coordination',
-    'Selection',
-    'Joining',
-  ],
-  cta: { label: 'Discuss Bulk Hiring', href: '#hire-teachers' },
-} as const
-
 export const staffingSupportSection = {
   badge: 'Academic Staffing Support',
   title: 'New institutions, expansion, and <span class="text-gradient-brand">replacement</span>',
@@ -580,50 +439,6 @@ export const qualityChecks = [
   { iconMdi: 'mdi:forum-outline', title: 'Communication Evaluation', description: 'Review of communication and interaction capabilities.' },
   { iconMdi: 'mdi:presentation', title: 'Teaching Demonstration', description: 'Where applicable, candidates may be evaluated through demo teaching.' },
 ] as const
-
-export const matchingSection = {
-  badge: 'How Matching Works',
-  title: 'Institution → Requirement → <span class="text-gradient-brand">Right Educator</span>',
-  description:
-    'Rather than presenting institutions with an undifferentiated list of teachers, our recruitment approach focuses on requirement-based matching.',
-  steps: [
-    { title: 'Your Requirement', detail: 'Class + Subject + Curriculum + Experience + Location + Mode' },
-    { title: 'Candidate Matching', detail: 'Qualification + Subject Expertise + Experience + Teaching Ability' },
-    { title: 'Shortlist', detail: 'Relevant educators aligned to the role' },
-    { title: 'Institutional Evaluation', detail: 'Interview + Demo + Assessment' },
-    { title: 'Selection', detail: 'The institution’s final decision' },
-  ],
-} as const
-
-export const requirementsSection = {
-  badge: 'Recruitment by Academic Requirement',
-  title: 'Tell us what you need. <span class="text-gradient-brand">We help build the team.</span>',
-  description: 'Institutions may require teachers based on different criteria.',
-  classes: '!px-0 !py-0',
-  groups: [
-    {
-      title: 'By Subject',
-      items: [
-        'Mathematics',
-        'Science',
-        'Physics',
-        'Chemistry',
-        'Biology',
-        'English',
-        'Social Science',
-        'Commerce',
-        'Computer Science',
-        'Languages',
-        'Humanities',
-      ],
-    },
-    { title: 'By Curriculum', items: ['CBSE', 'ICSE', 'State Boards', 'IB', 'IGCSE', 'International Curricula'] },
-    { title: 'By Level', items: ['Primary', 'Middle School', 'Secondary', 'Senior Secondary', 'Undergraduate', 'Postgraduate'] },
-    { title: 'By Teaching Mode', items: ['Classroom', 'Online', 'Hybrid', 'Residential', 'Visiting'] },
-    { title: 'By Experience', items: ['Fresh Graduates', 'Experienced Teachers', 'Senior Faculty', 'Subject Specialists'] },
-    { title: 'By Hiring Scale', items: ['Single Position', 'Department Hiring', 'Batch Hiring', 'Campus Hiring', 'Bulk Recruitment'] },
-  ],
-} as const
 
 export const techSection = {
   badge: 'Technology-Enabled Recruitment',
@@ -699,61 +514,6 @@ export const commitmentSection = {
     'Indian Mentors believes that teacher recruitment should not be treated as a simple vacancy-filling exercise. The educator selected for a role can directly influence student learning, classroom culture, academic outcomes, and institutional reputation.',
   focus: ['Relevance', 'Verification', 'Communication', 'Institutional fit'],
 } as const
-
-export const institutionsFaqSection = {
-  badge: 'Frequently Asked Questions',
-  title: 'Institutional teacher recruitment <span class="text-gradient-brand">FAQs</span>',
-  classes: '!px-0 !py-0',
-} as const
-
-export const institutionsFaqs = [
-  {
-    id: 'who',
-    question: 'What types of institutions can hire through Indian Mentors?',
-    answer:
-      'We support recruitment requirements for schools, coaching institutes, colleges, universities, EdTech companies, and teacher training programmes.',
-  },
-  {
-    id: 'bulk',
-    question: 'Can you recruit multiple teachers at once?',
-    answer:
-      'Yes. We can support bulk faculty recruitment based on institutional requirements, subject needs, location, and hiring timelines.',
-  },
-  {
-    id: 'boards',
-    question: 'Do you provide teachers for CBSE and ICSE schools?',
-    answer:
-      'Yes. Recruitment requirements can be structured according to CBSE, ICSE, State Board, and international curriculum requirements.',
-  },
-  {
-    id: 'online',
-    question: 'Can institutions hire online teachers?',
-    answer:
-      'Yes. We can support requirements for online educators, subject experts, doubt-solving mentors, and digital teaching professionals.',
-  },
-  {
-    id: 'temporary',
-    question: 'Do you provide temporary teachers?',
-    answer:
-      'Subject to availability, we can support temporary, contract, visiting, substitute, and short-term academic staffing requirements.',
-  },
-  {
-    id: 'decision',
-    question: 'Who makes the final hiring decision?',
-    answer: 'The institution retains the final decision regarding candidate selection and appointment.',
-  },
-  {
-    id: 'replacement',
-    question: 'Can you help with teacher replacement?',
-    answer:
-      'Yes. Replacement support can be provided according to the applicable recruitment arrangement and candidate availability.',
-  },
-  {
-    id: 'start',
-    question: 'How do institutions start?',
-    answer: 'Simply submit your faculty requirement or speak with our recruitment team.',
-  },
-] as const
 
 export const institutionsFinalCta = {
   badge: 'Ready to Build Your Academic Team?',

@@ -20,19 +20,6 @@ const tickerItems = computed(() => {
 
 <template>
   <div v-if="tickerItems.length" class="relative z-[4] -mb-5 h-[4.5rem] sm:-mb-6 sm:h-20" :aria-label="ariaLabel">
-    <!-- <div
-      class="theme-ticker-strip absolute inset-x-[-6%] top-0 origin-center rotate-[-3.1deg] scale-[1.06] py-3 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.35)] sm:py-3.5">
-      <div class="overflow-hidden">
-        <div class="hero-ticker-marquee-reverse flex w-max items-center gap-7 motion-reduce:animate-none sm:gap-9">
-          <template v-for="(item, i) in tickerItems" :key="`back-${item}-${i}`">
-            <span class="shrink-0 font-display text-[12px] font-black uppercase tracking-[0.18em] sm:text-[13px]"
-              v-html="item" />
-            <span aria-hidden="true" class="shrink-0 text-sm font-black opacity-30">|</span>
-          </template>
-</div>
-</div>
-</div> -->
-
     <div
       class="theme-ticker-strip absolute inset-x-[-6%] top-6 origin-center -rotate-[0deg] scale-[1.06] py-3 mt-5 shadow-[0_10px_38px_-12px_rgba(0,0,0,0.6)] sm:top-7 sm:py-3.5">
       <div class="overflow-hidden">

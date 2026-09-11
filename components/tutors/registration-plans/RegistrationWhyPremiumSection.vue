@@ -46,11 +46,6 @@ import { premiumValueSection, whyPremiumSection } from '~/data/tutor-registratio
       <article
         class="value-banner relative overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 p-6 text-white shadow-[0_24px_60px_-24px_rgba(29,78,216,0.5)] sm:p-8 lg:p-10"
         v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-        <!-- <span aria-hidden="true"
-          class="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
-        <span aria-hidden="true"
-          class="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-amber-300/20 blur-3xl" /> -->
-
         <div class="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
           <div class="lg:col-span-5">
             <CardHeader theme="dark" align="left" heading-id="premium-value-heading" :badge="premiumValueSection.badge"

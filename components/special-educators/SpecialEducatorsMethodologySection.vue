@@ -4,11 +4,11 @@ import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { seMethodology } from '~/data/special-educators'
 
 const accents = [
-  { well: 'from-blue-50 to-indigo-50 text-blue-600 ring-blue-100', bar: 'bg-blue-500', num: 'text-blue-600/10 group-hover:text-blue-600/20' },
-  { well: 'from-sky-50 to-blue-50 text-sky-600 ring-sky-100', bar: 'bg-sky-500', num: 'text-sky-600/10 group-hover:text-sky-600/20' },
-  { well: 'from-indigo-50 to-violet-50 text-indigo-600 ring-indigo-100', bar: 'bg-indigo-500', num: 'text-indigo-600/10 group-hover:text-indigo-600/20' },
-  { well: 'from-violet-50 to-fuchsia-50 text-violet-600 ring-violet-100', bar: 'bg-violet-500', num: 'text-violet-600/10 group-hover:text-violet-600/20' },
-  { well: 'from-amber-50 to-orange-50 text-amber-600 ring-amber-100', bar: 'bg-amber-500', num: 'text-amber-600/10 group-hover:text-amber-600/20' },
+  { well: 'from-blue-50 to-indigo-50 text-blue-600 ring-blue-100', bar: 'bg-blue-500' },
+  { well: 'from-sky-50 to-blue-50 text-sky-600 ring-sky-100', bar: 'bg-sky-500' },
+  { well: 'from-indigo-50 to-violet-50 text-indigo-600 ring-indigo-100', bar: 'bg-indigo-500' },
+  { well: 'from-violet-50 to-fuchsia-50 text-violet-600 ring-violet-100', bar: 'bg-violet-500' },
+  { well: 'from-amber-50 to-orange-50 text-amber-600 ring-amber-100', bar: 'bg-amber-500' },
 ] as const
 </script>
 
@@ -48,12 +48,6 @@ const accents = [
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 20 + i * 32, duration: 360 } }">
             <article
               class="method-tile group relative flex h-full items-center gap-3 overflow-hidden rounded-2xl border border-black/5 bg-white/90 p-3.5 shadow-sm sm:p-4 lg:flex-col lg:items-stretch">
-              <!-- <span
-                class="pointer-events-none absolute -right-1 -top-2 hidden font-display text-[44px] font-black tabular-nums leading-none transition duration-300 lg:block"
-                :class="accents[i % accents.length].num" aria-hidden="true">
-                {{ String(i + 1).padStart(2, '0') }}
-              </span> -->
-
               <div class="relative flex shrink-0 items-center gap-2.5 lg:w-full lg:justify-between">
                 <span class="font-display text-[11px] font-extrabold tabular-nums tracking-wide text-blue-600 lg:hidden"
                   aria-hidden="true">

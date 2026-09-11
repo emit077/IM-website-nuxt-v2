@@ -9,7 +9,6 @@ import StudentParentModesSection from '~/components/student-parent/StudentParent
 import StudentParentCoverageSection from '~/components/student-parent/StudentParentCoverageSection.vue'
 import StudentParentEnrollmentPreviewSection from '~/components/student-parent/StudentParentEnrollmentPreviewSection.vue'
 import StudentParentMonitoringSection from '~/components/student-parent/StudentParentMonitoringSection.vue'
-import StudentParentTrustSection from '~/components/student-parent/StudentParentTrustSection.vue'
 import StudentParentPlansSection from '~/components/student-parent/subscription/StudentParentPlansSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import WhyChooseUs from '~/components/ui/shared/WhyChooseUs.vue'

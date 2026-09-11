@@ -3,7 +3,6 @@ import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import {
   commitmentSection,
-  differenceSection,
   whyChooseReasons,
   whyInstitutionsSection,
 } from '~/data/institutions'
@@ -48,31 +47,6 @@ const accentClasses: Record<string, { tile: string; bar: string }> = {
           </article>
         </li>
       </ul>
-
-      <!-- <div
-        class="mt-12 overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft sm:p-8"
-        v-motion
-        :initial="{ opacity: 0, y: 16 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }"
-      >
-        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">{{ differenceSection.badge }}</p>
-        <h3 class="font-display mt-2 text-xl font-bold text-slate-900 sm:text-2xl" v-html="differenceSection.title" />
-        <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">{{ differenceSection.description }}</p>
-        <div class="mt-6 flex flex-wrap items-center gap-2">
-          <template v-for="(step, i) in differenceSection.flow" :key="step">
-            <span class="rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-[12px] font-semibold text-blue-800">
-              {{ step }}
-            </span>
-            <Icon
-              v-if="i < differenceSection.flow.length - 1"
-              icon="mdi:arrow-right"
-              class="hidden h-4 w-4 text-blue-300 sm:block"
-              aria-hidden="true"
-            />
-          </template>
-</div>
-<p class="mt-5 text-sm font-medium text-slate-700">{{ differenceSection.objective }}</p>
-</div> -->
 
       <div
         class="mt-6 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 p-6 text-white shadow-[0_24px_60px_-24px_rgba(29,78,216,0.5)] sm:p-8"

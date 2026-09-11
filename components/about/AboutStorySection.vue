@@ -131,7 +131,7 @@ onBeforeUnmount(() => {
         <ol ref="scroller"
           class="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-6 pt-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           role="list">
-          <li v-for="(item, i) in aboutStory.milestones" :key="item.id" data-story-card
+          <li v-for="(item, i) in aboutStory.milestones.slice().reverse()" :key="item.id" data-story-card
             class="relative w-[280px] shrink-0 snap-start sm:w-[320px]" v-motion :initial="{ opacity: 0, y: 20 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 460, delay: 60 + i * 80 } }">
             <article :class="[

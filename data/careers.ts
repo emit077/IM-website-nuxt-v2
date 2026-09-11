@@ -1,8 +1,6 @@
 export const CAREERS_EMAIL = 'info@indianmentors.in'
 export const CAREERS_PHONE_TEL = '+917389563564'
 
-export type CareerAccent = 'blue' | 'emerald' | 'amber' | 'violet' | 'indigo' | 'teal'
-
 export function careerApplyMailto(role?: string) {
   const subject = role
     ? `Career Application — ${role} — Indian Mentors`
@@ -90,24 +88,6 @@ export const whyCareerValues = [
     accent: 'teal' as const,
   },
 ] as const
-
-export const meaningSection = {
-  kicker: 'A Career With Meaning',
-  title: 'Your work supports a connected learning ecosystem',
-  chain: ['Students', 'Parents', 'Tutors', 'Institutions', 'Academic Outcomes'],
-  description:
-    'Every successful admission, tutor placement, academic intervention, support interaction, and operational improvement contributes to the larger learning ecosystem.',
-} as const
-
-export const departmentsSection = {
-  kicker: 'Career Opportunities',
-  title: 'Explore career opportunities <span class="text-gradient-brand">by department</span>',
-  classes: '!px-0 !py-0',
-  description:
-    'Our teams work across Admissions, Academics, Tutor Recruitment, Operations & Administration, Human Resources, Finance & Accounts, Digital Marketing & Communications, Business Development, Channel Partnerships, and Technology & ERP to deliver structured, personalised, and technology-enabled tutoring services.',
-  footer:
-    'Every department contributes to one shared objective — delivering personalised, reliable, and professionally managed tutoring services.',
-} as const
 
 export const howWeWorkSection = {
   kicker: 'How We Work',
@@ -322,7 +302,7 @@ export const hiringProcessSection = {
   image: '/assets/img/careers/hiring-process.png',
   imageAlt: 'A hiring manager and candidate in a guided interview conversation at Indian Mentors',
   overlayKicker: 'Careers at Indian Mentors',
-  overlayTitle: 'From application to onboarding — guided at every step',
+  overlayTitle: 'Application to Onboarding',
   cta: { label: 'View Open Positions', href: '#open-positions' },
 } as const
 
@@ -415,45 +395,11 @@ export const internshipsSection = {
   secondaryCta: { label: 'View Open Positions', href: '#open-positions' },
 } as const
 
-export const whoCanApplySection = {
-  kicker: 'Who Can Apply?',
-  title: 'Professionals at different stages of their careers',
-  classes: '!px-0 !py-0',
-  description: 'We welcome applications from people who want to contribute to a growing academic ecosystem.',
-  items: [
-    {
-      iconMdi: 'mdi:school-outline',
-      title: 'Fresh Graduates',
-      description: 'Start your professional journey in education, admissions, operations, recruitment, customer support, marketing, HR, finance, or technology.',
-    },
-    {
-      iconMdi: 'mdi:briefcase-outline',
-      title: 'Experienced Professionals',
-      description: 'Bring your industry experience and contribute to a growing education organisation.',
-    },
-    {
-      iconMdi: 'mdi:human-male-board',
-      title: 'Education Professionals',
-      description: 'Use your academic, counselling, teaching, recruitment, or education-management experience to strengthen our ecosystem.',
-    },
-    {
-      iconMdi: 'mdi:account-cog-outline',
-      title: 'Functional Specialists',
-      description: 'Professionals in HR, finance, technology, marketing, operations, compliance, and business development can contribute their specialised expertise.',
-    },
-  ],
-  educatorsNote: {
-    title: 'Careers for educators & academic professionals',
-    description:
-      'Indian Mentors is not limited to conventional corporate roles. We also create opportunities through academic counselling, tutor recruitment, tutor training, academic coordination, student mentoring, learning support, curriculum-aligned academic operations, and education partnerships.',
-  },
-} as const
-
 export const jobsSection = {
   kicker: "We're Hiring",
   title: 'Find your next <span class="text-gradient-brand">role</span>',
   classes: '!px-0 !py-0',
-  description: `Openings across admissions, academics, operations, HR, finance, marketing, and technology — including Bhilai-based roles and field positions across India. Apply from a listing below, or send your resume to <a href="${careerResumeMailto()}" class="font-semibold text-blue-700 underline decoration-blue-200 underline-offset-2 hover:text-blue-800">${CAREERS_EMAIL}</a>.`,
+  description: `Openings across admissions, academics, operations, HR, finance, marketing, and technology — including Bhilai-based roles and field positions across India. Apply from a listing below.`,
   searchPlaceholder: 'Search jobs by role, department, or keyword…',
   emptyTitle: 'No matching positions right now',
   emptyDescription: 'Try another filter, or send us your resume so our recruitment team can consider you for future openings.',
@@ -489,66 +435,6 @@ export const jobFilterOptions = {
     { value: 'Field Based', label: 'Field Based' },
   ],
 } as const
-
-export const talentNetworkSection = {
-  kicker: "Don't See Your Role?",
-  title: "Don't See Your Role?",
-  description:
-    "We're always looking for talented people. If you don't see a perfect match, send us your resume and we'll keep you in mind for future opportunities.",
-  ctaLabel: 'Send Us Your Resume',
-  emailPrompt: 'Or email us at',
-} as const
-
-export const equalOpportunitySection = {
-  title: 'Equal opportunity & professional respect',
-  description:
-    'We believe professional opportunities should be based on capability, role suitability, performance, integrity, and organisational requirements. Indian Mentors is committed to maintaining a professional environment where employees are expected to treat colleagues, customers, tutors, students, parents, and partners with respect.',
-} as const
-
-export const careersFaqSection = {
-  kicker: 'FAQs',
-  title: 'Frequently asked questions',
-  classes: '!px-0 !py-0',
-} as const
-
-export const careersFaqs = [
-  {
-    id: 'types',
-    question: 'What types of careers are available at Indian Mentors?',
-    answer:
-      'Opportunities may be available across admissions, academic counselling, tutor recruitment, HR, customer support, operations, finance, administration, digital marketing, technology, and business development.',
-  },
-  {
-    id: 'freshers',
-    question: 'Can freshers apply?',
-    answer:
-      'Yes. Suitable entry-level roles may be available for graduates and candidates beginning their professional careers, depending on current vacancies.',
-  },
-  {
-    id: 'experienced',
-    question: 'Can experienced professionals apply?',
-    answer:
-      'Yes. Experienced professionals are welcome to apply for relevant positions based on their qualifications, skills, and experience.',
-  },
-  {
-    id: 'wfh',
-    question: 'Are work-from-home opportunities available?',
-    answer:
-      'Work mode depends on the specific role, operational requirement, and location. Please refer to the individual job description for applicable work arrangements.',
-  },
-  {
-    id: 'how-to-apply',
-    question: 'How can I apply?',
-    answer:
-      'Candidates can apply through the relevant job listing or submit their resume through the careers section for consideration against suitable opportunities.',
-  },
-  {
-    id: 'fee',
-    question: 'Is there a recruitment fee?',
-    answer:
-      'Indian Mentors does not require candidates to pay a fee merely to participate in a genuine employment recruitment process. Candidates should rely only on official recruitment communication and verified organisational channels.',
-  },
-] as const
 
 export const careersFinalCta = {
   badge: 'Join Indian Mentors',

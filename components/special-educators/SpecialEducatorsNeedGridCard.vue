@@ -4,7 +4,6 @@ import { Icon } from '@iconify/vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 
 const props = defineProps<{
-  id: string
   index: number
   shortTitle: string
   title: string
@@ -17,13 +16,6 @@ const props = defineProps<{
 const overlayTitle = computed(() =>
   props.title.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim(),
 )
-
-function openDetail(event: MouseEvent) {
-  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
-  event.preventDefault()
-  document.getElementById(props.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  history.replaceState(null, '', `#${props.id}`)
-}
 </script>
 
 <template>

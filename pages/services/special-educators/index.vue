@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import SpecialEducatorsHeroSection from '~/components/special-educators/SpecialEducatorsHeroSection.vue'
-import SpecialEducatorsIntroSection from '~/components/special-educators/SpecialEducatorsIntroSection.vue'
 import SpecialEducatorsApproachSection from '~/components/special-educators/SpecialEducatorsApproachSection.vue'
 import SpecialEducatorsNeedsGridSection from '~/components/special-educators/SpecialEducatorsNeedsGridSection.vue'
-import SpecialEducatorsNeedsSection from '~/components/special-educators/SpecialEducatorsNeedsSection.vue'
 import SpecialEducatorsServicesSection from '~/components/special-educators/SpecialEducatorsServicesSection.vue'
 import SpecialEducatorsMethodologySection from '~/components/special-educators/SpecialEducatorsMethodologySection.vue'
 import SpecialEducatorsProcessSection from '~/components/special-educators/SpecialEducatorsProcessSection.vue'
@@ -26,12 +24,8 @@ useSeoMeta({
 <template>
   <div class="min-h-screen">
     <SpecialEducatorsHeroSection />
-    <!-- <SpecialEducatorsIntroSection /> -->
     <SpecialEducatorsApproachSection />
-
     <SpecialEducatorsNeedsGridSection />
-    <!-- <SpecialEducatorsNeedsSection /> -->
-
     <SpecialEducatorsServicesSection />
     <SpecialEducatorsMethodologySection />
     <SpecialEducatorsFeaturesSection />

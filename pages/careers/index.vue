@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import CareersHeroSection from '~/components/careers/CareersHeroSection.vue'
 import CareersWhySection from '~/components/careers/CareersWhySection.vue'
-import CareersDepartmentsSection from '~/components/careers/CareersDepartmentsSection.vue'
 import CareersHowWeWorkSection from '~/components/careers/CareersHowWeWorkSection.vue'
 import CareersCultureSection from '~/components/careers/CareersCultureSection.vue'
 import CareersGrowthSection from '~/components/careers/CareersGrowthSection.vue'
@@ -9,8 +8,6 @@ import CareersStandardsSection from '~/components/careers/CareersStandardsSectio
 import CareersHiringProcessSection from '~/components/careers/CareersHiringProcessSection.vue'
 import CareersInternshipsSection from '~/components/careers/CareersInternshipsSection.vue'
 import CareersJobsSection from '~/components/careers/CareersJobsSection.vue'
-import CareersTalentNetworkSection from '~/components/careers/CareersTalentNetworkSection.vue'
-import CareersFaqSection from '~/components/careers/CareersFaqSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { careersFinalCta } from '~/data/careers'
 
@@ -33,18 +30,14 @@ useSeoMeta({
 <template>
   <div class="min-h-screen">
     <CareersHeroSection />
-    <CareersWhySection />
-    <!-- <CareersDepartmentsSection /> -->
-    <CareersHowWeWorkSection />
     <CareersCultureSection />
-    <CareersGrowthSection />
-    <CareersStandardsSection />
     <CareersHiringProcessSection />
+    <CareersHowWeWorkSection />
+    <CareersStandardsSection />
+    <CareersGrowthSection />
+    <CareersWhySection />
     <CareersInternshipsSection />
-    <!-- <CareersWhoCanApplySection /> -->
     <CareersJobsSection />
-    <CareersTalentNetworkSection />
-    <!-- <CareersFaqSection /> -->
     <UiCTASection section-id="join-indian-mentors" heading-id="careers-final-cta-heading"
       badge-icon-mdi="mdi:briefcase-check-outline" :badge="careersFinalCta.badge" :title="careersFinalCta.title"
       :description="careersFinalCta.description" :supporting="careersFinalCta.closing" :ctas="careersCtas" />

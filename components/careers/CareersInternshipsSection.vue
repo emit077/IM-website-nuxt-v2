@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
@@ -7,21 +6,6 @@ import { internshipsSection } from '~/data/careers'
 
 const video = internshipsSection.video
 const embedSrc = `${video.permalink.replace(/\/$/, '')}/embed`
-const playerActive = ref(false)
-const iframeRef = ref<HTMLIFrameElement | null>(null)
-
-function hideOverlay() {
-  playerActive.value = true
-}
-
-function onWindowBlur() {
-  requestAnimationFrame(() => {
-    if (document.activeElement === iframeRef.value) hideOverlay()
-  })
-}
-
-onMounted(() => window.addEventListener('blur', onWindowBlur))
-onBeforeUnmount(() => window.removeEventListener('blur', onWindowBlur))
 </script>
 
 <template>
@@ -33,7 +17,6 @@ onBeforeUnmount(() => window.removeEventListener('blur', onWindowBlur))
         <div
           class="internship-showcase relative mt-10 overflow-hidden rounded-[22px] border border-indigo-300/30 bg-gradient-to-br from-blue-950 via-blue-800 to-blue-500 sm:rounded-[28px]">
 
-          <!--  -->
           <div class="relative z-[1] min-w-0 px-5 py-7 sm:px-7 sm:py-9 lg:w-7/12 lg:px-9">
             <CardHeader heading-id="internships-heading" :badge="internshipsSection.kicker"
               :title="internshipsSection.title" :description="internshipsSection.description"
@@ -64,7 +47,6 @@ onBeforeUnmount(() => window.removeEventListener('blur', onWindowBlur))
               </a>
             </div>
           </div>
-          <!--  -->
 
           <div
             class="internship-phone-crop relative h-[22rem] overflow-hidden sm:h-[24rem] lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-5/12">
@@ -79,7 +61,7 @@ onBeforeUnmount(() => window.removeEventListener('blur', onWindowBlur))
 
                 <div class="ig-clean relative h-[540px] overflow-hidden rounded-[1.7rem] bg-black">
                   <ClientOnly>
-                    <iframe ref="iframeRef" :src="embedSrc" :title="video.title" class="ig-clean-frame"
+                    <iframe :src="embedSrc" :title="video.title" class="ig-clean-frame"
                       allowtransparency="true" allow="encrypted-media; clipboard-write; picture-in-picture; autoplay"
                       scrolling="no" />
                     <template #fallback>
@@ -92,25 +74,6 @@ onBeforeUnmount(() => window.removeEventListener('blur', onWindowBlur))
                       </a>
                     </template>
                   </ClientOnly>
-
-                  <!-- <a
-                    v-if="!playerActive"
-                    class="play-overlay"
-                    :href="video.permalink"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    :aria-label="`Play ${video.title} on Instagram`"
-                  >
-                    <span class="play-overlay-shade" aria-hidden="true" />
-                    <span class="play-cluster" aria-hidden="true">
-                      <span class="play-ring play-ring-a" />
-                      <span class="play-ring play-ring-b" />
-                      <span class="play-btn">
-                        <Icon icon="mdi:play" class="h-7 w-7 translate-x-0.5" />
-                      </span>
-                    </span>
-                    <span class="play-label">Watch reel</span>
-                  </a> -->
                 </div>
               </div>
             </figure>

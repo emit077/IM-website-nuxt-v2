@@ -38,13 +38,6 @@ import { hiringSectors, sectorsSection } from '~/data/institutions'
               <p class="mt-2 line-clamp-2 text-[11px] font-semibold leading-relaxed text-slate-600">
                 {{ sector.extras.join(' / ') }}
               </p>
-
-              <!-- <a :href="sector.cta.href"
-                class="group/cta mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 transition hover:text-blue-800">
-                {{ sector.cta.label }}
-                <Icon icon="mdi:arrow-right"
-                  class="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" aria-hidden="true" />
-              </a> -->
             </div>
           </div>
         </article>

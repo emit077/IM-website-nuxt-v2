@@ -3,17 +3,13 @@ import { computed } from 'vue'
 import InstitutionsHeroSection from '~/components/institutions/InstitutionsHeroSection.vue'
 import InstitutionsMissionSection from '~/components/institutions/InstitutionsMissionSection.vue'
 import InstitutionsSectorsSection from '~/components/institutions/InstitutionsSectorsSection.vue'
-import InstitutionsSubjectsSection from '~/components/institutions/InstitutionsSubjectsSection.vue'
 import InstitutionsWhySection from '~/components/institutions/InstitutionsWhySection.vue'
 import InstitutionsProcessSection from '~/components/institutions/InstitutionsProcessSection.vue'
-import InstitutionsBulkHiringSection from '~/components/institutions/InstitutionsBulkHiringSection.vue'
 import InstitutionsServicesSection from '~/components/institutions/InstitutionsServicesSection.vue'
 import InstitutionsStaffingSupportSection from '~/components/institutions/InstitutionsStaffingSupportSection.vue'
 import InstitutionsQualitySection from '~/components/institutions/InstitutionsQualitySection.vue'
-import InstitutionsRequirementsSection from '~/components/institutions/InstitutionsRequirementsSection.vue'
 import InstitutionsErpSection from '~/components/institutions/InstitutionsErpSection.vue'
 import InstitutionsPricingSection from '~/components/institutions/InstitutionsPricingSection.vue'
-import InstitutionsFaqSection from '~/components/institutions/InstitutionsFaqSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
 import { institutionsFinalCta } from '~/data/institutions'
@@ -60,11 +56,8 @@ useSeoMeta({
     <InstitutionsHeroSection />
     <InstitutionsMissionSection />
     <InstitutionsSectorsSection />
-    <!-- <InstitutionsSubjectsSection /> -->
-    <!-- <InstitutionsRequirementsSection /> -->
     <InstitutionsWhySection />
     <InstitutionsProcessSection />
-    <!-- <InstitutionsBulkHiringSection /> -->
     <InstitutionsServicesSection />
     <InstitutionsStaffingSupportSection />
     <InstitutionsQualitySection />

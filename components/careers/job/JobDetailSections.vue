@@ -174,8 +174,7 @@ async function copyJobLink(url: string) {
           <div class="mt-10">
             <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">Role Overview</p>
             <p v-for="paragraph in overviewParagraphs" :key="paragraph"
-              class="mt-4  leading-relaxed text-slate-600 first:mt-6 text-sm sm:text-base">
-              {{ paragraph }}
+              class="mt-4  leading-relaxed text-slate-600 first:mt-6 text-sm sm:text-base" v-html="paragraph">
             </p>
           </div>
         </div>
