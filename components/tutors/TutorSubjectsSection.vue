@@ -1,20 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import { tutorSubjects } from '~/data/tutors'
 
 const items = tutorSubjects.items
 const coverage = tutorSubjects.coverageTile
-const failedLogos = ref<Record<string, boolean>>({})
+const coverageChips = [...coverage.grades, ...coverage.courses]
 
 function subjectList(subjects: string) {
   return subjects.split(' • ').map((s) => s.trim()).filter(Boolean)
-}
-
-function markLogoFailed(id: string) {
-  failedLogos.value[id] = true
 }
 </script>
 
@@ -68,7 +62,7 @@ function markLogoFailed(id: string) {
           <NuxtLink :to="tutorSubjects.cta.href"
             class="coverage-cta group relative flex h-full overflow-hidden rounded-[1.25rem] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-700"
             :aria-label="`${coverage.title}. ${tutorSubjects.cta.label}`">
-            <span class="coverage-visual pointer-events-none absolute inset-y-0 right-0 w-[62%] sm:w-[55%] lg:w-[48%]"
+            <span class="coverage-visual pointer-events-none absolute inset-y-0 right-0 w-[58%] sm:w-[50%] lg:w-[42%]"
               aria-hidden="true">
               <img :src="usePublicAsset(coverage.image)" alt=""
                 class="h-full w-full object-cover object-[68%_center] transition duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
@@ -77,64 +71,45 @@ function markLogoFailed(id: string) {
             <span class="coverage-overlay pointer-events-none absolute inset-0" aria-hidden="true" />
 
             <div
-              class="relative z-[1] flex w-full flex-col justify-between gap-3 p-4 sm:p-5 lg:flex-row lg:items-end lg:gap-6">
-              <div>
-                <h3 class="font-display text-lg font-extrabold leading-snug text-white sm:text-xl">
+              class="relative z-[1] flex w-full flex-col justify-between gap-3 p-4 sm:p-5 lg:flex-row lg:items-end lg:justify-between lg:gap-8 lg:px-6">
+
+              <div class="min-w-0 max-w-lg">
+                <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-100/75">
+                  {{ coverage.badge }}
+                </p>
+                <h3 class="mt-1 font-display text-[17px] font-extrabold leading-snug text-white sm:text-xl">
                   {{ coverage.title }}
                 </h3>
-                <p class="mt-1.5 max-w-md text-[13px] leading-relaxed text-blue-50/95">
+                <p class="mt-1 max-w-md text-[13px] leading-relaxed text-blue-50/90">
                   {{ coverage.description }}
                 </p>
-
                 <p class="mt-3 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-100/70">
-                  {{ coverage.gradesLabel }}
+                  boards & Grades we cover
                 </p>
-                <ul class="mt-1.5 flex flex-wrap gap-1" role="list" :aria-label="coverage.gradesLabel">
-                  <li v-for="(grade, i) in coverage.grades" :key="grade.label"
-                    :class="i >= 5 ? 'hidden sm:list-item' : ''">
+                <p class="mt-2.5 text-[12px] font-medium leading-relaxed text-white/90"
+                  :aria-label="coverage.boardsLabel">
+                  <span v-for="(board, i) in coverage.boards" :key="board.id">
+                    <span v-if="i > 0" class="font-normal text-white/35"> · </span>{{ board.name }}
+                  </span>
+                </p>
+
+                <ul class="mt-2 flex flex-wrap gap-1" role="list"
+                  :aria-label="`${coverage.gradesLabel}, ${coverage.coursesLabel}`">
+                  <li v-for="(chip, i) in coverageChips" :key="chip.label" :class="i >= 7 ? 'hidden sm:list-item' : ''">
                     <span
                       class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2 py-px text-[10.5px] font-medium text-blue-50 backdrop-blur-[2px]">
-                      {{ grade.label }}
-                    </span>
-                  </li>
-                </ul>
-
-                <ul class="mt-1.5 flex flex-wrap gap-1" role="list" :aria-label="coverage.coursesLabel">
-                  <li v-for="(course, i) in coverage.courses" :key="course.label"
-                    :class="i >= 5 ? 'hidden sm:list-item' : ''">
-                    <span
-                      class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2 py-px text-[10.5px] font-medium text-blue-50 backdrop-blur-[2px]">
-                      {{ course.label }}
-                    </span>
-                  </li>
-                </ul>
-
-                <ul class="mt-2.5 flex flex-wrap items-center" role="list">
-                  <li v-for="(board, i) in coverage.boards" :key="board.id"
-                    :style="{ zIndex: coverage.boards.length - i }" class="relative -ml-1.5 first:ml-0">
-                    <span
-                      class="grid h-8 w-8 place-items-center rounded-full bg-white shadow-sm ring-2 ring-white sm:h-9 sm:w-9"
-                      :title="board.name">
-                      <img v-if="!failedLogos[board.id]" :src="usePublicAsset(board.logo)" alt=""
-                        class="h-[70%] w-[70%] object-contain" loading="lazy" decoding="async"
-                        @error="markLogoFailed(board.id)" />
-                      <span v-else class="text-[9px] font-bold tracking-wide text-slate-500">
-                        {{ board.name.slice(0, 2) }}
-                      </span>
+                      {{ chip.label }}
                     </span>
                   </li>
                 </ul>
               </div>
+              <span
+                class="inline-flex w-fit shrink-0 items-center gap-2 self-end rounded-2xl bg-white px-4 py-2.5 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 group-hover:gap-2.5 group-hover:bg-cream-50">
+                {{ tutorSubjects.cta.label }}
+                <Icon icon="mdi:arrow-right" class="h-4 w-4 transition group-hover:translate-x-0.5"
+                  aria-hidden="true" />
+              </span>
 
-              <div class="mt-1 text-right lg:mt-0">
-                <ActionBtn :label="tutorSubjects.cta.label" :href="tutorSubjects.cta.href" variant="primary" />
-                <!-- <span
-                  class="mt-5 inline-flex w-fit items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 group-hover:gap-2.5 group-hover:bg-cream-50">
-                  {{ tutorSubjects.cta.label }}
-                  <Icon icon="mdi:arrow-right" class="h-4 w-4 transition group-hover:translate-x-0.5"
-                    aria-hidden="true" />
-                </span> -->
-              </div>
             </div>
           </NuxtLink>
         </li>

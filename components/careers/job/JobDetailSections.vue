@@ -240,7 +240,7 @@ async function copyJobLink(url: string) {
     <section v-if="benefits.length" id="benefits" class="bg-white section-py-compact"
       aria-labelledby="job-benefits-heading">
       <div class="container-page">
-        <p class="text-xs font-bold uppercase tracking-[0.16em] text-blue-700">
+        <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">
           Employee Benefits
         </p>
         <ul class="mt-4 grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-x-10" role="list">

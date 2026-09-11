@@ -31,7 +31,7 @@ const jobFilters = computed(() => ({
 
 const { data: cities } = await useCareerCities()
 const { data: jobsResult, pending, refresh } = await useCareerJobs(jobFilters)
-console.log("jobsResult::", jobsResult.value?.items)
+// console.log("jobsResult::", jobsResult.value?.items)
 const jobs = computed(() => jobsResult.value?.items ?? [])
 const jobsFailed = computed(() => Boolean(jobsResult.value?.failed))
 

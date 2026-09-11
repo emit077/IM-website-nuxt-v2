@@ -368,10 +368,34 @@ export const hiringSteps = [
 
 export const internshipsSection = {
   kicker: 'Internship Opportunities',
-  title: 'Learn. Contribute. Build Your Career <span class="text-gradient-brand">with Indian Mentors</span>',
-  classes: '!px-0 !py-0 mx-auto',
+  title: 'Learn. Contribute. Build Your Career <br/> with Indian Mentors',
+  classes: '!px-0 !py-0',
   description:
     'Structured internships for college students, final-year students, recent graduates, and passed-out candidates — bridging academic learning and professional experience through real projects, guided mentorship, and day-to-day operations.',
+  showcaseTitle: 'Learn. Contribute. Build Your Career',
+  checklist: [
+    'Structured internships for college, university, and final-year students',
+    'Open to recent graduates and candidates seeking industry experience',
+    'Work on real projects with guided mentorship',
+    'Hands-on exposure to day-to-day operations',
+  ],
+  stats: [
+    { value: '9+', label: 'Who can apply' },
+    { value: 'Live', label: 'Project work' },
+    { value: '1:1', label: 'Mentorship' },
+  ],
+  highlights: [
+    { iconMdi: 'mdi:briefcase-outline', label: 'Real projects' },
+    { iconMdi: 'mdi:account-supervisor-outline', label: 'Guided mentorship' },
+    { iconMdi: 'mdi:office-building-outline', label: 'Day-to-day operations' },
+  ],
+  video: {
+    permalink: 'https://www.instagram.com/reel/DcJGgc2pR5H/',
+    title: 'A day in the internship',
+    subtitle: 'Watch how interns learn, contribute, and grow with our team.',
+    handle: '@indianmentors',
+    handleHref: 'https://www.instagram.com/indianmentors/',
+  },
   whoCanApply: {
     kicker: 'Who Can Apply?',
     items: [
@@ -388,6 +412,7 @@ export const internshipsSection = {
     note: 'Internships may be available for both freshers and candidates with limited prior experience, depending on the requirements of the role.',
   },
   cta: { label: 'Apply for an Internship', href: careerApplyMailto('Internship') },
+  secondaryCta: { label: 'View Open Positions', href: '#open-positions' },
 } as const
 
 export const whoCanApplySection = {
