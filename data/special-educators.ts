@@ -78,9 +78,9 @@ export const seNeeds = {
       shortTitle: 'ADHD',
       image: 'assets/img/special-educators/adhd.png',
       iconMdi: 'mdi:brain',
-      title: 'Attention Deficit Hyperactivity Disorder (ADHD)',
+      title: 'Attention Deficit Hyperactivity Disorder ',
       description:
-        'Students with ADHD often benefit from structured educational strategies that support attention, organisation, self-regulation, and classroom participation.',
+        'Students with ADHD benefit from structured strategies that support attention, organisation, self-regulation, and classroom participation.',
       support: [
         'Improving Attention Span',
         'Behaviour Management Strategies',
@@ -94,10 +94,10 @@ export const seNeeds = {
         'Positive Reinforcement',
       ],
       goals: [
-        'Improve classroom participation',
+        'Improve class participation',
         'Increase focus and engagement',
-        'Build independent study habits',
-        'Strengthen academic confidence',
+        'Build independent study',
+        'Grow academic confidence',
       ],
     },
     {
@@ -107,7 +107,7 @@ export const seNeeds = {
       iconMdi: 'mdi:rainbow',
       title: 'Autism Spectrum Disorder (ASD)',
       description:
-        'Our educators create structured, predictable, and supportive learning environments that encourage communication, academic participation, and social interaction while respecting each child’s individual learning profile.',
+        'Structured, predictable learning environments support communication, academic participation, and social interaction.',
       support: [
         'Individual Learning Plans (ILP)',
         'Communication Skill Development',
@@ -122,7 +122,7 @@ export const seNeeds = {
       ],
       goals: [
         'Enhance communication',
-        'Encourage meaningful participation',
+        'Encourage participation',
         'Build academic independence',
         'Support social engagement',
       ],
@@ -134,7 +134,7 @@ export const seNeeds = {
       iconMdi: 'mdi:book-open-page-variant-outline',
       title: 'Dyslexia',
       description:
-        'Students with dyslexia receive systematic, structured, and multisensory educational support to strengthen literacy skills and reading confidence.',
+        'Students receive systematic, multisensory support to strengthen literacy skills, reading accuracy, and independent learning confidence.',
       support: [
         'Reading Intervention',
         'Phonics-Based Instruction',
@@ -149,7 +149,8 @@ export const seNeeds = {
       goals: [
         'Improve literacy skills',
         'Strengthen reading accuracy',
-        'Develop independent learning confidence',
+        'Build spelling confidence',
+        'Grow learning confidence',
       ],
     },
     {
@@ -159,7 +160,7 @@ export const seNeeds = {
       iconMdi: 'mdi:pencil-outline',
       title: 'Dysgraphia',
       description:
-        'Our educators support children in developing written communication through structured writing instruction and fine motor skill enhancement.',
+        'Structured writing instruction helps children develop handwriting, organisation of ideas, and confident written communication.',
       support: [
         'Handwriting Development',
         'Fine Motor Coordination Activities',
@@ -171,8 +172,9 @@ export const seNeeds = {
       ],
       goals: [
         'Improve handwriting',
-        'Strengthen written communication',
-        'Increase confidence in written tasks',
+        'Strengthen writing skills',
+        'Organise ideas to write',
+        'Build writing confidence',
       ],
     },
     {
@@ -182,7 +184,7 @@ export const seNeeds = {
       iconMdi: 'mdi:calculator-variant-outline',
       title: 'Dyscalculia',
       description:
-        'We use practical, visual, and concept-based teaching methods to help children understand numbers, mathematical reasoning, and problem-solving.',
+        'Practical, visual teaching methods help children understand numbers, mathematical reasoning, and problem-solving with less anxiety.',
       support: [
         'Number Sense Development',
         'Mathematical Concept Building',
@@ -193,9 +195,10 @@ export const seNeeds = {
         'Mathematical Confidence Building',
       ],
       goals: [
-        'Develop foundational numeracy',
-        'Improve mathematical reasoning',
-        'Reduce anxiety associated with mathematics',
+        'Build foundational numeracy',
+        'Improve maths reasoning',
+        'Strengthen number sense',
+        'Reduce maths anxiety',
       ],
     },
     {
@@ -205,7 +208,7 @@ export const seNeeds = {
       iconMdi: 'mdi:puzzle-outline',
       title: 'Specific Learning Disabilities (SLD)',
       description:
-        'Every learner receives an individualised educational approach that focuses on strengths while addressing specific academic challenges.',
+        'Each learner gets an individualised approach that builds on strengths and addresses specific academic challenges in the classroom.',
       support: [
         'Individualised Education Plans (IEP)',
         'Academic Skill Development',
@@ -217,9 +220,10 @@ export const seNeeds = {
         'Examination Preparation Support',
       ],
       goals: [
-        'Improve academic performance',
-        'Increase classroom participation',
-        'Encourage independent learning',
+        'Improve academic results',
+        'Increase class participation',
+        'Build study strategies',
+        'Encourage independent study',
       ],
     },
     {
@@ -227,9 +231,9 @@ export const seNeeds = {
       shortTitle: 'Speech & Language',
       image: 'assets/img/special-educators/speech.png',
       iconMdi: 'mdi:microphone-outline',
-      title: 'Speech & Language Delays (Educational Support)',
+      title: 'Speech & Language Delays',
       description:
-        'Our educators support language development within academic settings by reinforcing communication and classroom learning.',
+        'Educators support language development in academic settings by reinforcing communication, vocabulary, and classroom learning.',
       support: [
         'Language Development Activities',
         'Communication Practice',
@@ -239,9 +243,10 @@ export const seNeeds = {
         'Classroom Communication Skills',
       ],
       goals: [
-        'Improve classroom communication',
-        'Strengthen language comprehension',
-        'Build confidence in verbal participation',
+        'Improve class communication',
+        'Strengthen comprehension',
+        'Expand academic vocabulary',
+        'Build speaking confidence',
       ],
       note: 'Where required, we recommend coordination with qualified Speech-Language Pathologists for clinical assessment or therapy.',
     },
@@ -252,7 +257,7 @@ export const seNeeds = {
       iconMdi: 'mdi:emoticon-happy-outline',
       title: 'Behavioural & Emotional Challenges',
       description:
-        'Our educators use positive educational strategies to help students develop self-management skills, emotional awareness, and productive classroom behaviours.',
+        'Positive educational strategies help students build self-management, emotional awareness, and productive classroom behaviours.',
       support: [
         'Positive Behaviour Strategies',
         'Emotional Regulation Activities',
@@ -262,8 +267,9 @@ export const seNeeds = {
         'Parent Guidance & Educational Counselling',
       ],
       goals: [
-        'Encourage positive learning behaviours',
+        'Encourage positive behaviour',
         'Improve emotional resilience',
+        'Strengthen self-management',
         'Build classroom confidence',
       ],
     },
@@ -284,8 +290,8 @@ export const seServices = {
       description: 'Each student receives a personalised educational roadmap that includes:',
       points: [
         'Learning objectives',
-        'Academic priorities',
         'Teaching strategies',
+        'Academic priorities',
         'Progress indicators',
         'Parent recommendations',
       ],
@@ -309,10 +315,10 @@ export const seServices = {
       title: 'School Readiness Programme',
       description: 'Helping children prepare for successful classroom participation through:',
       points: [
-        'Routine Development',
-        'Classroom Behaviour',
         'Listening Skills',
         'Social Interaction',
+        'Classroom Behaviour',
+        'Routine Development',
         'Early Academic Skills',
       ],
     },
@@ -325,8 +331,8 @@ export const seServices = {
         'Reading',
         'Writing',
         'Mathematics',
-        'Language Development',
         'Study Skills',
+        'Language Development',
       ],
     },
     {
@@ -335,10 +341,10 @@ export const seServices = {
       title: 'Parent Guidance & Family Support',
       description: 'Parents play a vital role in educational progress. Support includes:',
       points: [
-        'Home learning strategies',
-        'Educational counselling',
-        'Progress discussions',
         'Goal setting',
+        'Progress discussions',
+        'Educational counselling',
+        'Home learning strategies',
         'Learning recommendations',
       ],
     },
@@ -348,11 +354,11 @@ export const seServices = {
       title: 'School Collaboration',
       description: 'Where appropriate and with family consent, our educators work with schools to:',
       points: [
+        'Align learning goals',
         'Support inclusive education',
         'Share educational observations',
-        'Align learning goals',
-        'Recommend classroom accommodations',
         'Encourage consistent approaches',
+        'Recommend classroom accommodations',
       ],
     },
   ],
@@ -476,6 +482,9 @@ export const seProcess = {
       description: 'We discuss learning concerns, school history, and family goals together.',
       iconMdi: 'mdi:account-voice',
       accent: 'blue' as const,
+      image: 'assets/img/special-educators/audience-families.png',
+      imageAlt: 'Parent, child, and special educator talking together during a consultation',
+      highlights: ['Learning concerns', 'School history', 'Family goals'],
     },
     {
       no: '02',
@@ -526,14 +535,14 @@ export const seAudience = {
   description:
     'From preschool through Class XII — and for families learning at home — support is adapted to the child’s stage, strengths, and educational goals.',
   items: [
-    { title: 'Preschool Children', iconMdi: 'mdi:baby-face-outline' },
-    { title: 'School Students (Nursery to Class XII)', iconMdi: 'mdi:school-outline' },
-    { title: 'Inclusive Education Learners', iconMdi: 'mdi:account-group-outline' },
-    { title: 'Children with Learning Differences', iconMdi: 'mdi:puzzle-outline' },
-    { title: 'Children Requiring Academic Intervention', iconMdi: 'mdi:book-education-outline' },
-    { title: 'Students Transitioning into Mainstream Education', iconMdi: 'mdi:transit-connection-variant' },
-    { title: 'Homeschooled Students Requiring Additional Support', iconMdi: 'mdi:home-outline' },
-    { title: 'Families Seeking Structured Individualised Learning', iconMdi: 'mdi:human-male-female-child' },
+    { title: 'Preschool\nChildren', iconMdi: 'mdi:baby-face-outline' },
+    { title: 'School Students\n(Nursery to Class XII)', iconMdi: 'mdi:school-outline' },
+    { title: 'Inclusive Education\nLearners', iconMdi: 'mdi:account-group-outline' },
+    { title: 'Children with\nLearning Differences', iconMdi: 'mdi:puzzle-outline' },
+    { title: 'Children Requiring\nAcademic Intervention', iconMdi: 'mdi:book-education-outline' },
+    { title: 'Students Transitioning into\nMainstream Education', iconMdi: 'mdi:transit-connection-variant' },
+    { title: 'Homeschooled Students\nRequiring Additional Support', iconMdi: 'mdi:home-outline' },
+    { title: 'Families Seeking Structured\nIndividualised Learning', iconMdi: 'mdi:human-male-female-child' },
   ],
 }
 

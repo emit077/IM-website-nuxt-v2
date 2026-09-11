@@ -28,8 +28,10 @@ useSeoMeta({
     <SpecialEducatorsHeroSection />
     <!-- <SpecialEducatorsIntroSection /> -->
     <SpecialEducatorsApproachSection />
+
     <SpecialEducatorsNeedsGridSection />
-    <SpecialEducatorsNeedsSection />
+    <!-- <SpecialEducatorsNeedsSection /> -->
+
     <SpecialEducatorsServicesSection />
     <SpecialEducatorsMethodologySection />
     <SpecialEducatorsFeaturesSection />

@@ -36,7 +36,7 @@ import { seAudience } from '~/data/special-educators'
             >
               <Icon :icon="item.iconMdi" class="h-5 w-5" />
             </span>
-            <h3 class="font-display text-[13.5px] font-semibold leading-snug text-slate-900 sm:text-[14px]">
+            <h3 class="whitespace-pre-line font-display text-[13.5px] font-semibold leading-snug text-slate-900 sm:text-[14px]">
               {{ item.title }}
             </h3>
           </article>
