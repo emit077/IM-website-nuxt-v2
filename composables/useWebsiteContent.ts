@@ -122,10 +122,23 @@ function slugifyCategory(category: string) {
 }
 
 function initialsFromName(name: string) {
-  const parts = name.trim().split(/\s+/).filter(Boolean)
+  const ignored = new Set(['mr', 'mrs', 'ms', 'miss', 'dr', 'prof', 'sir', 'smt', 'shri', 'shree'])
+  const parts = name
+    .trim()
+    .split(/\s+/)
+    .map((part) => part.replace(/[.,]/g, ''))
+    .filter((part) => part && !ignored.has(part.toLowerCase()))
   if (!parts.length) return 'IM'
   if (parts.length === 1) return parts[0]!.slice(0, 2).toUpperCase()
   return `${parts[0]![0] ?? ''}${parts[parts.length - 1]![0] ?? ''}`.toUpperCase()
+}
+
+function normalizeExternalUrl(url?: string | null) {
+  const raw = url?.trim()
+  if (!raw) return undefined
+  if (/^https?:\/\//i.test(raw)) return raw
+  if (raw.startsWith('//')) return `https:${raw}`
+  return `https://${raw}`
 }
 
 const RING_COLORS = [
@@ -171,27 +184,45 @@ export function mapTestimonials(items: WebsiteTestimonial[]): UiTestimonial[] {
   })
 }
 
-export function mapTeam(items: WebsiteTeamMember[]): LeadershipProfile[] {
-  return items.map((item, index) => {
-    const msg = item.msg?.trim() || ''
-    const lines = msg
-      ? msg
-          .split(/\n+/)
-          .map((line) => line.trim())
-          .filter(Boolean)
-      : []
+function resolveMediaUrl(url?: string | null, apiBase = '') {
+  const raw = url?.trim()
+  if (!raw || raw === 'null' || raw === 'undefined') return undefined
+  if (/^https?:\/\//i.test(raw) || raw.startsWith('data:')) return raw
+  if (raw.startsWith('//')) return `https:${raw}`
+  const base = apiBase.replace(/\/$/, '')
+  const path = raw.startsWith('/') ? raw : `/${raw}`
+  return base ? `${base}${path}` : path
+}
 
-    return {
-      id: index === 0 ? 'founder' : String(item.id),
-      name: item.name,
-      role: item.designation,
-      bio: msg || item.designation,
-      message: msg || undefined,
-      inTheirWords: lines.length ? lines.slice(0, 3) : [item.designation],
-      initials: initialsFromName(item.name),
-      ringColor: RING_COLORS[index % RING_COLORS.length]!,
-    }
-  })
+export function mapTeam(items: WebsiteTeamMember[], apiBase = ''): LeadershipProfile[] {
+  return [...items]
+    .sort((a, b) => (a.display_order ?? a.id) - (b.display_order ?? b.id))
+    .map((item, index) => {
+      const msg = item.msg?.trim() || ''
+      const lines = msg
+        ? msg
+            .split(/\n+/)
+            .map((line) => line.trim())
+            .filter(Boolean)
+        : []
+      const isLead = /founder|chief executive|\bceo\b/i.test(item.designation || '')
+      const department = item.department?.trim()
+
+      return {
+        id: isLead ? 'founder' : String(item.id),
+        name: item.name,
+        role: item.designation,
+        department: department && department !== item.designation ? department : undefined,
+        bio: msg || item.designation,
+        message: msg || undefined,
+        image: resolveMediaUrl(item.image || item.photo || item.profile_image, apiBase),
+        linkedin: normalizeExternalUrl(item.linkedin_link),
+        inTheirWords: lines.length ? lines.slice(0, 3) : [item.designation],
+        initials: initialsFromName(item.name),
+        ringColor: RING_COLORS[index % RING_COLORS.length]!,
+        displayOrder: item.display_order ?? index + 1,
+      }
+    })
 }
 
 export function mapCities(items: WebsiteCity[]): UiCityCard[] {
@@ -285,13 +316,13 @@ export function useWebsiteTestimonials(fallback: UiTestimonial[] = []) {
 }
 
 export function useWebsiteTeam(fallback: LeadershipProfile[] = []) {
-  const { fetchWebsiteList } = useWebsiteApi()
+  const { fetchWebsiteList, apiBase } = useWebsiteApi()
 
   return useAsyncData(
     'website-team',
     async () => {
       const rows = await fetchWebsiteList<WebsiteTeamMember>('/api/website/team/')
-      const mapped = mapTeam(rows)
+      const mapped = mapTeam(rows, apiBase)
       return mapped.length ? mapped : fallback
     },
     { default: () => fallback },

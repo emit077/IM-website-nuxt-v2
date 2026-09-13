@@ -14,6 +14,10 @@ export function institutionPartnerMailto() {
   return `mailto:${INSTITUTIONS_EMAIL}?subject=${encodeURIComponent('Institutional Partnership — Indian Mentors')}`
 }
 
+export function institutionProposalMailto() {
+  return `mailto:${INSTITUTIONS_EMAIL}?subject=${encodeURIComponent('Institutional Commercial Proposal — Indian Mentors')}`
+}
+
 export type InstitutionAccent = 'blue' | 'emerald' | 'amber' | 'violet' | 'indigo' | 'rose' | 'teal'
 
 export const institutionsHero = {

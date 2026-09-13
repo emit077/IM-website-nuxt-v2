@@ -1,112 +1,182 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import { aboutLeadership, aboutLeadershipQuote, aboutLeadershipSection } from '~/data/about'
+import { aboutLeadership, aboutLeadershipSection, type LeadershipProfile } from '~/data/about'
 
-const bannerImage = usePublicAsset('assets/img/banner/banner-1.png')
+const placeholderImage = usePublicAsset('assets/img/about/team-placeholder.png')
+const purposeImage = usePublicAsset('assets/img/about/better-mentorship-card.jpg')
+
+const founderHighlights = [
+  { icon: 'solar:graph-up-linear', label: 'Strategy & Vision' },
+  { icon: 'solar:settings-linear', label: 'Operations & Governance' },
+  { icon: 'solar:flag-2-linear', label: 'Growth & Impact' },
+] as const
 
 const { data: team } = await useWebsiteTeam(aboutLeadership)
 const leaders = computed(() => (team.value?.length ? team.value : aboutLeadership))
 
-const founder = computed(() => leaders.value.find((l) => l.id === 'founder') ?? leaders.value[0])
-const otherLeaders = computed(() => leaders.value.filter((l) => l.id !== founder.value?.id))
-const leadershipCards = computed(() => otherLeaders.value.slice(0, 4))
+const featured = computed(() => leaders.value.find((person) => person.id === 'founder') ?? leaders.value[0])
+const gridLeaders = computed(() => leaders.value.filter((person) => person.id !== featured.value?.id))
+
+const featuredBio = computed(() => summary(featured.value))
+const featuredPullQuote = computed(() => {
+  const line = featured.value?.inTheirWords?.find(
+    (item) => item && item !== featured.value?.role && item !== featuredBio.value,
+  )
+  return line || 'Building a trusted ecosystem where every student can find the right mentor.'
+})
+
+function portraitSrc(leader?: LeadershipProfile) {
+  return leader?.image || placeholderImage
+}
+
+function portraitClass(leader?: LeadershipProfile) {
+  return leader?.image
+    ? 'object-cover object-[center_20%]'
+    : 'object-contain object-bottom bg-white'
+}
+
+function featuredPortraitClass(leader?: LeadershipProfile) {
+  const src = portraitSrc(leader)
+  return src.includes('founder-afroj')
+    ? 'object-contain object-bottom'
+    : portraitClass(leader)
+}
+
+function summary(leader?: LeadershipProfile) {
+  if (!leader) return ''
+  const text = (leader.message?.trim() || leader.bio || '').trim()
+  if (!text || text === leader.role?.trim()) return ''
+  return text
+}
+
+function onPortraitError(event: Event) {
+  const img = event.target as HTMLImageElement
+  if (img.src !== placeholderImage) img.src = placeholderImage
+}
 </script>
 
 <template>
-  <section id="leadership" class="bg-white section-py" aria-labelledby="leadership-heading">
-    <div class="container-page">
-      <CardHeader heading-id="leadership-heading" :badge="aboutLeadershipSection.badge"
-        :title="aboutLeadershipSection.title" :description="aboutLeadershipSection.description"
-        :classes="aboutLeadershipSection.classes" />
-      <article v-if="founder"
-        class="group mx-auto mt-12 overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.04),0_18px_48px_-22px_rgba(15,23,42,0.18)] lg:grid lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)]"
-        v-motion :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
-        <div class="relative min-h-[18rem] overflow-hidden lg:min-h-full">
-          <img :src="bannerImage" :alt="founder.name"
-            class="absolute inset-0 h-full w-full object-cover object-center grayscale transition duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
-            loading="lazy" />
-          <div aria-hidden="true"
-            class="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/35 to-slate-900/10" />
+  <section id="leadership" class="relative overflow-hidden bg-[#f7f9fc] section-py"
+    aria-labelledby="leadership-heading">
+    <p aria-hidden="true"
+      class="pointer-events-none absolute right-6 top-16 hidden max-w-[7rem] text-right font-display text-[13px] leading-5 text-slate-300 lg:block">
+      People<br />Purpose<br />Progress
+    </p>
 
-          <div class="relative flex h-full flex-col justify-end p-7 sm:p-9">
-            <h3 class="mt-4 font-display text-2xl font-bold tracking-tight text-white sm:text-[1.7rem]">
-              {{ founder.name }}
-            </h3>
-            <p class="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-white/60">
-              {{ founder.role }}
+    <div class="container-page relative z-[1]">
+      <div class="mx-auto max-w-3xl text-center">
+        <CardHeader heading-id="leadership-heading" :badge="aboutLeadershipSection.badge"
+          :title="aboutLeadershipSection.title" :description="aboutLeadershipSection.description"
+          :classes="aboutLeadershipSection.classes" />
+      </div>
+
+      <div v-if="featured" class="mt-10 space-y-4 sm:mt-12">
+        <div class="grid gap-4 lg:grid-cols-12" aria-label="Founder spotlight">
+          <article
+            class="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-[#0F174A] via-brand-primary to-[#60A5FA] lg:col-span-4"
+            v-motion
+            :initial="{ opacity: 0, y: 14 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40, duration: 420 } }">
+            <img :src="portraitSrc(featured)" :alt="featured.name"
+              class="absolute inset-0 h-full w-full transition duration-700" :class="featuredPortraitClass(featured)"
+              loading="lazy" decoding="async" @error="onPortraitError" />
+          </article>
+
+          <article
+            class="relative overflow-hidden rounded-[1.6rem] bg-white px-6 py-7 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.28)] sm:px-8 sm:py-8 lg:col-span-5"
+            v-motion :initial="{ opacity: 0, y: 14 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80, duration: 420 } }">
+            <Icon icon="mdi:format-quote-close"
+              class="absolute right-6 top-5 h-12 w-12 text-slate-100 sm:right-8 sm:h-14 sm:w-14" aria-hidden="true" />
+
+            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
+              {{ featured.role }}
             </p>
-          </div>
-        </div>
-        <div class="px-8 py-10 sm:px-10 sm:py-12">
-          <p class="text-base leading-[1.8] text-slate-600 sm:text-[17px] italic">
-            "{{ founder.bio }}"
-          </p>
+            <h3 class="mt-2 font-display text-3xl font-bold tracking-tight text-slate-900">
+              {{ featured.name }}
+            </h3>
+            <p class="mt-3 font-display text-lg font-medium leading-snug text-slate-800">
+              “{{ featuredPullQuote }}”
+            </p>
+            <p v-if="featuredBio" class="mt-3 text-[14px] leading-relaxed text-slate-500">
+              {{ featuredBio }}
+            </p>
 
-          <div class="mt-9 flex items-center gap-3">
-            <span class="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-400">
-              Guiding principles
+            <ul class="mt-6 flex flex-wrap gap-x-5 gap-y-3 border-t border-slate-100 pt-5" role="list">
+              <li v-for="item in founderHighlights" :key="item.label"
+                class="flex items-center gap-2 text-[12px] font-semibold text-slate-500">
+                <span class="grid h-7 w-7 place-items-center rounded-full bg-slate-50 text-slate-400">
+                  <Icon :icon="item.icon" class="h-4 w-4" aria-hidden="true" />
+                </span>
+                {{ item.label }}
+              </li>
+            </ul>
+
+            <a v-if="featured.linkedin" :href="featured.linkedin" target="_blank" rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0b1b36] px-4 py-2.5 text-[13px] font-semibold text-white transition hover:bg-blue-700"
+              :aria-label="`View ${featured.name} on LinkedIn`">
+              <Icon icon="mdi:linkedin" class="h-4 w-4" aria-hidden="true" />
+              Connect on LinkedIn
+              <Icon icon="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" />
+            </a>
+          </article>
+
+          <aside class="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] bg-[#eef5ff] lg:col-span-3" v-motion
+            :initial="{ opacity: 0, y: 14 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 120, duration: 420 } }">
+            <img :src="purposeImage" alt="Better Mentorship. Brighter Futures."
+              class="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" decoding="async" />
+          </aside>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Leadership team">
+          <article v-for="(leader, i) in gridLeaders" :key="leader.id"
+            class="rounded-[1.6rem] bg-white px-6 py-7 text-center shadow-[0_16px_40px_-28px_rgba(15,23,42,0.22)]"
+            v-motion :initial="{ opacity: 0, y: 14 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 140 + i * 40, duration: 400 } }">
+            <div class="mx-auto h-20 w-20 overflow-hidden rounded-full bg-slate-100 ring-4 ring-slate-50">
+              <img :src="portraitSrc(leader)" :alt="leader.name" class="h-full w-full" :class="portraitClass(leader)"
+                loading="lazy" decoding="async" @error="onPortraitError" />
+            </div>
+            <h3 class="mt-4 font-display text-lg font-bold tracking-tight text-slate-900">
+              {{ leader.name }}
+            </h3>
+            <p class="mt-1 text-[13px] font-medium text-slate-500">{{ leader.role }}</p>
+            <p v-if="summary(leader)" class="mt-3 line-clamp-3 text-[13px] leading-relaxed text-slate-400">
+              {{ summary(leader) }}
+            </p>
+            <a v-if="leader.linkedin" :href="leader.linkedin" target="_blank" rel="noopener noreferrer"
+              class="mt-5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#0A66C2] transition hover:gap-2"
+              :aria-label="`View ${leader.name} on LinkedIn`">
+              <Icon icon="mdi:linkedin" class="h-4 w-4" aria-hidden="true" />
+              Connect on LinkedIn
+              <Icon icon="solar:arrow-right-linear" class="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          </article>
+        </div>
+
+        <div
+          class="flex flex-col items-start justify-between gap-4 rounded-[1.6rem] bg-white px-6 py-5 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.18)] sm:flex-row sm:items-center sm:px-7">
+          <div class="flex items-start gap-3 sm:items-center">
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-slate-50 text-slate-400">
+              <Icon icon="solar:users-group-rounded-linear" class="h-6 w-6" aria-hidden="true" />
             </span>
-            <span aria-hidden="true" class="h-px flex-1 bg-slate-100" />
-          </div>
-
-          <ul class="mt-6 space-y-5" role="list">
-            <li v-for="(quote, qi) in founder.inTheirWords" :key="quote" class="flex items-start gap-4" v-motion
-              :initial="{ opacity: 0, x: 10 }"
-              :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 420, delay: 80 + qi * 80 } }">
-              <span class="font-display mt-0.5 shrink-0 text-sm font-bold tabular-nums text-blue-600/80"
-                aria-hidden="true">
-                {{ String(qi + 1).padStart(2, '0') }}
-              </span>
-              <p class="border-l border-slate-200 pl-4 text-[15px] leading-relaxed text-slate-700">
-                {{ quote }}
+            <div>
+              <p class="font-display text-base font-bold text-slate-900">
+                Different backgrounds. A shared purpose.
               </p>
-            </li>
-          </ul>
-        </div>
-      </article>
-      <div v-if="leadershipCards.length" class="mx-auto mt-8 grid  gap-5 sm:grid-cols-2 lg:grid-cols-4" role="list"
-        aria-label="Leadership team">
-        <article v-for="(leader, li) in leadershipCards" :key="leader.id"
-          class="group overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_10px_30px_-24px_rgba(15,23,42,0.55)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_-28px_rgba(15,23,42,0.55)]"
-          role="listitem" v-motion :initial="{ opacity: 0, y: 18 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 80 + li * 90 } }">
-          <div class="relative aspect-[4/5] overflow-hidden bg-slate-200">
-            <img :src="leader.image ? usePublicAsset(leader.image) : bannerImage" :alt="leader.name"
-              class="h-full w-full object-cover grayscale transition duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
-              loading="lazy" />
-            <div aria-hidden="true"
-              class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-900/20 to-transparent" />
-            <div class="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
-              <h3 class="font-display text-base font-bold tracking-tight">
-                {{ leader.name }}
-              </h3>
-              <p class="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70">
-                {{ leader.role }}
+              <p class="mt-0.5 text-[13px] text-slate-500">
+                Together, we are making quality mentorship accessible to every learner, everywhere.
               </p>
             </div>
           </div>
-
-          <div class="p-4 sm:p-5">
-            <p class="line-clamp-4 text-sm leading-relaxed text-slate-600 italic">
-              " {{ leader.message ?? leader.bio }}"
-            </p>
-          </div>
-        </article>
-      </div>
-      <div class="group relative mx-auto mt-10 overflow-hidden rounded-2xl">
-        <img :src="bannerImage" alt="Indian Mentors leadership team"
-          class="h-48 w-full object-cover object-top transition duration-700 ease-out group-hover:scale-105 sm:h-56 lg:h-64"
-          loading="lazy" />
-        <div aria-hidden="true"
-          class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/35 to-slate-900/5" />
-        <div class="absolute inset-x-0 bottom-0 px-7 pb-8 pt-20 sm:px-10 sm:pb-10">
-          <blockquote>
-            <p
-              class="mx-auto max-w-3xl text-center font-display text-base font-medium italic leading-relaxed text-white/95 sm:text-lg lg:text-xl">
-              “{{ aboutLeadershipQuote }}”
-            </p>
-          </blockquote>
+          <NuxtLink to="/careers"
+            class="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#0b1b36] px-5 py-2.5 text-[13px] font-semibold text-white transition hover:bg-blue-700">
+            Explore Career Opportunities
+            <Icon icon="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" />
+          </NuxtLink>
         </div>
       </div>
     </div>

@@ -20,22 +20,17 @@ import { spLearningGoals } from '~/data/student-parent'
         <div class="min-w-0 lg:col-span-5" v-motion :initial="{ opacity: 0, y: 20 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
           <figure
-            class="goal-visual relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-blue-200/60 bg-gradient-to-br from-blue-50 via-white to-cream-50 shadow-soft">
+            class="goal-visual relative min-h-[22rem] overflow-hidden rounded-[1.75rem] bg-slate-200 shadow-soft lg:min-h-full">
+            <img :src="usePublicAsset(spLearningGoals.image)" :alt="spLearningGoals.imageAlt"
+              class="absolute inset-0 h-full w-full object-cover object-[center_20%]" loading="lazy" decoding="async" />
             <div aria-hidden="true"
-              class="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-300/25 blur-2xl" />
+              class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-slate-950/80 via-slate-950/35 to-transparent" />
 
-            <div class="relative min-h-[17rem] flex-1 overflow-hidden">
-              <img :src="usePublicAsset(spLearningGoals.image)" :alt="spLearningGoals.imageAlt"
-                class="absolute inset-0 h-full w-full scale-105 object-cover object-center" loading="lazy"
-                decoding="async" />
-            </div>
-
-            <figcaption
-              class="relative m-4 rounded-2xl text-center border border-blue-100 bg-white/85 p-4 backdrop-blur sm:m-5 sm:p-5">
-              <p class="font-display text-[18px] font-bold text-slate-900">
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-center sm:p-6">
+              <p class="font-display text-[18px] font-bold text-white">
                 {{ spLearningGoals.imageCaption }}
               </p>
-              <p class="mt-1.5 text-[13px] leading-relaxed text-slate-600">
+              <p class="mt-1.5 text-[13px] leading-relaxed text-white/80">
                 {{ spLearningGoals.imageNote }}
               </p>
             </figcaption>

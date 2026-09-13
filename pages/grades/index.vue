@@ -1,13 +1,29 @@
 <script setup lang="ts">
+import { nextTick, onMounted, watch } from 'vue'
 import GradesHeroSection from '~/components/grades/GradesHeroSection.vue'
-import GradesProgramsSection from '~/components/grades/GradesProgramsSection.vue'
+import GradesPathwaySection from '~/components/grades/GradesPathwaySection.vue'
+import GradesExplorerSection from '~/components/grades/GradesExplorerSection.vue'
+import GradesPromiseSection from '~/components/grades/GradesPromiseSection.vue'
+import GradesAdaptSection from '~/components/grades/GradesAdaptSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
-import { externalLinks } from '~/data/external-links'
+import { gradesFinalCta } from '~/data/grades'
 
-const gradesCtas = [
-  { label: 'Find a Personalised Tutor', href: externalLinks.studentSignup, iconMdi: 'mdi:account-search-outline' },
-  { label: 'Book a Free Demo Session', href: externalLinks.studentSignup, iconMdi: 'mdi:calendar-check-outline', primary: true },
-] as const
+const route = useRoute()
+
+function scrollToHash(behavior: ScrollBehavior = 'smooth') {
+  const id = route.hash.replace(/^#/, '')
+  if (!id || !import.meta.client) return
+  const el = document.getElementById(id)
+  el?.scrollIntoView({ behavior, block: 'start' })
+}
+
+onMounted(() => {
+  nextTick(() => scrollToHash('auto'))
+})
+
+watch(() => route.hash, () => {
+  nextTick(() => scrollToHash())
+})
 
 useSeoMeta({
   title: 'Grades Covered — Indian Mentors',
@@ -21,11 +37,14 @@ useSeoMeta({
 </script>
 
 <template>
-  <div>
+  <div class="min-h-screen">
     <GradesHeroSection />
-    <GradesProgramsSection />
-    <UiCTASection heading-id="grades-cta-heading" title="Start your personalised learning journey"
-      description="Whether your child needs foundation learning, board exam preparation, or competitive exam mentoring, Indian Mentors connects you with verified and experienced tutors across India."
-      supporting="No commitment required · Background-verified tutors · Free demo session" :ctas="gradesCtas" />
+    <!-- <GradesPathwaySection /> -->
+    <GradesExplorerSection />
+    <GradesAdaptSection />
+    <GradesPromiseSection />
+    <UiCTASection section-id="book-demo" heading-id="grades-cta-heading" :extra-anchor-ids="['counsellor']"
+      badge-icon-mdi="mdi:book-education-outline" :badge="gradesFinalCta.badge" :title="gradesFinalCta.title"
+      :description="gradesFinalCta.description" :supporting="gradesFinalCta.supporting" :ctas="gradesFinalCta.ctas" />
   </div>
 </template>

@@ -160,20 +160,20 @@ export const cultureSection = {
   galleryDescription: 'A look at where our teams work, collaborate, and grow together.',
   gallery: [
     {
-      src: '/assets/img/contact/suyamall.png',
-      alt: 'Indian Mentors corporate campus',
-      caption: 'Corporate campus',
-      description: 'A professional environment for academic operations.',
+      src: '/assets/img/careers/culture-teachers-day.png',
+      alt: 'Team celebrating Teachers Day with flowers and cake',
+      caption: "Teachers' Day celebration",
+      description: 'Honouring the mentors and educators who shape every learner\'s journey.',
     },
     {
-      src: '/assets/img/careers/professional-growth.webp',
-      alt: 'Team members in a professional training session',
+      src: '/assets/img/careers/culture-team-training.png',
+      alt: 'Team in a training session around a conference table',
       caption: 'Team collaboration',
       description: 'Learning together through structured training and support.',
     },
     {
-      src: '/assets/img/why-choose/academic-ecosystem.webp',
-      alt: 'Academic operations supporting personalised tutoring',
+      src: '/assets/img/careers/culture-academic-operations.png',
+      alt: 'Academic operations team working together in the office',
       caption: 'Academic operations',
       description: 'Every process supports a better learning experience.',
     },
@@ -407,19 +407,6 @@ export const jobsSection = {
 } as const
 
 export const jobFilterOptions = {
-  departments: [
-    { value: 'all', label: 'All Departments' },
-    { value: 'Admissions', label: 'Admissions' },
-    { value: 'Academics', label: 'Academics' },
-    { value: 'Tutor Recruitment', label: 'Tutor Recruitment' },
-    { value: 'Operations', label: 'Operations' },
-    { value: 'Human Resources', label: 'Human Resources' },
-    { value: 'Finance', label: 'Finance' },
-    { value: 'Digital Marketing', label: 'Digital Marketing' },
-    { value: 'Business Development', label: 'Business Development' },
-    { value: 'Channel Partnerships', label: 'Channel Partnerships' },
-    { value: 'Technology', label: 'Technology' },
-  ],
   employment: [
     { value: 'all', label: 'All Employment Types' },
     { value: 'Intern', label: 'Intern' },

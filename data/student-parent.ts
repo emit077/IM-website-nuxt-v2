@@ -111,10 +111,18 @@ export type SubscriptionComparisonRow = {
 export const enrollmentPlansSection = {
   badge: 'Free vs Premium',
   title: 'Compare Your Student <span class="text-gradient-brand">Enrollment Options</span>',
-  description: '',
-  classes: '!px-0 !py-0 mx-auto ',
+  detailedTitle: 'What You Get With <span class="text-gradient-brand">Each Profile</span>',
+  description:
+    'Two views of the same profiles — a quick comparison of included features, and a detailed breakdown of what you get with Free and Premium.',
+  classes: '!px-0 !py-0 mx-auto max-w-3xl',
+  tabs: [
+    { id: 'overview', label: 'Features Comparison' },
+    { id: 'detailed', label: 'Features Breakdown' },
+  ],
   footnote:
-    '*Subject to applicable policy, tutor availability, and service conditions.',
+    'Premium benefits are subject to applicable policies, tutor availability, course eligibility, and service conditions.',
+  detailedFootnote:
+    'Tutor replacement, demo availability, discounts, certificates, payment options, and other premium benefits are subject to applicable Indian Mentors policies, tutor availability, course eligibility, and service conditions.',
 }
 
 export const planComparisonSection = {
@@ -262,7 +270,7 @@ export const enrollmentPlans: EnrollmentPlan[] = [
   {
     id: 'premium',
     name: 'Premium Student Profile',
-    price: '₹1200',
+    price: '₹1,200',
     priceNote: '/ Year',
     tagline: 'Advanced Academic Support',
     description:
@@ -280,22 +288,100 @@ export const enrollmentPlans: EnrollmentPlan[] = [
   },
 ]
 
-export const planComparisonRows: ComparisonRow[] = [
+export const planOverviewRows: ComparisonRow[] = [
   { feature: 'Student Profile', free: '✓', premium: '✓' },
-  { feature: 'Tutor Browsing', free: 'Limited: 3–5 Profiles', premium: 'Unlimited + Direct Connection' },
-  { feature: 'Demo Sessions', free: '1 Free Online Demo', premium: 'Up to 3 Free Offline Demos' },
-  { feature: 'Demo Scheduling', free: 'Standard', premium: 'Priority' },
-  { feature: 'Tutor Replacement', free: '—', premium: '✓ 48-Hour Target*' },
-  { feature: 'Multi-Subject Enrollment', free: '—', premium: '✓' },
-  { feature: 'Payment Options', free: '—', premium: 'Half-Yearly / Annual' },
-  { feature: 'Key Account Manager', free: '—', premium: '✓ Dedicated' },
-  { feature: 'Academic Reports', free: 'Basic Demo Feedback', premium: 'Detailed Progress Reports' },
-  { feature: 'Attendance Tracking', free: 'Basic Demo Attendance', premium: 'Detailed Attendance Tracking' },
-  { feature: 'Family Dashboard', free: '—', premium: '✓' },
-  { feature: 'AI Tutor Recommendation', free: '—', premium: '✓' },
-  { feature: 'Priority Support', free: '—', premium: '✓' },
-  { feature: 'Discounts & Offers', free: '—', premium: '✓ Eligible Benefits' },
-  { feature: 'Achievement Certificates', free: '—', premium: '✓ Applicable Courses' },
+  { feature: 'Tutor Browsing', free: '✓', premium: '✓' },
+  { feature: 'Demo Sessions', free: '✓', premium: '✓' },
+  { feature: 'Demo Scheduling', free: '✓', premium: '✓' },
+  { feature: 'Tutor Replacement', free: '✗', premium: '✓' },
+  { feature: 'Multi-Subject Enrollment', free: '✗', premium: '✓' },
+  { feature: 'Payment Options', free: '✗', premium: '✓' },
+  { feature: 'Key Account Manager', free: '✗', premium: '✓' },
+  { feature: 'Academic Reports', free: '✓', premium: '✓' },
+  { feature: 'Attendance Tracking', free: '✓', premium: '✓' },
+  { feature: 'Parent/Student Dashboard', free: '✗', premium: '✓' },
+  { feature: 'AI Tutor Recommendation', free: '✗', premium: '✓' },
+  { feature: 'Priority Support', free: '✗', premium: '✓' },
+  { feature: 'Discounts & Offers', free: '✗', premium: '✓' },
+  { feature: 'Achievement Certificates', free: '✗', premium: '✓' },
+]
+
+export const planDetailedRows: ComparisonRow[] = [
+  {
+    feature: 'Student Profile',
+    free: 'Create and maintain a basic student profile with essential academic details.',
+    premium: 'Enhanced student profile with detailed requirements for personalised tutor matching.',
+  },
+  {
+    feature: 'Tutor Browsing',
+    free: 'Browse a limited selection of approximately 3–5 suitable tutor profiles.',
+    premium: 'Unlimited tutor browsing, with the option to connect directly with suitable tutors.',
+  },
+  {
+    feature: 'Demo Sessions',
+    free: '1 free online demo session to experience the tutoring approach.',
+    premium: 'Up to 3 free offline demo sessions, subject to tutor availability and applicable conditions.',
+  },
+  {
+    feature: 'Demo Scheduling',
+    free: 'Standard demo scheduling based on available slots.',
+    premium: 'Priority scheduling support for faster demo coordination.',
+  },
+  {
+    feature: 'Tutor Replacement',
+    free: 'Not included as a premium service benefit.',
+    premium: 'Tutor replacement support with a 48-hour target, subject to availability and policy.',
+  },
+  {
+    feature: 'Multi-Subject Enrollment',
+    free: 'Single-subject enrollment based on the selected service.',
+    premium: 'Flexible enrollment for multiple subjects under applicable plans.',
+  },
+  {
+    feature: 'Payment Options',
+    free: 'Premium payment facilities are not applicable.',
+    premium: 'Half-yearly and annual payment options may be available under eligible plans.',
+  },
+  {
+    feature: 'Key Account Manager',
+    free: 'Standard support through the regular service process.',
+    premium: 'Dedicated account manager for personalised assistance and coordination.',
+  },
+  {
+    feature: 'Academic Reports',
+    free: 'Basic feedback following the demo or applicable session.',
+    premium: 'Detailed academic and progress reports to help monitor learning outcomes.',
+  },
+  {
+    feature: 'Attendance Tracking',
+    free: 'Basic attendance record for demo sessions.',
+    premium: 'Detailed attendance tracking for ongoing tutoring sessions.',
+  },
+  {
+    feature: 'Parent/Student Dashboard',
+    free: 'Dashboard access is not included.',
+    premium: 'Dedicated dashboard for managing tutoring, sessions, academic information, and service updates.',
+  },
+  {
+    feature: 'AI Tutor Recommendation',
+    free: 'AI-powered tutor recommendation is not included.',
+    premium: 'AI-assisted tutor recommendations based on student requirements and available profiles.',
+  },
+  {
+    feature: 'Priority Support',
+    free: 'Standard customer support.',
+    premium: 'Priority assistance for service-related queries and coordination.',
+  },
+  {
+    feature: 'Discounts & Offers',
+    free: 'Standard pricing and applicable general offers.',
+    premium: 'Eligible for selected discounts, promotional offers, and premium benefits.',
+  },
+  {
+    feature: 'Achievement Certificates',
+    free: 'Not included as a standard profile benefit.',
+    premium: 'Certificates available for applicable courses or achievement-based programs.',
+  },
 ]
 
 export const subscriptionPlans: SubscriptionPlan[] = [
@@ -482,7 +568,7 @@ export const spLearningGoals = {
   description:
     'Tutoring is structured around a clear academic goal — from stronger fundamentals to exam and competitive readiness.',
   classes: '!px-0 !py-0 mx-auto ',
-  image: 'assets/img/hero/hero-2.png',
+  image: 'assets/img/student-parent/learning-goals.jpg',
   imageAlt: 'Student confident about a clear academic goal',
   imageCaption: 'One Clear Goal. One Structured Plan',
   imageNote: 'Every plan starts with the goal that matters most.',

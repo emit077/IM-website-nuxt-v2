@@ -97,10 +97,13 @@ export type LeadershipProfile = {
   role: string
   bio: string
   image?: string
+  linkedin?: string
+  department?: string
   message?: string
   inTheirWords: string[]
   initials: string
   ringColor: string
+  displayOrder?: number
 }
 
 export const aboutLeadership: LeadershipProfile[] = [
@@ -108,6 +111,7 @@ export const aboutLeadership: LeadershipProfile[] = [
     id: 'founder',
     name: 'Afroj Aalam',
     role: 'Founder & CEO',
+    image: '/assets/img/about/founder-afroj.png',
     bio: 'Leads strategy, governance, and long-term growth — keeping mentorship credible, measurable, and scalable across every city Indian Mentors serves.',
     inTheirWords: [
       'Every student deserves structure, not just another tuition class.',
@@ -129,7 +133,6 @@ export const aboutLeadership: LeadershipProfile[] = [
     ],
     initials: 'AD',
     ringColor: 'ring-emerald-500',
-    image: 'assets/img/hero/hero-1.png',
     message:
       'Focused on building consistent academic systems so every learner receives structured guidance, timely reviews, and clear improvement plans.',
   },
@@ -145,7 +148,6 @@ export const aboutLeadership: LeadershipProfile[] = [
     ],
     initials: 'RM',
     ringColor: 'ring-amber-500',
-    image: 'assets/img/hero/hero-2.png',
     message:
       'Keeps day-to-day delivery disciplined across cities, ensuring families, tutors, and internal teams stay aligned from onboarding to outcomes.',
   },
@@ -161,7 +163,6 @@ export const aboutLeadership: LeadershipProfile[] = [
     ],
     initials: 'PS',
     ringColor: 'ring-rose-500',
-    image: 'assets/img/hero/hero-4.png',
     message:
       'Works closely with mentors to strengthen teaching quality, feedback loops, and the student experience across home and online tutoring.',
   },
@@ -177,7 +178,6 @@ export const aboutLeadership: LeadershipProfile[] = [
     ],
     initials: 'KP',
     ringColor: 'ring-indigo-500',
-    image: 'assets/img/hero/hero-3.png',
     message:
       'Builds the digital workflows behind tutor coordination, parent visibility, progress reporting, and operational accountability.',
   },
@@ -196,6 +196,8 @@ export const aboutComparison = {
     'The Difference Behind Every <span class="text-gradient-brand">Student\'s Success</span>',
   description: 'How Indian Mentors compares to traditional coaching and self-study.',
   classes: '!px-0 !py-0',
+  footnote:
+    'Indian Mentors checks every box — verified tutors, parent visibility, and measurable outcomes in one structured system.',
   columns: ['Indian Mentors', 'Coaching Centers', 'Self-Study'] as const,
   rows: [
     { feature: 'Verified & background-checked tutors', indianMentors: true, coachingCenters: false, selfStudy: false },
@@ -210,10 +212,10 @@ export const aboutComparison = {
 }
 
 export const aboutLeadershipSection = {
-  badge: 'Our Leadership',
-  title: 'A structured Team Powering <span class="text-gradient-brand">Academic Excellence</span>',
+  badge: 'Our Team',
+  title: 'Meet the people behind <span class="text-gradient-brand">Indian Mentors</span>',
   description:
-    'The people guiding academic quality, operations, and mentor excellence across India.',
+    'A passionate team committed to better learning outcomes, stronger families, and brighter futures.',
   classes: '!px-0 !py-0',
 }
 

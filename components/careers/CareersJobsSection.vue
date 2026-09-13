@@ -44,17 +44,15 @@ watch(
       ...knownDepartments.value,
       ...(list ?? []).map((job) => job.department).filter(Boolean),
     ])
-    knownDepartments.value = [...next]
+    knownDepartments.value = [...next].sort((a, b) => a.localeCompare(b))
   },
   { immediate: true },
 )
 
-const departmentOptions = computed(() => {
-  const extras = knownDepartments.value
-    .filter((name) => !jobFilterOptions.departments.some((option) => option.value === name))
-    .map((name) => ({ value: name, label: name }))
-  return [...jobFilterOptions.departments, ...extras]
-})
+const departmentOptions = computed(() => [
+  { value: 'all', label: 'All Departments' },
+  ...knownDepartments.value.map((name) => ({ value: name, label: name })),
+])
 
 const filteredJobs = computed(() => {
   const query = searchQuery.value.trim().toLowerCase()

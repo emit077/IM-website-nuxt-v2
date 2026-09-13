@@ -41,8 +41,7 @@ import { specialisedSupportCategories, specialisedSupportSection } from '~/data/
             <ul class="mt-3 grid gap-2 sm:grid-cols-2" role="list">
               <li v-for="item in cat.supportMayInclude" :key="item"
                 class="flex items-start gap-2 text-[13.5px] leading-snug text-slate-700">
-                <span
-                  class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
+                <span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-700"
                   aria-hidden="true">
                   <IconCheck class="h-3 w-3" />
                 </span>
@@ -54,15 +53,13 @@ import { specialisedSupportCategories, specialisedSupportSection } from '~/data/
       </div>
 
       <p
-        class="mx-auto mt-8 max-w-3xl rounded-2xl border border-amber-200/80 bg-amber-50/80 px-5 py-4 text-center text-[13px] leading-relaxed text-amber-900 sm:text-sm">
+        class="mx-auto mt-8 max-w-5xl rounded-2xl border border-amber-200/80 bg-amber-50/80 px-5 py-4 text-center text-[13px] leading-relaxed text-amber-900 sm:text-sm">
         {{ specialisedSupportSection.note }}
       </p>
 
       <p class="mt-6 text-center">
-        <NuxtLink
-          to="/services/special-educators"
-          class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-blue-600 transition hover:text-blue-700"
-        >
+        <NuxtLink to="/services/special-educators"
+          class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-blue-600 transition hover:text-blue-700">
           Explore the full Special Educators programme
           <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
         </NuxtLink>

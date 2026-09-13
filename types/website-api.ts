@@ -40,8 +40,13 @@ export type WebsiteTeamMember = {
   id: number
   name: string
   designation: string
+  department?: string | null
   msg: string | null
   linkedin_link: string | null
+  image?: string | null
+  photo?: string | null
+  profile_image?: string | null
+  display_order?: number | null
 }
 
 export type WebsiteCity = {

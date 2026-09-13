@@ -14,8 +14,8 @@ const heroContent: HeroContent = {
   description:
     'Connecting students, parents, tutors, and institutions through verified mentors and transparent, technology-driven learning.',
   contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
-  backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-3.png')}')`,
-  mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-3.png')}`,
+  backgroundImage: `url('${usePublicAsset('assets/img/about/about-hero.png')}')`,
+  mobileBackgroundImage: `${usePublicAsset('assets/img/about/about-hero-mobile.png')}`,
   headingId: 'about-hero-heading',
   actionBtns: [
     {

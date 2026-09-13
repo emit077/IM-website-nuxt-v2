@@ -54,16 +54,15 @@ const embedSrc = `${video.permalink.replace(/\/$/, '')}/embed`
               class="phone-shell absolute left-1/2 top-0 w-[272px] max-w-[calc(100%-0.5rem)] -translate-x-1/2 sm:w-[286px] lg:top-8"
               :aria-label="video.title">
               <div
-                class="relative overflow-hidden rounded-[2.15rem] bg-slate-950 p-[9px] shadow-[0_28px_60px_-18px_rgba(2,6,23,0.75)] ring-1 ring-white/20">
+                class="relative overflow-hidden rounded-[2.15rem] bg-slate-950 px-[3px] py-[8px] shadow-[0_28px_60px_-18px_rgba(2,6,23,0.75)] ring-4 ring-black sm:p-[7px]">
                 <span
                   class="pointer-events-none absolute left-1/2 top-3 z-20 h-[22px] w-[92px] -translate-x-1/2 rounded-full bg-slate-950"
                   aria-hidden="true" />
 
-                <div class="ig-clean relative h-[540px] overflow-hidden rounded-[1.7rem] bg-black">
+                <div class="ig-clean relative h-[540px]  rounded-[1.7rem] bg-black">
                   <ClientOnly>
-                    <iframe :src="embedSrc" :title="video.title" class="ig-clean-frame"
-                      allowtransparency="true" allow="encrypted-media; clipboard-write; picture-in-picture; autoplay"
-                      scrolling="no" />
+                    <iframe :src="embedSrc" :title="video.title" class="ig-clean-frame" allowtransparency="true"
+                      allow="encrypted-media; clipboard-write; picture-in-picture; autoplay" scrolling="no" />
                     <template #fallback>
                       <a :href="video.permalink" target="_blank" rel="noopener noreferrer"
                         class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-slate-900 px-6 text-center">
@@ -95,7 +94,7 @@ const embedSrc = `${video.permalink.replace(/\/$/, '')}/embed`
 
 .ig-clean-frame {
   position: absolute;
-  top: -54px;
+  top: -62px;
   left: 50%;
   width: 430px;
   height: 1100px;

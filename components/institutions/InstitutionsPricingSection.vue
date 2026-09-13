@@ -65,7 +65,7 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
             </p>
 
             <ul class="mt-6 flex-1 space-y-2.5" role="list">
-              <li v-for="item in plan.includes" :key="item" class="flex items-start gap-2.5 text-[13.5px] leading-snug">
+              <li v-for="item in plan.includes.slice(0, 5)" :key="item" class="flex items-start gap-2.5 text-[13.5px] leading-snug">
                 <span :class="[
                   'mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full',
                   plan.featured ? 'bg-white/20 text-white' : 'bg-blue-50 text-blue-600',
