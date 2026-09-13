@@ -42,7 +42,8 @@ export const heroContent = {
     '<span class="text-gradient-brand">Indian Mentors</span> - Authorised Reseller Program for Education Consultants',
   description:
     'Build a rewarding education business by collaborating with Indian Mentors, a growing platform dedicated to delivering high-quality personalised tutoring services to students across India. ',
-  backgroundImage: 'assets/img/hero/hero-1.png',
+  backgroundImage: 'assets/img/channel-partner/channel-partner-hero.png',
+  mobileBackgroundImage: 'assets/img/channel-partner/channel-partner-hero-mobile.png',
   contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
   primaryCta: { label: 'Apply for Channel Partnership', href: '#partner-register' },
   secondaryCta: { label: 'Explore Available Territories', href: '#territory-structure' },
