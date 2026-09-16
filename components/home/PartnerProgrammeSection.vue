@@ -56,7 +56,7 @@ const steps = [
                 Simple and structured onboarding
               </p>
               <p class="mt-1.5 text-[13.5px] font-medium leading-relaxed text-indigo-50/90">
-                Our partnership journey is designed to be simple, transparent, and professionally guided.
+                Our partnership journey is designed to be simple, transparent, and professional.
               </p>
 
               <ol class="mt-4 flex flex-wrap items-center gap-2" aria-label="Partnership onboarding steps">

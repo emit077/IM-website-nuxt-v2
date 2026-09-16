@@ -35,6 +35,16 @@ const heroContent = {
   description: contactHero.subheadline,
   contentClass: '!px-0 !py-0 max-w-none',
 }
+
+function collageSrc(city: { image: string }) {
+  const img = city.image?.trim() || ''
+  if (!img) return ''
+  if (/^https?:\/\//i.test(img) || img.startsWith('//') || img.includes('/media/')) {
+    return useApiMedia(img)
+  }
+  if (img.includes('/')) return usePublicAsset(img)
+  return usePublicAsset(`/assets/img/city-img/${img}.png`)
+}
 </script>
 
 <template>
@@ -68,7 +78,7 @@ const heroContent = {
               <div class="grid grid-cols-2 gap-2 sm:gap-2.5">
                 <div v-for="city in collageTop" :key="city.id"
                   class="group relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-200">
-                  <img :src="city.image.startsWith('http') ? city.image : usePublicAsset(`/assets/img/city-img/${city.image}.png`)"
+                  <img :src="collageSrc(city)"
                     :alt="`${city.label} tutoring services`"
                     class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -84,7 +94,7 @@ const heroContent = {
               <div class="grid grid-cols-4 gap-2 sm:gap-2.5">
                 <div v-for="city in collageBottom" :key="city.id"
                   class="group relative aspect-square overflow-hidden rounded-xl bg-slate-200">
-                  <img :src="city.image.startsWith('http') ? city.image : usePublicAsset(`/assets/img/city-img/${city.image}.png`)"
+                  <img :src="collageSrc(city)"
                     :alt="`${city.label} tutoring services`"
                     class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
                     loading="lazy" decoding="async" />

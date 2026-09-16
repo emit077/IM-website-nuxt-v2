@@ -1,3 +1,4 @@
+import { onMounted } from 'vue'
 import type { BannerSlide } from '~/components/home/BannerCarousel.vue'
 import type { FaqCategory, FaqItem } from '~/data/faq'
 import type { LeadershipProfile } from '~/data/about'
@@ -149,22 +150,22 @@ const RING_COLORS = [
   'ring-violet-500',
 ] as const
 
-export function mapBanners(items: WebsiteBanner[]): BannerSlide[] {
+export function mapBanners(items: WebsiteBanner[], apiBase = ''): BannerSlide[] {
   return items
     .filter((item) => item.web_banner || item.mobile_banner)
     .map((item) => {
       const rawLink = item.banner_link?.trim() || ''
       const link = !rawLink || rawLink === '#' ? undefined : rawLink
       return {
-        image: item.web_banner || item.mobile_banner || '',
-        mobileImage: item.mobile_banner || undefined,
+        image: resolveMediaUrl(item.web_banner || item.mobile_banner, apiBase) || '',
+        mobileImage: resolveMediaUrl(item.mobile_banner, apiBase),
         link,
         label: link ? 'View offer' : undefined,
       }
     })
 }
 
-export function mapTestimonials(items: WebsiteTestimonial[]): UiTestimonial[] {
+export function mapTestimonials(items: WebsiteTestimonial[], apiBase = ''): UiTestimonial[] {
   return items.map((item) => {
     const quote = item.testimonial?.trim() || ''
     const rating = Number(item.rating) || 0
@@ -177,21 +178,21 @@ export function mapTestimonials(items: WebsiteTestimonial[]): UiTestimonial[] {
       role: item.details?.trim() || 'Indian Mentors community',
       duration: '',
       result: rating ? `${rating.toFixed(1)} / 5` : '',
-      thumb: item.thumbnail || '',
-      video: item.testimonial_video || undefined,
+      thumb: resolveMediaUrl(item.thumbnail, apiBase) || '',
+      video: resolveMediaUrl(item.testimonial_video, apiBase),
       rating,
     }
   })
 }
 
 function resolveMediaUrl(url?: string | null, apiBase = '') {
-  const raw = url?.trim()
-  if (!raw || raw === 'null' || raw === 'undefined') return undefined
-  if (/^https?:\/\//i.test(raw) || raw.startsWith('data:')) return raw
-  if (raw.startsWith('//')) return `https:${raw}`
-  const base = apiBase.replace(/\/$/, '')
-  const path = raw.startsWith('/') ? raw : `/${raw}`
-  return base ? `${base}${path}` : path
+  return useApiMedia(url, apiBase) || undefined
+}
+
+function refreshOnClient(refresh: () => Promise<unknown>) {
+  onMounted(() => {
+    void refresh()
+  })
 }
 
 export function mapTeam(items: WebsiteTeamMember[], apiBase = ''): LeadershipProfile[] {
@@ -225,11 +226,11 @@ export function mapTeam(items: WebsiteTeamMember[], apiBase = ''): LeadershipPro
     })
 }
 
-export function mapCities(items: WebsiteCity[]): UiCityCard[] {
+export function mapCities(items: WebsiteCity[], apiBase = ''): UiCityCard[] {
   return items.map((item) => ({
     id: String(item.id),
     label: item.city_name,
-    image: item.city_image || '',
+    image: resolveMediaUrl(item.city_image, apiBase) || '',
     subtitle: item.badge || (item.is_popular ? 'Popular City' : 'Branch Office'),
     address: item.address?.trim() || `Tutoring support available in ${item.city_name}.`,
     hasOffice: Boolean(item.address?.trim()),
@@ -289,36 +290,40 @@ export function mapFaqs(items: WebsiteFaq[]): FaqCategory[] {
 }
 
 export function useWebsiteBanners() {
-  const { fetchWebsiteList } = useWebsiteApi()
+  const { fetchWebsiteList, apiBase } = useWebsiteApi()
 
-  return useAsyncData(
+  const asyncData = useAsyncData(
     'website-banners',
     async () => {
       const rows = await fetchWebsiteList<WebsiteBanner>('/api/website/banners/')
-      return mapBanners(rows)
+      return mapBanners(rows, apiBase)
     },
     { default: () => [] as BannerSlide[] },
   )
+  refreshOnClient(asyncData.refresh)
+  return asyncData
 }
 
 export function useWebsiteTestimonials(fallback: UiTestimonial[] = []) {
-  const { fetchWebsiteList } = useWebsiteApi()
+  const { fetchWebsiteList, apiBase } = useWebsiteApi()
 
-  return useAsyncData(
+  const asyncData = useAsyncData(
     'website-testimonials',
     async () => {
       const rows = await fetchWebsiteList<WebsiteTestimonial>('/api/website/testimonials/')
-      const mapped = mapTestimonials(rows)
+      const mapped = mapTestimonials(rows, apiBase)
       return mapped.length ? mapped : fallback
     },
     { default: () => fallback },
   )
+  refreshOnClient(asyncData.refresh)
+  return asyncData
 }
 
 export function useWebsiteTeam(fallback: LeadershipProfile[] = []) {
   const { fetchWebsiteList, apiBase } = useWebsiteApi()
 
-  return useAsyncData(
+  const asyncData = useAsyncData(
     'website-team',
     async () => {
       const rows = await fetchWebsiteList<WebsiteTeamMember>('/api/website/team/')
@@ -327,26 +332,30 @@ export function useWebsiteTeam(fallback: LeadershipProfile[] = []) {
     },
     { default: () => fallback },
   )
+  refreshOnClient(asyncData.refresh)
+  return asyncData
 }
 
 export function useWebsiteCities(options?: { isPopular?: boolean }) {
-  const { fetchWebsiteList } = useWebsiteApi()
+  const { fetchWebsiteList, apiBase } = useWebsiteApi()
   const key =
     options?.isPopular === undefined
       ? 'website-cities'
       : `website-cities-popular-${options.isPopular}`
 
-  return useAsyncData(
+  const asyncData = useAsyncData(
     key,
     async () => {
       const rows = await fetchWebsiteList<WebsiteCity>('/api/website/cities/', {
         is_popular:
           options?.isPopular === undefined ? undefined : options.isPopular ? 'true' : 'false',
       })
-      return mapCities(rows)
+      return mapCities(rows, apiBase)
     },
     { default: () => [] as UiCityCard[] },
   )
+  refreshOnClient(asyncData.refresh)
+  return asyncData
 }
 
 export function useWebsitePrimaryContact() {

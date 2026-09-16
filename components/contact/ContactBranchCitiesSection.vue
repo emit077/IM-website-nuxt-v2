@@ -120,10 +120,17 @@ function officeToCard(office: BranchOffice): CityCard {
 }
 
 function fromApiCity(city: UiCityCard): CityCard {
+  const image =
+    useApiMedia(city.image) ||
+    cityImageForOffice({
+      city: city.label,
+      label: city.label,
+      address: city.address,
+    })
   return {
     id: city.id,
     label: city.label,
-    image: city.image,
+    image,
     subtitle: city.subtitle,
     address: city.address,
     hasOffice: city.hasOffice,
