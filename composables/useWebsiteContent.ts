@@ -189,10 +189,33 @@ function resolveMediaUrl(url?: string | null, apiBase = '') {
   return useApiMedia(url, apiBase) || undefined
 }
 
-function refreshOnClient(refresh: () => Promise<unknown>) {
+/**
+ * Static generate bakes API results into the page payload. Nuxt's default
+ * `getCachedData` keeps serving that snapshot, so `refresh()` never hits Django.
+ * Use payload only while hydrating, then always refetch in the browser.
+ */
+function liveDataOptions<T>(defaultValue: T) {
+  return {
+    default: () => defaultValue,
+    getCachedData(key: string, nuxtApp: { isHydrating?: boolean; payload: { data: Record<string, T> } }) {
+      if (nuxtApp.isHydrating) return nuxtApp.payload.data[key]
+      return undefined
+    },
+  }
+}
+
+function refreshOnClient(key: string, refresh: () => Promise<unknown>) {
   onMounted(() => {
-    console.log('[website-api] client refresh')
-    void refresh()
+    // Always force a real browser refetch. Static pages bake API data into
+    // the Nuxt payload; without clearing it, refresh() is a no-op and no
+    // Network/console fetch logs appear.
+    console.log('[website-api] client refresh', key, '(forcing live fetch)')
+    clearNuxtData(key)
+    void refresh().then(() => {
+      console.log('[website-api] client refresh done', key)
+    }).catch((error) => {
+      console.warn('[website-api] client refresh failed', key, error)
+    })
   })
 }
 
@@ -203,9 +226,9 @@ export function mapTeam(items: WebsiteTeamMember[], apiBase = ''): LeadershipPro
       const msg = item.msg?.trim() || ''
       const lines = msg
         ? msg
-            .split(/\n+/)
-            .map((line) => line.trim())
-            .filter(Boolean)
+          .split(/\n+/)
+          .map((line) => line.trim())
+          .filter(Boolean)
         : []
       const isLead = /founder|chief executive|\bceo\b/i.test(item.designation || '')
       const department = item.department?.trim()
@@ -299,9 +322,9 @@ export function useWebsiteBanners() {
       const rows = await fetchWebsiteList<WebsiteBanner>('/api/website/banners/')
       return mapBanners(rows, apiBase)
     },
-    { default: () => [] as BannerSlide[] },
+    liveDataOptions([] as BannerSlide[]),
   )
-  refreshOnClient(asyncData.refresh)
+  refreshOnClient('website-banners', asyncData.refresh)
   return asyncData
 }
 
@@ -315,9 +338,9 @@ export function useWebsiteTestimonials(fallback: UiTestimonial[] = []) {
       const mapped = mapTestimonials(rows, apiBase)
       return mapped.length ? mapped : fallback
     },
-    { default: () => fallback },
+    liveDataOptions(fallback),
   )
-  refreshOnClient(asyncData.refresh)
+  refreshOnClient('website-testimonials', asyncData.refresh)
   return asyncData
 }
 
@@ -342,9 +365,9 @@ export function useWebsiteTeam(fallback: LeadershipProfile[] = []) {
       const mapped = mapTeam(rows, apiBase)
       return mapped.length ? mapped : fallback
     },
-    { default: () => fallback },
+    liveDataOptions(fallback),
   )
-  refreshOnClient(asyncData.refresh)
+  refreshOnClient('website-team', asyncData.refresh)
   return asyncData
 }
 
@@ -364,16 +387,16 @@ export function useWebsiteCities(options?: { isPopular?: boolean }) {
       })
       return mapCities(rows, apiBase)
     },
-    { default: () => [] as UiCityCard[] },
+    liveDataOptions([] as UiCityCard[]),
   )
-  refreshOnClient(asyncData.refresh)
+  refreshOnClient(key, asyncData.refresh)
   return asyncData
 }
 
 export function useWebsitePrimaryContact() {
   const { fetchWebsiteList } = useWebsiteApi()
 
-  return useAsyncData(
+  const asyncData = useAsyncData(
     'website-primary-contacts',
     async () => {
       const rows = await fetchWebsiteList<WebsitePrimaryContact>(
@@ -381,14 +404,16 @@ export function useWebsitePrimaryContact() {
       )
       return mapPrimaryContact(rows)
     },
-    { default: () => null as UiPrimaryContact | null },
+    liveDataOptions(null as UiPrimaryContact | null),
   )
+  refreshOnClient('website-primary-contacts', asyncData.refresh)
+  return asyncData
 }
 
 export function useWebsiteAuthorisedContacts(fallback: PhoneContact[] = []) {
   const { fetchWebsiteList } = useWebsiteApi()
 
-  return useAsyncData(
+  const asyncData = useAsyncData(
     'website-authorised-contacts',
     async () => {
       const rows = await fetchWebsiteList<WebsiteAuthorisedContact>(
@@ -397,15 +422,17 @@ export function useWebsiteAuthorisedContacts(fallback: PhoneContact[] = []) {
       const mapped = mapAuthorisedContacts(rows)
       return mapped.length ? mapped : fallback
     },
-    { default: () => fallback },
+    liveDataOptions(fallback),
   )
+  refreshOnClient('website-authorised-contacts', asyncData.refresh)
+  return asyncData
 }
 
 export function useWebsiteBrochures(brochureType?: BrochureType | string) {
   const { fetchWebsiteList } = useWebsiteApi()
   const key = brochureType ? `website-brochures-${brochureType}` : 'website-brochures'
 
-  return useAsyncData(
+  const asyncData = useAsyncData(
     key,
     async () => {
       const rows = await fetchWebsiteList<WebsiteBrochure>('/api/website/brochures/', {
@@ -413,23 +440,27 @@ export function useWebsiteBrochures(brochureType?: BrochureType | string) {
       })
       return rows.filter((row) => row.brochure)
     },
-    { default: () => [] as WebsiteBrochure[] },
+    liveDataOptions([] as WebsiteBrochure[]),
   )
+  refreshOnClient(key, asyncData.refresh)
+  return asyncData
 }
 
 export function useWebsiteFaqs(fallback: FaqCategory[] = [], category?: string) {
   const { fetchWebsiteList } = useWebsiteApi()
   const key = category ? `website-faqs-${category}` : 'website-faqs'
 
-  return useAsyncData(
+  const asyncData = useAsyncData(
     key,
     async () => {
       const rows = await fetchWebsiteList<WebsiteFaq>('/api/website/faqs/', { category })
       const mapped = mapFaqs(rows)
       return mapped.length ? mapped : fallback
     },
-    { default: () => fallback },
+    liveDataOptions(fallback),
   )
+  refreshOnClient(key, asyncData.refresh)
+  return asyncData
 }
 
 /** Staff-only endpoint — exposed for completeness; not used on public pages. */
