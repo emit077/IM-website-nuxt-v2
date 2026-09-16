@@ -103,12 +103,10 @@ export const gradesStages: GradeStage[] = [
     overview:
       'Young children learn through play, rhythm, and conversation. Tutors nurture curiosity, language, and early number sense in a calm, engaging setting — so school feels familiar, not frightening.',
     approach: [
-      'Play-based and activity-driven sessions',
-      'Phonics and alphabet readiness',
-      'Numbers, shapes, and counting',
-      'Stories, rhymes, and spoken language',
-      'Fine and gross motor skills',
-      'Social confidence and routine',
+      'Play-based activities',
+      'Phonics and alphabet',
+      'Numbers and counting',
+      'Stories and rhymes',
     ],
     goal: 'School-ready children who are curious, communicative, and comfortable with early learning.',
     classes: [
@@ -171,11 +169,10 @@ export const gradesStages: GradeStage[] = [
     overview:
       'Primary years set whether a child guesses or understands. Tutors build reading, number sense, and independent habits through interactive practice — so later classes feel like a step up, not a shock.',
     approach: [
-      'Phonics and language fluency',
-      'Number sense and core maths',
-      'Activity-led concept teaching',
+      'Language fluency',
+      'Number sense and maths',
+      'Activity-led teaching',
       'Reading comprehension',
-      'Curiosity over rote memory',
     ],
     goal: 'Strong foundations and positive learning behaviour before middle school.',
     classes: [
@@ -262,10 +259,10 @@ export const gradesStages: GradeStage[] = [
     overview:
       'Subjects get heavier, and guessing stops working. Mentors deepen Maths, Science, and Social Studies, and help students plan their week — the habits boards later depend on.',
     approach: [
-      'Concept clarity in core subjects',
-      'Logical and analytical thinking',
-      'Study planning and discipline',
-      'Regular tests and tracking',
+      'Core concept clarity',
+      'Logical thinking',
+      'Study planning',
+      'Tests and tracking',
     ],
     goal: 'Students ready for secondary-level work and board-style questions.',
     classes: [
@@ -328,10 +325,10 @@ export const gradesStages: GradeStage[] = [
     overview:
       'Class 9 and 10 are the first high-stakes board years. Mentors finish the syllabus with a plan, then lock in sample papers, numericals, and time management — so exam day is practised, not improvised.',
     approach: [
-      'Board syllabus with a paced plan',
-      'Sample papers and previous years',
-      'Numericals and concept mastery',
-      'Time and exam strategy',
+      'Paced board syllabus',
+      'Sample and past papers',
+      'Numericals and concepts',
+      'Exam time strategy',
     ],
     goal: 'Strong board performance and academic confidence.',
     classes: [
@@ -383,9 +380,9 @@ export const gradesStages: GradeStage[] = [
       'These two years decide university options. Mentors teach to the chosen stream — Science, Commerce, or Humanities — and keep board work aligned with entrance goals where needed.',
     approach: [
       'Advanced subject depth',
-      'Board and entrance balance',
-      'Practicals, assignments, and projects',
-      'Continuous performance monitoring',
+      'Board-entrance balance',
+      'Practicals and projects',
+      'Performance tracking',
     ],
     goal: 'Board results, university readiness, and a clear next step.',
     streams: [
@@ -456,10 +453,10 @@ export const gradesStages: GradeStage[] = [
     overview:
       'Entrance prep is a different sport from school. Mentors work to a targeted syllabus, run mocks, and use performance data to decide what to revise next — for school entrances and professional exams.',
     approach: [
-      'Syllabus-targeted problem practice',
-      'Mocks and rank-focused strategy',
-      'Doubt-solving and analytics',
-      'Time-bound revision plans',
+      'Targeted practice',
+      'Mocks and rank plans',
+      'Doubt-solving support',
+      'Timed revision plans',
     ],
     goal: 'Better ranking potential through focused practice and performance analytics.',
     classes: [],
@@ -495,10 +492,10 @@ export const gradesStages: GradeStage[] = [
     overview:
       'Degree and master’s work is specialised and often lonely. Mentors help with advanced concepts, assignments, dissertations, and exam revision — so university work stays on track.',
     approach: [
-      'Advanced subject clarification',
-      'Assignment and dissertation guidance',
-      'Academic writing and research support',
-      'Structured university exam revision',
+      'Subject clarification',
+      'Assignment guidance',
+      'Academic writing help',
+      'Exam revision plans',
     ],
     goal: 'Stronger subject mastery and academic performance at university level.',
     classes: [

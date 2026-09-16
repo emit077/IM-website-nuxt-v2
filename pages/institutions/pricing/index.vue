@@ -24,7 +24,6 @@ const pricingCtas = computed(() => {
   }> = [
       { ...institutionsPricingFinalCta.primaryCta, iconMdi: 'mdi:account-plus-outline', primary: true },
       { ...institutionsPricingFinalCta.secondaryCta, iconMdi: 'mdi:headset' },
-      { ...institutionsPricingFinalCta.tertiaryCta, iconMdi: 'mdi:file-document-outline' },
     ]
   if (brochureUrl) {
     ctas.splice(1, 0, {
@@ -38,12 +37,12 @@ const pricingCtas = computed(() => {
 })
 
 useSeoMeta({
-  title: 'Faculty Prime & Faculty Elite — Institutional Recruitment Pricing | Indian Mentors',
+  title: 'Mentor Staffing & Mentor Enterprise — Institutional Recruitment Pricing | Indian Mentors',
   description:
-    'Compare Faculty Prime (8–15% of Annual Teacher CTC, pay per successful hire) and Faculty Elite (fixed annual subscription, unlimited hiring) for institutional academic staffing.',
-  ogTitle: 'Institutional Recruitment Pricing — Faculty Prime & Faculty Elite',
+    'Compare Mentor Staffing (8–15% of Annual Teacher CTC, pay per successful hire) and Mentor Enterprise (fixed annual subscription, unlimited hiring) for institutional academic staffing.',
+  ogTitle: 'Institutional Recruitment Pricing — Mentor Staffing & Mentor Enterprise',
   ogDescription:
-    'Two commercial models for teacher recruitment: Faculty Prime for requirement-based hiring, Faculty Elite for unlimited annual partnerships.',
+    'Two commercial models for teacher recruitment: Mentor Staffing for requirement-based hiring, Mentor Enterprise for unlimited annual partnerships.',
   ogType: 'website',
 })
 </script>
@@ -61,16 +60,6 @@ useSeoMeta({
       :badge="institutionsPricingFinalCta.badge" badge-icon-mdi="mdi:account-tie-outline"
       :title="institutionsPricingFinalCta.title" :description="institutionsPricingFinalCta.description"
       :supporting="institutionsPricingFinalCta.closing" :ctas="pricingCtas">
-      <template #footer>
-        <div class="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-2">
-          <div v-for="plan in institutionsPricingFinalCta.plans" :key="plan.name"
-            class="rounded-2xl border border-white/20 bg-white/10 px-4 py-3 text-left">
-            <p class="font-display text-sm font-extrabold text-white">{{ plan.name }}</p>
-            <p class="mt-0.5 text-[12px] text-blue-100">{{ plan.model }}</p>
-            <p class="mt-1 text-[12.5px] font-semibold text-amber-200">{{ plan.price }}</p>
-          </div>
-        </div>
-      </template>
     </UiCTASection>
     <NewsletterSection />
   </div>

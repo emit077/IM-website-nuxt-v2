@@ -11,6 +11,7 @@ export const externalLinks = {
   tutorRegistration: 'https://app.indianmentors.in/tutor/registration',
   /** Team / admin login */
   adminLogin: 'https://app.indianmentors.in/admin/login',
+  institutionRegistration: 'https://app.indianmentors.in/institution/registration',
 } as const
 
 export type ExternalLinkKey = keyof typeof externalLinks

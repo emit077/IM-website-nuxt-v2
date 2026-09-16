@@ -71,14 +71,12 @@ function rippleHandler(e: MouseEvent) {
             </template>
         </slot>
         <span v-html="label" />
-        <span
-            v-if="variant === 'theme-secondary' && shouldShowArrow"
+        <span v-if="variant === 'theme-secondary' && shouldShowArrow"
             class="hero-cta-arrow theme-btn-secondary-icon transition-transform duration-300 group-hover:translate-x-1"
             aria-hidden="true">
             <Icon icon="mdi:arrow-right" class="h-3.5 w-3.5" />
         </span>
-        <IconArrowRight
-            v-else-if="shouldShowArrow"
+        <IconArrowRight v-else-if="shouldShowArrow"
             class="hero-cta-arrow h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
     </a>
 </template>

@@ -535,17 +535,83 @@ export const contactInquirySection = {
   classes: '!px-0 !py-0',
 } as const
 
+export const inquiryStakeholders = [
+  'Parent / Student',
+  'Tutor / Mentor',
+  'Special Educator',
+  'Institution',
+  'Channel Partner',
+  'Job Seeker',
+  'Corporate / CSR Organisation',
+  'Other',
+] as const
+
+export type InquiryStakeholder = (typeof inquiryStakeholders)[number]
+
+export const inquiryHelpByStakeholder: Record<InquiryStakeholder, readonly string[]> = {
+  'Parent / Student': [
+    'Find a Tutor',
+    'Book a Free Demo',
+    'Academic Guidance',
+    'Book Free Consultation',
+    'Enrollment & Admissions',
+  ],
+  'Tutor / Mentor': [
+    'Become a Tutor',
+    'Tutor Registration',
+    'Find Student Leads',
+    'Teaching Opportunities',
+    'Tutor Profile / Verification',
+  ],
+  'Special Educator': [
+    'Talk to Recruiter',
+    'Educator Registration',
+    'Join as a Special Educator',
+    'Special Education Opportunities',
+  ],
+  Institution: [
+    'Academic Staffing',
+    'Faculty Requirement',
+    'Institutional Partnership',
+    'Hire Teachers & Educators',
+  ],
+  'Channel Partner': [
+    'Become a Channel Partner',
+    'Channel Partner Registration',
+    'Territory / Business Enquiry',
+    'Student Referral Partnership',
+    'Become an Education Partner',
+  ],
+  'Job Seeker': [
+    'Talk to Recruiter',
+    'Apply for the Internship',
+    'Internship Opportunities',
+    'Fresher Job Opportunities',
+    'Explore Career Opportunities',
+  ],
+  'Corporate / CSR Organisation': [
+    'CSR Collaboration',
+    'Education Initiative',
+    'Corporate Partnership',
+    'Institutional / Learning Solutions',
+  ],
+  Other: ['General Enquiry', 'Request a Callback'],
+}
+
 export const inquiryForm = {
   badge: 'Send an Enquiry',
-  title: 'Quick Enquiry Form',
-  description: 'Share a few details — we respond within 24–48 working hours.',
-  interests: [
-    'Book a Free Demo',
-    'Enrollment & Admissions',
-    'Become a Tutor',
-    'Institutional Partnership',
-    'General Enquiry',
-  ] as const,
+  title: 'How Can We Help You?',
+  description:
+    'Tell us what you’re looking for, and our team will connect with you.',
+  stakeholders: inquiryStakeholders,
+  helpByStakeholder: inquiryHelpByStakeholder,
+  stakeholderPlaceholder: 'Select your role',
+  helpPlaceholder: 'Select your requirement',
+  messageLabel: 'Tell us more',
+  messagePlaceholder: 'Briefly describe your requirement...',
+  submitLabel: 'Send Enquiry',
+  whatsappCtaLabel: 'Chat With Us',
+  whatsappPrefLabel: 'Prefer WhatsApp?',
   privacyNote: 'Your details stay private and are never shared with third parties.',
 } as const
 

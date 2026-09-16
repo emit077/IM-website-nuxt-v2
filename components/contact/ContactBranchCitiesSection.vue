@@ -189,9 +189,9 @@ const displayCards = computed(() => {
 
   const matchingOffices = searchTerm.value
     ? branchOffices.offices.filter((office) => {
-        const haystack = `${office.city} ${office.label ?? ''} ${office.address}`
-        return matchesSearch(haystack)
-      })
+      const haystack = `${office.city} ${office.label ?? ''} ${office.address}`
+      return matchesSearch(haystack)
+    })
     : []
 
   const coveredAddresses = new Set(
@@ -271,7 +271,7 @@ function clearSearch() {
           <div :class="[
             'flex w-max items-center gap-5 px-4',
             useMarquee
-              ? 'animate-marquee [animation-duration:50s] group-hover/rail:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center'
+              ? 'animate-marquee [animation-duration:100s] group-hover/rail:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center'
               : '-mx-4 snap-x snap-mandatory overflow-x-auto pb-1 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
           ]" role="list" aria-label="City office locations">
             <div v-for="(card, index) in marqueeCards" :key="`${card.id}-${index}`"
@@ -311,7 +311,8 @@ function clearSearch() {
                   </address>
 
                   <div class="mt-auto border-t border-slate-100 pt-4">
-                    <a v-if="card.hasOffice" :href="mapsUrl(card.address, card.directionLink)" target="_blank" rel="noopener noreferrer"
+                    <a v-if="card.hasOffice" :href="mapsUrl(card.address, card.directionLink)" target="_blank"
+                      rel="noopener noreferrer"
                       class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 transition hover:gap-2.5 hover:text-blue-800">
                       <Icon icon="mdi:directions" class="h-4 w-4 shrink-0" aria-hidden="true" />
                       Get Directions
@@ -344,8 +345,8 @@ function clearSearch() {
                       :class="rowIndex % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'">
                       <span
                         class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-slate-600 transition hover:text-blue-600 sm:text-sm">
-                        <Icon icon="mdi:map-marker-radius-outline"
-                          class="h-3.5 w-3.5 shrink-0 text-slate-400" aria-hidden="true" />
+                        <Icon icon="mdi:map-marker-radius-outline" class="h-3.5 w-3.5 shrink-0 text-slate-400"
+                          aria-hidden="true" />
                         {{ city }}
                       </span>
                     </td>

@@ -2,10 +2,12 @@
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { tutorSubjects } from '~/data/tutors'
+import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 
 const items = tutorSubjects.items
 const coverage = tutorSubjects.coverageTile
-const coverageChips = [...coverage.grades, ...coverage.courses]
+const coverageChips = [...coverage.grades]
+
 
 function subjectList(subjects: string) {
   return subjects.split(' • ').map((s) => s.trim()).filter(Boolean)
@@ -59,9 +61,9 @@ function subjectList(subjects: string) {
 
         <li class="sm:col-span-2 lg:col-span-4" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 220, duration: 420 } }">
-          <NuxtLink :to="tutorSubjects.cta.href"
-            class="coverage-cta group relative flex h-full overflow-hidden rounded-[1.25rem] no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-700"
-            :aria-label="`${coverage.title}. ${tutorSubjects.cta.label}`">
+          <div class=" coverage-cta group relative flex h-full overflow-hidden rounded-[1.25rem] no-underline
+            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4
+            focus-visible:outline-indigo-700" :aria-label="`${coverage.title}. ${tutorSubjects.cta.label}`">
             <span class="coverage-visual pointer-events-none absolute inset-y-0 right-0 w-[58%] sm:w-[50%] lg:w-[42%]"
               aria-hidden="true">
               <img :src="usePublicAsset(coverage.image)" alt=""
@@ -103,15 +105,9 @@ function subjectList(subjects: string) {
                   </li>
                 </ul>
               </div>
-              <span
-                class="inline-flex w-fit shrink-0 items-center gap-2 self-end rounded-2xl bg-white px-4 py-2.5 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 group-hover:gap-2.5 group-hover:bg-cream-50">
-                {{ tutorSubjects.cta.label }}
-                <Icon icon="mdi:arrow-right" class="h-4 w-4 transition group-hover:translate-x-0.5"
-                  aria-hidden="true" />
-              </span>
-
+              <ActionBtn variant="theme-secondary" :href="tutorSubjects.cta.href" :label="tutorSubjects.cta.label" />
             </div>
-          </NuxtLink>
+          </div>
         </li>
       </ul>
     </div>

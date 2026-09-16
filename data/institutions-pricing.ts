@@ -5,6 +5,7 @@ import {
   institutionProposalMailto,
   institutionRequirementMailto,
 } from './institutions'
+import { externalLinks } from './external-links'
 
 export const INSTITUTIONS_PRICING_PATH = '/institutions/pricing'
 
@@ -12,16 +13,16 @@ export const institutionsPricingSection = {
   badge: 'Commercial Structure',
   title: 'Two recruitment models. <span class="text-gradient-brand">Clear commercials.</span>',
   description:
-    'Institutions hire through Faculty Prime — pay per successful hire — or Faculty Elite, a fixed annual partnership for unlimited academic staffing.',
+    'Institutions hire through Mentor Staffing — pay per successful hire — or Mentor Enterprise, a fixed annual partnership for unlimited academic staffing.',
   classes: '!px-0 !py-0',
   note: 'Indicative commercial framework. Applicable taxes extra. Exact terms are confirmed in the Institutional Recruitment Agreement.',
-  cta: { label: 'Compare Faculty Prime and Faculty Elite', href: INSTITUTIONS_PRICING_PATH },
+  cta: { label: 'Compare Mentor Staffing and Mentor Enterprise', href: INSTITUTIONS_PRICING_PATH },
 } as const
 
 export const institutionsPricingPackages = [
   {
     id: 'faculty-prime',
-    name: 'Faculty Prime',
+    name: 'Mentor Staffing',
     model: 'Contract Academic Staffing',
     badge: 'Pay Per Successful Hire',
     featured: false,
@@ -31,9 +32,9 @@ export const institutionsPricingPackages = [
     priceNote: 'of Annual Teacher CTC',
     subtitle: 'Requirement-Based Recruitment · Pay Per Successful Hire',
     tagline:
-      'Designed for institutions that require teacher recruitment on an individual, periodic, or project-based basis.',
+      'Hire teachers individually, periodically, or for specific projects — pay only on successful placement.',
     description:
-      'Indian Mentors manages the recruitment journey from requirement understanding and talent sourcing to screening, shortlisting, interview coordination, selection, and joining support.',
+      'Designed for institutions that hire teachers individually, periodically, or for specific projects. Indian Mentors manages the full recruitment journey — from sourcing and screening through interviews, selection, and joining support.',
     includesLabel: 'Recruitment journey',
     includes: [
       'Requirement understanding',
@@ -44,13 +45,10 @@ export const institutionsPricingPackages = [
     ],
     suitableForLabel: 'Best suited for',
     suitableFor: [
-      'Occasional teacher recruitment',
+      'Occasional teacher hiring',
       'Seasonal academic hiring',
-      'Specific subject or faculty requirements',
-      'Specialised and senior teaching positions',
-      'New or replacement vacancies',
-      'Institutions without continuous recruitment requirements',
-      'Institutions preferring variable recruitment expenditure',
+      'Subject-specific roles',
+      'Variable hiring spend',
     ],
     advantage:
       'No annual recruitment subscription. Pay based on successful hiring volume.',
@@ -58,7 +56,7 @@ export const institutionsPricingPackages = [
   },
   {
     id: 'faculty-elite',
-    name: 'Faculty Elite',
+    name: 'Mentor Enterprise',
     model: 'Annual Hiring Partnership',
     badge: 'Unlimited Hiring',
     featured: true,
@@ -68,32 +66,23 @@ export const institutionsPricingPackages = [
     priceNote: 'subscription · unlimited hiring',
     subtitle: 'Fixed Annual Subscription · Unlimited Hiring',
     tagline:
-      'Designed for institutions with continuous, recurring, or high-volume academic staffing requirements.',
+      'Continuous or high-volume staffing needs — one fixed annual subscription for unlimited hiring.',
     description:
-      "Instead of paying a separate recruitment service margin against every teacher's Annual CTC, the institution enters into an annual recruitment partnership with Indian Mentors through a fixed subscription value.",
+      'Designed for institutions with continuous or high-volume academic staffing needs. One fixed annual subscription covers unlimited teacher recruitment — with no separate service margin on each teacher’s CTC.',
     includesLabel: 'What the institution receives',
     includes: [
       'Unlimited teacher recruitment requirements',
-      'Continuous vacancy support during the active partnership',
-      'Centralised recruitment coordination',
-      'Candidate sourcing and screening',
-      'Academic and professional profile evaluation',
-      'Shortlisting support',
-      'Interview coordination',
-      'Joining coordination',
-      'Replacement hiring support within the partnership',
-      'Institutional recruitment relationship management',
+      'Continuous vacancy support',
+      'Sourcing, screening and evaluation',
+      'Shortlisting and interview coordination',
+      'Joining and replacement hiring support',
     ],
     suitableForLabel: 'Best suited for',
     suitableFor: [
-      'Schools with recurring vacancies',
-      'School groups and education chains',
-      'Coaching institutes',
-      'Colleges and universities',
-      'New school / branch expansion',
-      'Institutions with large faculty requirements',
-      'Organisations with continuous academic staffing needs',
-      'Institutions seeking predictable annual recruitment expenditure',
+      'Recurring school vacancies',
+      'School groups & chains',
+      'Colleges & universities',
+      'Predictable annual spend',
     ],
     advantage: 'One annual partnership. Unlimited hiring. Predictable recruitment expenditure.',
     cta: { label: 'Explore Annual Partnership', href: institutionPartnerMailto() },
@@ -102,7 +91,7 @@ export const institutionsPricingPackages = [
 
 export const institutionsPricingHero = {
   badge: 'Institutional Recruitment Pricing',
-  title: 'Faculty Prime & Faculty Elite',
+  title: 'Mentor Staffing & Mentor Enterprise',
   subtitle: 'Two commercial models for academic staffing',
   description:
     'Choose requirement-based recruitment with pay per successful hire, or a fixed annual partnership with unlimited hiring — structured commercials designed around how your institution actually recruits.',
@@ -110,8 +99,8 @@ export const institutionsPricingHero = {
   headingId: 'institutions-pricing-hero-heading',
   tickerAriaLabel: 'Institutional pricing highlights',
   ticker: [
-    'Faculty Prime — 8–15% of CTC',
-    'Faculty Elite — unlimited hiring',
+    'Mentor Staffing — 8–15% of CTC',
+    'Mentor Enterprise — unlimited hiring',
     'Pay per successful hire',
     'Fixed annual subscription',
     '60-day replacement support',
@@ -132,7 +121,7 @@ export const institutionsPricingPackagesSection = {
   badge: 'Hiring Models',
   title: 'Choose the model that matches <span class="text-gradient-brand">how you hire.</span>',
   description:
-    'Faculty Prime is contract academic staffing billed against successful hires. Faculty Elite is an annual hiring partnership with unlimited recruitment during the active tenure.',
+    'Mentor Staffing is contract academic staffing billed against successful hires. Mentor Enterprise is an annual hiring partnership with unlimited recruitment during the active tenure.',
   classes: '!px-0 !py-0',
   note: 'Service margins, subscription values, and applicable taxes are confirmed in the Institutional Recruitment Agreement before recruitment begins.',
 } as const
@@ -141,11 +130,11 @@ export const institutionsPricingCompare = {
   badge: 'Side-by-side',
   title: 'Compare your institutional <span class="text-gradient-brand">recruitment model</span>',
   description:
-    'A structured view of how Faculty Prime and Faculty Elite differ on pricing, capacity, commitment, and replacement support.',
+    'A structured view of how Mentor Staffing and Mentor Enterprise differ on pricing, capacity, commitment, and replacement support.',
   classes: '!px-0 !py-0',
   featureLabel: 'Commercial Feature',
-  primeLabel: 'Faculty Prime',
-  eliteLabel: 'Faculty Elite',
+  primeLabel: 'Mentor Staffing',
+  eliteLabel: 'Mentor Enterprise',
   footnote:
     'Indicative commercial framework. Applicable taxes extra. Final terms are governed by the mutually executed Institutional Recruitment Agreement.',
   rows: [
@@ -204,16 +193,16 @@ export const institutionsGuaranteeSection = {
   byPlan: [
     {
       id: 'faculty-prime',
-      name: 'Faculty Prime',
+      name: 'Mentor Staffing',
       title: '60-Day Replacement Support',
-      body: 'For eligible Faculty Prime placements, Indian Mentors provides replacement recruitment support during the first 60 days in accordance with the agreed recruitment contract.',
+      body: 'For eligible Mentor Staffing placements, Indian Mentors provides replacement recruitment support during the first 60 days in accordance with the agreed recruitment contract.',
       flow: ['Original Placement', 'Eligible Exit', 'Replacement Search', 'Replacement Placement'],
     },
     {
       id: 'faculty-elite',
-      name: 'Faculty Elite',
+      name: 'Mentor Enterprise',
       title: 'Replacement Hiring Within Annual Partnership',
-      body: 'For eligible cases occurring during the active Faculty Elite partnership, replacement hiring can be handled within the scope of the annual recruitment partnership, subject to the agreed service terms.',
+      body: 'For eligible cases occurring during the active Mentor Enterprise partnership, replacement hiring can be handled within the scope of the annual recruitment partnership, subject to the agreed service terms.',
       flow: ['Annual Partnership', 'Teacher Exit', 'Replacement Requirement', 'Replacement Hiring'],
     },
   ],
@@ -241,17 +230,17 @@ export const institutionsPricingTerms = {
     {
       no: '03',
       title: 'Milestone-Based Payments',
-      description: 'Faculty Prime follows a defined 30% / 40% / 30% payment structure.',
+      description: 'Mentor Staffing follows a defined 30% / 40% / 30% payment structure.',
     },
     {
       no: '04',
       title: 'Flexible Subscription Payments',
-      description: 'Faculty Elite provides 1–4 payment options with applicable discounts.',
+      description: 'Mentor Enterprise provides 1–4 payment options with applicable discounts.',
     },
     {
       no: '05',
       title: 'Defined Replacement Window',
-      description: 'Eligible Faculty Prime placements receive 60-day replacement support.',
+      description: 'Eligible Mentor Staffing placements receive 60-day replacement support.',
     },
     {
       no: '06',
@@ -268,7 +257,7 @@ export const institutionsPricingChoose = {
   plans: [
     {
       id: 'faculty-prime',
-      eyebrow: 'Choose Faculty Prime',
+      eyebrow: 'Choose Mentor Staffing',
       title: 'If you need',
       featured: false,
       needs: [
@@ -277,13 +266,13 @@ export const institutionsPricingChoose = {
         { title: 'Project-Based Recruitment', description: 'Ideal for specific recruitment drives.' },
         { title: 'Variable Hiring Volume', description: 'Suitable when annual hiring requirements are uncertain.' },
       ],
-      name: 'Faculty Prime',
+      name: 'Mentor Staffing',
       price: '8–15% of Annual Teacher CTC',
       cta: { label: 'Request Recruitment Support', href: institutionRequirementMailto() },
     },
     {
       id: 'faculty-elite',
-      eyebrow: 'Choose Faculty Elite',
+      eyebrow: 'Choose Mentor Enterprise',
       title: 'If you need',
       featured: true,
       needs: [
@@ -292,7 +281,7 @@ export const institutionsPricingChoose = {
         { title: 'Predictable Budgeting', description: 'Use a fixed annual recruitment subscription.' },
         { title: 'Unlimited Hiring', description: 'Raise recruitment requirements throughout the partnership.' },
       ],
-      name: 'Faculty Elite',
+      name: 'Mentor Enterprise',
       price: 'Fixed Annual Subscription · Unlimited Hiring',
       cta: { label: 'Explore Annual Partnership', href: institutionPartnerMailto() },
     },
@@ -349,33 +338,13 @@ export const institutionsPricingFinalCta = {
   title: 'Build the right faculty team with the right commercial model.',
   description:
     'Whether your institution needs a single specialised teacher, a complete faculty recruitment drive, or an ongoing annual hiring partner, Indian Mentors provides a structured recruitment model designed around your requirements.',
-  closing: 'Faculty Prime for contract staffing. Faculty Elite for unlimited annual hiring.',
-  plans: [
-    {
-      name: 'Faculty Prime',
-      model: 'Contract Academic Staffing',
-      price: '8–15% of Annual Teacher CTC',
-    },
-    {
-      name: 'Faculty Elite',
-      model: 'Annual Hiring Partnership',
-      price: 'Fixed Annual Subscription · Unlimited Hiring',
-    },
-  ],
+  closing: 'Mentor Staffing for contract staffing. Mentor Enterprise for unlimited annual hiring.',
   primaryCta: {
     label: 'Hire Teachers',
-    href: institutionRequirementMailto(),
+    href: externalLinks.institutionRegistration,
   },
   secondaryCta: {
     label: 'Talk to a Recruitment Consultant',
     href: `tel:${INSTITUTIONS_PHONE_TEL}`,
-  },
-  tertiaryCta: {
-    label: 'Request Commercial Proposal',
-    href: institutionProposalMailto(),
-  },
-  whatsappCta: {
-    label: 'WhatsApp Requirement',
-    href: INSTITUTIONS_WHATSAPP,
-  },
+  }
 } as const

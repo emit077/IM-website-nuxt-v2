@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import {
@@ -7,6 +7,7 @@ import {
   emailSupport,
   contactInquirySection,
   inquiryForm,
+  type InquiryStakeholder,
   phoneSupport,
   whatsappSupport,
   workingHours,
@@ -27,21 +28,47 @@ const hoursLabel = computed(() => {
   return `${workingHours.days} | ${workingHours.hours}`
 })
 
+const whatsappHref = computed(() =>
+  primaryWa.value.wa ? `https://wa.me/${primaryWa.value.wa}` : undefined,
+)
+
 const form = reactive({
   name: '',
   phone: '',
   email: '',
-  interest: '',
+  stakeholder: '' as '' | InquiryStakeholder,
+  helpWith: '',
   message: '',
 })
 
 const errors = reactive<Record<string, boolean>>({})
 const submitting = ref(false)
 
+const helpOptions = computed(() => {
+  if (!form.stakeholder) return []
+  return inquiryForm.helpByStakeholder[form.stakeholder] ?? []
+})
+
+watch(
+  () => form.stakeholder,
+  () => {
+    form.helpWith = ''
+    errors.helpWith = false
+  },
+)
+
 function fieldClass(key: string) {
   return [
     'w-full rounded-xl border-0 bg-slate-100 px-4 py-2.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-blue-200',
     errors[key] ? 'ring-2 ring-rose-300' : '',
+  ]
+}
+
+function selectClass(key: string) {
+  return [
+    'w-full appearance-none rounded-xl border-0 bg-slate-100 px-4 py-2.5 text-sm text-slate-800 outline-none transition focus:bg-white focus:ring-2 focus:ring-blue-200',
+    errors[key] ? 'ring-2 ring-rose-300' : '',
+    !form[key as 'stakeholder' | 'helpWith'] ? 'text-slate-400' : '',
   ]
 }
 
@@ -57,21 +84,26 @@ function validate() {
   errors.name = form.name.trim().length < 2
   errors.phone = !isValidPhone(form.phone)
   errors.email = form.email.trim().length > 0 && !isValidEmail(form.email)
-  errors.message = form.message.trim().length < 5
-  return !errors.name && !errors.phone && !errors.email && !errors.message
+  errors.stakeholder = !form.stakeholder
+  errors.helpWith = !form.helpWith
+  errors.message = form.message.trim().length > 0 && form.message.trim().length < 5
+  return !errors.name && !errors.phone && !errors.email && !errors.stakeholder && !errors.helpWith && !errors.message
 }
 
 function resetForm() {
   form.name = ''
   form.phone = ''
   form.email = ''
-  form.interest = ''
+  form.stakeholder = ''
+  form.helpWith = ''
   form.message = ''
 }
 
 function onSubmit() {
   if (!validate()) {
-    toast.error('Please add your name, phone, and a short message.', { title: 'Missing details' })
+    toast.error('Please add your name, phone, stakeholder, and requirement.', {
+      title: 'Missing details',
+    })
     return
   }
   submitting.value = true
@@ -95,7 +127,7 @@ const directContacts = computed(() => [
     icon: 'mdi:whatsapp',
     label: 'WhatsApp',
     value: primaryWa.value.display,
-    href: primaryWa.value.wa ? `https://wa.me/${primaryWa.value.wa}` : undefined,
+    href: whatsappHref.value,
     external: true,
   },
   {
@@ -161,35 +193,71 @@ const directContacts = computed(() => [
             <div
               class="flex h-full flex-col rounded-2xl border border-slate-100 bg-white p-5 shadow-[0_8px_40px_rgba(15,23,42,0.08)] sm:p-6 lg:p-7">
               <form novalidate class="flex h-full flex-col" @submit.prevent="onSubmit">
+                <div class="mb-5">
+                  <h3 class="font-display text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+                    {{ inquiryForm.title }}
+                  </h3>
+                  <p class="mt-1.5 text-sm leading-relaxed text-slate-500">
+                    {{ inquiryForm.description }}
+                  </p>
+                </div>
+
                 <div class="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <label for="iq-name" class="mb-1.5 block text-xs text-slate-400">Name</label>
+                    <label for="iq-name" class="mb-1.5 block text-xs text-slate-400">
+                      Full Name <span class="text-rose-400" aria-hidden="true">*</span>
+                    </label>
                     <input id="iq-name" v-model="form.name" type="text" autocomplete="name" placeholder="Your full name"
-                      :aria-invalid="errors.name" :class="fieldClass('name')" @input="errors.name = false" />
+                      required :aria-invalid="errors.name" :class="fieldClass('name')" @input="errors.name = false" />
                   </div>
 
                   <div>
-                    <label for="iq-phone" class="mb-1.5 block text-xs text-slate-400">Phone</label>
+                    <label for="iq-phone" class="mb-1.5 block text-xs text-slate-400">
+                      Mobile Number <span class="text-rose-400" aria-hidden="true">*</span>
+                    </label>
                     <input id="iq-phone" v-model="form.phone" type="tel" inputmode="tel" autocomplete="tel"
-                      placeholder="+91 00000 00000" :aria-invalid="errors.phone" :class="fieldClass('phone')"
+                      placeholder="+91 00000 00000" required :aria-invalid="errors.phone" :class="fieldClass('phone')"
                       @input="errors.phone = false" />
                   </div>
 
                   <div class="sm:col-span-2">
-                    <label for="iq-email" class="mb-1.5 block text-xs text-slate-400">Email</label>
+                    <label for="iq-email" class="mb-1.5 block text-xs text-slate-400">Email Address</label>
                     <input id="iq-email" v-model="form.email" type="email" autocomplete="email"
                       placeholder="name@email.com" :aria-invalid="errors.email" :class="fieldClass('email')"
                       @input="errors.email = false" />
                   </div>
 
-                  <div class="sm:col-span-2">
-                    <label for="iq-interest" class="mb-1.5 block text-xs text-slate-400">I need help with</label>
+                  <div>
+                    <label for="iq-stakeholder" class="mb-1.5 block text-xs text-slate-400">
+                      I am a <span class="text-rose-400" aria-hidden="true">*</span>
+                    </label>
                     <div class="relative">
-                      <select id="iq-interest" v-model="form.interest"
-                        class="w-full appearance-none rounded-xl border-0 bg-slate-100 px-4 py-2.5 text-sm text-slate-800 outline-none transition focus:bg-white focus:ring-2 focus:ring-blue-200">
-                        <option value="">Select…</option>
-                        <option v-for="interest in inquiryForm.interests" :key="interest" :value="interest">
-                          {{ interest }}
+                      <select id="iq-stakeholder" v-model="form.stakeholder" required :aria-invalid="errors.stakeholder"
+                        :class="selectClass('stakeholder')" @change="errors.stakeholder = false">
+                        <option value="" disabled>{{ inquiryForm.stakeholderPlaceholder }}</option>
+                        <option v-for="stakeholder in inquiryForm.stakeholders" :key="stakeholder" :value="stakeholder">
+                          {{ stakeholder }}
+                        </option>
+                      </select>
+                      <Icon icon="mdi:chevron-down"
+                        class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                        aria-hidden="true" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="iq-help" class="mb-1.5 block text-xs text-slate-400">
+                      I need help with <span class="text-rose-400" aria-hidden="true">*</span>
+                    </label>
+                    <div class="relative">
+                      <select id="iq-help" v-model="form.helpWith" required :disabled="!form.stakeholder"
+                        :aria-invalid="errors.helpWith" :class="[
+                          ...selectClass('helpWith'),
+                          !form.stakeholder ? 'cursor-not-allowed opacity-60' : '',
+                        ]" @change="errors.helpWith = false">
+                        <option value="" disabled>{{ inquiryForm.helpPlaceholder }}</option>
+                        <option v-for="option in helpOptions" :key="option" :value="option">
+                          {{ option }}
                         </option>
                       </select>
                       <Icon icon="mdi:chevron-down"
@@ -199,22 +267,34 @@ const directContacts = computed(() => [
                   </div>
 
                   <div class="sm:col-span-2">
-                    <label for="iq-message" class="mb-1.5 block text-xs text-slate-400">Message</label>
-                    <textarea id="iq-message" v-model="form.message" rows="3" placeholder="Type your message"
-                      :aria-invalid="errors.message" :class="[...fieldClass('message'), 'resize-none']"
-                      @input="errors.message = false" />
+                    <label for="iq-message" class="mb-1.5 block text-xs text-slate-400">
+                      {{ inquiryForm.messageLabel }}
+                    </label>
+                    <textarea id="iq-message" v-model="form.message" rows="3"
+                      :placeholder="inquiryForm.messagePlaceholder" :aria-invalid="errors.message"
+                      :class="[...fieldClass('message'), 'resize-none']" @input="errors.message = false" />
                   </div>
                 </div>
 
-                <div class="mt-5 text-right">
+                <div class="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <p v-if="whatsappHref" class="text-sm text-slate-500 flex">
+                    {{ inquiryForm.whatsappPrefLabel }}
+                    <a :href="whatsappHref" target="_blank" rel="noopener noreferrer"
+                      class="ml-1  inline-flex items-center gap-1 font-semibold text-emerald-600 transition hover:text-emerald-700">
+                      <Icon icon="mdi:whatsapp" class="h-4 w-4" aria-hidden="true" />
+                      {{ inquiryForm.whatsappCtaLabel }}
+                    </a>
+                  </p>
+                  <span v-else />
+
                   <button type="submit" :disabled="submitting"
-                    class=" inline-flex items-center gap-3 rounded-full bg-blue-600 py-1.5 pl-1.5 pr-7 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:opacity-70">
+                    class="inline-flex items-center gap-3 self-end rounded-full bg-blue-600 py-1.5 pl-1.5 pr-7 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:opacity-70">
                     <span class="grid h-10 w-10 place-items-center rounded-full bg-white text-blue-600"
                       aria-hidden="true">
                       <Icon :icon="submitting ? 'mdi:loading' : 'mdi:arrow-right'"
                         :class="['h-5 w-5', submitting && 'animate-spin']" />
                     </span>
-                    {{ submitting ? 'Sending…' : 'Send Enquiry' }}
+                    {{ submitting ? 'Sending…' : inquiryForm.submitLabel }}
                   </button>
                 </div>
               </form>

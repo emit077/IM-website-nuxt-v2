@@ -154,14 +154,14 @@ const services: ServiceCard[] = [
                             <img :src="usePublicAsset(service.icon)" alt="" class="h-6 w-6" width="24" height="24" />
                         </span>
 
-                        <div class="relative z-[1] flex flex-col items-start px-5 pb-5 pt-5"
-                            :class="service.size === 'cta' ? 'sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:py-7 sm:pl-24 sm:pr-8' : ''">
-                            <div class="flex min-w-0 flex-col items-start">
-                                <!-- <span
-                                    class="inline-flex items-center rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.04em] text-white backdrop-blur-md">
-                                    {{ service.chip }}
-                                </span> -->
-                                <h3 class="mt-2.5 font-display uppercase text-[1rem] font-bold leading-snug  text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
+                        <div
+                            class="service-content relative z-[1] mt-auto flex w-full flex-col items-start px-5 pb-5 pt-5"
+                            :class="service.size === 'cta'
+                                ? 'service-content--cta sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:py-7 sm:pl-24 sm:pr-8'
+                                : ''">
+                            <div class="service-copy flex min-w-0 flex-col items-start">
+                                <h3
+                                    class="font-display text-[1rem] font-bold uppercase leading-snug text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
                                     :class="service.size === 'cta' ? 'sm:text-[1.35rem]' : ''" v-html="service.title">
                                 </h3>
                                 <p class="mt-1.5 text-sm font-semibold leading-relaxed text-white/80"
@@ -170,13 +170,12 @@ const services: ServiceCard[] = [
                                 </p>
                             </div>
                             <span
-                                class="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-[0.8rem] font-bold tracking-tight text-indigo-700 shadow-[0_10px_22px_-10px_rgba(15,23,42,0.55)] transition group-hover:-translate-y-px group-hover:gap-2.5 motion-reduce:transition-none"
+                                class="service-cta inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-[0.8rem] font-bold tracking-tight text-indigo-700 shadow-[0_10px_22px_-10px_rgba(15,23,42,0.55)]"
                                 :class="service.size === 'cta'
-                                    ? 'group-hover:bg-indigo-50 group-hover:text-indigo-800 sm:mt-0 sm:shrink-0 sm:px-5 sm:py-3'
-                                    : 'group-hover:bg-indigo-700 group-hover:text-white  w-full text-right justify-center'
+                                    ? 'mt-4 group-hover:bg-indigo-50 group-hover:text-indigo-800 sm:mt-0 sm:shrink-0 sm:px-5 sm:py-3'
+                                    : 'mt-4 w-full justify-center group-hover:bg-indigo-700 group-hover:text-white'
                                     ">
                                 {{ service.size === 'cta' ? 'Tell us what you need' : 'Know More' }}
-                                <!-- <Icon icon="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" /> -->
                             </span>
                         </div>
                     </NuxtLink>
@@ -185,3 +184,64 @@ const services: ServiceCard[] = [
         </div>
     </section>
 </template>
+
+<style scoped>
+.service-copy,
+.service-cta {
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.35s ease,
+    max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    margin-top 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.4s ease;
+}
+
+/* Collapse CTA so title sits at the bottom; hover expands it and lifts the copy */
+@media (hover: hover) and (pointer: fine) {
+  a.group:not(:hover):not(:focus-within) .service-content:not(.service-content--cta) .service-cta {
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateY(10px);
+    pointer-events: none;
+  }
+
+  a.group:hover .service-content:not(.service-content--cta) .service-cta,
+  a.group:focus-within .service-content:not(.service-content--cta) .service-cta {
+    max-height: 3rem;
+    margin-top: 1rem;
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 16px 28px -12px rgba(15, 23, 42, 0.45);
+  }
+
+  a.group:hover .service-content:not(.service-content--cta) .service-copy,
+  a.group:focus-within .service-content:not(.service-content--cta) .service-copy {
+    transform: translateY(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-copy,
+  .service-cta {
+    transition: none;
+  }
+
+  a.group:not(:hover):not(:focus-within) .service-content:not(.service-content--cta) .service-cta {
+    max-height: none;
+    margin-top: 1rem;
+    opacity: 1;
+    overflow: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  a.group:hover .service-content:not(.service-content--cta) .service-copy,
+  a.group:focus-within .service-content:not(.service-content--cta) .service-copy {
+    transform: none;
+  }
+}
+</style>

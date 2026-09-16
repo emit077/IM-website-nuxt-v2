@@ -79,10 +79,11 @@ const imageOnRight = props.index % 2 === 1
           <p class="mt-6 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
             {{ gradesExplorer.approachLabel }}
           </p>
-          <ul class="mt-2.5 flex flex-wrap gap-2" role="list">
+          <ul class="mt-3 grid max-w-xl grid-cols-2 gap-x-5 gap-y-2" role="list">
             <li v-for="item in stage.approach" :key="item"
-              class="max-w-full rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[12.5px] font-medium text-slate-700">
-              {{ item }}
+              class="flex min-w-0 items-center gap-2 text-[12.5px] font-medium leading-none text-slate-700 sm:text-[13px]">
+              <IconCheck class="h-3.5 w-3.5 shrink-0 text-blue-600" />
+              <span class="whitespace-nowrap">{{ item }}</span>
             </li>
           </ul>
 

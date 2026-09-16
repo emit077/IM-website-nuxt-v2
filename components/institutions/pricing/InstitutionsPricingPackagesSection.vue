@@ -52,10 +52,8 @@ import {
             <p :class="['mt-2 text-sm font-medium', plan.featured ? 'text-blue-100' : 'text-slate-500']">
               {{ plan.priceNote }}
             </p>
-            <p :class="['mt-4 text-sm leading-relaxed', plan.featured ? 'text-blue-50' : 'text-slate-600']">
-              {{ plan.tagline }}
-            </p>
-            <p :class="['mt-3 text-[13.5px] leading-relaxed', plan.featured ? 'text-blue-50/90' : 'text-slate-600']">
+            <p
+              :class="['mt-4 line-clamp-3 min-h-[4.05em] text-[13.5px] leading-relaxed', plan.featured ? 'text-blue-50/90' : 'text-slate-600']">
               {{ plan.description }}
             </p>
 
@@ -83,17 +81,16 @@ import {
             ]">
               {{ plan.suitableForLabel }}
             </p>
-            <ul class="mt-2.5 flex flex-wrap gap-1.5" role="list">
+            <ul class="mt-2.5 grid grid-cols-2 gap-1.5" role="list">
               <li v-for="item in plan.suitableFor" :key="item" :class="[
-                'rounded-full px-2.5 py-1 text-[11.5px] font-semibold',
+                'truncate rounded-full px-2.5 py-1.5 text-center text-[11.5px] font-semibold leading-none',
                 plan.featured ? 'bg-white/10 text-blue-50' : 'bg-slate-50 text-slate-700 ring-1 ring-slate-200/80',
               ]">
                 {{ item }}
               </li>
             </ul>
-
             <p :class="[
-              'mt-auto rounded-2xl px-4 py-3 text-[13px] leading-relaxed',
+              'mt-5 rounded-2xl px-4 py-3 text-[13px] leading-relaxed',
               plan.featured ? 'bg-white/10 text-blue-50' : 'bg-blue-50/70 text-slate-700 ring-1 ring-blue-100',
             ]">
               <span :class="['font-bold', plan.featured ? 'text-amber-200' : 'text-blue-700']">
