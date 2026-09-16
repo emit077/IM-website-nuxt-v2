@@ -2,6 +2,7 @@
 import { computed, onMounted } from 'vue'
 import CarouselLayout from '~/components/ui/CarouselLayout.vue'
 import { externalLinks } from '~/data/external-links'
+import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 
 export interface BannerSlide {
   /** Public URL, e.g. `/assets/img/banner/banner-1.png` */
@@ -45,7 +46,7 @@ const props = withDefaults(
     title?: string
   }>(),
   {
-    title: 'Programs, offers & next steps',
+    title: "What's trending",
     slides: undefined,
     interval: 5000,
     autoplay: true,
@@ -95,6 +96,7 @@ function wrapBind(slide: BannerSlide): Record<string, string> | { to: string } {
     <section v-if="list.length > 0" class="relative section-py-compact"
       :aria-label="`${props.title}. Promotional image carousel.`">
       <div class="container-page mt-12">
+        <CardHeader :title="props.title" />
         <div class="overflow-hidden">
           <CarouselLayout :items="list" :interval="props.interval" :autoplay="props.autoplay"
             :show-buttons="props.showButtons" :show-dots="props.showDots" :aria-label="`${props.title} banners`">
