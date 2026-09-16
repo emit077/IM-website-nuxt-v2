@@ -191,6 +191,7 @@ function resolveMediaUrl(url?: string | null, apiBase = '') {
 
 function refreshOnClient(refresh: () => Promise<unknown>) {
   onMounted(() => {
+    console.log('[website-api] client refresh')
     void refresh()
   })
 }
@@ -326,7 +327,18 @@ export function useWebsiteTeam(fallback: LeadershipProfile[] = []) {
   const asyncData = useAsyncData(
     'website-team',
     async () => {
+      console.log(
+        '[website-team] fetching',
+        `${apiBase}/api/website/team/`,
+        import.meta.server ? '(server)' : '(browser)',
+      )
       const rows = await fetchWebsiteList<WebsiteTeamMember>('/api/website/team/')
+      console.log(
+        '[website-team] result',
+        rows.length,
+        'members',
+        rows.map((row) => ({ name: row.name, image: row.image })),
+      )
       const mapped = mapTeam(rows, apiBase)
       return mapped.length ? mapped : fallback
     },

@@ -34,11 +34,12 @@ export function useWebsiteApi() {
     }
 
     try {
-      const response = await $fetch<ApiEnvelope<T[]>>(endpoint(path), {
+      const url = endpoint(path)
+      console.log('[website-api] GET', url, import.meta.server ? '(server)' : '(browser)')
+      const response = await $fetch<ApiEnvelope<T[]>>(url, {
         method: 'GET',
         query: sanitizeQuery(query),
       })
-
       if (!response?.success || !Array.isArray(response.result)) {
         const message = response?.message || 'Unexpected response'
         console.warn('[website-api] Unexpected response for', path, message)
