@@ -1,24 +1,28 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import { faqCategories, faqCategoryLinks } from '~/data/faq'
+import type { FaqCategory } from '~/data/faq'
 
 const searchQuery = defineModel<string>('searchQuery', { default: '' })
 const activeCategory = defineModel<string>('activeCategory', { default: 'all' })
 
-const { data: apiCategories } = await useWebsiteFaqs(faqCategories)
+const props = withDefaults(
+  defineProps<{
+    categories?: FaqCategory[]
+  }>(),
+  {
+    categories: () => [],
+  },
+)
 
-const categories = computed(() => {
-  const links = apiCategories.value?.length
-    ? apiCategories.value.map((category) => ({
-        id: category.id,
-        title: category.title,
-        iconMdi: category.iconMdi,
-      }))
-    : [...faqCategoryLinks]
-
-  return [{ id: 'all', title: 'All Topics', iconMdi: 'mdi:view-grid-outline' }, ...links]
-})
+const filters = computed(() => [
+  { id: 'all', title: 'All Topics', iconMdi: 'mdi:view-grid-outline' },
+  ...props.categories.map((category) => ({
+    id: category.id,
+    title: category.title,
+    iconMdi: category.iconMdi,
+  })),
+])
 
 function resetFilters() {
   searchQuery.value = ''
@@ -47,7 +51,7 @@ function resetFilters() {
         <div
           class="mt-3 flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           role="tablist" aria-label="Filter by FAQ category">
-          <button v-for="category in categories" :key="category.id" type="button" role="tab"
+          <button v-for="category in filters" :key="category.id" type="button" role="tab"
             :aria-selected="activeCategory === category.id" :class="[
               'inline-flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wide transition',
               activeCategory === category.id

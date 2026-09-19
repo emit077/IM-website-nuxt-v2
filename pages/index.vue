@@ -12,6 +12,7 @@ import EnrollmentProcessSection from '~/components/home/EnrollmentProcessSection
 import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import PartnerProgrammeSection from '~/components/home/PartnerProgrammeSection.vue'
 import HeroCarousel from '~/components/home/HeroCarousel.vue'
 import WhyChooseUs from '~/components/ui/shared/WhyChooseUs.vue'
@@ -52,6 +53,7 @@ useSeoMeta({
     <PartnerProgrammeSection />
     <HireInstituteSection />
     <VideoTestimonialsSection />
+    <FaqSectionMini category="Student" />
     <NewsletterSection />
   </div>
 </template>

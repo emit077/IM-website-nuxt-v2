@@ -10,6 +10,7 @@ import AboutRoadmapSection2 from '~/components/about/AboutRoadmapSection2.vue'
 import AboutComparisonSection from '~/components/about/AboutComparisonSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { aboutPartnersCta } from '~/data/about'
 import { externalLinks } from '~/data/external-links'
 
@@ -52,6 +53,7 @@ useSeoMeta({
     <UiCTASection heading-id="about-cta-heading" surface-class="bg-white" title="Ready to Learn Smarter?"
       description="Book a free demo with a verified mentor — personalised learning, transparent progress, no commitment."
       :ctas="aboutCtas" />
+    <FaqSectionMini category="About us" />
     <NewsletterSection />
   </div>
 </template>

@@ -3,6 +3,7 @@ import PlatformAccessHeroSection from '~/components/channel-partner/platform-acc
 import PlatformAccessFeaturesSection from '~/components/channel-partner/platform-access/PlatformAccessFeaturesSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { platformAccessCta } from '~/data/channel-partner-investment'
 
 const platformCtas = [
@@ -35,6 +36,7 @@ useSeoMeta({
       :description="platformAccessCta.description"
       :ctas="platformCtas"
     />
+    <FaqSectionMini category="channel partner" />
     <NewsletterSection />
   </div>
 </template>

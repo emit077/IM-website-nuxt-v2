@@ -7,6 +7,7 @@ import RegistrationWhyPremiumSection from '~/components/tutors/registration-plan
 import RegistrationWhoChoosesSection from '~/components/tutors/registration-plans/RegistrationWhoChoosesSection.vue'
 import RegistrationRequirementsSection from '~/components/tutors/registration-plans/RegistrationRequirementsSection.vue'
 import RegistrationFaqSection from '~/components/tutors/registration-plans/RegistrationFaqSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import RegistrationStickyCta from '~/components/tutors/registration-plans/RegistrationStickyCta.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { registrationBannerCta } from '~/data/tutor-registration-plans'
@@ -32,6 +33,7 @@ useSeoMeta({
     <RegistrationWhoChoosesSection />
     <RegistrationRequirementsSection />
     <RegistrationFaqSection />
+    <FaqSectionMini category="tutors" />
 
     <UiCTASection section-id="registration-banner" heading-id="registration-banner-heading" surface-class="bg-white"
       badge-icon-mdi="mdi:human-male-board" :title="registrationBannerCta.title"

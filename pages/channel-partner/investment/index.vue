@@ -10,6 +10,7 @@ import EarningsIllustrationSection from '~/components/channel-partner/investment
 import InvestmentAdvantagesSection from '~/components/channel-partner/investment/InvestmentAdvantagesSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { investmentFinalCta } from '~/data/channel-partner-investment'
 import InvestmentDigitalPlatformLicensing from '~/components/channel-partner/investment/InvestmentDigitalPlatformLicensing.vue'
 
@@ -53,6 +54,7 @@ useSeoMeta({
     <UiCTASection section-id="partner-investment-register" heading-id="investment-cta-heading" surface-class="bg-white"
       :title="investmentFinalCta.title" :description="investmentFinalCta.description"
       :supporting="investmentFinalCta.opportunities.join(' · ')" :ctas="investmentCtas" />
+    <FaqSectionMini category="channel partner" />
     <NewsletterSection />
   </div>
 </template>

@@ -10,6 +10,7 @@ import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { academicFinalCta } from '~/data/academic-coverage'
 import BoardCovered from '~/components/academic/BoardCovered.vue'
 import QuickServiceCategoriesSection from '~/components/ui/shared/QuickServiceCategoriesSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 
 const academicCtas = [
   { ...academicFinalCta.primaryCta, iconMdi: 'mdi:calendar-check-outline', primary: true },
@@ -40,6 +41,7 @@ useSeoMeta({
     <EnrichmentSection />
     <CourseMatchingSection />
     <WhyChooseAcademicSection />
+    <FaqSectionMini category="Academic Coverage" />
     <UiCTASection heading-id="academic-cta-heading" :title="academicFinalCta.title"
       :description="academicFinalCta.description" :supporting="academicFinalCta.supporting" :ctas="academicCtas" />
   </div>

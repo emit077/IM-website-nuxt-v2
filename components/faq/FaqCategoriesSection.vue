@@ -1,27 +1,29 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
-import { faqCategories, type FaqItem } from '~/data/faq'
+import type { FaqCategory, FaqItem } from '~/data/faq'
 
 const props = withDefaults(
   defineProps<{
+    categories?: FaqCategory[]
     searchQuery?: string
     activeCategory?: string
+    pending?: boolean
+    error?: boolean
   }>(),
   {
+    categories: () => [],
     searchQuery: '',
     activeCategory: 'all',
+    pending: false,
+    error: false,
   },
 )
 
 const emit = defineEmits<{
   'reset-filters': []
+  retry: []
 }>()
-
-const { data: apiCategories } = await useWebsiteFaqs(faqCategories)
-const categories = computed(() =>
-  apiCategories.value?.length ? apiCategories.value : faqCategories,
-)
 
 const query = computed(() => props.searchQuery.trim().toLowerCase())
 
@@ -34,7 +36,7 @@ function itemMatchesSearch(item: FaqItem) {
 }
 
 const filteredCategories = computed(() =>
-  categories.value
+  props.categories
     .filter((category) => props.activeCategory === 'all' || category.id === props.activeCategory)
     .map((category) => ({
       ...category,
@@ -51,9 +53,9 @@ const hasActiveFilters = computed(
   () => query.value.length > 0 || props.activeCategory !== 'all',
 )
 
-function resetFilters() {
-  emit('reset-filters')
-}
+const showEmpty = computed(
+  () => !props.pending && !filteredCategories.value.length,
+)
 </script>
 
 <template>
@@ -68,16 +70,42 @@ function resetFilters() {
         <template v-else>across {{ filteredCategories.length }} topics</template>
       </p>
 
+      <div v-if="pending && !categories.length" class="mx-auto max-w-3xl space-y-3" aria-live="polite">
+        <div v-for="n in 6" :key="n" class="h-[4.25rem] animate-pulse rounded-2xl bg-white" />
+        <p class="sr-only">Loading FAQs</p>
+      </div>
+
       <div
-        v-if="!filteredCategories.length"
+        v-else-if="showEmpty"
         class="mx-auto max-w-md rounded-2xl border border-dashed border-slate-300 bg-white/80 px-6 py-14 text-center"
       >
         <Icon icon="mdi:help-box-outline" class="mx-auto h-12 w-12 text-slate-300" aria-hidden="true" />
-        <p class="mt-4 font-display text-lg font-bold text-slate-800">No FAQs match your search</p>
-        <p class="mt-1 text-sm text-slate-500">
-          Try another keyword or choose a different topic filter.
+        <p class="mt-4 font-display text-lg font-bold text-slate-800">
+          {{ error ? 'Unable to load FAQs' : hasActiveFilters ? 'No FAQs match your search' : 'FAQs will appear here soon' }}
         </p>
-        <button type="button" class="btn-secondary mt-6" @click="resetFilters">Reset filters</button>
+        <p class="mt-1 text-sm text-slate-500">
+          {{ error
+            ? 'Please try again in a moment.'
+            : hasActiveFilters
+              ? 'Try another keyword or choose a different topic filter.'
+              : 'Our team is updating answers from the latest website content.' }}
+        </p>
+        <button
+          v-if="error"
+          type="button"
+          class="btn-secondary mt-6"
+          @click="emit('retry')"
+        >
+          Try again
+        </button>
+        <button
+          v-else-if="hasActiveFilters"
+          type="button"
+          class="btn-secondary mt-6"
+          @click="emit('reset-filters')"
+        >
+          Reset filters
+        </button>
       </div>
 
       <div v-else class="space-y-14 sm:space-y-16">

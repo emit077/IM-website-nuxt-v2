@@ -7,6 +7,7 @@ import WhyChooseEcosystemSection from '~/components/why-choose/WhyChooseEcosyste
 import WhyChooseCommitmentsSection from '~/components/why-choose/WhyChooseCommitmentsSection.vue'
 import WhyChooseConversionStrip from '~/components/why-choose/WhyChooseConversionStrip.vue'
 import QuickServiceCategoriesSection from '~/components/ui/shared/QuickServiceCategoriesSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 
 useSeoMeta({
   title: 'Why Choose Indian Mentors — Personalised Tutoring Ecosystem',
@@ -28,6 +29,7 @@ useSeoMeta({
     <QuickServiceCategoriesSection />
     <WhyChooseEcosystemSection />
     <WhyChooseCommitmentsSection />
+    <FaqSectionMini category="why us" />
     <WhyChooseConversionStrip />
   </div>
 </template>

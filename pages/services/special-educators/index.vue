@@ -8,6 +8,7 @@ import SpecialEducatorsProcessSection from '~/components/special-educators/Speci
 import SpecialEducatorsAudienceSection from '~/components/special-educators/SpecialEducatorsAudienceSection.vue'
 import SpecialEducatorsFeaturesSection from '~/components/special-educators/SpecialEducatorsFeaturesSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { seFinalCta } from '~/data/special-educators'
 
 useSeoMeta({
@@ -31,6 +32,7 @@ useSeoMeta({
     <SpecialEducatorsFeaturesSection />
     <SpecialEducatorsProcessSection />
     <SpecialEducatorsAudienceSection />
+    <FaqSectionMini category="services" />
     <UiCTASection section-id="special-educators-cta" heading-id="special-educators-cta-heading"
       :badge="seFinalCta.badge" badge-icon-mdi="mdi:account-heart-outline" :title="seFinalCta.title"
       :description="seFinalCta.description" :ctas="seFinalCta.ctas" />

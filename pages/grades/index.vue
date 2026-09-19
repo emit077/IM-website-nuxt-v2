@@ -6,6 +6,7 @@ import GradesExplorerSection from '~/components/grades/GradesExplorerSection.vue
 import GradesPromiseSection from '~/components/grades/GradesPromiseSection.vue'
 import GradesAdaptSection from '~/components/grades/GradesAdaptSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { gradesFinalCta } from '~/data/grades'
 
 const route = useRoute()
@@ -43,6 +44,7 @@ useSeoMeta({
     <GradesExplorerSection />
     <GradesAdaptSection />
     <GradesPromiseSection />
+    <FaqSectionMini category="Academic Coverage" />
     <UiCTASection section-id="book-demo" heading-id="grades-cta-heading" :extra-anchor-ids="['counsellor']"
       badge-icon-mdi="mdi:book-education-outline" :badge="gradesFinalCta.badge" :title="gradesFinalCta.title"
       :description="gradesFinalCta.description" :supporting="gradesFinalCta.supporting" :ctas="gradesFinalCta.ctas" />

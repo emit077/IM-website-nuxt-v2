@@ -122,6 +122,19 @@ function slugifyCategory(category: string) {
     .replace(/^-|-$/g, '')
 }
 
+export function getFaqCategoryMeta(category: string) {
+  const exact = FAQ_CATEGORY_META[category]
+  if (exact) return exact
+  const lower = category.trim().toLowerCase()
+  const match = Object.entries(FAQ_CATEGORY_META).find(([key]) => key.toLowerCase() === lower)
+  return match?.[1] ?? {
+    id: slugifyCategory(category),
+    title: category,
+    description: `Answers related to ${category}.`,
+    iconMdi: 'mdi:help-circle-outline',
+  }
+}
+
 function initialsFromName(name: string) {
   const ignored = new Set(['mr', 'mrs', 'ms', 'miss', 'dr', 'prof', 'sir', 'smt', 'shri', 'shree'])
   const parts = name
@@ -301,13 +314,12 @@ export function mapFaqs(items: WebsiteFaq[]): FaqCategory[] {
   }
 
   return [...grouped.entries()].map(([category, faqItems]) => {
-    const meta = FAQ_CATEGORY_META[category]
-    const id = meta?.id ?? slugifyCategory(category)
+    const meta = getFaqCategoryMeta(category)
     return {
-      id,
-      title: meta?.title ?? category,
-      description: meta?.description ?? `Answers related to ${category}.`,
-      iconMdi: meta?.iconMdi ?? 'mdi:help-circle-outline',
+      id: meta.id,
+      title: meta.title,
+      description: meta.description,
+      iconMdi: meta.iconMdi,
       items: faqItems,
     }
   })
@@ -448,7 +460,7 @@ export function useWebsiteBrochures(brochureType?: BrochureType | string) {
 
 export function useWebsiteFaqs(fallback: FaqCategory[] = [], category?: string) {
   const { fetchWebsiteList } = useWebsiteApi()
-  const key = category ? `website-faqs-${category}` : 'website-faqs'
+  const key = category ? `website-faqs-${slugifyCategory(category)}` : 'website-faqs'
 
   const asyncData = useAsyncData(
     key,

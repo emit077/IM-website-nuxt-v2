@@ -5,6 +5,7 @@ import ContactFindUsSection from '~/components/contact/ContactFindUsSection.vue'
 import ContactBranchCitiesSection from '~/components/contact/ContactBranchCitiesSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { findMentorSection, contactGetStarted, contactCTA2 } from '~/data/contact'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 
@@ -35,6 +36,7 @@ useSeoMeta({
     </div>
     <UiCTASection heading-id="contact-cta-heading" variant="dark" surface-class="section-surface-white"
       :title="contactGetStarted.title" :description="contactGetStarted.description" :ctas="contactGetStarted.ctas" />
+    <FaqSectionMini category="contact" />
     <NewsletterSection />
   </div>
 </template>

@@ -9,6 +9,7 @@ import InstitutionsPricingChooseSection from '~/components/institutions/pricing/
 import InstitutionsPricingWhySection from '~/components/institutions/pricing/InstitutionsPricingWhySection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { institutionsPricingFinalCta } from '~/data/institutions-pricing'
 
 const { data: institutionBrochures } = await useWebsiteBrochures('Institutions')
@@ -61,6 +62,7 @@ useSeoMeta({
       :title="institutionsPricingFinalCta.title" :description="institutionsPricingFinalCta.description"
       :supporting="institutionsPricingFinalCta.closing" :ctas="pricingCtas">
     </UiCTASection>
+    <FaqSectionMini category="institute" />
     <NewsletterSection />
   </div>
 </template>

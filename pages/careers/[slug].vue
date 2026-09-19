@@ -4,6 +4,7 @@ import JobDetailSections from '~/components/careers/job/JobDetailSections.vue'
 import JobStickyCta from '~/components/careers/job/JobStickyCta.vue'
 import JobApplyModal from '~/components/careers/job/JobApplyModal.vue'
 import { jobPageCtas } from '~/data/careers'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { useCareerJob } from '~/composables/useCareerContent'
 import type { CareerApplicationType } from '~/types/career-api'
 
@@ -77,6 +78,7 @@ function openApply(type: CareerApplicationType) {
 
     <template v-else>
       <JobDetailSections :job="job" @apply="openApply" />
+      <FaqSectionMini category="Career" />
 
       <div class="container-page py-10">
         <div class="mx-auto max-w-5xl text-center">

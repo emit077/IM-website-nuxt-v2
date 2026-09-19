@@ -8,6 +8,7 @@ import { enrollmentFinalCta } from '~/data/student-parent'
 import LearningStepsSection from '~/components/student-parent/enrollment/LearningStepsSection.vue'
 import StudentParentTrustSection from '~/components/student-parent/StudentParentTrustSection.vue'
 import StudentParentStickyCta from '~/components/student-parent/StudentParentStickyCta.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 
 useSeoMeta({
   title: 'Student Enrollment Plans — Students & Parents | Indian Mentors',
@@ -30,6 +31,7 @@ useSeoMeta({
     <StudentParentProfilesSection />
     <EnrollmentPlansSection />
     <EnrollmentDecideSection />
+    <FaqSectionMini category="Student" />
     <UiCTASection heading-id="sp-enrollment-cta-heading" surface-class="section-surface-muted"
       :title="enrollmentFinalCta.title" :description="enrollmentFinalCta.description" :ctas="enrollmentFinalCta.ctas" />
   </div>

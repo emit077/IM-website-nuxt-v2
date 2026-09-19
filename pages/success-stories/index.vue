@@ -2,22 +2,20 @@
 import SuccessStoriesHeroSection from '~/components/success-stories/SuccessStoriesHeroSection.vue'
 import SuccessStoriesStudentRail from '~/components/success-stories/SuccessStoriesStudentRail.vue'
 import SuccessStoriesQuoteSection from '~/components/success-stories/SuccessStoriesQuoteSection.vue'
+import SuccessStoriesTutorReviews from '~/components/success-stories/SuccessStoriesTutorReviews.vue'
+import SuccessStoriesInstitutionFeedback from '~/components/success-stories/SuccessStoriesInstitutionFeedback.vue'
 import SuccessStoriesPlacementSection from '~/components/success-stories/SuccessStoriesPlacementSection.vue'
+import SuccessStoriesPartnerReviews from '~/components/success-stories/SuccessStoriesPartnerReviews.vue'
 import SuccessStoriesVideoSection from '~/components/success-stories/SuccessStoriesVideoSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import {
-  institutionalFeedback,
   parentReviews,
-  partnerReviews,
   successStoriesFinalCta,
   storyTabs,
-  tutorReviews,
 } from '~/data/success-stories'
 
 const parentSection = storyTabs.find((t) => t.id === 'parents')!
-const tutorSection = storyTabs.find((t) => t.id === 'tutors')!
-const institutionSection = storyTabs.find((t) => t.id === 'institutions')!
-const partnerSection = storyTabs.find((t) => t.id === 'partners')!
 const successStoriesCtas = [
   { ...successStoriesFinalCta.primaryCta, iconMdi: 'mdi:calendar-check-outline', primary: true },
   { ...successStoriesFinalCta.secondaryCta, iconMdi: 'mdi:phone-outline' },
@@ -39,11 +37,12 @@ useSeoMeta({
     <SuccessStoriesHeroSection />
     <SuccessStoriesStudentRail />
     <SuccessStoriesQuoteSection :section="parentSection" :reviews="parentReviews" bg-class="bg-white" />
-    <SuccessStoriesQuoteSection :section="tutorSection" :reviews="tutorReviews" bg-class="bg-cream-50" />
-    <SuccessStoriesQuoteSection :section="institutionSection" :reviews="institutionalFeedback" bg-class="bg-white" />
+    <SuccessStoriesTutorReviews />
+    <SuccessStoriesInstitutionFeedback />
     <SuccessStoriesPlacementSection />
-    <SuccessStoriesQuoteSection :section="partnerSection" :reviews="partnerReviews" bg-class="bg-white" />
+    <SuccessStoriesPartnerReviews />
     <SuccessStoriesVideoSection />
+    <FaqSectionMini category="Student" />
     <UiCTASection :badge="successStoriesFinalCta.badge" badge-icon-mdi="mdi:trophy-outline"
       :title="successStoriesFinalCta.title" :description="successStoriesFinalCta.description"
       :supporting="successStoriesFinalCta.closing" :ctas="successStoriesCtas" />

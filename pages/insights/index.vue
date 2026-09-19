@@ -5,8 +5,8 @@ import InsightsFeaturedSection from '~/components/insights/InsightsFeaturedSecti
 import InsightsApproachSection from '~/components/insights/InsightsApproachSection.vue'
 import InsightsImpactSection from '~/components/insights/InsightsImpactSection.vue'
 import InsightsSearchSection from '~/components/insights/InsightsSearchSection.vue'
-import InsightsFaqSection from '~/components/insights/InsightsFaqSection.vue'
 import InsightsClosingSection from '~/components/insights/InsightsClosingSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import WhyChooseUs from '~/components/ui/shared/WhyChooseUs.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
@@ -44,7 +44,7 @@ useSeoMeta({
     <UiCTASection section-id="insights-cta" heading-id="insights-final-cta-heading"
       badge-icon-mdi="mdi:school-outline" :badge="insightsFinalCta.badge" :title="insightsFinalCta.title"
       :description="insightsFinalCta.description" :supporting="insightsFinalCta.supporting" :ctas="insightsCtas" />
-    <InsightsFaqSection />
+    <FaqSectionMini category="Student" title="Questions about the Insights Hub" />
     <InsightsClosingSection />
   </div>
 </template>

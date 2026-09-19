@@ -14,6 +14,7 @@ import TutorTrainingSection from '~/components/tutors/TutorTrainingSection.vue'
 import TutorReferralSection from '~/components/tutors/TutorReferralSection.vue'
 import TutorResourcesSection from '~/components/tutors/TutorResourcesSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { tutorsBannerCta } from '~/data/tutors'
 
 useSeoMeta({
@@ -43,6 +44,7 @@ useSeoMeta({
     <TutorTrainingSection />
     <TutorReferralSection />
     <TutorResourcesSection />
+    <FaqSectionMini category="tutors" />
     <UiCTASection heading-id="tutor-banner-heading" surface-class="section-surface-muted"
       badge-icon-mdi="mdi:human-male-board" :title="tutorsBannerCta.title" :description="tutorsBannerCta.description"
       :supporting="tutorsBannerCta.supporting" :ctas="tutorsBannerCta.ctas" />

@@ -698,7 +698,8 @@ export const earningsSection = {
   classes: '!px-0 !py-0',
   flowTitle: 'Earnings Flow',
   payoutTitle: 'Tutor Dashboard Provides',
-  cta: { label: 'View Earnings & Payout Policy', href: '#tutor-standards' },
+  tagline: 'Join now — teach, track, and get paid with clarity!',
+  cta: { label: 'Register as a Tutor', href: externalLinks.tutorRegistration },
   flow: [
     {
       no: '01',

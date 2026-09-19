@@ -616,6 +616,10 @@ const current = computed(() => libraryByGrade[selected.value])
 
 const featured = computed(() => current.value.featured)
 
+const featuredChips = computed(() =>
+  current.value.subjects.slice(0, 5).map((subject) => subject.replace(/\s*\([^)]*\)/g, '').trim()),
+)
+
 const gridCards = computed(() => current.value.cards)
 
 const gradeScroller = ref<HTMLElement | null>(null)
@@ -680,7 +684,8 @@ const headerContent = {
             <Icon icon="mdi:chevron-left" class="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
           </button>
 
-          <div ref="gradeScroller" class="min-w-0 flex-1 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          <div ref="gradeScroller"
+            class="min-w-0 flex-1 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             role="tablist" aria-label="Select class" @scroll.passive="updateGradeScrollState">
             <div class="flex min-w-min gap-2 px-1">
               <button v-for="g in grades" :key="g.id" type="button" role="tab" :data-grade="g.id"
@@ -714,7 +719,13 @@ const headerContent = {
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 80 } }">
             <div aria-hidden="true"
               class="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-white/10 blur-2xl"></div>
-            <div>
+            <div aria-hidden="true"
+              class="pointer-events-none absolute -bottom-16 -left-10 h-44 w-44 rounded-full bg-sky-300/20 blur-3xl">
+            </div>
+            <div aria-hidden="true"
+              class="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:18px_18px]">
+            </div>
+            <div class="relative">
               <span
                 class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/20 ring-1 ring-white/30 backdrop-blur-sm">
                 <svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -733,8 +744,38 @@ const headerContent = {
                 {{ featured.description }}
               </p>
             </div>
+            <div class="relative my-6 flex flex-1 flex-col justify-center gap-5">
+              <div class="relative isolate h-[7.5rem] w-full max-w-[13.5rem] overflow-hidden" aria-hidden="true">
+                <div
+                  class="absolute left-9 top-2 h-[6.25rem] w-[8.5rem] rotate-[8deg] rounded-xl border border-white/25 bg-white/10 shadow-lg">
+                  <div class="space-y-1.5 p-3 pt-4">
+                    <div class="h-1.5 w-10 rounded-full bg-white/35"></div>
+                    <div class="h-1 w-16 rounded-full bg-white/20"></div>
+                    <div class="h-1 w-12 rounded-full bg-white/15"></div>
+                  </div>
+                </div>
+                <div
+                  class="absolute left-4 top-1 h-[6.5rem] w-[8.75rem] -rotate-[6deg] rounded-xl border border-white/30 bg-white/15 shadow-lg">
+                  <div class="space-y-1.5 p-3 pt-4">
+                    <div class="h-1.5 w-12 rounded-full bg-white/45"></div>
+                    <div class="h-1 w-[4.5rem] rounded-full bg-white/25"></div>
+                    <div class="h-1 w-14 rounded-full bg-white/20"></div>
+                  </div>
+                </div>
+                <div
+                  class="absolute left-1 top-3 h-[6.75rem] w-36 rounded-xl bg-white/90 p-3 text-left shadow-xl ring-1 ring-black/5">
+                  <div class="mt-2.5 space-y-1.5">
+                    <div class="h-1 w-full rounded-full bg-slate-200"></div>
+                    <div class="h-1 w-full rounded-full bg-slate-200"></div>
+                    <div class="h-1 w-4/5 rounded-full bg-slate-200"></div>
+                    <div class="h-1 w-2/3 rounded-full bg-blue-200"></div>
+                    <div class="h-1 w-2/3 rounded-full bg-blue-200"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <span
-              class="inline-flex items-center gap-1.5 text-sm font-semibold text-white transition group-hover:gap-2">
+              class="relative inline-flex items-center gap-1.5 text-sm font-semibold text-white transition group-hover:gap-2">
               Open in library
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"

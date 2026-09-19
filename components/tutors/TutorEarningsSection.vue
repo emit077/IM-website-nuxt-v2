@@ -51,8 +51,13 @@ const accentClasses: Record<Accent, { tile: string; text: string }> = {
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 280 } }">
             <ActionBtn variant="primary" :label="earningsSection.cta.label" :href="earningsSection.cta.href" />
           </div>
-          <p class="mt-4 max-w-md text-[12.5px] leading-relaxed text-slate-500">
+          <p v-if="earningsSection.footnote" class="mt-4 max-w-md text-[12.5px] leading-relaxed text-slate-500">
             {{ earningsSection.footnote }}
+          </p>
+          <p
+            class="journey-note mt-6 flex items-center justify-center gap-2 text-center text-[18px] font-semibold text-sky-500 sm:mt-7 sm:justify-start sm:text-left sm:text-[20px]"
+            aria-hidden="true">
+            <span>{{ earningsSection.tagline }}</span>
           </p>
 
         </div>
@@ -111,6 +116,11 @@ const accentClasses: Record<Accent, { tile: string; text: string }> = {
 </template>
 
 <style scoped>
+.journey-note {
+  font-family: 'Caveat', 'Plus Jakarta Sans', cursive;
+  letter-spacing: 0.01em;
+}
+
 .timeline-card-surface {
   transition:
     transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),

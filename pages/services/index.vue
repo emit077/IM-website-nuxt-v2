@@ -4,6 +4,7 @@ import ServicesGridSection from '~/components/services/ServicesGridSection.vue'
 import ServicesSpecialisedSection from '~/components/services/ServicesSpecialisedSection.vue'
 import ServicesAudienceSection from '~/components/services/ServicesAudienceSection.vue'
 import ServicesConversionStrip from '~/components/services/ServicesConversionStrip.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 
 useSeoMeta({
   title: 'Our Tutoring Services — Indian Mentors',
@@ -22,6 +23,7 @@ useSeoMeta({
     <ServicesGridSection />
     <ServicesSpecialisedSection />
     <ServicesAudienceSection />
+    <FaqSectionMini category="services" />
     <ServicesConversionStrip />
   </div>
 </template>

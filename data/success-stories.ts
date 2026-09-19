@@ -45,25 +45,26 @@ export type StoryTab = {
 
 export const successStoriesHero = {
   badge: 'Testimonials',
-  title: 'Real Stories. <span class="text-gradient-brand">Real Growth. Real Trust.</span>',
+  title: 'Real Stories. Real Growth. Real Trust.',
   subtitle:
     'Our credibility is built on real outcomes and authentic relationships — from every corner of our academic ecosystem.',
   description:
     'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors across India.',
-  contentClass: '!px-0 !py-0 max-w-2xl',
-  tagline: 'Structured Mentorship. Measurable Results. Trusted Nationwide.',
-  intro:
-    'Our credibility is built on real outcomes and authentic relationships — from every corner of our academic ecosystem.',
+  caption: 'Structured Mentorship. Measurable Results. Trusted Nationwide.',
   primaryCta: { label: 'Book Free Demo', href: externalLinks.studentSignup },
-  secondaryCta: { label: 'Talk to Counsellor', href: 'tel:+917389563564' },
+  secondaryCta: { label: 'Talk to Counsellor', href: 'tel:+917389563564', icon: 'mdi:phone-outline' },
+  ticker: [
+    '25+ Stories',
+    '6 Stakeholder Groups',
+    '120+ Marks Gained',
+    'Pan-India Coverage',
+    'Student Journeys',
+    'Parent Reviews',
+    'Tutor Feedback',
+    'Institutional Trust',
+    'Partner Growth',
+  ],
 } as const
-
-export const successStoriesHeroStats = [
-  { value: '25+', label: 'Stories', iconMdi: 'mdi:book-open-page-variant-outline' },
-  { value: '6', label: 'Groups', iconMdi: 'mdi:account-group-outline' },
-  { value: '120+', label: 'Marks gained', iconMdi: 'mdi:trending-up' },
-  { value: 'Pan-India', label: 'Coverage', iconMdi: 'mdi:map-marker-radius-outline' },
-] as const
 
 export const storyTabs: StoryTab[] = [
   {

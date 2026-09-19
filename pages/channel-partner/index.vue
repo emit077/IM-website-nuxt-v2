@@ -9,7 +9,7 @@ import TerritoryStructureSection from '~/components/channel-partner/TerritoryStr
 import PartnershipProcessSection from '~/components/channel-partner/PartnershipProcessSection.vue'
 import PartnerEligibilitySection from '~/components/channel-partner/PartnerEligibilitySection.vue'
 import PartnerTestimonialsSection from '~/components/channel-partner/PartnerTestimonialsSection.vue'
-import PartnerFaqSection from '~/components/channel-partner/PartnerFaqSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import { finalCta } from '~/data/channel-partner'
 
@@ -41,7 +41,7 @@ useSeoMeta({
     <PartnershipProcessSection />
     <PartnerEligibilitySection />
     <PartnerTestimonialsSection />
-    <PartnerFaqSection />
+    <FaqSectionMini category="channel partner" />
     <UiCTASection section-id="partner-register" heading-id="partner-cta-heading" :title="finalCta.title"
       :description="finalCta.description" :supporting="`${finalCta.closingTitle}. ${finalCta.closingStatement}`"
       :ctas="partnerCtas" />

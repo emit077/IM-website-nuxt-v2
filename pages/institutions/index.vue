@@ -12,6 +12,7 @@ import InstitutionsErpSection from '~/components/institutions/InstitutionsErpSec
 import InstitutionsPricingSection from '~/components/institutions/InstitutionsPricingSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import NewsletterSection from '~/components/ui/shared/NewsletterSection.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { institutionsFinalCta } from '~/data/institutions'
 
 const { data: institutionBrochures } = await useWebsiteBrochures('Institutions')
@@ -68,6 +69,7 @@ useSeoMeta({
       badge-icon-mdi="mdi:account-tie-outline" :title="institutionsFinalCta.title"
       :description="institutionsFinalCta.description" :supporting="institutionsFinalCta.closing"
       :ctas="institutionsCtas" />
+    <FaqSectionMini category="institute" />
     <NewsletterSection />
   </div>
 </template>

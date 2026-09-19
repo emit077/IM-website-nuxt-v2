@@ -9,6 +9,7 @@ import CareersHiringProcessSection from '~/components/careers/CareersHiringProce
 import CareersInternshipsSection from '~/components/careers/CareersInternshipsSection.vue'
 import CareersJobsSection from '~/components/careers/CareersJobsSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { careersFinalCta } from '~/data/careers'
 
 const careersCtas = [
@@ -38,6 +39,7 @@ useSeoMeta({
     <CareersWhySection />
     <CareersInternshipsSection />
     <CareersJobsSection />
+    <FaqSectionMini category="Career" />
     <UiCTASection section-id="join-indian-mentors" heading-id="careers-final-cta-heading"
       badge-icon-mdi="mdi:briefcase-check-outline" :badge="careersFinalCta.badge" :title="careersFinalCta.title"
       :description="careersFinalCta.description" :supporting="careersFinalCta.closing" :ctas="careersCtas" />

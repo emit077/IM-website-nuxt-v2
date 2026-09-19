@@ -9,6 +9,7 @@ import SubscriptionSupportsSection from '~/components/student-parent/subscriptio
 import SubscriptionRecommendSection from '~/components/student-parent/subscription/SubscriptionRecommendSection.vue'
 import SubscriptionTermsSection from '~/components/student-parent/subscription/SubscriptionTermsSection.vue'
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
+import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { subscriptionFinalCta } from '~/data/student-parent'
 
 useSeoMeta({
@@ -33,6 +34,7 @@ useSeoMeta({
     <SubscriptionSupportsSection />
     <SubscriptionRecommendSection />
     <SubscriptionTermsSection />
+    <FaqSectionMini category="Student" />
     <UiCTASection heading-id="sp-subscription-cta-heading" surface-class="section-surface-muted"
       :title="subscriptionFinalCta.title" :description="subscriptionFinalCta.description"
       :ctas="subscriptionFinalCta.ctas" />
