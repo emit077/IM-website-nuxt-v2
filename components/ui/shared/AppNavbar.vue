@@ -37,6 +37,8 @@ const navMenus = [
       { label: 'Academic Coverage', href: '/academic-coverage' },
       { label: 'Success Stories', href: '/success-stories' },
       { label: 'Insights Hub', href: '/insights' },
+      { label: 'Blogs', href: '/blogs' },
+      { label: 'Case Studies', href: '/case-studies' },
       { label: 'Partner Programme', href: '/channel-partner' },
       { label: 'Hire for Institute', href: '/institutions' },
       { label: 'Institutional Pricing', href: '/institutions/pricing' },

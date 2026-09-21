@@ -30,7 +30,7 @@ const collageBottom = computed(() => {
 
 const heroContent = {
   badge: "India's #1 Verified Tutor Platform",
-  title: 'Contact Us<br class="hidden sm:block" /> <span class="text-gradient-brand">We’re Here to Help</span>',
+  title: 'Contact Us<br class=" sm:block" /> <span class="text-gradient-brand">We’re Here to Help</span>',
   subtitle: '<span class="text-gradient-brand">Indian Mentors</span> –  Connecting Learners with Verified Educators',
   description: contactHero.subheadline,
   contentClass: '!px-0 !py-0 max-w-none',
@@ -78,8 +78,7 @@ function collageSrc(city: { image: string }) {
               <div class="grid grid-cols-2 gap-2 sm:gap-2.5">
                 <div v-for="city in collageTop" :key="city.id"
                   class="group relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-200">
-                  <img :src="collageSrc(city)"
-                    :alt="`${city.label} tutoring services`"
+                  <img :src="collageSrc(city)" :alt="`${city.label} tutoring services`"
                     class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
                     loading="lazy" decoding="async" />
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent"
@@ -94,8 +93,7 @@ function collageSrc(city: { image: string }) {
               <div class="grid grid-cols-4 gap-2 sm:gap-2.5">
                 <div v-for="city in collageBottom" :key="city.id"
                   class="group relative aspect-square overflow-hidden rounded-xl bg-slate-200">
-                  <img :src="collageSrc(city)"
-                    :alt="`${city.label} tutoring services`"
+                  <img :src="collageSrc(city)" :alt="`${city.label} tutoring services`"
                     class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
                     loading="lazy" decoding="async" />
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent"

@@ -154,18 +154,16 @@ const services: ServiceCard[] = [
                             <img :src="usePublicAsset(service.icon)" alt="" class="h-6 w-6" width="24" height="24" />
                         </span>
 
-                        <div
-                            class="service-content relative z-[1] mt-auto flex w-full flex-col items-start px-5 pb-5 pt-5"
+                        <div class="service-content relative z-[1] mt-auto flex w-full flex-col items-start px-5 pb-5 pt-5 align-middle"
                             :class="service.size === 'cta'
                                 ? 'service-content--cta sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:py-7 sm:pl-24 sm:pr-8'
                                 : ''">
-                            <div class="service-copy flex min-w-0 flex-col items-start">
-                                <h3
-                                    class="font-display text-[1rem] font-bold uppercase leading-snug text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
+                            <div class="service-copy flex min-w-0 flex-col items-middle align-middle">
+                                <h3 class="font-display text-[1rem] font-bold uppercase leading-snug text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
                                     :class="service.size === 'cta' ? 'sm:text-[1.35rem]' : ''" v-html="service.title">
                                 </h3>
                                 <p class="mt-1.5 text-sm font-semibold leading-relaxed text-white/80"
-                                    :class="service.size === 'cta' ? 'sm:max-w-xl sm:text-sm' : ''">
+                                    :class="service.size === 'cta' ? 'sm:max-w-2xl sm:text-sm' : ''">
                                     {{ service.hook }}
                                 </p>
                             </div>
@@ -188,60 +186,61 @@ const services: ServiceCard[] = [
 <style scoped>
 .service-copy,
 .service-cta {
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.35s ease,
-    max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    margin-top 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.3s ease,
-    color 0.3s ease,
-    box-shadow 0.4s ease;
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.35s ease,
+        max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        margin-top 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.4s ease;
 }
 
 /* Collapse CTA so title sits at the bottom; hover expands it and lifts the copy */
 @media (hover: hover) and (pointer: fine) {
-  a.group:not(:hover):not(:focus-within) .service-content:not(.service-content--cta) .service-cta {
-    max-height: 0;
-    margin-top: 0;
-    opacity: 0;
-    overflow: hidden;
-    transform: translateY(10px);
-    pointer-events: none;
-  }
+    a.group:not(:hover):not(:focus-within) .service-content:not(.service-content--cta) .service-cta {
+        max-height: 0;
+        margin-top: 0;
+        opacity: 0;
+        overflow: hidden;
+        transform: translateY(10px);
+        pointer-events: none;
+    }
 
-  a.group:hover .service-content:not(.service-content--cta) .service-cta,
-  a.group:focus-within .service-content:not(.service-content--cta) .service-cta {
-    max-height: 3rem;
-    margin-top: 1rem;
-    opacity: 1;
-    transform: translateY(0);
-    box-shadow: 0 16px 28px -12px rgba(15, 23, 42, 0.45);
-  }
+    a.group:hover .service-content:not(.service-content--cta) .service-cta,
+    a.group:focus-within .service-content:not(.service-content--cta) .service-cta {
+        max-height: 3rem;
+        margin-top: 1rem;
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 0 16px 28px -12px rgba(15, 23, 42, 0.45);
+    }
 
-  a.group:hover .service-content:not(.service-content--cta) .service-copy,
-  a.group:focus-within .service-content:not(.service-content--cta) .service-copy {
-    transform: translateY(-2px);
-  }
+    a.group:hover .service-content:not(.service-content--cta) .service-copy,
+    a.group:focus-within .service-content:not(.service-content--cta) .service-copy {
+        transform: translateY(-2px);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .service-copy,
-  .service-cta {
-    transition: none;
-  }
 
-  a.group:not(:hover):not(:focus-within) .service-content:not(.service-content--cta) .service-cta {
-    max-height: none;
-    margin-top: 1rem;
-    opacity: 1;
-    overflow: visible;
-    transform: none;
-    pointer-events: auto;
-  }
+    .service-copy,
+    .service-cta {
+        transition: none;
+    }
 
-  a.group:hover .service-content:not(.service-content--cta) .service-copy,
-  a.group:focus-within .service-content:not(.service-content--cta) .service-copy {
-    transform: none;
-  }
+    a.group:not(:hover):not(:focus-within) .service-content:not(.service-content--cta) .service-cta {
+        max-height: none;
+        margin-top: 1rem;
+        opacity: 1;
+        overflow: visible;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    a.group:hover .service-content:not(.service-content--cta) .service-copy,
+    a.group:focus-within .service-content:not(.service-content--cta) .service-copy {
+        transform: none;
+    }
 }
 </style>

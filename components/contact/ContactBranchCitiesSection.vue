@@ -301,7 +301,7 @@ function clearSearch() {
 
                   <span
                     class="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] backdrop-blur-md"
-                    :class="card.hasOffice ? 'bg-emerald-500/90 text-white' : 'bg-white/20 text-white ring-1 ring-white/25'">
+                    :class="card.hasOffice ? 'bg-blue-700/90 text-white' : 'bg-white/20 text-white ring-1 ring-white/25'">
                     {{ card.subtitle }}
                   </span>
 

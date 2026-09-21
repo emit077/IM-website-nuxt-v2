@@ -766,7 +766,7 @@ export const spCoverage = {
     'English',
     'Hindi',
     'Regional Languages',
-    'Social Sciences',
+    'Social Studies',
     'Commerce',
     'Business Studies',
     'Computer Science',

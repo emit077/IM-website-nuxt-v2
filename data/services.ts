@@ -197,7 +197,7 @@ export const tutoringServices: ServiceItem[] = [
     id: 'home-schooling',
     img: 'assets/img/services/home-schooling.svg',
     visual: 'assets/img/services/home-schooling-support.webp',
-    title: 'Home Schooling Support',
+    title: 'Homeschooling Support',
     tagline: 'Structured Home-Based Education',
     overview:
       'Structured home-based education with curriculum planning, subject experts, assessments, and clear academic direction for your child.',
@@ -211,7 +211,7 @@ export const tutoringServices: ServiceItem[] = [
     coverage: ['CBSE', 'ICSE', 'State Boards', 'Cambridge', 'IB', 'Int’l Curricula'],
     keyBenefit:
       'Create a structured, personalised learning environment while keeping academic direction and continuity.',
-    cta: { label: 'Explore Home Schooling Support', href: externalLinks.studentSignup },
+    cta: { label: 'Explore Homeschooling Support', href: externalLinks.studentSignup },
   },
 
   {
@@ -286,6 +286,19 @@ export const specialisedSupportCategories: SpecialSupportCategory[] = [
     ],
   },
   {
+    id: 'sld',
+    iconMdi: 'mdi:puzzle-outline',
+    title: 'Specific Learning Difficulties (SLD) Support',
+    description: 'Providing structured academic assistance based on individual learning requirements.',
+    supportMayInclude: [
+      'Individualised education strategies',
+      'Academic skill development',
+      'Classroom adaptation',
+      'Cognitive learning strategies',
+      'Study skills development',
+    ],
+  },
+  {
     id: 'dyslexia',
     iconMdi: 'mdi:book-open-page-variant-outline',
     title: 'Dyslexia Support',
@@ -323,19 +336,7 @@ export const specialisedSupportCategories: SpecialSupportCategory[] = [
       'Practical learning activities',
     ],
   },
-  {
-    id: 'sld',
-    iconMdi: 'mdi:puzzle-outline',
-    title: 'Specific Learning Disability Support',
-    description: 'Providing structured academic assistance based on individual learning requirements.',
-    supportMayInclude: [
-      'Individualised education strategies',
-      'Academic skill development',
-      'Classroom adaptation',
-      'Cognitive learning strategies',
-      'Study skills development',
-    ],
-  },
+
   {
     id: 'speech',
     iconMdi: 'mdi:microphone-outline',

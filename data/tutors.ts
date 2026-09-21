@@ -61,7 +61,7 @@ export const heroHighlights = [
 
 export const tutorBenefits = {
   badge: 'Why Teach With Indian Mentors?',
-  title: 'A Professional Ecosystem Built Around <span class="text-gradient-brand">Educators</span>',
+  title: 'A Professional Ecosystem <span class="text-gradient-brand"> Built Around Educators</span>',
   description:
     'Indian Mentors provides a structured environment where tutors can discover suitable opportunities, manage their teaching engagements, track academic sessions, and build their professional tutoring journey.',
   classes: '!px-0 !py-0 mx-auto',
@@ -150,7 +150,7 @@ export const tutorWhoCanJoin = {
     {
       id: 'faculty',
       label: 'School & college faculty',
-      hint: 'Add individual tutoring alongside your teaching work.',
+      hint: 'Add individual tutoring alongside your teaching.',
       accent: 'indigo' as const,
     },
     {
@@ -220,7 +220,7 @@ export const tutorWhoCanJoin = {
 
 export const tutorOpportunities = {
   badge: 'Teaching Opportunities',
-  title: 'Find Students Who Match <span class="text-gradient-brand">Your Expertise</span>',
+  title: 'Find Students Who  <span class="text-gradient-brand">Match Your Expertise</span>',
   description:
     'Explore tutoring opportunities based on relevant factors such as subject expertise, academic level, curriculum, location, teaching mode, availability, and experience.',
   classes: '!px-0 !py-0 mx-auto max-w-4xl',
@@ -269,7 +269,7 @@ export const tutorOpportunities = {
       href: '/services/special-educators',
     },
     {
-      title: 'Home Schooling Support',
+      title: 'Homeschooling Support',
       description: 'Curriculum support for home-based education.',
       iconMdi: 'mdi:book-education-outline',
       href: '/academic-coverage',
@@ -291,7 +291,7 @@ export const tutorOpportunities = {
 
 export const tutorSubjects = {
   badge: 'Teaching Subjects & Academic Coverage',
-  title: 'Teach What You <span class="text-gradient-brand">Know Best</span>',
+  title: 'Teach What  <span class="text-gradient-brand">You Know Best</span>',
   description:
     'Indian Mentors supports tutoring requirements across school education, higher education, international curricula, competitive examinations, and selected specialised learning areas.',
   classes: '!px-0 !py-0 mx-auto max-w-4xl',
@@ -315,7 +315,8 @@ export const tutorSubjects = {
       { id: 'cambridge', name: 'Cambridge' },
       { id: 'nios', name: 'NIOS' },
       { id: 'state', name: 'State Boards' },
-      { id: 'jee-neet', name: 'JEE / NEET' },
+      { id: 'jee', name: 'JEE' },
+      { id: 'neet', name: 'NEET' },
     ],
     grades: [
       { label: 'Pre-Primary', href: '/academic-coverage#pre-primary' },
@@ -349,7 +350,7 @@ export const tutorSubjects = {
       image: '/assets/img/tutor-subjects/languages.webp',
     },
     {
-      title: 'Social Sciences & Humanities',
+      title: 'Social Studies & Humanities',
       subjects: 'History • Geography • Political Science • Sociology • Psychology',
       iconMdi: 'mdi:earth',
       image: '/assets/img/tutor-subjects/social-humanities.webp',
@@ -408,7 +409,7 @@ export const tutorPlans: TutorPlan[] = [
 
 export const tutorPlansSection = {
   badge: 'Tutor Registration Plans',
-  title: 'Start With the Plan That <span class="text-gradient-brand">Fits You</span>',
+  title: 'Start With the  <span class="text-gradient-brand">Plan That Fits You</span>',
   description: 'A Free Tutor Profile at ₹0, or Premium at ₹1,000 per year for additional visibility and platform features.',
   classes: '!px-0 !py-0',
   footnote:
@@ -467,7 +468,7 @@ export const hiringSteps: HiringStep[] = [
 
 export const hiringProcessSection = {
   badge: 'Tutor Hiring Process',
-  title: 'A Structured Path to Your <span class="text-gradient-brand">First Student</span>',
+  title: 'A Structured Path to  <span class="text-gradient-brand">Your First Student</span>',
   description:
     'The tutor hiring process at Indian Mentors is designed to maintain high academic standards and ensure a safe learning environment — so students and parents receive reliable, qualified mentors.',
   classes: '!px-0 !py-0',
@@ -588,7 +589,7 @@ export const erpSection = {
   showcaseTitle: 'One Workspace for Your Teaching Journey',
   mobilePreview: {
     greeting: 'Welcome back',
-    tutorName: 'Amit Kumar',
+    tutorName: 'Vaibhav Patel',
     tutorRole: 'Tutor',
     dateLabel: 'Apr 2024',
     walletLabel: 'Wallet',
@@ -678,7 +679,7 @@ export const policyPoints = [
 
 export const tutorPolicySection = {
   badge: 'Professional Standards',
-  title: 'Be the Mentor Students Can <span class="text-gradient-brand">Trust</span>',
+  title: 'Be the Mentor  <span class="text-gradient-brand">Students Can Trust</span>',
   description:
     'Every tutor associated with Indian Mentors is expected to maintain professional, ethical, respectful, and student-focused standards.',
   classes: '!px-0 !py-0 mx-auto ',
@@ -764,7 +765,7 @@ export const earningsSection = {
 
 export const browseStudentsSection = {
   badge: 'Browse Student Opportunities',
-  title: 'Find students that <span class="text-gradient-brand">match your expertise</span>',
+  title: 'Discover  <span class="text-gradient-brand">Students Ready </span> to Learn',
   description:
     'Registered tutors can explore available tutoring opportunities and connect with suitable students to expand their teaching engagements.',
   classes: '!px-0 !py-0',
@@ -823,7 +824,7 @@ export const tutorReferral = {
 
 export const tutorResources = {
   badge: 'Tutor Resources',
-  title: 'Resources to Help You <span class="text-gradient-brand">Teach Better</span>',
+  title: 'Resources to Help  <span class="text-gradient-brand">You Teach Better</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   brochure: {
     badge: 'Tutor Brochure',

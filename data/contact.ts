@@ -117,12 +117,12 @@ export const contactHeroCollageBottom = popularCityImages.slice(2, 6)
 
 const headOffice = {
   title: 'Indian Mentors – National Operations Center',
-  subtitle: 'Headquarters',
+  subtitle: 'Headquarter',
   location: 'Bhilai, Chhattisgarh',
   address:
     '32A, Indian Mentors Building, Near Avantibai Chowk, Junwani Road, Beside Dubey Dairy, Kohka, Bhilai, District Durg, Chhattisgarh, India – 490023',
   mapsCta: 'Get directions on Google Maps',
-  intro: 'The Indian Mentors headquarters in Bhilai serves as the central hub for:',
+  intro: 'The Indian Mentors headquarter in Bhilai serves as the central hub for:',
   responsibilities: [
     'Academic operations and mentor coordination',
     'Tutor verification and onboarding processes',
@@ -495,9 +495,9 @@ export type FindUsOffice = {
 
 export const findUs = {
   badge: 'Office Locations',
-  title: 'Headquarters & Central Operations',
+  title: 'Headquarter & Central Operations',
   description:
-    'Visit our headquarters or corporate office for in-person consultations and academic support.',
+    'Visit our headquarter or corporate office for in-person consultations and academic support.',
   offices: [
     {
       id: 'head-office',
@@ -506,9 +506,9 @@ export const findUs = {
       name: 'Indian Mentors – Personalised Tutoring Services',
       address: headOffice.address,
       image: 'contact/im-building',
-      imageLabel: 'Headquarters',
+      imageLabel: 'Headquarter',
       description:
-        'The headquarters serves as the central hub for academic operations, tutor coordination, technology systems, and nationwide tutoring services. Our administrative and academic teams work from this location to support students, parents, tutors, and institutional partners across India.',
+        'The headquarter serves as the central hub for academic operations, tutor coordination, technology systems, and nationwide tutoring services. Our administrative and academic teams work from this location to support students, parents, tutors, and institutional partners across India.',
       directionsCta: 'Contact Headquarter',
     },
     {
@@ -539,10 +539,10 @@ export const inquiryStakeholders = [
   'Parent / Student',
   'Tutor / Mentor',
   'Special Educator',
-  'Institution',
+  'Institution Hiring',
   'Channel Partner',
   'Job Seeker',
-  'Corporate / CSR Organisation',
+  'CSR Organisation',
   'Other',
 ] as const
 
@@ -569,7 +569,7 @@ export const inquiryHelpByStakeholder: Record<InquiryStakeholder, readonly strin
     'Join as a Special Educator',
     'Special Education Opportunities',
   ],
-  Institution: [
+  'Institution Hiring': [
     'Academic Staffing',
     'Faculty Requirement',
     'Institutional Partnership',
@@ -589,11 +589,11 @@ export const inquiryHelpByStakeholder: Record<InquiryStakeholder, readonly strin
     'Fresher Job Opportunities',
     'Explore Career Opportunities',
   ],
-  'Corporate / CSR Organisation': [
+  'CSR Organisation': [
     'CSR Collaboration',
     'Education Initiative',
     'Corporate Partnership',
-    'Institutional / Learning Solutions',
+    'Learning Solutions',
   ],
   Other: ['General Enquiry', 'Request a Callback'],
 }

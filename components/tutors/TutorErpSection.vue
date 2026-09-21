@@ -86,7 +86,7 @@ import { erpFeatures, erpSection } from '~/data/tutors'
                     </div>
                     <span
                       class="grid h-9 w-9 place-items-center rounded-full bg-blue-600 text-[11px] font-bold text-white">
-                      AK
+                      VP
                     </span>
                   </div>
 

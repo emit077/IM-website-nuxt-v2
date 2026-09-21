@@ -96,8 +96,12 @@ function wrapBind(slide: BannerSlide): Record<string, string> | { to: string } {
     <section v-if="list.length > 0" class="relative section-py-compact"
       :aria-label="`${props.title}. Promotional image carousel.`">
       <div class="container-page mt-12">
-        <CardHeader :title="props.title" />
-        <div class="overflow-hidden">
+        <h2
+          class="mt-2.5 text-balance font-display text-[1.35rem] text-center font-extrabold tracking-tight text-brand-ink sm:text-2xl uppercase">
+          What's trending
+        </h2>
+        <!-- <CardHeader :title="props.title" /> -->
+        <div class="overflow-hidden mt-6">
           <CarouselLayout :items="list" :interval="props.interval" :autoplay="props.autoplay"
             :show-buttons="props.showButtons" :show-dots="props.showDots" :aria-label="`${props.title} banners`">
             <template #default="{ item: slide }">

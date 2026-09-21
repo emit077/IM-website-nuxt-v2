@@ -51,6 +51,8 @@ export default defineNuxtConfig({
         '/institutions/pricing',
         '/faq',
         '/insights',
+        '/blogs',
+        '/case-studies',
         '/careers',
         '/careers/admission-counsellor',
         '/careers/admission-coordinator',

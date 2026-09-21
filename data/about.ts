@@ -386,7 +386,7 @@ export const aboutRoadmap = {
           icon: 'mdi:layers-plus',
           title: 'Expand Learning Services Portfolio',
           description:
-            'Introduce specialised programs including Olympiad preparation, NEET/JEE Foundation, language learning, coding, homeschooling support, and skill development.',
+            'Introduce specialised programs including Olympiad preparation, NEET/JEE Foundation, language learning, coding, homeschooling Support, and skill development.',
         },
       ],
     },

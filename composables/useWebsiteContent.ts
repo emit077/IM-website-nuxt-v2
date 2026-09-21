@@ -7,7 +7,9 @@ import type {
   BrochureType,
   WebsiteAuthorisedContact,
   WebsiteBanner,
+  WebsiteBlog,
   WebsiteBrochure,
+  WebsiteCaseStudy,
   WebsiteCity,
   WebsiteFaq,
   WebsitePrimaryContact,
@@ -473,6 +475,160 @@ export function useWebsiteFaqs(fallback: FaqCategory[] = [], category?: string) 
   )
   refreshOnClient(key, asyncData.refresh)
   return asyncData
+}
+
+export type WebsiteBlogFilters = {
+  category?: string
+}
+
+export type WebsiteCaseStudyFilters = {
+  grade?: string
+  board?: string
+  subject?: string
+  category?: string
+}
+
+function sortByDisplayOrder<T extends { display_order?: number; id: number }>(items: T[]) {
+  return [...items].sort((a, b) => (a.display_order ?? a.id) - (b.display_order ?? b.id))
+}
+
+export function excerptText(value?: string | null, length = 160) {
+  const text = String(value || '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  if (!text) return ''
+  if (text.length <= length) return text
+  return `${text.slice(0, length - 1).trim()}…`
+}
+
+export function blogPath(blog: Pick<WebsiteBlog, 'slug' | 'id'>) {
+  return `/blogs/${blog.slug || blog.id}`
+}
+
+export function caseStudyPath(study: Pick<WebsiteCaseStudy, 'id'>) {
+  return `/case-studies/${study.id}`
+}
+
+export function useWebsiteBlogs(
+  filters: MaybeRefOrGetter<WebsiteBlogFilters> = {},
+  options?: { cacheKey?: string },
+) {
+  const { fetchWebsiteList, apiBase } = useWebsiteApi()
+  const resolved = computed(() => toValue(filters))
+  const key = computed(() => {
+    const base = options?.cacheKey || 'website-blogs'
+    return resolved.value.category ? `${base}-${slugifyCategory(resolved.value.category)}` : base
+  })
+
+  const asyncData = useAsyncData(
+    () => key.value,
+    async () => {
+      const rows = await fetchWebsiteList<WebsiteBlog>('/api/website/blogs/', resolved.value)
+      return sortByDisplayOrder(rows).map((row) => ({
+        ...row,
+        image: resolveMediaUrl(row.image, apiBase) || null,
+        author: row.author
+          ? { ...row.author, image: resolveMediaUrl(row.author.image, apiBase) || null }
+          : row.author,
+      }))
+    },
+    {
+      ...liveDataOptions([] as WebsiteBlog[]),
+      watch: [resolved],
+    },
+  )
+  refreshOnClient(key.value, asyncData.refresh)
+  return asyncData
+}
+
+export function useWebsiteBlog(id: MaybeRefOrGetter<string | number>) {
+  const { fetchWebsiteItem, apiBase } = useWebsiteApi()
+  const resolved = computed(() => String(toValue(id) || ''))
+
+  return useAsyncData(
+    () => `website-blog-${resolved.value}`,
+    async () => {
+      if (!resolved.value) return null
+      const row = await fetchWebsiteItem<WebsiteBlog>(`/api/website/blogs/${resolved.value}/`)
+      if (!row) return null
+      return {
+        ...row,
+        image: resolveMediaUrl(row.image, apiBase) || null,
+        author: row.author
+          ? { ...row.author, image: resolveMediaUrl(row.author.image, apiBase) || null }
+          : row.author,
+      }
+    },
+    {
+      watch: [resolved],
+      default: () => null as WebsiteBlog | null,
+    },
+  )
+}
+
+export function useWebsiteCaseStudies(
+  filters: MaybeRefOrGetter<WebsiteCaseStudyFilters> = {},
+  options?: { cacheKey?: string },
+) {
+  const { fetchWebsiteList, apiBase } = useWebsiteApi()
+  const resolved = computed(() => toValue(filters))
+  const key = computed(() => {
+    const base = options?.cacheKey || 'website-case-studies'
+    const parts = [
+      resolved.value.category,
+      resolved.value.grade,
+      resolved.value.board,
+      resolved.value.subject,
+    ]
+      .filter(Boolean)
+      .map((value) => slugifyCategory(String(value)))
+    return parts.length ? `${base}-${parts.join('-')}` : base
+  })
+
+  const asyncData = useAsyncData(
+    () => key.value,
+    async () => {
+      const rows = await fetchWebsiteList<WebsiteCaseStudy>('/api/website/case-studies/', resolved.value)
+      return sortByDisplayOrder(rows).map((row) => ({
+        ...row,
+        image: resolveMediaUrl(row.image, apiBase) || null,
+        author: row.author
+          ? { ...row.author, image: resolveMediaUrl(row.author.image, apiBase) || null }
+          : row.author,
+      }))
+    },
+    {
+      ...liveDataOptions([] as WebsiteCaseStudy[]),
+      watch: [resolved],
+    },
+  )
+  refreshOnClient(key.value, asyncData.refresh)
+  return asyncData
+}
+
+export function useWebsiteCaseStudy(id: MaybeRefOrGetter<string | number>) {
+  const { fetchWebsiteItem, apiBase } = useWebsiteApi()
+  const resolved = computed(() => String(toValue(id) || ''))
+
+  return useAsyncData(
+    () => `website-case-study-${resolved.value}`,
+    async () => {
+      if (!resolved.value) return null
+      const row = await fetchWebsiteItem<WebsiteCaseStudy>(`/api/website/case-studies/${resolved.value}/`)
+      if (!row) return null
+      return {
+        ...row,
+        image: resolveMediaUrl(row.image, apiBase) || null,
+        author: row.author
+          ? { ...row.author, image: resolveMediaUrl(row.author.image, apiBase) || null }
+          : row.author,
+      }
+    },
+    {
+      watch: [resolved],
+      default: () => null as WebsiteCaseStudy | null,
+    },
+  )
 }
 
 /** Staff-only endpoint — exposed for completeness; not used on public pages. */

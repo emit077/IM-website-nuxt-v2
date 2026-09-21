@@ -17,7 +17,7 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
       style="width: 120px; height: 120px; background-image: radial-gradient(#3b82f6 1.4px, transparent 1.4px); background-size: 16px 16px" />
 
     <div class="container-page relative">
-      <Quotes :quotes="[0, 1]" class="mx-auto " />
+      <Quotes :quotes="[1]" class="mx-auto " />
       <div class="mt-16 grid items-center gap-10 lg:mt-20 lg:grid-cols-2 lg:gap-14">
         <div v-motion :initial="{ opacity: 0, x: -20 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 560, delay: 100 } }">

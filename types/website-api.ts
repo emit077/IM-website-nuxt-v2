@@ -86,3 +86,55 @@ export type WebsiteFaq = {
   ans: string
   category: string
 }
+
+export type WebsiteContentAuthor = {
+  name: string
+  image: string | null
+  designation: string | null
+}
+
+export type WebsiteBlogSectionItem = {
+  title: string
+  body: string
+}
+
+export type WebsiteBlogSection = {
+  heading: string
+  items: WebsiteBlogSectionItem[]
+}
+
+export type WebsiteBlog = {
+  id: number
+  title: string
+  slug: string
+  image: string | null
+  category: string
+  read_time: number
+  author: WebsiteContentAuthor | null
+  introduction: string
+  sections: WebsiteBlogSection[]
+  conclusion: string
+  display_order: number
+}
+
+export type WebsiteStudentProfile = {
+  grade: string
+  board: string
+  subject: string
+  initial_score: string
+}
+
+export type WebsiteCaseStudy = {
+  id: number
+  title: string
+  image: string | null
+  category: string
+  read_time: number
+  author: WebsiteContentAuthor | null
+  student_profile: WebsiteStudentProfile | null
+  challenge: string
+  approach: string[]
+  outcome: string[]
+  testimonial: string
+  display_order: number
+}

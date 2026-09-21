@@ -3,6 +3,8 @@ import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import { specialisedSupportCategories, specialisedSupportSection } from '~/data/services'
+import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
+
 </script>
 
 <template>
@@ -58,11 +60,15 @@ import { specialisedSupportCategories, specialisedSupportSection } from '~/data/
       </p>
 
       <p class="mt-6 text-center">
-        <NuxtLink to="/services/special-educators"
+        <ActionBtn theme="theme-secondary" label="Explore the full Special Educators programme"
+          href="/services/special-educators"
+          class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-blue-600 transition hover:text-blue-700 shadow-sm" />
+
+        <!-- <NuxtLink to="/services/special-educators"
           class="inline-flex items-center gap-1.5 text-[14px] font-semibold text-blue-600 transition hover:text-blue-700">
-          Explore the full Special Educators programme
+
           <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
-        </NuxtLink>
+        </NuxtLink> -->
       </p>
     </div>
   </section>

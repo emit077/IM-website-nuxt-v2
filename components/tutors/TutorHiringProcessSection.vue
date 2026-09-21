@@ -70,7 +70,7 @@ function rippleHandler(e: MouseEvent) {
                 </p>
                 <div class="">
                   <a v-if="step.cta" :href="step.cta.href"
-                    class="relative mt-4 inline-flex w-1/3 pr-10 items-center  gap-1.5 rounded-xl bg-white px-3.5 py-2.5 text-[12.5px] font-semibold text-blue-700 shadow-sm transition hover:bg-blue-50"
+                    class="relative mt-4 inline-flex  pr-10 items-center  gap-1.5 rounded-xl bg-white px-3.5 py-2.5 text-[12.5px] font-semibold text-blue-700 shadow-sm transition hover:bg-blue-50"
                     @mousemove="rippleHandler">
                     {{ step.cta.label }}
                     <IconArrowRight class="h-3.5 w-3.5 shrink-0" />
@@ -136,13 +136,13 @@ function rippleHandler(e: MouseEvent) {
             <img :src="usePublicAsset(hiringProcessSection.image)" :alt="hiringProcessSection.imageAlt"
               class="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" />
             <div aria-hidden="true"
-              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/15 to-transparent" />
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/35 to-transparent" />
             <div class="absolute inset-x-0 bottom-0 p-5 sm:p-6">
               <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-200">
                 Teaching with Indian Mentors
               </p>
               <p class="mt-1.5 font-display text-lg font-bold text-white sm:text-xl">
-                From profile to first session — guided every step
+                From profile to first session
               </p>
               <a :href="externalLinks.tutorRegistration"
                 class="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-white px-4 py-2.5 text-[13px] font-semibold text-blue-700 transition hover:bg-blue-50">

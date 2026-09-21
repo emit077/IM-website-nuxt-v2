@@ -20,5 +20,7 @@ const secondaryHero: SecondaryHeroContent = {
 </script>
 
 <template>
-  <SecondaryHeroLayout :hero-content="secondaryHero" />
+  <div class="mb-10">
+    <SecondaryHeroLayout :hero-content="secondaryHero" />
+  </div>
 </template>

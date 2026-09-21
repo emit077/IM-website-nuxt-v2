@@ -70,7 +70,7 @@ const heroScreens: HeroContent[] = [
   {
     badge: "India's #1 Verified Tutor Platform",
     title:
-      'Find the <span class="text-gradient-brand">Perfect Tutor</span><br class="hidden sm:block" /> for Your Child',
+      'Find the <span class="text-gradient-brand">Perfect <br class="hidden sm:block" /> Tutor</span> for Your Child',
     subtitle:
       '<span class="text-gradient-brand">Indian Mentors</span> - Where Learning Meets Mentorship',
     description:
@@ -102,7 +102,7 @@ const heroScreens: HeroContent[] = [
   {
     badge: 'Safety, Quality &amp; Transparency in Every Session',
     title:
-      'Learn from <span class="text-gradient-brand">  Background</span><br class="hidden sm:block" /> Verified Tutors',
+      'Learn from <span class="text-gradient-brand">  Background<br class="hidden sm:block" /> Verified </span>Tutors',
     subtitle: '<span class="text-gradient-brand">Indian Mentors</span> - Building Strong Foundations for Lifelong Learning',
     description:
       'Building Strong Foundations for Lifelong Learning<br />Every tutor undergoes structured verification and performance monitoring.',
@@ -124,7 +124,7 @@ const heroScreens: HeroContent[] = [
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-4.png')}')`,
     mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-4.png')}`,
-    caption: 'Trusted by 1,00,000+ Educators across India.',
+    caption: 'Trusted by 5,00,000+ Educators across India.',
     headingId: 'hero-screen-4-heading',
     actionBtns: [
       {

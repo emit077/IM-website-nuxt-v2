@@ -20,7 +20,7 @@ import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
             plan.variant === 'featured'
               ? 'border-blue-600 shadow-[0_20px_50px_-20px_rgba(37,99,235,0.35)]'
               : 'border-slate-200/80 shadow-soft',
-            ]" v-motion :initial="{ opacity: 0, y: 20 }"
+          ]" v-motion :initial="{ opacity: 0, y: 20 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 100, duration: 500 } }">
             <div class="flex items-center gap-3">
               <div>
@@ -60,14 +60,9 @@ import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
         </article>
       </div>
       <div class="mt-8 flex justify-center">
-
-
-        <ActionBtn :href="tutorPlansSection.cta.href" :label="tutorPlansSection.cta.label" variant="primary" />
+        <ActionBtn theme="theme-secondary" :href="tutorPlansSection.cta.href" :label="tutorPlansSection.cta.label"
+          variant="primary" />
       </div>
-
-      <p class="mx-auto mt-6 max-w-2xl text-center text-[12.5px] leading-relaxed text-slate-500">
-        {{ tutorPlansSection.footnote }}
-      </p>
     </div>
   </section>
 </template>

@@ -26,6 +26,8 @@ export type InsightCatalogItem = {
   topic: string
   iconMdi: string
   featured?: boolean
+  details?: readonly string[]
+  meta?: string
 }
 
 export const insightsHero = {
@@ -37,7 +39,7 @@ export const insightsHero = {
   caption: 'Discover expert articles, real student success stories, events, and academic resources—all in one place.',
   primaryCta: {
     label: 'Explore Blog Articles',
-    href: '/insights?type=article#explore',
+    href: '/blogs',
     icon: 'mdi:book-open-page-variant-outline',
   },
   secondaryCta: {
@@ -72,7 +74,7 @@ export const insightsHubCards: readonly InsightHubCard[] = [
     description:
       'Explore expert-written articles on study techniques, exam preparation, and academic strategies.',
     highlights: ['Study tips & productivity', 'Subject improvement guides', 'Parenting insights'],
-    cta: { label: 'Read Articles', href: '/insights?type=article#explore' },
+    cta: { label: 'Read Articles', href: '/blogs' },
     iconMdi: 'mdi:notebook-edit-outline',
     accent: 'blue',
   },
@@ -83,7 +85,7 @@ export const insightsHubCards: readonly InsightHubCard[] = [
     description:
       'Discover real student success stories and how personalised tutoring has transformed academic performance.',
     highlights: ['Before & after results', 'Learning challenges & solutions', 'Measurable outcomes'],
-    cta: { label: 'View Case Studies', href: '/success-stories' },
+    cta: { label: 'View Case Studies', href: '/case-studies' },
     iconMdi: 'mdi:chart-box-outline',
     accent: 'emerald',
   },
@@ -103,7 +105,7 @@ export const insightsHubCards: readonly InsightHubCard[] = [
     title: 'Media & News',
     description: 'Stay updated with announcements, press coverage, and milestones.',
     highlights: ['Latest updates', 'Media mentions', 'Institutional collaborations'],
-    cta: { label: 'Explore News', href: '/insights?type=news#explore' },
+    cta: { label: 'Explore News', href: '/insights/news/coverage-update' },
     iconMdi: 'mdi:newspaper-variant-outline',
     accent: 'violet',
   },
@@ -114,7 +116,7 @@ export const insightsHubCards: readonly InsightHubCard[] = [
     description:
       'Join interactive sessions, workshops, and webinars led by academic experts.',
     highlights: ['Live learning sessions', 'Exam preparation workshops', 'Career guidance events'],
-    cta: { label: 'View Events', href: '/insights?type=event#explore' },
+    cta: { label: 'View Events', href: '/insights/events/board-masterclass' },
     iconMdi: 'mdi:microphone-outline',
     accent: 'indigo',
   },
@@ -145,7 +147,7 @@ export const insightsFeaturedItems = [
     type: 'article' as const,
     title: '10 Effective Study Techniques Every Student Should Know',
     description: 'Improve focus, retention, and exam performance with proven strategies.',
-    href: '/insights?type=article&q=study%20techniques#explore',
+    href: '/blogs/10-effective-study-techniques-every-student-should-know',
     iconMdi: 'mdi:notebook-edit-outline',
     accent: 'blue' as const,
   },
@@ -155,7 +157,7 @@ export const insightsFeaturedItems = [
     type: 'case-study' as const,
     title: 'From 52% to 91% in Mathematics',
     description: 'See how personalised tutoring improved concept clarity and results.',
-    href: '/success-stories',
+    href: '/case-studies/1',
     iconMdi: 'mdi:chart-line',
     accent: 'emerald' as const,
   },
@@ -165,7 +167,7 @@ export const insightsFeaturedItems = [
     type: 'event' as const,
     title: 'Board Exam Preparation Masterclass',
     description: 'Learn expert strategies for scoring high in board exams.',
-    href: '/insights?type=event#explore',
+    href: '/insights/events/board-masterclass',
     iconMdi: 'mdi:presentation',
     accent: 'indigo' as const,
   },
@@ -237,11 +239,15 @@ export const insightsImpactStats = [
 ] as const
 
 export const insightsSearchSection = {
-  kicker: 'Search & Explore',
-  title: 'Find articles, stories, and <span class="text-gradient-brand">topics that matter</span>',
+  kicker: 'Events & News',
+  title: 'Sessions, updates, and <span class="text-gradient-brand">what’s happening next</span>',
   classes: '!px-0 !py-0',
-  description: 'Filter by content type, grade, subject, or topic to get to the right insight faster.',
-  placeholder: 'Search articles, case studies, or topics…',
+  description:
+    'Open a workshop, webinar, or announcement to read the full brief — then continue into articles and case studies.',
+  exploreCtas: [
+    { label: 'Explore articles', href: '/blogs', iconMdi: 'mdi:notebook-edit-outline' },
+    { label: 'Explore case studies', href: '/case-studies', iconMdi: 'mdi:chart-box-outline' },
+  ],
 } as const
 
 export const insightContentTypes = [
@@ -385,69 +391,113 @@ export const insightsCatalog: readonly InsightCatalogItem[] = [
     type: 'event',
     title: 'Board Exam Preparation Masterclass',
     summary: 'Learn expert strategies for scoring high in board exams.',
-    href: externalLinks.studentSignup,
+    href: '/insights/events/board-masterclass',
     grade: 'secondary',
     subject: 'exam-prep',
     topic: 'board-exams',
     iconMdi: 'mdi:presentation',
     featured: true,
+    meta: 'Live workshop · Class 10 & 12',
+    details: [
+      'A structured walkthrough of board-exam planning: syllabus mapping, revision cycles, and how to practise papers under timed conditions.',
+      'Mentors share subject-wise scoring patterns, common error traps, and a weekly routine families can follow in the last 8–12 weeks.',
+      'Best suited for Class 10 and Class 12 students preparing for CBSE, ICSE, or state boards, and for parents who want a clear home-support plan.',
+    ],
   },
   {
     id: 'academic-planning-webinar',
     type: 'event',
     title: 'Parent-Student Academic Planning Webinar',
     summary: 'A live session on goal-setting, tutor matching, and study routines for the year.',
-    href: '/contact',
+    href: '/insights/events/academic-planning-webinar',
     grade: 'all-levels',
     subject: 'parenting',
     topic: 'study-techniques',
     iconMdi: 'mdi:account-group-outline',
+    meta: 'Webinar · Students & parents',
+    details: [
+      'Families leave with a simple academic calendar: goals for the term, how many hours of guided study are realistic, and when to review progress.',
+      'We cover how Indian Mentors matches a tutor to board, grade, and learning style, and what a first-month personalised plan typically includes.',
+      'Designed as a joint session so students and parents hear the same expectations around routine, doubt-solving, and communication.',
+    ],
   },
   {
     id: 'career-guidance',
     type: 'event',
     title: 'Career Guidance Workshop for Class 11–12',
     summary: 'Subject choices, competitive exam paths, and academic planning for senior students.',
-    href: '/contact',
+    href: '/insights/events/career-guidance',
     grade: 'senior',
     subject: 'exam-prep',
     topic: 'exam-preparation',
     iconMdi: 'mdi:briefcase-outline',
+    meta: 'Workshop · Senior secondary',
+    details: [
+      'Senior students map stream and subject choices to college and competitive-exam options without treating every path as a last-minute decision.',
+      'Counsellors discuss PCM, PCB, commerce, and humanities routes, along with how board scores and entrance prep can run in parallel.',
+      'Parents get a framework for conversations at home: interests, workload, and when extra mentoring is useful versus when rest is the priority.',
+    ],
   },
   {
     id: 'coverage-update',
     type: 'news',
     title: 'Expanded Academic Coverage Across Boards',
     summary: 'Updates on multi-board support, subject depth, and nationwide mentoring access.',
-    href: '/academic-coverage',
+    href: '/insights/news/coverage-update',
     grade: 'all-levels',
     subject: 'exam-prep',
     topic: 'progress',
     iconMdi: 'mdi:bullhorn-outline',
+    meta: 'Announcement',
+    details: [
+      'Indian Mentors continues to widen board and subject coverage so families can stay with one academic partner as students move grades or cities.',
+      'The update covers CBSE, ICSE, and state-board mentoring, with deeper support in core subjects and exam-prep streams.',
+      'Schools and parents can review the full academic-coverage map to see grades, boards, and subjects currently available.',
+    ],
   },
   {
     id: 'hub-resources',
     type: 'news',
     title: 'New Learning Resources Added to the Insights Hub',
     summary: 'Fresh guides, stories, and event recordings for students and parents.',
-    href: '/insights#explore',
+    href: '/insights/news/hub-resources',
     grade: 'all-levels',
     subject: 'parenting',
     topic: 'study-techniques',
     iconMdi: 'mdi:newspaper-variant-outline',
+    meta: 'Hub update',
+    details: [
+      'The Insights Hub now groups expert articles, student case studies, and session briefs so families can move from a question to a next step faster.',
+      'New reading includes study-technique guides, parent-support notes, and recorded takeaways from recent workshops.',
+      'Start with the blog library for practical tactics, then use case studies when you want to see how a similar student journey unfolded.',
+    ],
   },
   {
     id: 'institutional-collab',
     type: 'news',
     title: 'Institutional Collaborations and Mentoring Milestones',
     summary: 'How schools and families are using structured mentoring at scale.',
-    href: '/institutions',
+    href: '/insights/news/institutional-collab',
     grade: 'all-levels',
     subject: 'parenting',
     topic: 'progress',
     iconMdi: 'mdi:handshake-outline',
+    meta: 'Partnerships',
+    details: [
+      'Institutes work with Indian Mentors to add verified tutors, structured academic plans, and reporting without rebuilding their own hiring stack.',
+      'Recent collaborations focus on consistent mentoring quality, coverage across grades, and clearer outcomes for school leadership and parents.',
+      'Institutions exploring a similar model can review hiring and pricing options, while families can still enrol for one-to-one support directly.',
+    ],
   },
 ]
+
+export function insightEntriesByType(type: Extract<InsightContentType, 'event' | 'news'>) {
+  return insightsCatalog.filter((item) => item.type === type)
+}
+
+export function insightEntryBySlug(type: Extract<InsightContentType, 'event' | 'news'>, slug: string) {
+  return insightsCatalog.find((item) => item.type === type && item.id === slug) ?? null
+}
 
 export const insightsNewsletter = {
   badge: 'Stay Updated',

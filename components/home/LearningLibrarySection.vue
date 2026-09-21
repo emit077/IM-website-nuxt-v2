@@ -662,7 +662,7 @@ const headerContent = {
   title: 'Resources built for <span class="text-blue-600">your grade</span>',
   description:
     'Curriculum-aligned notes, worksheets, and practice packs for every stage — from Nursery to Class 12.',
-  classes: '!px-0 !py-0 mx-auto max-w-2xl',
+  classes: '!px-0 !py-0 mx-auto',
 }
 </script>
 

@@ -30,16 +30,16 @@ const marqueeItems = computed(() => [...partners, ...partners])
       class="pointer-events-none absolute -right-20 top-0 h-40 w-40 rounded-full bg-amber-100/35 blur-3xl" />
 
     <div class=" relative">
-      <div class="mx-auto flex max-w-3xl flex-col items-center text-center" v-motion :initial="{ opacity: 0, y: 14 }"
+      <div class="mx-auto flex max-w-5xl flex-col items-center text-center" v-motion :initial="{ opacity: 0, y: 14 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
 
         <h2
-          class="mt-2.5 text-balance font-display text-[1.35rem] font-extrabold tracking-tight text-brand-ink sm:text-2xl">
+          class="mt-2.5 text-balance font-display text-[1.35rem] font-extrabold tracking-tight text-brand-ink sm:text-2xl uppercase">
           Trusted by parents for boards across India
         </h2>
-        <p class="mt-2 max-w-xl text-pretty text-sm leading-relaxed text-slate-500 sm:text-[15px]">
+        <!-- <p class="mt-2  text-pretty text-sm leading-relaxed text-slate-500 sm:text-[15px]">
           From CBSE and ICSE to IB, Cambridge, state boards, and competitive exams — mentors matched to your curriculum.
-        </p>
+        </p> -->
       </div>
 
       <div class="group relative mt-8 w-full overflow-hidden sm:mt-10" v-motion :initial="{ opacity: 0, y: 12 }"

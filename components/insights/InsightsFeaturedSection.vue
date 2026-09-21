@@ -1,7 +1,48 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import { insightsFeaturedItems, insightsFeaturedSection, type InsightAccent } from '~/data/insights'
+import {
+  insightsFeaturedItems,
+  insightsFeaturedSection,
+  type InsightAccent,
+} from '~/data/insights'
+import { blogPath, caseStudyPath, excerptText, useWebsiteBlogs, useWebsiteCaseStudies } from '~/composables/useWebsiteContent'
+
+const { data: blogs } = await useWebsiteBlogs()
+const { data: studies } = await useWebsiteCaseStudies()
+
+const featuredItems = computed(() => {
+  const blog = blogs.value?.[0]
+  const study = studies.value?.[0]
+  const event = insightsFeaturedItems.find((item) => item.type === 'event')!
+
+  return [
+    blog
+      ? {
+          id: `blog-${blog.id}`,
+          typeLabel: 'Featured Article',
+          title: blog.title,
+          description: excerptText(blog.introduction, 140),
+          href: blogPath(blog),
+          iconMdi: 'mdi:notebook-edit-outline',
+          accent: 'blue' as InsightAccent,
+        }
+      : insightsFeaturedItems[0]!,
+    study
+      ? {
+          id: `study-${study.id}`,
+          typeLabel: 'Featured Case Study',
+          title: study.title,
+          description: excerptText(study.challenge, 140),
+          href: caseStudyPath(study),
+          iconMdi: 'mdi:chart-line',
+          accent: 'emerald' as InsightAccent,
+        }
+      : insightsFeaturedItems[1]!,
+    event,
+  ]
+})
 
 const accentClasses: Record<InsightAccent, { badge: string; icon: string; hover: string }> = {
   blue: {
@@ -51,7 +92,7 @@ const accentClasses: Record<InsightAccent, { badge: string; icon: string; hover:
         :classes="`${insightsFeaturedSection.classes} mx-auto max-w-3xl`" />
 
       <ul class="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3" role="list">
-        <li v-for="(item, i) in insightsFeaturedItems" :key="item.id" v-motion :initial="{ opacity: 0, y: 16 }"
+        <li v-for="(item, i) in featuredItems" :key="item.id" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 50 + i * 70, duration: 420 } }">
           <NuxtLink :to="item.href" :class="[
               'group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1.5 hover:shadow-card sm:p-7',
