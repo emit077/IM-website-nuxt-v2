@@ -196,7 +196,13 @@ watch([grade, board, subject, category], syncQuery)
         <li v-for="(study, i) in filteredStudies" :key="study.id" v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 20 + i * 50, duration: 360 } }">
           <NuxtLink :to="caseStudyPath(study)"
-            class="group flex h-full flex-col rounded-[1.5rem] border border-slate-200/80 bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-card sm:p-6">
+            class="group flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:border-emerald-200 hover:shadow-card">
+            <div class="aspect-[16/10] overflow-hidden bg-slate-100">
+              <img :src="study.image || usePublicAsset('/assets/img/insights/personalised-learning.png')"
+                :alt="study.title" width="640" height="400"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" loading="lazy" />
+            </div>
+            <div class="flex flex-1 flex-col p-5 sm:p-6">
             <div class="flex items-center justify-between gap-3">
               <span
                 class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-emerald-700 ring-1 ring-emerald-100">
@@ -222,6 +228,7 @@ watch([grade, board, subject, category], syncQuery)
               <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden="true" />
             </span>
+            </div>
           </NuxtLink>
         </li>
       </ul>

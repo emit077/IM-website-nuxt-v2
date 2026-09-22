@@ -11,6 +11,9 @@ import type {
   WebsiteBrochure,
   WebsiteCaseStudy,
   WebsiteCity,
+  WebsiteContentAuthor,
+  WebsiteEvent,
+  WebsiteNews,
   WebsiteFaq,
   WebsitePrimaryContact,
   WebsiteTeamMember,
@@ -488,6 +491,14 @@ export type WebsiteCaseStudyFilters = {
   category?: string
 }
 
+export type WebsiteNewsFilters = {
+  category?: string
+}
+
+export type WebsiteEventFilters = {
+  mode?: string
+}
+
 function sortByDisplayOrder<T extends { display_order?: number; id: number }>(items: T[]) {
   return [...items].sort((a, b) => (a.display_order ?? a.id) - (b.display_order ?? b.id))
 }
@@ -507,6 +518,31 @@ export function blogPath(blog: Pick<WebsiteBlog, 'slug' | 'id'>) {
 
 export function caseStudyPath(study: Pick<WebsiteCaseStudy, 'id'>) {
   return `/case-studies/${study.id}`
+}
+
+export function newsPath(article: Pick<WebsiteNews, 'slug' | 'id'>) {
+  return `/news/${article.slug || article.id}`
+}
+
+export function eventPath(event: Pick<WebsiteEvent, 'slug' | 'id'>) {
+  return `/events/${event.slug || event.id}`
+}
+
+export function formatContentDate(value?: string | null) {
+  if (!value) return ''
+  const date = new Date(`${value}T00:00:00`)
+  if (Number.isNaN(date.getTime())) return value
+  return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
+}
+
+export function formatContentTime(value?: string | null) {
+  if (!value) return ''
+  const [hours, minutes] = value.split(':')
+  if (hours == null || minutes == null) return value
+  const date = new Date()
+  date.setHours(Number(hours), Number(minutes), 0, 0)
+  if (Number.isNaN(date.getTime())) return value
+  return date.toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' })
 }
 
 export function useWebsiteBlogs(
@@ -627,6 +663,122 @@ export function useWebsiteCaseStudy(id: MaybeRefOrGetter<string | number>) {
     {
       watch: [resolved],
       default: () => null as WebsiteCaseStudy | null,
+    },
+  )
+}
+
+function withResolvedMedia<T extends { image?: string | null; author?: WebsiteContentAuthor | null }>(
+  row: T,
+  apiBase: string,
+): T {
+  return {
+    ...row,
+    image: resolveMediaUrl(row.image, apiBase) || null,
+    author: row.author
+      ? { ...row.author, image: resolveMediaUrl(row.author.image, apiBase) || null }
+      : row.author,
+  }
+}
+
+export function useWebsiteNews(
+  filters: MaybeRefOrGetter<WebsiteNewsFilters> = {},
+  options?: { cacheKey?: string },
+) {
+  const { fetchWebsiteList, apiBase } = useWebsiteApi()
+  const resolved = computed(() => toValue(filters))
+  const key = computed(() => {
+    const base = options?.cacheKey || 'website-news'
+    return resolved.value.category ? `${base}-${slugifyCategory(resolved.value.category)}` : base
+  })
+
+  const asyncData = useAsyncData(
+    () => key.value,
+    async () => {
+      const rows = await fetchWebsiteList<WebsiteNews>('/api/website/news/', resolved.value)
+      return rows.map((row) => withResolvedMedia(row, apiBase))
+    },
+    {
+      ...liveDataOptions([] as WebsiteNews[]),
+      watch: [resolved],
+    },
+  )
+  refreshOnClient(key.value, asyncData.refresh)
+  return asyncData
+}
+
+export function useWebsiteNewsArticle(id: MaybeRefOrGetter<string | number>) {
+  const { fetchWebsiteItem, apiBase } = useWebsiteApi()
+  const resolved = computed(() => String(toValue(id) || ''))
+  const key = computed(() => `website-news-${resolved.value || 'empty'}`)
+
+  const asyncData = useAsyncData(
+    () => key.value,
+    async () => {
+      if (!resolved.value) return null
+      const row = await fetchWebsiteItem<WebsiteNews>(`/api/website/news/${resolved.value}/`)
+      if (!row) return null
+      return withResolvedMedia(row, apiBase)
+    },
+    {
+      watch: [resolved],
+      default: () => null as WebsiteNews | null,
+      getCachedData(cacheKey: string, nuxtApp: { isHydrating?: boolean; payload: { data: Record<string, WebsiteNews | null> } }) {
+        if (nuxtApp.isHydrating) return nuxtApp.payload.data[cacheKey]
+        return undefined
+      },
+    },
+  )
+  refreshOnClient(key.value, asyncData.refresh)
+  return asyncData
+}
+
+export function useWebsiteEvents(
+  filters: MaybeRefOrGetter<WebsiteEventFilters> = {},
+  options?: { cacheKey?: string },
+) {
+  const { fetchWebsiteList, apiBase } = useWebsiteApi()
+  const resolved = computed(() => toValue(filters))
+  const key = computed(() => {
+    const base = options?.cacheKey || 'website-events'
+    return resolved.value.mode ? `${base}-${slugifyCategory(resolved.value.mode)}` : base
+  })
+
+  const asyncData = useAsyncData(
+    () => key.value,
+    async () => {
+      const rows = await fetchWebsiteList<WebsiteEvent>('/api/website/events/', resolved.value)
+      return rows.map((row) => ({
+        ...row,
+        image: resolveMediaUrl(row.image, apiBase) || null,
+      }))
+    },
+    {
+      ...liveDataOptions([] as WebsiteEvent[]),
+      watch: [resolved],
+    },
+  )
+  refreshOnClient(key.value, asyncData.refresh)
+  return asyncData
+}
+
+export function useWebsiteEvent(id: MaybeRefOrGetter<string | number>) {
+  const { fetchWebsiteItem, apiBase } = useWebsiteApi()
+  const resolved = computed(() => String(toValue(id) || ''))
+
+  return useAsyncData(
+    () => `website-event-${resolved.value}`,
+    async () => {
+      if (!resolved.value) return null
+      const row = await fetchWebsiteItem<WebsiteEvent>(`/api/website/events/${resolved.value}/`)
+      if (!row) return null
+      return {
+        ...row,
+        image: resolveMediaUrl(row.image, apiBase) || null,
+      }
+    },
+    {
+      watch: [resolved],
+      default: () => null as WebsiteEvent | null,
     },
   )
 }

@@ -105,7 +105,7 @@ export const insightsHubCards: readonly InsightHubCard[] = [
     title: 'Media & News',
     description: 'Stay updated with announcements, press coverage, and milestones.',
     highlights: ['Latest updates', 'Media mentions', 'Institutional collaborations'],
-    cta: { label: 'Explore News', href: '/insights/news/coverage-update' },
+    cta: { label: 'Explore News', href: '/news' },
     iconMdi: 'mdi:newspaper-variant-outline',
     accent: 'violet',
   },
@@ -116,7 +116,7 @@ export const insightsHubCards: readonly InsightHubCard[] = [
     description:
       'Join interactive sessions, workshops, and webinars led by academic experts.',
     highlights: ['Live learning sessions', 'Exam preparation workshops', 'Career guidance events'],
-    cta: { label: 'View Events', href: '/insights/events/board-masterclass' },
+    cta: { label: 'View Events', href: '/events' },
     iconMdi: 'mdi:microphone-outline',
     accent: 'indigo',
   },
@@ -167,7 +167,7 @@ export const insightsFeaturedItems = [
     type: 'event' as const,
     title: 'Board Exam Preparation Masterclass',
     description: 'Learn expert strategies for scoring high in board exams.',
-    href: '/insights/events/board-masterclass',
+    href: '/events',
     iconMdi: 'mdi:presentation',
     accent: 'indigo' as const,
   },
@@ -247,6 +247,8 @@ export const insightsSearchSection = {
   exploreCtas: [
     { label: 'Explore articles', href: '/blogs', iconMdi: 'mdi:notebook-edit-outline' },
     { label: 'Explore case studies', href: '/case-studies', iconMdi: 'mdi:chart-box-outline' },
+    { label: 'News & Media', href: '/news', iconMdi: 'mdi:newspaper-variant-outline' },
+    { label: 'Events & Webinars', href: '/events', iconMdi: 'mdi:microphone-outline' },
   ],
 } as const
 

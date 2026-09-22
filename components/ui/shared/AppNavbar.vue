@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue'
+import { computed, ref, watch, onMounted, onUnmounted } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import { externalLinks } from '~/data/external-links'
 import { emailSupport, phoneSupport } from '~/data/contact'
@@ -7,7 +7,6 @@ import { emailSupport, phoneSupport } from '~/data/contact'
 const scrolled = ref(false)
 const mobileOpen = ref(false)
 const openMenuId = ref<string | null>(null)
-const mobileOpenMenuId = ref<string | null>(null)
 const navRef = ref<HTMLElement | null>(null)
 const { isSecondaryHeroActive } = useSecondaryHeroTheme()
 
@@ -28,24 +27,51 @@ const navMenus = [
     id: 'more',
     label: 'More',
     items: [
-      { label: 'Why Choose Us', href: '/why-choose' },
-      { label: 'Special Educators', href: '/services/special-educators' },
-      { label: 'Tutor Registration Plans', href: '/tutors/registration-plans' },
-      { label: 'Students & Parents', href: '/student-parent' },
-      { label: 'Subscription Plans', href: '/student-parent/subscription' },
-      { label: 'Enrollment', href: '/student-parent/enrollment' },
-      { label: 'Academic Coverage', href: '/academic-coverage' },
-      { label: 'Success Stories', href: '/success-stories' },
-      { label: 'Insights Hub', href: '/insights' },
-      { label: 'Blogs', href: '/blogs' },
-      { label: 'Case Studies', href: '/case-studies' },
-      { label: 'Partner Programme', href: '/channel-partner' },
-      { label: 'Hire for Institute', href: '/institutions' },
-      { label: 'Institutional Pricing', href: '/institutions/pricing' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'FAQs', href: '/faq' },
+      { label: 'Why Choose', href: '/why-choose', description: 'Why families trust us' },
+      { label: 'Parent & Student', href: '/student-parent', description: 'Support for families' },
+      { label: 'Academic Coverage', href: '/academic-coverage', description: 'Boards, classes & subjects' },
+      { label: 'Partner Program', href: '/channel-partner', description: 'Grow with us' },
+      { label: 'Hire for Institute', href: '/institutions', description: 'Teacher recruitment' },
+      { label: 'Career', href: '/careers', description: 'Join our team' },
+      { label: 'Insights Hub', href: '/insights', description: 'Company insights' },
+      { label: 'News & Media', href: '/news', description: 'Press & announcements' },
+      { label: 'Events & Webinars', href: '/events', description: 'Live sessions' },
+      { label: 'FAQ', href: '/faq', description: 'Common questions' },
     ],
   },
+]
+
+const mobileNavGroups = [
+  {
+    heading: 'Company',
+    items: [
+      { label: 'About Us', href: '/about' },
+      { label: 'Career', href: '/careers' },
+      { label: 'Contact Us', href: '/contact' },
+    ],
+  },
+  {
+    heading: 'What We Offer',
+    items: [
+      { label: 'Our Services', href: '/services' },
+      { label: 'Tutors', href: '/tutors' },
+      { label: 'Academic Coverage', href: '/academic-coverage' },
+      { label: 'Parent & Student', href: '/student-parent' },
+      { label: 'Partner Program', href: '/channel-partner' },
+      { label: 'Hire for Institute', href: '/institutions' },
+    ],
+  },
+  {
+    heading: 'Resources',
+    items: [
+      { label: 'Insights Hub', href: '/insights' },
+      { label: 'News & Media', href: '/news' },
+      { label: 'Events & Webinars', href: '/events' },
+      { label: 'Why Choose', href: '/why-choose' },
+      { label: 'FAQ', href: '/faq' },
+    ],
+  },
+
 ]
 
 function onScroll() {
@@ -54,7 +80,6 @@ function onScroll() {
 
 function closeMenus() {
   openMenuId.value = null
-  mobileOpenMenuId.value = null
   mobileOpen.value = false
 }
 
@@ -62,9 +87,10 @@ function toggleMenu(id: string) {
   openMenuId.value = openMenuId.value === id ? null : id
 }
 
-function toggleMobileMenu(id: string) {
-  mobileOpenMenuId.value = mobileOpenMenuId.value === id ? null : id
-}
+watch(mobileOpen, (open) => {
+  if (!import.meta.client) return
+  document.body.style.overflow = open ? 'hidden' : ''
+})
 
 function onKeydown(e: KeyboardEvent) {
   if (e.key === 'Escape') closeMenus()
@@ -81,6 +107,7 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('keydown', onKeydown)
+  document.body.style.overflow = ''
 })
 </script>
 
@@ -182,12 +209,16 @@ onUnmounted(() => {
               enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-100 ease-in"
               leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
               <div v-if="openMenuId === menu.id"
-                class="absolute left-0 top-full z-50 mt-1.5 min-w-[13rem] overflow-hidden rounded-lg border border-slate-200 bg-white py-1 shadow-lg"
+                class="absolute left-0 top-full z-50 mt-2 w-[17.5rem] overflow-hidden rounded-lg border border-slate-100 bg-white py-3 shadow-[0_16px_40px_-20px_rgba(15,23,42,0.45)]"
                 role="menu">
                 <a v-for="item in menu.items" :key="item.label" :href="item.href" role="menuitem"
-                  class="block px-4 py-2 text-sm text-slate-600 transition-colors hover:bg-blue-50 hover:text-blue-700"
-                  @click="openMenuId = null">
-                  {{ item.label }}
+                  class="group block px-5 py-1.5 transition-colors hover:bg-slate-50" @click="openMenuId = null">
+                  <span class="block text-sm font-semibold leading-snug text-slate-900 group-hover:text-blue-700">
+                    {{ item.label }}
+                  </span>
+                  <span class="mt-0.5 block text-xs leading-snug text-slate-400">
+                    {{ item.description }}
+                  </span>
                 </a>
               </div>
             </Transition>
@@ -220,90 +251,63 @@ onUnmounted(() => {
         </button>
       </nav>
     </div>
-    <Transition enter-active-class="transition duration-200 ease-out" enter-from-class="opacity-0 -translate-y-1"
-      enter-to-class="opacity-100 translate-y-0" leave-active-class="transition duration-150 ease-in"
-      leave-from-class="opacity-100" leave-to-class="opacity-0">
-      <div v-if="mobileOpen" :class="[
-        'border-b lg:hidden',
-        isSecondaryHeroActive
-          ? 'border-white/15 bg-[var(--theme-blue,#2a2fff)]'
-          : 'border-slate-200 bg-white',
-      ]">
-        <div class="container-page max-h-[calc(100dvh-4rem)] overflow-y-auto py-3">
-          <a :href="`tel:${phone.tel}`" :class="[
-            'mb-3 flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium sm:hidden',
-            isSecondaryHeroActive
-              ? 'bg-white/10 text-white'
-              : 'bg-blue-50 text-blue-800',
-          ]">
-            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path
-                d="M6.5 3h3l1.5 4-2 1.5c1 2.5 3.5 5 6 6L18 12.5 22 14v3c0 1.5-1 2.5-2.5 2.5C9.5 20 4 14.5 4 6.5 4 5 5 3 6.5 3Z"
-                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-            </svg>
-            {{ phone.display }}
-          </a>
-
-          <a v-for="link in primaryLinks" :key="link.href" :href="link.href" :class="[
-            'block rounded-lg px-3 py-2.5 text-sm font-medium',
-            isSecondaryHeroActive
-              ? 'text-white/90 hover:bg-white/10 hover:text-white'
-              : 'text-slate-700 hover:bg-blue-50 hover:text-blue-700',
-          ]" @click="closeMenus">
-            {{ link.label }}
-          </a>
-
-          <div v-for="menu in navMenus" :key="menu.id" class="mt-0.5">
-            <button type="button" :class="[
-              'flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium',
-              isSecondaryHeroActive
-                ? 'text-white/90 hover:bg-white/10 hover:text-white'
-                : 'text-slate-700 hover:bg-blue-50 hover:text-blue-700',
-            ]" :aria-expanded="mobileOpenMenuId === menu.id" @click="toggleMobileMenu(menu.id)">
-              {{ menu.label }}
-              <svg class="h-4 w-4 transition-transform duration-200"
-                :class="mobileOpenMenuId === menu.id && 'rotate-180'" viewBox="0 0 24 24" fill="none"
+    <Teleport to="body">
+      <div v-if="mobileOpen" class="fixed inset-0 z-[60] lg:hidden" role="dialog" aria-modal="true"
+        aria-label="Site menu">
+        <button type="button" class="absolute inset-0 bg-slate-950/55" aria-label="Close menu" @click="closeMenus" />
+        <aside
+          class="absolute inset-y-0 right-0 flex w-[min(22.5rem,82vw)] flex-col overflow-y-auto bg-[#f7f6f2] shadow-[-16px_0_40px_rgba(15,23,42,0.18)]">
+          <div class="flex items-center justify-end px-3 pt-2">
+            <button type="button" class="rounded-lg p-2 text-slate-800 transition hover:bg-black/5"
+              aria-label="Close menu" @click="closeMenus">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
                 aria-hidden="true">
-                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6" />
               </svg>
             </button>
-            <div v-if="mobileOpenMenuId === menu.id" class="mb-1 ml-3 border-l pl-3"
-              :class="isSecondaryHeroActive ? 'border-white/20' : 'border-slate-200'">
-              <a v-for="item in menu.items" :key="item.label" :href="item.href" :class="[
-                'block rounded-lg px-3 py-2 text-sm',
-                isSecondaryHeroActive
-                  ? 'text-white/75 hover:bg-white/10 hover:text-white'
-                  : 'text-slate-600 hover:bg-blue-50 hover:text-blue-700',
-              ]" @click="closeMenus">
-                {{ item.label }}
-              </a>
-            </div>
           </div>
 
-          <div class="mt-3 flex flex-col gap-2 border-t pt-3"
-            :class="isSecondaryHeroActive ? 'border-white/20' : 'border-slate-200'">
-            <a :href="externalLinks.login" :class="[
-              '!w-full text-sm',
-              isSecondaryHeroActive
-                ? 'inline-flex items-center justify-center rounded-2xl border border-white/40 bg-transparent px-7 py-3.5 font-semibold text-white transition hover:bg-white/10'
-                : 'btn-secondary',
-            ]" @click="closeMenus">Login</a>
-            <a :href="externalLinks.tutorRegistration" :class="[
-              '!w-full text-sm',
-              isSecondaryHeroActive
-                ? 'inline-flex items-center justify-center rounded-2xl border border-white/40 bg-transparent px-7 py-3.5 font-semibold text-white transition hover:bg-white/10'
-                : 'btn-secondary',
-            ]" @click="closeMenus">Become a Tutor</a>
-            <a :href="externalLinks.studentSignup" :class="[
-              '!w-full text-sm',
-              isSecondaryHeroActive
-                ? 'inline-flex items-center justify-center rounded-2xl bg-white px-7 py-3.5 font-semibold text-[var(--theme-blue,#2a2fff)] shadow-sm transition hover:bg-white/90'
-                : 'btn-primary',
-            ]" @click="closeMenus">Book Free Demo</a>
+          <nav class="px-8 pb-8 pt-1" aria-label="Mobile">
+            <section v-for="group in mobileNavGroups" :key="group.heading" class="mb-7 last:mb-0">
+              <h2 class="text-[15px] font-bold tracking-tight text-slate-900">
+                {{ group.heading }}
+              </h2>
+              <ul class="mt-2.5" role="list">
+                <li v-for="item in group.items" :key="item.href">
+                  <a :href="item.href"
+                    class="block py-1.5 pl-4 text-[15px] font-medium text-slate-600 transition hover:text-blue-700"
+                    @click="closeMenus">
+                    {{ item.label }}
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </nav>
+
+          <div class="mt-auto border-t border-slate-200/80 px-6 py-4">
+            <a :href="`tel:${phone.tel}`"
+              class="mb-2.5 flex items-center gap-2 text-sm font-medium text-slate-700 sm:hidden">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M6.5 3h3l1.5 4-2 1.5c1 2.5 3.5 5 6 6L18 12.5 22 14v3c0 1.5-1 2.5-2.5 2.5C9.5 20 4 14.5 4 6.5 4 5 5 3 6.5 3Z"
+                  stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+              </svg>
+              {{ phone.display }}
+            </a>
+            <div class="flex flex-col gap-1.5">
+              <a :href="externalLinks.login"
+                class="inline-flex w-full items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800"
+                @click="closeMenus">Login</a>
+              <a :href="externalLinks.tutorRegistration"
+                class="inline-flex w-full items-center justify-center rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800"
+                @click="closeMenus">Become a Tutor</a>
+              <a :href="externalLinks.studentSignup"
+                class="inline-flex w-full items-center justify-center rounded-full bg-blue-700 px-4 py-2.5 text-sm font-semibold text-white"
+                @click="closeMenus">Book Free Demo</a>
+            </div>
           </div>
-        </div>
+        </aside>
       </div>
-    </Transition>
+    </Teleport>
   </header>
 </template>

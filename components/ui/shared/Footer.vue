@@ -70,6 +70,8 @@ const navLinks = [
   { label: 'Insights Hub', to: '/insights' },
   { label: 'Blogs', to: '/blogs' },
   { label: 'Case studies', to: '/case-studies' },
+  { label: 'News & media', to: '/news' },
+  { label: 'Events & webinars', to: '/events' },
   { label: 'Partner programme', to: '/#partner-programme' },
   { label: 'Channel partner program', to: '/channel-partner' },
   { label: 'Partner investment model', to: '/channel-partner/investment' },

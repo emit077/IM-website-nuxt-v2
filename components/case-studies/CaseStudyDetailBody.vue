@@ -1,10 +1,35 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import type { WebsiteCaseStudy } from '~/types/website-api'
 
-defineProps<{
+const props = defineProps<{
   study: WebsiteCaseStudy
 }>()
+
+function formatScore(value?: string | null) {
+  const raw = value?.trim()
+  if (!raw) return '—'
+  if (/[%+]/.test(raw)) return raw
+  if (/^\d+(\.\d+)?$/.test(raw)) return `${raw}%`
+  return raw
+}
+
+const snapshot = computed(() => {
+  const profile = props.study.student_profile
+  if (!profile) return []
+  return [
+    { label: 'Grade', value: profile.grade, icon: 'mdi:school-outline' },
+    { label: 'Board', value: profile.board, icon: 'mdi:certificate-outline' },
+    { label: 'Subject', value: profile.subject, icon: 'mdi:book-open-page-variant-outline' },
+    {
+      label: 'Starting score',
+      value: formatScore(profile.initial_score),
+      icon: 'mdi:chart-timeline-variant',
+      accent: true,
+    },
+  ]
+})
 </script>
 
 <template>
@@ -41,27 +66,39 @@ defineProps<{
           <span v-if="study.author?.name"> · {{ study.author.name }}</span>
         </p>
 
-        <dl v-if="study.student_profile"
-          class="mt-8 grid gap-4 rounded-[1.5rem] border border-slate-200/80 bg-white px-5 py-5 shadow-soft sm:grid-cols-4 sm:px-6">
-          <div>
-            <dt class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">Grade</dt>
-            <dd class="mt-1 font-display text-[15px] font-bold text-slate-900">{{ study.student_profile.grade }}</dd>
-          </div>
-          <div>
-            <dt class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">Board</dt>
-            <dd class="mt-1 font-display text-[15px] font-bold text-slate-900">{{ study.student_profile.board }}</dd>
-          </div>
-          <div>
-            <dt class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">Subject</dt>
-            <dd class="mt-1 font-display text-[15px] font-bold text-slate-900">{{ study.student_profile.subject }}</dd>
-          </div>
-          <div>
-            <dt class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">Starting score</dt>
-            <dd class="mt-1 font-display text-[15px] font-bold text-slate-900">
-              {{ study.student_profile.initial_score || '—' }}
-            </dd>
-          </div>
-        </dl>
+        <div v-if="study.image"
+          class="mt-8 overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white shadow-soft">
+          <img :src="study.image" :alt="study.title" class="w-full object-cover" />
+        </div>
+
+        <section v-if="snapshot.length" class="mt-8" aria-label="Student snapshot">
+          <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">Student snapshot</p>
+          <dl class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div v-for="item in snapshot" :key="item.label" :class="[
+              'rounded-2xl border px-4 py-4',
+              item.accent
+                ? 'border-emerald-200 bg-emerald-50/80'
+                : 'border-slate-200/80 bg-white shadow-soft',
+            ]">
+              <dt class="flex items-center gap-2">
+                <span :class="[
+                  'grid h-8 w-8 shrink-0 place-items-center rounded-lg',
+                  item.accent ? 'bg-white text-emerald-700' : 'bg-slate-50 text-slate-500',
+                ]" aria-hidden="true">
+                  <Icon :icon="item.icon" class="h-4 w-4" />
+                </span>
+                <span class="text-[11px] font-bold uppercase leading-tight tracking-[0.12em]"
+                  :class="item.accent ? 'text-emerald-700' : 'text-slate-400'">
+                  {{ item.label }}
+                </span>
+              </dt>
+              <dd class="mt-3 font-display text-[17px] font-bold leading-snug tracking-tight"
+                :class="item.accent ? 'text-emerald-900' : 'text-slate-900'">
+                {{ item.value }}
+              </dd>
+            </div>
+          </dl>
+        </section>
 
         <section class="mt-12">
           <h2 class="font-display text-2xl font-bold tracking-tight text-slate-900">The challenge</h2>

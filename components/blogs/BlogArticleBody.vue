@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { splitCareerParagraphs } from '~/composables/useCareerContent'
+import { usePublicAsset } from '~/composables/usePublicAsset'
 import type { WebsiteBlog } from '~/types/website-api'
 
 defineProps<{
@@ -42,8 +43,9 @@ defineProps<{
           <span v-if="blog.author?.designation"> · {{ blog.author.designation }}</span>
         </p>
 
-        <div v-if="blog.image" class="mt-8 overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white shadow-soft">
-          <img :src="blog.image" :alt="blog.title" class="w-full object-cover" />
+        <div class="mt-8 overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-white shadow-soft">
+          <img :src="blog.image || usePublicAsset('/assets/img/insights/personalised-learning.png')"
+            :alt="blog.title" class="aspect-[16/9] w-full object-cover" />
         </div>
 
         <div class="mt-8 space-y-4 text-[15.5px] leading-relaxed text-slate-600">

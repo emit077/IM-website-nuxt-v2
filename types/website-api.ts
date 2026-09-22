@@ -138,3 +138,36 @@ export type WebsiteCaseStudy = {
   testimonial: string
   display_order: number
 }
+
+export type WebsiteNews = {
+  id: number
+  title: string
+  slug: string
+  image: string | null
+  category: string
+  published_on: string
+  location: string | null
+  body: string[]
+  quote: string | null
+  quote_attribution: string | null
+  author: WebsiteContentAuthor | null
+  display_order: number
+}
+
+export type WebsiteEvent = {
+  id: number
+  title: string
+  slug: string
+  image: string | null
+  event_date: string
+  start_time: string | null
+  end_time: string | null
+  mode: string
+  mode_display: string | null
+  venue: string | null
+  audience: string | null
+  overview: string
+  learning_points: string[]
+  register_link: string | null
+  display_order: number
+}
