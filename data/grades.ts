@@ -43,27 +43,27 @@ export type GradeStage = {
 }
 
 export const gradesHero = {
-  badge: 'Grades covered',
-  title: 'Personalised learning from<br class="hidden sm:inline" /> nursery to university',
-  subtitle: 'One mentorship framework. Seven academic stages. Support that grows with the student.',
+  badge: 'Learning library',
+  title: 'Resources built for<br class="hidden sm:inline" /> every grade',
+  subtitle: 'Curriculum-aligned notes, worksheets, and practice packs from Nursery to Class 12.',
   description:
-    'Indian Mentors matches verified tutors to the student’s stage, board, and goals — from first letters and numbers through board exams, entrances, and university work.',
-  caption: 'Structured plans, progress tracking, and a free demo before you commit.',
-  headingId: 'grades-hero-heading',
-  tickerAriaLabel: 'Academic stages covered by Indian Mentors',
+    'Browse grade-wise study material — NCERT solutions, subject notes, and practice sets aligned to the student’s class, board, and exam goals.',
+  caption: 'Notes, worksheets, and practice packs — organised by class and subject.',
+  headingId: 'learning-library-hero-heading',
+  tickerAriaLabel: 'Learning library resources by grade',
   ticker: [
     'Nursery to UKG',
     'Class 1–5',
     'Class 6–8',
-    'Class 9–10 boards',
-    'Class 11–12 streams',
-    'JEE / NEET',
-    'Undergraduate',
-    'Postgraduate',
+    'Class 9–10',
+    'Class 11–12',
+    'NCERT solutions',
+    'Practice packs',
+    'Worksheets',
   ],
   actionBtns: [
-    { label: 'Book Free Demo', href: externalLinks.studentSignup, variant: 'theme-secondary' as const },
-    { label: 'Explore all stages', href: '#grades-covered', variant: 'secondary' as const },
+    { label: 'Browse the library', href: '#grades-covered', variant: 'theme-secondary' as const },
+    { label: 'Book Free Demo', href: externalLinks.studentSignup, variant: 'secondary' as const },
   ],
 }
 
@@ -76,10 +76,10 @@ export const gradesPathway = {
 }
 
 export const gradesExplorer = {
-  badge: 'Grades covered',
-  title: 'What we teach at <span class="text-gradient-brand">each stage</span>',
+  badge: 'Learning library',
+  title: 'Resources for <span class="text-gradient-brand">each stage</span>',
   description:
-    'From nursery to postgraduate, every programme has a clear approach, class-by-class focus, and the outcome we work toward with families.',
+    'From nursery to postgraduate, every stage has grade-aligned notes, worksheets, and practice — plus a clear approach and the outcome we work toward with families.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   approachLabel: 'How we teach',
   goalLabel: 'What we work toward',

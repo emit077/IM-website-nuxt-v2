@@ -299,6 +299,8 @@ export function mapPrimaryContact(
 }
 
 export function mapAuthorisedContacts(items: WebsiteAuthorisedContact[]): PhoneContact[] {
+  // Keep the API array order. Do not sort by id — the endpoint already
+  // returns the display sequence (newest contact first).
   return items
     .map((item) => formatPhone(item.mobile))
     .filter((phone): phone is NonNullable<typeof phone> => Boolean(phone))
@@ -427,7 +429,7 @@ export function useWebsitePrimaryContact() {
   return asyncData
 }
 
-export function useWebsiteAuthorisedContacts(fallback: PhoneContact[] = []) {
+export function useWebsiteAuthorisedContacts() {
   const { fetchWebsiteList } = useWebsiteApi()
 
   const asyncData = useAsyncData(
@@ -436,10 +438,9 @@ export function useWebsiteAuthorisedContacts(fallback: PhoneContact[] = []) {
       const rows = await fetchWebsiteList<WebsiteAuthorisedContact>(
         '/api/website/authorised-contacts/',
       )
-      const mapped = mapAuthorisedContacts(rows)
-      return mapped.length ? mapped : fallback
+      return mapAuthorisedContacts(rows)
     },
-    liveDataOptions(fallback),
+    liveDataOptions([] as PhoneContact[]),
   )
   refreshOnClient('website-authorised-contacts', asyncData.refresh)
   return asyncData

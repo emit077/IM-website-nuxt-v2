@@ -2,7 +2,6 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import { externalLinks } from '~/data/external-links'
 
 type GradeId =
   | '12pass'
@@ -612,6 +611,29 @@ const libraryByGrade: Record<GradeId, GradeLibrary> = {
 
 const selected = ref<GradeId>('10')
 
+const libraryStageByGrade: Record<GradeId, string> = {
+  nursery: 'pre-primary',
+  lkg: 'pre-primary',
+  ukg: 'pre-primary',
+  '1': 'primary',
+  '2': 'primary',
+  '3': 'primary',
+  '4': 'primary',
+  '5': 'primary',
+  '6': 'middle',
+  '7': 'middle',
+  '8': 'middle',
+  '9': 'secondary',
+  '10': 'secondary',
+  '11': 'senior',
+  '12': 'senior',
+  '12pass': 'university',
+}
+
+const libraryHref = computed(
+  () => `/learning-library#${libraryStageByGrade[selected.value] ?? 'grades-covered'}`,
+)
+
 const current = computed(() => libraryByGrade[selected.value])
 
 const featured = computed(() => current.value.featured)
@@ -713,7 +735,7 @@ const headerContent = {
           </button>
         </div>
         <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:grid-rows-2">
-          <a :href="externalLinks.studentSignup"
+          <NuxtLink :to="libraryHref"
             class="group relative flex min-h-[280px] flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 via-blue-500 to-sky-400 p-6 text-white shadow-lg shadow-blue-600/30 ring-1 ring-white/20 transition hover:brightness-[1.03] hover:shadow-xl sm:col-span-2 sm:min-h-[260px] lg:col-span-1 lg:row-span-2 lg:min-h-0"
             v-motion :initial="{ opacity: 0, y: 12 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 80 } }">
@@ -782,8 +804,8 @@ const headerContent = {
                   stroke-linejoin="round" />
               </svg>
             </span>
-          </a>
-          <a v-for="(card, i) in gridCards" :key="`${selected}-${card.id}`" :href="externalLinks.studentSignup"
+          </NuxtLink>
+          <NuxtLink v-for="(card, i) in gridCards" :key="`${selected}-${card.id}`" :to="libraryHref"
             class="group flex flex-col rounded-2xl border border-slate-200/90 bg-white p-5 shadow-[0_2px_16px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md"
             v-motion :initial="{ opacity: 0, y: 10 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450, delay: 120 + i * 70 } }">
@@ -802,13 +824,13 @@ const headerContent = {
             </p>
             <span
               class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition group-hover:gap-1.5">
-              View
+              View more
               <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </span>
-          </a>
+          </NuxtLink>
         </div>
       </div>
     </div>

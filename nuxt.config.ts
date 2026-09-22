@@ -32,6 +32,10 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  routeRules: {
+    '/grades': { redirect: { to: '/learning-library', statusCode: 301 } },
+  },
+
   /** Prerender to `.output/public` for static hosts (`nuxt generate`). */
   nitro: {
     preset: 'static',
@@ -41,6 +45,7 @@ export default defineNuxtConfig({
       routes: [
         '/about',
         '/academic-coverage',
+        '/learning-library',
         '/grades',
         '/student-parent',
         '/student-parent/subscription',

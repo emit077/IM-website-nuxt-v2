@@ -2,8 +2,8 @@
 import { computed, reactive, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
+import PhoneCountryInput from '~/components/ui/PhoneCountryInput.vue'
 import {
-  authorisedPhoneNumbers,
   emailSupport,
   contactInquirySection,
   inquiryForm,
@@ -12,11 +12,13 @@ import {
   whatsappSupport,
   workingHours,
 } from '~/data/contact'
+import type { MasterCountry } from '~/types/master-api'
+import { validateNationalMobile } from '~/utils/phone'
 
 const toast = useToast()
 
 const { data: primaryContact } = await useWebsitePrimaryContact()
-const { data: authorisedLines } = await useWebsiteAuthorisedContacts([...authorisedPhoneNumbers])
+const { data: authorisedLines } = await useWebsiteAuthorisedContacts()
 
 const phone = computed(() => primaryContact.value?.phone ?? phoneSupport.number)
 const email = computed(() => primaryContact.value?.email ?? emailSupport.address)
@@ -40,6 +42,7 @@ const form = reactive({
   helpWith: '',
   message: '',
 })
+const country = ref<MasterCountry | null>(null)
 
 const errors = reactive<Record<string, boolean>>({})
 const submitting = ref(false)
@@ -77,7 +80,7 @@ function isValidEmail(value: string) {
 }
 
 function isValidPhone(value: string) {
-  return value.replace(/\D/g, '').length >= 10
+  return !validateNationalMobile(value, country.value)
 }
 
 function validate() {
@@ -97,6 +100,7 @@ function resetForm() {
   form.stakeholder = ''
   form.helpWith = ''
   form.message = ''
+  country.value = null
 }
 
 function onSubmit() {
@@ -215,9 +219,12 @@ const directContacts = computed(() => [
                     <label for="iq-phone" class="mb-1.5 block text-xs text-slate-400">
                       Mobile Number <span class="text-rose-400" aria-hidden="true">*</span>
                     </label>
-                    <input id="iq-phone" v-model="form.phone" type="tel" inputmode="tel" autocomplete="tel"
-                      placeholder="+91 00000 00000" required :aria-invalid="errors.phone" :class="fieldClass('phone')"
-                      @input="errors.phone = false" />
+                    <PhoneCountryInput v-model="form.phone" v-model:country="country" input-id="iq-phone"
+                      variant="filled" required :invalid="errors.phone" @update:model-value="errors.phone = false"
+                      @update:country="errors.phone = false" />
+                    <p v-if="errors.phone" class="mt-1 text-xs text-rose-600">
+                      {{ validateNationalMobile(form.phone, country) }}
+                    </p>
                   </div>
 
                   <div class="sm:col-span-2">
@@ -302,7 +309,7 @@ const directContacts = computed(() => [
           </div>
         </div>
       </div>
-      <div v-motion :initial="{ opacity: 0, y: 16 }"
+      <div v-if="authorisedLines?.length" v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 120 } }"
         aria-labelledby="authorised-numbers-heading">
 

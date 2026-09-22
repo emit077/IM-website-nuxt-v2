@@ -488,7 +488,7 @@ export const complianceSection = {
   badge: 'Tutor Verification & Screening',
   title: 'Building Trust Through Responsible Tutor Selection',
   description:
-    'Our tutor onboarding process is designed to support academic credibility, student safety, professional accountability, and a trusted learning environment.',
+    'Our tutor onboarding supports academic credibility, student safety, and trusted learning.',
   note: 'Responsible onboarding helps build a stronger tutoring ecosystem for students, families, and educators.',
   classes: '!px-0 !py-0',
   cta: { label: 'View Verification Standards', href: '#tutor-standards' },
@@ -498,32 +498,32 @@ export const complianceChecks = [
   {
     iconMdi: 'mdi:card-account-details-outline',
     title: '01 — Identity',
-    description: 'Identity and personal information verification.',
+    description: 'Identity and personal information verification for every tutor profile.',
   },
   {
     iconMdi: 'mdi:certificate-outline',
     title: '02 — Qualification',
-    description: 'Review of relevant academic qualifications.',
+    description: 'Review of relevant academic qualifications for the subjects taught.',
   },
   {
     iconMdi: 'mdi:map-marker-check-outline',
     title: '03 — Address',
-    description: 'Applicable address verification.',
+    description: 'Applicable address verification to support local and in-person tutoring.',
   },
   {
     iconMdi: 'mdi:briefcase-check-outline',
     title: '04 — Experience',
-    description: 'Review of relevant teaching experience.',
+    description: 'Review of teaching experience for classroom, home, and online.',
   },
   {
     iconMdi: 'mdi:lightbulb-on-outline',
     title: '05 — Expertise',
-    description: 'Assessment of subject and academic expertise.',
+    description: 'Assessment of subject knowledge and academic expertise for teaching.',
   },
   {
     iconMdi: 'mdi:file-document-outline',
     title: '06 — Documentation',
-    description: 'Review of applicable supporting documents.',
+    description: 'Review of applicable supporting documents required for verification.',
   },
   {
     iconMdi: 'mdi:account-check-outline',
@@ -642,7 +642,7 @@ export const policyPoints = [
   },
   {
     iconMdi: 'mdi:shield-lock-outline',
-    title: 'Respect student and family privacy',
+    title: 'Respect student privacy',
     description: 'Confidential handling of student and family data.',
   },
   {
@@ -667,12 +667,12 @@ export const policyPoints = [
   },
   {
     iconMdi: 'mdi:emoticon-happy-outline',
-    title: 'Support a positive learning environment',
+    title: 'Positive learning environment',
     description: 'Safe, encouraging, and constructive mentoring.',
   },
   {
     iconMdi: 'mdi:file-document-outline',
-    title: 'Follow applicable policies and agreements',
+    title: 'Follow policies & agreements',
     description: 'Compliance with current tutor terms and platform policies.',
   },
 ]
@@ -855,7 +855,7 @@ export const tutorResources = {
     },
     {
       title: 'Demo Class Guidance',
-      description: 'Prepare for effective introductory tutoring sessions.',
+      description: 'Prepare for effective introductory tutoring sessions with students.',
       iconMdi: 'mdi:notebook-outline',
       href: '#how-it-works',
     },
@@ -867,13 +867,13 @@ export const tutorResources = {
     },
     {
       title: 'Communication Guidance',
-      description: 'Follow professional communication practices.',
+      description: 'Follow professional communication practices with students and parents.',
       iconMdi: 'mdi:message-text-outline',
       href: '#tutor-standards',
     },
     {
       title: 'Teaching Resources',
-      description: 'Explore relevant tutoring and academic resources.',
+      description: 'Explore relevant tutoring and academic resources for your sessions.',
       iconMdi: 'mdi:school-outline',
       href: '/academic-coverage',
     },

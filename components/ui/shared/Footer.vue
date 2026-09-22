@@ -63,7 +63,7 @@ const navLinks = [
   { label: 'Contact us', to: '/contact' },
   { label: 'Our services', to: '/services' },
   { label: 'Special educators', to: '/services/special-educators' },
-  { label: 'Learning library', to: '/#learning-library' },
+  { label: 'Learning library', to: '/learning-library' },
   { label: 'Find tutors', to: '/#tutors' },
   { label: 'How it works', to: '/#how-it-works' },
   { label: 'Success stories', to: '/success-stories' },

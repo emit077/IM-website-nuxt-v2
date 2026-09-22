@@ -53,7 +53,8 @@ Provides instant visibility of the student's academic activities and tutoring sc
 
             <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap" v-motion :initial="{ opacity: 0, y: 10 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 120 } }">
-              <a :href="externalLinks.studentSignup" class="btn-primary ripple group w-full sm:w-auto" @mousemove="rippleHandler">
+              <a :href="externalLinks.studentSignup" class="btn-primary ripple group w-full sm:w-auto"
+                @mousemove="rippleHandler">
                 <IconCalendar class="h-4 w-4 shrink-0 opacity-95" />
                 Book Free Demo
                 <IconArrowRight
@@ -78,7 +79,7 @@ Provides instant visibility of the student's academic activities and tutoring sc
                   <path d="M9 12h6M9 16h4" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Track Attendance</p>
+              <p class="text-[15px] font-semibold leading-snug text-slate-900">Track<br>Attendance</p>
             </li>
 
             <li v-motion :initial="{ opacity: 0, y: 12 }"
@@ -94,7 +95,7 @@ Provides instant visibility of the student's academic activities and tutoring sc
                   <path d="m9 16 2 2 4-4" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Scheduled Sessions</p>
+              <p class="text-[15px] font-semibold leading-snug text-slate-900">Scheduled<br>Sessions</p>
             </li>
 
             <li v-motion :initial="{ opacity: 0, y: 12 }"
@@ -109,7 +110,7 @@ Provides instant visibility of the student's academic activities and tutoring sc
                   <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Homework &amp; Notes</p>
+              <p class="text-[15px] font-semibold leading-snug text-slate-900">Homework &amp;<br>Notes</p>
             </li>
 
             <li v-motion :initial="{ opacity: 0, y: 12 }"
@@ -124,7 +125,7 @@ Provides instant visibility of the student's academic activities and tutoring sc
                   <path d="M7 16v-5M12 16V8M17 16v-3" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Performance Analytics</p>
+              <p class="text-[15px] font-semibold leading-snug text-slate-900">Performance<br>Analytics</p>
             </li>
 
             <li v-motion :initial="{ opacity: 0, y: 12 }"
@@ -139,7 +140,7 @@ Provides instant visibility of the student's academic activities and tutoring sc
                   <path d="M2 10h20" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Fee &amp; Payments</p>
+              <p class="text-[15px] font-semibold leading-snug text-slate-900">Fee &amp;<br>Payments</p>
             </li>
 
             <li v-motion :initial="{ opacity: 0, y: 12 }"
@@ -154,7 +155,7 @@ Provides instant visibility of the student's academic activities and tutoring sc
                   <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Real-Time Notifications</p>
+              <p class="text-[15px] font-semibold leading-snug text-slate-900">Real-Time<br>Notifications</p>
             </li>
           </ul>
         </div>

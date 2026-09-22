@@ -21,8 +21,7 @@ const brochureHref = computed(
       <div class="mt-10 grid gap-5 lg:grid-cols-12 lg:gap-6">
         <article
           class="relative flex h-full flex-col overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 p-6 text-white shadow-[0_24px_60px_-24px_rgba(29,78,216,0.5)] sm:p-8 lg:col-span-5"
-          v-motion :initial="{ opacity: 0, y: 14 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
+          v-motion :initial="{ opacity: 0, y: 14 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
           <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-100/85">
             {{ tutorResources.brochure.badge }}
           </p>
@@ -59,7 +58,7 @@ const brochureHref = computed(
                 <Icon :icon="item.iconMdi" class="h-5 w-5" />
               </span>
               <h3 class="mt-4 font-display text-[15px] font-bold text-slate-900">{{ item.title }}</h3>
-              <p class="mt-2 text-[13px] leading-relaxed text-slate-600">{{ item.description }}</p>
+              <p class="mt-2  min-h-[2.6em] text-[13px] leading-relaxed text-slate-600">{{ item.description }}</p>
             </a>
           </li>
         </ul>

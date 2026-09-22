@@ -13,7 +13,7 @@ const secondaryHero: SecondaryHeroContent = {
   ticker: gradesHero.ticker,
   headingId: gradesHero.headingId,
   tickerAriaLabel: gradesHero.tickerAriaLabel,
-  patternId: 'grades-hero-waves',
+  patternId: 'learning-library-hero-waves',
 }
 </script>
 
@@ -21,7 +21,7 @@ const secondaryHero: SecondaryHeroContent = {
   <SecondaryHeroLayout :hero-content="secondaryHero">
     <template #title>
       <h1
-        id="grades-hero-heading"
+        id="learning-library-hero-heading"
         class="mt-5 capitalize font-display text-[2.4rem] font-black leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl lg:text-[3.75rem] xl:text-[4.25rem]"
         v-motion
         :initial="{ opacity: 0, y: 16 }"

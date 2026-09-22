@@ -23,13 +23,13 @@ import { policyPoints, tutorPolicySection } from '~/data/tutors'
         <li v-for="(point, i) in policyPoints" :key="point.title" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 45, duration: 400 } }">
           <article
-            class="group flex h-full flex-col rounded-[1.5rem] border border-slate-200/80 bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card sm:p-6">
+            class="group flex h-full flex-col rounded-[1.5rem] border border-slate-200/80 bg-white p-5 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card sm:p-6 lg:px-4 lg:py-5 xl:p-6">
             <span
               class="grid h-11 w-11 place-items-center rounded-2xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition group-hover:bg-blue-600 group-hover:text-white"
               aria-hidden="true">
               <Icon :icon="point.iconMdi" class="h-5 w-5" />
             </span>
-            <h3 class="mt-4 font-display text-[15px] font-bold leading-snug text-slate-900">
+            <h3 class="mt-4 whitespace-nowrap font-display text-[15px] font-bold leading-none tracking-tight text-slate-900 lg:text-[13px] xl:text-[15px]">
               {{ point.title }}
             </h3>
             <p class="mt-2 line-clamp-2 text-[13px] leading-relaxed text-slate-500">

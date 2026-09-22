@@ -469,18 +469,6 @@ export const alsoServing = {
   ] satisfies ServiceZone[],
 } as const
 
-/** All authorised Indian Mentors support lines (excluding the primary support line). */
-export const authorisedPhoneNumbers = [
-  { display: '+91 73895 63564', tel: '+917389563564', wa: '917389563564' },
-  { display: '+91 78690 27983', tel: '+917869027983', wa: '917869027983' },
-  { display: '+91 70245 68193', tel: '+917024568193', wa: '917024568193' },
-  { display: '+91 91791 84304', tel: '+919179184304', wa: '919179184304' },
-  { display: '+91 74152 63564', tel: '+917415263564', wa: '917415263564' },
-  { display: '+91 74153 63564', tel: '+917415363564', wa: '917415363564' },
-  { display: '+91 74159 13564', tel: '+917415913564', wa: '917415913564' },
-  { display: '+91 74159 23564', tel: '+917415923564', wa: '917415923564' },
-] as const satisfies readonly PhoneContact[]
-
 export type FindUsOffice = {
   id: string
   kind: string

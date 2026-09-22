@@ -36,8 +36,8 @@ export const gradesSection = {
   description:
     'Structured tutoring from early childhood to postgraduate — adapted to each student’s level, pace, and goals.',
   classes: '!px-0 !py-0',
-  viewAllLabel: 'View all grades & programmes',
-  viewAllHref: '/grades',
+  viewAllLabel: 'View the learning library',
+  viewAllHref: '/learning-library',
   learnMoreLabel: 'Learn more',
   consultationCta: {
     label: 'Book Free Consultation',

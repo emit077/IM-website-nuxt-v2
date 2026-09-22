@@ -99,6 +99,7 @@ export type LeadershipProfile = {
   image?: string
   linkedin?: string
   department?: string
+  credentials?: string
   message?: string
   inTheirWords: string[]
   initials: string
@@ -110,7 +111,8 @@ export const aboutLeadership: LeadershipProfile[] = [
   {
     id: 'founder',
     name: 'Afroj Aalam',
-    role: 'Founder & CEO',
+    role: 'Founder & CEO, Indian Mentors',
+    credentials: 'Engineer | Mentor | Entrepreneur | Educationist',
     image: '/assets/img/about/founder-afroj.png',
     bio: 'Leads strategy, governance, and long-term growth — keeping mentorship credible, measurable, and scalable across every city Indian Mentors serves.',
     inTheirWords: [

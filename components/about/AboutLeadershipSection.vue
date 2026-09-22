@@ -11,12 +11,24 @@ const founderHighlights = [
   { icon: 'solar:graph-up-linear', label: 'Strategy & Vision' },
   { icon: 'solar:settings-linear', label: 'Operations & Governance' },
   { icon: 'solar:flag-2-linear', label: 'Growth & Impact' },
+  { icon: 'solar:users-group-rounded-linear', label: 'People & Culture' },
 ] as const
 
 const { data: team } = await useWebsiteTeam(aboutLeadership)
 const leaders = computed(() => (team.value?.length ? team.value : aboutLeadership))
 
+const founderProfile = aboutLeadership.find((person) => person.id === 'founder')
 const featured = computed(() => leaders.value.find((person) => person.id === 'founder') ?? leaders.value[0])
+const isFounderCard = computed(() => featured.value?.id === 'founder')
+const featuredName = computed(() =>
+  isFounderCard.value ? founderProfile?.name || featured.value?.name : featured.value?.name,
+)
+const featuredRoleLine = computed(() =>
+  isFounderCard.value ? founderProfile?.role || featured.value?.role : featured.value?.role,
+)
+const featuredCredentials = computed(() =>
+  isFounderCard.value ? founderProfile?.credentials : undefined,
+)
 const gridLeaders = computed(() => leaders.value.filter((person) => person.id !== featured.value?.id))
 
 const featuredBio = computed(() => summary(featured.value))
@@ -76,28 +88,33 @@ function onPortraitError(event: Event) {
         <div class="grid gap-4 lg:grid-cols-12" aria-label="Founder spotlight">
           <article
             class="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-[#0F174A] via-brand-primary to-[#60A5FA] lg:col-span-4"
-            v-motion
-            :initial="{ opacity: 0, y: 14 }"
+            v-motion :initial="{ opacity: 0, y: 14 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40, duration: 420 } }">
             <img :src="portraitSrc(featured)" :alt="featured.name"
               class="absolute inset-0 h-full w-full transition duration-700" :class="featuredPortraitClass(featured)"
               loading="lazy" decoding="async" @error="onPortraitError" />
+            <div
+              class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07122b] via-[#07122b]/75 to-transparent px-5 pb-5 pt-20 text-center">
+              <h3 class="font-display text-2xl font-bold tracking-tight text-white">
+                {{ featuredName }}
+              </h3>
+              <p class="mt-1 text-[13px] font-semibold leading-snug text-white/90">
+                {{ featuredRoleLine }}
+              </p>
+              <p v-if="featuredCredentials" class="mt-1 text-[11px] font-medium leading-snug text-white/75">
+                {{ featuredCredentials }}
+              </p>
+            </div>
           </article>
 
           <article
-            class="relative overflow-hidden rounded-[1.6rem] bg-white px-6 py-7 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.28)] sm:px-8 sm:py-8 lg:col-span-5"
+            class="relative overflow-hidden rounded-[1.6rem] bg-white px-6 py-7 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.28)] sm:px-8 sm:py-12 lg:col-span-5"
             v-motion :initial="{ opacity: 0, y: 14 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80, duration: 420 } }">
             <Icon icon="mdi:format-quote-close"
               class="absolute right-6 top-5 h-12 w-12 text-slate-100 sm:right-8 sm:h-14 sm:w-14" aria-hidden="true" />
 
-            <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-slate-400">
-              {{ featured.role }}
-            </p>
-            <h3 class="mt-2 font-display text-3xl font-bold tracking-tight text-slate-900">
-              {{ featured.name }}
-            </h3>
-            <p class="mt-3 font-display text-lg font-medium leading-snug text-slate-800">
+            <p class="font-display text-lg font-medium leading-snug text-slate-800">
               “{{ featuredPullQuote }}”
             </p>
             <p v-if="featuredBio" class="mt-3 text-[14px] leading-relaxed text-slate-500">

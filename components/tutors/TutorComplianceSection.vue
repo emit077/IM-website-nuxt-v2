@@ -7,8 +7,7 @@ import { complianceChecks, complianceSection } from '~/data/tutors'
 <template>
   <section
     class="relative scroll-mt-20 overflow-hidden bg-gradient-to-br from-blue-600 via-blue-800 to-indigo-900 section-py"
-    id="tutor-verification"
-    aria-labelledby="compliance-heading">
+    id="tutor-verification" aria-labelledby="compliance-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
     <div aria-hidden="true"
@@ -44,9 +43,11 @@ import { complianceChecks, complianceSection } from '~/data/tutors'
                   aria-hidden="true">
                   <Icon :icon="check.iconMdi" class="h-5 w-5" />
                 </span>
-                <div class="min-w-0">
+                <div class="w-full">
                   <h3 class="font-display truncate text-[15px] font-bold text-white">{{ check.title }}</h3>
-                  <p class="mt-1 line-clamp-2 text-[13px] leading-relaxed text-blue-100/75">{{ check.description }}</p>
+                  <p class="mt-1 line-clamp-2 min-h-[2.6em]  text-[13px] leading-relaxed text-blue-100/75">
+                    {{ check.description }}
+                  </p>
                 </div>
               </article>
             </li>

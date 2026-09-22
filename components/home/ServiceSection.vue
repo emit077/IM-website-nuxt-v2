@@ -145,27 +145,31 @@ const services: ServiceCard[] = [
                             Most chosen
                         </span> -->
                         <span
-                            class=" absolute left-4 top-4 inline-flex items-center rounded-full border border-black/20 bg-black/50 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.04em] text-white backdrop-blur-md">
+                            class="absolute left-4 top-4 z-[2] inline-flex items-center rounded-full border border-black/20 bg-black/50 px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.04em] text-white backdrop-blur-md"
+                            :class="service.size === 'cta' ? 'left-5 top-5 sm:left-8 sm:top-6' : ''">
                             {{ service.chip }}
                         </span>
 
-                        <span v-if="service.icon"
-                            class="absolute left-4 top-4 z-[2] grid h-12 w-12 place-items-center rounded-2xl bg-white/15 ring-1 ring-inset ring-white/25 backdrop-blur-sm sm:left-6 sm:top-1/2 sm:-translate-y-1/2">
-                            <img :src="usePublicAsset(service.icon)" alt="" class="h-6 w-6" width="24" height="24" />
-                        </span>
-
-                        <div class="service-content relative z-[1] mt-auto flex w-full flex-col items-start px-5 pb-5 pt-5 align-middle"
+                        <div class="service-content relative z-[1] mt-auto flex w-full flex-col items-start px-5 pb-5 pt-5"
                             :class="service.size === 'cta'
-                                ? 'service-content--cta sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:py-7 sm:pl-24 sm:pr-8'
+                                ? 'service-content--cta !mt-0 flex-1 justify-end gap-4 pt-14 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:px-8 sm:pb-6 sm:pt-16'
                                 : ''">
-                            <div class="service-copy flex min-w-0 flex-col items-middle align-middle">
-                                <h3 class="font-display text-[1rem] font-bold uppercase leading-snug text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
-                                    :class="service.size === 'cta' ? 'sm:text-[1.35rem]' : ''" v-html="service.title">
-                                </h3>
-                                <p class="mt-1.5 text-sm font-semibold leading-relaxed text-white/80"
-                                    :class="service.size === 'cta' ? 'sm:max-w-2xl sm:text-sm' : ''">
-                                    {{ service.hook }}
-                                </p>
+                            <div class="flex min-w-0 items-center gap-4"
+                                :class="service.size === 'cta' ? 'sm:flex-1 sm:gap-5' : 'contents'">
+                                <span v-if="service.icon"
+                                    class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/15 ring-1 ring-inset ring-white/25 backdrop-blur-sm">
+                                    <img :src="usePublicAsset(service.icon)" alt="" class="h-6 w-6" width="24"
+                                        height="24" />
+                                </span>
+                                <div class="service-copy flex min-w-0 flex-col">
+                                    <h3 class="font-display text-[1rem] font-bold uppercase leading-snug text-white [text-shadow:0_8px_18px_rgba(15,23,42,0.35)]"
+                                        :class="service.size === 'cta' ? 'sm:text-[1.35rem]' : ''" v-html="service.title">
+                                    </h3>
+                                    <p class="mt-1.5 text-sm font-semibold leading-relaxed text-white/80"
+                                        :class="service.size === 'cta' ? 'sm:max-w-2xl sm:text-sm' : ''">
+                                        {{ service.hook }}
+                                    </p>
+                                </div>
                             </div>
                             <span
                                 class="service-cta inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-[0.8rem] font-bold tracking-tight text-indigo-700 shadow-[0_10px_22px_-10px_rgba(15,23,42,0.55)]"
