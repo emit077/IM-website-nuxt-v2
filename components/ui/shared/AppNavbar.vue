@@ -34,8 +34,6 @@ const navMenus = [
       { label: 'Hire for Institute', href: '/institutions', description: 'Teacher recruitment' },
       { label: 'Career', href: '/careers', description: 'Join our team' },
       { label: 'Insights Hub', href: '/insights', description: 'Company insights' },
-      { label: 'News & Media', href: '/news', description: 'Press & announcements' },
-      { label: 'Events & Webinars', href: '/events', description: 'Live sessions' },
       { label: 'FAQ', href: '/faq', description: 'Common questions' },
     ],
   },
@@ -65,8 +63,6 @@ const mobileNavGroups = [
     heading: 'Resources',
     items: [
       { label: 'Insights Hub', href: '/insights' },
-      { label: 'News & Media', href: '/news' },
-      { label: 'Events & Webinars', href: '/events' },
       { label: 'Why Choose', href: '/why-choose' },
       { label: 'FAQ', href: '/faq' },
     ],

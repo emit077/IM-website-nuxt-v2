@@ -281,18 +281,18 @@ async function onSubmitSignIn() {
 
       <!-- Trust bar -->
       <div
-        class="mt-10 rounded-2xl border border-slate-200/70 bg-white/80 px-4 py-5 shadow-soft backdrop-blur-sm sm:mt-12 sm:px-6"
+        class="mt-10 rounded-2xl border border-slate-200/70 bg-white/80 px-4 py-5 shadow-soft backdrop-blur-sm sm:mt-12 sm:px-5 lg:px-6"
         v-motion :initial="{ opacity: 0, y: 12 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 160 } }">
-        <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-2" role="list">
-          <li v-for="point in enrollmentTrustPoints" :key="point.id" class="flex items-start gap-3 px-1 sm:px-2">
+        <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:flex lg:items-center lg:justify-between lg:gap-4" role="list">
+          <li v-for="point in enrollmentTrustPoints" :key="point.id" class="flex items-center gap-2.5 px-1 lg:px-0">
             <span
-              class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-slate-50 text-slate-700 ring-1 ring-slate-100">
+              class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-slate-50 text-slate-700 ring-1 ring-slate-100">
               <Icon :icon="point.iconMdi" class="h-5 w-5" aria-hidden="true" />
             </span>
-            <div class="min-w-0">
-              <p class="font-display text-[14px] font-bold text-slate-900">{{ point.title }}</p>
-              <p class="mt-0.5 text-[12.5px] leading-snug text-slate-500">{{ point.description }}</p>
+            <div>
+              <p class="font-display text-[14px] font-bold text-slate-900 lg:whitespace-nowrap">{{ point.title }}</p>
+              <p class="mt-0.5 text-[12px] leading-snug text-slate-500 lg:whitespace-nowrap">{{ point.description }}</p>
             </div>
           </li>
         </ul>

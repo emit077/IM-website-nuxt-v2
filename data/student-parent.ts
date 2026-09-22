@@ -233,7 +233,7 @@ export const enrollmentTrustPoints = [
     id: 'support',
     iconMdi: 'mdi:headset',
     title: 'Expert Support',
-    description: 'Counsellors ready whenever you need help.',
+    description: 'Counsellors ready when you need help.',
   },
   {
     id: 'commitment',
