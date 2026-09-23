@@ -26,8 +26,8 @@ import { whyChooseConversionStrip } from '~/data/why-choose'
             </p>
           </div>
           <div class="why-choose-conversion-ctas flex w-full shrink-0 flex-col gap-3 lg:max-w-xs lg:w-80">
-            <ActionBtn v-for="cta in whyChooseConversionStrip.ctas" :key="cta.label" :variant="cta.variant"
-              :href="cta.href" :label="cta.label" />
+            <ActionBtn v-for="cta in whyChooseConversionStrip.ctas" :key="cta.label" class="!w-full"
+              :variant="cta.variant" :href="cta.href" :label="cta.label" />
           </div>
         </div>
       </div>

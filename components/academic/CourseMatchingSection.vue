@@ -69,7 +69,7 @@ function isLightText(tone: StepTone) {
           </p>
         </div>
 
-        <ul class="mx-auto mt-5 grid grid-cols-2 gap-2.5 sm:mt-6 sm:grid-cols-4" role="list">
+        <ul class="mx-auto mt-5 grid grid-cols-1 gap-2.5 sm:mt-6 sm:grid-cols-4" role="list">
           <li v-for="(item, i) in criteria" :key="item.label" class="param-chip group"
             :class="`param-chip--${paramTones[i % paramTones.length]}`" v-motion :initial="{ opacity: 0, y: 8 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 35, duration: 340 } }">
@@ -108,8 +108,8 @@ function isLightText(tone: StepTone) {
       <div
         class="mt-10 overflow-hidden rounded-[24px] border border-blue-200/70 bg-gradient-to-br from-blue-700 via-blue-600 to-sky-600 px-5 py-6 shadow-[0_18px_40px_-24px_rgba(37,99,235,0.55)] sm:mt-12 sm:px-8 sm:py-7"
         v-motion :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
-        <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-          <div class="min-w-0">
+        <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div class="w-full ">
             <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-100">
               Ready to get matched?
             </p>
@@ -120,13 +120,13 @@ function isLightText(tone: StepTone) {
               {{ courseMatchingSection.supporting }}
             </p>
           </div>
-          <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a :href="courseMatchingSection.ctaHref" class="theme-btn-lime">
+          <div class="flex flex-col gap-3 items-end justify-end align-right md:w-auto md:flex-row md:flex-wrap">
+            <a :href="courseMatchingSection.ctaHref" class="theme-btn-lime w-full justify-center md:w-auto">
               {{ courseMatchingSection.ctaLabel }}
               <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
             </a>
             <a :href="courseMatchingSection.secondaryCtaHref"
-              class="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/40 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-white/10">
+              class="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/40 px-5 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-white/10 md:w-auto">
               <Icon icon="mdi:calendar-account-outline" class="h-4 w-4" aria-hidden="true" />
               {{ courseMatchingSection.secondaryCtaLabel }}
             </a>

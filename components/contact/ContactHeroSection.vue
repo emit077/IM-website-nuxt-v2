@@ -54,21 +54,15 @@ function collageSrc(city: { image: string }) {
       class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-blue-50/70 to-transparent" />
 
     <div class="container-page section-py">
-      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-        <HeroHeader variant="hero" heading-id="contact-hero-heading" :badge="heroContent.badge"
-          :title="heroContent.title" :subtitle="heroContent.subtitle" :description="heroContent.description"
-          :content-class="heroContent.contentClass">
-          <div class="flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
-            :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }">
-            <ActionBtn variant="primary" :label="contactHero.primaryCta.label" icon="mdi:phone-outline"
-              :href="primaryCtaHref" />
-            <ActionBtn variant="secondary" :label="contactHero.secondaryCta.label" icon="mdi:map-marker-radius-outline"
-              :href="contactHero.secondaryCta.href"
-              icon-wrapper-class="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white" />
-          </div>
-        </HeroHeader>
+      <div class="grid items-center gap-8 lg:grid-cols-2 lg:items-start lg:gap-14">
+        <div class="lg:col-start-1 lg:row-start-1">
+          <HeroHeader variant="hero" heading-id="contact-hero-heading" :badge="heroContent.badge"
+            :title="heroContent.title" :subtitle="heroContent.subtitle" :description="heroContent.description"
+            :content-class="heroContent.contentClass" />
+        </div>
 
-        <div class="relative mx-auto w-full max-w-md lg:max-w-none" v-motion :initial="{ opacity: 0, x: 20 }"
+        <div class="relative mx-auto w-full max-w-md lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none" v-motion
+          :initial="{ opacity: 0, x: 20 }"
           :enter="{ opacity: 1, x: 0, transition: { duration: 600, delay: 200, ease: [0.22, 1, 0.36, 1] } }">
           <div aria-hidden="true"
             class="pointer-events-none absolute -inset-2 rounded-[1.35rem] bg-gradient-to-br from-blue-100/50 via-indigo-50/30 to-sky-50/40 blur-sm" />
@@ -106,6 +100,16 @@ function collageSrc(city: { image: string }) {
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="flex flex-col gap-3 lg:col-start-1 lg:row-start-2 xl:flex-row xl:gap-4" v-motion
+          :initial="{ opacity: 0, y: 16 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }">
+          <ActionBtn class="!w-full xl:!w-auto" variant="primary" :label="contactHero.primaryCta.label"
+            icon="mdi:phone-outline" :href="primaryCtaHref" />
+          <ActionBtn class="!w-full xl:!w-auto" variant="secondary" :label="contactHero.secondaryCta.label"
+            icon="mdi:map-marker-radius-outline" :href="contactHero.secondaryCta.href"
+            icon-wrapper-class="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white" />
         </div>
       </div>
 

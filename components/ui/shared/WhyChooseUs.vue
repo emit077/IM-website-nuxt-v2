@@ -156,15 +156,23 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
         </div>
       </div>
 
-      <div v-else class="grid gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10">
-        <div class="lg:col-span-4 lg:h-full" v-motion :initial="{ opacity: 0, y: 18 }"
+      <div v-else class="grid gap-5 sm:gap-6 xl:grid-cols-12 xl:items-stretch xl:gap-10">
+        <div v-if="props.showHeader" class="xl:col-span-8 xl:col-start-5 xl:row-start-1" v-motion
+          :initial="{ opacity: 0, y: 16 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 70, duration: 520 } }">
+          <CardHeader :heading-id="props.headingId" align="left" :badge="props.badge" :title="props.title"
+            :description="props.description" :classes="headerClass" />
+        </div>
+
+        <div class="xl:col-span-4 xl:col-start-1 xl:row-start-1 xl:h-full"
+          :class="props.showHeader ? 'xl:row-span-2' : ''" v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
-          <div class="group relative mx-auto max-w-md overflow-hidden lg:mx-0 lg:h-full lg:max-w-none rounded-4xl ">
+          <div class="group relative w-full overflow-hidden rounded-4xl xl:h-full">
             <img :src="advantageImage" :alt="whyChooseAdvantage.imageAlt"
-              class="w-full object-cover object-center object-top transition duration-700 group-hover:scale-[1.03] lg:absolute lg:inset-0 lg:h-full lg:w-full"
+              class="aspect-[4/5] w-full object-cover object-[center_18%] transition duration-700 group-hover:scale-[1.03] sm:aspect-[5/4] md:aspect-[3/2] lg:aspect-[16/10] xl:absolute xl:inset-0 xl:aspect-auto xl:h-full xl:w-full xl:object-top"
               loading="lazy" decoding="async" />
             <span
-              class="absolute bottom-4 left-4 right-4 inline-flex items-center gap-2.5 rounded-xl bg-white/95 px-3 py-2.5 shadow-soft backdrop-blur-sm sm:right-auto sm:max-w-[85%]">
+              class="absolute bottom-3 left-3 right-3 inline-flex items-center gap-2.5 rounded-xl bg-white/95 px-3 py-2.5 shadow-soft backdrop-blur-sm sm:bottom-4 sm:left-4 sm:right-auto sm:max-w-[85%]">
               <span
                 class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-lg shadow-blue-600/30"
                 aria-hidden="true">
@@ -177,12 +185,8 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
           </div>
         </div>
 
-        <div class="lg:col-span-8" v-motion :initial="{ opacity: 0, y: 16 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 70, duration: 520 } }">
-          <CardHeader v-if="props.showHeader" :heading-id="props.headingId" align="left" :badge="props.badge"
-            :title="props.title" :description="props.description" :classes="headerClass" />
-
-          <ul class="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3" role="list">
+        <div class="xl:col-span-8 xl:col-start-5" :class="props.showHeader ? 'xl:row-start-2' : 'xl:row-start-1'">
+          <ul class="grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3" role="list">
             <li v-for="(adv, i) in advantageItems" :key="adv.title" v-motion :initial="{ opacity: 0, y: 12 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 45, duration: 400 } }">
               <article
@@ -202,9 +206,10 @@ const advantageImage = usePublicAsset(whyChooseAdvantage.image)
             </li>
           </ul>
 
-          <div class="mt-5 grid grid-cols-2 gap-2.5 text-left">
-            <ActionBtn v-for="cta in whyChooseAdvantage.ctas" :key="cta.label" class="!w-full !justify-start sm:!w-full"
-              :variant="cta.variant" :href="cta.href" :label="cta.label" :icon="cta.icon" />
+          <div class="mt-5 flex flex-col gap-2.5 xl:grid xl:grid-cols-2">
+            <ActionBtn v-for="cta in whyChooseAdvantage.ctas" :key="cta.label"
+              class="!w-full !justify-center xl:!w-full xl:!justify-start" :variant="cta.variant" :href="cta.href"
+              :label="cta.label" :icon="cta.icon" />
           </div>
         </div>
       </div>

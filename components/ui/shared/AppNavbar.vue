@@ -27,11 +27,11 @@ const navMenus = [
     id: 'more',
     label: 'More',
     items: [
-      { label: 'Why Choose', href: '/why-choose', description: 'Why families trust us' },
       { label: 'Parent & Student', href: '/student-parent', description: 'Support for families' },
       { label: 'Academic Coverage', href: '/academic-coverage', description: 'Boards, classes & subjects' },
       { label: 'Partner Program', href: '/channel-partner', description: 'Grow with us' },
       { label: 'Hire for Institute', href: '/institutions', description: 'Teacher recruitment' },
+      { label: 'Why Choose', href: '/why-choose', description: 'Why families trust us' },
       { label: 'Career', href: '/careers', description: 'Join our team' },
       { label: 'Insights Hub', href: '/insights', description: 'Company insights' },
       { label: 'FAQ', href: '/faq', description: 'Common questions' },

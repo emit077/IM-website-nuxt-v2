@@ -29,14 +29,13 @@ function clippedMetaTags(items?: string[]) {
     <section v-for="(stage, i) in stages" :id="stage.id" :key="stage.id"
       class="relative scroll-mt-24 overflow-hidden bg-white py-3 sm:py-4" :aria-labelledby="`${stage.id}-heading`">
       <div class="container-page">
-        <div class="grid items-stretch gap-4 overflow-hidden rounded-2xl border lg:grid-cols-12 lg:gap-0"
-          :class="i % 2 === 0
-            ? 'border-sky-100/80 bg-sky-50/40'
-            : 'border-slate-200/60 bg-slate-50/45'">
-          <div class="lg:col-span-4 lg:h-full" :class="i % 2 === 1 ? 'lg:order-2' : 'lg:order-1'" v-motion
+        <div class="grid items-stretch gap-4 overflow-hidden rounded-2xl border md:grid-cols-12 md:gap-0" :class="i % 2 === 0
+          ? 'border-sky-100/80 bg-sky-50/40'
+          : 'border-slate-200/60 bg-slate-50/45'">
+          <div class="md:col-span-4 md:h-full" :class="i % 2 === 1 ? 'md:order-2' : 'md:order-1'" v-motion
             :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
             <div
-              class="group relative mx-auto aspect-[5/5.2] w-full max-w-md lg:mx-0 lg:aspect-auto lg:h-full lg:max-w-none lg:min-h-full">
+              class="group relative mx-auto aspect-[5/5.2] w-full max-w-md md:mx-0 md:aspect-auto md:h-full md:max-w-none md:min-h-full">
               <div class="absolute inset-0 overflow-hidden"
                 :class="i % 2 === 1 ? 'grade-visual grade-visual--rtl' : 'grade-visual grade-visual--ltr'">
                 <img :src="usePublicAsset(stage.visual)" :alt="`${stage.title} — Indian Mentors`"
@@ -45,7 +44,7 @@ function clippedMetaTags(items?: string[]) {
               </div>
               <span
                 class="absolute bottom-4 z-10 inline-flex items-center gap-2 rounded-2xl bg-white/95 px-3 py-2 shadow-soft backdrop-blur-sm"
-                :class="i % 2 === 1 ? 'right-4 lg:right-6' : 'left-4'">
+                :class="i % 2 === 1 ? 'right-4 md:right-6' : 'left-4'">
                 <span class="grid h-8 w-8 place-items-center rounded-xl bg-blue-50 text-blue-700 ring-1 ring-blue-100"
                   aria-hidden="true">
                   <Icon :icon="stage.iconMdi" class="h-4 w-4" />
@@ -56,8 +55,8 @@ function clippedMetaTags(items?: string[]) {
           </div>
 
           <div
-            class="lg:col-span-8 px-5 py-5 pl-6 sm:px-6 sm:py-6 sm:pl-8 lg:px-7 lg:py-7 lg:pl-11 xl:px-8 xl:py-8 xl:pl-14"
-            :class="i % 2 === 1 ? 'lg:order-1 lg:pl-8 lg:pr-11 xl:pl-8 xl:pr-14' : 'lg:order-2'" v-motion
+            class="md:col-span-8 px-5 py-5 pl-6 sm:px-6 sm:py-6 sm:pl-8 md:px-7 md:py-7 md:pl-11 xl:px-8 xl:py-8 xl:pl-14"
+            :class="i % 2 === 1 ? 'md:order-1 md:pl-8 md:pr-11 xl:pl-8 xl:pr-14' : 'md:order-2'" v-motion
             :initial="{ opacity: 0, y: 14 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 60, duration: 480 } }">
             <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">
@@ -65,7 +64,7 @@ function clippedMetaTags(items?: string[]) {
             </p>
 
             <h3 :id="`${stage.id}-heading`"
-              class="mt-2 max-w-xl font-display text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl lg:text-[1.85rem] lg:leading-[1.25]">
+              class="mt-2 max-w-xl font-display text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl md:text-[1.85rem] md:leading-[1.25]">
               {{ stage.tagline }}
             </h3>
 
@@ -86,16 +85,10 @@ function clippedMetaTags(items?: string[]) {
 
             <div v-if="stage.chips?.length" class="mt-5 max-w-xl">
               <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">Grades</p>
-              <p
-                class="mt-2 flex flex-wrap items-center text-[13px] font-semibold leading-none tracking-wide text-slate-600">
-                <template v-for="(chip, idx) in clippedMetaTags(stage.chips).shown" :key="chip">
-                  <span v-if="idx > 0" class="mx-2 font-normal text-slate-300" aria-hidden="true">/</span>
-                  <span class="whitespace-nowrap">{{ chip }}</span>
-                </template>
-                <template v-if="clippedMetaTags(stage.chips).hasMore">
-                  <span class="mx-2 font-normal text-slate-300" aria-hidden="true">/</span>
-                  <span class="whitespace-nowrap text-slate-400">etc.</span>
-                </template>
+              <p class="meta-divided meta-divided--slash mt-2 text-[13px] font-semibold tracking-wide text-slate-600">
+                <span v-for="chip in clippedMetaTags(stage.chips).shown" :key="chip" class="meta-divided__item">{{ chip
+                  }}</span>
+                <span v-if="clippedMetaTags(stage.chips).hasMore" class="meta-divided__item text-slate-400">etc.</span>
               </p>
             </div>
           </div>
@@ -131,37 +124,29 @@ function clippedMetaTags(items?: string[]) {
 
 @media (min-width: 1024px) {
   .grade-visual--ltr {
-    -webkit-mask-image: linear-gradient(
-      to right,
-      #000 0%,
-      #000 84%,
-      rgba(0, 0, 0, 0.4) 94%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to right,
-      #000 0%,
-      #000 84%,
-      rgba(0, 0, 0, 0.4) 94%,
-      transparent 100%
-    );
+    -webkit-mask-image: linear-gradient(to right,
+        #000 0%,
+        #000 84%,
+        rgba(0, 0, 0, 0.4) 94%,
+        transparent 100%);
+    mask-image: linear-gradient(to right,
+        #000 0%,
+        #000 84%,
+        rgba(0, 0, 0, 0.4) 94%,
+        transparent 100%);
   }
 
   .grade-visual--rtl {
-    -webkit-mask-image: linear-gradient(
-      to left,
-      #000 0%,
-      #000 84%,
-      rgba(0, 0, 0, 0.4) 94%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to left,
-      #000 0%,
-      #000 84%,
-      rgba(0, 0, 0, 0.4) 94%,
-      transparent 100%
-    );
+    -webkit-mask-image: linear-gradient(to left,
+        #000 0%,
+        #000 84%,
+        rgba(0, 0, 0, 0.4) 94%,
+        transparent 100%);
+    mask-image: linear-gradient(to left,
+        #000 0%,
+        #000 84%,
+        rgba(0, 0, 0, 0.4) 94%,
+        transparent 100%);
   }
 }
 </style>

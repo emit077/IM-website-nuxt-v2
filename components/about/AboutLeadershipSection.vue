@@ -85,9 +85,9 @@ function onPortraitError(event: Event) {
       </div>
 
       <div v-if="featured" class="mt-10 space-y-4 sm:mt-12">
-        <div class="grid gap-4 lg:grid-cols-12" aria-label="Founder spotlight">
+        <div class="grid gap-4 md:grid-cols-12" aria-label="Founder spotlight">
           <article
-            class="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-[#0F174A] via-brand-primary to-[#60A5FA] lg:col-span-4"
+            class="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-[#0F174A] via-brand-primary to-[#60A5FA] md:col-span-6 lg:col-span-4"
             v-motion :initial="{ opacity: 0, y: 14 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40, duration: 420 } }">
             <img :src="portraitSrc(featured)" :alt="featured.name"
@@ -108,7 +108,7 @@ function onPortraitError(event: Event) {
           </article>
 
           <article
-            class="relative overflow-hidden rounded-[1.6rem] bg-white px-6 py-7 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.28)] sm:px-8 sm:py-12 lg:col-span-5"
+            class="relative overflow-hidden rounded-[1.6rem] bg-white px-6 py-7 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.28)] sm:px-8 sm:py-12 lg:col-span-5 md:col-span-6"
             v-motion :initial="{ opacity: 0, y: 14 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80, duration: 420 } }">
             <Icon icon="mdi:format-quote-close"
@@ -140,8 +140,9 @@ function onPortraitError(event: Event) {
             </a>
           </article>
 
-          <aside class="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] bg-[#eef5ff] lg:col-span-3" v-motion
-            :initial="{ opacity: 0, y: 14 }"
+          <aside
+            class="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] bg-[#eef5ff] lg:col-span-3  hidden lg:block"
+            v-motion :initial="{ opacity: 0, y: 14 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 120, duration: 420 } }">
             <img :src="purposeImage" alt="Better Mentorship. Brighter Futures."
               class="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" decoding="async" />

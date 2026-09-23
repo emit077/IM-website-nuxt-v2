@@ -93,7 +93,7 @@ const dataset = computed<BarChartDataset>(() => ({
                   <span class="text-sm text-slate-600">{{ row.label }}</span>
                   <span :class="[
                     'font-display text-sm font-bold tabular-nums sm:text-base',
-                    row.highlight ? 'text-amber-700' : 'text-slate-400',
+                    row.highlight ? 'text-blue-700' : 'text-slate-400',
                   ]">
                     {{ row.value }}
                   </span>
@@ -122,7 +122,7 @@ const dataset = computed<BarChartDataset>(() => ({
                   <span class="text-sm text-slate-600">{{ row.label }}</span>
                   <span :class="[
                     'font-display text-sm font-bold tabular-nums sm:text-base',
-                    row.highlight ? 'text-amber-700' : 'text-slate-400',
+                    row.highlight ? 'text-blue-700' : 'text-slate-400',
                   ]">
                     {{ row.value }}
                   </span>

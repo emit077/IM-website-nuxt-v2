@@ -28,9 +28,10 @@ const primaryImage = usePublicAsset(aboutSection.image)
         <!-- Left: single image -->
         <div class="relative lg:col-span-5" v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
-          <div class="relative mx-auto   overflow-hidden rounded-[28px]  sm:min-h-[420px] lg:mx-0 lg:max-w-none">
+          <div
+            class="relative mx-auto   overflow-hidden rounded-[28px]  sm:min-h-[420px] min-h-[220px]  lg:mx-0 lg:max-w-none">
             <img :src="primaryImage" alt="Indian Mentors channel partner program"
-              class=" inset-0 h-full object- object-center" loading="lazy" decoding="async" />
+              class=" inset-0 h-2/3 lg:h-full object-center " loading="lazy" decoding="async" />
 
             <!-- Floating stats -->
 

@@ -18,7 +18,7 @@ const afterTones = [
       <CardHeader heading-id="demo-heading" :badge="spDemo.badge" :title="spDemo.title"
         :description="spDemo.description" :classes="spDemo.classes" />
 
-      <div class="mt-6 grid items-stretch gap-3 lg:grid-cols-2 lg:gap-4">
+      <div class="mt-6 grid items-stretch gap-3 md:grid-cols-2 lg:grid-cols-2 lg:gap-4">
         <div class="relative min-h-[16rem] sm:min-h-[18rem] lg:min-h-0" v-motion :initial="{ opacity: 0, x: -18 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 520 } }">
           <figure
@@ -65,8 +65,8 @@ const afterTones = [
               class="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:linear-gradient(rgba(255,255,255,.45)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.45)_1px,transparent_1px)] [background-size:28px_28px]" />
 
             <div
-              class="relative flex flex-col items-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-              <div class="min-w-0">
+              class="relative lg:flex block flex-col items-center gap-3 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left ">
+              <div class="min-w-0 text-left">
                 <h3 class="font-display text-lg font-extrabold tracking-tight text-white">
                   {{ spDemo.banner.title }}
                 </h3>
@@ -74,7 +74,7 @@ const afterTones = [
                 </p>
               </div>
               <a :href="spDemo.cta.href"
-                class="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-blue-700 shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-blue-50">
+                class="inline-flex md:mt-4  mt-0 shrink-0 items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-blue-700 shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-blue-50">
                 <span class="grid h-6 w-6 place-items-center rounded-full bg-blue-600 text-white" aria-hidden="true">
                   <Icon icon="mdi:play" class="h-3.5 w-3.5 translate-x-px" />
                 </span>

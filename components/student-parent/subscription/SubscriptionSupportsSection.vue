@@ -31,7 +31,7 @@ import { subSupports } from '~/data/subscription'
         <p class="text-center text-[11px] font-bold uppercase tracking-[0.16em] text-blue-200">
           {{ subSupports.flexibility.badge }}
         </p>
-        <h3 class="mt-3 text-center font-display text-2xl font-bold">{{ subSupports.flexibility.title }}</h3>
+        <h3 class="mt-3 text-center font-display text-2xl font-bold" v-html="subSupports.flexibility.title"></h3>
         <p class="mx-auto mt-3 max-w-3xl text-center text-[13.5px] leading-relaxed text-blue-100">
           {{ subSupports.flexibility.description }}
         </p>

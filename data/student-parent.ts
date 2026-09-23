@@ -678,7 +678,7 @@ export const spDemo = {
   ],
   banner: {
     title: 'Book Your Free Demo',
-    description: 'Experience personalised tutoring before you commit.<br/> No cost, no obligation.',
+    description: 'Experience personalised tutoring before you commit.<br class="hidden lg:inline" /> No cost, no obligation.',
   },
   cta: { label: 'Enroll Now', href: externalLinks.studentSignup },
 }
@@ -914,7 +914,7 @@ export const enrollmentHero = {
 
 export const spEnrollmentPreview = {
   badge: 'Enrollment Options',
-  title: 'Start Free or Go <span class="text-gradient-brand">Premium</span>',
+  title: 'Start Free or  <span class="text-gradient-brand">Go Premium</span>',
   classes: '!px-0 !py-0 mx-auto ',
   description:
     'Create a student profile, explore tutors, and book a free demo — then upgrade when you want more access and support.',
@@ -1024,7 +1024,7 @@ export const spFamilyDashboard = {
 
 export const spWhyFamilies = {
   badge: 'Our 5C Framework',
-  title: "Your Child's Education Deserves <span class=\"text-gradient-brand\">Clarity</span>",
+  title: "Your Child's Education  <span class=\"text-gradient-brand\"> Deserves Clarity</span>",
   description:
     'Indian Mentors aims to maintain transparency throughout the tutoring journey.',
   classes: '!px-0 !py-0 mx-auto ',

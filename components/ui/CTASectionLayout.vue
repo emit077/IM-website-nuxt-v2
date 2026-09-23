@@ -136,16 +136,16 @@ function onCtaMousemove(e: MouseEvent, isPrimary?: boolean) {
           </div>
 
           <div v-if="props.ctas.length > 0 || $slots.ctas" :class="isSplit
-            ? 'flex w-full shrink-0 flex-col gap-2.5 sm:flex-row sm:flex-wrap lg:max-w-xs lg:w-80 lg:flex-col'
-            : 'mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center'">
+            ? 'flex w-full shrink-0 flex-col gap-2.5 lg:max-w-xs lg:w-80'
+            : 'mt-8 flex w-full flex-col items-stretch justify-center gap-3 xl:flex-row xl:flex-wrap xl:items-center'">
             <slot name="ctas">
               <a v-for="cta in props.ctas" :key="cta.label" :href="cta.href" :target="cta.target"
                 :rel="cta.rel ?? (cta.target === '_blank' ? 'noopener noreferrer' : undefined)" :class="[
                   'inline-flex w-full items-center justify-center gap-2 font-semibold transition duration-300 hover:-translate-y-1',
                   isCompact
                     ? 'rounded-xl px-5 py-2.5 text-[13px]'
-                    : 'rounded-2xl px-7 py-3.5 text-sm sm:w-auto',
-                  isSplit ? 'lg:w-full' : 'sm:w-auto',
+                    : 'rounded-2xl px-7 py-3.5 text-sm',
+                  isSplit ? 'w-full' : 'w-full xl:w-auto',
                   styles.primaryHoverShadow,
                   cta.primary ? styles.primaryCta : styles.secondaryCta,
                 ]" @mousemove="onCtaMousemove($event, cta.primary)">

@@ -115,7 +115,7 @@ onUnmounted(() => {
 
         <slot name="actions">
           <div v-if="actionBtns.length"
-            class="mt-6 flex w-full flex-col items-stretch justify-center gap-3 sm:w-auto sm:flex-row sm:items-center"
+            class="mt-6 flex w-full flex-col items-stretch justify-center gap-3 xl:w-auto xl:flex-row xl:items-center"
             v-motion :initial="{ opacity: 0, y: 12 }"
             :enter="{ opacity: 1, y: 0, transition: { duration: 500, delay: 280 } }">
             <ActionBtn v-for="(btn, index) in actionBtns" :key="`${btn.label}-${index}`" :variant="btn.variant"

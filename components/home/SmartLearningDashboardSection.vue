@@ -35,7 +35,7 @@ Provides instant visibility of the student's academic activities and tutoring sc
 
     <div class="container-page relative">
       <div
-        class="relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white px-5 py-6 shadow-soft sm:px-7 sm:py-8 lg:px-9 lg:py-10 lg:shadow-[0_8px_40px_-12px_rgba(15,23,42,0.08)]"
+        class="relative overflow-hidden rounded-[1.75rem] border border-slate-200/80 bg-white px-3.5 py-5 shadow-soft sm:px-7 sm:py-8 lg:px-9 lg:py-10 lg:shadow-[0_8px_40px_-12px_rgba(15,23,42,0.08)]"
         v-motion :initial="{ opacity: 0, y: 14 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550, ease: 'easeOut' } }">
         <div aria-hidden="true" class="pointer-events-none absolute inset-0 opacity-[0.35]"
@@ -47,117 +47,117 @@ Provides instant visibility of the student's academic activities and tutoring sc
           class="pointer-events-none absolute -bottom-20 -left-12 h-48 w-48 rounded-full bg-blue-50/90 blur-3xl"></div>
 
         <div class="relative grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-12">
-          <div class="lg:col-span-6 flex flex-col gap-5 sm:gap-6">
+          <div class="lg:col-span-6 lg:col-start-1 lg:row-start-1">
             <CardHeader align="left" :badge="headerContent.badge" :title="headerContent.title"
               :description="headerContent.description" :classes="headerContent.classes" />
-
-            <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap" v-motion :initial="{ opacity: 0, y: 10 }"
-              :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 120 } }">
-              <a :href="externalLinks.studentSignup" class="btn-primary ripple group w-full sm:w-auto"
-                @mousemove="rippleHandler">
-                <IconCalendar class="h-4 w-4 shrink-0 opacity-95" />
-                Book Free Demo
-                <IconArrowRight
-                  class="dashboard-cta-arrow h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
-              </a>
-              <a href="#join" class="btn-secondary w-full sm:w-auto">
-                Talk to Counsellor
-              </a>
-            </div>
           </div>
-          <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-3.5 lg:col-span-6 lg:grid-cols-3" role="list">
+          <ul class="grid grid-cols-2 gap-2 sm:gap-3.5 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:grid-cols-3" role="list">
             <li v-motion :initial="{ opacity: 0, y: 12 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 60 } }"
-              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-4 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
+              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-3 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
               <div
-                class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90"
+                class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90 sm:mb-3 sm:h-10 sm:w-10"
                 aria-hidden="true">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
+                <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
                   <rect x="9" y="3" width="6" height="4" rx="1" />
                   <path d="M9 12h6M9 16h4" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Track<br>Attendance</p>
+              <p class="text-[13px] font-semibold leading-snug text-slate-900 sm:text-[15px]">Track<br>Attendance</p>
             </li>
 
             <li v-motion :initial="{ opacity: 0, y: 12 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 100 } }"
-              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-4 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
+              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-3 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
               <div
-                class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90"
+                class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90 sm:mb-3 sm:h-10 sm:w-10"
                 aria-hidden="true">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
+                <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
                   stroke-linecap="round" stroke-linejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" />
                   <path d="M16 2v4M8 2v4M3 10h18" />
                   <path d="m9 16 2 2 4-4" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Scheduled<br>Sessions</p>
+              <p class="text-[13px] font-semibold leading-snug text-slate-900 sm:text-[15px]">Scheduled<br>Sessions</p>
             </li>
 
             <li v-motion :initial="{ opacity: 0, y: 12 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 140 } }"
-              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-4 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
+              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-3 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
               <div
-                class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90"
+                class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90 sm:mb-3 sm:h-10 sm:w-10"
                 aria-hidden="true">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
+                <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                   <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Homework &amp;<br>Notes</p>
+              <p class="text-[13px] font-semibold leading-snug text-slate-900 sm:text-[15px]">Homework &amp;<br>Notes</p>
             </li>
 
             <li v-motion :initial="{ opacity: 0, y: 12 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 180 } }"
-              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-4 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
+              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-3 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
               <div
-                class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90"
+                class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90 sm:mb-3 sm:h-10 sm:w-10"
                 aria-hidden="true">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
+                <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M3 3v18h18" />
                   <path d="M7 16v-5M12 16V8M17 16v-3" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Performance<br>Analytics</p>
+              <p class="text-[13px] font-semibold leading-snug text-slate-900 sm:text-[15px]">Performance<br>Analytics</p>
             </li>
 
             <li v-motion :initial="{ opacity: 0, y: 12 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 220 } }"
-              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-4 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
+              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-3 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
               <div
-                class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90"
+                class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90 sm:mb-3 sm:h-10 sm:w-10"
                 aria-hidden="true">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
+                <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
                   stroke-linecap="round" stroke-linejoin="round">
                   <rect x="2" y="5" width="20" height="14" rx="2" />
                   <path d="M2 10h20" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Fee &amp;<br>Payments</p>
+              <p class="text-[13px] font-semibold leading-snug text-slate-900 sm:text-[15px]">Fee &amp;<br>Payments</p>
             </li>
 
             <li v-motion :initial="{ opacity: 0, y: 12 }"
               :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480, delay: 260 } }"
-              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-4 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
+              class="dashboard-feature rounded-xl border border-[#e7eefb] bg-[#f6f8fd] p-3 shadow-[0_2px_10px_rgba(37,99,235,0.05)] sm:p-4">
               <div
-                class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90"
+                class="mb-2 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100/90 sm:mb-3 sm:h-10 sm:w-10"
                 aria-hidden="true">
-                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
+                <svg class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
                   <path d="M13.73 21a2 2 0 0 1-3.46 0" />
                 </svg>
               </div>
-              <p class="text-[15px] font-semibold leading-snug text-slate-900">Real-Time<br>Notifications</p>
+              <p class="text-[13px] font-semibold leading-snug text-slate-900 sm:text-[15px]">Real-Time<br>Notifications</p>
             </li>
           </ul>
+          <div class="flex flex-col gap-3 lg:col-span-6 lg:col-start-1 lg:row-start-2 xl:flex-row" v-motion
+            :initial="{ opacity: 0, y: 10 }"
+            :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 120 } }">
+            <a :href="externalLinks.studentSignup" class="btn-primary ripple group w-full xl:w-auto"
+              @mousemove="rippleHandler">
+              <IconCalendar class="h-4 w-4 shrink-0 opacity-95" />
+              Book Free Demo
+              <IconArrowRight
+                class="dashboard-cta-arrow h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
+            </a>
+            <a href="#join" class="btn-secondary w-full xl:w-auto">
+              Talk to Counsellor
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -192,6 +192,12 @@ Provides instant visibility of the student's academic activities and tutoring sc
   background-color: #fff;
   box-shadow: 0 8px 28px -12px rgba(37, 99, 235, 0.12);
   transform: translateY(-2px);
+}
+
+@media (max-width: 639px) {
+  .dashboard-feature:hover {
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

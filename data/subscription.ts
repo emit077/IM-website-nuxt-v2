@@ -153,7 +153,7 @@ export const subSupports = {
   ],
   flexibility: {
     badge: "Flexible as Your Needs Change",
-    title: 'Academic Priorities Can Shift',
+    title: 'Academic Priorities <br class="block sm:hidden" /> Can Shift',
     description:
       'Depending on applicable terms, families may discuss adjustments to the areas below. Any modification remains subject to tutor availability, plan eligibility, pricing differences and applicable subscription policies.',
     items: ['Subjects', 'Session Duration', 'Learning Frequency', 'Learning Mode', 'Tutor', 'Learning Plan'],

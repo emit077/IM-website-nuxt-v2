@@ -14,7 +14,7 @@ const headerContent = {
   <section id="about" class="relative overflow-hidden section-surface-muted section-py" aria-label="About us">
     <div class="container-page">
       <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-12">
-        <div class="flex flex-col gap-7 lg:col-span-7 lg:gap-8 xl:col-span-6">
+        <div class="flex flex-col gap-7 lg:col-span-7 lg:col-start-1 lg:row-start-1 lg:gap-8 xl:col-span-6">
           <CardHeader :badge="headerContent.badge" :title="headerContent.title" :classes="headerContent.classes"
             align="left" />
           <p class="text-pretty text-base leading-relaxed text-slate-600 sm:text-lg" v-motion
@@ -27,13 +27,14 @@ const headerContent = {
             We believe in strong collaboration between <b>students, parents, and mentors</b> to create a meaningful and
             results-driven learning experience.
           </p>
-          <div class="flex flex-col gap-3 sm:flex-row sm:gap-4" v-motion :initial="{ opacity: 0, y: 16 }"
-            :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
-            <ActionBtn variant="primary" href="/about" label="Know More About Us" />
-          </div>
         </div>
-        <div class="relative flex lg:col-span-5 lg:self-stretch xl:col-span-6">
+        <div
+          class="relative flex lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1 lg:self-stretch xl:col-span-6 xl:col-start-7">
           <HeroStats />
+        </div>
+        <div class="lg:col-span-7 lg:col-start-1 lg:row-start-2 xl:col-span-6" v-motion :initial="{ opacity: 0, y: 16 }"
+          :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
+          <ActionBtn class="!w-full xl:!w-auto" variant="primary" href="/about" label="Know More About Us" />
         </div>
       </div>
     </div>

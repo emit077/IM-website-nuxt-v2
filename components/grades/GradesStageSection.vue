@@ -25,15 +25,10 @@ const imageOnRight = props.index % 2 === 1
 </script>
 
 <template>
-  <section
-    :id="stage.id"
-    class="relative scroll-mt-28 overflow-hidden"
-    :class="[
-      index % 2 === 0 ? 'bg-white' : 'section-surface-muted',
-      index === 0 ? 'pt-8 sm:pt-10 pb-14 sm:pb-16 lg:pb-20' : 'section-py',
-    ]"
-    :aria-labelledby="headingId"
-  >
+  <section :id="stage.id" class="relative scroll-mt-28 overflow-hidden" :class="[
+    index % 2 === 0 ? 'bg-white' : 'section-surface-muted',
+    index === 0 ? 'pt-8 sm:pt-10 pb-14 sm:pb-16 lg:pb-20' : 'section-py',
+  ]" :aria-labelledby="headingId">
     <div class="container-page">
       <div class="grid items-stretch gap-6 lg:grid-cols-12 lg:gap-8" v-motion :initial="{ opacity: 0, y: 16 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
@@ -72,14 +67,14 @@ const imageOnRight = props.index % 2 === 1
             {{ stage.tagline }}
           </p>
           <p class="mt-1 text-[13px] font-medium text-slate-500">{{ stage.focus }}</p>
-          <p class="mt-4 max-w-xl text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
+          <p class="mt-4 text-[14px] leading-relaxed text-slate-600 sm:text-[15px]">
             {{ stage.overview }}
           </p>
 
           <p class="mt-6 text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
             {{ gradesExplorer.approachLabel }}
           </p>
-          <ul class="mt-3 grid max-w-xl grid-cols-2 gap-x-5 gap-y-2" role="list">
+          <ul class="mt-3 grid  grid-cols-2 gap-x-5 gap-y-2" role="list">
             <li v-for="item in stage.approach" :key="item"
               class="flex min-w-0 items-center gap-2 text-[12.5px] font-medium leading-none text-slate-700 sm:text-[13px]">
               <IconCheck class="h-3.5 w-3.5 shrink-0 text-blue-600" />
@@ -180,15 +175,15 @@ const imageOnRight = props.index % 2 === 1
           </li>
         </ul>
 
-        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div class="flex flex-col gap-3 sm:flex-row">
+        <div class="mt-6 flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
+          <div class="flex flex-col gap-3 xl:flex-row">
             <a :href="externalLinks.studentSignup"
-              class="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-700">
+              class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-700 xl:w-auto">
               {{ stage.ctaLabel }}
               <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
             </a>
             <a :href="gradesExplorer.counsellorHref"
-              class="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700">
+              class="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700 xl:w-auto">
               {{ gradesExplorer.counsellorLabel }}
             </a>
           </div>

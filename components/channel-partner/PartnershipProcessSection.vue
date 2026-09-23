@@ -338,17 +338,17 @@ function goNext() {
         <p class="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-slate-600">
           {{ processSection.ctaDescription }}
         </p>
-        <div class="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+        <div class="mt-6 flex flex-col items-stretch justify-center gap-3 xl:flex-row xl:items-center">
           <a
             :href="processSection.primaryCta.href"
-            class="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_28px_-12px_rgba(37,99,235,0.65)] transition hover:bg-blue-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300/70"
+            class="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_28px_-12px_rgba(37,99,235,0.65)] transition hover:bg-blue-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300/70 xl:w-auto"
           >
             <Icon icon="mdi:account-plus-outline" class="h-4 w-4" aria-hidden="true" />
             {{ processSection.primaryCta.label }}
           </a>
           <a
             :href="processSection.secondaryCta.href"
-            class="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300/70"
+            class="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:text-blue-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300/70 xl:w-auto"
           >
             <Icon icon="mdi:phone-in-talk-outline" class="h-4 w-4" aria-hidden="true" />
             {{ processSection.secondaryCta.label }}

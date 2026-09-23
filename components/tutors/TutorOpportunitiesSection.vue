@@ -45,7 +45,4 @@ import { tutorOpportunities, browseStudentsSection } from '~/data/tutors'
     </div>
   </section>
 
-  <BrowseMentorsSection mode="students" section-id="browse-students" :badge="browseStudentsSection.badge"
-    :title="browseStudentsSection.title" :description="browseStudentsSection.description"
-    :classes="browseStudentsSection.classes" />
 </template>

@@ -12,7 +12,7 @@ import { enrollmentPlans, enrollmentStart } from '~/data/student-parent'
       <CardHeader heading-id="profiles-heading" :badge="enrollmentStart.badge" :title="enrollmentStart.title"
         :description="enrollmentStart.description" :classes="enrollmentStart.classes" />
 
-      <ul class="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-6" role="list">
+      <ul class="mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-5 md:grid-cols-2 lg:gap-6" role="list">
         <li v-for="(plan, i) in enrollmentPlans" :key="plan.id" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 80, duration: 450 } }">
           <article :class="[

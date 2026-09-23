@@ -288,7 +288,7 @@ export const specialisedSupportCategories: SpecialSupportCategory[] = [
   {
     id: 'sld',
     iconMdi: 'mdi:puzzle-outline',
-    title: 'Specific Learning Difficulties (SLD) Support',
+    title: 'Specific Learning Disabilities (SLD) Support',
     description: 'Providing structured academic assistance based on individual learning requirements.',
     supportMayInclude: [
       'Individualised education strategies',

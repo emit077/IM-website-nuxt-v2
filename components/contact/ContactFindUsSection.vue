@@ -53,7 +53,7 @@ function mapsUrl(address: string) {
             </address>
             <p class="mt-4 text-sm leading-relaxed text-slate-500">{{ office.description }}</p>
 
-            <div class="mt-auto flex flex-col gap-3 pt-6 sm:flex-row">
+            <div class="mt-auto flex flex-col gap-3 pt-6 xl:flex-row">
               <a :href="mapsUrl(office.address)" target="_blank" rel="noopener noreferrer"
                 class="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl bg-brand-ink px-5 py-3 text-sm font-semibold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:bg-slate-800">
                 <Icon icon="mdi:directions" class="h-4 w-4 shrink-0" aria-hidden="true" />

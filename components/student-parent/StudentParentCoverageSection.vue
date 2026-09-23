@@ -11,10 +11,10 @@ import { spCoverage } from '~/data/student-parent'
       <CardHeader heading-id="coverage-heading" :badge="spCoverage.badge" :title="spCoverage.title"
         :classes="spCoverage.classes" />
 
-      <p class="mt-10 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">
+      <!-- <p class="mt-10 text-center text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">
         {{ spCoverage.school.label }}
-      </p>
-      <ol class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5" role="list">
+      </p> -->
+      <ol class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-5 justify-center" role="list">
         <li v-for="(stage, i) in spCoverage.school.stages" :key="stage.title" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 40, duration: 400 } }">
           <NuxtLink :to="stage.href"

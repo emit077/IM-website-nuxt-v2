@@ -20,11 +20,12 @@ function planHref(planId: string) {
         :title="spSubscriptionPricing.title" :description="spSubscriptionPricing.description"
         :classes="spSubscriptionPricing.classes" />
 
-      <ul class="relative z-10 mt-12 grid grid-cols-1 items-stretch gap-6 lg:mt-16 lg:grid-cols-3 lg:gap-5" role="list">
+      <ul class="relative z-10 mt-12 grid grid-cols-1 items-stretch gap-6 lg:mt-16  lg:grid-cols-3 lg:gap-5"
+        role="list">
         <li v-for="(plan, i) in spSubscriptionPricing.items" :key="plan.id"
           :class="plan.featured ? 'lg:z-10' : 'lg:mt-4'" v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 50 + i * 80, duration: 480 } }">
-          <div :class="[plan.featured ? '-mt-6' : '']">
+          <div :class="[plan.featured ? ' lg:-mt-6' : '']">
             <SubscriptionPricingCard :plan="plan" :href="planHref(plan.id)" :mini="mini" />
           </div>
         </li>

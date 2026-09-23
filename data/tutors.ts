@@ -144,7 +144,7 @@ export const tutorWhoCanJoin = {
     {
       id: 'independent',
       label: 'Independent tutors',
-      hint: 'Teach through local, home, online, or hybrid formats.',
+      hint: 'Teach through home, online, or hybrid formats.',
       accent: 'blue' as const,
     },
     {

@@ -37,9 +37,9 @@ useSeoMeta({
     <StudentParentLearningGoalsSection />
     <StudentParentMatchingSection />
     <StudentParentModesSection />
-    <StudentParentDemoSection />
     <StudentParentCoverageSection />
     <StudentParentEnrollmentPreviewSection />
+    <StudentParentDemoSection />
     <StudentParentPlansSection :mini="true" />
     <StudentParentMonitoringSection />
     <WhyChooseUs layout="minimal" reverse-items section-id="why-choose-families"

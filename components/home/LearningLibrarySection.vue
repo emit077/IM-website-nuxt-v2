@@ -99,7 +99,7 @@ const libraryByGrade: Record<GradeId, GradeLibrary> = {
   lkg: {
     subjects: ['English (listening & speaking)', 'Hindi (rhymes & sounds)', 'Early Mathematics', 'EVS themes', 'Story & rhyme bank'],
     featured: {
-      tag: 'EARLY YEARS',
+      tag: 'LKG',
       title: 'Play-based literacy & numeracy',
       description: 'Gentle English and Hindi exposure, counting and shapes, and short thematic EVS units — all in bite-sized activities.',
     },
@@ -759,7 +759,7 @@ const headerContent = {
               <p class="mt-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-100">
                 {{ featured.tag }}
               </p>
-              <h3 class="mt-2 font-display text-2xl font-bold leading-tight sm:text-[1.65rem]">
+              <h3 class="mt-2 font-display text-2xl font-bold leading-tight sm:text-[1.65rem] capitalize">
                 {{ featured.title }}
               </h3>
               <p class="mt-3 max-w-sm text-sm leading-relaxed text-blue-50/95">
@@ -816,7 +816,7 @@ const headerContent = {
                 <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" />
               </svg>
             </span>
-            <h3 class="mt-4 font-display text-base font-bold text-slate-900">
+            <h3 class="mt-4 font-display text-base font-bold text-slate-900 capitalize">
               {{ card.title }}
             </h3>
             <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">

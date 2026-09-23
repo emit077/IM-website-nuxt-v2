@@ -37,7 +37,7 @@ defineProps<{
         :aria-labelledby="heroContent.headingId || undefined">
 
         <div v-if="heroContent.backgroundImage"
-            class="absolute top-0 right-0 hidden h-full w-1/2 max-w-[50%] bg-cover bg-left bg-no-repeat md:block"
+            class="absolute top-0 right-0 hidden h-full w-1/2 max-w-[50%] bg-cover bg-left bg-no-repeat xl:block"
             :style="{ backgroundImage: heroContent.backgroundImage }" />
 
         <div class="container-page pb-12 pt-10 lg:pt-16 ">
@@ -48,22 +48,21 @@ defineProps<{
                             :badge="heroContent.badge" :title="heroContent.title" :subtitle="heroContent.subtitle"
                             :description="heroContent.description" :content-class="heroContent.contentClass" />
                     </slot>
-                    <slot name="actions">
-                        <div v-if="heroContent.actionBtns.length" class="my-6 flex flex-col gap-3 sm:flex-row sm:gap-4"
-                            v-motion :initial="{ opacity: 0, y: 16 }"
-                            :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
-
-                            <img :src="heroContent.mobileBackgroundImage" alt="Hero Image"
-                                class="h-full mt-[-80px] mb-[-40px]  md:hidden">
-
-                            <ActionBtn v-for="(btn, index) in heroContent.actionBtns" :key="`${btn.label}-${index}`"
-                                :variant="btn.variant" :label="btn.label" :icon="btn.icon" :href="btn.link"
-                                :icon-wrapper-class="btn.iconWrapperClass" />
-                        </div>
-                    </slot>
                     <slot name="caption">
-                        <p v-if="heroContent.caption" class="mb-6 ml-2 text-sm text-gray-500"
-                            v-html="heroContent.caption" />
+                        <p v-if="heroContent.caption" class="mt-4 text-sm text-gray-500" v-html="heroContent.caption" />
+                    </slot>
+                    <img v-if="heroContent.mobileBackgroundImage" :src="heroContent.mobileBackgroundImage"
+                        alt="Hero Image"
+                        class="mx-auto mt-4 w-full max-w-md object-contain sm:max-w-lg xl:hidden" />
+                    <slot name="actions">
+                        <div v-if="heroContent.actionBtns.length"
+                            class="my-6 flex w-full flex-col items-stretch gap-3 xl:flex-row xl:gap-4" v-motion
+                            :initial="{ opacity: 0, y: 16 }"
+                            :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 500 } }">
+                            <ActionBtn v-for="(btn, index) in heroContent.actionBtns" :key="`${btn.label}-${index}`"
+                                class="!w-full xl:!w-auto" :variant="btn.variant" :label="btn.label" :icon="btn.icon"
+                                :href="btn.link" :icon-wrapper-class="btn.iconWrapperClass" />
+                        </div>
                     </slot>
                 </div>
             </div>

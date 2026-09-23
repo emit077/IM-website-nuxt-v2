@@ -51,7 +51,7 @@ const accentOf = (accent: string) => accentClasses[accent] ?? accentClasses.blue
 
       <ol class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
         <li v-for="(reason, i) in whyPartnerReasons" :key="reason.title"
-          :class="i === 0 ? 'sm:col-span-2 lg:col-span-3' : ''" v-motion :initial="{ opacity: 0, y: 16 }"
+          :class="i === 0 ? 'sm:col-span-1 lg:col-span-3' : ''" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 70, duration: 450 } }">
           <article :class="[
             'group relative flex h-full overflow-hidden rounded-[1.6rem] border border-slate-200/80 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-card sm:p-7',

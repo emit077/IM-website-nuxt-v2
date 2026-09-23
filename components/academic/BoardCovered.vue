@@ -100,7 +100,7 @@ const gridBoards = computed(() => boards.filter((b) => !b.featured))
 
 const header = {
   badge: 'Boards covered',
-  title: 'Trusted curricula. <span class="text-gradient-brand">India & beyond.</span>',
+  title: 'Trusted curriculum. <span class="text-gradient-brand">India & beyond.</span>',
   description:
     'From national boards to international programmes — find verified mentors aligned to your curriculum.',
   classes: '!px-0 !py-0',

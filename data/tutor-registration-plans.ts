@@ -262,7 +262,7 @@ export const planDetailedRows: ComparisonRow[] = [
 
 export const whyPremiumSection = {
   badge: 'Why Choose Premium?',
-  title: 'More Tools for Tutors Who <span class="text-gradient-brand">Want to Grow</span>',
+  title: 'More Tools for Tutors  <span class="text-gradient-brand">Who Want to Grow</span>',
   description:
     'Premium is designed for educators who want to take a more active approach to building their tutoring profile and exploring opportunities through Indian Mentors.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',

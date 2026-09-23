@@ -519,7 +519,7 @@ export const whyChooseAcademicSection = {
 }
 
 export const academicFinalCta = {
-  title: 'Start your personalised learning journeytoday',
+  title: 'Start your personalised learning journey today',
   description:
     'Whether your child needs foundation learning, board exam preparation, or competitive mentoring, we connect you with verified tutors across India.',
   supporting: 'No commitment required · Background-verified tutors · Free demo session',

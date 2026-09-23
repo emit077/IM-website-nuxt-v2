@@ -213,6 +213,59 @@
   .secondary-hero .btn-secondary {
     @apply border-white/40 bg-transparent text-white hover:border-white/60 hover:bg-white/10 hover:text-white;
   }
+
+  /* Inline meta rows: separators sit in a left gutter that is clipped on every
+     wrapped line, so dividers never lead or trail a line on narrow screens. */
+  .meta-divided {
+    --sep: 1.15rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 0.4rem;
+    width: calc(100% + var(--sep));
+    margin-left: calc(var(--sep) * -1);
+    clip-path: inset(-0.2rem 0 -0.2rem calc(var(--sep) - 1px));
+    line-height: 1.35;
+  }
+
+  .meta-divided--bar {
+    --sep: 1.35rem;
+  }
+
+  .meta-divided__item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    padding-left: var(--sep);
+    white-space: nowrap;
+  }
+
+  .meta-divided--slash .meta-divided__item::before {
+    content: "/";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: var(--sep);
+    transform: translateY(-50%);
+    text-align: center;
+    font-weight: 400;
+    line-height: 1;
+    color: rgb(203 213 225);
+    pointer-events: none;
+  }
+
+  .meta-divided--bar .meta-divided__item::before {
+    content: "";
+    position: absolute;
+    left: calc(var(--sep) / 2);
+    top: 50%;
+    width: 1px;
+    height: 0.875rem;
+    transform: translate(-50%, -50%);
+    background: rgb(203 213 225);
+    pointer-events: none;
+  }
 }
 
 @layer utilities {

@@ -421,16 +421,6 @@ onUnmounted(() => {
                                 <PhoneCountryInput v-model="form.mobile" v-model:country="country"
                                     input-id="signin-mobile" tone="blue" required :invalid="!!formErrors.mobile"
                                     :aria-describedby="formErrors.mobile ? 'signin-mobile-error' : undefined">
-                                    <template #leading>
-                                        <svg class="h-4.5 w-4.5 shrink-0 text-slate-400 transition group-focus-within:text-blue-600"
-                                            viewBox="0 0 24 24" fill="none" aria-hidden="true"
-                                            style="width:18px;height:18px;">
-                                            <rect x="7" y="3" width="10" height="18" rx="2.4" stroke="currentColor"
-                                                stroke-width="1.6" />
-                                            <path d="M10.5 18h3" stroke="currentColor" stroke-width="1.6"
-                                                stroke-linecap="round" />
-                                        </svg>
-                                    </template>
                                 </PhoneCountryInput>
                                 <p v-if="formErrors.mobile" id="signin-mobile-error"
                                     class="mt-1.5 text-[12px] font-medium text-rose-600">

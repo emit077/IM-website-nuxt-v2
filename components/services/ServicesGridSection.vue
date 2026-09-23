@@ -89,10 +89,8 @@ function clippedMetaTags(items?: string[]) {
 
             <div class="mt-5 max-w-xl">
               <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">Best suited for</p>
-              <ul class="mt-2 flex flex-wrap items-center gap-y-1 text-[13px] font-medium text-slate-700" role="list">
-                <li v-for="(item, idx) in service.bestSuitedFor.slice(0, 3)" :key="item"
-                  class="inline-flex items-center whitespace-nowrap">
-                  <span v-if="idx > 0" class="mx-2.5 h-3.5 w-px bg-slate-300" aria-hidden="true" />
+              <ul class="meta-divided meta-divided--bar mt-2 text-[13px] font-medium text-slate-700" role="list">
+                <li v-for="item in service.bestSuitedFor.slice(0, 3)" :key="item" class="meta-divided__item">
                   <span class="inline-flex items-center gap-1.5">
                     <span class="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" aria-hidden="true" />
                     {{ item }}
@@ -105,17 +103,11 @@ function clippedMetaTags(items?: string[]) {
               <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
                 {{ service.supportAreas?.length ? 'Support areas' : 'Coverage' }}
               </p>
-              <p
-                class="mt-2 flex flex-wrap items-center text-[13px] font-semibold leading-none tracking-wide text-slate-600">
-                <template v-for="(item, idx) in clippedMetaTags(service.supportAreas ?? service.coverage).shown"
-                  :key="item">
-                  <span v-if="idx > 0" class="mx-2 font-normal text-slate-300" aria-hidden="true">/</span>
-                  <span class="whitespace-nowrap">{{ item }}</span>
-                </template>
-                <template v-if="clippedMetaTags(service.supportAreas ?? service.coverage).hasMore">
-                  <span class="mx-2 font-normal text-slate-300" aria-hidden="true">/</span>
-                  <span class="whitespace-nowrap text-slate-400">etc.</span>
-                </template>
+              <p class="meta-divided meta-divided--slash mt-2 text-[13px] font-semibold tracking-wide text-slate-600">
+                <span v-for="item in clippedMetaTags(service.supportAreas ?? service.coverage).shown" :key="item"
+                  class="meta-divided__item">{{ item }}</span>
+                <span v-if="clippedMetaTags(service.supportAreas ?? service.coverage).hasMore"
+                  class="meta-divided__item text-slate-400">etc.</span>
               </p>
             </div>
 

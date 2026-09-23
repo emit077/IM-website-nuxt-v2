@@ -16,9 +16,9 @@ const premiumProfile = spProfiles.items.find((profile) => profile.featured) ?? s
         :title="spEnrollmentPreview.title" :description="spEnrollmentPreview.description"
         :classes="spEnrollmentPreview.classes" />
 
-      <div class="mt-8 grid items-stretch gap-5 lg:grid-cols-12 lg:gap-6">
+      <div class="mt-8 grid items-stretch gap-5 md:grid-cols-12 lg:grid-cols-12 lg:gap-6">
         <article
-          class="flex h-full flex-col rounded-[1.35rem] border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6 lg:col-span-5"
+          class="flex h-full flex-col rounded-[1.35rem] border border-slate-200/80 bg-white p-5 shadow-soft sm:p-6  md:col-span-6 lg:col-span-5"
           v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40, duration: 420 } }">
           <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">
@@ -49,7 +49,7 @@ const premiumProfile = spProfiles.items.find((profile) => profile.featured) ?? s
         </article>
 
         <article
-          class="flex h-full flex-col overflow-hidden rounded-[1.35rem] bg-[#2563eb] text-white shadow-soft lg:col-span-7 lg:flex-row"
+          class="flex h-full flex-col overflow-hidden rounded-[1.35rem] bg-[#2563eb] text-white shadow-soft sm:col-span-6 lg:col-span-7 lg:flex-row"
           v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 110, duration: 420 } }">
           <div class="flex min-w-0 flex-1 flex-col p-5 sm:p-6 lg:p-7">
@@ -87,7 +87,8 @@ const premiumProfile = spProfiles.items.find((profile) => profile.featured) ?? s
             </div>
           </div>
 
-          <figure class="relative min-h-[18rem] overflow-hidden sm:min-h-[20rem] lg:w-[42%] lg:min-h-0 lg:self-stretch">
+          <figure
+            class="relative min-h-[18rem] overflow-hidden sm:min-h-[20rem] lg:w-[42%] lg:min-h-0 lg:self-stretch hidden lg:block">
             <img :src="usePublicAsset(spEnrollmentPreview.image)" :alt="spEnrollmentPreview.imageAlt"
               class="h-full w-full object-contain object-bottom" loading="lazy" decoding="async" />
           </figure>

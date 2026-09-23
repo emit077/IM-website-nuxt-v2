@@ -26,21 +26,21 @@ const accents = [
 
       <div class="relative mt-8 overflow-hidden  sm:mt-9 sm:p-5 lg:p-6">
 
-        <div class="relative mb-5 flex flex-col gap-4 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
+        <!-- <div class="relative mb-5 flex flex-col gap-4 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
           <div class="flex items-end gap-3">
             <span class="font-display text-5xl font-black leading-none tracking-tight text-blue-600 sm:text-6xl">
               {{ seMethodology.items.length }}
             </span>
             <div class="pb-1">
               <p class="font-display text-[15px] font-bold leading-tight text-slate-900 sm:text-base">
-                learner-centred practices
+                Learner-Centred Practices
               </p>
               <p class="mt-0.5 text-[12.5px] leading-snug text-slate-500">
                 Shaping every personalised learning plan
               </p>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <ol class="relative grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3" role="list">
           <li v-for="(item, i) in seMethodology.items" :key="item.title" class="min-w-0" v-motion

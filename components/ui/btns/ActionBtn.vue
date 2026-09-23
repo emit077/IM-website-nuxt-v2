@@ -40,9 +40,9 @@ const resolvedIconClass = computed(() => {
 })
 
 const rootClass = computed(() => {
-    if (props.variant === 'primary') return 'btn-primary ripple group w-full sm:w-auto'
-    if (props.variant === 'theme-secondary') return 'theme-btn-secondary ripple group w-full sm:w-auto'
-    return 'btn-secondary group w-full sm:w-auto'
+        if (props.variant === 'primary') return 'btn-primary ripple group w-full xl:w-auto'
+    if (props.variant === 'theme-secondary') return 'theme-btn-secondary ripple group w-full xl:w-auto'
+    return 'btn-secondary group w-full xl:w-auto'
 })
 
 const shouldShowArrow = computed(() => {

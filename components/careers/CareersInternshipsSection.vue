@@ -34,18 +34,6 @@ const embedSrc = `${video.permalink.replace(/\/$/, '')}/embed`
               </li>
             </ul>
 
-            <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <a :href="internshipsSection.cta.href"
-                class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-indigo-800 shadow-lg shadow-indigo-950/25 transition hover:-translate-y-0.5 hover:bg-indigo-50 sm:w-auto sm:py-3">
-                {{ internshipsSection.cta.label }}
-                <Icon icon="mdi:arrow-right" class="h-4 w-4 shrink-0" aria-hidden="true" />
-              </a>
-              <a :href="internshipsSection.secondaryCta.href"
-                class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15 sm:w-auto sm:py-3">
-                <Icon icon="mdi:briefcase-search-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
-                {{ internshipsSection.secondaryCta.label }}
-              </a>
-            </div>
           </div>
 
           <div
@@ -76,6 +64,19 @@ const embedSrc = `${video.permalink.replace(/\/$/, '')}/embed`
                 </div>
               </div>
             </figure>
+          </div>
+
+          <div class="flex flex-col gap-3 px-5 pb-7 sm:px-7 lg:w-7/12 lg:px-9 xl:flex-row xl:items-center">
+            <a :href="internshipsSection.cta.href"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-indigo-800 shadow-lg shadow-indigo-950/25 transition hover:-translate-y-0.5 hover:bg-indigo-50 xl:w-auto xl:py-3">
+              {{ internshipsSection.cta.label }}
+              <Icon icon="mdi:arrow-right" class="h-4 w-4 shrink-0" aria-hidden="true" />
+            </a>
+            <a :href="internshipsSection.secondaryCta.href"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15 xl:w-auto xl:py-3">
+              <Icon icon="mdi:briefcase-search-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
+              {{ internshipsSection.secondaryCta.label }}
+            </a>
           </div>
         </div>
       </div>

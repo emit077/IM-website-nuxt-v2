@@ -16,6 +16,8 @@ import TutorResourcesSection from '~/components/tutors/TutorResourcesSection.vue
 import UiCTASection from '~/components/ui/CTASectionLayout.vue'
 import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
 import { tutorsBannerCta } from '~/data/tutors'
+import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
+import { tutorOpportunities, browseStudentsSection } from '~/data/tutors'
 
 useSeoMeta({
   title: 'Tutors — Indian Mentors',
@@ -31,19 +33,23 @@ useSeoMeta({
 <template>
   <div class="tutors">
     <TutorsHeroSection />
-    <TutorBenefitsSection />
-    <TutorWhoCanJoinSection />
     <TutorOpportunitiesSection />
-    <TutorSubjectsSection />
+    <TutorWhoCanJoinSection />
+    <TutorBenefitsSection />
     <TutorHiringProcessSection />
+    <TutorComplianceSection />
+    <BrowseMentorsSection mode="students" section-id="browse-students" :badge="browseStudentsSection.badge"
+      :title="browseStudentsSection.title" :description="browseStudentsSection.description"
+      :classes="browseStudentsSection.classes" />
+    <TutorSubjectsSection />
     <TutorPlansSection />
     <TutorEarningsSection />
     <TutorErpSection />
     <TutorPolicySection />
-    <TutorComplianceSection />
     <TutorTrainingSection />
     <TutorReferralSection />
     <TutorResourcesSection />
+
     <FaqSectionMini category="tutors" />
     <UiCTASection heading-id="tutor-banner-heading" surface-class="section-surface-muted"
       badge-icon-mdi="mdi:human-male-board" :title="tutorsBannerCta.title" :description="tutorsBannerCta.description"

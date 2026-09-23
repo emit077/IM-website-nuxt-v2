@@ -86,6 +86,21 @@ export const seNeeds = {
       ],
     },
     {
+      id: 'sld',
+      shortTitle: 'SLD',
+      image: 'assets/img/special-educators/sld.png',
+      iconMdi: 'mdi:puzzle-outline',
+      title: 'Specific Learning Disabilities (SLD)',
+      description:
+        'Each learner gets an individualised approach that builds on strengths and addresses specific academic challenges in the classroom.',
+      goals: [
+        'Improve academic results',
+        'Increase class participation',
+        'Build study strategies',
+        'Encourage independent study',
+      ],
+    },
+    {
       id: 'dyslexia',
       shortTitle: 'Dyslexia',
       image: 'assets/img/special-educators/dyslexia.png',
@@ -130,21 +145,7 @@ export const seNeeds = {
         'Reduce maths anxiety',
       ],
     },
-    {
-      id: 'sld',
-      shortTitle: 'SLD',
-      image: 'assets/img/special-educators/sld.png',
-      iconMdi: 'mdi:puzzle-outline',
-      title: 'Specific Learning Disabilities (SLD)',
-      description:
-        'Each learner gets an individualised approach that builds on strengths and addresses specific academic challenges in the classroom.',
-      goals: [
-        'Improve academic results',
-        'Increase class participation',
-        'Build study strategies',
-        'Encourage independent study',
-      ],
-    },
+
     {
       id: 'speech',
       shortTitle: 'Speech & Language',
@@ -212,16 +213,16 @@ export const seServices = {
       ],
     },
     {
-      id: 'school-readiness',
-      iconMdi: 'mdi:human-male-child',
-      title: 'School Readiness Programme',
-      description: 'Helping children prepare for successful classroom participation through:',
+      id: 'parent-guidance',
+      iconMdi: 'mdi:account-heart-outline',
+      title: 'Parent Guidance & Family Support',
+      description: 'Parents play a vital role in educational progress. Support includes:',
       points: [
-        'Listening Skills',
-        'Social Interaction',
-        'Classroom Behaviour',
-        'Routine Development',
-        'Early Academic Skills',
+        'Goal setting',
+        'Progress discussions',
+        'Educational counselling',
+        'Home learning strategies',
+        'Learning recommendations',
       ],
     },
     {
@@ -237,17 +238,18 @@ export const seServices = {
         'Language Development',
       ],
     },
+
     {
-      id: 'parent-guidance',
-      iconMdi: 'mdi:account-heart-outline',
-      title: 'Parent Guidance & Family Support',
-      description: 'Parents play a vital role in educational progress. Support includes:',
+      id: 'school-readiness',
+      iconMdi: 'mdi:human-male-child',
+      title: 'School Readiness Programme',
+      description: 'Helping children prepare for successful classroom participation through:',
       points: [
-        'Goal setting',
-        'Progress discussions',
-        'Educational counselling',
-        'Home learning strategies',
-        'Learning recommendations',
+        'Listening Skills',
+        'Social Interaction',
+        'Classroom Behaviour',
+        'Routine Development',
+        'Early Academic Skills',
       ],
     },
     {
@@ -268,7 +270,7 @@ export const seServices = {
 
 export const seMethodology = {
   badge: 'Our Teaching Methodology',
-  title: 'Evidence-Informed, <span class="text-gradient-brand">Learner-Centred</span> Practices',
+  title: '10 <span class="text-gradient-brand">Learner-Centred </span> Practices',
   classes: '!px-0 !py-0 mx-auto ',
   description: 'Every educational programme is tailored using evidence-informed, learner-centred practices.',
   items: [
@@ -327,7 +329,7 @@ export const seMethodology = {
 
 export const seFeatures = {
   badge: 'Why Families Choose Indian Mentors',
-  title: 'Support That Respects Every Child’s <span class="text-gradient-brand">Potential</span>',
+  title: 'Support That Respects <span class="text-gradient-brand">Every Child’s  Potential</span>',
   description:
     'Qualified special educators, individualised plans, and collaborative support for families and schools.',
   classes: '!px-0 !py-0 mx-auto ',
@@ -373,7 +375,7 @@ export const seFeatures = {
 
 export const seProcess = {
   badge: 'Our Special Education Process',
-  title: 'A Clear Path from Consultation to <span class="text-gradient-brand">Progress</span>',
+  title: 'A Clear Path from <span class="text-gradient-brand">Consultation to  Progress</span>',
   classes: '!px-0 !py-0 mx-auto ',
   description: 'Structured steps that help families understand concerns, plan support, and track educational growth.',
   steps: [
@@ -431,7 +433,7 @@ export const seProcess = {
 
 export const seAudience = {
   badge: 'Who Can Benefit?',
-  title: 'Special Education Services Suitable for <span class="text-gradient-brand">Many Learners</span>',
+  title: 'Special Education Services <span class="text-gradient-brand"> Suitable for Many Learners</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   description:
     'From preschool through Class XII — and for families learning at home — support is adapted to the child’s stage, strengths, and educational goals.',

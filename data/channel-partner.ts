@@ -424,7 +424,7 @@ export const processSteps: ProcessStep[] = [
 
 export const whoCanApplySection = {
   kicker: 'Who Can Become a Channel Partner?',
-  title: 'Eligibility to Join Our  Channel Partner <br> Network',
+  title: 'Eligibility to Join Our  Channel Partner <br class="hidden md:hidden" /> Network',
   description:
     'We welcome applications from individuals and organisations interested in contributing to the education sector.',
   suitableLabel: 'Suitable partners include:',

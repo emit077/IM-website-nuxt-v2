@@ -8,13 +8,8 @@ import { tutorReferral } from '~/data/tutors'
     aria-labelledby="tutor-referral-heading">
     <div class="container-page relative">
       <article
-        class="relative overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 p-6 text-white shadow-[0_24px_60px_-24px_rgba(29,78,216,0.5)] sm:p-10 lg:p-12"
+        class="relative overflow-hidden rounded-[1.75rem] bg-gradient-to-br from-blue-900 via-blue-700 to-indigo-800 p-6 text-white shadow-[0_24px_60px_-24px_rgba(29,78,216,0.5)] sm:p-10 lg:p-12"
         v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
-        <span aria-hidden="true"
-          class="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
-        <span aria-hidden="true"
-          class="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-amber-300/20 blur-3xl" />
-
         <div class="relative grid items-center gap-8 lg:grid-cols-12">
           <div class="lg:col-span-8">
             <p class="text-[11px] font-bold uppercase tracking-[0.18em] text-blue-100/80">{{ tutorReferral.badge }}</p>

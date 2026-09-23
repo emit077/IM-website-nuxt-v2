@@ -733,7 +733,7 @@ export const earningsIllustrationSection = {
     total: "₹4L",
     rows: [
       { label: "Channel Partner (90%)", value: "₹3.6L", highlight: true },
-      { label: "Indian Mentors (10%)", value: "₹40,000" },
+      { label: "Indian Mentors (10%)", value: "₹40K" },
     ],
   },
   annualProjection: {

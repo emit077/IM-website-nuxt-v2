@@ -39,7 +39,7 @@ const steps = [
 
         <div
           class="relative z-[1] grid items-center gap-8 px-5 py-7 sm:gap-9 sm:px-7 sm:py-9 lg:grid-cols-12 lg:gap-8 lg:py-0 lg:pl-9 lg:pr-0">
-          <div class="min-w-0 lg:col-span-6 lg:py-10 xl:col-span-6">
+          <div class="min-w-0 lg:col-span-6 lg:col-start-1 lg:row-start-1 lg:py-10 xl:col-span-6">
             <CardHeader heading-id="partner-programme-heading" theme="dark" align="left" :badge="headerContent.badge"
               :title="headerContent.title" :description="headerContent.description" :classes="headerContent.classes" />
 
@@ -76,21 +76,9 @@ const steps = [
               </ol>
             </div>
 
-            <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <NuxtLink to="/channel-partner"
-                class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-indigo-800 shadow-lg shadow-indigo-950/25 transition hover:-translate-y-0.5 hover:bg-indigo-50 sm:w-auto sm:py-3">
-                Apply for Partnership
-                <Icon icon="mdi:arrow-right" class="h-4 w-4 shrink-0" aria-hidden="true" />
-              </NuxtLink>
-              <NuxtLink to="/channel-partner"
-                class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15 sm:w-auto sm:py-3">
-                <Icon icon="mdi:information-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
-                Know More About Partnership
-              </NuxtLink>
-            </div>
           </div>
 
-          <div class="min-w-0 self-stretch lg:col-span-6">
+          <div class="min-w-0 self-stretch lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1">
             <figure
               class="relative h-full overflow-hidden rounded-2xl border border-white/15 bg-white shadow-[0_24px_50px_-22px_rgba(2,6,23,0.55)] sm:rounded-[1.35rem] lg:rounded-none lg:rounded-l-[1.6rem] lg:border-y-0 lg:border-l lg:border-r-0"
               aria-label="Indian Mentors partner dashboard preview">
@@ -115,6 +103,19 @@ const steps = [
                 </div>
               </div>
             </figure>
+          </div>
+
+          <div class="flex flex-col gap-3 lg:col-span-6 lg:col-start-1 lg:row-start-2 lg:pb-10 xl:flex-row xl:items-center">
+            <NuxtLink to="/channel-partner"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-indigo-800 shadow-lg shadow-indigo-950/25 transition hover:-translate-y-0.5 hover:bg-indigo-50 xl:w-auto xl:py-3">
+              Apply for Partnership
+              <Icon icon="mdi:arrow-right" class="h-4 w-4 shrink-0" aria-hidden="true" />
+            </NuxtLink>
+            <NuxtLink to="/channel-partner"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15 xl:w-auto xl:py-3">
+              <Icon icon="mdi:information-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
+              Know More About Partnership
+            </NuxtLink>
           </div>
         </div>
       </div>

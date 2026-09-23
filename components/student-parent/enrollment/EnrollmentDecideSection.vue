@@ -13,7 +13,7 @@ import { enrollmentChoose, enrollmentNeeds, enrollmentValue } from '~/data/stude
       <CardHeader heading-id="needs-heading" :badge="enrollmentNeeds.badge" :title="enrollmentNeeds.title"
         :classes="enrollmentNeeds.classes" />
 
-      <ul class="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-5" role="list">
+      <ul class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 lg:gap-5" role="list">
         <li v-for="(item, i) in enrollmentNeeds.items" :key="item.id" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 50, duration: 400 } }">
           <article :class="[
@@ -43,7 +43,7 @@ import { enrollmentChoose, enrollmentNeeds, enrollmentValue } from '~/data/stude
               'mt-5 text-[12px] font-bold uppercase tracking-[0.08em]',
               item.featured ? 'text-amber-200' : 'text-blue-600',
             ]">
-              Your Goal: {{ item.goal }}
+              Your Goal: <br class="block lg:hidden" /> {{ item.goal }}
             </p>
           </article>
         </li>
@@ -68,7 +68,8 @@ import { enrollmentChoose, enrollmentNeeds, enrollmentValue } from '~/data/stude
           </p>
           <p class="mt-1 text-lg font-semibold text-slate-500">{{ enrollmentValue.hookPeriod }}</p>
           <p class="mt-2 text-sm font-medium text-slate-400">{{ enrollmentValue.billingNote }}</p>
-          <p class="mt-6 max-w-sm text-[15px] leading-relaxed text-slate-600">{{ enrollmentValue.card }}</p>
+          <p class="mt-6 lg:max-w-sm max-w-full text-[15px] leading-relaxed text-slate-600">{{ enrollmentValue.card }}
+          </p>
           <div class="mt-8">
             <ActionBtn variant="primary" :label="enrollmentValue.cta.label" :href="enrollmentValue.cta.href"
               icon="mdi:star-four-points-outline" />
@@ -92,7 +93,8 @@ import { enrollmentChoose, enrollmentNeeds, enrollmentValue } from '~/data/stude
                 <Icon :icon="item.iconMdi" class="h-5 w-5" />
               </span>
               <h3 class="relative mt-4 font-display text-base font-bold text-slate-900">{{ item.title }}</h3>
-              <p class="relative mt-2 line-clamp-2 min-h-[2.75em] text-[13.5px] leading-relaxed text-slate-600">{{ item.description }}</p>
+              <p class="relative mt-2 line-clamp-2 min-h-[2.75em] text-[13.5px] leading-relaxed text-slate-600">{{
+                item.description }}</p>
             </article>
           </li>
         </ol>
