@@ -6,7 +6,9 @@ import { institutionsHero, institutionsHeroStats } from '~/data/institutions'
 const secondaryIconClass =
   'grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white'
 
-const heroContent: HeroContent = {
+const { data: heroScreens } = await useWebsiteHeroScreens('institutions')
+
+const fallbackHero: HeroContent = {
   badge: institutionsHero.badge,
   title: institutionsHero.title,
   subtitle: institutionsHero.subtitle,
@@ -33,6 +35,10 @@ const heroContent: HeroContent = {
   ],
   trustStats: institutionsHeroStats,
 }
+
+const heroContent = computed(() =>
+  mergeWebsiteHeroScreen(fallbackHero, heroScreens.value?.[0]),
+)
 </script>
 
 <template>

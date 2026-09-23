@@ -7,9 +7,13 @@ import { contactHero, contactHeroCollageBottom, contactHeroCollageTop, contactHe
 
 const { data: primaryContact } = await useWebsitePrimaryContact()
 const { data: popularCities } = await useWebsiteCities({ isPopular: true })
+const { data: heroScreens } = await useWebsiteHeroScreens('contact')
+const liveHero = computed(() => heroScreens.value?.[0])
 
 const primaryCtaHref = computed(
-  () => `tel:${primaryContact.value?.phone.tel ?? phoneSupport.number.tel}`,
+  () =>
+    liveHero.value?.primary_route?.trim() ||
+    `tel:${primaryContact.value?.phone.tel ?? phoneSupport.number.tel}`,
 )
 
 const collageTop = computed(() => {
@@ -28,13 +32,37 @@ const collageBottom = computed(() => {
   return fromApi.length === 4 ? fromApi : contactHeroCollageBottom
 })
 
-const heroContent = {
-  badge: "India's #1 Verified Tutor Platform",
-  title: 'Contact Us<br class=" sm:block" /> <span class="text-gradient-brand">We’re Here to Help</span>',
-  subtitle: '<span class="text-gradient-brand">Indian Mentors</span> –  Connecting Learners with Verified Educators',
-  description: contactHero.subheadline,
+const heroContent = computed(() => ({
+  badge: liveHero.value?.badge?.trim() || "India's #1 Verified Tutor Platform",
+  title:
+    liveHero.value?.title?.trim() ||
+    'Contact Us<br class=" sm:block" /> <span class="text-gradient-brand">We’re Here to Help</span>',
+  subtitle:
+    liveHero.value?.subtitle?.trim() ||
+    '<span class="text-gradient-brand">Indian Mentors</span> –  Connecting Learners with Verified Educators',
+  description: liveHero.value?.description?.trim() || contactHero.subheadline,
   contentClass: '!px-0 !py-0 max-w-none',
-}
+}))
+
+const primaryCtaLabel = computed(
+  () => liveHero.value?.primary_cta_label?.trim() || contactHero.primaryCta.label,
+)
+const secondaryCtaLabel = computed(
+  () => liveHero.value?.secondary_cta_label?.trim() || contactHero.secondaryCta.label,
+)
+const secondaryCtaHref = computed(
+  () => liveHero.value?.secondary_route?.trim() || contactHero.secondaryCta.href,
+)
+const trustStats = computed(() => {
+  const stats = (liveHero.value?.stats ?? [])
+    .map((stat) => ({
+      value: stat.value?.trim() || '',
+      label: stat.label?.trim() || '',
+      icon: stat.icon?.trim() || '',
+    }))
+    .filter((stat) => stat.value || stat.label)
+  return stats.length ? stats : contactHeroTrustStats
+})
 
 function collageSrc(city: { image: string }) {
   const img = city.image?.trim() || ''
@@ -105,15 +133,15 @@ function collageSrc(city: { image: string }) {
         <div class="flex flex-col gap-3 lg:col-start-1 lg:row-start-2 xl:flex-row xl:gap-4" v-motion
           :initial="{ opacity: 0, y: 16 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }">
-          <ActionBtn class="!w-full xl:!w-auto" variant="primary" :label="contactHero.primaryCta.label"
+          <ActionBtn class="!w-full xl:!w-auto" variant="primary" :label="primaryCtaLabel"
             icon="mdi:phone-outline" :href="primaryCtaHref" />
-          <ActionBtn class="!w-full xl:!w-auto" variant="secondary" :label="contactHero.secondaryCta.label"
-            icon="mdi:map-marker-radius-outline" :href="contactHero.secondaryCta.href"
+          <ActionBtn class="!w-full xl:!w-auto" variant="secondary" :label="secondaryCtaLabel"
+            icon="mdi:map-marker-radius-outline" :href="secondaryCtaHref"
             icon-wrapper-class="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white" />
         </div>
       </div>
 
-      <TrustIndicators class="mt-10 lg:mt-12" :items="contactHeroTrustStats" />
+      <TrustIndicators class="mt-10 lg:mt-12" :items="trustStats" />
     </div>
   </section>
 </template>

@@ -66,7 +66,9 @@ const browseTutorsBtn = {
   iconWrapperClass: secondaryIconClass,
 }
 
-const heroScreens: HeroContent[] = [
+const { data: heroScreenRows } = await useWebsiteHeroScreens('home')
+
+const fallbackScreens: HeroContent[] = [
   {
     badge: "India's #1 Verified Tutor Platform",
     title:
@@ -142,6 +144,14 @@ const heroScreens: HeroContent[] = [
     trustStats,
   },
 ]
+
+const heroScreens = computed(() => {
+  const rows = heroScreenRows.value ?? []
+  if (!rows.length) return fallbackScreens
+  return rows.map((row, index) =>
+    mergeWebsiteHeroScreen(fallbackScreens[index] ?? fallbackScreens[0]!, row),
+  )
+})
 </script>
 
 <template>

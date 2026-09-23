@@ -29,7 +29,7 @@ useSeoMeta({
     <QuickServiceCategoriesSection />
     <WhyChooseEcosystemSection />
     <WhyChooseCommitmentsSection />
-    <FaqSectionMini category="why us" />
+    <FaqSectionMini category="about" />
     <WhyChooseConversionStrip />
   </div>
 </template>

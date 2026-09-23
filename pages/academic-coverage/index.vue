@@ -41,7 +41,7 @@ useSeoMeta({
     <EnrichmentSection />
     <CourseMatchingSection />
     <WhyChooseAcademicSection />
-    <FaqSectionMini category="Academic Coverage" />
+    <FaqSectionMini category="academic-coverage" />
     <UiCTASection heading-id="academic-cta-heading" :title="academicFinalCta.title"
       :description="academicFinalCta.description" :supporting="academicFinalCta.supporting" :ctas="academicCtas" />
   </div>

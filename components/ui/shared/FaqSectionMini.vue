@@ -15,7 +15,7 @@ const props = withDefaults(
     sectionId?: string
   }>(),
   {
-    limit: 3,
+    limit: 4,
     badge: 'FAQs',
     title: undefined,
     description: undefined,
@@ -24,7 +24,7 @@ const props = withDefaults(
 )
 
 const meta = computed(() => getFaqCategoryMeta(props.category))
-const { data, pending } = await useWebsiteFaqs([], props.category)
+const { data, pending } = await useWebsiteFaqs(props.category)
 
 const items = computed(() => {
   const all = data.value?.flatMap((group) => group.items) ?? []
@@ -36,66 +36,51 @@ const sectionId = computed(() => props.sectionId || `${meta.value.id}-faq`)
 const headingTitle = computed(
   () => props.title || `Common questions about ${meta.value.title}`,
 )
-const viewAllHref = computed(() => `/faq#${meta.value.id}`)
+const viewAllHref = computed(() => `/faq/${meta.value.id}`)
 </script>
 
 <template>
-  <section
-    v-if="pending || items.length"
-    :id="sectionId"
-    class="relative scroll-mt-20 overflow-hidden bg-white section-py"
-    :aria-labelledby="headingId"
-  >
+  <section v-if="pending || items.length" :id="sectionId"
+    class="relative scroll-mt-20 overflow-hidden bg-white section-py" :aria-labelledby="headingId">
     <div class="container-page">
-      <CardHeader
-        :heading-id="headingId"
-        :badge="badge"
-        :title="headingTitle"
-        :description="description"
-        classes="!px-0 !py-0"
-      />
+      <CardHeader :heading-id="headingId" :badge="badge" :title="headingTitle" :description="description"
+        classes="!px-0 !py-0" />
 
-      <div v-if="pending && !items.length" class="mx-auto mt-10 max-w-3xl space-y-3" aria-hidden="true">
-        <div v-for="n in limit" :key="n" class="h-[4.25rem] animate-pulse rounded-2xl bg-slate-100" />
+      <div v-if="pending && !items.length" class="mt-8 grid gap-2 lg:grid-cols-2" aria-hidden="true">
+        <div v-for="n in limit" :key="n" class="h-16 animate-pulse rounded-xl bg-slate-100" />
       </div>
 
-      <div v-else class="mx-auto mt-10 max-w-3xl space-y-3">
-        <details
-          v-for="(item, i) in items"
-          :key="item.id"
-          class="group overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition duration-300 open:border-blue-200 open:shadow-[0_16px_44px_-20px_rgba(37,99,235,0.2)] open:ring-1 open:ring-blue-100"
-          v-motion
-          :initial="{ opacity: 0, y: 12 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 50, duration: 400 } }"
-        >
+      <div v-else class="mt-8 grid items-start gap-2 lg:grid-cols-2">
+        <details v-for="item in items" :key="item.id"
+          class="group overflow-hidden rounded-xl border border-slate-200/80 bg-white open:border-blue-200 open:ring-1 open:ring-blue-100">
           <summary
-            class="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-cream-50/80 sm:px-5 sm:py-[1.125rem] [&::-webkit-details-marker]:hidden"
-          >
-            <span class="font-display text-[15px] font-semibold leading-snug text-slate-900 sm:text-base">
-              {{ item.question }}
+            class="flex cursor-pointer list-none items-start justify-between gap-3 px-3.5 py-3 text-left [&::-webkit-details-marker]:hidden">
+            <span class="min-w-0">
+              <!-- <span
+                v-if="item.subcategory"
+                class="mb-0.5 block text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400"
+              >
+                {{ item.subcategory }}
+              </span> -->
+              <span class="block text-sm font-semibold leading-snug text-slate-900">
+                {{ item.question }}
+              </span>
             </span>
             <span
-              class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition duration-300 group-open:rotate-45 group-open:bg-blue-600 group-open:text-white"
-              aria-hidden="true"
-            >
-              <Icon icon="mdi:plus" class="h-4 w-4" />
+              class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-slate-50 text-slate-500 transition group-open:rotate-45 group-open:bg-blue-600 group-open:text-white"
+              aria-hidden="true">
+              <Icon icon="mdi:plus" class="h-3.5 w-3.5" />
             </span>
           </summary>
-          <div class="border-t border-slate-100 px-4 pb-4 pt-3 sm:px-5 sm:pb-5 sm:pt-4">
-            <p class="text-sm leading-relaxed text-slate-600 sm:text-[15px]">
-              {{ item.answer }}
-            </p>
+          <div class="border-t border-slate-100 px-3.5 pb-3.5 pt-2.5">
+            <p class="text-sm leading-relaxed text-slate-600">{{ item.answer }}</p>
           </div>
         </details>
       </div>
 
       <div class="mt-8 flex justify-center">
-        <ActionBtn
-          variant="secondary"
-          label="View all FAQs"
-          :href="viewAllHref"
-          icon="mdi:help-circle-outline"
-        />
+        <ActionBtn variant="secondary" label="View all FAQs" :href="viewAllHref"
+          class="border-none shadow-none text-sm text-blue-600 hover:text-blue-700 hover:bg-transparent hover:shadow-none" />
       </div>
     </div>
   </section>

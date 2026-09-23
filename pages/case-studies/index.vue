@@ -19,7 +19,7 @@ useSeoMeta({
 <template>
   <div class="min-h-screen">
     <CaseStudiesListSection />
-    <FaqSectionMini category="Student" />
+    <FaqSectionMini category="insights" />
     <UiCTASection heading-id="case-studies-cta-heading" badge-icon-mdi="mdi:chart-box-outline"
       :badge="caseStudiesFinalCta.badge" :title="caseStudiesFinalCta.title"
       :description="caseStudiesFinalCta.description" :supporting="caseStudiesFinalCta.supporting" :ctas="ctas" />

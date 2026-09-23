@@ -34,7 +34,7 @@ useSeoMeta({
     <SubscriptionSupportsSection />
     <SubscriptionRecommendSection />
     <SubscriptionTermsSection />
-    <FaqSectionMini category="Student" />
+    <FaqSectionMini category="student-parent" />
     <UiCTASection heading-id="sp-subscription-cta-heading" surface-class="section-surface-muted"
       :title="subscriptionFinalCta.title" :description="subscriptionFinalCta.description"
       :ctas="subscriptionFinalCta.ctas" />

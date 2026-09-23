@@ -36,7 +36,7 @@ useSeoMeta({
       :description="platformAccessCta.description"
       :ctas="platformCtas"
     />
-    <FaqSectionMini category="channel partner" />
+    <FaqSectionMini category="channel-partner" />
     <NewsletterSection />
   </div>
 </template>

@@ -20,7 +20,7 @@ useSeoMeta({
 <template>
   <div class="min-h-screen">
     <BlogsListSection />
-    <FaqSectionMini category="Student" />
+    <FaqSectionMini category="insights" />
     <UiCTASection heading-id="blogs-cta-heading" badge-icon-mdi="mdi:notebook-edit-outline"
       :badge="blogsFinalCta.badge" :title="blogsFinalCta.title" :description="blogsFinalCta.description"
       :supporting="blogsFinalCta.supporting" :ctas="ctas" />

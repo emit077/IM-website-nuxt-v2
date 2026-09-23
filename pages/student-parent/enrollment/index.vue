@@ -31,7 +31,7 @@ useSeoMeta({
     <StudentParentProfilesSection />
     <EnrollmentPlansSection />
     <EnrollmentDecideSection />
-    <FaqSectionMini category="Student" />
+    <FaqSectionMini category="student-parent" />
     <UiCTASection heading-id="sp-enrollment-cta-heading" surface-class="section-surface-muted"
       :title="enrollmentFinalCta.title" :description="enrollmentFinalCta.description" :ctas="enrollmentFinalCta.ctas" />
   </div>

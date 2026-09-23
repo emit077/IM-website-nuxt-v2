@@ -2,78 +2,17 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { useIntervalFn } from '@vueuse/core'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
-import type { UiTestimonial } from '~/composables/useWebsiteContent'
 
-const fallbackTestimonials: UiTestimonial[] = [
-  {
-    id: 'fallback-1',
-    category: 'Student Success',
-    title: 'From average scores to class topper',
-    quote:
-      "The mentor's revision strategy and weekly mock tests helped me improve quickly. I now approach exams with confidence.",
-    person: 'Aarushi Verma',
-    role: 'Class 10 Student',
-    duration: '2:08',
-    result: 'Top 5 rank in class',
-    thumb: 'https://i.pravatar.cc/800?img=47',
-    rating: 5,
-  },
-  {
-    id: 'fallback-2',
-    category: 'Parent Review',
-    title: 'Clear progress updates every week',
-    quote:
-      'We finally had structure at home. The tutor shared practical goals and feedback after each session.',
-    person: 'Rohit Sharma',
-    role: 'Parent, Grade 8',
-    duration: '1:54',
-    result: '18% score improvement',
-    thumb: 'https://i.pravatar.cc/800?img=15',
-    rating: 5,
-  },
-  {
-    id: 'fallback-3',
-    category: 'Tutor Review',
-    title: 'Quality students and smoother workflow',
-    quote:
-      'The platform makes planning and communication easier. Student consistency improved within a few weeks.',
-    person: 'Nisha Kapoor',
-    role: 'English Tutor',
-    duration: '2:25',
-    result: 'Higher completion rate',
-    thumb: 'https://i.pravatar.cc/800?img=23',
-    rating: 5,
-  },
-  {
-    id: 'fallback-4',
-    category: 'School Feedback',
-    title: 'Stronger classroom participation',
-    quote:
-      'Students from this program ask better questions and show stronger fundamentals in regular school sessions.',
-    person: 'Academic Coordinator',
-    role: 'Partner School',
-    duration: '1:46',
-    result: 'Better concept retention',
-    thumb: 'https://i.pravatar.cc/800?img=12',
-    rating: 5,
-  },
-  {
-    id: 'fallback-5',
-    category: 'Placement Success',
-    title: 'Interview prep that actually works',
-    quote:
-      'The mentoring sessions were practical and focused. I landed a strong placement offer in my final semester.',
-    person: 'Aniket Singh',
-    role: 'B.Tech Student',
-    duration: '2:31',
-    result: 'Placed at 12 LPA',
-    thumb: 'https://i.pravatar.cc/800?img=68',
-    rating: 5,
-  },
-]
+withDefaults(
+  defineProps<{
+    /** Renders only the player, for use inside another hero. */
+    embedded?: boolean
+  }>(),
+  { embedded: false },
+)
 
-const { data: apiTestimonials } = await useWebsiteTestimonials(fallbackTestimonials)
-const testimonials = computed(() => apiTestimonials.value?.length ? apiTestimonials.value : fallbackTestimonials)
+const { data: apiTestimonials } = await useWebsiteTestimonials()
+const testimonials = computed(() => apiTestimonials.value ?? [])
 
 const headerContent = {
   badge: 'Testimonials',
@@ -150,21 +89,25 @@ function onTouchEnd(e: TouchEvent) {
 </script>
 
 <template>
-  <section id="testimonials" class="relative overflow-hidden section-surface-white section-py">
-    <div
-      class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.12),transparent_45%)]"
-      aria-hidden="true" />
-    <div class="pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-blue-300/20 blur-3xl"
-      aria-hidden="true" />
-    <div class="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-indigo-300/20 blur-3xl"
-      aria-hidden="true" />
+  <section v-if="testimonials.length" :id="embedded ? undefined : 'testimonials'"
+    :class="embedded ? 'mt-10 w-full text-left' : 'relative overflow-hidden section-surface-white section-py'">
+    <template v-if="!embedded">
+      <div
+        class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(37,99,235,0.12),transparent_45%)]"
+        aria-hidden="true" />
+      <div class="pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-blue-300/20 blur-3xl"
+        aria-hidden="true" />
+      <div class="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-indigo-300/20 blur-3xl"
+        aria-hidden="true" />
+    </template>
 
-    <div class="container-page relative">
-      <CardHeader :badge="headerContent.badge" :title="headerContent.title" :description="headerContent.description"
-        :classes="headerContent.classes" />
+    <div :class="embedded ? '' : 'container-page relative'">
+      <CardHeader v-if="!embedded" :badge="headerContent.badge" :title="headerContent.title"
+        :description="headerContent.description" :classes="headerContent.classes" />
 
       <div
-        class="mt-8 overflow-hidden rounded-[2rem] border border-blue-100/80 bg-white/85 p-4 shadow-[0_24px_70px_rgba(37,99,235,0.14)] backdrop-blur-xl sm:p-5 md:p-6 ">
+        class="overflow-hidden rounded-[2rem] border border-blue-100/80 bg-white/85 p-4 shadow-[0_24px_70px_rgba(37,99,235,0.14)] backdrop-blur-xl sm:p-5 md:p-6"
+        :class="embedded ? '' : 'mt-8'">
         <article :key="`testimonial-${active}`" v-motion :initial="{ opacity: 0, y: 14 }" :enter="{
           opacity: 1,
           y: 0,

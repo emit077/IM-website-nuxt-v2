@@ -53,7 +53,7 @@ useSeoMeta({
     <UiCTASection heading-id="about-cta-heading" surface-class="bg-white" title="Ready to Learn Smarter?"
       description="Book a free demo with a verified mentor — personalised learning, transparent progress, no commitment."
       :ctas="aboutCtas" />
-    <FaqSectionMini category="About us" />
+    <FaqSectionMini category="about" />
     <NewsletterSection />
   </div>
 </template>

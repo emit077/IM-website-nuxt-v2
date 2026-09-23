@@ -3,7 +3,9 @@ import SecondaryHeroLayout from '~/components/ui/SecondaryHeroLayout.vue'
 import type { SecondaryHeroContent } from '~/components/ui/SecondaryHeroLayout.vue'
 import { institutionsPricingHero } from '~/data/institutions-pricing'
 
-const heroContent: SecondaryHeroContent = {
+const { data: heroScreens } = await useWebsiteHeroScreens('institutions/pricing')
+
+const fallbackHero: SecondaryHeroContent = {
   badge: institutionsPricingHero.badge,
   title: institutionsPricingHero.title,
   subtitle: institutionsPricingHero.subtitle,
@@ -15,6 +17,10 @@ const heroContent: SecondaryHeroContent = {
   tickerAriaLabel: institutionsPricingHero.tickerAriaLabel,
   patternId: 'institutions-pricing-hero-waves',
 }
+
+const heroContent = computed(() =>
+  mergeWebsiteHeroScreen(fallbackHero, heroScreens.value?.[0]),
+)
 </script>
 
 <template>

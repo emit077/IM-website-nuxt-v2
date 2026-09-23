@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import VideoTestimonialsSection from '~/components/home/VideoTestimonialsSection.vue'
 import SecondaryHeroLayout from '~/components/ui/SecondaryHeroLayout.vue'
 import type { SecondaryHeroContent } from '~/components/ui/SecondaryHeroLayout.vue'
 import { successStoriesHero } from '~/data/success-stories'
@@ -18,5 +19,7 @@ const heroContent: SecondaryHeroContent = {
 </script>
 
 <template>
-  <SecondaryHeroLayout :hero-content="heroContent" />
+  <SecondaryHeroLayout :hero-content="heroContent">
+    <VideoTestimonialsSection embedded />
+  </SecondaryHeroLayout>
 </template>

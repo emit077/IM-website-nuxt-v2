@@ -19,7 +19,7 @@ useSeoMeta({
 <template>
   <div class="min-h-screen">
     <NewsListSection />
-    <FaqSectionMini category="Student" />
+    <FaqSectionMini category="insights" />
     <UiCTASection heading-id="news-cta-heading" badge-icon-mdi="mdi:newspaper-variant-outline"
       :badge="newsFinalCta.badge" :title="newsFinalCta.title" :description="newsFinalCta.description"
       :supporting="newsFinalCta.supporting" :ctas="ctas" />

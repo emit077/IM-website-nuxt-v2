@@ -52,7 +52,7 @@ useSeoMeta({
 
     <UiCTASection heading-id="sp-final-cta-heading" layout="split" surface-class="section-surface-muted"
       :title="spFinalCta.title" :description="spFinalCta.description" :ctas="spFinalCta.ctas" />
-    <FaqSectionMini category="Student" />
+    <FaqSectionMini category="student-parent" />
     <StudentParentSupportSection />
   </div>
 </template>

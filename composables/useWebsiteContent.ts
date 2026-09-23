@@ -1,4 +1,4 @@
-import { onMounted } from 'vue'
+import { computed, onMounted, toValue, type MaybeRefOrGetter } from 'vue'
 import type { BannerSlide } from '~/components/home/BannerCarousel.vue'
 import type { FaqCategory, FaqItem } from '~/data/faq'
 import type { LeadershipProfile } from '~/data/about'
@@ -15,6 +15,7 @@ import type {
   WebsiteEvent,
   WebsiteNews,
   WebsiteFaq,
+  WebsiteHeroScreen,
   WebsitePrimaryContact,
   WebsiteTeamMember,
   WebsiteTestimonial,
@@ -53,21 +54,67 @@ export type UiPrimaryContact = {
   workingHours: string | null
 }
 
+export const FAQ_CATEGORY_ORDER = [
+  'services',
+  'special-educators',
+  'academic-coverage',
+  'student-parent',
+  'contact',
+  'about',
+  'careers',
+  'tutors',
+  'institutions',
+  'channel-partner',
+  'insights',
+  'support',
+  'others',
+] as const
+
 const FAQ_CATEGORY_META: Record<
   string,
   { id: string; title: string; description: string; iconMdi: string }
 > = {
-  'About us': {
-    id: 'about-us',
+  services: {
+    id: 'services',
+    title: 'Services',
+    description: 'Home, online, hybrid, and specialised tutoring programmes.',
+    iconMdi: 'mdi:book-open-variant',
+  },
+  'special-educators': {
+    id: 'special-educators',
+    title: 'Special Educators',
+    description: 'Individualised support for diverse learning needs.',
+    iconMdi: 'mdi:account-heart-outline',
+  },
+  'academic-coverage': {
+    id: 'academic-coverage',
+    title: 'Academic Coverage',
+    description: 'Boards, grades, subjects, and exam preparation.',
+    iconMdi: 'mdi:book-education-outline',
+  },
+  'student-parent': {
+    id: 'student-parent',
+    title: 'Students & Parents',
+    description: 'Tutor matching, learning modes, and support for families.',
+    iconMdi: 'mdi:account-school-outline',
+  },
+  contact: {
+    id: 'contact',
+    title: 'Contact',
+    description: 'How to reach our counselling and enquiry teams.',
+    iconMdi: 'mdi:email-outline',
+  },
+  about: {
+    id: 'about',
     title: 'About Us',
     description: 'Our story, mission, and how Indian Mentors works.',
     iconMdi: 'mdi:information-outline',
   },
-  Student: {
-    id: 'student',
-    title: 'Students & Parents',
-    description: 'Tutor matching, learning modes, and support for families.',
-    iconMdi: 'mdi:account-school-outline',
+  careers: {
+    id: 'careers',
+    title: 'Careers',
+    description: 'Roles, hiring process, and working at Indian Mentors.',
+    iconMdi: 'mdi:briefcase-outline',
   },
   tutors: {
     id: 'tutors',
@@ -75,48 +122,48 @@ const FAQ_CATEGORY_META: Record<
     description: 'Registration, screening, payouts, and teaching opportunities.',
     iconMdi: 'mdi:human-male-board',
   },
-  'why us': {
-    id: 'why-us',
-    title: 'Why Choose Us',
-    description: 'What makes Indian Mentors different for families and educators.',
-    iconMdi: 'mdi:shield-check-outline',
+  institutions: {
+    id: 'institutions',
+    title: 'Institutions',
+    description: 'Teacher recruitment and institutional partnerships.',
+    iconMdi: 'mdi:domain',
   },
-  services: {
-    id: 'services',
-    title: 'Services',
-    description: 'Home, online, and specialised tutoring programmes.',
-    iconMdi: 'mdi:book-open-variant',
-  },
-  'channel partner': {
+  'channel-partner': {
     id: 'channel-partner',
     title: 'Channel Partner',
     description: 'Partnership models, territories, and partner support.',
     iconMdi: 'mdi:handshake-outline',
   },
-  contact: {
-    id: 'contact',
-    title: 'Contact',
-    description: 'How to reach our support and counselling teams.',
+  insights: {
+    id: 'insights',
+    title: 'Insights',
+    description: 'Learning guidance, exams, and resources from the Insights Hub.',
+    iconMdi: 'mdi:lightbulb-on-outline',
+  },
+  support: {
+    id: 'support',
+    title: 'Support',
+    description: 'Accounts, payments, scheduling, and help after enrollment.',
     iconMdi: 'mdi:headset',
   },
-  institute: {
-    id: 'institute',
-    title: 'Institutions',
-    description: 'Teacher recruitment and institutional partnerships.',
-    iconMdi: 'mdi:domain',
+  others: {
+    id: 'others',
+    title: 'Others',
+    description: 'Additional answers that do not fit a single topic.',
+    iconMdi: 'mdi:dots-horizontal-circle-outline',
   },
-  Career: {
-    id: 'career',
-    title: 'Careers',
-    description: 'Roles, hiring process, and working at Indian Mentors.',
-    iconMdi: 'mdi:briefcase-outline',
-  },
-  'Academic Coverage': {
-    id: 'academic-coverage',
-    title: 'Academic Coverage',
-    description: 'Boards, grades, subjects, and exam preparation.',
-    iconMdi: 'mdi:book-education-outline',
-  },
+}
+
+const FAQ_CATEGORY_ALIASES: Record<string, (typeof FAQ_CATEGORY_ORDER)[number]> = {
+  'about us': 'about',
+  student: 'student-parent',
+  'students & parents': 'student-parent',
+  career: 'careers',
+  institute: 'institutions',
+  'channel partner': 'channel-partner',
+  'academic coverage': 'academic-coverage',
+  'why us': 'about',
+  'special educators': 'special-educators',
 }
 
 function slugifyCategory(category: string) {
@@ -127,15 +174,19 @@ function slugifyCategory(category: string) {
     .replace(/^-|-$/g, '')
 }
 
+export function canonicalFaqCategory(category: string) {
+  const trimmed = category.trim()
+  const lower = trimmed.toLowerCase()
+  if (lower in FAQ_CATEGORY_META) return lower
+  return FAQ_CATEGORY_ALIASES[lower] ?? slugifyCategory(trimmed)
+}
+
 export function getFaqCategoryMeta(category: string) {
-  const exact = FAQ_CATEGORY_META[category]
-  if (exact) return exact
-  const lower = category.trim().toLowerCase()
-  const match = Object.entries(FAQ_CATEGORY_META).find(([key]) => key.toLowerCase() === lower)
-  return match?.[1] ?? {
-    id: slugifyCategory(category),
-    title: category,
-    description: `Answers related to ${category}.`,
+  const id = canonicalFaqCategory(category)
+  return FAQ_CATEGORY_META[id] ?? {
+    id,
+    title: category.trim() || 'FAQs',
+    description: `Answers related to ${category.trim() || 'this topic'}.`,
     iconMdi: 'mdi:help-circle-outline',
   }
 }
@@ -184,27 +235,107 @@ export function mapBanners(items: WebsiteBanner[], apiBase = ''): BannerSlide[] 
 }
 
 export function mapTestimonials(items: WebsiteTestimonial[], apiBase = ''): UiTestimonial[] {
-  return items.map((item) => {
-    const quote = item.testimonial?.trim() || ''
-    const rating = Number(item.rating) || 0
-    return {
-      id: String(item.id),
-      category: 'Testimonial',
-      title: quote.length > 64 ? `${quote.slice(0, 61)}…` : quote || item.name,
-      quote,
-      person: item.name,
-      role: item.details?.trim() || 'Indian Mentors community',
-      duration: '',
-      result: rating ? `${rating.toFixed(1)} / 5` : '',
-      thumb: resolveMediaUrl(item.thumbnail, apiBase) || '',
-      video: resolveMediaUrl(item.testimonial_video, apiBase),
-      rating,
-    }
-  })
+  return [...items]
+    .sort((a, b) => (a.display_order ?? a.id) - (b.display_order ?? b.id))
+    .map((item) => {
+      const quote = item.quote?.trim() || ''
+      const rating = Number(item.rating) || 0
+      return {
+        id: String(item.id),
+        category: item.category?.trim() || 'Testimonial',
+        title: item.title?.trim() || quote,
+        quote,
+        person: item.person?.trim() || '',
+        role: item.role?.trim() || '',
+        duration: item.duration?.trim() || '',
+        result: item.result?.trim() || '',
+        thumb: resolveMediaUrl(item.thumb, apiBase) || '',
+        video: resolveMediaUrl(item.testimonial_video, apiBase),
+        rating,
+      }
+    })
 }
 
 function resolveMediaUrl(url?: string | null, apiBase = '') {
   return useApiMedia(url, apiBase) || undefined
+}
+
+type MergeableHeroButton = {
+  label: string
+  link?: string
+  href?: string
+  variant?: string
+  icon?: unknown
+  iconWrapperClass?: string
+  showArrow?: boolean
+}
+
+type MergeableHero = {
+  badge?: string
+  title?: string
+  subtitle?: string
+  description?: string
+  caption?: string
+  backgroundImage?: string
+  mobileBackgroundImage?: string
+  actionBtns?: MergeableHeroButton[]
+  trustStats?: { value: string; label: string; icon: string }[]
+}
+
+function mergeHeroButton(
+  button: MergeableHeroButton | undefined,
+  label: string | null | undefined,
+  route: string | null | undefined,
+) {
+  const nextLabel = label?.trim() || button?.label || ''
+  if (!button && !nextLabel) return null
+  const href = route?.trim() || button?.href || button?.link || '#'
+  return {
+    ...button,
+    label: nextLabel,
+    link: href,
+    href,
+  }
+}
+
+/** Overlay a hero-screens API row onto the local hero. Blank API fields keep the local copy. */
+export function mergeWebsiteHeroScreen<T extends MergeableHero>(
+  fallback: T,
+  screen: WebsiteHeroScreen | null | undefined,
+): T {
+  if (!screen) return fallback
+
+  const buttons = fallback.actionBtns ?? []
+  const actionBtns = [
+    mergeHeroButton(buttons[0], screen.primary_cta_label, screen.primary_route),
+    mergeHeroButton(buttons[1], screen.secondary_cta_label, screen.secondary_route),
+  ].filter((button) => button?.label)
+
+  const stats = (Array.isArray(screen.stats) ? screen.stats : [])
+    .map((stat) => ({
+      value: stat.value?.trim() || '',
+      label: stat.label?.trim() || '',
+      icon: stat.icon?.trim() || '',
+    }))
+    .filter((stat) => stat.value || stat.label)
+
+  const backgroundImage = screen.bg_image?.trim()
+    ? `url('${screen.bg_image.trim()}')`
+    : fallback.backgroundImage
+  const mobileBackgroundImage = screen.mobile_bg?.trim() || fallback.mobileBackgroundImage
+
+  return {
+    ...fallback,
+    badge: screen.badge?.trim() || fallback.badge,
+    title: screen.title?.trim() || fallback.title,
+    subtitle: screen.subtitle?.trim() || fallback.subtitle,
+    description: screen.description?.trim() || fallback.description,
+    caption: screen.caption?.trim() || fallback.caption,
+    backgroundImage,
+    mobileBackgroundImage,
+    actionBtns: actionBtns.length ? actionBtns : fallback.actionBtns,
+    trustStats: stats.length ? stats : fallback.trustStats,
+  } as T
 }
 
 /**
@@ -310,26 +441,55 @@ export function mapFaqs(items: WebsiteFaq[]): FaqCategory[] {
   const grouped = new Map<string, FaqItem[]>()
 
   for (const item of items) {
-    const key = item.category || 'General'
+    const key = canonicalFaqCategory(item.category || 'others')
     const list = grouped.get(key) ?? []
+    const subcategory = item.subcategory?.trim()
     list.push({
       id: String(item.id),
       question: item.que,
       answer: item.ans,
+      subcategory: subcategory || undefined,
     })
     grouped.set(key, list)
   }
 
-  return [...grouped.entries()].map(([category, faqItems]) => {
-    const meta = getFaqCategoryMeta(category)
-    return {
-      id: meta.id,
-      title: meta.title,
-      description: meta.description,
-      iconMdi: meta.iconMdi,
-      items: faqItems,
-    }
-  })
+  const order = new Map<string, number>(FAQ_CATEGORY_ORDER.map((id, index) => [id, index]))
+
+  return [...grouped.entries()]
+    .sort(([a], [b]) => (order.get(a) ?? 99) - (order.get(b) ?? 99) || a.localeCompare(b))
+    .map(([category, faqItems]) => {
+      const meta = getFaqCategoryMeta(category)
+      return {
+        id: meta.id,
+        title: meta.title,
+        description: meta.description,
+        iconMdi: meta.iconMdi,
+        items: faqItems,
+      }
+    })
+}
+
+export function useWebsiteHeroScreens(pageName: string) {
+  const { fetchWebsiteList, apiBase } = useWebsiteApi()
+  const key = `website-hero-screens-${pageName.replace(/\//g, '-')}`
+
+  const asyncData = useAsyncData(
+    key,
+    async () => {
+      const rows = await fetchWebsiteList<WebsiteHeroScreen>('/api/website/hero-screens/', {
+        page_name: pageName,
+      })
+      return rows.map((row) => ({
+        ...row,
+        bg_image: resolveMediaUrl(row.bg_image, apiBase) || null,
+        mobile_bg: resolveMediaUrl(row.mobile_bg, apiBase) || null,
+        stats: Array.isArray(row.stats) ? row.stats : [],
+      }))
+    },
+    liveDataOptions([] as WebsiteHeroScreen[]),
+  )
+  refreshOnClient(key, asyncData.refresh)
+  return asyncData
 }
 
 export function useWebsiteBanners() {
@@ -347,17 +507,16 @@ export function useWebsiteBanners() {
   return asyncData
 }
 
-export function useWebsiteTestimonials(fallback: UiTestimonial[] = []) {
+export function useWebsiteTestimonials() {
   const { fetchWebsiteList, apiBase } = useWebsiteApi()
 
   const asyncData = useAsyncData(
     'website-testimonials',
     async () => {
       const rows = await fetchWebsiteList<WebsiteTestimonial>('/api/website/testimonials/')
-      const mapped = mapTestimonials(rows, apiBase)
-      return mapped.length ? mapped : fallback
+      return mapTestimonials(rows, apiBase)
     },
-    liveDataOptions(fallback),
+    liveDataOptions([] as UiTestimonial[]),
   )
   refreshOnClient('website-testimonials', asyncData.refresh)
   return asyncData
@@ -464,20 +623,32 @@ export function useWebsiteBrochures(brochureType?: BrochureType | string) {
   return asyncData
 }
 
-export function useWebsiteFaqs(fallback: FaqCategory[] = [], category?: string) {
+export function useWebsiteFaqs(category?: MaybeRefOrGetter<string | undefined>) {
   const { fetchWebsiteList } = useWebsiteApi()
-  const key = category ? `website-faqs-${slugifyCategory(category)}` : 'website-faqs'
+  const slug = computed(() => {
+    const value = toValue(category)?.trim()
+    return value ? canonicalFaqCategory(value) : ''
+  })
+  const key = computed(() => (slug.value ? `website-faqs-${slug.value}` : 'website-faqs'))
 
   const asyncData = useAsyncData(
     key,
     async () => {
-      const rows = await fetchWebsiteList<WebsiteFaq>('/api/website/faqs/', { category })
-      const mapped = mapFaqs(rows)
-      return mapped.length ? mapped : fallback
+      const rows = await fetchWebsiteList<WebsiteFaq>('/api/website/faqs/', {
+        category: slug.value || undefined,
+      })
+      return mapFaqs(rows)
     },
-    liveDataOptions(fallback),
+    {
+      ...liveDataOptions([] as FaqCategory[]),
+      watch: [slug],
+    },
   )
-  refreshOnClient(key, asyncData.refresh)
+  onMounted(() => {
+    const current = key.value
+    clearNuxtData(current)
+    void asyncData.refresh()
+  })
   return asyncData
 }
 

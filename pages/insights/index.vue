@@ -44,7 +44,7 @@ useSeoMeta({
     <UiCTASection section-id="insights-cta" heading-id="insights-final-cta-heading"
       badge-icon-mdi="mdi:school-outline" :badge="insightsFinalCta.badge" :title="insightsFinalCta.title"
       :description="insightsFinalCta.description" :supporting="insightsFinalCta.supporting" :ctas="insightsCtas" />
-    <FaqSectionMini category="Student" title="Questions about the Insights Hub" />
+    <FaqSectionMini category="insights" title="Questions about the Insights Hub" />
     <InsightsClosingSection />
   </div>
 </template>

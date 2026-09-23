@@ -78,7 +78,7 @@ function openApply(type: CareerApplicationType) {
 
     <template v-else>
       <JobDetailSections :job="job" @apply="openApply" />
-      <FaqSectionMini category="Career" />
+      <FaqSectionMini category="careers" />
 
       <div class="container-page py-10">
         <div class="mx-auto max-w-5xl text-center">

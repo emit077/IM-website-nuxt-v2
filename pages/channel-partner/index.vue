@@ -41,7 +41,7 @@ useSeoMeta({
     <PartnershipProcessSection />
     <PartnerEligibilitySection />
     <PartnerTestimonialsSection />
-    <FaqSectionMini category="channel partner" />
+    <FaqSectionMini category="channel-partner" />
     <UiCTASection section-id="partner-register" heading-id="partner-cta-heading" :title="finalCta.title"
       :description="finalCta.description" :supporting="`${finalCta.closingTitle}. ${finalCta.closingStatement}`"
       :ctas="partnerCtas" />

@@ -53,7 +53,7 @@ useSeoMeta({
     <PartnerProgrammeSection />
     <HireInstituteSection />
     <VideoTestimonialsSection />
-    <FaqSectionMini category="Student" />
+    <FaqSectionMini category="student-parent" />
     <NewsletterSection />
   </div>
 </template>

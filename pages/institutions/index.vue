@@ -69,7 +69,7 @@ useSeoMeta({
       badge-icon-mdi="mdi:account-tie-outline" :title="institutionsFinalCta.title"
       :description="institutionsFinalCta.description" :supporting="institutionsFinalCta.closing"
       :ctas="institutionsCtas" />
-    <FaqSectionMini category="institute" />
+    <FaqSectionMini category="institutions" />
     <NewsletterSection />
   </div>
 </template>

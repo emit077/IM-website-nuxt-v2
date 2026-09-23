@@ -42,7 +42,7 @@ useSeoMeta({
     <GradesExplorerSection />
     <GradesAdaptSection />
     <GradesPromiseSection />
-    <FaqSectionMini category="Academic Coverage" />
+    <FaqSectionMini category="academic-coverage" />
     <UiCTASection section-id="book-demo" heading-id="learning-library-cta-heading" :extra-anchor-ids="['counsellor']"
       badge-icon-mdi="mdi:book-education-outline" :badge="gradesFinalCta.badge" :title="gradesFinalCta.title"
       :description="gradesFinalCta.description" :supporting="gradesFinalCta.supporting" :ctas="gradesFinalCta.ctas" />

@@ -42,7 +42,7 @@ useSeoMeta({
     <SuccessStoriesPlacementSection />
     <SuccessStoriesPartnerReviews />
     <SuccessStoriesVideoSection />
-    <FaqSectionMini category="Student" />
+    <FaqSectionMini category="insights" />
     <UiCTASection :badge="successStoriesFinalCta.badge" badge-icon-mdi="mdi:trophy-outline"
       :title="successStoriesFinalCta.title" :description="successStoriesFinalCta.description"
       :supporting="successStoriesFinalCta.closing" :ctas="successStoriesCtas" />

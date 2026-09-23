@@ -19,7 +19,7 @@ useSeoMeta({
 <template>
   <div class="min-h-screen">
     <EventsListSection />
-    <FaqSectionMini category="Student" />
+    <FaqSectionMini category="insights" />
     <UiCTASection heading-id="events-cta-heading" badge-icon-mdi="mdi:microphone-outline"
       :badge="eventsFinalCta.badge" :title="eventsFinalCta.title" :description="eventsFinalCta.description"
       :supporting="eventsFinalCta.supporting" :ctas="ctas" />

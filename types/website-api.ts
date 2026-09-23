@@ -19,14 +19,42 @@ export type WebsiteBanner = {
   banner_link: string | null
 }
 
+export type WebsiteHeroStat = {
+  value: string
+  label: string
+  icon: string
+}
+
+export type WebsiteHeroScreen = {
+  id: number
+  page_name: string
+  badge: string
+  title: string
+  subtitle: string
+  description: string
+  caption: string
+  bg_image: string | null
+  mobile_bg: string | null
+  primary_cta_label: string
+  primary_route: string
+  secondary_cta_label: string
+  secondary_route: string
+  stats: WebsiteHeroStat[]
+}
+
 export type WebsiteTestimonial = {
   id: number
-  testimonial_video: string | null
-  thumbnail: string | null
-  testimonial: string
+  category: string
+  title: string
+  quote: string
+  person: string
+  role: string
+  duration: string | null
+  result: string | null
+  thumb: string | null
   rating: string | number
-  name: string
-  details: string | null
+  testimonial_video: string | null
+  display_order: number
 }
 
 export type WebsiteNewsletterSubscription = {
@@ -85,6 +113,7 @@ export type WebsiteFaq = {
   que: string
   ans: string
   category: string
+  subcategory?: string | null
 }
 
 export type WebsiteContentAuthor = {

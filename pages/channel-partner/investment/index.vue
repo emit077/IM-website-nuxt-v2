@@ -54,7 +54,7 @@ useSeoMeta({
     <UiCTASection section-id="partner-investment-register" heading-id="investment-cta-heading" surface-class="bg-white"
       :title="investmentFinalCta.title" :description="investmentFinalCta.description"
       :supporting="investmentFinalCta.opportunities.join(' · ')" :ctas="investmentCtas" />
-    <FaqSectionMini category="channel partner" />
+    <FaqSectionMini category="channel-partner" />
     <NewsletterSection />
   </div>
 </template>

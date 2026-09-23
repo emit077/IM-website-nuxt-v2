@@ -62,7 +62,7 @@ useSeoMeta({
       :title="institutionsPricingFinalCta.title" :description="institutionsPricingFinalCta.description"
       :supporting="institutionsPricingFinalCta.closing" :ctas="pricingCtas">
     </UiCTASection>
-    <FaqSectionMini category="institute" />
+    <FaqSectionMini category="institutions" />
     <NewsletterSection />
   </div>
 </template>
