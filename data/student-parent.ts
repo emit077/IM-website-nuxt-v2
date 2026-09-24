@@ -637,9 +637,9 @@ export const spMatching = {
   considerations: [
     { title: 'Subject Expertise', description: 'Relevant academic subject knowledge.', iconMdi: 'mdi:book-education-outline' },
     { title: 'Class / Grade', description: "Fit with the student's academic level.", iconMdi: 'mdi:account-school-outline' },
-    { title: 'Board / Curriculum', description: "Aligned with the student's curriculum, where applicable.", iconMdi: 'mdi:certificate-outline' },
-    { title: 'Learning Requirements', description: 'Concept building, homework, revision, or exam prep.', iconMdi: 'mdi:clipboard-text-outline' },
-    { title: 'Teaching Preference', description: 'A teaching style and setting that suit the student.', iconMdi: 'mdi:human-male-board' },
+    { title: 'Board / Curriculum', description: "Aligned with the student's curriculum.", iconMdi: 'mdi:certificate-outline' },
+    { title: 'Learning Requirements', description: 'Concepts, homework, revision, or exams.', iconMdi: 'mdi:clipboard-text-outline' },
+    { title: 'Teaching Preference', description: 'A style and setting that suit the student.', iconMdi: 'mdi:human-male-board' },
     { title: 'Location', description: 'Home tutoring availability or online access.', iconMdi: 'mdi:map-marker-outline' },
     { title: 'Schedule', description: 'Preferred days and tutoring timings.', iconMdi: 'mdi:clock-outline' },
     { title: 'Student-Tutor Compatibility', description: "The student's comfort and response in sessions.", iconMdi: 'mdi:handshake-outline' },

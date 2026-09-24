@@ -2,11 +2,7 @@
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
-import {
-  planTermsSection,
-  registrationFaqSection,
-  registrationFaqs,
-} from '~/data/tutor-registration-plans'
+import { planTermsSection } from '~/data/tutor-registration-plans'
 </script>
 
 <template>

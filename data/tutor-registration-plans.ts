@@ -404,62 +404,6 @@ export const verificationSection = {
   cta: { label: 'View Tutor Verification Standards', href: '/tutors#tutor-verification' },
 }
 
-export const registrationFaqSection = {
-  badge: 'Frequently Asked Questions',
-  title: 'Questions About <span class="text-gradient-brand">Tutor Plans</span>',
-  classes: '!px-0 !py-0 mx-auto max-w-3xl',
-}
-
-export const registrationFaqs = [
-  {
-    id: 'free-really-free',
-    question: 'Is the Free Tutor Profile really free?',
-    answer:
-      'Yes. Tutors can create a Free Tutor Profile without an upfront registration fee, subject to the applicable platform terms.',
-  },
-  {
-    id: 'premium-fee',
-    question: 'What is the Premium Tutor Profile fee?',
-    answer:
-      'The proposed Premium Tutor Profile is ₹1,000 per year, subject to the applicable plan terms.',
-  },
-  {
-    id: 'start-free-upgrade',
-    question: 'Can I start with Free and upgrade later?',
-    answer:
-      'Yes. Tutors can begin with the Free Profile and choose to upgrade when they want additional platform features.',
-  },
-  {
-    id: 'premium-guarantee',
-    question: 'Does Premium guarantee students?',
-    answer:
-      'No. A Premium profile does not guarantee student assignments, demos, income, or a specific number of leads. Opportunities depend on student requirements, tutor eligibility, availability, location, subject demand, and other applicable factors.',
-  },
-  {
-    id: 'online-offline',
-    question: 'Can I teach online and offline?',
-    answer:
-      'Yes, where suitable opportunities are available. Tutors can indicate their preferred teaching formats, including home, online, and hybrid tutoring.',
-  },
-  {
-    id: 'how-matched',
-    question: 'How are tutor opportunities matched?',
-    answer:
-      'Relevant factors may include subject expertise, class level, location, availability, teaching mode, experience, and student requirements.',
-  },
-  {
-    id: 'earnings-calculated',
-    question: 'How are tutor earnings calculated?',
-    answer:
-      'Tutor earnings are determined according to the applicable tutor commission structure, engagement terms, completed sessions, deductions, and platform policies.',
-  },
-  {
-    id: 'upgrade-process',
-    question: 'Can I upgrade from Free to Premium?',
-    answer: 'Yes, subject to the applicable upgrade process and plan availability.',
-  },
-]
-
 export const planTermsSection = {
   badge: 'Important Plan Terms',
   title: 'Transparent Plans. <span class="text-gradient-brand">Clear Expectations.</span>',

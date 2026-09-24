@@ -20,6 +20,6 @@ const heroContent: SecondaryHeroContent = {
 
 <template>
   <SecondaryHeroLayout :hero-content="heroContent">
-    <VideoTestimonialsSection embedded />
+    <!-- <VideoTestimonialsSection embedded /> -->
   </SecondaryHeroLayout>
 </template>

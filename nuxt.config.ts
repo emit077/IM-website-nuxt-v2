@@ -89,7 +89,9 @@ export default defineNuxtConfig({
 
   app: {
     baseURL: appBaseURL,
-    buildAssetsDir: '/_nuxt/',
+    // Amplify Hosting skips folders whose names start with "_", so the
+    // default "/_nuxt/" assets 404 and CloudFront serves index.html (text/html).
+    buildAssetsDir: '/nuxt/',
     head: {
       title: 'Indian Mentors — Find the Perfect Tutor for Your Child',
       htmlAttrs: { lang: 'en' },

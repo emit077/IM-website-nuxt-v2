@@ -59,7 +59,7 @@ withDefaults(
   </div>
   <div v-else class="">
     <div class="relative text-left px-0 py-0" :class="contentClass">
-      <div class="flex flex-col gap-7 lg:gap-8 md:text-left text-center  items-center md:items-start">
+      <div class="flex flex-col gap-4 text-center items-center sm:gap-5 md:items-start md:text-left lg:gap-6">
         <slot name="badge">
           <span v-if="badge" class="badge-pill w-fit hidden md:flex">
             <span class="grid h-5 w-5 place-items-center rounded-full bg-emerald-500 text-white hidden md:grid">
@@ -70,16 +70,16 @@ withDefaults(
         </slot>
         <slot name="title">
           <h1 v-if="title" :id="headingId || undefined"
-            class="heading-display text-balance text-[2.4rem] leading-[1.06] text-slate-900 sm:text-5xl lg:text-[3.7rem] xl:text-[4rem]"
+            class="heading-display text-balance text-[1.75rem] leading-[1.08] text-slate-900 sm:text-[2rem] md:text-[2.35rem] lg:text-[2.85rem] xl:text-[4rem]"
             v-html="title" />
         </slot>
         <slot name="subtitle">
-          <p v-if="subtitle" class="text-pretty text-base font-bold leading-relaxed text-slate-500 sm:text-lg" v-motion
+          <p v-if="subtitle" class="text-pretty text-sm font-bold leading-relaxed text-slate-500 sm:text-base lg:text-lg" v-motion
             :initial="{ opacity: 0, y: 16 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: 150 } }" v-html="subtitle" />
         </slot>
         <slot name="description">
-          <p v-if="description" class=" text-pretty text-base leading-relaxed text-slate-600 sm:text-lg max-w-2xl"
+          <p v-if="description" class=" text-pretty text-sm leading-relaxed text-slate-600 sm:text-base lg:text-lg max-w-2xl"
             v-motion :initial="{ opacity: 0, y: 16 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: 250 } }" v-html="description" />
         </slot>

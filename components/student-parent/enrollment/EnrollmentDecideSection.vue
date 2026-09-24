@@ -4,6 +4,34 @@ import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import IconCheck from '~/components/icons/IconCheck.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import { enrollmentChoose, enrollmentNeeds, enrollmentValue } from '~/data/student-parent'
+
+const cardTones = [
+  {
+    card: 'border border-slate-200/80 bg-white shadow-soft',
+    icon: 'bg-blue-50 text-blue-600 ring-1 ring-blue-100',
+    kicker: 'text-blue-600',
+    body: 'text-slate-600',
+    goal: 'text-blue-600',
+  },
+  {
+    card: 'bg-blue-500 text-white shadow-[0_22px_50px_-24px_rgba(59,130,246,0.45)]',
+    icon: 'bg-white/15 text-white',
+    kicker: 'text-blue-100',
+    body: 'text-blue-50',
+    goal: 'text-blue-100',
+  },
+  {
+    card: 'bg-blue-700 text-white shadow-[0_22px_50px_-24px_rgba(29,78,216,0.5)]',
+    icon: 'bg-white/15 text-white',
+    kicker: 'text-blue-100',
+    body: 'text-blue-50',
+    goal: 'text-blue-100',
+  },
+] as const
+
+function cardTone(index: number) {
+  return cardTones[index] ?? cardTones[0]
+}
 </script>
 
 <template>
@@ -17,31 +45,28 @@ import { enrollmentChoose, enrollmentNeeds, enrollmentValue } from '~/data/stude
         <li v-for="(item, i) in enrollmentNeeds.items" :key="item.id" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 30 + i * 50, duration: 400 } }">
           <article :class="[
-            'flex h-full flex-col rounded-[1.5rem] p-6 shadow-soft sm:p-7',
-            item.featured
-              ? 'bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 text-white shadow-[0_22px_50px_-24px_rgba(29,78,216,0.5)]'
-              : 'border border-slate-200/80 bg-white',
+            'flex h-full flex-col rounded-[1.5rem] p-6 sm:p-7',
+            cardTone(i).card,
           ]">
             <span :class="[
               'grid h-11 w-11 place-items-center rounded-2xl',
-              item.featured ? 'bg-white/15 text-white' : 'bg-blue-50 text-blue-600 ring-1 ring-blue-100',
+              cardTone(i).icon,
             ]" aria-hidden="true">
               <Icon :icon="item.iconMdi" class="h-5 w-5" />
             </span>
             <p :class="[
               'mt-5 text-[11px] font-bold uppercase tracking-[0.16em]',
-              item.featured ? 'text-blue-100' : 'text-blue-600',
+              cardTone(i).kicker,
             ]">
               {{ item.name }}
             </p>
             <h3 class="mt-2 font-display text-xl font-bold">{{ item.plan }}</h3>
-            <p
-              :class="['mt-3 flex-1 text-[13.5px] leading-relaxed', item.featured ? 'text-blue-50' : 'text-slate-600']">
+            <p :class="['mt-3 flex-1 text-[13.5px] leading-relaxed', cardTone(i).body]">
               {{ item.description }}
             </p>
             <p :class="[
               'mt-5 text-[12px] font-bold uppercase tracking-[0.08em]',
-              item.featured ? 'text-amber-200' : 'text-blue-600',
+              cardTone(i).goal,
             ]">
               Your Goal: <br class="block lg:hidden" /> {{ item.goal }}
             </p>

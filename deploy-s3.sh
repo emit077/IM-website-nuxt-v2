@@ -71,7 +71,7 @@ npm run generate &
 GEN_PID=$!
 
 # `nuxt generate` can hang after writing files. Wait until the static
-# payload is actually complete (_nuxt + public assets), not just index.html.
+# payload is actually complete (nuxt/ + public assets), not just index.html.
 # Killing too early uploads HTML-only and every image/script 404s on S3.
 i=0
 idle=0
@@ -94,7 +94,7 @@ while kill -0 "$GEN_PID" 2>/dev/null; do
     html_count=$(find "$OUT" -name 'index.html' | wc -l | tr -d ' ')
   fi
 
-  if [ -f "$OUT/index.html" ] && [ -d "$OUT/_nuxt" ] && [ -d "$OUT/assets" ]; then
+  if [ -f "$OUT/index.html" ] && [ -d "$OUT/nuxt" ] && [ -d "$OUT/assets" ]; then
     if [ "$html_count" = "$last_html_count" ]; then
       idle=$((idle + 1))
     else
@@ -123,11 +123,11 @@ if [ ! -d "$OUT/assets" ] && [ -d "$ROOT/public/assets" ]; then
   cp -R "$ROOT/public/assets" "$OUT/assets"
 fi
 
-if [ ! -d "$OUT/_nuxt" ]; then
-  if [ -d "$ROOT/.nuxt/dist/client/_nuxt" ]; then
-    echo "Copying client build _nuxt into output..."
+if [ ! -d "$OUT/nuxt" ]; then
+  if [ -d "$ROOT/.nuxt/dist/client/nuxt" ]; then
+    echo "Copying client build nuxt/ into output..."
     mkdir -p "$OUT"
-    cp -R "$ROOT/.nuxt/dist/client/_nuxt" "$OUT/_nuxt"
+    cp -R "$ROOT/.nuxt/dist/client/nuxt" "$OUT/nuxt"
   elif [ -d "$ROOT/.nuxt/dist/client" ]; then
     echo "Copying client build into output..."
     mkdir -p "$OUT"
@@ -135,8 +135,8 @@ if [ ! -d "$OUT/_nuxt" ]; then
   fi
 fi
 
-if [ ! -f "$OUT/index.html" ] || [ ! -d "$OUT/_nuxt" ] || [ ! -d "$OUT/assets" ]; then
-  echo "error: incomplete generate output (need index.html, _nuxt/, and assets/)" >&2
+if [ ! -f "$OUT/index.html" ] || [ ! -d "$OUT/nuxt" ] || [ ! -d "$OUT/assets" ]; then
+  echo "error: incomplete generate output (need index.html, nuxt/, and assets/)" >&2
   ls -la "$OUT" >&2 || true
   exit 1
 fi

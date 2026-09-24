@@ -27,37 +27,70 @@ echo "Starting nuxt generate (baseURL=$NUXT_APP_BASE_URL)..."
 npm run generate &
 GEN_PID=$!
 
+# Wait until HTML, client assets, and public assets are on disk.
+# Stopping at the first index.html uploads a site whose /nuxt/*.js files 404.
 i=0
-while [ ! -f "$OUT/index.html" ]; do
+idle=0
+last_html_count=-1
+MAX_WAIT=600
+IDLE_DONE=20
+
+while kill -0 "$GEN_PID" 2>/dev/null; do
   i=$((i + 1))
-  if [ "$i" -gt 300 ]; then
-    echo "error: timed out waiting for $OUT/index.html" >&2
-    kill "$GEN_PID" 2>/dev/null || true
-    exit 1
-  fi
-  if ! kill -0 "$GEN_PID" 2>/dev/null; then
-    wait "$GEN_PID" || true
-    break
-  fi
-  sleep 1
-done
-
-if [ ! -f "$OUT/index.html" ]; then
-  echo "error: $OUT/index.html missing after generate" >&2
-  exit 1
-fi
-
-# Allow Nitro to finish flushing files, then stop a hung generate process.
-if kill -0 "$GEN_PID" 2>/dev/null; then
-  sleep 5
-  if kill -0 "$GEN_PID" 2>/dev/null; then
-    echo "Generate finished writing output but process hung; terminating pid $GEN_PID..."
+  if [ "$i" -gt "$MAX_WAIT" ]; then
+    echo "error: timed out waiting for nuxt generate (pid $GEN_PID)" >&2
     kill "$GEN_PID" 2>/dev/null || true
     sleep 2
     kill -9 "$GEN_PID" 2>/dev/null || true
+    break
   fi
-  wait "$GEN_PID" 2>/dev/null || true
+
+  html_count=0
+  if [ -d "$OUT" ]; then
+    html_count=$(find "$OUT" -name 'index.html' | wc -l | tr -d ' ')
+  fi
+
+  if [ -f "$OUT/index.html" ] && [ -d "$OUT/nuxt" ] && [ -d "$OUT/assets" ]; then
+    if [ "$html_count" = "$last_html_count" ]; then
+      idle=$((idle + 1))
+    else
+      idle=0
+      last_html_count=$html_count
+    fi
+    if [ "$idle" -ge "$IDLE_DONE" ]; then
+      echo "Generate output looks complete; stopping hung process pid $GEN_PID..."
+      kill "$GEN_PID" 2>/dev/null || true
+      sleep 2
+      kill -9 "$GEN_PID" 2>/dev/null || true
+      break
+    fi
+  else
+    idle=0
+    last_html_count=$html_count
+  fi
+
+  sleep 1
+done
+
+wait "$GEN_PID" 2>/dev/null || true
+
+if [ ! -d "$OUT/assets" ] && [ -d "$ROOT/public/assets" ]; then
+  echo "Copying public/assets into build output..."
+  mkdir -p "$OUT"
+  cp -R "$ROOT/public/assets" "$OUT/assets"
+fi
+
+if [ ! -d "$OUT/nuxt" ] && [ -d "$ROOT/.nuxt/dist/client/nuxt" ]; then
+  echo "Copying client build nuxt/ into output..."
+  mkdir -p "$OUT"
+  cp -R "$ROOT/.nuxt/dist/client/nuxt" "$OUT/nuxt"
+fi
+
+if [ ! -f "$OUT/index.html" ] || [ ! -d "$OUT/nuxt" ] || [ ! -d "$OUT/assets" ]; then
+  echo "error: incomplete generate output (need index.html, nuxt/, and assets/)" >&2
+  ls -la "$OUT" >&2 || true
+  exit 1
 fi
 
 echo "Amplify build ready → $OUT"
-ls -la "$OUT/index.html"
+ls -la "$OUT/index.html" "$OUT/nuxt" | head -20

@@ -13,7 +13,7 @@ Built with **Nuxt 3 + Vue 3 + Tailwind CSS + Vue Motion (`@vueuse/motion`)**.
 - Glassmorphism floating cards (Verified Tutor, 4.9 Rating, 5,000+ Tutors, Online + Home)
 - Parallax student image, animated mesh blobs, soft radial glow
 - Staggered fade-up entrance animations via Vue Motion
-- Fully responsive (mobile → tablet → desktop)
+- Screen-specific UI for mobile, iPad (portrait and landscape), laptop, and desktop — each size gets its own layout, not a shrunk desktop page
 - SEO-ready (`useSeoMeta`, OG tags, semantic HTML, lang attr)
 - Accessibility: aria labels, focus rings, semantic landmarks, prefers-reduced-motion friendly
 - Public static imagery via `usePublicAsset` helpers
@@ -82,6 +82,25 @@ indian-mentors/
 ```
 
 ---
+
+## Responsive UI (required)
+
+Every page and section must be designed for the actual screen, in both orientations. Do not only scale, hide, or squeeze the desktop layout.
+
+| Screen | Target | What “proper UI” means |
+| --- | --- | --- |
+| Mobile | ~320–639px, portrait and landscape | Single-column flow, readable type, full-width actions, image after the section title, no horizontal scroll, tap targets that fit a thumb |
+| iPad portrait | ~768–1023px | Tablet composition: stacked or 2-column where it stays readable, spacing and type sized for the tablet, not a stretched phone or a cropped desktop |
+| iPad landscape | ~1024–1279px | Use the extra width on purpose (side-by-side content, wider grids) while keeping touch-friendly controls and comfortable line length |
+| Laptop | ~1280–1535px | Full desktop structure with balanced columns, no huge empty gaps, content that fits a typical laptop viewport without awkward cropping |
+| Desktop | 1536px and up | The wide layout: multi-column sections, contained max width, imagery and cards composed for a large screen |
+
+Rules:
+
+- Change structure per breakpoint (stack, reorder, column count, image placement, nav pattern). A media query that only changes font size or padding is not enough.
+- Check portrait and landscape separately for phone and iPad. Landscape is its own layout, not a rotated portrait.
+- Keep text, buttons, cards, and images inside the viewport. No clipped headings, overlapping blocks, or sideways scroll.
+- Touch screens (phone and iPad) use larger hit areas and simpler nav. Laptop and desktop can use hover and denser layouts.
 
 ## Customisation
 

@@ -90,7 +90,7 @@ touch "$OUT/.nojekyll"
 echo "Cleaning build output..."
 find "$OUT" -name '.DS_Store' -delete
 find "$OUT" -name 'Thumbs.db' -delete
-rm -f "$OUT/_nuxt/builds/meta/dev.json"
+rm -f "$OUT/nuxt/builds/meta/dev.json"
 
 for link in $(find "$OUT" -type l); do
   target=$(python3 -c 'import os, sys; print(os.path.realpath(sys.argv[1]))' "$link") || {

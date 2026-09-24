@@ -48,11 +48,6 @@ const filteredItems = computed(() => {
   )
 })
 
-const showSubcategory = computed(() => {
-  const labels = new Set(items.value.map((item) => item.subcategory).filter(Boolean))
-  return labels.size > 1
-})
-
 useSeoMeta({
   title: () => `${meta.value.title} FAQs — Indian Mentors`,
   description: () => meta.value.description,
@@ -125,16 +120,8 @@ useSeoMeta({
           class="group overflow-hidden rounded-xl border border-slate-200/80 bg-white open:border-blue-200 open:ring-1 open:ring-blue-100">
           <summary
             class="flex cursor-pointer list-none items-start justify-between gap-3 px-3.5 py-3 text-left [&::-webkit-details-marker]:hidden">
-            <span class="min-w-0">
-              <!-- <span
-                v-if="showSubcategory && item.subcategory"
-                class="mb-0.5 block text-[10px] font-bold uppercase tracking-[0.12em] text-slate-400"
-              >
-                {{ item.subcategory }}
-              </span> -->
-              <span class="block text-sm font-semibold leading-snug text-slate-900">
-                {{ item.question }}
-              </span>
+            <span class="min-w-0 text-sm font-semibold leading-snug text-slate-900">
+              {{ item.question }}
             </span>
             <span
               class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md bg-slate-50 text-slate-500 transition group-open:rotate-45 group-open:bg-blue-600 group-open:text-white"
