@@ -214,10 +214,9 @@ export const whyChooseEcosystem = {
 
 export const whyChooseCommitments = {
   kicker: 'Our Commitments',
-  title: 'Built Around Families & <span class="text-gradient-brand">Learners</span>',
   classes: '!px-0 !py-0',
-  description:
-    'Transparency for parents. The right mentor for every student.',
+  title: 'More Clarity for Families. <br class=" block md:hidden" /> <span class="text-gradient-brand">More Confidence for Learners.</span> ',
+  description: 'Our approach combines transparent coordination with personalised tutoring support to help students develop understanding, consistency, and independence.',
   parents: {
     label: 'For Families',
     iconMdi: 'mdi:account-check-outline',
@@ -331,7 +330,7 @@ export const whyChooseAdvantage = {
 export const whyChooseJourney = {
   badge: 'Our Tutoring Service Journey',
   title:
-    'From Requirement to Personalised <span class="text-gradient-brand">Learning</span>',
+    'From Requirement  <span class="text-gradient-brand">to Personalised Learning</span>',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',
   steps: [
     {
@@ -381,7 +380,7 @@ export const whyChooseJourney = {
 
 export const whyChooseDifference = {
   badge: 'The Indian Mentors Difference',
-  title: 'More Than Finding a <span class="text-gradient-brand">Tutor</span>',
+  title: 'A Smarter Approach <span class="text-gradient-brand">to Personalised Tutoring</span>',
   description:
     'Indian Mentors is a personalised tutoring ecosystem that connects students with suitable tutors and supports their complete learning journey.',
   classes: '!px-0 !py-0 mx-auto max-w-3xl',

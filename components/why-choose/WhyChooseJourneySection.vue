@@ -141,7 +141,7 @@ onBeforeUnmount(() => {
                     {{ step.title }}
                   </h3>
                   <p :class="[
-                    'mt-1.5 line-clamp-2 text-[13px] leading-snug sm:text-[13.5px]',
+                    'mt-1.5  text-[13px] leading-snug sm:text-[13.5px]',
                     i === 0 ? 'text-blue-100' : 'text-slate-500',
                   ]">
                     {{ step.description }}

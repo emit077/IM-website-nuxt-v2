@@ -18,22 +18,13 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
         :title="staffingSupportSection.title" :description="staffingSupportSection.description"
         :classes="staffingSupportSection.classes" />
 
-      <div class="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2 sm:gap-5">
-        <article
-          v-for="(card, i) in staffingSupportCards"
-          :id="card.id"
-          :key="card.id"
-          v-motion
+      <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 sm:gap-5">
+        <article v-for="(card, i) in staffingSupportCards" :id="card.id" :key="card.id" v-motion
           :initial="{ opacity: 0, y: 16 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 80, duration: 450 } }"
-        >
-          <div
-            class="flex h-full flex-col rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft sm:p-7"
-          >
-            <span
-              :class="['grid h-12 w-12 place-items-center rounded-2xl ring-1', accentClasses[card.accent].chip]"
-              aria-hidden="true"
-            >
+          :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 80, duration: 450 } }">
+          <div class="flex h-full flex-col rounded-3xl border border-slate-200/80 bg-white p-6 shadow-soft sm:p-7">
+            <span :class="['grid h-12 w-12 place-items-center rounded-2xl ring-1', accentClasses[card.accent].chip]"
+              aria-hidden="true">
               <Icon :icon="card.iconMdi" class="h-6 w-6" />
             </span>
             <h3 class="font-display mt-4 text-lg font-bold text-slate-900 sm:text-xl">{{ card.title }}</h3>
@@ -46,10 +37,8 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
               </li>
             </ul>
             <p class="mt-5 border-t border-slate-100 pt-4 text-[13px] italic text-slate-500">{{ card.note }}</p>
-            <a
-              :href="card.cta.href"
-              class="group mt-4 inline-flex items-center gap-2 text-sm font-semibold text-blue-700"
-            >
+            <a :href="card.cta.href"
+              class="group mt-4 inline-flex items-center gap-2 text-sm font-semibold text-blue-700">
               {{ card.cta.label }}
               <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden="true" />

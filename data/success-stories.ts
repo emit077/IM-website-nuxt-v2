@@ -49,7 +49,7 @@ export const successStoriesHero = {
   subtitle:
     'Our credibility is built on real outcomes and authentic relationships — from every corner of our academic ecosystem.',
   description:
-    'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors across India.',
+    'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors Across the Globe.',
   caption: 'Structured Mentorship. Measurable Results. Trusted Nationwide.',
   primaryCta: { label: 'Book Free Demo', href: externalLinks.studentSignup },
   secondaryCta: { label: 'Talk to Counsellor', href: 'tel:+917389563564', icon: 'mdi:phone-outline' },
@@ -273,7 +273,7 @@ export const studentRailSection = {
   badge: 'Student journeys',
   title: 'Scroll the <span class="text-gradient-brand">transformation reel</span>',
   classes: '!px-0 !py-0 max-w-lg',
-  description: 'Real before-and-after academic outcomes from students across India.',
+  description: 'Real before-and-after academic outcomes from students Across the Globe.',
 } as const
 
 export const videoTestimonialsSection = {

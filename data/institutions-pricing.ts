@@ -23,13 +23,13 @@ export const institutionsPricingPackages = [
   {
     id: 'faculty-prime',
     name: 'Mentor Staffing',
-    model: 'Contract Academic Staffing',
-    badge: 'Pay Per Successful Hire',
+    model: 'Academic Recruitment Partnership',
+    badge: 'Pay Per Hiring',
     featured: false,
     accent: 'blue' as const,
     iconMdi: 'mdi:account-check-outline',
     price: '8–15%',
-    priceNote: 'of Annual Teacher CTC',
+    priceNote: 'of Teacher\'s Annual Package',
     subtitle: 'Requirement-Based Recruitment · Pay Per Successful Hire',
     tagline:
       'Hire teachers individually, periodically, or for specific projects — pay only on successful placement.',
@@ -57,14 +57,14 @@ export const institutionsPricingPackages = [
   {
     id: 'faculty-elite',
     name: 'Mentor Enterprise',
-    model: 'Annual Hiring Partnership',
+    model: 'Annual Recruitment Partnership',
     badge: 'Unlimited Hiring',
     featured: true,
     accent: 'emerald' as const,
     iconMdi: 'mdi:calendar-star-outline',
     price: 'Fixed Annual',
-    priceNote: 'subscription · unlimited hiring',
-    subtitle: 'Fixed Annual Subscription · Unlimited Hiring',
+    priceNote: 'Subscription · Unlimited Hiring',
+    subtitle: 'Hire More · Pay Annually',
     tagline:
       'Continuous or high-volume staffing needs — one fixed annual subscription for unlimited hiring.',
     description:
@@ -119,9 +119,9 @@ export const institutionsPricingHero = {
 
 export const institutionsPricingPackagesSection = {
   badge: 'Hiring Models',
-  title: 'Choose the model that matches <span class="text-gradient-brand">how you hire.</span>',
+  title: 'Find the Right Recruitment Model  <span class="text-gradient-brand">for Your Institution</span>',
   description:
-    'Mentor Staffing is contract academic staffing billed against successful hires. Mentor Enterprise is an annual hiring partnership with unlimited recruitment during the active tenure.',
+    'Choose contract-based academic staffing for individual requirements or an annual recruitment partnership for continuous hiring support.',
   classes: '!px-0 !py-0',
   note: 'Service margins, subscription values, and applicable taxes are confirmed in the Institutional Recruitment Agreement before recruitment begins.',
 } as const
@@ -139,7 +139,7 @@ export const institutionsPricingCompare = {
     'Indicative commercial framework. Applicable taxes extra. Final terms are governed by the mutually executed Institutional Recruitment Agreement.',
   rows: [
     { feature: 'Model', prime: 'Contract Academic Staffing', elite: 'Annual Hiring Partnership' },
-    { feature: 'Pricing Basis', prime: '% of Annual Teacher CTC', elite: 'Fixed Annual Subscription' },
+    { feature: 'Pricing Basis', prime: "% of teacher's Annual Package", elite: 'Fixed Annual Subscription' },
     { feature: 'Standard Pricing', prime: '8–15%', elite: 'Contract-specific' },
     { feature: 'Hiring Capacity', prime: 'Requirement-based', elite: 'Unlimited' },
     { feature: 'Payment Basis', prime: 'Per recruitment engagement', elite: 'Annual partnership' },
@@ -157,7 +157,7 @@ export const institutionsPricingCompare = {
 
 export const institutionsGuaranteeSection = {
   badge: 'Replacement Guarantee',
-  title: 'A clearly defined <span class="text-gradient-brand">replacement policy</span>',
+  title: 'Post-Placement <span class="text-gradient-brand">Support for Institutions</span>',
   description:
     'Recruitment support that continues beyond the joining date. Indian Mentors recognises that successful recruitment is not simply about filling a vacancy—it is about helping institutions maintain continuity in their academic workforce.',
   classes: '!px-0 !py-0',
@@ -210,7 +210,7 @@ export const institutionsGuaranteeSection = {
 
 export const institutionsPricingTerms = {
   badge: 'Commercial Clarity',
-  title: 'Transparent terms. <span class="text-gradient-brand">No hidden recruitment model.</span>',
+  title: 'Transparency That <span class="text-gradient-brand">Works for Institutions</span>',
   description:
     'Indian Mentors follows a structured commercial framework designed to provide clarity before recruitment begins.',
   classes: '!px-0 !py-0',
@@ -251,8 +251,8 @@ export const institutionsPricingTerms = {
 } as const
 
 export const institutionsPricingChoose = {
-  badge: 'Which Model?',
-  title: 'Which model is right for <span class="text-gradient-brand">your institution?</span>',
+  badge: 'Your Recruitment Model',
+  title: 'Select the Right Model for <span class="text-gradient-brand">Your Hiring Requirements</span>',
   classes: '!px-0 !py-0',
   plans: [
     {
@@ -267,7 +267,7 @@ export const institutionsPricingChoose = {
         { title: 'Variable Hiring Volume', description: 'Suitable when annual hiring requirements are uncertain.' },
       ],
       name: 'Mentor Staffing',
-      price: '8–15% of Annual Teacher CTC',
+      price: '8–15% of Teacher\'s Annual Package',
       cta: { label: 'Request Recruitment Support', href: institutionRequirementMailto() },
     },
     {
@@ -290,7 +290,7 @@ export const institutionsPricingChoose = {
 
 export const institutionsPricingWhy = {
   badge: 'Why Indian Mentors',
-  title: 'More than recruitment. <span class="text-gradient-brand">A structured academic staffing partner.</span>',
+  title: 'A Reliable Partner for  <span class="text-gradient-brand">Academic Hiring Needs</span>',
   description:
     'Indian Mentors combines recruitment operations with an education-focused understanding of institutional staffing requirements.',
   classes: '!px-0 !py-0',

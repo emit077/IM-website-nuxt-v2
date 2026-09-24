@@ -23,10 +23,8 @@ import { qualityChecks, qualitySection } from '~/data/institutions'
             <div aria-hidden="true"
               class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/15 to-transparent" />
             <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-              <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-200">
-                {{ qualitySection.imageCaption }}
-              </p>
-              <p class="mt-1.5 font-display text-lg font-bold leading-snug text-white sm:text-xl">
+
+              <p class="mt-1.5 font-display text-lg font-bold leading-snug text-white sm:text-lg capitalize">
                 {{ qualitySection.imageNote }}
               </p>
             </figcaption>
@@ -52,7 +50,7 @@ import { qualityChecks, qualitySection } from '~/data/institutions'
         </ul>
       </div>
 
-      <p class="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-slate-500">
+      <p class="mx-auto mt-8 text-center text-sm leading-relaxed text-slate-500">
         {{ qualitySection.disclaimer }}
       </p>
     </div>

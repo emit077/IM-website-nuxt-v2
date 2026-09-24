@@ -36,8 +36,8 @@ import { staffingModels, staffingModelsSection } from '~/data/institutions'
       </div>
 
       <div
-        class="mt-8 flex flex-col items-start justify-between gap-4 border-t border-slate-200 pt-6 sm:flex-row sm:items-center">
-        <p class="max-w-xl text-sm leading-relaxed text-slate-600">
+        class="mt-8 flex flex-row   items-start justify-between gap-4 border-t border-slate-200 pt-6 sm:flex-row sm:items-center">
+        <p class="text-sm leading-relaxed text-slate-600 col-span-2">
           {{ staffingModelsSection.panelNote }}
         </p>
         <a :href="staffingModelsSection.cta.href"

@@ -12,9 +12,9 @@ import { institutionsGuaranteeSection } from '~/data/institutions-pricing'
         :title="institutionsGuaranteeSection.title" :description="institutionsGuaranteeSection.description"
         :classes="institutionsGuaranteeSection.classes" />
 
-      <p class="mx-auto mt-5 max-w-3xl text-center text-sm leading-relaxed text-slate-600">
+      <!-- <p class="mx-auto mt-5 max-w-3xl text-center text-sm leading-relaxed text-slate-600">
         {{ institutionsGuaranteeSection.intro }}
-      </p>
+      </p> -->
 
       <div class="mt-10 grid grid-cols-1 gap-4 lg:mt-12 lg:grid-cols-2">
         <article v-for="(period, i) in institutionsGuaranteeSection.periods" :id="period.id" :key="period.id"

@@ -41,7 +41,7 @@ export const heroContent = {
   subtitle:
     '<span class="text-gradient-brand">Indian Mentors</span> - Authorised Reseller Program for Education Consultants',
   description:
-    'Build a rewarding education business by collaborating with Indian Mentors, a growing platform dedicated to delivering high-quality personalised tutoring services to students across India. ',
+    'Build a rewarding education business by collaborating with Indian Mentors, a growing platform dedicated to delivering high-quality personalised tutoring services to students Across the Globe. ',
   backgroundImage: 'assets/img/channel-partner/channel-partner-hero.png',
   mobileBackgroundImage: 'assets/img/channel-partner/channel-partner-hero-mobile.png',
   contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
@@ -119,7 +119,7 @@ export const aboutSection = {
 
 export const partnerRoleSection = {
   kicker: 'Your Role',
-  title: 'What Does a <span class="text-gradient-brand">Channel Partner</span> Do?',
+  title: 'What Does  <span class="text-gradient-brand">a Channel Partner</span> Do?',
   classes: '!px-0 !py-0',
   description:
     'As an Authorised Reseller, you operate as the local representative of Indian Mentors, managing academic service coordination within your territory.',
@@ -338,7 +338,7 @@ export const territorySection = {
 
 export const processSection = {
   kicker: 'How the Channel Partner Program Works',
-  title: ' The Process of Becoming a <span class="text-gradient-brand">Channel Partner</span>',
+  title: ' The Process of Becoming  <span class="text-gradient-brand">a Channel Partner</span>',
   classes: '!px-0 !py-0',
   description:
     'Our partnership journey is designed to be simple, transparent, and professionally guided.',
@@ -519,7 +519,7 @@ export const partnerFaqs: PartnerFaqItem[] = [
 export const finalCta = {
   title: 'Become a Channel Partner Today',
   description:
-    'Join the Indian Mentors Channel Partner Network and contribute to delivering high-quality personalised tutoring services to students across India.',
+    'Join the Indian Mentors Channel Partner Network and contribute to delivering high-quality personalised tutoring services to students Across the Globe.',
   primaryCta: { label: 'Apply Now', href: '#partner-register' },
   secondaryCta: { label: 'Talk to a Partnership Expert', href: 'tel:+917389563564' },
   closingTitle: 'Start Your Partnership Journey with Indian Mentors',

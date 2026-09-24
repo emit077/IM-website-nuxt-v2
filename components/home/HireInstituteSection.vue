@@ -18,7 +18,7 @@ function rippleHandler(e: MouseEvent) {
 const headerContent = {
   badge: 'Institutional Hiring',
   title: "Trusted Teacher Recruitment <span class='text-gradient-brand'>& Academic Staffing</span> ",
-  description: 'Hire qualified, verified, and pre-screened educators for schools, colleges, coaching institutes, EdTech companies, and academic programs across India.',
+  description: 'Hire qualified, verified, and pre-screened educators for schools, colleges, coaching institutes, EdTech companies, and academic programs Across the Globe.',
   classes: '!px-0 !py-0',
 }
 </script>
@@ -45,9 +45,9 @@ const headerContent = {
             <CardHeader align="left" :badge="headerContent.badge" :title="headerContent.title"
               :description="headerContent.description" :classes="headerContent.classes" />
 
-            <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:mt-8">
               <div v-for="metric in metrics" :key="metric.label"
-                class="rounded-xl border border-[#e7eefb] bg-[#f6f8fd] px-4 py-3 shadow-[0_2px_10px_rgba(37,99,235,0.05)] transition duration-200 hover:border-blue-200/80 hover:bg-white">
+                class="rounded-xl border border-[#e7eefb] bg-[#f6f8fd] px-4 py-5 shadow-[0_2px_10px_rgba(37,99,235,0.05)] transition duration-200 hover:border-blue-200/80 hover:bg-white">
                 <div
                   class="font-display text-[1.65rem] font-extrabold leading-none tracking-tight text-slate-900 sm:text-[1.85rem]">
                   {{ metric.value }}<span class="text-blue-600">{{ metric.suffix }}</span>

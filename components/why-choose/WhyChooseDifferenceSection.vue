@@ -18,7 +18,7 @@ import { whyChooseDifference } from '~/data/why-choose'
 
       <ol class="mt-10 flex flex-wrap justify-center gap-3.5 lg:gap-4" role="list">
         <li v-for="(step, i) in whyChooseDifference.steps" :key="step.id"
-          class="w-full sm:w-[calc((100%-0.875rem)/2)] lg:w-[calc((100%-2rem)/3)] xl:w-[calc((100%-3rem)/4)]" v-motion
+          class="w-full sm:w-[calc((100%-0.875rem)/2)] lg:w-[calc((100%-3rem)/4)]" v-motion
           :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 45, duration: 420 } }">
           <article

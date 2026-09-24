@@ -26,7 +26,7 @@ export const institutionsHero = {
   subtitle:
     '<span class="text-gradient-brand">Indian Mentors</span> — Institutional Teacher Recruitment & Academic Staffing',
   description:
-    'We help schools, coaching institutes, colleges, and EdTech hire qualified, verified teachers across India.',
+    'We help schools, coaching institutes, colleges, and EdTech hire qualified, verified teachers Across the Globe.',
   caption: 'Qualified Educators. Structured Recruitment. Reliable Academic Staffing.',
   backgroundImage: 'assets/img/hero/hero-2.png',
   contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
@@ -43,7 +43,7 @@ export const institutionsHeroStats = [
 
 export const institutionsMissionSection = {
   badge: 'Our Mission',
-  title: 'A trusted academic staffing partner <span class="text-gradient-brand">across India</span>',
+  title: 'A trusted academic staffing  <span class="text-gradient-brand">partner Across the Globe</span>',
   description:
     'Indian Mentors aims to become a trusted academic staffing partner for educational institutions by providing reliable recruitment support and promoting high standards of teaching.',
   classes: '!px-0 !py-0',
@@ -86,7 +86,7 @@ export const institutionsMissionGoals = [
 
 export const sectorsSection = {
   badge: 'Who We Help',
-  title: 'Recruitment solutions for every <span class="text-gradient-brand">learning environment</span>',
+  title: 'Recruitment solutions for  <span class="text-gradient-brand">every learning environment</span>',
   description:
     'Whether you are running a school, coaching centre, college, EdTech platform, or teacher training program, Indian Mentors can help you build the right teaching team.',
   classes: '!px-0 !py-0',
@@ -238,7 +238,7 @@ export const staffingModels = [
 ] as const
 
 export const whyInstitutionsSection = {
-  badge: 'Why Institutions Partner With Indian Mentors',
+  badge: 'Partner With Indian Mentors',
   title: 'Recruitment built around <span class="text-gradient-brand">academic quality</span>',
   description:
     'Hiring speed matters — but the right fit matters more. Our recruitment approach focuses on both candidate quality and institutional requirements.',
@@ -297,8 +297,8 @@ export const whyChooseReasons = [
 ] as const
 
 export const institutionsProcessSection = {
-  badge: 'Our Recruitment Framework',
-  title: 'From requirement to <span class="text-gradient-brand">classroom</span>',
+  badge: 'Recruitment Framework',
+  title: 'Our Process From <span class="text-gradient-brand">Requirement to Placement</span>',
   description: 'A structured six-stage recruitment process that keeps institutions in control of the final decision.',
   classes: '!px-0 !py-0',
   image: '/assets/img/careers/hiring-process.png',
@@ -375,7 +375,7 @@ export const hiringProcessOutcome =
 
 export const staffingSupportSection = {
   badge: 'Academic Staffing Support',
-  title: 'New institutions, expansion, and <span class="text-gradient-brand">replacement</span>',
+  title: 'New institutions,  <span class="text-gradient-brand">expansion, replacement</span>',
   description: 'A new institution needs more than infrastructure. Vacancies should not disrupt learning. We support both launch and continuity.',
   classes: '!px-0 !py-0',
 } as const
@@ -430,7 +430,7 @@ export const qualitySection = {
   image: '/assets/img/insights/personalised-learning.png',
   imageAlt: 'Educator reviewing academic material with a learner during a verification-aligned teaching session',
   imageCaption: 'Screened for the classroom',
-  imageNote: 'Identity, credentials, subject fit, and teaching ability — checked before shortlist.',
+  imageNote: 'Identity, credentials, subject fit & teaching ability — checked before shortlist.',
   disclaimer:
     'Verification and screening requirements may vary according to the role, institution, subject, and hiring model.',
 } as const
@@ -464,7 +464,7 @@ export const techFeatures = [
 
 export const ecosystemSection = {
   badge: 'A Connected Academic Recruitment Ecosystem',
-  title: 'For institutions. For recruiters. <span class="text-gradient-brand">For educators.</span>',
+  title: ' institutions.  <span class="text-gradient-brand">recruiters.  </span>educators.',
   description:
     'The recruitment team sits at the centre of a two-way relationship — receiving faculty needs from institutions and profiles from educators, then matching them back in both directions.',
   classes: '!px-0 !py-0',

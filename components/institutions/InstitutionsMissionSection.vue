@@ -12,7 +12,7 @@ import { institutionsMissionGoals, institutionsMissionSection } from '~/data/ins
         :title="institutionsMissionSection.title" :description="institutionsMissionSection.description"
         :classes="institutionsMissionSection.classes" />
 
-      <ul class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3 xl:gap-5" role="list">
+      <ul class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-3 xl:gap-5" role="list">
         <li v-for="item in institutionsMissionGoals" :id="item.id" :key="item.id">
           <article
             class="flex h-full flex-col rounded-[1.25rem] border border-slate-200/80 bg-white p-4 shadow-soft sm:p-5">

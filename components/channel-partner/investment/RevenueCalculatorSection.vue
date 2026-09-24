@@ -198,7 +198,7 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
         <div class="grid lg:grid-cols-12">
           <!-- Configure -->
           <div
-            class="space-y-10 border-b border-slate-100 px-7 py-9 sm:px-10 sm:py-11 lg:col-span-5 lg:border-b-0 lg:border-r lg:border-slate-100">
+            class="space-y-10 border-b border-slate-100  py-9 sm:px-10 sm:py-11 lg:col-span-5 lg:border-b-0 lg:border-r lg:border-slate-100 order-2 md:order-1">
             <h3 class="font-display text-lg font-bold text-slate-900">{{ configureTitle }}</h3>
 
             <div class="space-y-9">
@@ -259,7 +259,8 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
                     <p class="mt-0.5 text-xs text-slate-400">{{ subscriptionFormula }}</p>
                   </div>
                 </div>
-                <div class="inline-flex flex-wrap rounded-lg bg-slate-100 p-1" role="tablist" aria-label="Earnings period">
+                <div class="inline-flex flex-wrap rounded-lg bg-slate-100 p-1" role="tablist"
+                  aria-label="Earnings period">
                   <button v-for="tab in periodTabs" :key="tab.id" type="button" role="tab"
                     :aria-selected="period === tab.id" :class="[
                       'rounded-md px-2.5 py-1.5 text-xs font-semibold transition sm:px-3.5 sm:text-sm',

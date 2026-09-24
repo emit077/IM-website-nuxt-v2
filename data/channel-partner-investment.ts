@@ -174,7 +174,7 @@ export const securityDepositSection = {
 export const platformLicenseSection = {
   kicker: "Platform License Duration Options",
   title:
-    'Choose a License Term That Fits Your <span class="text-gradient-brand">Growth Plans</span>',
+    'Choose a License Term  <span class="text-gradient-brand">That Fits Your Growth Plans</span>',
   classes: "!px-0 !py-0",
   feeKicker: "Digital Platform Licensing Fee",
   feeTitle:
@@ -635,7 +635,7 @@ export const territoryModelSection = {
 export const subscriptionShareSection = {
   kicker: "Subscription Revenue",
   title:
-    'Keep <span class="text-gradient-brand">90%</span> of Every Subscription',
+    'Keep <span class="text-gradient-brand">90%</span> of Every <span class="text-gradient-brand">Subscription</span>',
   classes: "!px-0 !py-0",
   description:
     "Personalised tutoring subscriptions in your territory create ongoing income. You retain 90% of eligible subscription revenue; Indian Mentors keeps 10% for platform and academic infrastructure.",
@@ -930,7 +930,7 @@ export const investmentFinalCta = {
   badge: "Become an Authorised Channel Partner",
   title: "Join the Growing Network of Authorised Resellers",
   description:
-    "Join the growing network of Indian Mentors Authorised Resellers and help expand quality personalised tutoring services across India.",
+    "Join the growing network of Indian Mentors Authorised Resellers and help expand quality personalised tutoring services Across the Globe.",
   opportunities: [
     "Build a local education business",
     "Earn recurring subscription revenue",

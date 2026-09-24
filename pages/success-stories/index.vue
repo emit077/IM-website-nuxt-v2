@@ -24,7 +24,7 @@ const successStoriesCtas = [
 useSeoMeta({
   title: 'Success Stories — Indian Mentors',
   description:
-    'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors across India.',
+    'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors Across the Globe.',
   ogTitle: 'Success Stories — Real Growth. Real Trust. | Indian Mentors',
   ogDescription:
     'Authentic testimonials from every stakeholder in our academic ecosystem — structured mentorship with measurable results.',

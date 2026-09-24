@@ -16,7 +16,7 @@ import {
         :title="institutionsPricingPackagesSection.title" :description="institutionsPricingPackagesSection.description"
         :classes="institutionsPricingPackagesSection.classes" />
 
-      <div class="mx-auto mt-10 grid max-w-6xl grid-cols-1 items-stretch gap-5 lg:mt-12 lg:grid-cols-2">
+      <div class="mx-auto mt-10 grid max-w-6xl grid-cols-1 items-stretch gap-5 lg:mt-12 md:grid-cols-2">
         <article v-for="(plan, i) in institutionsPricingPackages" :id="plan.id" :key="plan.id" class="scroll-mt-28"
           v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 80, duration: 480 } }">
@@ -28,7 +28,7 @@ import {
           ]">
             <span v-if="plan.badge" :class="[
               'absolute right-0 top-5 rounded-l-md px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wide',
-              plan.featured ? 'bg-amber-300 text-slate-900' : 'bg-slate-100 text-slate-700',
+              plan.featured ? 'bg-white text-slate-900' : 'bg-slate-100 text-slate-700',
             ]">
               {{ plan.badge }}
             </span>
@@ -81,9 +81,9 @@ import {
             ]">
               {{ plan.suitableForLabel }}
             </p>
-            <ul class="mt-2.5 grid grid-cols-2 gap-1.5" role="list">
+            <ul class="mt-2.5 grid grid-cols-1 lg:grid-cols-2 gap-1.5" role="list">
               <li v-for="item in plan.suitableFor" :key="item" :class="[
-                'truncate rounded-full px-2.5 py-1.5 text-center text-[11.5px] font-semibold leading-none',
+                ' rounded-full px-2.5 py-1.5 text-center text-[11.5px] font-semibold leading-none',
                 plan.featured ? 'bg-white/10 text-blue-50' : 'bg-slate-50 text-slate-700 ring-1 ring-slate-200/80',
               ]">
                 {{ item }}
@@ -112,7 +112,7 @@ import {
         </article>
       </div>
 
-      <p class="mx-auto mt-8 max-w-2xl text-center text-[12.5px] leading-relaxed text-slate-500">
+      <p class="mx-auto mt-8  text-center text-[12.5px] leading-relaxed text-slate-500">
         {{ institutionsPricingPackagesSection.note }}
       </p>
     </div>

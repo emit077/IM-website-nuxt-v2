@@ -12,7 +12,7 @@ import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 useSeoMeta({
   title: 'Contact Us — Indian Mentors',
   description:
-    'Get in touch with Indian Mentors. Call, WhatsApp, or email our support team, send an inquiry, find our head and corporate offices, and search operational office locations across India.',
+    'Get in touch with Indian Mentors. Call, WhatsApp, or email our support team, send an inquiry, find our head and corporate offices, and search operational office locations Across the Globe.',
   ogTitle: 'Contact Us — Indian Mentors',
   ogDescription:
     'Reach Indian Mentors for enrollment, tutor allocation, and demo bookings. Explore support channels, submit an inquiry, and locate our offices nationwide.',

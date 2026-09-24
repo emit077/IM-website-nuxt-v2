@@ -47,7 +47,7 @@ useSeoMeta({
     'Hire qualified, verified, curriculum-aligned teachers for schools, coaching institutes, colleges, universities, and EdTech. Structured recruitment, demo evaluation, bulk hiring, and replacement support.',
   ogTitle: 'Build Strong Academic Teams. Hire With Confidence. — Indian Mentors',
   ogDescription:
-    'Institutional hiring for schools, coaching institutes, colleges, and EdTech. Verified educators, structured screening, and flexible academic staffing across India.',
+    'Institutional hiring for schools, coaching institutes, colleges, and EdTech. Verified educators, structured screening, and flexible academic staffing Across the Globe.',
   ogType: 'website',
 })
 </script>

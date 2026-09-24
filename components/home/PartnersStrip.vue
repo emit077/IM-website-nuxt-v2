@@ -35,7 +35,7 @@ const marqueeItems = computed(() => [...partners, ...partners])
 
         <h2
           class="mt-2.5 text-balance font-display text-[1.35rem] font-extrabold tracking-tight text-brand-ink sm:text-2xl uppercase">
-          Trusted by parents for boards across India
+          Trusted by parents for boards Across the Globe
         </h2>
         <!-- <p class="mt-2  text-pretty text-sm leading-relaxed text-slate-500 sm:text-[15px]">
           From CBSE and ICSE to IB, Cambridge, state boards, and competitive exams — mentors matched to your curriculum.

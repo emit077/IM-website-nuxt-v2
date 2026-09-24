@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
 
       <div id="life-at-indian-mentors" class="mt-14 lg:mt-16">
         <div class="mx-auto max-w-2xl text-center">
-          <h3 class="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          <h3 class="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl capitalize">
             {{ cultureSection.galleryTitle }}
           </h3>
           <p class="mt-2 text-sm leading-relaxed text-slate-500 sm:text-base">
@@ -129,7 +129,7 @@ onBeforeUnmount(() => {
               <div aria-hidden="true"
                 class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/15 to-transparent" />
               <span class="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                <span class="block font-display text-[15px] font-bold text-white">{{ item.caption }}</span>
+                <span class="block font-display text-[15px] font-bold text-white capitalize">{{ item.caption }}</span>
                 <span class="mt-0.5 block text-[12.5px] leading-snug text-white/80">{{ item.description }}</span>
               </span>
             </button>
@@ -137,7 +137,7 @@ onBeforeUnmount(() => {
         </ul>
       </div>
 
-      <ul class="mt-12 grid grid-cols-1 gap-8 sm:mt-14 sm:grid-cols-3 sm:gap-6 lg:gap-10" role="list">
+      <ul class="mt-12 grid grid-cols-1 gap-8 sm:mt-14  sm:grid-cols-3 sm:gap-6 lg:gap-10" role="list">
         <li v-for="(item, i) in cultureSection.values" :key="item.title" class="text-center" v-motion
           :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 80, duration: 380 } }">
@@ -145,7 +145,7 @@ onBeforeUnmount(() => {
             aria-hidden="true">
             <Icon :icon="item.iconMdi" class="h-6 w-6" />
           </span>
-          <h3 class="font-display mt-4 text-base font-bold text-slate-900">{{ item.title }}</h3>
+          <h3 class="font-display mt-4 text-base font-bold text-slate-900 capitalize">{{ item.title }}</h3>
           <p class="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-slate-500">{{ item.description }}</p>
         </li>
       </ul>
@@ -168,7 +168,7 @@ onBeforeUnmount(() => {
         <figure class="relative max-h-[82vh] w-full max-w-5xl">
           <img :src="activeItem.src" :alt="activeItem.alt"
             class="mx-auto max-h-[74vh] w-auto max-w-full rounded-2xl object-contain shadow-[0_24px_80px_-20px_rgba(0,0,0,0.55)]" />
-          <figcaption class="mt-4 text-center font-display text-sm font-semibold text-white sm:text-base">
+          <figcaption class="mt-4 text-center font-display text-sm font-semibold text-white sm:text-base capitalize">
             {{ activeItem.caption }}
           </figcaption>
         </figure>

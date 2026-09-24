@@ -32,7 +32,7 @@ import { whyChooseDifferentiators } from '~/data/why-choose'
             <h3 class="mt-5 truncate font-display text-lg font-bold leading-snug text-slate-900">
               {{ feat.title }}
             </h3>
-            <p class="mt-2.5 line-clamp-2 text-sm leading-relaxed text-slate-500">
+            <p class="mt-2.5 text-sm leading-relaxed text-slate-500">
               {{ feat.description }}
             </p>
 

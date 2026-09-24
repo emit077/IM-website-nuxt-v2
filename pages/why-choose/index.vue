@@ -23,11 +23,12 @@ useSeoMeta({
 <template>
   <div class="min-h-screen">
     <WhyChooseHeroSection />
-    <WhyChooseDifferentiatorsSection />
-    <WhyChooseDifferenceSection />
     <WhyChooseJourneySection />
-    <QuickServiceCategoriesSection />
-    <WhyChooseEcosystemSection />
+    <WhyChooseDifferentiatorsSection />
+    <div class="container-page relative">
+      <QuickServiceCategoriesSection />
+    </div>
+    <WhyChooseDifferenceSection />
     <WhyChooseCommitmentsSection />
     <FaqSectionMini category="about" />
     <WhyChooseConversionStrip />

@@ -17,7 +17,7 @@ const testimonials = computed(() => apiTestimonials.value ?? [])
 const headerContent = {
   badge: 'Testimonials',
   title: 'Real Stories. Real Growth. Real Trust',
-  description: 'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors across India.',
+  description: 'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors Across the Globe.',
   classes: '!px-0 !py-0',
 }
 
@@ -116,36 +116,25 @@ function onTouchEnd(e: TouchEvent) {
           @mouseenter="paused = true" @mouseleave="paused = false" @touchstart.passive="onTouchStart"
           @touchend.passive="onTouchEnd">
           <div class="relative overflow-hidden rounded-2xl lg:col-span-8">
-            <video
-              v-if="playing && current.video"
-              :src="current.video"
-              class="h-60 w-full object-cover sm:h-40 lg:min-h-[400px]"
-              controls
-              autoplay
-              playsinline
-              @ended="playing = false"
-            />
+            <video v-if="playing && current.video" :src="current.video"
+              class="h-60 w-full object-cover sm:h-40 lg:min-h-[400px]" controls autoplay playsinline
+              @ended="playing = false" />
             <template v-else>
               <img :src="current.thumb" :alt="`${current.person} testimonial`"
                 class="h-60 w-full object-cover sm:h-40 lg:min-h-[400px]" width="800" height="600" loading="lazy"
                 decoding="async" />
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/25 to-transparent"
                 aria-hidden="true" />
-              <button
-                v-if="current.video"
-                type="button"
+              <button v-if="current.video" type="button"
                 class="absolute inset-0 m-auto grid h-16 w-16 place-items-center rounded-full bg-white/90 text-slate-900 shadow-xl transition hover:scale-105"
-                :aria-label="`Play testimonial by ${current.person}`"
-                @click="playCurrent"
-              >
+                :aria-label="`Play testimonial by ${current.person}`" @click="playCurrent">
                 ▶
               </button>
             </template>
             <span class="absolute left-3 top-3 rounded-full bg-blue-600/95 px-3 py-1 text-xs font-extrabold text-white">
               {{ current.category }}
             </span>
-            <span
-              v-if="current.duration"
+            <span v-if="current.duration"
               class="absolute right-3 top-3 rounded-full bg-slate-900/85 px-3 py-1 text-xs font-extrabold text-white">
               {{ current.duration }}
             </span>
@@ -163,7 +152,8 @@ function onTouchEnd(e: TouchEvent) {
                   “{{ current.quote }}”
                 </p>
                 <div class="text-center">
-                  <div class="mt-4 flex items-center justify-center -space-x-1" :aria-label="`${starCount} out of 5 stars`">
+                  <div class="mt-4 flex items-center justify-center -space-x-1"
+                    :aria-label="`${starCount} out of 5 stars`">
                     <span v-for="i in starCount" :key="`star-${i}`"
                       class="ml-[-5px] inline-flex h-7 w-7 items-center justify-center leading-none text-blue-500 sm:h-8 sm:w-8 sm:text-xl md:ml-[-10px] md:h-9 md:w-9 md:text-2xl lg:h-10 lg:w-10 lg:text-3xl"
                       aria-hidden="true">

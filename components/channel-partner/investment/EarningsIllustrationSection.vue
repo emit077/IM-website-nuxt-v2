@@ -133,12 +133,12 @@ const dataset = computed<BarChartDataset>(() => ({
 
           <div class="flex flex-col  px-5 py-7 sm:px-8 sm:py-8 lg:col-span-7 lg:px-8 lg:py-9 border-l border-slate-200">
             <!-- tabs -->
-            <div class="flex flex-col items-center gap-3 sm:items-start">
+            <div class="flex flex-col items-center gap-2 sm:items-start">
               <div class="inline-flex flex-wrap justify-center rounded-full border border-slate-200 bg-slate-100/80 p-1"
                 role="tablist" aria-label="Chart period">
                 <button v-for="tab in scaleTabs" :key="tab.id" type="button" role="tab"
                   :aria-selected="chartPeriod === tab.id" :class="[
-                    'rounded-full px-3 py-1.5 text-xs font-bold transition-colors sm:px-4 sm:text-sm',
+                    'rounded-full px-2 py-1.5 text-xs font-bold transition-colors sm:px-4 sm:text-sm',
                     chartPeriod === tab.id
                       ? 'bg-blue-600 text-white shadow-sm'
                       : 'text-slate-600 hover:text-slate-900',

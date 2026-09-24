@@ -38,7 +38,7 @@ export const careersHeroHighlights = [
 
 export const whyCareersSection = {
   kicker: 'Why Indian Mentors',
-  title: 'Why build your career <span class="text-gradient-brand">with Indian Mentors?</span>',
+  title: 'Build Your Career in  <span class="text-gradient-brand">a Growing Education Ecosystem</span>',
   classes: '!px-0 !py-0',
   description:
     'A growing education organisation needs more than talented people. It needs professionals who understand ownership, accountability, systems, communication, and continuous improvement.',
@@ -154,9 +154,9 @@ export const cultureSection = {
   featured: {
     src: '/assets/img/contact/im-building.png',
     alt: 'Indian Mentors office building in Bhilai',
-    caption: 'Our Bhilai office',
+    caption: 'Our Bhilai Office',
   },
-  galleryTitle: 'Culture & workplace',
+  galleryTitle: 'Culture & Workplace',
   galleryDescription: 'A look at where our teams work, collaborate, and grow together.',
   gallery: [
     {
@@ -279,7 +279,7 @@ export const growthSection = {
 
 export const standardsSection = {
   kicker: 'Our Professional Standards',
-  title: 'What we value in  <span class="text-gradient-brand">every role</span>',
+  title: 'What we value   <span class="text-gradient-brand">in every role</span>',
   classes: '!px-0 !py-0',
   items: [
     { iconMdi: 'mdi:scale-balance', title: 'Integrity', description: 'Do the right thing, even when nobody is watching.' },
@@ -348,7 +348,7 @@ export const hiringSteps = [
 
 export const internshipsSection = {
   kicker: 'Internship Opportunities',
-  title: 'Learn. Contribute. Build Your Career <br/> with Indian Mentors',
+  title: 'Learn. Contribute. Build Your Career  with Indian Mentors',
   classes: '!px-0 !py-0',
   description:
     'Structured internships for college students, final-year students, recent graduates, and passed-out candidates — bridging academic learning and professional experience through real projects, guided mentorship, and day-to-day operations.',
@@ -399,7 +399,7 @@ export const jobsSection = {
   kicker: "We're Hiring",
   title: 'Find your next <span class="text-gradient-brand">role</span>',
   classes: '!px-0 !py-0',
-  description: `Openings across admissions, academics, operations, HR, finance, marketing, and technology — including Bhilai-based roles and field positions across India. Apply from a listing below.`,
+  description: `Openings across admissions, academics, operations, HR, finance, marketing, and technology — including Bhilai-based roles and field positions Across the Globe. Apply from a listing below.`,
   searchPlaceholder: 'Search jobs by role, department, or keyword…',
   emptyTitle: 'No matching positions right now',
   emptyDescription: 'Try another filter, or send us your resume so our recruitment team can consider you for future openings.',

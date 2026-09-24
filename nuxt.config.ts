@@ -108,7 +108,7 @@ export default defineNuxtConfig({
         {
           property: 'og:description',
           content:
-            'Structured tutoring and reliable teacher recruitment — built for families and educators across India.',
+            'Structured tutoring and reliable teacher recruitment — built for families and educators Across the Globe.',
         },
         { property: 'og:type', content: 'website' },
         { name: 'twitter:card', content: 'summary_large_image' },

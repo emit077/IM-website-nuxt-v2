@@ -284,7 +284,8 @@ async function onSubmitSignIn() {
         class="mt-10 rounded-2xl border border-slate-200/70 bg-white/80 px-4 py-5 shadow-soft backdrop-blur-sm sm:mt-12 sm:px-5 lg:px-6"
         v-motion :initial="{ opacity: 0, y: 12 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: 160 } }">
-        <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:flex lg:items-center lg:justify-between lg:gap-4" role="list">
+        <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:items-center lg:justify-between lg:gap-4"
+          role="list">
           <li v-for="point in enrollmentTrustPoints" :key="point.id" class="flex items-center gap-2.5 px-1 lg:px-0">
             <span
               class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-slate-50 text-slate-700 ring-1 ring-slate-100">

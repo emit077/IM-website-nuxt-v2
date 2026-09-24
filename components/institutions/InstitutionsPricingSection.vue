@@ -28,7 +28,7 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
         :title="institutionsPricingSection.title" :description="institutionsPricingSection.description"
         :classes="institutionsPricingSection.classes" />
 
-      <ul class="mx-auto mt-10 grid max-w-4xl grid-cols-1 items-stretch gap-5 lg:mt-12 lg:grid-cols-2" role="list">
+      <ul class="mx-auto mt-10 grid max-w-4xl grid-cols-1 items-stretch gap-5 lg:mt-12 md:grid-cols-2" role="list">
         <li v-for="(plan, i) in institutionsPricingPackages" :key="plan.id" v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 50 + i * 80, duration: 480 } }">
           <article :class="[
@@ -39,7 +39,7 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
           ]">
             <span v-if="plan.badge" :class="[
               'absolute right-0 top-5 rounded-l-md px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wide',
-              plan.featured ? 'bg-amber-300 text-slate-900' : 'bg-slate-100 text-slate-700',
+              plan.featured ? 'bg-white text-slate-900' : 'bg-slate-100 text-slate-700',
             ]">
               {{ plan.badge }}
             </span>
@@ -60,12 +60,13 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
               {{ plan.priceNote }}
             </p>
             <p
-              :class="['mt-3 line-clamp-2 min-h-[3.25em] text-[13.5px] leading-relaxed', plan.featured ? 'text-white/80' : 'text-slate-600']">
+              :class="['mt-3  min-h-[3.25em] text-[13.5px] leading-relaxed', plan.featured ? 'text-white/80' : 'text-slate-600']">
               {{ plan.tagline }}
             </p>
 
             <ul class="mt-6 flex-1 space-y-2.5" role="list">
-              <li v-for="item in plan.includes.slice(0, 5)" :key="item" class="flex items-start gap-2.5 text-[13.5px] leading-snug">
+              <li v-for="item in plan.includes.slice(0, 5)" :key="item"
+                class="flex items-start gap-2.5 text-[13.5px] leading-snug">
                 <span :class="[
                   'mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full',
                   plan.featured ? 'bg-white/20 text-white' : 'bg-blue-50 text-blue-600',
@@ -76,13 +77,13 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
               </li>
             </ul>
 
-            <NuxtLink :to="institutionsPricingSection.cta.href + '#' + plan.id" :class="[
+            <NuxtLink :to="institutionsPricingSection.cta.href" :class="[
               'mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold transition duration-300 hover:-translate-y-0.5',
               plan.featured
                 ? 'bg-white text-blue-700 hover:bg-cream-50'
                 : 'bg-blue-600 text-white shadow-cta hover:bg-blue-700',
             ]">
-              View {{ plan.name }} details
+              Explore {{ plan.name }}
               <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
             </NuxtLink>
           </article>
@@ -90,9 +91,9 @@ const accentClasses: Record<string, { chip: string; check: string }> = {
       </ul>
 
       <div class="mt-8 flex flex-col items-center gap-4 text-center sm:mt-10">
-        <ActionBtn :href="institutionsPricingSection.cta.href" :label="institutionsPricingSection.cta.label"
-          variant="primary" />
-        <p class="max-w-2xl text-[12.5px] leading-relaxed text-slate-500">
+        <!-- <ActionBtn :href="institutionsPricingSection.cta.href" :label="institutionsPricingSection.cta.label"
+          variant="primary" /> -->
+        <p class="text-[12.5px] leading-relaxed text-slate-500">
           {{ institutionsPricingSection.note }}
         </p>
       </div>

@@ -474,7 +474,7 @@ export const hiringProcessSection = {
   classes: '!px-0 !py-0',
   image: '/assets/img/services/home-tutors.webp',
   imageAlt: 'Professional mentor teaching a student — Indian Mentors hiring journey',
-  socialProof: 'Trusted by educators teaching across India',
+  socialProof: 'Trusted by educators teaching Across the Globe',
   cta: { label: 'Learn About the Hiring Process', href: '#how-it-works' },
   references: [
     { iconMdi: 'mdi:shield-check-outline', label: 'ID & credential verified' },

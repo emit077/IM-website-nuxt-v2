@@ -40,7 +40,7 @@ const pricingCtas = computed(() => {
 useSeoMeta({
   title: 'Mentor Staffing & Mentor Enterprise — Institutional Recruitment Pricing | Indian Mentors',
   description:
-    'Compare Mentor Staffing (8–15% of Annual Teacher CTC, pay per successful hire) and Mentor Enterprise (fixed annual subscription, unlimited hiring) for institutional academic staffing.',
+    'Compare Mentor Staffing (8–15% of Teacher\'s Annual Package, pay per successful hire) and Mentor Enterprise (fixed annual subscription, unlimited hiring) for institutional academic staffing.',
   ogTitle: 'Institutional Recruitment Pricing — Mentor Staffing & Mentor Enterprise',
   ogDescription:
     'Two commercial models for teacher recruitment: Mentor Staffing for requirement-based hiring, Mentor Enterprise for unlimited annual partnerships.',
