@@ -41,10 +41,10 @@ useSeoMeta({
     <InsightsSearchSection />
     <NewsletterSection :badge="insightsNewsletter.badge" :title="insightsNewsletter.title"
       :description="insightsNewsletter.description" />
-    <UiCTASection section-id="insights-cta" heading-id="insights-final-cta-heading"
-      badge-icon-mdi="mdi:school-outline" :badge="insightsFinalCta.badge" :title="insightsFinalCta.title"
-      :description="insightsFinalCta.description" :supporting="insightsFinalCta.supporting" :ctas="insightsCtas" />
+    <UiCTASection section-id="insights-cta" heading-id="insights-final-cta-heading" badge-icon-mdi="mdi:school-outline"
+      :badge="insightsFinalCta.badge" :title="insightsFinalCta.title" :description="insightsFinalCta.description"
+      :supporting="insightsFinalCta.supporting" :ctas="insightsCtas" />
     <FaqSectionMini category="insights" title="Questions about the Insights Hub" />
-    <InsightsClosingSection />
+    <!-- <InsightsClosingSection /> -->
   </div>
 </template>

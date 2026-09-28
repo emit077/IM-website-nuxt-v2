@@ -102,7 +102,7 @@ export const storyTabs: StoryTab[] = [
     label: 'Institutions',
     iconMdi: 'mdi:domain',
     kicker: 'Institutional Feedback',
-    title: 'Trusted by schools <span class="text-gradient-brand">and colleges</span>',
+    title: 'Trusted by schools,  <span class="text-gradient-brand">colleges & universities</span>',
     classes: '!px-0 !py-0',
     description: 'Recruitment and faculty support that saves time and maintains quality.',
     accent: 'indigo',
@@ -111,8 +111,8 @@ export const storyTabs: StoryTab[] = [
     id: 'placements',
     label: 'Placements',
     iconMdi: 'mdi:briefcase-check-outline',
-    kicker: 'Teacher Placements',
-    title: 'Verified opportunities for <span class="text-gradient-brand">educators</span>',
+    kicker: 'Teacher Placement Stories',
+    title: 'Educators Placed with <span class="text-gradient-brand">Our Partner Institutions</span>',
     classes: '!px-0 !py-0',
     description: 'Real placement journeys connecting teachers with reputed institutions nationwide.',
     accent: 'violet',
@@ -122,9 +122,9 @@ export const storyTabs: StoryTab[] = [
     label: 'Partners',
     iconMdi: 'mdi:handshake-outline',
     kicker: 'Channel Partners',
-    title: 'Partners who scale <span class="text-gradient-brand">with clarity</span>',
+    title: 'Voices from  <span class="text-gradient-brand">our partner network</span>',
     classes: '!px-0 !py-0',
-    description: 'Transparent earnings, structured reporting, and strong brand support.',
+    description: 'Real experiences from partners growing their reach with Indian Mentors.',
     accent: 'rose',
   },
 ]
@@ -204,7 +204,8 @@ export const parentReviews: QuoteReview[] = [
   { id: 'iyer-bengaluru', name: 'Mr. Iyer', location: 'Bengaluru', quote: 'Tutor replacement was handled smoothly. Academic coordinator stayed involved throughout.' },
   { id: 'gupta-mumbai', name: 'Mr. Gupta', location: 'Mumbai', quote: 'Flexible scheduling helped us manage coaching and school together.' },
   { id: 'khan-hyderabad', name: 'Mrs. Khan', location: 'Hyderabad', quote: "My daughter's grades improved within three months. The dashboard updates are very helpful." },
-  { id: 'patel-pune', name: 'Mrs. Patel', location: 'Pune', quote: 'Structured academic planning and regular reports make Indian Mentors different from local tuition services.' },
+  { id: 'patel-pune', name: 'Mrs. Patel', location: 'Pune', quote: 'Structured academic planning and regular reports make Indian Mentors different from local tuition.' },
+  { id: 'kumar-chennai', name: 'Mrs. Krishnan  ', location: 'Chennai', quote: 'The tutor understood my son’s learning needs and adjusted the sessions accordingly.' },
 ]
 
 export const tutorReviews: QuoteReview[] = [
@@ -213,6 +214,7 @@ export const tutorReviews: QuoteReview[] = [
   { id: 'priya-nair', name: 'Priya Nair', role: 'English Tutor', quote: 'Flexible hours allowed me to balance personal commitments while growing professionally.' },
   { id: 'amit-singh', name: 'Amit Singh', role: 'Competitive Exam Mentor', quote: 'Serious students and organised support team make teaching productive.' },
   { id: 'kavita-rao', name: 'Kavita Rao', role: 'Primary Tutor', quote: 'Dedicated recruiter support and structured communication make this platform reliable.' },
+  { id: 'arun-kumar', name: 'Vivek Sharma', role: 'Computer Science Tutor', quote: 'Clear communication, timely coordination, and consistent support help me focus more on teaching.' },
 ]
 
 export const institutionalFeedback: QuoteReview[] = [
@@ -278,8 +280,8 @@ export const studentRailSection = {
 
 export const videoTestimonialsSection = {
   kicker: 'Video Testimonials',
-  title: 'Hear it <span class="text-gradient-brand">in their own words</span>',
-  classes: '!px-0 !py-0 max-w-xl',
+  title: 'Stories of <span class="text-gradient-brand">Learning and Growth</span>',
+  classes: '!px-0 !py-0 max-w-xl ',
   description: 'Authentic video reviews from every stakeholder — real experiences that reflect trust and measurable impact.',
 } as const
 

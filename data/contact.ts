@@ -549,7 +549,7 @@ export const inquiryHelpByStakeholder: Record<InquiryStakeholder, readonly strin
     'Tutor Registration',
     'Find Student Leads',
     'Teaching Opportunities',
-    'Tutor Profile / Verification',
+    'Tutor Profile Verification',
   ],
   'Special Educator': [
     'Talk to Recruiter',

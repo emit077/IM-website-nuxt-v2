@@ -66,7 +66,7 @@ const accentClasses = {
     <div class="container-page">
       <CardHeader heading-id="insights-search-heading" :badge="insightsSearchSection.kicker"
         :title="insightsSearchSection.title" :description="insightsSearchSection.description"
-        :classes="`${insightsSearchSection.classes} mx-auto max-w-3xl`" />
+        :classes="`${insightsSearchSection.classes} mx-auto `" />
 
       <ul v-if="items.length" class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
         <li v-for="item in items" :key="item.id">
@@ -95,7 +95,8 @@ const accentClasses = {
               <p class="mt-2 line-clamp-2 flex-1 text-[13.5px] leading-relaxed text-slate-500">
                 {{ item.summary }}
               </p>
-              <span :class="['mt-4 inline-flex items-center gap-1 text-sm font-semibold', accentClasses[item.accent].cta]">
+              <span
+                :class="['mt-4 inline-flex items-center gap-1 text-sm capitalize font-semibold', accentClasses[item.accent].cta]">
                 {{ item.cta }}
                 <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                   aria-hidden="true" />
@@ -107,7 +108,7 @@ const accentClasses = {
 
       <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
         <NuxtLink v-for="cta in insightsSearchSection.exploreCtas" :key="cta.href" :to="cta.href"
-          class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-soft transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-700 hover:shadow-card">
+          class="inline-flex items-center gap-2 capitalize rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-soft transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-700 hover:shadow-card">
           <Icon :icon="cta.iconMdi" class="h-4 w-4 text-blue-600" aria-hidden="true" />
           {{ cta.label }}
         </NuxtLink>

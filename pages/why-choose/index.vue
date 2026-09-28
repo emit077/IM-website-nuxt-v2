@@ -25,6 +25,7 @@ useSeoMeta({
     <WhyChooseHeroSection />
     <WhyChooseJourneySection />
     <WhyChooseDifferentiatorsSection />
+    <WhyChooseEcosystemSection />
     <div class="container-page relative">
       <QuickServiceCategoriesSection />
     </div>

@@ -89,7 +89,7 @@ function resetFilters() {
       </nav>
 
       <CardHeader heading-id="blog-list-heading" :badge="blogsListSection.kicker" :title="blogsListSection.title"
-        :description="blogsListSection.description" :classes="`${blogsListSection.classes} mx-auto max-w-3xl`" />
+        :description="blogsListSection.description" :classes="`${blogsListSection.classes} mx-auto `" />
 
       <div class="mx-auto mt-8 max-w-5xl">
         <div class="relative">
@@ -132,7 +132,7 @@ function resetFilters() {
                 {{ excerptText(blog.introduction, 140) }}
               </p>
               <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-600">
-                Read article
+                Read Article
                 <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                   aria-hidden="true" />
               </span>

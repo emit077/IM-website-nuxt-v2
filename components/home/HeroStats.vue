@@ -1,9 +1,9 @@
 <script setup lang="ts">
 const stats = [
-  { value: '50K', suffix: '+', label: 'active students learning every month' },
-  { value: '5', suffix: '+ lakh', label: 'verified tutors across every subject' },
-  { value: '50', suffix: '+ lakh', label: 'sessions delivered since 2018' },
-  { value: '98', suffix: '%', label: 'satisfaction rate from verified reviews' },
+  { value: '50K', suffix: '+', label: 'Active students learning every month' },
+  { value: '5', suffix: '+ lakh', label: 'Verified tutors across every subject' },
+  { value: '50', suffix: '+ lakh', label: 'Sessions delivered since 2019' },
+  { value: '98', suffix: '%', label: 'Satisfaction rate from verified reviews' },
 ]
 </script>
 

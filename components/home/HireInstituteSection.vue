@@ -18,7 +18,7 @@ function rippleHandler(e: MouseEvent) {
 const headerContent = {
   badge: 'Institutional Hiring',
   title: "Trusted Teacher Recruitment <span class='text-gradient-brand'>& Academic Staffing</span> ",
-  description: 'Hire qualified, verified, and pre-screened educators for schools, colleges, coaching institutes, EdTech companies, and academic programs Across the Globe.',
+  description: 'Hire qualified, verified, and pre-screened educators for schools, colleges, coaching institutes, EdTech companies, and academic programs across the Globe.',
   classes: '!px-0 !py-0',
 }
 </script>

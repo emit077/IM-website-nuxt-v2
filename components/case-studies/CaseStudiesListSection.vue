@@ -149,7 +149,7 @@ watch([grade, board, subject, category], syncQuery)
         <p class="sr-only">Loading case studies</p>
       </div>
 
-      <ul v-else-if="filteredStudies.length" class="mt-8 grid gap-4 lg:grid-cols-3" role="list">
+      <ul v-else-if="filteredStudies.length" class="mt-8 grid gap-4 lg:grid-cols-3 sm:grid-cols-2" role="list">
         <li v-for="(study, i) in filteredStudies" :key="study.id" v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 20 + i * 50, duration: 360 } }">
           <NuxtLink :to="caseStudyPath(study)"
@@ -183,7 +183,7 @@ watch([grade, board, subject, category], syncQuery)
                 {{ study.outcome[0] }}
               </p>
               <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-emerald-700">
-                Read case study
+                Read Case Study
                 <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                   aria-hidden="true" />
               </span>

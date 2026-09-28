@@ -159,7 +159,7 @@ export const enrollmentProcessSection = {
   formCta: "Let's Get Started",
   formNote: 'By continuing, you agree to receive a call from our counsellor about your free demo class.',
   annotationTop: 'Find the right tutor. Learn better. Achieve more.',
-  annotationBottom: "You're just a few clicks away from your goals!ss",
+  annotationBottom: "You're just a few clicks away from your goals!",
   socialProof: '50,000+ students already learning with us.',
 }
 

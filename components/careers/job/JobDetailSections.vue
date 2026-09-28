@@ -23,11 +23,8 @@ const overviewTagline = computed(() => {
   return headline
 })
 const overviewParagraphs = computed(() => {
-  const intro = props.job.intro?.trim() || ''
   const overview = splitCareerParagraphs(props.job.role_overview)
-  if (!intro) return overview
-  if (!overview.length || overview[0] === intro) return overview.length ? overview : [intro]
-  return [intro, ...overview]
+  return overview
 })
 
 const responsibilities = computed(() =>

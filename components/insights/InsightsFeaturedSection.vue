@@ -42,7 +42,7 @@ const featuredItems = computed(() => {
       image: blog.image || fallbackCover(),
       iconMdi: 'mdi:notebook-edit-outline',
       accent: 'blue' as const,
-      cta: 'Read article',
+      cta: 'Read Article',
     })
   }
 
@@ -152,13 +152,15 @@ const accentClasses = {
                 </span>
                 <span v-if="item.meta" class="shrink-0 text-[12px] font-medium text-slate-400">{{ item.meta }}</span>
               </div>
-              <h3 class="mt-3 font-display text-base font-bold leading-snug text-slate-900 transition group-hover:opacity-90">
+              <h3
+                class="mt-3 font-display text-base font-bold leading-snug text-slate-900 transition group-hover:opacity-90">
                 {{ item.title }}
               </h3>
               <p class="mt-2 line-clamp-2 flex-1 text-[13.5px] leading-relaxed text-slate-500">
                 {{ item.description }}
               </p>
-              <span :class="['mt-4 inline-flex items-center gap-1 text-sm font-semibold', accentClasses[item.accent].cta]">
+              <span
+                :class="['mt-4 inline-flex items-center gap-1 text-sm font-semibold capitalize', accentClasses[item.accent].cta]">
                 {{ item.cta }}
                 <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                   aria-hidden="true" />

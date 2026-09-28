@@ -131,7 +131,7 @@ function resetFilters() {
                 {{ excerptText(article.body?.[0], 140) }}
               </p>
               <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-violet-700">
-                Read article
+                Read Article
                 <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                   aria-hidden="true" />
               </span>

@@ -39,8 +39,9 @@ useSeoMeta({
     <SuccessStoriesQuoteSection :section="parentSection" :reviews="parentReviews" bg-class="bg-white" />
     <SuccessStoriesTutorReviews />
     <SuccessStoriesInstitutionFeedback />
-    <SuccessStoriesPlacementSection />
     <SuccessStoriesPartnerReviews />
+    <SuccessStoriesPlacementSection />
+
     <SuccessStoriesVideoSection />
     <FaqSectionMini category="insights" />
     <UiCTASection :badge="successStoriesFinalCta.badge" badge-icon-mdi="mdi:trophy-outline"
