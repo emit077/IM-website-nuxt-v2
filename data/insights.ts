@@ -181,28 +181,28 @@ export const insightsWhy = {
   classes: '!px-0 !py-0 mx-auto',
   items: [
     {
-      title: 'Expert-curated content',
-      description: 'Expert-curated academic content for real classrooms, boards, and learning levels.',
+      title: 'Expert content',
+      description: 'Academic content for real classrooms, boards, and learning levels.',
       iconMdi: 'mdi:school-outline',
     },
     {
-      title: 'Practical strategies',
-      description: 'Practical, easy-to-apply techniques students can try in the next study session.',
+      title: 'Practical tips',
+      description: 'Easy techniques students can try in the next study session.',
       iconMdi: 'mdi:lightbulb-on-outline',
     },
     {
-      title: 'Real success stories',
-      description: 'Real success stories and results that show what personalised support can change.',
+      title: 'Success stories',
+      description: 'Results that show what personalised support can change.',
       iconMdi: 'mdi:trophy-outline',
     },
     {
-      title: 'Continuous updates',
-      description: 'Continuous updates on education trends, events, and new academic resources.',
+      title: 'Fresh updates',
+      description: 'Updates on education trends, events, and academic resources.',
       iconMdi: 'mdi:update',
     },
     {
-      title: 'Students and parents',
-      description: 'Designed for both students and parents — guidance that supports the whole family.',
+      title: 'For families',
+      description: 'Written for students and parents so the whole family is supported.',
       iconMdi: 'mdi:account-group-outline',
     },
   ],

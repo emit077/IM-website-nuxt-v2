@@ -95,7 +95,7 @@ function cardTone(index: number) {
           <p class="mt-2 text-sm font-medium text-slate-400">{{ enrollmentValue.billingNote }}</p>
           <p class="mt-6 lg:max-w-sm max-w-full text-[15px] leading-relaxed text-slate-600">{{ enrollmentValue.card }}
           </p>
-          <div class="mt-8">
+          <div class="mt-8 hidden lg:block">
             <ActionBtn variant="primary" :label="enrollmentValue.cta.label" :href="enrollmentValue.cta.href"
               icon="mdi:star-four-points-outline" />
           </div>
@@ -123,6 +123,11 @@ function cardTone(index: number) {
             </article>
           </li>
         </ol>
+
+        <div class="lg:hidden">
+          <ActionBtn variant="primary" :label="enrollmentValue.cta.label" :href="enrollmentValue.cta.href"
+            icon="mdi:star-four-points-outline" />
+        </div>
       </div>
     </div>
   </section>

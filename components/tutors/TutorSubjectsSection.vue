@@ -67,15 +67,13 @@ function subjectList(subjects: string) {
             <span class="coverage-visual pointer-events-none absolute inset-y-0 right-0 w-[58%] sm:w-[50%] lg:w-[42%]"
               aria-hidden="true">
               <img :src="usePublicAsset(coverage.image)" alt=""
-                class="h-full w-full object-cover object-[68%_center] transition duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                class="h-full w-full object-cover object-[68%_center] hidden lg:block transition duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 loading="lazy" decoding="async" />
             </span>
             <span class="coverage-overlay pointer-events-none absolute inset-0" aria-hidden="true" />
 
-            <div
-              class="relative z-[1] flex w-full flex-col justify-between gap-3 p-4 sm:p-5 lg:flex-row lg:items-end lg:justify-between lg:gap-8 lg:px-6">
-
-              <div class="min-w-0 max-w-lg">
+            <div class="relative z-[1] flex w-full flex-col p-4 sm:p-6 lg:px-8 lg:py-7">
+              <div class="min-w-0 max-w-lg sm:max-w-[60%] lg:max-w-[52%]">
                 <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-100/75">
                   {{ coverage.badge }}
                 </p>
@@ -104,8 +102,10 @@ function subjectList(subjects: string) {
                     </span>
                   </li>
                 </ul>
+
+                <ActionBtn class="mt-5 !w-full sm:!w-auto" variant="theme-secondary" :href="tutorSubjects.cta.href"
+                  :label="tutorSubjects.cta.label" />
               </div>
-              <ActionBtn variant="theme-secondary" :href="tutorSubjects.cta.href" :label="tutorSubjects.cta.label" />
             </div>
           </div>
         </li>

@@ -436,12 +436,12 @@ export const qualitySection = {
 } as const
 
 export const qualityChecks = [
-  { iconMdi: 'mdi:card-account-details-outline', title: 'Identity Verification', description: 'Basic identity and profile verification.' },
-  { iconMdi: 'mdi:certificate-outline', title: 'Qualification Review', description: 'Review of relevant educational qualifications and submitted credentials.' },
+  { iconMdi: 'mdi:card-account-details-outline', title: 'Identity Verification', description: 'Verify identity details and the educator profile on record.' },
+  { iconMdi: 'mdi:certificate-outline', title: 'Qualification Review', description: 'Review of relevant qualifications and submitted credentials.' },
   { iconMdi: 'mdi:briefcase-check-outline', title: 'Experience Assessment', description: 'Evaluation of teaching experience and relevant academic background.' },
-  { iconMdi: 'mdi:book-check-outline', title: 'Subject Expertise', description: 'Assessment based on the requirements of the role.' },
-  { iconMdi: 'mdi:forum-outline', title: 'Communication Evaluation', description: 'Review of communication and interaction capabilities.' },
-  { iconMdi: 'mdi:presentation', title: 'Teaching Demonstration', description: 'Where applicable, candidates may be evaluated through demo teaching.' },
+  { iconMdi: 'mdi:book-check-outline', title: 'Subject Expertise', description: 'Assess subject expertise for the requirements of the role.' },
+  { iconMdi: 'mdi:forum-outline', title: 'Communication Evaluation', description: 'Review of communication and classroom interaction capabilities.' },
+  { iconMdi: 'mdi:presentation', title: 'Teaching Demonstration', description: 'Where applicable, candidates are evaluated through demo teaching.' },
 ] as const
 
 export const techSection = {

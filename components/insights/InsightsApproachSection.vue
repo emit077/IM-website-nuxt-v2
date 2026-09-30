@@ -44,7 +44,7 @@ const approachImage = usePublicAsset(insightsApproach.image)
           </ul>
 
           <a :href="insightsApproach.cta.href"
-            class="mt-7 inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-sm font-semibold text-blue-700 shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-cream-50">
+            class="mt-7 hidden items-center gap-2 rounded-2xl lg:inline-flex bg-white px-6 py-3 text-sm font-semibold text-blue-700 shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-cream-50">
             {{ insightsApproach.cta.label }}
             <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
           </a>
@@ -64,6 +64,12 @@ const approachImage = usePublicAsset(insightsApproach.image)
             </figcaption>
           </figure>
         </div>
+
+        <a :href="insightsApproach.cta.href"
+          class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-cream-50 sm:w-auto sm:justify-self-start lg:hidden">
+          {{ insightsApproach.cta.label }}
+          <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+        </a>
       </div>
     </div>
   </section>

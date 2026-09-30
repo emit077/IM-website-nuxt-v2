@@ -2,7 +2,7 @@ import { computed, onMounted, toValue, type MaybeRefOrGetter } from 'vue'
 import type { BannerSlide } from '~/components/home/BannerCarousel.vue'
 import type { FaqCategory, FaqItem } from '~/data/faq'
 import type { LeadershipProfile } from '~/data/about'
-import type { PhoneContact } from '~/data/contact'
+import { emailSupport, phoneSupport, type PhoneContact } from '~/data/contact'
 import type {
   BrochureType,
   WebsiteAuthorisedContact,
@@ -52,6 +52,14 @@ export type UiPrimaryContact = {
   email: string
   whatsapp: PhoneContact | null
   workingHours: string | null
+}
+
+/** Used when the primary-contacts API has no row. Must be non-null so SSR payload is kept. */
+const fallbackPrimaryContact: UiPrimaryContact = {
+  phone: phoneSupport.number,
+  email: emailSupport.address,
+  whatsapp: phoneSupport.number,
+  workingHours: null,
 }
 
 export const FAQ_CATEGORY_ORDER = [
@@ -580,9 +588,9 @@ export function useWebsitePrimaryContact() {
       const rows = await fetchWebsiteList<WebsitePrimaryContact>(
         '/api/website/primary-contacts/',
       )
-      return mapPrimaryContact(rows)
+      return mapPrimaryContact(rows) ?? fallbackPrimaryContact
     },
-    liveDataOptions(null as UiPrimaryContact | null),
+    liveDataOptions(fallbackPrimaryContact),
   )
   refreshOnClient('website-primary-contacts', asyncData.refresh)
   return asyncData

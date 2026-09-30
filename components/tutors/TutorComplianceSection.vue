@@ -24,13 +24,13 @@ import { complianceChecks, complianceSection } from '~/data/tutors'
               {{ complianceSection.note }}
             </p>
             <a :href="complianceSection.cta.href"
-              class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-[13px] font-semibold text-blue-700 transition hover:bg-blue-50">
+              class="mt-6 hidden items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-[13px] font-semibold text-blue-700 transition hover:bg-blue-50 lg:inline-flex">
               {{ complianceSection.cta.label }}
               <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
             </a>
           </CardHeader>
         </div>
-        <div class="lg:col-span-7">
+        <div class="flex flex-col gap-6 lg:col-span-7">
           <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2" role="list">
             <li v-for="(check, i) in complianceChecks" :key="check.title"
               :class="i === complianceChecks.length - 1 ? 'sm:col-span-2' : ''" v-motion
@@ -52,6 +52,11 @@ import { complianceChecks, complianceSection } from '~/data/tutors'
               </article>
             </li>
           </ul>
+          <a :href="complianceSection.cta.href"
+            class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-blue-700 transition hover:bg-blue-50 sm:w-auto sm:self-start lg:hidden">
+            {{ complianceSection.cta.label }}
+            <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </div>

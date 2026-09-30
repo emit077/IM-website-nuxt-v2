@@ -149,7 +149,7 @@ const directContacts = computed(() => [
   <section id="call-us" class="scroll-mt-24 border-b border-slate-200/70 section-surface-white section-py"
     aria-labelledby="contact-support-heading">
     <div class="container-page">
-      <div class="overflow-hidden rounded-[2rem] bg-white p-6 shadow-sm sm:p-8 lg:p-12" v-motion
+      <div class="overflow-hidden rounded-[2rem] bg-white shadow-sm sm:p-8 lg:p-12" v-motion
         :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
         <div class="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
           <div class="flex flex-col lg:justify-between lg:py-2">

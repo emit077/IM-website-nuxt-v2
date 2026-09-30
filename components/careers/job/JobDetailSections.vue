@@ -52,7 +52,7 @@ const jobFacts = computed(() =>
     // { label: 'Role', value: props.job.position, icon: 'mdi:briefcase-outline' },
     { label: 'Industry Type', value: props.job.industry, icon: 'mdi:domain' },
     { label: 'Department', value: props.job.department, icon: 'mdi:sitemap-outline' },
-    { label: 'Employment Type', value: props.job.primary_employment_type, icon: 'mdi:clock-outline' },
+    { label: 'Employment Type', value: props.job.employment_types?.join(', ') ?? '', icon: 'mdi:clock-outline' },
     { label: 'Work Model', value: props.job.work_model, icon: 'mdi:office-building-outline' },
     { label: 'Experience', value: formatFactValue(props.job.experience), icon: 'mdi:account-star-outline' },
     { label: 'Location', value: location.value, icon: 'mdi:map-marker-outline' },

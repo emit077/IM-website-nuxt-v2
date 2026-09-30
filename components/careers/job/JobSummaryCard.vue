@@ -43,9 +43,9 @@ const tags = computed(() => [props.job.work_model, props.job.industry].filter(Bo
         <span v-if="job.department" class="rounded-full bg-blue-50 px-3 py-1 text-[12px] font-semibold text-blue-800">
           {{ job.department }}
         </span>
-        <span v-if="job.primary_employment_type"
+        <span v-if="job.employment_types" v-for="employment_type in job.employment_types" :key="employment_type"
           class="rounded-full bg-slate-100 px-3 py-1 text-[12px] font-semibold text-slate-600">
-          {{ job.primary_employment_type }}
+          {{ employment_type }}
         </span>
       </div>
     </div>

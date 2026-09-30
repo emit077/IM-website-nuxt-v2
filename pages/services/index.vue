@@ -5,6 +5,8 @@ import ServicesSpecialisedSection from '~/components/services/ServicesSpecialise
 import ServicesAudienceSection from '~/components/services/ServicesAudienceSection.vue'
 import ServicesConversionStrip from '~/components/services/ServicesConversionStrip.vue'
 import FaqSectionMini from '~/components/ui/shared/FaqSectionMini.vue'
+import CTASectionLayout from '~/components/ui/CTASectionLayout.vue'
+import { servicesConversionStrip } from '~/data/services'
 
 useSeoMeta({
   title: 'Our Tutoring Services — Indian Mentors',
@@ -24,6 +26,7 @@ useSeoMeta({
     <ServicesSpecialisedSection />
     <ServicesAudienceSection />
     <FaqSectionMini category="services" />
-    <ServicesConversionStrip />
+    <CTASectionLayout :title="servicesConversionStrip.title" :description="servicesConversionStrip.description"
+      :ctas="servicesConversionStrip.ctas" />
   </div>
 </template>

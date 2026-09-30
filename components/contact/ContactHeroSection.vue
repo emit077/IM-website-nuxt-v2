@@ -82,14 +82,14 @@ function collageSrc(city: { image: string }) {
       class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-gradient-to-b from-blue-50/70 to-transparent" />
 
     <div class="container-page section-py">
-      <div class="grid items-center gap-8 lg:grid-cols-2 lg:items-start lg:gap-14">
-        <div class="lg:col-start-1 lg:row-start-1">
+      <div class="grid items-center gap-8 md:gap-10 lg:grid-cols-2 lg:items-start lg:gap-14">
+        <div class="order-1 lg:order-none lg:col-start-1 lg:row-start-1">
           <HeroHeader variant="hero" heading-id="contact-hero-heading" :badge="heroContent.badge"
             :title="heroContent.title" :subtitle="heroContent.subtitle" :description="heroContent.description"
             :content-class="heroContent.contentClass" />
         </div>
 
-        <div class="relative mx-auto w-full max-w-md lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none" v-motion
+        <div class="relative order-3 mx-auto w-full max-w-md sm:max-w-xl md:order-3 md:max-w-none lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none" v-motion
           :initial="{ opacity: 0, x: 20 }"
           :enter="{ opacity: 1, x: 0, transition: { duration: 600, delay: 200, ease: [0.22, 1, 0.36, 1] } }">
           <div aria-hidden="true"
@@ -99,7 +99,7 @@ function collageSrc(city: { image: string }) {
             <div class="flex flex-col gap-2 sm:gap-2.5">
               <div class="grid grid-cols-2 gap-2 sm:gap-2.5">
                 <div v-for="city in collageTop" :key="city.id"
-                  class="group relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-200">
+                  class="group relative aspect-[4/3] overflow-hidden rounded-xl bg-slate-200 md:aspect-[16/10] lg:aspect-[4/3]">
                   <img :src="collageSrc(city)" :alt="`${city.label} tutoring services`"
                     class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-105"
                     loading="lazy" decoding="async" />
@@ -121,7 +121,7 @@ function collageSrc(city: { image: string }) {
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent"
                     aria-hidden="true" />
                   <span
-                    class="absolute bottom-1.5 left-1.5 rounded-full bg-white/15 px-2 py-0.5 text-[9px] font-semibold text-white backdrop-blur-sm sm:bottom-2 sm:left-2 sm:px-2.5 sm:py-1 sm:text-[10px]">
+                    class="absolute bottom-1.5 left-1.5 rounded-full bg-white/15 px-2 py-0.5 text-[9px] font-semibold text-white backdrop-blur-sm sm:bottom-2 sm:left-2 sm:px-2.5 sm:py-1 sm:text-[10px] md:text-xs lg:text-[10px] xl:text-xs">
                     {{ city.label }}
                   </span>
                 </div>
@@ -130,12 +130,13 @@ function collageSrc(city: { image: string }) {
           </div>
         </div>
 
-        <div class="flex flex-col gap-3 lg:col-start-1 lg:row-start-2 xl:flex-row xl:gap-4" v-motion
-          :initial="{ opacity: 0, y: 16 }"
+        <div
+          class="order-4 flex w-full flex-col gap-3 sm:flex-row sm:gap-4 md:order-2 lg:order-none lg:col-start-1 lg:row-start-2"
+          v-motion :initial="{ opacity: 0, y: 16 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }">
-          <ActionBtn class="!w-full xl:!w-auto" variant="primary" :label="primaryCtaLabel"
-            icon="mdi:phone-outline" :href="primaryCtaHref" />
-          <ActionBtn class="!w-full xl:!w-auto" variant="secondary" :label="secondaryCtaLabel"
+          <ActionBtn class="!w-full sm:!w-auto sm:flex-1 xl:flex-none" variant="primary"
+            :label="primaryCtaLabel" icon="mdi:phone-outline" :href="primaryCtaHref" />
+          <ActionBtn class="!w-full sm:!w-auto sm:flex-1 xl:flex-none" variant="secondary" :label="secondaryCtaLabel"
             icon="mdi:map-marker-radius-outline" :href="secondaryCtaHref"
             icon-wrapper-class="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white" />
         </div>

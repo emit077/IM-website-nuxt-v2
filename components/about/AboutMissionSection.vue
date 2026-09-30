@@ -33,7 +33,7 @@ const stepNumber = (i: number) => String(i + 1).padStart(2, '0')
         <div class="relative flex items-center justify-center gap-3 sm:gap-6 lg:justify-start" v-motion
           :initial="{ opacity: 0, scale: 0.94 }"
           :visibleOnce="{ opacity: 1, scale: 1, transition: { duration: 620, delay: 180 } }">
-          <div class="relative h-56 w-56 shrink-0 sm:h-64 sm:w-64">
+          <div class="relative h-56 w-56 shrink-0 sm:h-64 sm:w-64 hidden md:block">
             <span aria-hidden="true"
               class="mv-pulse absolute inset-0 rounded-full bg-blue-500/[0.06] ring-1 ring-blue-200/60" />
             <span aria-hidden="true" class="absolute inset-6 rounded-full bg-blue-500/[0.05] ring-1 ring-blue-200/50" />
