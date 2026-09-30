@@ -23,14 +23,14 @@ const floatingStats = [
     iconMdi: 'mdi:cash-multiple',
     value: '90%',
     label: 'Revenue kept by partner',
-    wrap: 'left-0 top-10 sm:-left-4',
+    wrap: 'left-2 top-3 sm:left-0 sm:top-8 lg:-left-4',
     icon: 'bg-blue-600 text-white',
   },
   {
     iconMdi: 'mdi:sync',
     value: 'Recurring',
     label: 'Predictable monthly income',
-    wrap: 'right-0 bottom-12 sm:-right-4',
+    wrap: 'right-2 bottom-3 sm:right-0 sm:bottom-10 lg:-right-4',
     icon: 'bg-emerald-500 text-white',
   },
 ]
@@ -53,9 +53,9 @@ const floatingStats = [
 
       <div class="mt-12 grid items-center gap-8 lg:mt-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10">
         <!-- Win-Win image -->
-        <div class="order-2 lg:order-2" v-motion :initial="{ opacity: 0, y: 16 }"
+        <div class="order-2 mt-2 lg:order-2 lg:mt-0" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
-          <div class="relative mx-auto w-full max-w-md">
+          <div class="relative mx-auto w-full max-w-[17.5rem] sm:max-w-xs md:max-w-sm lg:max-w-md">
             <div aria-hidden="true"
               class="pointer-events-none absolute -inset-4 -z-10 rounded-[2.75rem] bg-gradient-to-br from-blue-200/50 via-indigo-100/40 to-transparent blur-2xl" />
             <div aria-hidden="true"

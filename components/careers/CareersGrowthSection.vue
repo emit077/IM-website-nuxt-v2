@@ -64,14 +64,12 @@ const lastIndex = growthSection.path.length - 1
           </li>
         </ol>
 
-        <div class="relative order-1 flex lg:order-2 lg:col-span-6" v-motion :initial="{ opacity: 0, y: 16 }"
+        <div class="relative order-1 flex h-full justify-center lg:order-2 lg:col-span-6" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
-          <figure class="relative flex w-full flex-col overflow-hidden ">
-            <div class="relative min-h-[16rem] flex-1 sm:min-h-[20rem] lg:min-h-0">
-              <img :src="growthImage" :alt="growthSection.imageAlt"
-                class="absolute inset-0 h-full w-full object-contain object-center p-3 sm:p-4" loading="lazy"
-                decoding="async" />
-            </div>
+          <figure class="relative w-full max-w-md lg:h-full lg:min-h-[22rem] lg:max-w-none lg:flex-1">
+            <img :src="growthImage" :alt="growthSection.imageAlt"
+              class="mx-auto h-auto w-full max-h-52 object-contain object-center sm:max-h-64 md:max-h-72 lg:absolute lg:inset-0 lg:h-full lg:max-h-none lg:p-4"
+              loading="lazy" decoding="async" />
           </figure>
         </div>
       </div>

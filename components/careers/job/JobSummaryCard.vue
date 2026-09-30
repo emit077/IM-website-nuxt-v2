@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { jobsSection } from '~/data/careers'
 import { jobPath } from '~/data/career-jobs'
-import { formatCareerLocation } from '~/composables/useCareerContent'
+import { careerKeywords, formatCareerLocation } from '~/composables/useCareerContent'
 import type { CareerJobListItem } from '~/types/career-api'
 
 const props = withDefaults(
@@ -25,6 +25,13 @@ const emit = defineEmits<{
 
 const location = computed(() => formatCareerLocation(props.job.city))
 const tags = computed(() => [props.job.work_model, props.job.industry].filter(Boolean))
+const keywords = computed(() => careerKeywords(props.job.keywords))
+const alltags = computed(() => [...tags.value, ...keywords.value])
+
+const showDetailpage = (slug: string) => {
+  router.push(jobPath(slug))
+}
+const router = useRouter()
 </script>
 
 <template>
@@ -54,6 +61,13 @@ const tags = computed(() => [props.job.work_model, props.job.industry].filter(Bo
       {{ job.intro || job.headline }}
     </p>
 
+    <!-- <ul v-if="keywords.length" class="mt-3 flex flex-wrap gap-2" role="list" aria-label="Keywords">
+      <li v-for="keyword in keywords" :key="keyword"
+        class="rounded-full border border-blue-100 bg-blue-50/70 px-2.5 py-0.5 text-[12px] font-medium text-blue-800">
+        {{ keyword }}
+      </li>
+    </ul> -->
+
     <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-slate-500">
       <span v-if="location" class="inline-flex items-center gap-1.5">
         <Icon icon="mdi:map-marker-outline" class="h-4 w-4 text-slate-400" aria-hidden="true" />
@@ -70,15 +84,15 @@ const tags = computed(() => [props.job.work_model, props.job.industry].filter(Bo
     </div>
 
     <div class="mt-4 flex flex-wrap items-end justify-between gap-3">
-      <ul v-if="tags.length" class="flex flex-wrap gap-2" role="list">
-        <li v-for="tag in tags" :key="tag"
+      <ul v-if="alltags.length" class="flex flex-wrap gap-2" role="list">
+        <li v-for="tag in alltags" :key="tag"
           class="rounded-full bg-lime-300 px-3 py-1 text-[12px] font-semibold text-slate-900">
           {{ tag }}
         </li>
       </ul>
-      <button v-if="job.is_open" type="button"
+      <button v-if="linked" type="button"
         class="relative z-10 ml-auto inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-blue-700 px-4 py-2 text-[13px] font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-800"
-        :aria-label="`Apply for ${job.position}`" @click.stop="emit('apply')">
+        :aria-label="`Apply for ${job.position}`" @click.stop="showDetailpage(job.slug)">
         {{ jobsSection.applyLabel }}
         <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
       </button>

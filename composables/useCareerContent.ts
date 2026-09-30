@@ -14,6 +14,11 @@ export type CareerJobFilters = {
   work_model?: string
 }
 
+export function careerKeywords(keywords?: string[] | null) {
+  if (!Array.isArray(keywords)) return []
+  return keywords.map((item) => String(item).trim()).filter(Boolean)
+}
+
 export function formatCareerLocation(city: CareerCity | null | undefined) {
   if (!city?.name) return ''
   return city.state ? `${city.name}, ${city.state}` : city.name

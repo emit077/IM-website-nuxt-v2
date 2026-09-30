@@ -89,9 +89,16 @@ export const institutionsPricingPackages = [
   },
 ] as const
 
+export const institutionsPricingHeroStats = [
+  { value: '8–15%', label: 'of CTC · Mentor Staffing', icon: 'solar:wallet-money-bold-duotone' },
+  { value: 'Unlimited', label: 'Mentor Enterprise hiring', icon: 'solar:users-group-two-rounded-bold-duotone' },
+  { value: 'Pay per hire', label: 'Successful placement only', icon: 'solar:check-circle-bold-duotone' },
+  { value: '60-day', label: 'Replacement support', icon: 'solar:shield-check-bold-duotone' },
+]
+
 export const institutionsPricingHero = {
   badge: 'Institutional Recruitment Pricing',
-  title: 'Mentor Staffing & Mentor Enterprise',
+  title: 'Mentor Staffing &<br><span class="text-gradient-brand">Mentor Enterprise</span>',
   subtitle: 'Two commercial models for academic staffing',
   description:
     'Choose requirement-based recruitment with pay per successful hire, or a fixed annual partnership with unlimited hiring — structured commercials designed around how your institution actually recruits.',

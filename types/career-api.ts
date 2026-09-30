@@ -22,7 +22,9 @@ export type CareerJobListItem = {
   industry: string
   experience: string
   primary_employment_type: CareerEmploymentType | string
+  employment_types?: string[]
   work_model: CareerWorkModel | string
+  keywords?: string[]
   is_active: boolean
   display_order: number
   posted_on: string | null

@@ -6,6 +6,7 @@ import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import JobApplyModal from '~/components/careers/job/JobApplyModal.vue'
 import JobSummaryCard from '~/components/careers/job/JobSummaryCard.vue'
 import {
+  careerKeywords,
   formatCareerLocation,
   useCareerCities,
   useCareerJobs,
@@ -70,6 +71,7 @@ const filteredJobs = computed(() => {
       job.primary_employment_type,
       job.work_model,
       formatCareerLocation(job.city),
+      ...careerKeywords(job.keywords),
     ]
       .join(' ')
       .toLowerCase()

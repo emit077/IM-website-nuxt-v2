@@ -34,7 +34,7 @@ import { staffingModels, staffingModelsSection } from '~/data/institutions'
           </article>
         </div>
       </div>
-
+      <!-- 
       <div
         class="mt-8 flex flex-row   items-start justify-between gap-4 border-t border-slate-200 pt-6 sm:flex-row sm:items-center">
         <p class="text-sm leading-relaxed text-slate-600 col-span-2">
@@ -46,7 +46,7 @@ import { staffingModels, staffingModelsSection } from '~/data/institutions'
           <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
             aria-hidden="true" />
         </a>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>

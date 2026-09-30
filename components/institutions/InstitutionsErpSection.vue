@@ -88,7 +88,7 @@ const ecosystemNodes = [
               </div>
             </article>
 
-            <div v-else class="flex items-center justify-center py-1 lg:px-1.5 lg:py-0" v-motion
+            <div v-else class="mx-auto flex w-full max-w-xs items-center justify-center py-1 sm:max-w-sm lg:max-w-none lg:px-1.5 lg:py-0" v-motion
               :initial="{ opacity: 0 }"
               :visibleOnce="{ opacity: 1, transition: { delay: 80 + i * 70, duration: 420 } }">
               <div class="flex w-full flex-col items-stretch gap-2 lg:gap-3">

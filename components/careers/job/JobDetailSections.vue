@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import { Icon } from '@iconify/vue'
 import { jobPageCtas } from '~/data/careers'
-import { formatCareerLocation, splitCareerParagraphs } from '~/composables/useCareerContent'
+import { careerKeywords, formatCareerLocation, splitCareerParagraphs } from '~/composables/useCareerContent'
 import type { CareerApplicationType, CareerJobDetail } from '~/types/career-api'
 
 const props = defineProps<{ job: CareerJobDetail }>()
@@ -14,7 +14,7 @@ const toast = useToast()
 const copied = ref(false)
 let copiedTimer: ReturnType<typeof setTimeout> | undefined
 
-const overviewImage = usePublicAsset('/assets/img/institutions/institutions-teacher-training-workshop.png')
+const overviewImage = usePublicAsset('/assets/img/careers/job-description-bg.webp')
 
 const overviewHeading = computed(() => props.job.position || props.job.headline)
 const overviewTagline = computed(() => {
@@ -40,6 +40,7 @@ const benefits = computed(() =>
 )
 
 const location = computed(() => formatCareerLocation(props.job.city))
+const keywords = computed(() => careerKeywords(props.job.keywords))
 
 function formatFactValue(value?: string | null) {
   const text = String(value || '').trim()
@@ -120,7 +121,7 @@ async function copyJobLink(url: string) {
             v-motion :initial="{ opacity: 0, y: 12 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
             <img :src="overviewImage" alt="Indian Mentors team collaborating in a professional training session"
-              class="h-56 w-full object-cover object-center sm:h-80 lg:h-[16rem]" width="1600" height="600" />
+              class="h-56 w-full object-cover object-top sm:h-80 lg:h-[16rem] mb-5" width="1600" height="600" />
             <div aria-hidden="true"
               class="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-950/100 via-blue-800/85 to-blue-700/80" />
             <figcaption
@@ -167,6 +168,15 @@ async function copyJobLink(url: string) {
                 </div>
               </div>
             </dl>
+            <!-- <div v-if="keywords.length" class="mt-6">
+              <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">Keywords</p>
+              <ul class="mt-3 flex flex-wrap gap-2" role="list">
+                <li v-for="keyword in keywords" :key="keyword"
+                  class="rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-[13px] font-medium text-blue-800">
+                  {{ keyword }}
+                </li>
+              </ul>
+            </div> -->
           </div>
           <div class="mt-10">
             <p class="text-sm font-bold uppercase tracking-[0.16em] text-blue-700">Role Overview</p>

@@ -299,8 +299,8 @@ export const hiringProcessSection = {
   classes: '!px-0 !py-0',
   description:
     'A clear, structured path from application to onboarding — designed to assess fit, communication, and professional readiness.',
-  image: '/assets/img/careers/hiring-process.png',
-  imageAlt: 'A hiring manager and candidate in a guided interview conversation at Indian Mentors',
+  image: '/assets/img/careers/careers-hiring-process.jpg',
+  imageAlt: 'Two professionals talking in a bright office during the Indian Mentors hiring process',
   overlayKicker: 'Careers at Indian Mentors',
   overlayTitle: 'Application to Onboarding',
   cta: { label: 'View Open Positions', href: '#open-positions' },
@@ -403,7 +403,7 @@ export const jobsSection = {
   searchPlaceholder: 'Search jobs by role, department, or keyword…',
   emptyTitle: 'No matching positions right now',
   emptyDescription: 'Try another filter, or send us your resume so our recruitment team can consider you for future openings.',
-  applyLabel: 'Apply Now',
+  applyLabel: 'View Details',
 } as const
 
 export const jobFilterOptions = {

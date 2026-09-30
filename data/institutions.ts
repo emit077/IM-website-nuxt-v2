@@ -301,8 +301,8 @@ export const institutionsProcessSection = {
   title: 'Our Process From <span class="text-gradient-brand">Requirement to Placement</span>',
   description: 'A structured six-stage recruitment process that keeps institutions in control of the final decision.',
   classes: '!px-0 !py-0',
-  image: '/assets/img/careers/hiring-process.png',
-  imageAlt: 'Recruitment specialists coordinating institutional faculty hiring',
+  image: '/assets/img/institutions/institutions-hiring-young.jpg',
+  imageAlt: 'Two young educators reviewing a faculty shortlist beside a classroom',
   imageCaption: 'Guided hiring support',
   imageNote: 'From requirement to classroom — with your institution in control.',
 } as const

@@ -37,7 +37,7 @@ const maxScope = Math.max(...securityDepositSection.territoryLevels.map((t) => t
           <div
             class="relative border-b border-emerald-100/80 bg-gradient-to-br from-emerald-50 via-white to-white px-6 py-7 sm:px-8 sm:py-8">
             <span aria-hidden="true"
-              class="pointer-events-none absolute -right-2 -top-4 select-none font-display text-[7.5rem] font-black leading-none text-emerald-100/80">
+              class="pointer-events-none absolute -right-2 -top-4 select-none font-display text-6xl font-black leading-none text-emerald-100/80 sm:text-[7.5rem]">
               01
             </span>
 
@@ -109,7 +109,7 @@ const maxScope = Math.max(...securityDepositSection.territoryLevels.map((t) => t
           <div
             class="relative border-b border-blue-100/80 bg-gradient-to-br from-blue-50 via-white to-white px-6 py-7 sm:px-8 sm:py-8">
             <span aria-hidden="true"
-              class="pointer-events-none absolute -right-2 -top-4 select-none font-display text-[7.5rem] font-black leading-none text-blue-100/80">
+              class="pointer-events-none absolute -right-2 -top-4 select-none font-display text-6xl font-black leading-none text-blue-100/80 sm:text-[7.5rem]">
               02
             </span>
 

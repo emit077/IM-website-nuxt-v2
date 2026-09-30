@@ -22,7 +22,7 @@ import { partnershipOpportunitiesSection, partnershipTiers } from '~/data/channe
         ]" v-motion :initial="{ opacity: 0, y: 20 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 60 + i * 80, duration: 500 } }">
           <span v-if="tier.popular"
-            class="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-400 px-4 py-1.5 text-[11px] font-bold uppercase tracking-wide text-white shadow-md ring-4 ring-[#f8fafc]">
+            class="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-wide text-blue-600 shadow-md shadow-">
             Most Popular
           </span>
 

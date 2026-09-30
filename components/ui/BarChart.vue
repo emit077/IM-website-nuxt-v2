@@ -117,14 +117,14 @@ function valueClass(index: number) {
             <span v-for="n in gridlines" :key="`grid-${n}`" class="h-px w-full" :class="themeClasses.gridline" />
           </div>
           <div v-for="(item, i) in items" :key="`${item.label}-${i}`"
-            class="relative z-10 flex w-36 flex-col items-center sm:w-40">
+            class="relative z-10 flex w-[7.25rem] flex-col items-center sm:w-36 md:w-40">
             <span class="mb-2 font-display text-xl font-bold" :class="valueClass(i)" v-motion
               :initial="{ opacity: 0, scale: 0.85 }"
               :visibleOnce="{ opacity: 1, scale: 1, transition: { delay: 380 + i * 80, duration: 450 } }">
               <span v-if="item.valueLabelShort" class="sm:hidden">{{ item.valueLabelShort }}</span>
               <span :class="item.valueLabelShort ? 'hidden sm:inline' : undefined">{{ displayValue(item) }}</span>
             </span>
-            <div class="w-16 origin-bottom rounded-xl rounded-b-none sm:w-[4.5rem]" :class="item.bgColor" v-motion
+            <div class="w-12 origin-bottom rounded-xl rounded-b-none sm:w-16 md:w-[4.5rem]" :class="item.bgColor" v-motion
               :initial="{ scaleY: 0 }"
               :visibleOnce="{ scaleY: 1, transition: { delay: 300 + i * 100, duration: 1000, ease: 'easeOut' } }"
               :style="{ height: `${barHeight(item)}px` }" aria-hidden="true" />
@@ -135,7 +135,7 @@ function valueClass(index: number) {
 
         <div class="flex justify-center">
           <div v-for="(item, i) in items" :key="`${item.label}-${i}-caption`"
-            class="w-36 px-2 pt-4 text-center sm:w-40 sm:px-3">
+            class="w-[7.25rem] px-1.5 pt-4 text-center sm:w-36 sm:px-2 md:w-40 md:px-3">
             <p class="font-display text-sm font-bold" :class="labelClass(item)">
               {{ item.label }}
               <span v-if="item.labelSuffix" class="text-xs font-medium" :class="themeClasses.suffix">

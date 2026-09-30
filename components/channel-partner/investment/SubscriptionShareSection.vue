@@ -159,7 +159,7 @@ const dataset: BarChartDataset = {
               </template>
             </CardHeader>
 
-            <ul class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3" role="list">
+            <ul class="mt-8 grid grid-cols-1 gap-3 md:grid-cols-3" role="list">
               <li v-for="(item, i) in highlights" :key="item.title" v-motion :initial="{ opacity: 0, y: 12 }"
                 :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 280 + i * 70, duration: 450 } }">
                 <div class="h-full rounded-2xl border border-white/10 bg-white/5 px-3.5 py-3.5 backdrop-blur-sm">

@@ -32,9 +32,9 @@ const accentClasses: Record<(typeof hiringSteps)[number]['accent'], { tile: stri
         <div class="relative flex lg:col-span-5" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
           <figure
-            class="relative min-h-[280px] w-full flex-1 overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-slate-100 shadow-[0_22px_48px_-26px_rgba(15,23,42,0.28)] sm:min-h-[360px] lg:min-h-0">
+            class="relative min-h-[280px] w-full flex-1 overflow-hidden rounded-[1.5rem] border border-slate-200/80 bg-slate-100 shadow-[0_22px_48px_-26px_rgba(15,23,42,0.28)] sm:min-h-[400px] lg:min-h-0">
             <img :src="hiringImage" :alt="hiringProcessSection.imageAlt"
-              class="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" decoding="async" />
+              class="absolute inset-0 h-full w-full object-cover object-top" loading="lazy" decoding="async" />
             <div aria-hidden="true"
               class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
             <figcaption class="absolute inset-x-0 bottom-0 p-5 sm:p-6 flex flex-col items-center justify-center">

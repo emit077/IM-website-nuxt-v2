@@ -19,7 +19,7 @@ const approachImage = usePublicAsset(insightsApproach.image)
 
     <div class="container-page relative">
       <div class="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
-        <div class="lg:col-span-6">
+        <div class="order-1 lg:col-span-6">
           <CardHeader theme="dark" align="left" heading-id="insights-approach-heading" :badge="insightsApproach.kicker"
             :title="insightsApproach.title" :description="insightsApproach.description"
             :classes="`${insightsApproach.classes} max-w-2xl`" />
@@ -50,12 +50,13 @@ const approachImage = usePublicAsset(insightsApproach.image)
           </a>
         </div>
 
-        <div class="relative lg:col-span-6" v-motion :initial="{ opacity: 0, y: 16 }"
+        <div class="relative order-2 lg:col-span-6" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 480 } }">
           <figure
-            class="relative h-full min-h-[18rem] overflow-hidden rounded-[1.75rem] shadow-[0_24px_60px_-24px_rgba(15,23,42,0.55)] sm:min-h-[22rem] lg:min-h-[28rem]">
+            class="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-[0_24px_60px_-24px_rgba(15,23,42,0.55)] sm:aspect-[16/10] lg:aspect-auto lg:h-full lg:min-h-[28rem]">
             <img :src="approachImage" :alt="insightsApproach.imageAlt"
-              class="absolute inset-0 h-full w-full object-cover object-[center_20%]" loading="lazy" decoding="async" />
+              class="absolute inset-0 h-full w-full object-cover object-[center_30%] sm:object-center" loading="lazy"
+              decoding="async" />
             <span aria-hidden="true"
               class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/55 to-transparent" />
             <figcaption
@@ -66,7 +67,7 @@ const approachImage = usePublicAsset(insightsApproach.image)
         </div>
 
         <a :href="insightsApproach.cta.href"
-          class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-cream-50 sm:w-auto sm:justify-self-start lg:hidden">
+          class="order-3 mx-auto inline-flex w-full max-w-md items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-cream-50 sm:w-auto lg:hidden">
           {{ insightsApproach.cta.label }}
           <Icon icon="mdi:arrow-right" class="h-4 w-4" aria-hidden="true" />
         </a>
