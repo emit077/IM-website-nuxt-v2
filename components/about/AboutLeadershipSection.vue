@@ -5,7 +5,6 @@ import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import { aboutLeadership, aboutLeadershipSection, type LeadershipProfile } from '~/data/about'
 
 const placeholderImage = usePublicAsset('assets/img/about/team-placeholder.png')
-const purposeImage = usePublicAsset('assets/img/about/better-mentorship-card.jpg')
 
 const founderHighlights = [
   { icon: 'solar:graph-up-linear', label: 'Strategy & Vision' },
@@ -29,7 +28,9 @@ const featuredRoleLine = computed(() =>
 const featuredCredentials = computed(() =>
   isFounderCard.value ? founderProfile?.credentials : undefined,
 )
-const gridLeaders = computed(() => leaders.value.filter((person) => person.id !== featured.value?.id))
+const otherLeaders = computed(() => leaders.value.filter((person) => person.id !== featured.value?.id))
+const companion = computed(() => otherLeaders.value[0])
+const gridLeaders = computed(() => otherLeaders.value.slice(1))
 
 const featuredBio = computed(() => summary(featured.value))
 const featuredPullQuote = computed(() => {
@@ -85,71 +86,91 @@ function onPortraitError(event: Event) {
       </div>
 
       <div v-if="featured" class="mt-10 space-y-4 sm:mt-12">
-        <div class="grid gap-4 md:grid-cols-12" aria-label="Founder spotlight">
+        <div class="grid items-stretch gap-4 lg:grid-cols-12" aria-label="Leadership spotlight">
           <article
-            class="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-[#0F174A] via-brand-primary to-[#60A5FA] md:col-span-6 lg:col-span-4"
+            class="overflow-hidden rounded-[1.6rem] bg-white shadow-[0_16px_40px_-28px_rgba(15,23,42,0.28)] lg:col-span-8"
             v-motion :initial="{ opacity: 0, y: 14 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40, duration: 420 } }">
-            <img :src="portraitSrc(featured)" :alt="featured.name"
-              class="absolute inset-0 h-full w-full transition duration-700" :class="featuredPortraitClass(featured)"
-              loading="lazy" decoding="async" @error="onPortraitError" />
-            <div
-              class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07122b] via-[#07122b]/75 to-transparent px-5 pb-5 pt-20 text-center">
-              <h3 class="font-display text-2xl font-bold tracking-tight text-white">
-                {{ featuredName }}
-              </h3>
-              <p class="mt-1 text-[13px] font-semibold leading-snug text-white/90">
-                {{ featuredRoleLine }}
-              </p>
-              <p v-if="featuredCredentials" class="mt-1 text-[11px] font-medium leading-snug text-white/75">
-                {{ featuredCredentials }}
-              </p>
+            <div class="grid h-full md:grid-cols-[minmax(15.5rem,0.78fr)_minmax(0,1.22fr)]">
+              <div class="relative min-h-[22rem] bg-gradient-to-br from-[#0F174A] via-brand-primary to-[#60A5FA]">
+                <img :src="portraitSrc(featured)" :alt="featured.name"
+                  class="absolute inset-0 h-full w-full transition duration-700" :class="featuredPortraitClass(featured)"
+                  loading="lazy" decoding="async" @error="onPortraitError" />
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07122b] via-[#07122b]/80 to-transparent px-5 pb-5 pt-20 text-center">
+                  <h3 class="font-display text-2xl font-bold tracking-tight text-white">
+                    {{ featuredName }}
+                  </h3>
+                  <p class="mt-1 text-[13px] font-semibold leading-snug text-white/90">
+                    {{ featuredRoleLine }}
+                  </p>
+                  <p v-if="featuredCredentials" class="mt-1 text-[11px] font-medium leading-snug text-white/75">
+                    {{ featuredCredentials }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="relative flex flex-col px-6 py-7 sm:px-7 sm:py-8">
+                <Icon icon="mdi:format-quote-close"
+                  class="absolute right-5 top-4 h-11 w-11 text-slate-100 sm:right-6 sm:h-12 sm:w-12" aria-hidden="true" />
+
+                <p class="font-display text-lg font-medium leading-snug text-slate-800">
+                  “{{ featuredPullQuote }}”
+                </p>
+                <p v-if="featuredBio" class="mt-3 text-[14px] leading-relaxed text-slate-500">
+                  {{ featuredBio }}
+                </p>
+
+                <ul class="mt-5 flex flex-wrap gap-x-4 gap-y-3 border-t border-slate-100 pt-4" role="list">
+                  <li v-for="item in founderHighlights" :key="item.label"
+                    class="flex items-center gap-2 text-[12px] font-semibold text-slate-500">
+                    <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-slate-50 text-slate-400">
+                      <Icon :icon="item.icon" class="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    {{ item.label }}
+                  </li>
+                </ul>
+
+                <div v-if="featured.linkedin" class="mt-auto pt-5">
+                  <a :href="featured.linkedin" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 rounded-full bg-[#0b1b36] px-4 py-2.5 text-[13px] font-semibold text-white transition hover:bg-blue-700"
+                    :aria-label="`View ${featured.name} on LinkedIn`">
+                    <Icon icon="mdi:linkedin" class="h-4 w-4" aria-hidden="true" />
+                    Connect on LinkedIn
+                    <Icon icon="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
             </div>
           </article>
 
-          <article
-            class="relative overflow-hidden rounded-[1.6rem] bg-white px-6 py-7 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.28)] sm:px-8 sm:py-12 lg:col-span-5 md:col-span-6"
+          <article v-if="companion"
+            class="flex h-full flex-col items-center rounded-[1.6rem] bg-white px-6 py-8 text-center shadow-[0_16px_40px_-28px_rgba(15,23,42,0.22)] lg:col-span-4"
             v-motion :initial="{ opacity: 0, y: 14 }"
-            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80, duration: 420 } }">
-            <Icon icon="mdi:format-quote-close"
-              class="absolute right-6 top-5 h-12 w-12 text-slate-100 sm:right-8 sm:h-14 sm:w-14" aria-hidden="true" />
-
-            <p class="font-display text-lg font-medium leading-snug text-slate-800">
-              “{{ featuredPullQuote }}”
+            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 100, duration: 420 } }">
+            <div class="h-24 w-24 overflow-hidden rounded-full bg-slate-100 ring-4 ring-slate-50">
+              <img :src="portraitSrc(companion)" :alt="companion.name" class="h-full w-full"
+                :class="portraitClass(companion)" loading="lazy" decoding="async" @error="onPortraitError" />
+            </div>
+            <h3 class="mt-4 font-display text-xl font-bold tracking-tight text-slate-900">
+              {{ companion.name }}
+            </h3>
+            <p class="mt-1 text-[13px] font-semibold text-slate-500">{{ companion.role }}</p>
+            <p v-if="summary(companion)" class="mt-4 text-[13px] leading-relaxed text-slate-500">
+              {{ summary(companion) }}
             </p>
-            <p v-if="featuredBio" class="mt-3 text-[14px] leading-relaxed text-slate-500">
-              {{ featuredBio }}
-            </p>
-
-            <ul class="mt-6 flex flex-wrap gap-x-5 gap-y-3 border-t border-slate-100 pt-5" role="list">
-              <li v-for="item in founderHighlights" :key="item.label"
-                class="flex items-center gap-2 text-[12px] font-semibold text-slate-500">
-                <span class="grid h-7 w-7 place-items-center rounded-full bg-slate-50 text-slate-400">
-                  <Icon :icon="item.icon" class="h-4 w-4" aria-hidden="true" />
-                </span>
-                {{ item.label }}
-              </li>
-            </ul>
-
-            <a v-if="featured.linkedin" :href="featured.linkedin" target="_blank" rel="noopener noreferrer"
-              class="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0b1b36] px-4 py-2.5 text-[13px] font-semibold text-white transition hover:bg-blue-700"
-              :aria-label="`View ${featured.name} on LinkedIn`">
+            <a v-if="companion.linkedin" :href="companion.linkedin" target="_blank" rel="noopener noreferrer"
+              class="mt-auto inline-flex items-center gap-1.5 pt-5 text-[13px] font-semibold text-[#0A66C2] transition hover:gap-2"
+              :aria-label="`View ${companion.name} on LinkedIn`">
               <Icon icon="mdi:linkedin" class="h-4 w-4" aria-hidden="true" />
               Connect on LinkedIn
-              <Icon icon="solar:arrow-right-linear" class="h-4 w-4" aria-hidden="true" />
+              <Icon icon="solar:arrow-right-linear" class="h-3.5 w-3.5" aria-hidden="true" />
             </a>
           </article>
-
-          <aside
-            class="relative min-h-[22rem] overflow-hidden rounded-[1.6rem] bg-[#eef5ff] lg:col-span-3  hidden lg:block"
-            v-motion :initial="{ opacity: 0, y: 14 }"
-            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 120, duration: 420 } }">
-            <img :src="purposeImage" alt="Better Mentorship. Brighter Futures."
-              class="absolute inset-0 h-full w-full object-cover object-center" loading="lazy" decoding="async" />
-          </aside>
         </div>
 
-        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Leadership team">
+        <div v-if="gridLeaders.length" class="grid gap-4 sm:grid-cols-2"
+          :class="gridLeaders.length > 3 ? 'xl:grid-cols-4' : 'xl:grid-cols-3'" aria-label="Leadership team">
           <article v-for="(leader, i) in gridLeaders" :key="leader.id"
             class="rounded-[1.6rem] bg-white px-6 py-7 text-center shadow-[0_16px_40px_-28px_rgba(15,23,42,0.22)]"
             v-motion :initial="{ opacity: 0, y: 14 }"
