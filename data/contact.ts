@@ -128,7 +128,7 @@ const headOffice = {
     'Tutor verification and onboarding processes',
     'ERP system management and monitoring',
     'Academic compliance and quality control',
-    'Strategic expansion of tutoring services Across the Globe',
+    'Strategic expansion of tutoring services across the Globe',
   ],
   closing:
     'From this location, our administrative and academic teams ensure that every student receives consistent, high-quality tutoring support nationwide.',
@@ -139,7 +139,7 @@ export const branchOffices = {
   title: 'Major Cities with <span class="text-gradient-brand">Operational Presence</span>',
   classes: '!px-0 !py-0',
   intro:
-    'Indian Mentors currently maintains operational activities in several key metropolitan and regional cities Across the Globe.',
+    'Indian Mentors currently maintains operational activities in several key metropolitan and regional cities across the Globe.',
   offices: [
     {
       city: 'Mumbai',
@@ -240,7 +240,7 @@ export const branchOffices = {
 
 export const alsoServing = {
   intro:
-    'In addition to our branch locations, Indian Mentors actively serves students in numerous growing educational hubs Across the Globe through our home tutoring network and online learning ecosystem.',
+    'In addition to our branch locations, Indian Mentors actively serves students in numerous growing educational hubs across the Globe through our home tutoring network and online learning ecosystem.',
   searchPlaceholder: 'Search all cities and office locations (e.g. Bengaluru, Delhi, Pune)…',
   emptyState: 'No cities match your search. Try another name, or contact us for home tutoring in your area.',
   previewLimit: 20,
@@ -496,7 +496,7 @@ export const findUs = {
       image: 'contact/im-building',
       imageLabel: 'Headquarter',
       description:
-        'The headquarter serves as the central hub for academic operations, tutor coordination, technology systems, and nationwide tutoring services. Our administrative and academic teams work from this location to support students, parents, tutors, and institutional partners Across the Globe.',
+        'The headquarter serves as the central hub for academic operations, tutor coordination, technology systems, and nationwide tutoring services. Our administrative and academic teams work from this location to support students, parents, tutors, and institutional partners across the Globe.',
       directionsCta: 'Contact Headquarter',
     },
     {
@@ -509,7 +509,7 @@ export const findUs = {
       image: 'contact/suyamall',
       imageLabel: 'Corporate Office',
       description:
-        'The corporate office supports academic operations, tutor management, student support, and strategic coordination Across the Globe. Located in the educational and commercial hub of Bhilai, it ensures seamless coordination between students, parents, mentors, and institutional partners.',
+        'The corporate office supports academic operations, tutor management, student support, and strategic coordination across the Globe. Located in the educational and commercial hub of Bhilai, it ensures seamless coordination between students, parents, mentors, and institutional partners.',
       directionsCta: 'Contact Corporate Office',
     },
   ] satisfies FindUsOffice[],

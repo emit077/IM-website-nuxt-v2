@@ -17,7 +17,7 @@ const testimonials = computed(() => apiTestimonials.value ?? [])
 const headerContent = {
   badge: 'Testimonials',
   title: 'Real Stories. Real Growth. Real Trust',
-  description: 'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors Across the Globe.',
+  description: 'Explore real experiences and success stories from students, parents, tutors, institutions, and channel partners who trust Indian Mentors across the Globe.',
   classes: '!px-0 !py-0',
 }
 

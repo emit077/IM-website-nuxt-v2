@@ -19,6 +19,7 @@ const primaryLinks = [
   { label: 'About Us', href: '/about' },
   { label: 'Our Services', href: '/services' },
   { label: 'Contact Us', href: '/contact' },
+  { label: 'Parent & Student', href: '/student-parent' },
   { label: 'Tutors', href: '/tutors' },
 ]
 
@@ -27,10 +28,9 @@ const navMenus = [
     id: 'more',
     label: 'More',
     items: [
-      { label: 'Parent & Student', href: '/student-parent', description: 'Support for families' },
       { label: 'Academic Coverage', href: '/academic-coverage', description: 'Boards, classes & subjects' },
-      { label: 'Partner Program', href: '/channel-partner', description: 'Grow with us' },
-      { label: 'Hire for Institute', href: '/institutions', description: 'Teacher recruitment' },
+      { label: 'Institutional Partners', href: '/institutions', description: 'Teacher recruitment' },
+      { label: 'Channel Partners', href: '/channel-partner', description: 'Collaborate and grow with us' },
       { label: 'Why Choose', href: '/why-choose', description: 'Why families trust us' },
       { label: 'Career', href: '/careers', description: 'Join our team' },
       { label: 'Insights Hub', href: '/insights', description: 'Company insights' },

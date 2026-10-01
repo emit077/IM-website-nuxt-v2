@@ -26,7 +26,7 @@ export const institutionsHero = {
   subtitle:
     '<span class="text-gradient-brand">Indian Mentors</span> — Institutional Teacher Recruitment & Academic Staffing',
   description:
-    'We help schools, coaching institutes, colleges, and EdTech hire qualified, verified teachers Across the Globe.',
+    'We help schools, coaching institutes, colleges, and EdTech hire qualified, verified teachers across the Globe.',
   caption: 'Qualified Educators. Structured Recruitment. Reliable Academic Staffing.',
   backgroundImage: 'assets/img/hero/hero-2.png',
   contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',

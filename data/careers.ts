@@ -399,7 +399,7 @@ export const jobsSection = {
   kicker: "We're Hiring",
   title: 'Find your next <span class="text-gradient-brand">role</span>',
   classes: '!px-0 !py-0',
-  description: `Openings across admissions, academics, operations, HR, finance, marketing, and technology — including Bhilai-based roles and field positions Across the Globe. Apply from a listing below.`,
+  description: `Openings across admissions, academics, operations, HR, finance, marketing, and technology — including Bhilai-based roles and field positions across the Globe. Apply from a listing below.`,
   searchPlaceholder: 'Search jobs by role, department, or keyword…',
   emptyTitle: 'No matching positions right now',
   emptyDescription: 'Try another filter, or send us your resume so our recruitment team can consider you for future openings.',

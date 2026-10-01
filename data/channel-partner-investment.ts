@@ -930,7 +930,7 @@ export const investmentFinalCta = {
   badge: "Become an Authorised Channel Partner",
   title: "Join the Growing Network of Authorised Resellers",
   description:
-    "Join the growing network of Indian Mentors Authorised Resellers and help expand quality personalised tutoring services Across the Globe.",
+    "Join the growing network of Indian Mentors Authorised Resellers and help expand quality personalised tutoring services across the Globe.",
   opportunities: [
     "Build a local education business",
     "Earn recurring subscription revenue",

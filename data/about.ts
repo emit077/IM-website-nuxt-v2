@@ -88,7 +88,7 @@ export const aboutVision = {
     },
   ] satisfies VisionPoint[],
   closing:
-    'By bringing together structured mentorship and technology-driven operations, Indian Mentors aims to set new standards in personalised academic services Across the Globe.',
+    'By bringing together structured mentorship and technology-driven operations, Indian Mentors aims to set new standards in personalised academic services across the Globe.',
 }
 
 export type LeadershipProfile = {
@@ -403,7 +403,7 @@ export const aboutRoadmap = {
           icon: 'mdi:map-marker-radius-outline',
           title: 'Nationwide Presence',
           description:
-            'Expand operations Across the Globe with standardized onboarding, compliance, and quality assurance frameworks.',
+            'Expand operations across the Globe with standardized onboarding, compliance, and quality assurance frameworks.',
         },
         {
           icon: 'mdi:hub-outline',

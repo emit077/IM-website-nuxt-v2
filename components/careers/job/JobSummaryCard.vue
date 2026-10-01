@@ -28,6 +28,9 @@ const tags = computed(() => [props.job.work_model, props.job.industry].filter(Bo
 const keywords = computed(() => careerKeywords(props.job.keywords))
 const alltags = computed(() => [...tags.value, ...keywords.value])
 
+console.log(keywords.value, 'keywords');
+
+
 const showDetailpage = (slug: string) => {
   router.push(jobPath(slug))
 }

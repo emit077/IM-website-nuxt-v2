@@ -7,9 +7,12 @@ export type FaqItem = {
 
 export type FaqCategory = {
   id: string
+  slug: string
   title: string
+  subtitle: string
   description: string
   iconMdi: string
+  displayOrder: number
   items: FaqItem[]
 }
 
@@ -22,7 +25,7 @@ export const faqHero = {
     'Whether you are a parent looking for a tutor, a student seeking personalised learning, an educator joining as a Teaching Partner, or an institution looking for qualified educators, find the information you need in one place.',
   searchPlaceholder: 'Search your question...',
   searchSuggestions: [
-    { label: 'How do I register as a tutor?', href: '/faq/tutors' },
+    { label: 'How do I register as a tutor?', href: '/faq/tutors-teaching-partners' },
     { label: 'How can my institution recruit teachers?', href: '/faq/institutions' },
   ],
   quickLinksLabel: '',

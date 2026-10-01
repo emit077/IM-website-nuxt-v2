@@ -108,12 +108,23 @@ export type WebsiteBrochure = {
   brochure_type: BrochureType | string
 }
 
+export type WebsiteFaqCategory = {
+  id: number
+  title: string
+  subtitle: string | null
+  description: string | null
+  display_order: number
+  icon?: string | null
+}
+
 export type WebsiteFaq = {
   id: number
   que: string
   ans: string
-  category: string
+  category: string | WebsiteFaqCategory | null
   subcategory?: string | null
+  display_order?: number
+  is_popular?: boolean
 }
 
 export type WebsiteContentAuthor = {

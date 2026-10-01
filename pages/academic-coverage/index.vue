@@ -23,7 +23,7 @@ useSeoMeta({
     'Complete academic support for all grades, boards, and subjects. From nursery to postgraduate — CBSE, ICSE, IGCSE, IB, and competitive exam preparation with verified tutors.',
   ogTitle: 'Academic Coverage & Courses — Indian Mentors',
   ogDescription:
-    'Structured learning programs for every stage of education. Home, online, shadow, travel, and live-in tutoring Across the Globe.',
+    'Structured learning programs for every stage of education. Home, online, shadow, travel, and live-in tutoring across the Globe.',
   ogType: 'website',
 })
 </script>

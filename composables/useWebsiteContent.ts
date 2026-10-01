@@ -15,6 +15,7 @@ import type {
   WebsiteEvent,
   WebsiteNews,
   WebsiteFaq,
+  WebsiteFaqCategory,
   WebsiteHeroScreen,
   WebsitePrimaryContact,
   WebsiteTeamMember,
@@ -197,6 +198,125 @@ export function getFaqCategoryMeta(category: string) {
     description: `Answers related to ${category.trim() || 'this topic'}.`,
     iconMdi: 'mdi:help-circle-outline',
   }
+}
+
+const FAQ_CATEGORY_TITLES = [
+  'Home Page',
+  'Our Tutoring Services',
+  'Why Choose Us',
+  'Academic Coverage',
+  'Parents & Students',
+  'Contact Us',
+  'About Us',
+  'Careers',
+  'Tutors / Teaching Partners',
+  'Institutions',
+  'Channel Partners',
+  'Insights Hub',
+  'Help & Support',
+  'Special Educators',
+] as const
+
+const FAQ_TITLE_ICONS: Record<string, string> = {
+  'Home Page': 'solar:home-2-bold-duotone',
+  'Our Tutoring Services': 'solar:book-2-bold-duotone',
+  'Why Choose Us': 'solar:shield-check-bold-duotone',
+  'Academic Coverage': 'solar:diploma-bold-duotone',
+  'Parents & Students': 'solar:users-group-rounded-bold-duotone',
+  'Contact Us': 'solar:letter-bold-duotone',
+  'About Us': 'solar:info-circle-bold-duotone',
+  'Careers': 'solar:case-round-bold-duotone',
+  'Tutors / Teaching Partners': 'solar:square-academic-cap-bold-duotone',
+  'Institutions': 'solar:buildings-2-bold-duotone',
+  'Channel Partners': 'solar:hand-shake-bold-duotone',
+  'Insights Hub': 'solar:lightbulb-bolt-bold-duotone',
+  'Help & Support': 'solar:headphones-round-sound-bold-duotone',
+  'Special Educators': 'solar:heart-pulse-bold-duotone',
+}
+
+/** Older site slugs that should still open the matching CMS category. */
+const FAQ_LEGACY_SLUGS: Record<string, (typeof FAQ_CATEGORY_TITLES)[number]> = {
+  services: 'Our Tutoring Services',
+  'student-parent': 'Parents & Students',
+  student: 'Parents & Students',
+  contact: 'Contact Us',
+  about: 'About Us',
+  'about us': 'About Us',
+  'why us': 'Why Choose Us',
+  'why-choose': 'Why Choose Us',
+  tutors: 'Tutors / Teaching Partners',
+  institute: 'Institutions',
+  'channel-partner': 'Channel Partners',
+  'channel partner': 'Channel Partners',
+  insights: 'Insights Hub',
+  support: 'Help & Support',
+  career: 'Careers',
+  home: 'Home Page',
+}
+
+export function faqCategoryIcon(title: string) {
+  return FAQ_TITLE_ICONS[title] ?? 'solar:question-circle-bold-duotone'
+}
+
+/** Prefer the icon stored on the category. Accepts `solar:name` or a bare Solar name. */
+export function resolveFaqIcon(icon: string | null | undefined, title: string) {
+  const raw = icon?.trim()
+  if (!raw) return faqCategoryIcon(title)
+  if (raw.includes(':')) return raw
+  return `solar:${raw}`
+}
+
+export function matchedFaqCategoryTitle(value: string) {
+  const key = value.trim().toLowerCase()
+  if (!key) return null
+  const legacy = FAQ_LEGACY_SLUGS[key]
+  if (legacy) return legacy
+  return FAQ_CATEGORY_TITLES.find((title) => title.toLowerCase() === key || slugifyCategory(title) === key) ?? null
+}
+
+/** Value accepted by `/api/website/faqs/?category=`. */
+export function faqCategoryQuery(value: string) {
+  const title = matchedFaqCategoryTitle(value)
+  if (title) return title
+  const trimmed = value.trim()
+  return trimmed
+}
+
+export function faqCategorySlug(value: string) {
+  const title = matchedFaqCategoryTitle(value)
+  if (title) return slugifyCategory(title)
+  if (/^\d+$/.test(value.trim())) return value.trim()
+  return slugifyCategory(value)
+}
+
+export function mapFaqCategory(row: WebsiteFaqCategory): FaqCategory {
+  const title = row.title?.trim() || 'FAQs'
+  return {
+    id: String(row.id),
+    slug: slugifyCategory(title),
+    title,
+    subtitle: row.subtitle?.trim() || '',
+    description: row.description?.trim() || '',
+    iconMdi: resolveFaqIcon(row.icon, title),
+    displayOrder: row.display_order ?? row.id,
+    items: [],
+  }
+}
+
+export function findFaqCategory(categories: FaqCategory[], param: string) {
+  const value = decodeURIComponent(param).trim()
+  if (!value) return undefined
+  const lower = value.toLowerCase()
+  const direct = categories.find(
+    (category) => category.id === value || category.slug === lower || category.title.toLowerCase() === lower,
+  )
+  if (direct) return direct
+  const title = matchedFaqCategoryTitle(value)
+  if (!title) return undefined
+  const titleKey = title.toLowerCase()
+  return categories.find(
+    (category) => category.title.toLowerCase() === titleKey || category.slug === slugifyCategory(title),
+  )
 }
 
 function initialsFromName(name: string) {
@@ -445,36 +565,76 @@ export function mapAuthorisedContacts(items: WebsiteAuthorisedContact[]): PhoneC
     .filter((phone): phone is NonNullable<typeof phone> => Boolean(phone))
 }
 
-export function mapFaqs(items: WebsiteFaq[]): FaqCategory[] {
-  const grouped = new Map<string, FaqItem[]>()
+function readFaqCategory(category: WebsiteFaq['category']): Pick<
+  FaqCategory,
+  'id' | 'slug' | 'title' | 'subtitle' | 'description' | 'iconMdi' | 'displayOrder'
+> {
+  if (category && typeof category === 'object') {
+    const title = category.title?.trim() || 'FAQs'
+    return {
+      id: String(category.id),
+      slug: slugifyCategory(title),
+      title,
+      subtitle: category.subtitle?.trim() || '',
+      description: category.description?.trim() || '',
+      iconMdi: resolveFaqIcon(category.icon, title),
+      displayOrder: category.display_order ?? category.id,
+    }
+  }
 
-  for (const item of items) {
-    const key = canonicalFaqCategory(item.category || 'others')
-    const list = grouped.get(key) ?? []
+  const label = typeof category === 'string' ? category : ''
+  const title = matchedFaqCategoryTitle(label)
+  if (title) {
+    return {
+      id: slugifyCategory(title),
+      slug: slugifyCategory(title),
+      title,
+      subtitle: '',
+      description: '',
+      iconMdi: faqCategoryIcon(title),
+      displayOrder: FAQ_CATEGORY_TITLES.indexOf(title),
+    }
+  }
+
+  const meta = getFaqCategoryMeta(label || 'others')
+  return {
+    id: meta.id,
+    slug: meta.id,
+    title: meta.title,
+    subtitle: '',
+    description: meta.description,
+    iconMdi: meta.iconMdi,
+    displayOrder: 99,
+  }
+}
+
+export function mapFaqs(items: WebsiteFaq[]): FaqCategory[] {
+  const ordered = [...items].sort((a, b) => {
+    const aCategory = readFaqCategory(a.category)
+    const bCategory = readFaqCategory(b.category)
+    return (
+      aCategory.displayOrder - bCategory.displayOrder ||
+      (a.display_order ?? a.id) - (b.display_order ?? b.id)
+    )
+  })
+  const grouped = new Map<string, FaqCategory>()
+
+  for (const item of ordered) {
+    const meta = readFaqCategory(item.category)
+    const group = grouped.get(meta.id) ?? { ...meta, items: [] }
     const subcategory = item.subcategory?.trim()
-    list.push({
+    group.items.push({
       id: String(item.id),
       question: item.que,
       answer: item.ans,
       subcategory: subcategory || undefined,
     })
-    grouped.set(key, list)
+    grouped.set(meta.id, group)
   }
 
-  const order = new Map<string, number>(FAQ_CATEGORY_ORDER.map((id, index) => [id, index]))
-
-  return [...grouped.entries()]
-    .sort(([a], [b]) => (order.get(a) ?? 99) - (order.get(b) ?? 99) || a.localeCompare(b))
-    .map(([category, faqItems]) => {
-      const meta = getFaqCategoryMeta(category)
-      return {
-        id: meta.id,
-        title: meta.title,
-        description: meta.description,
-        iconMdi: meta.iconMdi,
-        items: faqItems,
-      }
-    })
+  return [...grouped.values()].sort(
+    (a, b) => a.displayOrder - b.displayOrder || a.title.localeCompare(b.title),
+  )
 }
 
 export function useWebsiteHeroScreens(pageName: string) {
@@ -631,25 +791,48 @@ export function useWebsiteBrochures(brochureType?: BrochureType | string) {
   return asyncData
 }
 
+export function useWebsiteFaqCategories() {
+  const { fetchWebsiteList } = useWebsiteApi()
+
+  const asyncData = useAsyncData(
+    'website-faq-categories',
+    async () => {
+      const rows = await fetchWebsiteList<WebsiteFaqCategory>(
+        '/api/website/faq-categories/',
+        undefined,
+        { throwOnError: true },
+      )
+      return rows
+        .map(mapFaqCategory)
+        .sort((a, b) => a.displayOrder - b.displayOrder || a.title.localeCompare(b.title))
+    },
+    liveDataOptions([] as FaqCategory[]),
+  )
+  refreshOnClient('website-faq-categories', asyncData.refresh)
+  return asyncData
+}
+
 export function useWebsiteFaqs(category?: MaybeRefOrGetter<string | undefined>) {
   const { fetchWebsiteList } = useWebsiteApi()
-  const slug = computed(() => {
+  const categoryQuery = computed(() => {
     const value = toValue(category)?.trim()
-    return value ? canonicalFaqCategory(value) : ''
+    return value ? faqCategoryQuery(value) : ''
   })
-  const key = computed(() => (slug.value ? `website-faqs-${slug.value}` : 'website-faqs'))
+  const key = computed(() =>
+    categoryQuery.value ? `website-faqs-${slugifyCategory(categoryQuery.value)}` : 'website-faqs',
+  )
 
   const asyncData = useAsyncData(
     key,
     async () => {
       const rows = await fetchWebsiteList<WebsiteFaq>('/api/website/faqs/', {
-        category: slug.value || undefined,
+        category: categoryQuery.value || undefined,
       })
       return mapFaqs(rows)
     },
     {
       ...liveDataOptions([] as FaqCategory[]),
-      watch: [slug],
+      watch: [categoryQuery],
     },
   )
   onMounted(() => {
@@ -657,6 +840,37 @@ export function useWebsiteFaqs(category?: MaybeRefOrGetter<string | undefined>) 
     clearNuxtData(current)
     void asyncData.refresh()
   })
+  return asyncData
+}
+
+export function useWebsitePopularFaqs() {
+  const { fetchWebsiteList } = useWebsiteApi()
+
+  const asyncData = useAsyncData(
+    'website-faqs-popular',
+    async () => {
+      const rows = await fetchWebsiteList<WebsiteFaq>('/api/website/faqs/', {
+        is_popular: 'true',
+      })
+      const seen = new Set<string>()
+      const items: FaqItem[] = []
+      for (const row of rows) {
+        const question = row.que?.trim()
+        if (!question || seen.has(question)) continue
+        seen.add(question)
+        const subcategory = row.subcategory?.trim()
+        items.push({
+          id: String(row.id),
+          question,
+          answer: row.ans,
+          subcategory: subcategory || undefined,
+        })
+      }
+      return items
+    },
+    liveDataOptions([] as FaqItem[]),
+  )
+  refreshOnClient('website-faqs-popular', asyncData.refresh)
   return asyncData
 }
 

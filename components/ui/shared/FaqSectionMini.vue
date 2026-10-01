@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
-import { getFaqCategoryMeta } from '~/composables/useWebsiteContent'
+import { faqCategorySlug, getFaqCategoryMeta, matchedFaqCategoryTitle } from '~/composables/useWebsiteContent'
 
 const props = withDefaults(
   defineProps<{
@@ -33,10 +33,14 @@ const items = computed(() => {
 
 const headingId = computed(() => `${props.sectionId || `${meta.value.id}-faq`}-heading`)
 const sectionId = computed(() => props.sectionId || `${meta.value.id}-faq`)
-const headingTitle = computed(
-  () => props.title || `Common questions about ${meta.value.title}`,
+const group = computed(() => data.value?.[0])
+const topicTitle = computed(
+  () => group.value?.title || matchedFaqCategoryTitle(props.category) || meta.value.title,
 )
-const viewAllHref = computed(() => `/faq/${meta.value.id}`)
+const headingTitle = computed(
+  () => props.title || `Common questions about ${topicTitle.value}`,
+)
+const viewAllHref = computed(() => `/faq/${group.value?.slug || faqCategorySlug(props.category)}`)
 </script>
 
 <template>

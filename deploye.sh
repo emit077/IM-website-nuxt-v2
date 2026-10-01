@@ -36,7 +36,7 @@ if [ -f "$ROOT/.env.production" ]; then
   set +a
 fi
 # Django API origin for /api/website/* (override in env for production builds)
-export NUXT_PUBLIC_API_URL="${NUXT_PUBLIC_API_URL:-http://13.234.192.144}"
+export NUXT_PUBLIC_API_URL="${NUXT_PUBLIC_API_URL:-https://13.234.192.144}"
 
 OUT="$ROOT/.output/public"
 

@@ -51,7 +51,7 @@ const embedSrc = `${video.permalink.replace(/\/$/, '')}/embed`
           <div class="relative flex justify-center px-5 pb-8 sm:px-7 lg:col-span-5 lg:px-6 lg:py-8">
             <figure class="phone-shell relative w-[250px] max-w-full sm:w-[270px]" :aria-label="video.title">
               <div
-                class="relative overflow-hidden rounded-[2.15rem] bg-slate-950 px-[3px] py-[8px] shadow-[0_28px_60px_-18px_rgba(2,6,23,0.75)] ring-4 ring-black sm:p-[7px]">
+                class="relative overflow-hidden rounded-[2.15rem] bg-slate-950 px-[3px] py-[8px] shadow-[0_28px_60px_-18px_rgba(2,6,23,0.75)] ring-0 ring-black sm:p-[7px]">
                 <span
                   class="pointer-events-none absolute left-1/2 top-3 z-20 h-[22px] w-[92px] -translate-x-1/2 rounded-full bg-slate-950"
                   aria-hidden="true" />

@@ -12,7 +12,7 @@
 #   AWS_DEFAULT_REGION              default: ap-south-1
 #   CLOUDFRONT_DISTRIBUTION_ID      invalidate after sync when set
 #   NUXT_APP_BASE_URL               default: /
-#   NUXT_PUBLIC_API_URL             default: http://13.234.192.144 (from .env.production)
+#   NUXT_PUBLIC_API_URL             default: https://13.234.192.144 (from .env.production)
 #   SKIP_GIT_RELEASE=1              skip the release commit and tag
 #   PUSH_RELEASE=1                  push the release commit and tag to origin
 #
@@ -49,7 +49,7 @@ DISTRIBUTION_ID="${CLOUDFRONT_DISTRIBUTION_ID:-}"
 
 export NODE_ENV=production
 export NUXT_APP_BASE_URL="${NUXT_APP_BASE_URL:-/}"
-export NUXT_PUBLIC_API_URL="${NUXT_PUBLIC_API_URL:-http://13.234.192.144}"
+export NUXT_PUBLIC_API_URL="${NUXT_PUBLIC_API_URL:-https://13.234.192.144}"
 
 OUT="$ROOT/.output/public"
 RELEASE_STAMP=$(date +%Y-%m-%d-%H%M)

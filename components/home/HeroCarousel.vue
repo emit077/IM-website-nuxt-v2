@@ -76,7 +76,7 @@ const fallbackScreens: HeroContent[] = [
     subtitle:
       '<span class="text-gradient-brand">Indian Mentors</span> - Where Learning Meets Mentorship',
     description:
-      'Structured tutoring and teacher recruitment for families Across the Globe.<br class="hidden sm:block" /> Background-checked mentors. Personalised plans. Real progress.',
+      'Structured tutoring and teacher recruitment for families across the Globe.<br class="hidden sm:block" /> Background-checked mentors. Personalised plans. Real progress.',
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-1.png')}')`,
     mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-1.png')}`,
@@ -92,7 +92,7 @@ const fallbackScreens: HeroContent[] = [
     subtitle:
       '<span class="text-gradient-brand">Indian Mentors</span> - Guiding Every Student Towards Academic Excellence',
     description:
-      'Providing structured tutoring services and reliable teacher recruitment solutions Across the Globe.',
+      'Providing structured tutoring services and reliable teacher recruitment solutions across the Globe.',
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-2.png')}')`,
     mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-2.png')}`,
@@ -126,7 +126,7 @@ const fallbackScreens: HeroContent[] = [
     contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
     backgroundImage: `url('${usePublicAsset('assets/img/hero/hero-4.png')}')`,
     mobileBackgroundImage: `${usePublicAsset('assets/img/hero/hero-mobile-4.png')}`,
-    caption: 'Trusted by 5,00,000+ Educators Across the Globe.',
+    caption: 'Trusted by 5,00,000+ Educators across the Globe.',
     headingId: 'hero-screen-4-heading',
     actionBtns: [
       {

@@ -29,7 +29,7 @@ useSeoMeta({
     "India's #1 verified tutor platform. Connect with background-checked, subject-verified home and online tutors for Classes 1-12, JEE/NEET and college students.",
   ogTitle: 'Indian Mentors — Verified Tutors for Every Student',
   ogDescription:
-    'Structured tutoring and reliable teacher recruitment — built for families and educators Across the Globe.',
+    'Structured tutoring and reliable teacher recruitment — built for families and educators across the Globe.',
   ogType: 'website',
 })
 </script>

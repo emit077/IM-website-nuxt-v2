@@ -1,34 +1,69 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
-import FaqLiveChatSection from '~/components/faq/FaqLiveChatSection.vue'
-import { FAQ_CATEGORY_ORDER, canonicalFaqCategory, getFaqCategoryMeta } from '~/composables/useWebsiteContent'
+import {
+  faqCategoryIcon,
+  faqCategorySlug,
+  findFaqCategory,
+  matchedFaqCategoryTitle,
+} from '~/composables/useWebsiteContent'
 
 const route = useRoute()
 const rawSlug = computed(() => decodeURIComponent(String(route.params.category || '')))
-const slug = computed(() => canonicalFaqCategory(rawSlug.value))
-const isKnownCategory = computed(() =>
-  (FAQ_CATEGORY_ORDER as readonly string[]).includes(slug.value),
-)
+
+const {
+  data: categoryRows,
+  pending: categoriesPending,
+  status: categoriesStatus,
+} = await useWebsiteFaqCategories()
+
+const resolved = computed(() => findFaqCategory(categoryRows.value ?? [], rawSlug.value))
+const aliasTitle = computed(() => matchedFaqCategoryTitle(rawSlug.value))
+const canonicalSlug = computed(() => resolved.value?.slug || (aliasTitle.value ? faqCategorySlug(aliasTitle.value) : ''))
 
 watch(
-  [rawSlug, isKnownCategory],
+  [rawSlug, canonicalSlug, categoriesPending, categoriesStatus, categoryRows],
   () => {
-    if (!isKnownCategory.value) {
-      showError(createError({ statusCode: 404, statusMessage: 'FAQ topic not found' }))
+    if (canonicalSlug.value && canonicalSlug.value !== rawSlug.value) {
+      navigateTo({ path: `/faq/${canonicalSlug.value}`, query: route.query }, { redirectCode: 301, replace: true })
       return
     }
-    if (slug.value !== rawSlug.value) {
-      navigateTo({ path: `/faq/${slug.value}`, query: route.query }, { redirectCode: 301, replace: true })
+    if (categoriesPending.value || categoriesStatus.value === 'idle' || categoriesStatus.value === 'pending') return
+    if (!categoryRows.value?.length) return
+    if (!resolved.value && !aliasTitle.value) {
+      showError(createError({ statusCode: 404, statusMessage: 'FAQ topic not found' }))
     }
   },
   { immediate: true },
 )
 
-const meta = computed(() => getFaqCategoryMeta(slug.value))
-const { data, pending, error, refresh } = await useWebsiteFaqs(slug)
+const meta = computed(() => {
+  if (resolved.value) return resolved.value
+  const title = aliasTitle.value || 'FAQs'
+  return {
+    id: '',
+    slug: canonicalSlug.value,
+    title,
+    subtitle: '',
+    description: '',
+    iconMdi: faqCategoryIcon(title),
+    displayOrder: 0,
+    items: [],
+  }
+})
 
-const items = computed(() => data.value?.find((category) => category.id === slug.value)?.items ?? [])
+const { data, pending, error, refresh } = await useWebsiteFaqs(
+  computed(() => aliasTitle.value || resolved.value?.id || rawSlug.value),
+)
+
+const items = computed(() => {
+  const groups = data.value ?? []
+  const current = resolved.value
+  if (current) {
+    return groups.find((category) => category.id === current.id)?.items ?? groups[0]?.items ?? []
+  }
+  return groups[0]?.items ?? []
+})
 
 const search = ref(typeof route.query.q === 'string' ? route.query.q : '')
 watch(
@@ -64,27 +99,32 @@ useSeoMeta({
       <div class="container-page py-5 sm:py-6">
         <NuxtLink to="/faq"
           class="inline-flex items-center gap-1 text-xs font-semibold text-slate-500 transition hover:text-blue-600">
-          <Icon icon="mdi:arrow-left" class="h-3.5 w-3.5" aria-hidden="true" />
+          <Icon icon="solar:arrow-left-linear" class="h-3.5 w-3.5" aria-hidden="true" />
           All topics
         </NuxtLink>
 
         <div class="mt-3 flex items-start gap-3">
-          <span class="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-600 text-white" aria-hidden="true">
-            <Icon :icon="meta.iconMdi" class="h-4 w-4" />
+          <span class="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-gradient-to-br from-blue-600 to-blue-500 text-white shadow-[0_12px_20px_-14px_rgba(37,99,235,0.95)]" aria-hidden="true">
+            <Icon :icon="meta.iconMdi" class="h-6 w-6" />
           </span>
           <div class="min-w-0">
+            <p v-if="meta.subtitle" class="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-600">
+              {{ meta.subtitle }}
+            </p>
             <h1 class="font-display text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
               {{ meta.title }}
             </h1>
-            <p class="mt-1 text-sm leading-relaxed text-slate-500">
+            <p v-if="meta.description || items.length" class="mt-1 text-sm leading-relaxed text-slate-500">
               {{ meta.description }}
-              <span v-if="items.length" class="text-slate-400"> · {{ items.length }} answers</span>
+              <span v-if="items.length" class="text-slate-400">
+                <template v-if="meta.description"> · </template>{{ items.length }} answers
+              </span>
             </p>
           </div>
         </div>
 
         <div class="relative mt-4 max-w-md">
-          <Icon icon="mdi:magnify"
+          <Icon icon="solar:magnifier-linear"
             class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
             aria-hidden="true" />
           <input v-model="search" type="search" placeholder="Search this topic"
@@ -135,8 +175,6 @@ useSeoMeta({
           </div>
         </details>
       </div>
-
-      <!-- <FaqLiveChatSection /> -->
 
       <p class="mt-6 text-center text-xs text-slate-500">
         Still have a question?

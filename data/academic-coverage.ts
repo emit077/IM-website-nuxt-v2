@@ -5,7 +5,7 @@ export const academicHero = {
   badge: 'Academic Edge',
   titleLine1: 'Learning support from nursery to university',
   description:
-    'Personalised tutoring for every grade, board, and subject — verified mentors matched to your goals Across the Globe.',
+    'Personalised tutoring for every grade, board, and subject — verified mentors matched to your goals across the Globe.',
   backgroundImage: 'assets/img/hero/hero-2.png',
   mobileBackgroundImage: 'assets/img/hero/hero-mobile-2.png',
   primaryCta: {
@@ -521,7 +521,7 @@ export const whyChooseAcademicSection = {
 export const academicFinalCta = {
   title: 'Start your personalised learning journey today',
   description:
-    'Whether your child needs foundation learning, board exam preparation, or competitive mentoring, we connect you with verified tutors Across the Globe.',
+    'Whether your child needs foundation learning, board exam preparation, or competitive mentoring, we connect you with verified tutors across the Globe.',
   supporting: 'No commitment required · Background-verified tutors · Free demo session',
   primaryCta: {
     label: 'Book Free Demo',

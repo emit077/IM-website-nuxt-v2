@@ -41,7 +41,7 @@ export const heroContent = {
   subtitle:
     '<span class="text-gradient-brand">Indian Mentors</span> - Authorised Reseller Program for Education Consultants',
   description:
-    'Build a rewarding education business by collaborating with Indian Mentors, a growing platform dedicated to delivering high-quality personalised tutoring services to students Across the Globe. ',
+    'Build a rewarding education business by collaborating with Indian Mentors, a growing platform dedicated to delivering high-quality personalised tutoring services to students across the Globe. ',
   backgroundImage: 'assets/img/channel-partner/channel-partner-hero.png',
   mobileBackgroundImage: 'assets/img/channel-partner/channel-partner-hero-mobile.png',
   contentClass: '!px-0 !py-0 max-w-2xl lg:max-w-[46rem]',
@@ -519,7 +519,7 @@ export const partnerFaqs: PartnerFaqItem[] = [
 export const finalCta = {
   title: 'Become a Channel Partner Today',
   description:
-    'Join the Indian Mentors Channel Partner Network and contribute to delivering high-quality personalised tutoring services to students Across the Globe.',
+    'Join the Indian Mentors Channel Partner Network and contribute to delivering high-quality personalised tutoring services to students across the Globe.',
   primaryCta: { label: 'Apply Now', href: '#partner-register' },
   secondaryCta: { label: 'Talk to a Partnership Expert', href: 'tel:+917389563564' },
   closingTitle: 'Start Your Partnership Journey with Indian Mentors',

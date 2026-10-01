@@ -24,7 +24,7 @@ export const newsFinalCta = {
   badge: 'Next step',
   title: 'Want the story behind the headlines?',
   description: 'Book a free demo and see how personalised mentoring works for your child.',
-  supporting: 'Trusted by families Across the Globe.',
+  supporting: 'Trusted by families across the Globe.',
   primaryCta: {
     label: 'Book Free Demo',
     href: externalLinks.studentSignup,
