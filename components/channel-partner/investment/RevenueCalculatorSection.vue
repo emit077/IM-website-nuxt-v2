@@ -198,17 +198,17 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
         <div class="grid lg:grid-cols-12">
           <!-- Configure -->
           <div
-            class="space-y-10 border-b border-slate-100  py-9 sm:px-10 sm:py-11 lg:col-span-5 lg:border-b-0 lg:border-r lg:border-slate-100 order-2 md:order-1">
+            class="min-w-0 space-y-10 border-b border-slate-100 py-9 sm:px-10 sm:py-11 lg:col-span-5 lg:border-b-0 lg:border-r lg:border-slate-100 order-2 md:order-1">
             <h3 class="font-display text-lg font-bold text-slate-900">{{ configureTitle }}</h3>
 
             <div class="space-y-9">
               <div v-for="slider in sliders" :key="slider.id" class="space-y-3.5">
-                <div class="flex items-end justify-between gap-4">
+                <div class="flex min-w-0 items-end justify-between gap-4">
                   <label :for="slider.id" class="flex min-w-0 items-center gap-2.5 text-sm font-medium text-slate-600">
                     <Icon :icon="slider.iconMdi" class="h-[18px] w-[18px] shrink-0 text-blue-600" aria-hidden="true" />
-                    <span class="truncate">{{ slider.label }}</span>
+                    <span class="min-w-0">{{ slider.label }}</span>
                   </label>
-                  <div class="flex items-center gap-2">
+                  <div class="flex shrink-0 items-center gap-2">
                     <button type="button"
                       class="grid h-8 w-8 place-items-center rounded-xl border border-slate-200 text-slate-500 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600"
                       :aria-label="`Decrease ${slider.label}`"
@@ -244,12 +244,14 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
           </div>
 
           <!-- Results -->
-          <div class="flex flex-col justify-center px-7 py-9 sm:px-10 sm:py-11 lg:col-span-7">
-            <div class="relative overflow-hidden rounded-[24px] border border-slate-200/70 bg-white shadow-md" v-motion
-              :initial="{ opacity: 0, y: 12 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
+          <div class="flex min-w-0 flex-col justify-center px-0 py-9 sm:px-10 sm:py-11 md:px-7 lg:col-span-7">
+            <div
+              class="earnings-card relative overflow-hidden rounded-[24px] border border-slate-200/70 bg-white shadow-md"
+              v-motion :initial="{ opacity: 0, y: 12 }"
+              :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500 } }">
               <!-- Card header -->
               <div
-                class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 px-6 py-5 sm:px-7">
+                class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 px-3 sm:px-6 py-5 sm:px-7">
                 <div class="flex items-center gap-3">
                   <span class="grid h-9 w-9 place-items-center rounded-xl bg-blue-50 text-blue-600" aria-hidden="true">
                     <Icon icon="mdi:wallet-outline" class="h-[18px] w-[18px]" />
@@ -272,7 +274,7 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
               </div>
 
               <!-- Card body: donut + legend -->
-              <div class="flex flex-col items-center gap-8 px-6 py-8 sm:flex-row sm:gap-10 sm:px-7">
+              <div class="earnings-body flex flex-col items-center gap-8 px-6 py-8 sm:px-7">
                 <!-- Donut -->
                 <div class="relative shrink-0" aria-hidden="true">
                   <svg viewBox="0 0 200 200" class="h-44 w-44 -rotate-45">
@@ -290,13 +292,13 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
                 </div>
 
                 <!-- Legend + totals -->
-                <div class="w-full min-w-0 flex-1">
+                <div class="earnings-legend min-w-0 w-full flex-1">
                   <ul class="divide-y divide-slate-100">
                     <li v-for="row in legendRows" :key="row.key"
                       class="flex items-center justify-between gap-3 py-3 first:pt-0  px-4">
                       <div class="flex min-w-0 items-center gap-2.5">
                         <span class="h-2.5 w-2.5 shrink-0 rounded-full" :class="row.dotClass" aria-hidden="true" />
-                        <span class="truncate text-sm font-medium text-slate-700">{{ row.label }}</span>
+                        <span class="min-w-0 text-sm font-medium text-slate-700">{{ row.label }}</span>
                         <span
                           class="shrink-0 rounded-md bg-slate-100 px-1.5 py-0.5 text-[11px] font-semibold text-slate-500">
                           {{ row.percent }}%
@@ -327,10 +329,35 @@ function nudge(set: (v: number) => void, value: number, step: number, min: numbe
 </template>
 
 <style scoped>
+.earnings-card {
+  container-type: inline-size;
+}
+
+.earnings-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.earnings-legend {
+  width: 100%;
+}
+
+@container (min-width: 36rem) {
+  .earnings-body {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
+
+  .earnings-legend {
+    width: auto;
+  }
+}
+
 .calc-range {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
+  min-width: 0;
   height: 7px;
   border-radius: 9999px;
   background: linear-gradient(to right, #2563eb var(--fill, 0%), #e2e8f0 var(--fill, 0%));

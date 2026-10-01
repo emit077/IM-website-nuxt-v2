@@ -143,8 +143,8 @@ const dataset: BarChartDataset = {
         class="relative mt-10 overflow-hidden rounded-[22px] border border-indigo-300/35 bg-gradient-to-br from-indigo-950 via-indigo-900 to-indigo-700 px-6 py-8 text-white shadow-[0_24px_55px_-30px_rgba(37,99,235,0.85)] sm:rounded-[28px] sm:px-8 sm:py-10 lg:px-12 lg:py-12"
         v-motion :initial="{ opacity: 0, y: 18 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
 
-        <div class="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-          <div class="lg:col-span-7">
+        <div class="flex flex-col gap-8 lg:grid lg:grid-cols-12 lg:items-center lg:gap-14">
+          <div class="lg:col-span-7 lg:col-start-1 lg:row-start-1">
             <CardHeader align="left" theme="dark" :badge="structure.kicker" classes="!px-0 !py-0">
               <template #title>
                 <h3 id="subscription-structure-heading"
@@ -158,9 +158,14 @@ const dataset: BarChartDataset = {
                 </p>
               </template>
             </CardHeader>
+          </div>
 
-            <ul class="mt-8 grid grid-cols-1 gap-3 md:grid-cols-3" role="list">
-              <li v-for="(item, i) in highlights" :key="item.title" v-motion :initial="{ opacity: 0, y: 12 }"
+          <div class="grid items-stretch gap-6 md:grid-cols-2 md:gap-4 lg:contents">
+            <ul
+              class="order-1 grid grid-cols-1 content-center gap-3 md:contents lg:order-none lg:col-span-7 lg:col-start-1 lg:row-start-2 lg:grid lg:grid-cols-3 lg:gap-3"
+              role="list">
+              <li v-for="(item, i) in highlights" :key="item.title" class="md:col-start-1 lg:col-start-auto" v-motion
+                :initial="{ opacity: 0, y: 12 }"
                 :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 280 + i * 70, duration: 450 } }">
                 <div class="h-full rounded-2xl border border-white/10 bg-white/5 px-3.5 py-3.5 backdrop-blur-sm">
                   <span class="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-orange-300"
@@ -173,14 +178,17 @@ const dataset: BarChartDataset = {
               </li>
             </ul>
 
-            <p class="mt-6 text-sm leading-relaxed text-blue-100/90" v-html="subscriptionShareSection.closing"></p>
-          </div>
-
-          <div class="lg:col-span-5">
-            <div class="rounded-3xl border border-slate-200/80 bg-white px-4 py-8 shadow-soft sm:px-6 sm:py-10">
-              <BarChart :dataset="dataset" show-gridlines :gridline-count="4"
-                :aria-label="`Subscription revenue split: Channel Partner ${partnerShare.percent} percent, Indian Mentors ${platformShare.percent} percent`" />
+            <div
+              class="order-3 md:col-start-2 md:row-start-1 md:row-span-3 lg:order-none lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:row-span-3">
+              <div
+                class="flex h-full items-center justify-center rounded-3xl border border-slate-200/80 bg-white px-3 py-6 shadow-soft sm:px-0 sm:py-8">
+                <BarChart :dataset="dataset" show-gridlines :gridline-count="4"
+                  :aria-label="`Subscription revenue split: Channel Partner ${partnerShare.percent} percent, Indian Mentors ${platformShare.percent} percent`" />
+              </div>
             </div>
+
+            <p class="order-2 text-sm leading-relaxed text-blue-100/90 md:col-span-2 md:row-start-4 lg:order-none lg:col-span-7 lg:col-start-1 lg:row-start-3"
+              v-html="subscriptionShareSection.closing"></p>
           </div>
         </div>
       </div>

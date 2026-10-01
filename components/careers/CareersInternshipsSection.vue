@@ -15,9 +15,9 @@ const embedSrc = `${video.permalink.replace(/\/$/, '')}/embed`
 
       <div v-motion :initial="{ opacity: 0, y: 24 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
         <div
-          class="internship-showcase relative mt-10 overflow-hidden rounded-[22px] border border-indigo-300/30 bg-gradient-to-br from-blue-950 via-blue-800 to-blue-500 sm:rounded-[28px]">
+          class="internship-showcase relative mt-10 overflow-hidden rounded-[22px] border border-indigo-300/30 bg-gradient-to-br from-blue-950 via-blue-800 to-blue-500 sm:rounded-[28px] lg:grid lg:grid-cols-12 lg:items-center">
 
-          <div class="relative z-[1] min-w-0 px-5 py-7 sm:px-7 sm:py-9 lg:w-7/12 lg:px-9">
+          <div class="relative z-[1] min-w-0 px-5 py-7 sm:px-7 sm:py-9 lg:col-span-7 lg:px-9">
             <CardHeader heading-id="internships-heading" :badge="internshipsSection.kicker"
               :title="internshipsSection.title" :description="internshipsSection.description"
               :classes="internshipsSection.classes" align="left" theme="dark" />
@@ -34,20 +34,29 @@ const embedSrc = `${video.permalink.replace(/\/$/, '')}/embed`
               </li>
             </ul>
 
+            <div class="mt-6 flex flex-col gap-3 xl:flex-row xl:items-center">
+              <a :href="internshipsSection.cta.href"
+                class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-indigo-800 shadow-lg shadow-indigo-950/25 transition hover:-translate-y-0.5 hover:bg-indigo-50 xl:w-auto xl:py-3">
+                {{ internshipsSection.cta.label }}
+                <Icon icon="mdi:arrow-right" class="h-4 w-4 shrink-0" aria-hidden="true" />
+              </a>
+              <a :href="internshipsSection.secondaryCta.href"
+                class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15 xl:w-auto xl:py-3">
+                <Icon icon="mdi:briefcase-search-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
+                {{ internshipsSection.secondaryCta.label }}
+              </a>
+            </div>
           </div>
 
-          <div
-            class="internship-phone-crop relative h-[22rem] overflow-hidden sm:h-[24rem] lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:w-5/12">
-            <figure
-              class="phone-shell absolute left-1/2 top-0 w-[272px] max-w-[calc(100%-0.5rem)] -translate-x-1/2 sm:w-[286px] lg:top-8"
-              :aria-label="video.title">
+          <div class="relative flex justify-center px-5 pb-8 sm:px-7 lg:col-span-5 lg:px-6 lg:py-8">
+            <figure class="phone-shell relative w-[250px] max-w-full sm:w-[270px]" :aria-label="video.title">
               <div
                 class="relative overflow-hidden rounded-[2.15rem] bg-slate-950 px-[3px] py-[8px] shadow-[0_28px_60px_-18px_rgba(2,6,23,0.75)] ring-4 ring-black sm:p-[7px]">
                 <span
                   class="pointer-events-none absolute left-1/2 top-3 z-20 h-[22px] w-[92px] -translate-x-1/2 rounded-full bg-slate-950"
                   aria-hidden="true" />
 
-                <div class="ig-clean relative h-[540px]  rounded-[1.7rem] bg-black">
+                <div class="ig-clean relative aspect-[9/16] w-full overflow-hidden rounded-[1.7rem] bg-black">
                   <ClientOnly>
                     <iframe :src="embedSrc" :title="video.title" class="ig-clean-frame" allowtransparency="true"
                       allow="encrypted-media; clipboard-write; picture-in-picture; autoplay" scrolling="no" />
@@ -65,19 +74,6 @@ const embedSrc = `${video.permalink.replace(/\/$/, '')}/embed`
               </div>
             </figure>
           </div>
-
-          <div class="flex flex-col gap-3 px-5 pb-7 sm:px-7 lg:w-7/12 lg:px-9 xl:flex-row xl:items-center">
-            <a :href="internshipsSection.cta.href"
-              class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-sm font-semibold text-indigo-800 shadow-lg shadow-indigo-950/25 transition hover:-translate-y-0.5 hover:bg-indigo-50 xl:w-auto xl:py-3">
-              {{ internshipsSection.cta.label }}
-              <Icon icon="mdi:arrow-right" class="h-4 w-4 shrink-0" aria-hidden="true" />
-            </a>
-            <a :href="internshipsSection.secondaryCta.href"
-              class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-white/10 px-5 py-3.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15 xl:w-auto xl:py-3">
-              <Icon icon="mdi:briefcase-search-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
-              {{ internshipsSection.secondaryCta.label }}
-            </a>
-          </div>
         </div>
       </div>
     </div>
@@ -90,18 +86,20 @@ const embedSrc = `${video.permalink.replace(/\/$/, '')}/embed`
 }
 
 .ig-clean {
-  aspect-ratio: auto;
+  container-type: inline-size;
 }
 
+/* Instagram's reel embed is a 4:5 frame with a 54px header. Scale it so the 9:16 video fills the phone screen. */
 .ig-clean-frame {
   position: absolute;
-  top: -62px;
-  left: 50%;
-  width: 430px;
-  height: 1100px;
-  margin-left: -215px;
+  top: -54px;
+  left: 0;
+  width: 100%;
+  height: calc(54px + 125cqi);
   border: 0;
   background: #000;
+  transform: scale(1.4222);
+  transform-origin: center 54px;
 }
 
 .play-overlay {

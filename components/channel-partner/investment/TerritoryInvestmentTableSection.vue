@@ -87,12 +87,12 @@ import { territoryInvestmentSection } from '~/data/channel-partner-investment'
             <div class="flex items-start justify-between gap-3">
               <div class="flex items-center gap-3">
                 <span :class="[
-                  'grid h-11 w-11 shrink-0 place-items-center rounded-xl text-base font-bold',
+                  'grid h-11 w-11 shrink-0 place-items-center rounded-xl',
                   row.highlight
                     ? 'bg-amber-500 text-white'
                     : 'bg-slate-100 text-slate-600',
                 ]" aria-hidden="true">
-                  {{ row.initial }}
+                  <Icon :icon="row.iconMdi" class="h-5 w-5" />
                 </span>
                 <div>
                   <div class="flex flex-wrap items-center gap-2">

@@ -42,7 +42,7 @@ const marqueeItems = computed(() => [...partners, ...partners])
         </p> -->
       </div>
 
-      <div class="group relative mt-8 w-full overflow-hidden sm:mt-10" v-motion :initial="{ opacity: 0, y: 12 }"
+      <div class="group marquee-viewport relative mt-8 w-full sm:mt-10" v-motion :initial="{ opacity: 0, y: 12 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600, delay: 80 } }">
         <div
           class="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-[#FCFCFA] via-[#FCFCFA]/90 to-transparent sm:w-20" />
@@ -50,9 +50,10 @@ const marqueeItems = computed(() => [...partners, ...partners])
           class="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-[#FCFCFA] via-[#FCFCFA]/90 to-transparent sm:w-20" />
 
         <div
-          class="flex w-max items-center gap-4 animate-marquee [animation-duration:42s] group-hover:[animation-play-state:paused] sm:gap-5 motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center">
+          class="marquee-track flex w-max items-center gap-4 animate-marquee [animation-duration:42s] group-hover:[animation-play-state:paused] sm:gap-5">
           <div v-for="(p, i) in marqueeItems" :key="`${p.id}-${i}`"
-            class="partners-card relative flex min-w-[11.5rem] shrink-0 items-center gap-4 overflow-hidden rounded-2xl border border-slate-200/80 bg-white px-5 py-4 shadow-[0_8px_24px_-16px_rgba(15,23,42,0.35)] transition duration-300 hover:border-blue-200 hover:shadow-[0_12px_28px_-14px_rgba(29,78,216,0.28)] sm:min-w-[13rem] sm:px-6 sm:py-5">
+            class="partners-card relative flex min-w-[11.5rem] shrink-0 items-center gap-4 overflow-hidden rounded-2xl border border-slate-200/80 bg-white px-5 py-4 shadow-[0_8px_24px_-16px_rgba(15,23,42,0.35)] transition duration-300 hover:border-blue-200 hover:shadow-[0_12px_28px_-14px_rgba(29,78,216,0.28)] sm:min-w-[13rem] sm:px-6 sm:py-5"
+            :class="i >= partners.length ? 'marquee-clone' : ''">
             <img v-if="!failedLogos[p.id]" aria-hidden="true" :src="usePublicAsset(p.logo)" alt=""
               class="pointer-events-none absolute -right-3 -bottom-4 h-24 w-24 object-contain opacity-[0.08] grayscale transition duration-300 group-hover:opacity-[0.18] sm:-right-2 sm:-bottom-3 sm:h-28 sm:w-28" />
 

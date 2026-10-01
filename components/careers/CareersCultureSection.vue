@@ -116,37 +116,48 @@ onBeforeUnmount(() => {
           </p>
         </div>
 
-        <ul class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5" role="list"
-          aria-label="Workplace photo gallery">
+        <ul class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-3" role="list" aria-label="Workplace photo gallery">
           <li v-for="(item, i) in gallery" :key="item.src" v-motion :initial="{ opacity: 0, y: 12 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 70, duration: 380 } }">
             <button type="button"
-              class="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 text-left shadow-soft focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
+              class="group flex h-full w-full flex-col overflow-hidden rounded-[1.35rem] border border-slate-200/80 bg-white text-left shadow-soft transition duration-300 hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-[0_18px_40px_-24px_rgba(37,99,235,0.45)] focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200"
               :aria-label="`View ${item.caption}`" @click="openAt(i + 1)">
-              <img :src="item.src" :alt="item.alt"
-                class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-                loading="lazy" decoding="async" />
-              <div aria-hidden="true"
-                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/15 to-transparent" />
-              <span class="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                <span class="block font-display text-[15px] font-bold text-white capitalize">{{ item.caption }}</span>
-                <span class="mt-0.5 block text-[12.5px] leading-snug text-white/80">{{ item.description }}</span>
+              <span class="relative block aspect-[16/10] overflow-hidden bg-slate-100">
+                <img :src="item.src" :alt="item.alt"
+                  class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]" loading="lazy"
+                  decoding="async" />
+                <span
+                  class="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-white/95 text-slate-700 shadow-sm ring-1 ring-black/5"
+                  aria-hidden="true">
+                  <Icon icon="mdi:arrow-expand" class="h-4 w-4" />
+                </span>
+              </span>
+              <span class="flex flex-1 flex-col px-4 pb-5 pt-4 sm:px-5">
+                <span class="font-display text-[15px] font-bold capitalize leading-snug text-slate-900 sm:text-base">
+                  {{ item.caption }}
+                </span>
+                <span class="mt-1.5 text-[13.5px] leading-relaxed text-slate-600">{{ item.description }}</span>
               </span>
             </button>
           </li>
         </ul>
       </div>
 
-      <ul class="mt-12 grid grid-cols-1 gap-8 sm:mt-14  sm:grid-cols-3 sm:gap-6 lg:gap-10" role="list">
-        <li v-for="(item, i) in cultureSection.values" :key="item.title" class="text-center" v-motion
-          :initial="{ opacity: 0, y: 12 }"
+      <ul
+        class="mt-5 grid grid-cols-1 overflow-hidden rounded-[1.35rem] border border-slate-200/80 bg-slate-50/80 sm:mt-6 sm:grid-cols-3 sm:divide-x sm:divide-slate-200"
+        role="list">
+        <li v-for="(item, i) in cultureSection.values" :key="item.title"
+          class="flex items-start gap-3.5 border-b border-slate-200 px-5 py-5 last:border-b-0 sm:border-b-0 sm:px-6 sm:py-6"
+          v-motion :initial="{ opacity: 0, y: 12 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40 + i * 80, duration: 380 } }">
-          <span :class="['mx-auto grid h-12 w-12 place-items-center rounded-2xl ring-1', valueAccent[item.accent]]"
+          <span :class="['grid h-11 w-11 shrink-0 place-items-center rounded-xl ring-1', valueAccent[item.accent]]"
             aria-hidden="true">
-            <Icon :icon="item.iconMdi" class="h-6 w-6" />
+            <Icon :icon="item.iconMdi" class="h-5 w-5" />
           </span>
-          <h3 class="font-display mt-4 text-base font-bold text-slate-900 capitalize">{{ item.title }}</h3>
-          <p class="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-slate-500">{{ item.description }}</p>
+          <div class="min-w-0">
+            <h3 class="font-display text-[15px] font-bold capitalize text-slate-900">{{ item.title }}</h3>
+            <p class="mt-1 text-[13.5px] leading-relaxed text-slate-600">{{ item.description }}</p>
+          </div>
         </li>
       </ul>
     </div>

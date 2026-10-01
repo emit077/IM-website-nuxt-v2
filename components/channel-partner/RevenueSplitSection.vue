@@ -38,14 +38,19 @@ const dataset: BarChartDataset = {
         <div aria-hidden="true"
           class="pointer-events-none absolute -bottom-20 -left-16 h-64 w-64 rounded-full bg-blue-400/15 blur-3xl" />
 
-        <div class="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-          <div class="lg:col-span-8">
+        <div class="relative flex flex-col gap-8 lg:grid lg:grid-cols-12 lg:items-center lg:gap-14">
+          <div class="lg:col-span-8 lg:col-start-1 lg:row-start-1">
             <CardHeader heading-id="revenue-split-heading" align="left" :badge="revenueSplitSection.kicker" show
               theme="dark" :title="revenueSplitSection.title" :description="revenueSplitSection.description"
               classes="!px-0 !py-0" />
+          </div>
 
-            <ul class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3" role="list">
-              <li v-for="(item, i) in highlights" :key="item.title" v-motion :initial="{ opacity: 0, y: 12 }"
+          <div class="grid items-stretch gap-8 md:grid-cols-2 md:gap-4 lg:contents">
+            <ul
+              class="order-1 grid grid-cols-1 gap-3 sm:grid-cols-3 md:contents lg:order-none lg:col-span-8 lg:col-start-1 lg:row-start-2 lg:mt-8 lg:grid lg:grid-cols-3 lg:gap-3"
+              role="list">
+              <li v-for="(item, i) in highlights" :key="item.title" class="md:col-start-1 lg:col-start-auto" v-motion
+                :initial="{ opacity: 0, y: 12 }"
                 :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 280 + i * 70, duration: 450 } }">
                 <div class="h-full rounded-2xl border border-white/10 bg-white/5 px-3.5 py-3.5 backdrop-blur-sm">
                   <span class="grid h-8 w-8 place-items-center rounded-lg bg-white/10" aria-hidden="true">
@@ -56,27 +61,28 @@ const dataset: BarChartDataset = {
                 </div>
               </li>
             </ul>
-          </div>
 
-          <div class="lg:col-span-4">
-            <BarChart class="lg:ml-auto lg:mr-4" :dataset="dataset"
-              :aria-label="`Revenue split chart: Channel Partner ${partnerShare.percent} percent, Indian Mentors ${platformShare.percent} percent`"
-              show-gridlines :gridline-count="4" />
+            <div
+              class="order-2 flex items-center justify-center md:col-start-2 md:row-start-1 md:row-span-3 lg:order-none lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-2">
+              <BarChart class="lg:ml-auto lg:mr-4" :dataset="dataset"
+                :aria-label="`Revenue split chart: Channel Partner ${partnerShare.percent} percent, Indian Mentors ${platformShare.percent} percent`"
+                show-gridlines :gridline-count="4" />
+            </div>
           </div>
         </div>
-        <div class="mt-8 flex flex-col items-stretch justify-center gap-3 pb-10 xl:flex-row xl:items-center xl:gap-4">
+        <div class="relative mt-8 flex flex-col items-stretch justify-center gap-3 pb-10 md:flex-row md:gap-4">
           <a :href="revenueSplitSection.primaryCta.href"
-            class="btn-secondary group inline-flex w-full items-center justify-center gap-2.5 bg-white px-6 py-3.5 text-sm hover:text-blue-950 xl:w-auto xl:px-8 xl:text-[15px]">
+            class="btn-secondary group inline-flex w-full items-center justify-center gap-2.5 bg-white px-6 py-3.5 text-sm hover:text-blue-950 md:flex-1 xl:w-auto xl:flex-none xl:px-8 xl:text-[15px]">
             <Icon icon="mdi:account-plus-outline" class="h-4 w-4 shrink-0" aria-hidden="true" />
             {{ revenueSplitSection.primaryCta.label }}
             <IconArrowRight
               class="hero-cta-arrow h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
           <NuxtLink :to="revenueSplitSection.secondaryCta.href"
-            class="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl border border-white/35 bg-white/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-white/55 hover:bg-white/15 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/30 xl:w-auto xl:px-8 xl:text-[15px]">
+            class="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl border border-white/35 bg-white/10 px-6 py-3.5 text-center text-sm font-semibold text-white backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-white/55 hover:bg-white/15 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/30 md:flex-1 xl:w-auto xl:flex-none xl:px-8 xl:text-[15px]">
             {{ revenueSplitSection.secondaryCta.label }}
             <IconArrowRight
-              class="hero-cta-arrow h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              class="hero-cta-arrow h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
           </NuxtLink>
         </div>
       </div>

@@ -47,14 +47,14 @@ import { spCoverage } from '~/data/student-parent'
         </li>
       </ol>
 
-      <NuxtLink :to="spCoverage.exploreHref"
+      <div :to="spCoverage.exploreHref"
         class="group relative mt-8 block overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-700 text-white no-underline shadow-[0_20px_50px_-24px_rgba(29,78,216,0.5)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_56px_-22px_rgba(29,78,216,0.58)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-700"
         :aria-label="`${spCoverage.beyond.title}. ${spCoverage.beyond.ctaLabel}`" v-motion
         :initial="{ opacity: 0, y: 14 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 450 } }">
         <span class="beyond-visual pointer-events-none absolute inset-y-0 right-0 w-[68%] sm:w-[58%] lg:w-[50%]"
           aria-hidden="true">
           <img :src="usePublicAsset(spCoverage.beyond.image)" alt=""
-            class="h-full w-full object-cover object-[72%_center]  transition duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+            class="h-full w-full object-cover object-[72%_center] hidden md:block  transition duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
             loading="lazy" decoding="async" />
         </span>
         <span class="beyond-overlay pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -67,13 +67,15 @@ import { spCoverage } from '~/data/student-parent'
           <p class="mt-3 max-w-xl text-[14px] leading-relaxed text-blue-50/95 sm:text-[15px]">
             {{ spCoverage.beyond.description }}
           </p>
-          <span
-            class="mt-6 inline-flex w-fit items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 group-hover:gap-2.5 group-hover:bg-cream-50">
-            {{ spCoverage.beyond.ctaLabel }}
-            <Icon icon="mdi:arrow-right" class="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden="true" />
-          </span>
+          <NuxtLink :to="spCoverage.exploreHref">
+            <span
+              class="mt-6 inline-flex w-fit items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 group-hover:gap-2.5 group-hover:bg-cream-50">
+              {{ spCoverage.beyond.ctaLabel }}
+              <Icon icon="mdi:arrow-right" class="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden="true" />
+            </span>
+          </NuxtLink>
         </div>
-      </NuxtLink>
+      </div>
     </div>
   </section>
 </template>

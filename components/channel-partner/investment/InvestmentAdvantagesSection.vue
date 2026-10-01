@@ -53,7 +53,7 @@ const floatingStats = [
 
       <div class="mt-12 grid items-center gap-8 lg:mt-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-10">
         <!-- Win-Win image -->
-        <div class="order-2 mt-2 lg:order-2 lg:mt-0" v-motion :initial="{ opacity: 0, y: 16 }"
+        <div class="order-2 mt-2 lg:order-2 lg:mt-0 hidden lg:block" v-motion :initial="{ opacity: 0, y: 16 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
           <div class="relative mx-auto w-full max-w-[17.5rem] sm:max-w-xs md:max-w-sm lg:max-w-md">
             <div aria-hidden="true"

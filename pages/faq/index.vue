@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
+import FaqHeroSection from '~/components/faq/FaqHeroSection.vue'
 import type { FaqCategory } from '~/data/faq'
 import { FAQ_CATEGORY_ORDER, canonicalFaqCategory } from '~/composables/useWebsiteContent'
 
@@ -59,34 +60,9 @@ useSeoMeta({
 
 <template>
   <div class="min-h-screen bg-cream-50">
-    <header class="border-b border-slate-200/80 bg-white">
-      <div class="container-page py-6 sm:py-8">
-        <p class="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-600">FAQs</p>
-        <h1 class="font-display mt-1.5 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Answers by topic
-        </h1>
-        <p class="mt-1.5 max-w-xl text-sm leading-relaxed text-slate-500">
-          Pick a category to open its questions. Each topic has its own page.
-        </p>
+    <FaqHeroSection v-model:query="query" />
 
-        <div class="relative mt-4 max-w-md">
-          <Icon
-            icon="mdi:magnify"
-            class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
-            aria-hidden="true"
-          />
-          <input
-            v-model="query"
-            type="search"
-            placeholder="Search topics or questions"
-            class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-blue-400 focus:ring-2 focus:ring-blue-100"
-            aria-label="Search FAQ topics"
-          />
-        </div>
-      </div>
-    </header>
-
-    <section class="container-page py-6 sm:py-8" aria-label="FAQ categories">
+    <section class="container-page py-8 sm:py-10" aria-label="FAQ categories">
       <div v-if="pending && !categories.length" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div v-for="n in 8" :key="n" class="h-36 animate-pulse rounded-xl bg-white" />
       </div>

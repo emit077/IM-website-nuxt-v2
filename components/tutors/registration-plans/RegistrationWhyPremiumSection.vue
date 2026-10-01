@@ -71,7 +71,7 @@ import { premiumValueSection, whyPremiumSection } from '~/data/tutor-registratio
               </li>
             </ul>
 
-            <div class="mt-7 hidden lg:block">
+            <div class="premium-cta-desktop mt-7">
               <a :href="premiumValueSection.cta.href"
                 class="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-cream-50 sm:w-auto">
                 <Icon icon="mdi:star-four-points-outline" class="h-4 w-4" aria-hidden="true" />
@@ -121,16 +121,16 @@ import { premiumValueSection, whyPremiumSection } from '~/data/tutor-registratio
                 </article>
               </li>
             </ol>
-
-            <a :href="premiumValueSection.cta.href"
-              class="group mt-7 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-cream-50 sm:w-auto lg:hidden">
-              <Icon icon="mdi:star-four-points-outline" class="h-4 w-4" aria-hidden="true" />
-              {{ premiumValueSection.cta.label }}
-              <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                aria-hidden="true" />
-            </a>
           </div>
         </div>
+
+        <a :href="premiumValueSection.cta.href"
+          class="premium-cta-mobile group mt-8 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-cream-50">
+          <Icon icon="mdi:star-four-points-outline" class="h-4 w-4" aria-hidden="true" />
+          {{ premiumValueSection.cta.label }}
+          <Icon icon="mdi:arrow-right" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            aria-hidden="true" />
+        </a>
       </article>
     </div>
   </section>
@@ -139,6 +139,20 @@ import { premiumValueSection, whyPremiumSection } from '~/data/tutor-registratio
 <style scoped>
 .value-banner {
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.premium-cta-desktop {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .premium-cta-desktop {
+    display: block;
+  }
+
+  .premium-cta-mobile {
+    display: none;
+  }
 }
 
 .value-step {

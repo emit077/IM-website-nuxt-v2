@@ -273,17 +273,16 @@ function clearSearch() {
       </div>
     </div>
     <div class="mt-5">
-      <div v-if="displayCards.length" class="group/rail relative mt-6 min-h-[400px] overflow-hidden sm:min-h-[420px]">
-        <div class="flex h-full items-center py-6 sm:py-8">
-          <div :class="[
-            'flex w-max items-center gap-5 px-4',
-            useMarquee
-              ? 'animate-marquee [animation-duration:100s] group-hover/rail:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center'
-              : '-mx-4 snap-x snap-mandatory overflow-x-auto pb-1 pt-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
-          ]" role="list" aria-label="City office locations">
+      <div v-if="displayCards.length"
+        class="group/rail relative mt-6 min-h-[400px] max-w-full sm:min-h-[420px]"
+        :class="useMarquee ? 'marquee-viewport' : 'touch-scroll-x'">
+        <div :class="[
+          'flex w-max items-center gap-5 px-4 py-6 sm:py-8',
+          useMarquee && 'marquee-track animate-marquee [animation-duration:100s] group-hover/rail:[animation-play-state:paused]',
+        ]" role="list" aria-label="City office locations">
             <div v-for="(card, index) in marqueeCards" :key="`${card.id}-${index}`"
-              class="city-card-slot relative z-10 flex w-[280px] shrink-0 items-center justify-center sm:w-[300px]"
-              :class="useMarquee ? '' : 'snap-start'" role="listitem">
+              class="city-card-slot relative z-10 flex w-[280px] shrink-0 items-center justify-center snap-start sm:w-[300px]"
+              :class="useMarquee && index >= displayCards.length ? 'marquee-clone' : ''" role="listitem">
               <article
                 class="city-card group/card relative flex w-full flex-col overflow-hidden rounded-[1.35rem] border border-slate-200/80 bg-white shadow-[0_10px_30px_-24px_rgba(15,23,42,0.55)]"
                 v-motion="!useMarquee && { initial: { opacity: 0, y: 18 }, visibleOnce: { opacity: 1, y: 0, transition: { duration: 480, delay: 60 + index * 70 } } }">
@@ -334,7 +333,6 @@ function clearSearch() {
               </article>
             </div>
           </div>
-        </div>
       </div>
     </div>
     <div class="container-page">

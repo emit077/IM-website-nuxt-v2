@@ -195,7 +195,7 @@ export const revenueSplitSection = {
     href: '#partner-register',
   },
   secondaryCta: {
-    label: 'Explore Investment & Revenue-Sharing Model',
+    label: 'Explore evenue-Sharing Model',
     href: '/channel-partner/investment',
   },
 }

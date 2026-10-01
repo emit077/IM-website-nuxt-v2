@@ -19,14 +19,29 @@ const features = computed(() =>
 )
 
 const activeIndex = ref(0)
-const activeFeature = computed(() => features.value[activeIndex.value]!)
+/** Mobile accordion can collapse the open row; desktop always shows the active module. */
+const collapsed = ref(false)
+const activeFeature = computed(() => features.value[activeIndex.value] ?? features.value[0]!)
 
 function selectFeature(index: number) {
   activeIndex.value = index
+  collapsed.value = false
   const id = features.value[index]?.id
   if (id && import.meta.client) {
     history.replaceState(null, '', `#${id}`)
   }
+}
+
+function toggleFeature(index: number) {
+  if (activeIndex.value === index && !collapsed.value) {
+    collapsed.value = true
+    return
+  }
+  selectFeature(index)
+}
+
+function isExpanded(index: number) {
+  return activeIndex.value === index && !collapsed.value
 }
 
 function step(delta: number) {
@@ -64,7 +79,10 @@ function syncFromHash() {
   const hash = window.location.hash.replace(/^#/, '')
   if (!hash) return
   const index = features.value.findIndex((f) => f.id === hash)
-  if (index >= 0) activeIndex.value = index
+  if (index >= 0) {
+    activeIndex.value = index
+    collapsed.value = false
+  }
 }
 
 onMounted(() => {
@@ -106,7 +124,67 @@ onUnmounted(() => {
       ]" v-motion :initial="{ opacity: 0, y: 16 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 520 } }">
         <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-36 " />
 
-        <div class="relative grid lg:grid-cols-[minmax(260px,0.9fr)_1.2fr]">
+        <!-- Smaller screens: accordion, details expand under the selected module -->
+        <ul class="space-y-2 p-2 sm:p-3 lg:hidden" role="list">
+          <li v-for="(feature, i) in features" :key="feature.id">
+            <div :class="[
+              'overflow-hidden rounded-2xl transition duration-200',
+              isExpanded(i) ? 'border border-blue-200 bg-white shadow-soft' : 'border border-transparent',
+            ]">
+              <button :id="`platform-feature-mobile-${feature.id}`" type="button"
+                class="group flex w-full items-center gap-3 rounded-2xl px-2.5 py-2.5 text-left transition duration-200 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-300/60"
+                :class="isExpanded(i)
+                  ? 'bg-blue-600 text-white shadow-[0_14px_32px_-16px_rgba(37,99,235,0.7)]'
+                  : 'hover:bg-slate-50'" :aria-expanded="isExpanded(i)"
+                :aria-controls="`platform-feature-mobile-panel-${feature.id}`" @click="toggleFeature(i)">
+                <span :class="[
+                  'grid h-9 w-9 shrink-0 place-items-center rounded-xl transition',
+                  isExpanded(i)
+                    ? 'bg-white/15 text-white'
+                    : 'bg-blue-50 text-blue-600 ring-1 ring-blue-100 group-hover:bg-blue-100',
+                ]" aria-hidden="true">
+                  <Icon :icon="feature.iconMdi" class="h-[18px] w-[18px]" />
+                </span>
+                <span :class="[
+                  'min-w-0 flex-1 font-display text-[13px] font-bold leading-snug',
+                  isExpanded(i) ? 'text-white' : 'text-slate-900',
+                ]">
+                  {{ feature.title }}
+                </span>
+                <Icon :icon="isExpanded(i) ? 'mdi:chevron-up' : 'mdi:chevron-down'" :class="[
+                  'h-4 w-4 shrink-0 transition',
+                  isExpanded(i) ? 'text-white/80' : 'text-slate-300 group-hover:text-blue-500',
+                ]" aria-hidden="true" />
+              </button>
+
+              <div :id="`platform-feature-mobile-panel-${feature.id}`" :hidden="!isExpanded(i)"
+                class="px-3.5 pb-4 pt-4">
+                <p class="text-sm leading-relaxed text-slate-600">
+                  {{ feature.description }}
+                </p>
+                <p class="mt-5 text-sm font-bold text-slate-500">
+                  What's included
+                </p>
+                <ul class="mt-3 grid grid-cols-1 gap-2.5 sm:grid-cols-2" role="list">
+                  <li v-for="point in feature.points" :key="point">
+                    <div class="flex h-full gap-2.5 rounded-2xl border border-slate-100 bg-slate-50/70 px-3.5 py-3">
+                      <span
+                        class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-blue-50 text-blue-600"
+                        aria-hidden="true">
+                        <Icon icon="mdi:arrow-right" class="h-3.5 w-3.5" />
+                      </span>
+                      <span class="text-[13px] font-medium leading-snug text-slate-700">
+                        {{ point }}
+                      </span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="relative hidden lg:grid lg:grid-cols-[minmax(260px,0.9fr)_1.2fr]">
           <!-- Left: module list -->
           <aside class="relative border-b border-slate-100 p-4 sm:p-5 lg:border-b-0 lg:border-r lg:p-6" role="tablist"
             aria-label="Platform modules" aria-orientation="vertical">

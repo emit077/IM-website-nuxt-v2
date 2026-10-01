@@ -19,12 +19,13 @@ const afterTones = [
         :description="spDemo.description" :classes="spDemo.classes" />
 
       <div class="mt-6 grid items-stretch gap-3 md:grid-cols-2 lg:grid-cols-2 lg:gap-4">
-        <div class="relative min-h-[16rem] sm:min-h-[18rem] lg:min-h-0" v-motion :initial="{ opacity: 0, x: -18 }"
+        <div class="relative lg:h-full lg:min-h-0" v-motion :initial="{ opacity: 0, x: -18 }"
           :visibleOnce="{ opacity: 1, x: 0, transition: { duration: 520 } }">
           <figure
-            class="relative h-full overflow-hidden rounded-[1.25rem] border border-slate-200/70 bg-slate-100 shadow-soft lg:absolute lg:inset-0">
+            class="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] border border-slate-200/70 bg-slate-100 shadow-soft sm:aspect-[16/10] lg:absolute lg:inset-0 lg:aspect-auto">
             <img :src="usePublicAsset(spDemo.image)" :alt="spDemo.imageAlt"
-              class="h-full w-full object-cover object-center" loading="lazy" decoding="async" />
+              class="absolute inset-0 h-full w-full object-cover object-[center_68%] sm:object-[center_62%]"
+              loading="lazy" decoding="async" />
             <span class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent"
               aria-hidden="true" />
             <figcaption class="absolute inset-x-0 bottom-0 p-4">

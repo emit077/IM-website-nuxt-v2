@@ -37,8 +37,24 @@ import { institutionsGuaranteeSection } from '~/data/institutions-pricing'
         <p class="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">
           {{ institutionsGuaranteeSection.processLabel }}
         </p>
-        <ol class="mt-4 flex flex-wrap items-center gap-x-2 gap-y-2.5" role="list">
-          <li v-for="(step, i) in institutionsGuaranteeSection.process" :key="step" class="flex items-center gap-2">
+        <ol class="mt-4 sm:hidden" role="list">
+          <li v-for="(step, i) in institutionsGuaranteeSection.process" :key="step" class="flex gap-3">
+            <div class="flex w-7 shrink-0 flex-col items-center" aria-hidden="true">
+              <span
+                class="grid h-7 w-7 place-items-center rounded-full bg-blue-50 text-[11px] font-bold tabular-nums text-blue-700 ring-1 ring-blue-100">
+                {{ i + 1 }}
+              </span>
+              <span v-if="i < institutionsGuaranteeSection.process.length - 1" class="min-h-3.5 w-px flex-1 bg-slate-200" />
+            </div>
+            <p class="flex h-7 items-center text-[14px] font-semibold leading-none text-slate-800">
+              {{ step }}
+            </p>
+          </li>
+        </ol>
+
+        <ol class="mt-4 hidden flex-wrap items-center gap-x-2 gap-y-2.5 sm:flex" role="list">
+          <li v-for="(step, i) in institutionsGuaranteeSection.process" :key="`desktop-${step}`"
+            class="flex items-center gap-2">
             <span
               class="rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-[13px] font-semibold text-slate-800">
               {{ step }}

@@ -24,7 +24,7 @@ const rotations = ['-rotate-1', 'rotate-1', '-rotate-2', 'rotate-2', '-rotate-1'
         :title="studentRailSection.title" :description="studentRailSection.description"
         :classes="studentRailSection.classes" />
 
-      <div class="group relative mt-8 overflow-hidden rounded-2xl">
+      <div class="group marquee-viewport relative mt-8 rounded-2xl">
         <div
           class="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-cream-50 to-transparent sm:w-16"
           aria-hidden="true" />
@@ -33,11 +33,12 @@ const rotations = ['-rotate-1', 'rotate-1', '-rotate-2', 'rotate-2', '-rotate-1'
           aria-hidden="true" />
 
         <div
-          class="flex w-max items-stretch gap-5 animate-marquee [animation-duration:55s] group-hover:[animation-play-state:paused] motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center"
+          class="marquee-track flex w-max items-stretch gap-5 animate-marquee [animation-duration:55s] group-hover:[animation-play-state:paused]"
           role="list" aria-label="Student journey stories">
           <article v-for="(story, i) in loopItems" :key="`${story.id}-${i}`" role="listitem" :class="[
             'flex w-[min(85vw,300px)] shrink-0 flex-col transition duration-500 hover:-translate-y-1 hover:rotate-0 sm:w-[280px]',
             rotations[i % studentStories.length],
+            i >= studentStories.length ? 'marquee-clone' : '',
           ]">
             <div
               class="flex h-full flex-col rounded-sm bg-white p-3 pb-5 shadow-[0_20px_50px_-20px_rgba(15,23,42,0.35)] ring-1 ring-slate-200/80">

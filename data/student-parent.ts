@@ -756,7 +756,7 @@ export const spCoverage = {
     title: 'Competitive Examination Support',
     description:
       'Applicable preparation for examinations such as JEE, NEET, CUET, and other academic entrance requirements.',
-    image: 'assets/img/shared/academic.png',
+    image: 'assets/img/student-parent/competitive-exam-support.jpg',
     ctaLabel: 'Explore Academic Coverage',
   },
   boards: ['CBSE', 'ICSE', 'State Boards', 'IB', 'IGCSE', 'NIOS'],

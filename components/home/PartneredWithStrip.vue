@@ -28,7 +28,7 @@ function markLogoFailed(id: string) {
         Recognised &amp; Partnered With
       </p>
 
-      <div class="group relative w-full overflow-hidden" v-motion :initial="{ opacity: 0, y: 12 }"
+      <div class="group marquee-viewport relative w-full" v-motion :initial="{ opacity: 0, y: 12 }"
         :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
         <div class="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent">
         </div>
@@ -36,9 +36,10 @@ function markLogoFailed(id: string) {
           class="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent">
         </div>
         <div
-          class="flex w-max items-center gap-12 animate-marquee group-hover:[animation-play-state:paused] sm:gap-14 motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center">
+          class="marquee-track flex w-max items-center gap-12 animate-marquee group-hover:[animation-play-state:paused] sm:gap-14">
           <div v-for="(p, i) in [...partners, ...partners]" :key="`${p.id}-${i}`"
-            class="flex h-10 shrink-0 items-center justify-center sm:h-12">
+            class="flex h-10 shrink-0 items-center justify-center sm:h-12"
+            :class="i >= partners.length ? 'marquee-clone' : ''">
             <img v-if="!failedLogos[p.id]" :src="usePublicAsset(p.logo)" :alt="`${p.name} logo`"
               class="h-full w-auto max-w-[140px] object-contain opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0"
               loading="lazy" @error="markLogoFailed(p.id)" />

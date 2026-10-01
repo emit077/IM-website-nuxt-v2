@@ -36,7 +36,7 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
         :title="videoTestimonialsSection.title" :description="videoTestimonialsSection.description"
         :classes="videoTestimonialsSection.classes" />
 
-      <div class="group relative mt-8 overflow-hidden rounded-2xl">
+      <div class="group marquee-viewport relative mt-8 rounded-2xl">
         <div
           class="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-white to-transparent sm:w-16"
           aria-hidden="true" />
@@ -45,10 +45,11 @@ onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
           aria-hidden="true" />
 
         <div
-          class="flex w-max items-stretch gap-4 animate-marquee [animation-duration:50s] group-hover:[animation-play-state:paused] sm:gap-5 motion-reduce:w-full motion-reduce:animate-none motion-reduce:flex-wrap motion-reduce:justify-center"
+          class="marquee-track flex w-max items-stretch gap-4 animate-marquee [animation-duration:50s] group-hover:[animation-play-state:paused] sm:gap-5"
           role="list" aria-label="Video testimonials">
           <article v-for="(item, i) in loopItems" :key="`${item.id}-${i}`" role="listitem"
-            class="flex w-[min(68vw,220px)] shrink-0 flex-col sm:w-[210px]">
+            class="flex w-[min(68vw,220px)] shrink-0 flex-col sm:w-[210px]"
+            :class="i >= testimonials.length ? 'marquee-clone' : ''">
             <component :is="item.video ? 'button' : 'div'" :type="item.video ? 'button' : undefined"
               class="group/card flex h-full flex-col text-left"
               :aria-label="item.video ? `Play testimonial by ${item.person}` : undefined"

@@ -26,12 +26,13 @@ const primaryImage = usePublicAsset(aboutSection.image)
 
       <div class="mt-12 grid items-stretch gap-10 lg:mt-14 lg:grid-cols-12 lg:gap-12">
         <!-- Left: single image -->
-        <div class="relative lg:col-span-5" v-motion :initial="{ opacity: 0, y: 18 }"
+        <div class="relative lg:col-span-5 lg:h-full" v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
           <div
-            class="relative mx-auto   overflow-hidden rounded-[28px]  sm:min-h-[420px] min-h-[220px]  lg:mx-0 lg:max-w-none">
+            class="relative mx-auto aspect-[4/5] w-full max-w-[19rem] overflow-hidden rounded-[28px] sm:max-w-xs md:max-w-[22rem] lg:mx-0 lg:aspect-auto lg:h-full lg:max-w-none lg:min-h-[26rem]">
             <img :src="primaryImage" alt="Indian Mentors channel partner program"
-              class=" inset-0 h-2/3 lg:h-full object-center " loading="lazy" decoding="async" />
+              class="absolute inset-0 h-full w-full object-cover object-center lg:object-[center_18%]" loading="lazy"
+              decoding="async" />
 
             <!-- Floating stats -->
 

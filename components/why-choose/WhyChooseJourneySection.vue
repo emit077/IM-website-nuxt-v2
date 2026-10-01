@@ -109,10 +109,10 @@ onBeforeUnmount(() => {
             stroke-linecap="round" stroke-dasharray="3 3.2" marker-end="url(#journey-arrowhead)" />
         </svg>
 
-        <ol class="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-x-14 sm:gap-y-12 lg:gap-x-16 lg:gap-y-14" role="list">
+        <ol class="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-x-14 sm:gap-y-12 lg:gap-x-16 lg:gap-y-14" role="list">
           <li v-for="(step, i) in whyChooseJourney.steps" :key="step.no" class="relative min-w-0"
             :class="i % 2 === 1 ? 'sm:mt-10' : ''">
-            <article data-journey-card class="timeline-card h-full">
+            <article data-journey-card class="timeline-card sm:h-full">
               <div :class="[
                 'timeline-card-surface group relative flex w-full items-start gap-3 overflow-hidden rounded-2xl border p-4 sm:gap-4 sm:p-5',
                 i === 0
@@ -150,9 +150,9 @@ onBeforeUnmount(() => {
               </div>
             </article>
 
-            <div v-if="i < whyChooseJourney.steps.length - 1" class="flex justify-center pt-2 text-sky-500 sm:hidden"
+            <div v-if="i < whyChooseJourney.steps.length - 1" class="flex justify-center pt-1 text-sky-500 sm:hidden"
               aria-hidden="true">
-              <svg class="h-7 w-5" viewBox="0 0 20 28" fill="none">
+              <svg class="h-5 w-4" viewBox="0 0 20 28" fill="none">
                 <path d="M10 2v18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
                   stroke-dasharray="3 3.2" />
                 <path d="M4 16l6 8 6-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
