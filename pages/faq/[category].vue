@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { Icon } from '@iconify/vue'
+import FaqLiveChatSection from '~/components/faq/FaqLiveChatSection.vue'
 import { FAQ_CATEGORY_ORDER, canonicalFaqCategory, getFaqCategoryMeta } from '~/composables/useWebsiteContent'
 
 const route = useRoute()
@@ -134,6 +135,8 @@ useSeoMeta({
           </div>
         </details>
       </div>
+
+      <!-- <FaqLiveChatSection /> -->
 
       <p class="mt-6 text-center text-xs text-slate-500">
         Still have a question?

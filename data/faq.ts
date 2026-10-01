@@ -34,3 +34,18 @@ export const faqHero = {
     // { label: 'Help & Support', href: '/faq/support' },
   ],
 } as const
+
+export const faqLiveChat = {
+  title: 'Live Chat Support',
+  intro:
+    'For quick assistance, users can connect with our Live Chat Support System available directly on the website.',
+  featuresTitle: 'Live Chat Features',
+  features: [
+    'Instant responses for common queries',
+    'Quick guidance for new users',
+    'Real-time troubleshooting support',
+    'Direct connection with support executives (when required)',
+  ],
+  closing:
+    'Live chat is ideal for general inquiries, navigation support, and quick problem resolution.',
+} as const

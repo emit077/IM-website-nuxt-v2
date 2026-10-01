@@ -19,7 +19,7 @@ if [ -f "$ROOT/.env.production" ]; then
   set +a
 fi
 # Django API origin for /api/website/* (override in Amplify env vars if needed)
-export NUXT_PUBLIC_API_URL="${NUXT_PUBLIC_API_URL:-http://13.234.192.144}"
+export NUXT_PUBLIC_API_URL="${NUXT_PUBLIC_API_URL:-https://13.234.192.144}"
 
 rm -rf "$ROOT/.output"
 
