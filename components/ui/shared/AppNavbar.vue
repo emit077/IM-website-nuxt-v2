@@ -18,23 +18,32 @@ const primaryLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
   { label: 'Our Services', href: '/services' },
-  { label: 'Contact Us', href: '/contact' },
-  { label: 'Parent & Student', href: '/student-parent' },
+  { label: 'Students & Parents', href: '/student-parent' },
   { label: 'Tutors', href: '/tutors' },
+  { label: 'Contact Us', href: '/contact' },
+
 ]
 
 const navMenus = [
   {
     id: 'more',
     label: 'More',
+    // items: [
+    //   { label: 'Academic Coverage', href: '/academic-coverage', description: 'Boards, classes & subjects' },
+    //   { label: 'Institutional Partners', href: '/institutions', description: 'Teacher recruitment' },
+    //   { label: 'Channel Partners', href: '/channel-partner', description: 'Collaborate and grow with us' },
+    //   { label: 'Why Choose', href: '/why-choose', description: 'Why families trust us' },
+    //   { label: 'Career', href: '/careers', description: 'Join our team' },
+    //   { label: 'Insights Hub', href: '/insights', description: 'Company insights' },
+    //   { label: 'FAQ', href: '/faq', description: 'Common questions' },
+    // ],
     items: [
-      { label: 'Academic Coverage', href: '/academic-coverage', description: 'Boards, classes & subjects' },
-      { label: 'Institutional Partners', href: '/institutions', description: 'Teacher recruitment' },
+      { label: 'Why Choose Us', href: '/why-choose', description: 'Discover what sets us apart' },
+      { label: 'Academic Coverage', href: '/academic-coverage', description: 'Explore our learning programs' },
       { label: 'Channel Partners', href: '/channel-partner', description: 'Collaborate and grow with us' },
-      { label: 'Why Choose', href: '/why-choose', description: 'Why families trust us' },
-      { label: 'Career', href: '/careers', description: 'Join our team' },
-      { label: 'Insights Hub', href: '/insights', description: 'Company insights' },
-      { label: 'FAQ', href: '/faq', description: 'Common questions' },
+      { label: 'Institutional Partners', href: '/institutions', description: 'Teacher recruitment services' },
+      { label: 'Career Opportunities', href: '/careers', description: 'Build your future with us' },
+      { label: 'Insights Hub', href: '/insights', description: 'Explore educational insights' },
     ],
   },
 ]
@@ -44,27 +53,27 @@ const mobileNavGroups = [
     heading: 'Company',
     items: [
       { label: 'About Us', href: '/about' },
-      { label: 'Career', href: '/careers' },
       { label: 'Contact Us', href: '/contact' },
+      { label: 'Careers', href: '/careers' },
     ],
   },
   {
     heading: 'What We Offer',
     items: [
-      { label: 'Our Services', href: '/services' },
       { label: 'Tutors', href: '/tutors' },
+      { label: 'Our Services', href: '/services' },
+      { label: 'Students & Parents', href: '/student-parent' },
       { label: 'Academic Coverage', href: '/academic-coverage' },
-      { label: 'Parent & Student', href: '/student-parent' },
-      { label: 'Partner Program', href: '/channel-partner' },
-      { label: 'Hire for Institute', href: '/institutions' },
+      { label: 'Channel Partners', href: '/channel-partner' },
+      { label: 'Institutional Partners', href: '/institutions' },
     ],
   },
   {
     heading: 'Resources',
     items: [
       { label: 'Insights Hub', href: '/insights' },
-      { label: 'Why Choose', href: '/why-choose' },
-      { label: 'FAQ', href: '/faq' },
+      { label: 'Why Choose Us', href: '/why-choose' },
+      // { label: 'FAQ', href: '/faq' },
     ],
   },
 

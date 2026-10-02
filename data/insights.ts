@@ -235,7 +235,7 @@ export const insightsImpactStats = [
   { value: 'Thousands', label: 'Students supported', icon: 'mdi:target' },
   { value: 'Significant', label: 'Academic improvement', icon: 'mdi:trending-up' },
   { value: 'Multi-board', label: 'Coverage nationwide', icon: 'mdi:earth' },
-  { value: 'High', label: 'Parent & student satisfaction', icon: 'mdi:star-outline' },
+  { value: 'High', label: 'Students & Parents satisfaction', icon: 'mdi:star-outline' },
 ] as const
 
 export const insightsSearchSection = {

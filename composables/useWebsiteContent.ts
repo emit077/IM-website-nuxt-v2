@@ -205,7 +205,7 @@ const FAQ_CATEGORY_TITLES = [
   'Our Tutoring Services',
   'Why Choose Us',
   'Academic Coverage',
-  'Parents & Students',
+  'Students & Parents',
   'Contact Us',
   'About Us',
   'Careers',
@@ -222,7 +222,7 @@ const FAQ_TITLE_ICONS: Record<string, string> = {
   'Our Tutoring Services': 'solar:book-2-bold-duotone',
   'Why Choose Us': 'solar:shield-check-bold-duotone',
   'Academic Coverage': 'solar:diploma-bold-duotone',
-  'Parents & Students': 'solar:users-group-rounded-bold-duotone',
+  'Students & Parents': 'solar:users-group-rounded-bold-duotone',
   'Contact Us': 'solar:letter-bold-duotone',
   'About Us': 'solar:info-circle-bold-duotone',
   'Careers': 'solar:case-round-bold-duotone',
@@ -237,8 +237,8 @@ const FAQ_TITLE_ICONS: Record<string, string> = {
 /** Older site slugs that should still open the matching CMS category. */
 const FAQ_LEGACY_SLUGS: Record<string, (typeof FAQ_CATEGORY_TITLES)[number]> = {
   services: 'Our Tutoring Services',
-  'student-parent': 'Parents & Students',
-  student: 'Parents & Students',
+  'student-parent': 'Students & Parents',
+  student: 'Students & Parents',
   contact: 'Contact Us',
   about: 'About Us',
   'about us': 'About Us',

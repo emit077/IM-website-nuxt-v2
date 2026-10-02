@@ -19,10 +19,10 @@ import BrowseMentorsSection from '~/components/shared/BrowseMentorsSection.vue'
 import { spFinalCta, spWhyFamilies } from '~/data/student-parent'
 
 useSeoMeta({
-  title: 'Parents & Students — Indian Mentors',
+  title: 'Students & Parents — Indian Mentors',
   description:
     'Personalised learning, measurable progress, and trusted support. One-to-one tutoring with structured matching, free demos, academic monitoring, and dedicated counselling for families.',
-  ogTitle: 'Parents & Students — Indian Mentors',
+  ogTitle: 'Students & Parents — Indian Mentors',
   ogDescription:
     'A better way to learn. A smarter way to support your child — personalised tutoring, transparent progress, and a complete learning journey.',
   ogType: 'website',

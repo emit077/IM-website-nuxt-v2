@@ -30,7 +30,7 @@ export const faqHero = {
   ],
   quickLinksLabel: '',
   quickLinks: [
-    // { label: 'Parents & Students', href: '/faq/student-parent' },
+    // { label: 'Students & Parents', href: '/faq/student-parent' },
     // { label: 'Tutors', href: '/faq/tutors' },
     // { label: 'Institutions', href: '/faq/institutions' },
     // { label: 'Careers', href: '/faq/careers' },

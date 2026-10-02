@@ -1101,7 +1101,7 @@ export const spFamilyRequirements = {
 }
 
 export const spCycle = {
-  badge: 'Parent & Student Success Cycle',
+  badge: 'Students & Parents Success Cycle',
   title: 'A Continuous <span class="text-gradient-brand">Learning Journey</span>',
   classes: '!px-0 !py-0 mx-auto ',
   steps: [

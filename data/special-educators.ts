@@ -7,7 +7,7 @@ export const seHero = {
     'Compassionate, Qualified & Experienced Special Educators Delivering Individualised Educational Interventions for Children with Diverse Learning Profiles.',
   caption: 'INDIAN MENTORS – Personalised Education That Celebrates Every Child’s Potential.',
   description:
-    'Every child learns differently, and every learning journey deserves understanding, patience, and the right educational support.',
+    '',
   headingId: 'special-educators-hero-heading',
   tickerAriaLabel: 'Special education highlights',
   ticker: [
