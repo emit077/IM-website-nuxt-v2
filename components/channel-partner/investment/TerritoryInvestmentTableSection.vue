@@ -81,7 +81,7 @@ import { territoryInvestmentSection } from '~/data/channel-partner-investment'
           <article :class="[
             'relative overflow-hidden rounded-2xl border p-4 shadow-soft transition duration-200 sm:p-5',
             row.highlight
-              ? 'border-amber-200 bg-amber-50/60 ring-1 ring-amber-100'
+              ? 'border-blue-200 bg-blue-50/60 ring-1 ring-blue-100'
               : 'border-slate-200/80 bg-white',
           ]">
             <div class="flex items-start justify-between gap-3">
@@ -89,7 +89,7 @@ import { territoryInvestmentSection } from '~/data/channel-partner-investment'
                 <span :class="[
                   'grid h-11 w-11 shrink-0 place-items-center rounded-xl',
                   row.highlight
-                    ? 'bg-amber-500 text-white'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-slate-100 text-slate-600',
                 ]" aria-hidden="true">
                   <Icon :icon="row.iconMdi" class="h-5 w-5" />
@@ -98,7 +98,7 @@ import { territoryInvestmentSection } from '~/data/channel-partner-investment'
                   <div class="flex flex-wrap items-center gap-2">
                     <h3 class="font-display text-base font-bold text-slate-900">{{ row.level }}</h3>
                     <span v-if="row.highlight"
-                      class="inline-flex items-center rounded-md bg-amber-500 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-white">
+                      class="inline-flex items-center rounded-md bg-blue-600 px-1.5 py-0.5 text-[10px] font-bold tracking-wide text-white">
                       Popular
                     </span>
                   </div>
@@ -128,9 +128,9 @@ import { territoryInvestmentSection } from '~/data/channel-partner-investment'
                 <dt class="text-[10px] font-semibold uppercase tracking-wide text-slate-400">License 2Y</dt>
                 <dd class="mt-1 text-[13px] font-bold tabular-nums text-slate-800">{{ row.license2 }}</dd>
               </div>
-              <div class="rounded-xl border border-amber-100 bg-amber-50/50 px-2 py-2.5">
-                <dt class="text-[10px] font-semibold uppercase tracking-wide text-amber-600">License 5Y</dt>
-                <dd class="mt-1 text-[13px] font-bold tabular-nums text-amber-700">{{ row.license5 }}</dd>
+              <div class="rounded-xl border border-blue-100 bg-blue-50/70 px-2 py-2.5">
+                <dt class="text-[10px] font-semibold uppercase tracking-wide text-blue-600">License 5Y</dt>
+                <dd class="mt-1 text-[13px] font-bold tabular-nums text-blue-700">{{ row.license5 }}</dd>
                 <p class="mt-0.5 text-[9px] font-medium text-slate-400">Best Value</p>
               </div>
             </dl>
