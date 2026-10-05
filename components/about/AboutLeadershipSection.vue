@@ -6,13 +6,6 @@ import { aboutLeadership, aboutLeadershipSection, type LeadershipProfile } from 
 
 const placeholderImage = usePublicAsset('assets/img/about/team-placeholder.png')
 
-const founderHighlights = [
-  { icon: 'solar:graph-up-linear', label: 'Strategy & Vision' },
-  { icon: 'solar:settings-linear', label: 'Operations & Governance' },
-  { icon: 'solar:flag-2-linear', label: 'Growth & Impact' },
-  { icon: 'solar:users-group-rounded-linear', label: 'People & Culture' },
-] as const
-
 const { data: team } = await useWebsiteTeam(aboutLeadership)
 const leaders = computed(() => (team.value?.length ? team.value : aboutLeadership))
 
@@ -29,8 +22,8 @@ const featuredCredentials = computed(() =>
   isFounderCard.value ? founderProfile?.credentials : undefined,
 )
 const otherLeaders = computed(() => leaders.value.filter((person) => person.id !== featured.value?.id))
-const companions = computed(() => otherLeaders.value.slice(0, 2))
-const gridLeaders = computed(() => otherLeaders.value.slice(2))
+const companions = computed(() => otherLeaders.value.slice(0, 1))
+const gridLeaders = computed(() => otherLeaders.value.slice(1))
 
 const featuredBio = computed(() => summary(featured.value))
 const featuredPullQuote = computed(() => {
@@ -86,45 +79,36 @@ function onPortraitError(event: Event) {
       </div>
 
       <div v-if="featured" class="mt-10 space-y-4 sm:mt-12">
-        <div class="grid items-stretch gap-4 lg:grid-cols-12" aria-label="Leadership spotlight">
-          <article class="overflow-hidden rounded-[1.75rem] bg-white shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)]"
-            :class="companions.length > 1 ? 'lg:col-span-6' : 'lg:col-span-8'" v-motion :initial="{ opacity: 0, y: 14 }"
+        <div class="grid items-stretch gap-4" :class="companions.length ? 'lg:grid-cols-12' : ''"
+          aria-label="Leadership spotlight">
+          <article
+            class="overflow-hidden rounded-[1.75rem] bg-white shadow-[0_24px_50px_-28px_rgba(15,23,42,0.45)] lg:col-span-8"
+            v-motion :initial="{ opacity: 0, y: 14 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 40, duration: 420 } }">
-            <div class="grid  md:grid-cols-[minmax(13rem,0.92fr)_minmax(0,1.15fr)]">
-              <div class="relative  bg-gradient-to-br from-[#07122b] via-[#123a86] to-[#3b82f6]">
+            <div class="grid h-full md:grid-cols-[minmax(12.5rem,0.9fr)_minmax(0,1.15fr)]">
+              <div
+                class="relative min-h-[22rem] bg-gradient-to-br from-[#07122b] via-[#123a86] to-[#3b82f6] md:min-h-full">
                 <img :src="portraitSrc(featured)" :alt="featured.name" class="absolute inset-0 h-full w-full"
                   :class="featuredPortraitClass(featured)" loading="lazy" decoding="async" @error="onPortraitError" />
-                <div
-                  class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07122b] via-[#07122b]/88 to-transparent px-5 pb-6 pt-28 text-left h-1/2">
-                  <!-- <h3 class="font-display text-[1.7rem] font-extrabold leading-none tracking-tight text-white">
-                    {{ featuredName }}
-                  </h3>
-                  <p class="mt-2 text-[12px] font-bold uppercase leading-snug tracking-[0.12em] text-white/90">
-                    {{ featuredRoleLine }}
-                  </p>
-                  <p v-if="featuredCredentials" class="mt-1.5 text-[11px] font-medium leading-snug text-white/80">
-                    {{ featuredCredentials }}
-                  </p> -->
-                </div>
               </div>
 
               <div class="flex flex-col bg-white px-6 py-7 sm:px-7 sm:py-8">
                 <p
-                  class="font-display text-[1.45rem] font-extrabold leading-[1.2] tracking-tight text-slate-950 sm:text-[1.65rem]">
+                  class="font-display text-[1.35rem] font-extrabold leading-[1.2] tracking-tight text-slate-950 sm:text-[1.55rem]">
                   “{{ featuredPullQuote }}”
                 </p>
-                <p v-if="featuredBio" class="mt-4 text-[15px] font-medium leading-relaxed text-slate-600">
+                <p v-if="featuredBio" class="mt-3 text-[14px] font-medium leading-relaxed text-slate-600">
                   {{ featuredBio }}
                 </p>
 
-                <div class=" inset-x-0 bottom-0  px-5 pb-6 pt-28 text-left">
-                  <h3 class="font-display text-[1.7rem] font-extrabold leading-none tracking-tight text-black">
+                <div class="mt-6">
+                  <h3 class="font-display text-2xl font-extrabold leading-none tracking-tight text-slate-950">
                     {{ featuredName }}
                   </h3>
-                  <p class="mt-2 text-[12px] font-bold uppercase leading-snug tracking-[0.12em] text-black/90">
+                  <p class="mt-2 text-[12px] font-bold uppercase leading-snug tracking-[0.12em] text-slate-700">
                     {{ featuredRoleLine }}
                   </p>
-                  <p v-if="featuredCredentials" class="mt-1.5 text-[11px] font-medium leading-snug text-black/80">
+                  <p v-if="featuredCredentials" class="mt-1.5 text-[11px] font-medium leading-snug text-slate-500">
                     {{ featuredCredentials }}
                   </p>
                 </div>
@@ -142,37 +126,35 @@ function onPortraitError(event: Event) {
             </div>
           </article>
 
-          <article v-for="(companion, i) in companions" :key="companion.id"
-            class="flex  flex-col overflow-hidden rounded-[1.75rem] bg-white shadow-[0_24px_50px_-28px_rgba(15,23,42,0.4)]"
-            :class="companions.length > 1 ? 'lg:col-span-3' : 'lg:col-span-4'" v-motion :initial="{ opacity: 0, y: 14 }"
-            :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 40, duration: 420 } }">
-            <div class="relative h-72 shrink-0 bg-gradient-to-br from-[#07122b] via-[#123a86] to-[#3b82f6] sm:h-80">
-              <img :src="portraitSrc(companion)" :alt="companion.name" class="absolute inset-0  w-full"
-                :class="companion.image ? 'object-cover object-[center_22%]' : portraitClass(companion)" loading="lazy"
-                decoding="async" @error="onPortraitError" />
-              <div
-                class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#07122b] via-[#07122b]/80 to-transparent px-4 pb-4 pt-16 text-left">
-                <h3 class="font-display text-2xl font-extrabold leading-none tracking-tight text-white">
+          <div v-if="companions.length" class="grid h-full gap-4 lg:col-span-4"
+            :class="companions.length > 1 ? 'sm:grid-cols-2 lg:grid-cols-1' : ''">
+            <article v-for="(companion, i) in companions" :key="companion.id"
+              class="flex h-full min-h-0 flex-col overflow-hidden rounded-[1.75rem] bg-white shadow-[0_24px_50px_-28px_rgba(15,23,42,0.4)]"
+              v-motion :initial="{ opacity: 0, y: 14 }"
+              :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 80 + i * 40, duration: 420 } }">
+              <div class="mx-auto h-24 w-24 overflow-hidden rounded-full bg-slate-100 ring-4 ring-blue-50">
+                <img :src="portraitSrc(companion)" :alt="companion.name" class="h-full w-full"
+                  :class="portraitClass(companion)" loading="lazy" decoding="async" @error="onPortraitError" />
+              </div>
+              <div class="px-6 py-4 flex flex-col items-center justify-center">
+                <h3 class="mt-4 font-display text-xl font-extrabold tracking-tight text-slate-950">
                   {{ companion.name }}
                 </h3>
-                <p class="mt-2 text-[12px] font-bold uppercase tracking-[0.12em] text-white/85">
-                  {{ companion.role }}
+                <p class="mt-1 text-[13px] font-bold text-slate-600">{{ companion.role }}</p>
+
+                <p v-if="summary(companion)" class="mt-3  text-[13px] leading-relaxed text-slate-400">
+                  {{ summary(companion) }}
                 </p>
               </div>
-            </div>
-            <div class="flex flex-col px-4 py-4">
-              <p v-if="summary(companion)" class="line-clamp-4 text-[13px] font-medium leading-relaxed text-slate-600">
-                {{ summary(companion) }}
-              </p>
               <a v-if="companion.linkedin" :href="companion.linkedin" target="_blank" rel="noopener noreferrer"
-                class="mt-4 inline-flex w-fit items-center gap-1.5 text-[13px] font-bold text-[#0A66C2] transition hover:gap-2"
+                class="mt-3 inline-flex w-fit items-center gap-1.5 text-[13px] font-bold text-[#0A66C2] transition hover:gap-2"
                 :aria-label="`View ${companion.name} on LinkedIn`">
                 <Icon icon="mdi:linkedin" class="h-4 w-4" aria-hidden="true" />
                 Connect on LinkedIn
                 <Icon icon="solar:arrow-right-linear" class="h-3.5 w-3.5" aria-hidden="true" />
               </a>
-            </div>
-          </article>
+            </article>
+          </div>
         </div>
 
         <div v-if="gridLeaders.length" class="grid gap-4 sm:grid-cols-2"
@@ -189,7 +171,7 @@ function onPortraitError(event: Event) {
               {{ leader.name }}
             </h3>
             <p class="mt-1 text-[13px] font-bold text-slate-600">{{ leader.role }}</p>
-            <p v-if="summary(leader)" class="mt-3 line-clamp-3 text-[13px] leading-relaxed text-slate-400">
+            <p v-if="summary(leader)" class="mt-3  text-[13px] leading-relaxed text-slate-400">
               {{ summary(leader) }}
             </p>
             <a v-if="leader.linkedin" :href="leader.linkedin" target="_blank" rel="noopener noreferrer"
