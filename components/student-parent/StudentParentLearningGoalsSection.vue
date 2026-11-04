@@ -17,22 +17,29 @@ import { spLearningGoals } from '~/data/student-parent'
         :description="spLearningGoals.description" :classes="spLearningGoals.classes" />
 
       <div class="mt-10 grid gap-6 lg:grid-cols-12 lg:items-stretch lg:gap-7">
-        <div class="min-w-0 lg:col-span-5" v-motion :initial="{ opacity: 0, y: 20 }"
+        <div class="flex min-w-0 items-center justify-center lg:col-span-5" v-motion :initial="{ opacity: 0, y: 20 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
-          <figure
-            class="goal-visual relative min-h-[22rem] overflow-hidden rounded-[1.75rem] bg-slate-200 shadow-soft lg:min-h-full">
-            <img :src="usePublicAsset(spLearningGoals.image)" :alt="spLearningGoals.imageAlt"
-              class="absolute inset-0 h-full w-full object-cover object-[center_20%]" loading="lazy" decoding="async" />
-            <div aria-hidden="true"
-              class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-slate-950/80 via-slate-950/35 to-transparent" />
+          <figure class="phone-shell relative w-full max-w-[300px] sm:max-w-[320px]"
+            aria-label="Indian Mentors learning goals reel">
+            <span class="phone-btn phone-btn-silent" aria-hidden="true" />
+            <span class="phone-btn phone-btn-volume-up" aria-hidden="true" />
+            <span class="phone-btn phone-btn-volume-down" aria-hidden="true" />
+            <span class="phone-btn phone-btn-power" aria-hidden="true" />
 
-            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-center sm:p-6">
-              <p class="font-display text-[18px] font-bold text-white">
-                {{ spLearningGoals.imageCaption }}
-              </p>
-              <p class="mt-1.5 text-[13px] leading-relaxed text-white/80">
-                {{ spLearningGoals.imageNote }}
-              </p>
+            <div
+              class="relative overflow-hidden rounded-[2.45rem] bg-slate-950 p-[11px] shadow-[0_28px_60px_-22px_rgba(15,23,42,0.55)] ring-1 ring-slate-900">
+              <span
+                class="pointer-events-none absolute left-1/2 top-[18px] z-20 h-[22px] w-[96px] -translate-x-1/2 rounded-full bg-slate-950"
+                aria-hidden="true" />
+              <div class="goal-screen relative aspect-[9/16] w-full overflow-hidden rounded-[1.9rem] bg-black">
+                <iframe :src="spLearningGoals.videoUrl" scrolling="no" class="goal-reel"
+                  title="Indian Mentors learning goals reel" loading="lazy" allowtransparency="true"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin" />
+              </div>
+            </div>
+            <figcaption class="sr-only">
+              {{ spLearningGoals.imageCaption }}. {{ spLearningGoals.imageNote }}
             </figcaption>
           </figure>
         </div>
@@ -90,18 +97,63 @@ import { spLearningGoals } from '~/data/student-parent'
   box-shadow: 0 18px 38px -22px rgba(37, 99, 235, 0.35);
 }
 
-.goal-visual {
-  transition: box-shadow 0.5s ease;
+.phone-shell {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.goal-visual:hover {
-  box-shadow: 0 26px 55px -28px rgba(37, 99, 235, 0.4);
+.phone-btn {
+  position: absolute;
+  z-index: 0;
+  width: 3px;
+  border-radius: 999px;
+  background: #0f172a;
+}
+
+.phone-btn-silent {
+  left: -2px;
+  top: 86px;
+  height: 16px;
+}
+
+.phone-btn-volume-up {
+  left: -2px;
+  top: 116px;
+  height: 40px;
+}
+
+.phone-btn-volume-down {
+  left: -2px;
+  top: 164px;
+  height: 40px;
+}
+
+.phone-btn-power {
+  right: -2px;
+  top: 138px;
+  height: 58px;
+}
+
+.goal-screen {
+  container-type: inline-size;
+}
+
+/* Instagram's reel embed is a 4:5 frame with a 54px header plus an overlay avatar. Shift and scale so the 9:16 video fills the phone screen. */
+.goal-reel {
+  position: absolute;
+  top: -102px;
+  left: 0;
+  width: 100%;
+  height: calc(54px + 125cqi);
+  border: 0;
+  background: #000;
+  transform: scale(1.72);
+  transform-origin: center 102px;
 }
 
 @media (prefers-reduced-motion: reduce) {
 
   .goal-row,
-  .goal-visual {
+  .phone-shell {
     transition: none;
   }
 

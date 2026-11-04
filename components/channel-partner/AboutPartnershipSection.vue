@@ -24,34 +24,33 @@ const primaryImage = usePublicAsset(aboutSection.image)
         </template>
       </CardHeader>
 
-      <div class="mt-12 grid items-stretch gap-10 lg:mt-14 lg:grid-cols-12 lg:gap-12">
-        <!-- Left: single image -->
-        <div class="relative lg:col-span-5 lg:h-full" v-motion :initial="{ opacity: 0, y: 18 }"
+      <div class="mt-12 grid items-center gap-10 lg:mt-14 lg:grid-cols-12 lg:items-stretch lg:gap-12">
+        <!-- Left image height follows the feature cards without cropping the photo. -->
+        <div class="relative lg:col-span-5 lg:[container-type:size]" v-motion :initial="{ opacity: 0, y: 18 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 550 } }">
           <div
-            class="relative mx-auto aspect-[4/5] w-full max-w-[19rem] overflow-hidden rounded-[28px] sm:max-w-xs md:max-w-[22rem] lg:mx-0 lg:aspect-auto lg:h-full lg:max-w-none lg:min-h-[26rem]">
-            <img :src="primaryImage" alt="Indian Mentors channel partner program"
-              class="absolute inset-0 h-full w-full object-cover object-center lg:object-[center_18%]" loading="lazy"
-              decoding="async" />
-
-            <!-- Floating stats -->
-
-
+            class="relative mx-auto w-full max-w-[19rem] sm:max-w-xs md:max-w-[20rem] lg:absolute lg:inset-0 lg:mx-0 lg:flex lg:max-w-none lg:items-center lg:justify-center">
             <div
-              class="absolute bottom-4 left-4 z-10 flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/95 px-3 py-2.5 shadow-[0_14px_36px_-14px_rgba(30,58,138,0.35)] backdrop-blur-sm sm:bottom-5 sm:left-5 sm:gap-3 sm:px-3.5 sm:py-3"
-              v-motion :initial="{ opacity: 0, x: -12, scale: 0.92 }"
-              :visibleOnce="{ opacity: 1, x: 0, scale: 1, transition: { delay: 420, duration: 450 } }">
-              <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-600 text-white sm:h-10 sm:w-10"
-                aria-hidden="true">
-                <Icon :icon="aboutSection.stats[1].iconMdi" class="h-[18px] w-[18px]" />
-              </span>
-              <div class="leading-tight">
-                <p class="font-display text-base font-bold text-slate-900 sm:text-lg">
-                  {{ aboutSection.stats[1].value }}
-                </p>
-                <p class="text-[11px] font-medium text-slate-500 sm:text-xs">
-                  {{ aboutSection.stats[1].label }}
-                </p>
+              class="relative w-full lg:aspect-[1870/2320] lg:h-[min(100cqh,calc(100cqw*2320/1870))] lg:w-auto lg:max-w-full">
+              <img :src="primaryImage" alt="Indian Mentors channel partner program" width="1870" height="2320"
+                class="block h-auto w-full object-contain lg:h-full lg:w-full" loading="lazy" decoding="async" />
+
+              <div
+                class="absolute bottom-4 left-4 z-10 flex items-center gap-2.5 rounded-2xl border border-white/80 bg-white/95 px-3 py-2.5 shadow-[0_14px_36px_-14px_rgba(30,58,138,0.35)] backdrop-blur-sm sm:bottom-5 sm:left-5 sm:gap-3 sm:px-3.5 sm:py-3"
+                v-motion :initial="{ opacity: 0, x: -12, scale: 0.92 }"
+                :visibleOnce="{ opacity: 1, x: 0, scale: 1, transition: { delay: 420, duration: 450 } }">
+                <span class="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-600 text-white sm:h-10 sm:w-10"
+                  aria-hidden="true">
+                  <Icon :icon="aboutSection.stats[1].iconMdi" class="h-[18px] w-[18px]" />
+                </span>
+                <div class="leading-tight">
+                  <p class="font-display text-base font-bold text-slate-900 sm:text-lg">
+                    {{ aboutSection.stats[1].value }}
+                  </p>
+                  <p class="text-[11px] font-medium text-slate-500 sm:text-xs">
+                    {{ aboutSection.stats[1].label }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

@@ -160,8 +160,8 @@ export const cultureSection = {
   galleryDescription: 'A look at where our teams work, collaborate, and grow together.',
   gallery: [
     {
-      src: '/assets/img/careers/culture-teachers-day.png',
-      alt: 'Team celebrating Teachers Day with flowers and cake',
+      src: '/assets/img/careers/culture-teachers-day-card.png',
+      alt: 'Colleagues honouring a mentor with flowers and cake on Teachers Day',
       caption: "Teachers' Day celebration",
       description: 'Honouring the mentors and educators who shape every learner\'s journey.',
     },

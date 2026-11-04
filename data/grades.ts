@@ -44,7 +44,7 @@ export type GradeStage = {
 
 export const gradesHero = {
   badge: 'Learning library',
-  title: 'Resources built for<br class="hidden sm:inline" /> every grade',
+  title: 'Resources built for<br class="hidden sm:inline" /> every grade and classroom',
   subtitle: 'Curriculum-aligned notes, worksheets, and practice packs from Nursery to Class 12.',
   description:
     'Browse grade-wise study material — NCERT solutions, subject notes, and practice sets aligned to the student’s class, board, and exam goals.',

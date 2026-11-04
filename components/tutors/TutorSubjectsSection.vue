@@ -6,7 +6,6 @@ import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 
 const items = tutorSubjects.items
 const coverage = tutorSubjects.coverageTile
-const coverageChips = [...coverage.grades]
 
 
 function subjectList(subjects: string) {
@@ -61,9 +60,9 @@ function subjectList(subjects: string) {
 
         <li class="sm:col-span-2 lg:col-span-4" v-motion :initial="{ opacity: 0, y: 14 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 220, duration: 420 } }">
-          <div class=" coverage-cta group relative flex h-full overflow-hidden rounded-[1.25rem] no-underline
+          <div class="coverage-cta group relative flex min-h-[16.5rem] overflow-hidden rounded-[1.25rem] no-underline sm:min-h-[15.5rem]
             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4
-            focus-visible:outline-indigo-700" :aria-label="`${coverage.title}. ${tutorSubjects.cta.label}`">
+            focus-visible:outline-indigo-700" :aria-label="`Teach any board. Any grade. ${tutorSubjects.cta.label}`">
             <span class="coverage-visual pointer-events-none absolute inset-y-0 right-0 w-[58%] sm:w-[50%] lg:w-[42%]"
               aria-hidden="true">
               <img :src="usePublicAsset(coverage.image)" alt=""
@@ -72,38 +71,15 @@ function subjectList(subjects: string) {
             </span>
             <span class="coverage-overlay pointer-events-none absolute inset-0" aria-hidden="true" />
 
-            <div class="relative z-[1] flex w-full flex-col p-4 sm:p-6 lg:px-8 lg:py-7">
-              <div class="min-w-0 max-w-lg sm:max-w-[60%] lg:max-w-[52%]">
-                <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-blue-100/75">
-                  {{ coverage.badge }}
-                </p>
-                <h3 class="mt-1 font-display text-[17px] font-extrabold leading-snug text-white sm:text-xl">
-                  {{ coverage.title }}
-                </h3>
-                <p class="mt-1 max-w-md text-[13px] leading-relaxed text-blue-50/90">
+            <div class="relative z-[1] flex w-full flex-col justify-center p-5 sm:p-7 lg:px-9 lg:py-8">
+              <div class="min-w-0 max-w-md sm:max-w-[58%] lg:max-w-[46%]">
+                <h3
+                  class="font-display text-[1.85rem] font-black leading-[1.02] tracking-[-0.03em] text-white sm:text-[2.15rem] lg:text-[2.45rem]"
+                  v-html="coverage.title" />
+                <p class="mt-3 max-w-md text-[13.5px] font-medium leading-snug text-blue-50/90 sm:text-sm">
                   {{ coverage.description }}
                 </p>
-                <p class="mt-3 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-100/70">
-                  boards & Grades we cover
-                </p>
-                <p class="mt-2.5 text-[12px] font-medium leading-relaxed text-white/90"
-                  :aria-label="coverage.boardsLabel">
-                  <span v-for="(board, i) in coverage.boards" :key="board.id">
-                    <span v-if="i > 0" class="font-normal text-white/35"> · </span>{{ board.name }}
-                  </span>
-                </p>
-
-                <ul class="mt-2 flex flex-wrap gap-1" role="list"
-                  :aria-label="`${coverage.gradesLabel}, ${coverage.coursesLabel}`">
-                  <li v-for="(chip, i) in coverageChips" :key="chip.label" :class="i >= 7 ? 'hidden sm:list-item' : ''">
-                    <span
-                      class="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-2 py-px text-[10.5px] font-medium text-blue-50 backdrop-blur-[2px]">
-                      {{ chip.label }}
-                    </span>
-                  </li>
-                </ul>
-
-                <ActionBtn class="mt-5 !w-full sm:!w-auto" variant="theme-secondary" :href="tutorSubjects.cta.href"
+                <ActionBtn class="mt-6 !w-full sm:!w-auto" variant="theme-secondary" :href="tutorSubjects.cta.href"
                   :label="tutorSubjects.cta.label" />
               </div>
             </div>

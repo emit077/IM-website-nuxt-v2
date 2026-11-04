@@ -97,23 +97,23 @@ const headerContent = {
           </aside>
 
           <div class="flex flex-col gap-3 lg:col-start-1 lg:row-start-2 xl:flex-row xl:items-center">
-            <a href="#contact"
+            <a href="#"
               class="btn-primary ripple group inline-flex h-12 w-full items-center justify-center gap-2 !px-7 text-[15px] xl:w-auto"
               @mousemove="rippleHandler">
-              Hire Teachers
+              Sign Up
               <svg class="hiring-cta-arrow h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24"
                 fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
               </svg>
             </a>
-            <a href="#contact"
+            <a href="/institutions/"
               class="btn-secondary inline-flex h-12 w-full items-center justify-center gap-2 !px-6 text-[15px] xl:w-auto">
               <svg class="h-4 w-4 text-blue-600" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path
                   d="M12 2.8a9.2 9.2 0 1 0 9.2 9.2A9.2 9.2 0 0 0 12 2.8Zm4.1 6.7-5 5a1 1 0 0 1-1.4 0l-2.4-2.4a1 1 0 0 1 1.4-1.4l1.7 1.7 4.3-4.3a1 1 0 1 1 1.4 1.4Z"
                   fill="currentColor" />
               </svg>
-              Talk to Recruiter
+              Know More
             </a>
           </div>
         </div>

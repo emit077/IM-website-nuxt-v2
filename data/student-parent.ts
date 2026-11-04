@@ -570,6 +570,7 @@ export const spLearningGoals = {
   classes: '!px-0 !py-0 mx-auto ',
   image: 'assets/img/student-parent/learning-goals.jpg',
   imageAlt: 'Student confident about a clear academic goal',
+  videoUrl: 'https://www.instagram.com/reel/DeRg1XEOzt5/embed',
   imageCaption: 'One Clear Goal. One Structured Plan',
   imageNote: 'Every plan starts with the goal that matters most.',
   items: [
