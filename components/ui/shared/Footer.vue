@@ -91,7 +91,7 @@ const footerLinkGroups = [
       { label: 'News & Media', to: '/news' },
       { label: 'Success Stories', to: '/success-stories' },
       { label: 'Events & Webinars', to: '/events' },
-      { label: 'Team Login', to: externalLinks.adminLogin },
+      { label: 'Admin Login', to: externalLinks.adminLogin },
     ],
   },
 ] as const
@@ -189,7 +189,8 @@ const footerLinkGroups = [
                 </svg>
               </span>
               <span class="min-w-0">
-                <span class="block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">Working hours</span>
+                <span class="block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">Working
+                  hours</span>
                 <span class="mt-0.5 block whitespace-nowrap font-medium text-slate-200">{{ workingHours }}</span>
               </span>
             </li>

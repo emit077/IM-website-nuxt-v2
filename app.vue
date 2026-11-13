@@ -11,6 +11,7 @@ import PageLoader from '~/components/ui/PageLoader.vue'
     <ToastContainer />
     <ClientOnly>
       <PageLoader />
+      <UiLaunchCurtain />
     </ClientOnly>
   </div>
 </template>

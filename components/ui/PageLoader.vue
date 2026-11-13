@@ -2,10 +2,12 @@
 const MIN_VISIBLE_MS = 2000
 const visible = ref(true)
 const pending = ref(1)
+const { active: curtainActive } = useLaunchCurtain()
 let shownAt = Date.now()
 let hideTimer: ReturnType<typeof setTimeout> | undefined
 
 function show() {
+  if (curtainActive.value) return
   pending.value += 1
   if (hideTimer) clearTimeout(hideTimer)
   if (!visible.value) shownAt = Date.now()
