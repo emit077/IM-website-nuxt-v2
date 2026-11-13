@@ -2,7 +2,7 @@ import { computed, onMounted, toValue, type MaybeRefOrGetter } from 'vue'
 import type { BannerSlide } from '~/components/home/BannerCarousel.vue'
 import type { FaqCategory, FaqItem } from '~/data/faq'
 import type { LeadershipProfile } from '~/data/about'
-import { emailSupport, phoneSupport, type PhoneContact } from '~/data/contact'
+import type { PhoneContact } from '~/data/contact'
 import type {
   BrochureType,
   WebsiteAuthorisedContact,
@@ -55,13 +55,6 @@ export type UiPrimaryContact = {
   workingHours: string | null
 }
 
-/** Used when the primary-contacts API has no row. Must be non-null so SSR payload is kept. */
-const fallbackPrimaryContact: UiPrimaryContact = {
-  phone: phoneSupport.number,
-  email: emailSupport.address,
-  whatsapp: phoneSupport.number,
-  workingHours: null,
-}
 
 export const FAQ_CATEGORY_ORDER = [
   'services',
@@ -388,82 +381,47 @@ function resolveMediaUrl(url?: string | null, apiBase = '') {
   return useApiMedia(url, apiBase) || undefined
 }
 
-type MergeableHeroButton = {
-  label: string
-  link?: string
-  href?: string
-  variant?: string
-  icon?: unknown
-  iconWrapperClass?: string
-  showArrow?: boolean
-}
-
-type MergeableHero = {
-  badge?: string
-  title?: string
-  subtitle?: string
-  description?: string
-  caption?: string
-  backgroundImage?: string
-  mobileBackgroundImage?: string
-  actionBtns?: MergeableHeroButton[]
-  trustStats?: { value: string; label: string; icon: string }[]
-}
-
-function mergeHeroButton(
-  button: MergeableHeroButton | undefined,
-  label: string | null | undefined,
-  route: string | null | undefined,
-) {
-  const nextLabel = label?.trim() || button?.label || ''
-  if (!button && !nextLabel) return null
-  const href = route?.trim() || button?.href || button?.link || '#'
-  return {
-    ...button,
-    label: nextLabel,
-    link: href,
-    href,
-  }
-}
-
-/** Overlay a hero-screens API row onto the local hero. Blank API fields keep the local copy. */
-export function mergeWebsiteHeroScreen<T extends MergeableHero>(
-  fallback: T,
-  screen: WebsiteHeroScreen | null | undefined,
-): T {
-  if (!screen) return fallback
-
-  const buttons = fallback.actionBtns ?? []
-  const actionBtns = [
-    mergeHeroButton(buttons[0], screen.primary_cta_label, screen.primary_route),
-    mergeHeroButton(buttons[1], screen.secondary_cta_label, screen.secondary_route),
-  ].filter((button) => button?.label)
-
-  const stats = (Array.isArray(screen.stats) ? screen.stats : [])
+function heroStats(screen: WebsiteHeroScreen) {
+  return (Array.isArray(screen.stats) ? screen.stats : [])
     .map((stat) => ({
       value: stat.value?.trim() || '',
       label: stat.label?.trim() || '',
       icon: stat.icon?.trim() || '',
     }))
     .filter((stat) => stat.value || stat.label)
+}
 
-  const backgroundImage = screen.bg_image?.trim()
-    ? `url('${screen.bg_image.trim()}')`
-    : fallback.backgroundImage
-  const mobileBackgroundImage = screen.mobile_bg?.trim() || fallback.mobileBackgroundImage
+function heroButtons(screen: WebsiteHeroScreen) {
+  const primary = screen.primary_cta_label?.trim()
+  const secondary = screen.secondary_cta_label?.trim()
+  return [
+    primary
+      ? { variant: 'primary' as const, label: primary, link: screen.primary_route?.trim() || '#' }
+      : null,
+    secondary
+      ? { variant: 'secondary' as const, label: secondary, link: screen.secondary_route?.trim() || '#' }
+      : null,
+  ].filter((button) => button !== null)
+}
 
+/** Build a hero from the hero-screens API. Blank fields stay blank. */
+export function heroContentFromWebsiteScreen(
+  screen: WebsiteHeroScreen,
+  chrome: { contentClass?: string; headingId?: string } = {},
+) {
   return {
-    ...fallback,
-    badge: screen.badge?.trim() || fallback.badge,
-    title: screen.title?.trim() || fallback.title,
-    subtitle: screen.subtitle?.trim() || fallback.subtitle,
-    description: screen.description?.trim() || fallback.description,
-    caption: screen.caption?.trim() || fallback.caption,
-    backgroundImage,
-    mobileBackgroundImage,
-    actionBtns: actionBtns.length ? actionBtns : fallback.actionBtns,
-    trustStats: stats.length ? stats : fallback.trustStats,
-  } as T
+    badge: screen.badge?.trim() || undefined,
+    title: screen.title?.trim() || undefined,
+    subtitle: screen.subtitle?.trim() || undefined,
+    description: screen.description?.trim() || undefined,
+    caption: screen.caption?.trim() || undefined,
+    contentClass: chrome.contentClass,
+    headingId: chrome.headingId,
+    backgroundImage: screen.bg_image?.trim() ? `url('${screen.bg_image.trim()}')` : undefined,
+    mobileBackgroundImage: screen.mobile_bg?.trim() || undefined,
+    actionBtns: heroButtons(screen),
+    trustStats: heroStats(screen),
+  }
 }
 
 /**
@@ -496,6 +454,13 @@ function refreshOnClient(key: string, refresh: () => Promise<unknown>) {
   })
 }
 
+function readRoleTags(value?: string | string[] | null) {
+  const tags = Array.isArray(value)
+    ? value.map((tag) => tag.trim()).filter(Boolean)
+    : (value?.split(/[|,]/) ?? []).map((tag) => tag.trim()).filter(Boolean)
+  return tags.length ? tags.join(' | ') : undefined
+}
+
 export function mapTeam(items: WebsiteTeamMember[], apiBase = ''): LeadershipProfile[] {
   return [...items]
     .sort((a, b) => (a.display_order ?? a.id) - (b.display_order ?? b.id))
@@ -509,6 +474,8 @@ export function mapTeam(items: WebsiteTeamMember[], apiBase = ''): LeadershipPro
         : []
       const isLead = /founder|chief executive|\bceo\b/i.test(item.designation || '')
       const department = item.department?.trim()
+      const quote = item.quote?.trim() || ''
+      const roleTags = readRoleTags(item.roleTags)
 
       return {
         id: isLead ? 'founder' : String(item.id),
@@ -517,8 +484,11 @@ export function mapTeam(items: WebsiteTeamMember[], apiBase = ''): LeadershipPro
         department: department && department !== item.designation ? department : undefined,
         bio: msg || item.designation,
         message: msg || undefined,
+        quote: quote || undefined,
+        roleTags,
         image: resolveMediaUrl(item.image || item.photo || item.profile_image, apiBase),
         linkedin: normalizeExternalUrl(item.linkedin_link),
+        x: normalizeExternalUrl(item.x_link || item.twitter_link),
         inTheirWords: lines.length ? lines.slice(0, 3) : [item.designation],
         initials: initialsFromName(item.name),
         ringColor: RING_COLORS[index % RING_COLORS.length]!,
@@ -690,7 +660,7 @@ export function useWebsiteTestimonials() {
   return asyncData
 }
 
-export function useWebsiteTeam(fallback: LeadershipProfile[] = []) {
+export function useWebsiteTeam() {
   const { fetchWebsiteList, apiBase } = useWebsiteApi()
 
   const asyncData = useAsyncData(
@@ -708,10 +678,9 @@ export function useWebsiteTeam(fallback: LeadershipProfile[] = []) {
         'members',
         rows.map((row) => ({ name: row.name, image: row.image })),
       )
-      const mapped = mapTeam(rows, apiBase)
-      return mapped.length ? mapped : fallback
+      return mapTeam(rows, apiBase)
     },
-    liveDataOptions(fallback),
+    liveDataOptions([] as LeadershipProfile[]),
   )
   refreshOnClient('website-team', asyncData.refresh)
   return asyncData
@@ -748,9 +717,9 @@ export function useWebsitePrimaryContact() {
       const rows = await fetchWebsiteList<WebsitePrimaryContact>(
         '/api/website/primary-contacts/',
       )
-      return mapPrimaryContact(rows) ?? fallbackPrimaryContact
+      return mapPrimaryContact(rows)
     },
-    liveDataOptions(fallbackPrimaryContact),
+    liveDataOptions(null as UiPrimaryContact | null),
   )
   refreshOnClient('website-primary-contacts', asyncData.refresh)
   return asyncData

@@ -70,7 +70,11 @@ export type WebsiteTeamMember = {
   designation: string
   department?: string | null
   msg: string | null
+  quote?: string | null
+  roleTags?: string | string[] | null
   linkedin_link: string | null
+  x_link?: string | null
+  twitter_link?: string | null
   image?: string | null
   photo?: string | null
   profile_image?: string | null

@@ -63,14 +63,14 @@ const units = computed(() =>
             {{ unit.description }}
           </p>
 
-          <div class="min-h-4 flex-1" aria-hidden="true" />
+          <!-- <div class="min-h-4 flex-1" aria-hidden="true" />
           <div
             class="flex flex-col items-start gap-2 border-t border-slate-100 pt-4 transition-colors duration-300 group-hover:border-white/20">
             <span v-for="role in unit.roles" :key="role"
               class="rounded-md bg-blue-50/70 px-2.5 py-1 text-[11px] font-semibold text-blue-700 transition-colors duration-300 group-hover:bg-white/15 group-hover:text-white">
               {{ role }}
             </span>
-          </div>
+          </div> -->
         </article>
       </div>
     </div>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ToastContainer from '~/components/ui/ToastContainer.vue'
+import PageLoader from '~/components/ui/PageLoader.vue'
 </script>
 
 <template>
@@ -8,5 +9,8 @@ import ToastContainer from '~/components/ui/ToastContainer.vue'
       <NuxtPage />
     </NuxtLayout>
     <ToastContainer />
+    <ClientOnly>
+      <PageLoader />
+    </ClientOnly>
   </div>
 </template>

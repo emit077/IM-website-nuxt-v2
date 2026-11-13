@@ -4,13 +4,9 @@ import { Icon } from '@iconify/vue'
 import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 import PhoneCountryInput from '~/components/ui/PhoneCountryInput.vue'
 import {
-  emailSupport,
   contactInquirySection,
   inquiryForm,
   type InquiryStakeholder,
-  phoneSupport,
-  whatsappSupport,
-  workingHours,
 } from '~/data/contact'
 import type { MasterCountry } from '~/types/master-api'
 import { validateNationalMobile } from '~/utils/phone'
@@ -20,18 +16,13 @@ const toast = useToast()
 const { data: primaryContact } = await useWebsitePrimaryContact()
 const { data: authorisedLines } = await useWebsiteAuthorisedContacts()
 
-const phone = computed(() => primaryContact.value?.phone ?? phoneSupport.number)
-const email = computed(() => primaryContact.value?.email ?? emailSupport.address)
-const primaryWa = computed(
-  () => primaryContact.value?.whatsapp ?? whatsappSupport.numbers[0]!,
-)
-const hoursLabel = computed(() => {
-  if (primaryContact.value?.workingHours) return primaryContact.value.workingHours
-  return `${workingHours.days} | ${workingHours.hours}`
-})
+const phone = computed(() => primaryContact.value?.phone ?? null)
+const email = computed(() => primaryContact.value?.email ?? '')
+const primaryWa = computed(() => primaryContact.value?.whatsapp ?? null)
+const hoursLabel = computed(() => primaryContact.value?.workingHours ?? '')
 
 const whatsappHref = computed(() =>
-  primaryWa.value.wa ? `https://wa.me/${primaryWa.value.wa}` : undefined,
+  primaryWa.value?.wa ? `https://wa.me/${primaryWa.value.wa}` : undefined,
 )
 
 const form = reactive({
@@ -119,29 +110,35 @@ function onSubmit() {
 }
 
 const directContacts = computed(() => [
-  {
-    id: 'call-us-phone',
-    icon: 'mdi:phone-outline',
-    label: 'Phone number',
-    value: phone.value.display,
-    href: `tel:${phone.value.tel}`,
-  },
-  {
-    id: 'whatsapp',
-    icon: 'mdi:whatsapp',
-    label: 'WhatsApp',
-    value: primaryWa.value.display,
-    href: whatsappHref.value,
-    external: true,
-  },
-  {
-    id: 'email',
-    icon: 'mdi:email-outline',
-    label: 'E-mail',
-    value: email.value,
-    href: `mailto:${email.value}`,
-  },
-])
+  phone.value
+    ? {
+      id: 'call-us-phone',
+      icon: 'mdi:phone-outline',
+      label: 'Phone number',
+      value: phone.value.display,
+      href: `tel:${phone.value.tel}`,
+    }
+    : null,
+  primaryWa.value
+    ? {
+      id: 'whatsapp',
+      icon: 'mdi:whatsapp',
+      label: 'WhatsApp',
+      value: primaryWa.value.display,
+      href: whatsappHref.value,
+      external: true,
+    }
+    : null,
+  email.value
+    ? {
+      id: 'email',
+      icon: 'mdi:email-outline',
+      label: 'E-mail',
+      value: email.value,
+      href: `mailto:${email.value}`,
+    }
+    : null,
+].filter((contact) => contact !== null))
 
 </script>
 
@@ -177,7 +174,7 @@ const directContacts = computed(() => [
                 </li>
               </ul>
 
-              <div
+              <div v-if="hoursLabel"
                 class="mt-8 flex items-center gap-4 rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50/90 to-slate-50/80 px-5 py-4 shadow-sm">
                 <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-blue-600 text-white shadow-sm"
                   aria-hidden="true">

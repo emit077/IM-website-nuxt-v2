@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import CarouselLayout from '~/components/ui/CarouselLayout.vue'
-import { externalLinks } from '~/data/external-links'
-import CardHeader from '~/components/ui/CardHeaderLayout.vue'
 
 export interface BannerSlide {
   /** Public URL, e.g. `/assets/img/banner/banner-1.png` */
@@ -14,21 +12,6 @@ export interface BannerSlide {
   /** Accessible name when the slide is a link (recommended for SEO and screen readers). */
   label?: string
 }
-
-const fallbackSlides: BannerSlide[] = [
-  {
-    image: '/assets/img/banner/banner-1.png',
-    mobileImage: '/assets/img/banner/mobile-banner-1.png',
-    link: externalLinks.studentSignup,
-    label: 'Book a free demo — verified tutors',
-  },
-  {
-    image: '/assets/img/banner/banner-2.png',
-    mobileImage: '/assets/img/banner/mobile-banner-2.png',
-    link: '/services',
-    label: 'Explore tutoring services',
-  },
-]
 
 const props = withDefaults(
   defineProps<{
@@ -60,10 +43,8 @@ const props = withDefaults(
 const { data: apiSlides, refresh } = await useWebsiteBanners()
 
 const list = computed(() => {
-  const fromApi = (apiSlides.value ?? []).filter((s) => s.image)
-  if (fromApi.length) return fromApi
   if (props.slides?.length) return props.slides.filter((s) => s.image)
-  return fallbackSlides
+  return (apiSlides.value ?? []).filter((s) => s.image)
 })
 
 onMounted(() => {

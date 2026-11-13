@@ -1,46 +1,17 @@
 <script setup lang="ts">
 import HeroLayout from '~/components/ui/HeroLayout.vue'
-import type { HeroContent } from '~/components/ui/HeroLayout.vue'
-import { institutionsHero, institutionsHeroStats } from '~/data/institutions'
-
-const secondaryIconClass =
-  'grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white'
 
 const { data: heroScreens } = await useWebsiteHeroScreens('institutions')
 
-const fallbackHero: HeroContent = {
-  badge: institutionsHero.badge,
-  title: institutionsHero.title,
-  subtitle: institutionsHero.subtitle,
-  description: institutionsHero.description,
-  contentClass: institutionsHero.contentClass,
-  backgroundImage: `url('${usePublicAsset('assets/img/institutions/institutions-hero.png')}')`,
-  mobileBackgroundImage: `${usePublicAsset('assets/img/institutions/institutions-hero-mobile.png')}`,
-  caption: institutionsHero.caption,
-  headingId: 'institutions-hero-heading',
-  actionBtns: [
-    {
-      variant: 'primary',
-      label: institutionsHero.primaryCta.label,
-      icon: 'mdi:clipboard-plus-outline',
-      link: institutionsHero.primaryCta.href,
-    },
-    {
-      variant: 'secondary',
-      label: institutionsHero.secondaryCta.label,
-      icon: 'mdi:account-tie-outline',
-      link: institutionsHero.secondaryCta.href,
-      iconWrapperClass: secondaryIconClass,
-    },
-  ],
-  trustStats: institutionsHeroStats,
-}
-
-const heroContent = computed(() =>
-  mergeWebsiteHeroScreen(fallbackHero, heroScreens.value?.[0]),
-)
+const heroContent = computed(() => {
+  const screen = heroScreens.value?.[0]
+  if (!screen) return null
+  return heroContentFromWebsiteScreen(screen, {
+    headingId: 'institutions-hero-heading',
+  })
+})
 </script>
 
 <template>
-  <HeroLayout :hero-content="heroContent" />
+  <HeroLayout v-if="heroContent" :hero-content="heroContent" />
 </template>

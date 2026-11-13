@@ -2,25 +2,16 @@
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { externalLinks } from '~/data/external-links'
-import { phoneSupport, emailSupport, workingHours as staticWorkingHours } from '~/data/contact'
 
 const { data: primaryContact } = await useWebsitePrimaryContact()
 
-const phoneNumber = computed(
-  () => primaryContact.value?.phone.display ?? phoneSupport.number.display,
-)
-const phoneTel = computed(() => primaryContact.value?.phone.tel ?? phoneSupport.number.tel)
-const waNumber = computed(
-  () => primaryContact.value?.whatsapp?.wa ?? phoneSupport.number.wa ?? '917389563564',
-)
-const email = computed(() => primaryContact.value?.email ?? emailSupport.address)
+const phoneNumber = computed(() => primaryContact.value?.phone.display ?? '')
+const phoneTel = computed(() => primaryContact.value?.phone.tel ?? '')
+const waNumber = computed(() => primaryContact.value?.whatsapp?.wa ?? '')
+const waDisplay = computed(() => primaryContact.value?.whatsapp?.display ?? phoneNumber.value)
+const email = computed(() => primaryContact.value?.email ?? '')
 const location = 'Bhilai, Chhattisgarh'
-const workingHours = computed(() => ({
-  label: 'Working hours',
-  value:
-    primaryContact.value?.workingHours
-    ?? `${staticWorkingHours.days} · ${staticWorkingHours.hours}`,
-}))
+const workingHours = computed(() => primaryContact.value?.workingHours ?? '')
 
 /** Social profiles from https://indianmentors.in/ footer (X uses clean profile URL). */
 const socialLinks = [
@@ -100,6 +91,7 @@ const footerLinkGroups = [
       { label: 'News & Media', to: '/news' },
       { label: 'Success Stories', to: '/success-stories' },
       { label: 'Events & Webinars', to: '/events' },
+      { label: 'Team Login', to: externalLinks.adminLogin },
     ],
   },
 ] as const
@@ -122,7 +114,7 @@ const footerLinkGroups = [
           </p>
 
           <ul class="mt-10 space-y-6 text-[15px]" role="list">
-            <li>
+            <li v-if="phoneTel">
               <a :href="`tel:${phoneTel}`" class="group flex items-center gap-4 transition hover:opacity-90">
                 <span
                   class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20">
@@ -139,7 +131,7 @@ const footerLinkGroups = [
               </a>
             </li>
 
-            <li>
+            <li v-if="waNumber">
               <a :href="`https://wa.me/${waNumber}`" target="_blank" rel="noopener noreferrer"
                 class="group flex items-center gap-4 transition hover:opacity-90">
                 <span
@@ -151,12 +143,12 @@ const footerLinkGroups = [
                 </span>
                 <span class="min-w-0">
                   <span class="block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">WhatsApp</span>
-                  <span class="mt-0.5 block font-medium text-slate-200 group-hover:text-white">{{ phoneNumber }}</span>
+                  <span class="mt-0.5 block font-medium text-slate-200 group-hover:text-white">{{ waDisplay }}</span>
                 </span>
               </a>
             </li>
 
-            <li>
+            <li v-if="email">
               <a :href="`mailto:${email}`" class="group flex items-center gap-4 transition hover:opacity-90">
                 <span
                   class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20">
@@ -188,7 +180,7 @@ const footerLinkGroups = [
               </span>
             </li>
 
-            <li class="flex items-center gap-4">
+            <li v-if="workingHours" class="flex items-center gap-4">
               <span
                 class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-blue-500/10 text-blue-400 ring-1 ring-blue-500/20">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -197,10 +189,8 @@ const footerLinkGroups = [
                 </svg>
               </span>
               <span class="min-w-0">
-                <span class="block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">{{
-                  workingHours.label }}</span>
-                <span class="mt-0.5 block whitespace-nowrap font-medium text-slate-200">{{ workingHours.value }}</span>
-
+                <span class="block text-[11px] font-bold uppercase tracking-[0.12em] text-slate-500">Working hours</span>
+                <span class="mt-0.5 block whitespace-nowrap font-medium text-slate-200">{{ workingHours }}</span>
               </span>
             </li>
           </ul>

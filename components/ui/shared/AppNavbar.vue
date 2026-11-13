@@ -2,7 +2,6 @@
 import { computed, ref, watch, onMounted, onUnmounted } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import { externalLinks } from '~/data/external-links'
-import { emailSupport, phoneSupport } from '~/data/contact'
 
 const scrolled = ref(false)
 const mobileOpen = ref(false)
@@ -11,8 +10,8 @@ const navRef = ref<HTMLElement | null>(null)
 const { isSecondaryHeroActive } = useSecondaryHeroTheme()
 
 const { data: primaryContact } = await useWebsitePrimaryContact()
-const phone = computed(() => primaryContact.value?.phone ?? phoneSupport.number)
-const email = computed(() => primaryContact.value?.email ?? emailSupport.address)
+const phone = computed(() => primaryContact.value?.phone ?? null)
+const email = computed(() => primaryContact.value?.email ?? '')
 
 const primaryLinks = [
   { label: 'Home', href: '/' },
@@ -126,7 +125,7 @@ onUnmounted(() => {
     ]">
       <div class="container-page flex h-9 items-center justify-between text-xs sm:text-[13px]">
         <div class="flex min-w-0 items-center gap-3">
-          <a :href="`tel:${phone.tel}`" :class="[
+          <a v-if="phone" :href="`tel:${phone.tel}`" :class="[
             'inline-flex items-center gap-1.5 transition',
             isSecondaryHeroActive ? 'hover:text-blue-700' : 'hover:text-blue-100',
           ]">
@@ -137,8 +136,8 @@ onUnmounted(() => {
             </svg>
             {{ phone.display }}
           </a>
-          <span class="h-3.5 w-px" :class="isSecondaryHeroActive ? 'bg-slate-300' : 'bg-white/30'" aria-hidden="true" />
-          <a :href="`mailto:${email}`" :class="[
+          <span v-if="phone && email" class="h-3.5 w-px" :class="isSecondaryHeroActive ? 'bg-slate-300' : 'bg-white/30'" aria-hidden="true" />
+          <a v-if="email" :href="`mailto:${email}`" :class="[
             'truncate transition',
             isSecondaryHeroActive ? 'hover:text-blue-700' : 'hover:text-blue-100',
           ]">
@@ -290,7 +289,7 @@ onUnmounted(() => {
           </nav>
 
           <div class="mt-auto border-t border-slate-200/80 px-6 py-4">
-            <a :href="`tel:${phone.tel}`"
+            <a v-if="phone" :href="`tel:${phone.tel}`"
               class="mb-2.5 flex items-center gap-2 text-sm font-medium text-slate-700 sm:hidden">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path

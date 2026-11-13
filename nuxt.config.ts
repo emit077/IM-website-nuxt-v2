@@ -92,6 +92,8 @@ export default defineNuxtConfig({
         '/careers/administrative-compliance-executive',
         '/careers/digital-marketing-executive',
         '/careers/erp-tech-operations-executive',
+        '/maintenance',
+        '/coming-soon',
       ],
     },
   },

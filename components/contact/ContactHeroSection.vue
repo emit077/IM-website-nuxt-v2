@@ -3,66 +3,41 @@ import { computed } from 'vue'
 import HeroHeader from '~/components/ui/HeroHeaderLayout.vue'
 import ActionBtn from '~/components/ui/btns/ActionBtn.vue'
 import TrustIndicators from '~/components/ui/TrustIndicatorsLayout.vue'
-import { contactHero, contactHeroCollageBottom, contactHeroCollageTop, contactHeroTrustStats, phoneSupport } from '~/data/contact'
+import { contactHeroCollageBottom, contactHeroCollageTop } from '~/data/contact'
 
 const { data: primaryContact } = await useWebsitePrimaryContact()
-const { data: popularCities } = await useWebsiteCities({ isPopular: true })
 const { data: heroScreens } = await useWebsiteHeroScreens('contact')
 const liveHero = computed(() => heroScreens.value?.[0])
 
-const primaryCtaHref = computed(
-  () =>
-    liveHero.value?.primary_route?.trim() ||
-    `tel:${primaryContact.value?.phone.tel ?? phoneSupport.number.tel}`,
-)
-
-const collageTop = computed(() => {
-  const fromApi = (popularCities.value ?? [])
-    .filter((city) => city.image)
-    .slice(0, 2)
-    .map((city) => ({ id: city.id, image: city.image, label: city.label }))
-  return fromApi.length === 2 ? fromApi : contactHeroCollageTop
-})
-
-const collageBottom = computed(() => {
-  const fromApi = (popularCities.value ?? [])
-    .filter((city) => city.image)
-    .slice(2, 6)
-    .map((city) => ({ id: city.id, image: city.image, label: city.label }))
-  return fromApi.length === 4 ? fromApi : contactHeroCollageBottom
-})
+const collageTop = contactHeroCollageTop
+const collageBottom = contactHeroCollageBottom
 
 const heroContent = computed(() => ({
-  badge: liveHero.value?.badge?.trim() || "India's #1 Verified Tutor Platform",
-  title:
-    liveHero.value?.title?.trim() ||
-    'Contact Us<br class=" sm:block" /> <span class="text-gradient-brand">We’re Here to Help</span>',
-  subtitle:
-    liveHero.value?.subtitle?.trim() ||
-    '<span class="text-gradient-brand">Indian Mentors</span> –  Connecting Learners with Verified Educators',
-  description: liveHero.value?.description?.trim() || contactHero.subheadline,
+  badge: liveHero.value?.badge?.trim() || '',
+  title: liveHero.value?.title?.trim() || '',
+  subtitle: liveHero.value?.subtitle?.trim() || '',
+  description: liveHero.value?.description?.trim() || '',
   contentClass: '!px-0 !py-0 max-w-none',
 }))
 
-const primaryCtaLabel = computed(
-  () => liveHero.value?.primary_cta_label?.trim() || contactHero.primaryCta.label,
-)
-const secondaryCtaLabel = computed(
-  () => liveHero.value?.secondary_cta_label?.trim() || contactHero.secondaryCta.label,
-)
-const secondaryCtaHref = computed(
-  () => liveHero.value?.secondary_route?.trim() || contactHero.secondaryCta.href,
-)
-const trustStats = computed(() => {
-  const stats = (liveHero.value?.stats ?? [])
+const primaryCtaLabel = computed(() => liveHero.value?.primary_cta_label?.trim() || '')
+const secondaryCtaLabel = computed(() => liveHero.value?.secondary_cta_label?.trim() || '')
+const primaryCtaHref = computed(() => {
+  const route = liveHero.value?.primary_route?.trim()
+  if (route) return route
+  const tel = primaryContact.value?.phone.tel
+  return tel ? `tel:${tel}` : ''
+})
+const secondaryCtaHref = computed(() => liveHero.value?.secondary_route?.trim() || '')
+const trustStats = computed(() =>
+  (liveHero.value?.stats ?? [])
     .map((stat) => ({
       value: stat.value?.trim() || '',
       label: stat.label?.trim() || '',
       icon: stat.icon?.trim() || '',
     }))
-    .filter((stat) => stat.value || stat.label)
-  return stats.length ? stats : contactHeroTrustStats
-})
+    .filter((stat) => stat.value || stat.label),
+)
 
 function collageSrc(city: { image: string }) {
   const img = city.image?.trim() || ''
@@ -89,7 +64,7 @@ function collageSrc(city: { image: string }) {
             :content-class="heroContent.contentClass" />
         </div>
 
-        <div class="relative order-3 mx-auto w-full max-w-md sm:max-w-xl md:order-3 md:max-w-none lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none" v-motion
+        <div v-if="collageTop.length || collageBottom.length" class="relative order-3 mx-auto w-full max-w-md sm:max-w-xl md:order-3 md:max-w-none lg:order-none lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-w-none" v-motion
           :initial="{ opacity: 0, x: 20 }"
           :enter="{ opacity: 1, x: 0, transition: { duration: 600, delay: 200, ease: [0.22, 1, 0.36, 1] } }">
           <div aria-hidden="true"
@@ -131,13 +106,14 @@ function collageSrc(city: { image: string }) {
         </div>
 
         <div
+          v-if="primaryCtaLabel || secondaryCtaLabel"
           class="order-4 flex w-full flex-col gap-3 sm:flex-row sm:gap-4 md:order-2 lg:order-none lg:col-start-1 lg:row-start-2"
           v-motion :initial="{ opacity: 0, y: 16 }"
           :enter="{ opacity: 1, y: 0, transition: { duration: 600, delay: 400 } }">
-          <ActionBtn class="!w-full sm:!w-auto sm:flex-1 xl:flex-none" variant="primary"
-            :label="primaryCtaLabel" icon="mdi:phone-outline" :href="primaryCtaHref" />
-          <ActionBtn class="!w-full sm:!w-auto sm:flex-1 xl:flex-none" variant="secondary" :label="secondaryCtaLabel"
-            icon="mdi:map-marker-radius-outline" :href="secondaryCtaHref"
+          <ActionBtn v-if="primaryCtaLabel" class="!w-full sm:!w-auto sm:flex-1 xl:flex-none" variant="primary"
+            :label="primaryCtaLabel" icon="mdi:phone-outline" :href="primaryCtaHref || '#'" />
+          <ActionBtn v-if="secondaryCtaLabel" class="!w-full sm:!w-auto sm:flex-1 xl:flex-none" variant="secondary" :label="secondaryCtaLabel"
+            icon="mdi:map-marker-radius-outline" :href="secondaryCtaHref || '#'"
             icon-wrapper-class="grid h-6 w-6 place-items-center rounded-full bg-blue-100 text-blue-700 transition-colors duration-200 group-hover:bg-blue-600 group-hover:text-white" />
         </div>
       </div>

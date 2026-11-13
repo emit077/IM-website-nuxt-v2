@@ -7,7 +7,6 @@ import {
   branchOffices,
   popularCities,
   popularCityImages,
-  type BranchOffice,
 } from '~/data/contact'
 import type { UiCityCard } from '~/composables/useWebsiteContent'
 
@@ -38,99 +37,48 @@ const props = withDefaults(
 )
 
 const { data: apiCities } = await useWebsiteCities()
-const hasApiCities = computed(() => Boolean(apiCities.value?.length))
-
-const staticCities = computed(() => (props.variant === 'icons' ? popularCities : popularCityImages))
-
-const officeLookup = computed(() => {
-  const map = new Map<string, BranchOffice>()
-  for (const office of branchOffices.offices) {
-    map.set(office.city.toLowerCase(), office)
-    if (office.label) map.set(office.label.toLowerCase(), office)
-  }
-  const alias = (key: string, predicate: (office: BranchOffice) => boolean) => {
-    const office = branchOffices.offices.find(predicate)
-    if (office) map.set(key, office)
-  }
-  alias('bengaluru', (o) => o.city === 'Bengaluru')
-  alias('delhi-ncr', (o) => o.city === 'Delhi')
-  alias('hydrabad', (o) => o.city === 'Hyderabad')
-  alias('hyderabad', (o) => o.city === 'Hyderabad')
-  alias('vizag', (o) => o.city === 'Visakhapatnam' || o.label === 'Visakhapatnam')
-  alias('visakhapatnam', (o) => o.city === 'Visakhapatnam' || o.label === 'Visakhapatnam')
-  return map
-})
-
-function getOfficeForCity(city: { id: string; label: string }) {
-  return officeLookup.value.get(city.label.toLowerCase()) ?? officeLookup.value.get(city.id.toLowerCase())
-}
-
-function officeDisplayName(office: BranchOffice) {
-  return office.label ?? office.city
-}
 
 function mapsUrl(address: string, directionLink?: string) {
   if (directionLink) return directionLink
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`
 }
 
-function cityAsset(city: (typeof popularCities)[number] | (typeof popularCityImages)[number]) {
-  if (props.variant === 'icons' && 'icon' in city) {
-    return usePublicAsset(`/assets/img/city-icons/${city.icon}.png`)
-  }
-  if ('image' in city) {
-    return usePublicAsset(`/assets/img/city-img/${city.image}.png`)
-  }
-  return ''
+const cityImageAliases: Record<string, string> = {
+  delhi: 'delhi',
+  'delhi-ncr': 'delhi',
+  'new delhi': 'delhi',
+  hyderabad: 'hydrabad',
+  hydrabad: 'hydrabad',
+  ahmedabad: 'ahmdabad',
+  ahmdabad: 'ahmdabad',
+  bengaluru: 'bengaluru',
+  bangalore: 'bengaluru',
+  bangluru: 'bengaluru',
+  visakhapatnam: 'vizag',
+  vizag: 'vizag',
+  bhubaneswar: 'bhubaneswar',
+  bhubneshwar: 'bhubaneswar',
 }
 
-function cityImageForOffice(office: BranchOffice) {
-  const name = officeDisplayName(office).toLowerCase()
-  const match = staticCities.value.find(
-    (city) => city.label.toLowerCase() === name || city.id.toLowerCase() === office.city.toLowerCase(),
-  )
-  return match ? cityAsset(match) : ''
-}
-
-function toStaticCityCard(
-  city: (typeof popularCities)[number] | (typeof popularCityImages)[number],
-): CityCard {
-  const office = getOfficeForCity(city)
-  return {
-    id: city.id,
-    label: city.label,
-    image: cityAsset(city),
-    subtitle: office ? 'Branch Office' : 'Service Area',
-    address: office
-      ? office.address
-      : `Home tutoring and online support available across ${city.label}. Contact us to connect with a verified mentor.`,
-    hasOffice: Boolean(office),
-  }
-}
-
-function officeToCard(office: BranchOffice): CityCard {
-  return {
-    id: `${office.city}-${office.address}`,
-    label: officeDisplayName(office),
-    image: cityImageForOffice(office),
-    subtitle: 'Branch Office',
-    address: office.address,
-    hasOffice: true,
-  }
+function localCityImage(label: string) {
+  const key = label.trim().toLowerCase()
+  const alias = cityImageAliases[key] ?? key
+  const list = props.variant === 'icons' ? popularCities : popularCityImages
+  const match = list.find((city) => {
+    const id = city.id.toLowerCase()
+    const name = city.label.toLowerCase()
+    return name === key || id === key || id === alias || name === alias
+  })
+  if (!match) return ''
+  if ('icon' in match) return usePublicAsset(`/assets/img/city-icons/${match.icon}.png`)
+  return usePublicAsset(`/assets/img/city-img/${match.image}.png`)
 }
 
 function fromApiCity(city: UiCityCard): CityCard {
-  const image =
-    useApiMedia(city.image) ||
-    cityImageForOffice({
-      city: city.label,
-      label: city.label,
-      address: city.address,
-    })
   return {
     id: city.id,
     label: city.label,
-    image,
+    image: localCityImage(city.label),
     subtitle: city.subtitle,
     address: city.address,
     hasOffice: city.hasOffice,
@@ -138,36 +86,12 @@ function fromApiCity(city: UiCityCard): CityCard {
   }
 }
 
-const popularCityNames = computed(() => {
-  if (hasApiCities.value) {
-    return new Set(
-      (apiCities.value ?? [])
-        .filter((city) => city.isPopular)
-        .map((city) => city.label.toLowerCase()),
-    )
-  }
-  return new Set(staticCities.value.flatMap((city) => [city.label.toLowerCase(), city.id.toLowerCase()]))
-})
-
-const branchOfficeNames = branchOffices.offices.flatMap((office) =>
-  [office.city, office.label].filter(Boolean) as string[],
+const otherCities = computed(() =>
+  (apiCities.value ?? [])
+    .filter((city) => !city.isPopular)
+    .map((city) => city.label)
+    .sort((a, b) => a.localeCompare(b)),
 )
-
-const otherCities = computed(() => {
-  if (hasApiCities.value) {
-    return (apiCities.value ?? [])
-      .filter((city) => !city.isPopular)
-      .map((city) => city.label)
-      .sort((a, b) => a.localeCompare(b))
-  }
-
-  return [...new Set([
-    ...alsoServing.zones.flatMap((zone) => zone.cities),
-    ...branchOfficeNames.filter((name) => !popularCityNames.value.has(name.toLowerCase())),
-  ])]
-    .filter((city) => !popularCityNames.value.has(city.toLowerCase()))
-    .sort((a, b) => a.localeCompare(b))
-})
 
 const citySearch = ref('')
 const showAll = ref(false)
@@ -181,40 +105,36 @@ function matchesSearch(text: string) {
   return text.toLowerCase().includes(searchTerm.value)
 }
 
-const displayCards = computed(() => {
-  if (hasApiCities.value) {
-    const source = (apiCities.value ?? []).filter((city) => city.isPopular)
-    const cards = (source.length ? source : (apiCities.value ?? [])).map(fromApiCity)
-    return cards.filter((card) => matchesSearch(`${card.label} ${card.address} ${card.subtitle}`))
-  }
+function officeAddress(label: string) {
+  const key = label.trim().toLowerCase()
+  const office = branchOffices.offices.find(
+    (item) => item.city.toLowerCase() === key || item.label?.toLowerCase() === key,
+  )
+  return office?.address ?? ''
+}
 
-  const filteredPopularCities = staticCities.value.filter((city) => {
-    const office = getOfficeForCity(city)
-    const haystack = `${city.label} ${city.id} ${office?.address ?? ''}`
-    return matchesSearch(haystack)
+const localCityCards = computed(() => {
+  const list = props.variant === 'icons' ? popularCities : popularCityImages
+  return list.map((city) => {
+    const address = officeAddress(city.label) || officeAddress(city.id)
+    return {
+      id: city.id,
+      label: city.label,
+      image: localCityImage(city.label),
+      subtitle: address ? 'Branch Office' : 'Service Area',
+      address: address || `Home tutoring and online support available across ${city.label}.`,
+      hasOffice: Boolean(address),
+    }
   })
+})
 
-  const matchingOffices = searchTerm.value
-    ? branchOffices.offices.filter((office) => {
-      const haystack = `${office.city} ${office.label ?? ''} ${office.address}`
-      return matchesSearch(haystack)
-    })
-    : []
-
-  const coveredAddresses = new Set(
-    filteredPopularCities
-      .map((city) => getOfficeForCity(city)?.address)
-      .filter(Boolean),
-  )
-
-  const additionalMatchingOffices = matchingOffices.filter(
-    (office) => !coveredAddresses.has(office.address),
-  )
-
-  return [
-    ...filteredPopularCities.map(toStaticCityCard),
-    ...additionalMatchingOffices.map(officeToCard),
-  ]
+const displayCards = computed(() => {
+  const api = apiCities.value ?? []
+  const source = api.filter((city) => city.isPopular)
+  const cards = (source.length ? source : api).map(fromApiCity)
+  const visible = cards.filter((card) => matchesSearch(`${card.label} ${card.address} ${card.subtitle}`))
+  if (visible.length) return visible
+  return localCityCards.value.filter((card) => matchesSearch(`${card.label} ${card.address} ${card.subtitle}`))
 })
 
 const useMarquee = computed(() => !isSearching.value && displayCards.value.length > 1)

@@ -297,7 +297,7 @@ export const tutorSubjects = {
   classes: '!px-0 !py-0 mx-auto max-w-4xl',
   cta: { label: 'Explore Academic Coverage', href: '/academic-coverage' },
   coverageTile: {
-    title: 'Teach any board.<br />Any grade.',
+    title: 'Teach Any Grade.<br />Any Board.',
     description: 'CBSE to Cambridge. Pre-primary to senior secondary.',
     image: '/assets/img/shared/academic.png',
   },

@@ -98,92 +98,17 @@ export type LeadershipProfile = {
   bio: string
   image?: string
   linkedin?: string
+  x?: string
   department?: string
   credentials?: string
   message?: string
+  quote?: string
+  roleTags?: string
   inTheirWords: string[]
   initials: string
   ringColor: string
   displayOrder?: number
 }
-
-export const aboutLeadership: LeadershipProfile[] = [
-  {
-    id: 'founder',
-    name: 'Afroj Aalam',
-    role: 'Founder & CEO, Indian Mentors',
-    credentials: 'Engineer | Mentor | Entrepreneur | Educationist',
-    image: '/assets/img/about/founder-afroj.png',
-    bio: 'Leads strategy, governance, and long-term growth — keeping mentorship credible, measurable, and scalable across every city Indian Mentors serves.',
-    inTheirWords: [
-      'Every student deserves structure, not just another tuition class.',
-      'Transparency between parents, mentors, and students is non-negotiable.',
-      'Technology should empower mentors — not replace the human connection.',
-    ],
-    initials: 'FC',
-    ringColor: 'ring-blue-500',
-  },
-  {
-    id: 'academic-director',
-    name: 'Ananya Desai',
-    role: 'Academic Director',
-    bio: 'An experienced education professional overseeing curriculum development, mentor training, and academic performance management across the organisation.',
-    inTheirWords: [
-      'Quality mentorship starts with verified expertise and continuous training.',
-      'Progress must be measurable — parents deserve clarity, not assumptions.',
-      'Every learning plan should align with the student\'s board, goals, and pace.',
-    ],
-    initials: 'AD',
-    ringColor: 'ring-emerald-500',
-    message:
-      'Focused on building consistent academic systems so every learner receives structured guidance, timely reviews, and clear improvement plans.',
-  },
-  {
-    id: 'operations-head',
-    name: 'Rohan Mehta',
-    role: 'Head of Operations',
-    bio: 'Coordinates city-level tutor onboarding, parent communication, scheduling, and service delivery to keep mentorship reliable at scale.',
-    inTheirWords: [
-      'A great tutoring experience depends on dependable systems behind every session.',
-      'Families should always know what is happening, who is responsible, and what comes next.',
-      'Operations must make quality easier for mentors, students, and parents.',
-    ],
-    initials: 'RM',
-    ringColor: 'ring-amber-500',
-    message:
-      'Keeps day-to-day delivery disciplined across cities, ensuring families, tutors, and internal teams stay aligned from onboarding to outcomes.',
-  },
-  {
-    id: 'mentor-success-lead',
-    name: 'Priya Sharma',
-    role: 'Mentor Success Lead',
-    bio: 'Supports tutor quality, training, engagement, and performance feedback so mentors can teach with confidence and accountability.',
-    inTheirWords: [
-      'Mentors do their best work when expectations, feedback, and support are clear.',
-      'Strong tutor relationships create stronger academic outcomes for students.',
-      'Quality is built through regular review, not one-time verification.',
-    ],
-    initials: 'PS',
-    ringColor: 'ring-rose-500',
-    message:
-      'Works closely with mentors to strengthen teaching quality, feedback loops, and the student experience across home and online tutoring.',
-  },
-  {
-    id: 'technology-lead',
-    name: 'Kavya Patel',
-    role: 'Technology Lead',
-    bio: 'Guides the platform systems, reporting workflows, and digital tools that support transparent academic monitoring.',
-    inTheirWords: [
-      'Technology should make learning progress easier to understand and act on.',
-      'Reliable data helps families and mentors make better academic decisions.',
-      'The best systems stay simple for the people using them every day.',
-    ],
-    initials: 'KP',
-    ringColor: 'ring-indigo-500',
-    message:
-      'Builds the digital workflows behind tutor coordination, parent visibility, progress reporting, and operational accountability.',
-  },
-]
 
 export type ComparisonRow = {
   feature: string
@@ -220,9 +145,6 @@ export const aboutLeadershipSection = {
     'A passionate team committed to better learning outcomes, stronger families, and brighter futures.',
   classes: '!px-0 !py-0',
 }
-
-export const aboutLeadershipQuote =
-  'Together, we are building India\'s most trusted personalised tutoring ecosystem — where every learner gets structure, every parent gets clarity, and every mentor gets the support to teach with impact.'
 
 export type CommitmentItem = {
   icon: string
