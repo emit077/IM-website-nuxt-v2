@@ -100,7 +100,7 @@ const headerContent = {
             <a href="#"
               class="btn-primary ripple group inline-flex h-12 w-full items-center justify-center gap-2 !px-7 text-[15px] xl:w-auto"
               @mousemove="rippleHandler">
-              Sign Up
+              Hire Teachers
               <svg class="hiring-cta-arrow h-4 w-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24"
                 fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
