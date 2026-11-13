@@ -16,10 +16,11 @@ import { spLearningGoals } from '~/data/student-parent'
       <CardHeader heading-id="learning-goals-heading" :badge="spLearningGoals.badge" :title="spLearningGoals.title"
         :description="spLearningGoals.description" :classes="spLearningGoals.classes" />
 
-      <div class="mt-10 grid gap-6 lg:grid-cols-12 lg:items-stretch lg:gap-7">
-        <div class="flex min-w-0 items-center justify-center lg:col-span-5" v-motion :initial="{ opacity: 0, y: 20 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
-          <figure class="phone-shell relative w-full max-w-[300px] sm:max-w-[320px]"
+      <div class="mt-10 grid gap-6 lg:grid-cols-12 lg:items-stretch lg:gap-x-24 lg:gap-y-7">
+        <div class="phone-slot relative flex min-w-0 items-center justify-center lg:col-span-5" v-motion
+          :initial="{ opacity: 0, y: 20 }" :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 600 } }">
+          <figure
+            class="phone-shell relative w-full max-w-[340px] sm:max-w-[380px] lg:absolute lg:inset-y-0 lg:left-1/2 lg:h-full lg:w-auto lg:max-w-full lg:-translate-x-1/2"
             aria-label="Indian Mentors learning goals reel">
             <span class="phone-btn phone-btn-silent" aria-hidden="true" />
             <span class="phone-btn phone-btn-volume-up" aria-hidden="true" />
@@ -27,11 +28,12 @@ import { spLearningGoals } from '~/data/student-parent'
             <span class="phone-btn phone-btn-power" aria-hidden="true" />
 
             <div
-              class="relative overflow-hidden rounded-[2.45rem] bg-slate-950 p-[11px] shadow-[0_28px_60px_-22px_rgba(15,23,42,0.55)] ring-1 ring-slate-900">
+              class="phone-bezel relative overflow-hidden rounded-[2.35rem] bg-slate-950 p-1.5 shadow-[0_28px_60px_-22px_rgba(15,23,42,0.55)] ring-1 ring-slate-900 sm:rounded-[2.5rem] sm:p-2 lg:flex lg:h-full lg:w-max lg:items-center">
               <span
-                class="pointer-events-none absolute left-1/2 top-[18px] z-20 h-[22px] w-[96px] -translate-x-1/2 rounded-full bg-slate-950"
+                class="pointer-events-none absolute left-1/2 top-2.5 z-20 h-5 w-[88px] -translate-x-1/2 rounded-full bg-slate-950 sm:top-3 sm:h-[22px] sm:w-[100px]"
                 aria-hidden="true" />
-              <div class="goal-screen relative aspect-[9/16] w-full overflow-hidden rounded-[1.9rem] bg-black">
+              <div
+                class="goal-screen relative aspect-[9/16] w-full overflow-hidden rounded-[1.95rem] bg-black sm:rounded-[2.05rem] lg:h-full lg:w-auto">
                 <iframe :src="spLearningGoals.videoUrl" scrolling="no" class="goal-reel"
                   title="Indian Mentors learning goals reel" loading="lazy" allowtransparency="true"
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
@@ -111,43 +113,44 @@ import { spLearningGoals } from '~/data/student-parent'
 
 .phone-btn-silent {
   left: -2px;
-  top: 86px;
+  top: 15%;
   height: 16px;
 }
 
 .phone-btn-volume-up {
   left: -2px;
-  top: 116px;
+  top: 21%;
   height: 40px;
 }
 
 .phone-btn-volume-down {
   left: -2px;
-  top: 164px;
+  top: 29%;
   height: 40px;
 }
 
 .phone-btn-power {
   right: -2px;
-  top: 138px;
-  height: 58px;
+  top: 24%;
+  height: 64px;
 }
 
 .goal-screen {
   container-type: inline-size;
 }
 
-/* Instagram's reel embed is a 4:5 frame with a 54px header plus an overlay avatar. Shift and scale so the 9:16 video fills the phone screen. */
+/* The embed is a 4:5 frame plus a 54px header. Scale 16/9 ÷ 5/4 so the 9:16 reel
+   meets every edge of the screen without cropping the video. */
 .goal-reel {
   position: absolute;
-  top: -102px;
+  top: -54px;
   left: 0;
   width: 100%;
   height: calc(54px + 125cqi);
   border: 0;
   background: #000;
-  transform: scale(1.72);
-  transform-origin: center 102px;
+  transform: scale(1.4222);
+  transform-origin: center 54px;
 }
 
 @media (prefers-reduced-motion: reduce) {
