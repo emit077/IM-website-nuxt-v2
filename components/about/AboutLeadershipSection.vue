@@ -181,11 +181,10 @@ function onPortraitError(event: Event) {
             </div>
           </article>
         </div>
-
-        <div v-if="gridLeaders.length" class="grid gap-4 sm:grid-cols-2"
+        <div v-if="gridLeaders.length" class="grid gap-4 sm:grid-cols-2 pt-10"
           :class="gridLeaders.length > 3 ? 'xl:grid-cols-4' : 'xl:grid-cols-3'" aria-label="Leadership team">
           <article v-for="(leader, i) in gridLeaders" :key="leader.id"
-            class="rounded-[1.6rem] bg-white px-6 py-7 text-center shadow-[0_16px_40px_-28px_rgba(15,23,42,0.22)]"
+            class="rounded-[1.6rem] bg-white px-6 py-7 text-center shadow-[0_16px_40px_-28px_rgba(15,23,42,0.22)] mb-2"
             v-motion :initial="{ opacity: 0, y: 14 }"
             :visibleOnce="{ opacity: 1, y: 0, transition: { delay: 140 + i * 40, duration: 400 } }">
             <div class="mx-auto h-24 w-24 overflow-hidden rounded-full bg-slate-100 ring-4 ring-blue-50">
@@ -208,7 +207,6 @@ function onPortraitError(event: Event) {
             </a>
           </article>
         </div>
-
         <div
           class="flex flex-col items-start justify-between gap-4 rounded-[1.6rem] bg-white px-6 py-5 shadow-[0_16px_40px_-28px_rgba(15,23,42,0.18)] sm:flex-row sm:items-center sm:px-7">
           <div class="flex items-start gap-3 sm:items-center">
