@@ -13,7 +13,7 @@ useSeoMeta({
 })
 
 /** 15 November 2026, 1:00 PM India Standard Time. */
-const LAUNCH_AT = new Date('2026-11-14T00:27:00+05:30').getTime()
+const LAUNCH_AT = new Date('2026-11-15T11:30:00+05:30').getTime()
 const LAUNCH_LABEL = '15 November 2026 · 1:00 PM IST'
 
 const logo = usePublicAsset('/assets/img/logo/IM-logo-black.svg')
