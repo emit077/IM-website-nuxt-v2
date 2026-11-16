@@ -128,9 +128,33 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', href: `${appBaseURL}assets/img/logo/favicon.png`.replace(/\/{2,}/g, '/') },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'preconnect', href: 'https://www.googletagmanager.com' },
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap',
+        },
+      ],
+      script: [
+        {
+          key: 'gtm',
+          tagPriority: 'critical',
+          innerHTML: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5DZQ8K6P');`,
+        },
+        {
+          key: 'gtag-src',
+          src: 'https://www.googletagmanager.com/gtag/js?id=AW-16712187723',
+          async: true,
+        },
+        {
+          key: 'gtag-config',
+          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-16712187723');`,
+        },
+      ],
+      noscript: [
+        {
+          key: 'gtm-noscript',
+          tagPosition: 'bodyOpen',
+          innerHTML: '<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DZQ8K6P" height="0" width="0" style="display:none;visibility:hidden"></iframe>',
         },
       ],
     },

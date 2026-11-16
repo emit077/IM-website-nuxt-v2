@@ -107,7 +107,7 @@ function onPortraitError(event: Event) {
 </script>
 
 <template>
-  <section id="leadership" class="relative bg-[#f4f7fb] section-py" aria-labelledby="leadership-heading">
+  <section id="leadership" class="relative overflow-x-clip bg-[#f4f7fb] section-py" aria-labelledby="leadership-heading">
     <div aria-hidden="true"
       class="pointer-events-none absolute -left-24 top-24 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl" />
     <div aria-hidden="true"
